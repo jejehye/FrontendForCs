@@ -61,3 +61,23 @@
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100; align-items: center; justify-content: center; }
         .modal-overlay.active { display: flex; }
         .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+.pds-header-gradient { background: linear-gradient(135deg, #0046ff 0%, #0039cc 100%); }
+.pds-bg-soft { background: #fafbfc; }
+.pds-card-muted { background: #fafbfc; border-color: #d2d2d7; }
+.pds-card-success { background: #f0fdf4; border-color: #86efac; }
+.pds-card-danger { background: #fef2f2; border-color: #fca5a5; }
+.pds-card-neutral { background: #f0f0f5; border-color: #d2d2d7; }
+.pds-log-bg { background: #1d1d1f; }
+.pds-progress-track { background: #e5e7eb; }
+.pds-progress-success { width: 0%; background: #00c73c; }
+.pds-progress-warning { width: 0%; background: #ff9500; }
+.pds-progress-danger { width: 0%; background: #ff3b30; }
+.pds-badge-vip-bg { background: #e5edff; border-color: #b3ccff; }
+.pds-border-subtle { border-color: #d2d2d7; }
+.pds-border-light { border-color: #f0f0f5; }
+.pds-text-primary { color: #1d1d1f; }
+.pds-text-secondary { color: #86868b; }
+.pds-text-brand { color: #0046ff; }
+.pds-text-success { color: #00c73c; }
+.pds-text-danger { color: #ff3b30; }
