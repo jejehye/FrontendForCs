@@ -42,6 +42,33 @@ if (window.tailwind) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+      const accountNumberInput = document.getElementById('account-number');
+      const residentIdInput = document.getElementById('resident-id');
+
+      const formatAccountNumber = value => value
+        .replace(/[^0-9]/g, '')
+        .slice(0, 14)
+        .replace(/(\d{3})(\d{0,3})(\d{0,8})/, (_, p1, p2, p3) =>
+        [p1, p2, p3].filter(Boolean).join('-'));
+
+      const formatResidentId = value => value
+        .replace(/[^0-9]/g, '')
+        .slice(0, 13)
+        .replace(/(\d{6})(\d{0,7})/, (_, p1, p2) =>
+        [p1, p2].filter(Boolean).join('-'));
+
+      if (accountNumberInput) {
+        accountNumberInput.addEventListener('input', () => {
+          accountNumberInput.value = formatAccountNumber(accountNumberInput.value);
+        });
+      }
+
+      if (residentIdInput) {
+        residentIdInput.addEventListener('input', () => {
+          residentIdInput.value = formatResidentId(residentIdInput.value);
+        });
+      }
+
 document.querySelectorAll('.nav-item').forEach(item =>
       {
         item.addEventListener('click', function()
