@@ -667,18 +667,45 @@
               입력</h4><span class="text-[10px] text-gray-500">2024-05-21
               14:23</span>
           </div>
-          <div class="space-y-2">
+          <div class="space-y-3">
+            <div class="rounded-lg border border-blue-100 bg-blue-50/60 p-2.5">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-[10px] text-gray-700 font-bold">상담유형</label>
+                <span class="text-[9px] text-blue-700 font-medium">대분류 &gt; 중분류 &gt; 소분류</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2">
+                <div>
+                  <label class="text-[9px] text-gray-500 font-semibold mb-1 block">대분류</label>
+                  <select
+                    class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                    <option selected>투자상담</option>
+                    <option>업무처리</option>
+                    <option>민원/클레임</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[9px] text-gray-500 font-semibold mb-1 block">중분류</label>
+                  <select
+                    class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                    <option selected>해외투자</option>
+                    <option>국내주식</option>
+                    <option>펀드/ETF</option>
+                    <option>ISA/연금</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[9px] text-gray-500 font-semibold mb-1 block">소분류</label>
+                  <select
+                    class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                    <option selected>해외주식 매수문의</option>
+                    <option>해외주식 수수료</option>
+                    <option>환전/외화입출금</option>
+                    <option>해외시장 운영시간</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             <div class="grid grid-cols-2 gap-2">
-              <div><label
-                  class="text-[10px] text-gray-600 font-bold mb-1 block">상담유형</label><select
-                  class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
-                  <option>일반상담</option>
-                  <option>업무처리</option>
-                  <option>클레임</option>
-                  <option>해외투자</option>
-                  <option>펀드</option>
-                  <option>ISA</option>
-                </select></div>
               <div><label
                   class="text-[10px] text-gray-600 font-bold mb-1 block">처리상태</label><select
                   class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
@@ -687,9 +714,19 @@
                   <option>보류</option>
                   <option>이관</option>
                 </select></div>
+              <div><label class="text-[10px] text-gray-600 font-bold mb-1 block">후속조치</label><select
+                  class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                  <option selected>없음</option>
+                  <option>콜백요청</option>
+                  <option>전문상담사 연결</option>
+                  <option>문자안내 발송</option>
+                </select></div>
             </div>
             <div><label
-                class="text-[10px] text-gray-600 font-bold mb-1 block">상담내용</label><textarea rows="3" placeholder="상담 내용을 입력하세요..." id="ilxt9b" class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500 resize-none"></textarea>
+                class="text-[10px] text-gray-600 font-bold mb-1 block">상담내용</label><textarea rows="4" placeholder="고객 문의, 안내 내용, 후속조치 등을 순서대로 입력하세요." id="ilxt9b" class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500 resize-none"></textarea>
+              <div class="mt-1 flex items-center justify-between text-[9px] text-gray-400">
+                <span>예시) 문의사항 → 처리결과 → 추가안내</span><span>0 / 500자</span>
+              </div>
             </div>
             <div class="flex gap-2"><button
                 class="flex-1 bg-white border border-gray-300 text-gray-700 text-xs py-1.5 rounded hover:bg-gray-50 font-medium"><i
