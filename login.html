@@ -1,212 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CTI Agent Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0046ff',
-                        secondary: '#6c757d',
-                        success: '#28a745',
-                        danger: '#dc3545',
-                        warning: '#ffc107',
-                        info: '#17a2b8',
-                        light: '#f8f9fa',
-                        dark: '#343a40',
-                    },
-                    fontFamily: {
-                        sans: ['Pretendard', 'Malgun Gothic', 'Dotum', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'Noto Sans KR', sans-serif; 
-            background: #f5f7fa;
-            overflow: hidden;
-        }
-        ::-webkit-scrollbar { display: none; }
-        
-        .login-container {gu
-            width: 1440px;
-            height: 1024px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f7fa;
-        }
-        
-        .login-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            width: 420px;
-        }
-        
-        .login-header {
-            background: linear-gradient(135deg, #0046ff 0%, #003db8 100%);
-            padding: 40px 40px 35px;
-            text-align: center;
-            color: white;
-        }
-        
-        .login-body {
-            padding: 40px;
-        }
-        
-        .logo-section {
-            margin-bottom: 20px;
-        }
-        
-        .logo-text {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-subtext {
-            font-size: 14px;
-            opacity: 0.95;
-            margin-top: 8px;
-            font-weight: 400;
-        }
-        
-        .input-group {
-            margin-bottom: 16px;
-        }
-        
-        .input-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        
-        .input-group input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #dde2e8;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: all 0.2s;
-            background: #fff;
-        }
-        
-        .input-group input:focus {
-            outline: none;
-            border-color: #0046ff;
-            box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.08);
-        }
-        
-        .login-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #0046ff 0%, #003db8 100%);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 24px;
-        }
-        
-        .login-btn:hover {
-            background: linear-gradient(135deg, #003db8 0%, #002d8a 100%);
-        }
-        
-        .login-btn:active {
-            transform: translateY(1px);
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 16px;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-        }
-        
-        .checkbox-group label {
-            font-size: 13px;
-            color: #666;
-            cursor: pointer;
-        }
-        
-        .error-message {
-            background: #fff1f0;
-            border: 1px solid #ffccc7;
-            color: #cf1322;
-            padding: 10px 14px;
-            border-radius: 4px;
-            font-size: 13px;
-            margin-bottom: 16px;
-            display: none;
-        }
-        
-        .error-message.show {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: shake 0.3s;
-        }
-        
-        .login-footer {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #f0f0f0;
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            font-size: 12px;
-        }
-        
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        .footer-links a:hover {
-            color: #0046ff;
-        }
-        
-        .footer-info {
-            margin-top: 16px;
-            font-size: 11px;
-            color: #999;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
-        }
-    </style>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
@@ -218,34 +16,34 @@
                 <div class="logo-subtext">CTI Web 상담환경</div>
             </div>
         </div>
-        
+
         <div class="login-body">
             <div id="errorMessage" class="error-message">
-                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="error-icon">!</span>
                 <span id="errorText">사번 또는 비밀번호가 올바르지 않습니다.</span>
             </div>
-            
+
             <form id="loginForm">
                 <div class="input-group">
                     <label for="employeeId">사번</label>
                     <input type="text" id="employeeId" placeholder="사번을 입력하세요" required autocomplete="off">
                 </div>
-                
+
                 <div class="input-group">
                     <label for="password">비밀번호</label>
                     <input type="password" id="password" placeholder="비밀번호를 입력하세요" required autocomplete="off">
                 </div>
-                
+
                 <div class="checkbox-group">
                     <input type="checkbox" id="rememberMe">
                     <label for="rememberMe">사번 저장</label>
                 </div>
-                
+
                 <button type="submit" class="login-btn">
                     로그인
                 </button>
             </form>
-            
+
             <div class="login-footer">
                 <div class="footer-links">
                     <a href="#">비밀번호 찾기</a>
@@ -260,78 +58,7 @@
     </div>
 </div>
 
-<script>
-    const loginForm = document.getElementById('loginForm');
-    const employeeIdInput = document.getElementById('employeeId');
-    const passwordInput = document.getElementById('password');
-    const rememberMeCheckbox = document.getElementById('rememberMe');
-    const errorMessage = document.getElementById('errorMessage');
-    const errorText = document.getElementById('errorText');
-
-    if (localStorage.getItem('rememberedEmployeeId')) {
-        employeeIdInput.value = localStorage.getItem('rememberedEmployeeId');
-        rememberMeCheckbox.checked = true;
-    }
-
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const employeeId = employeeIdInput.value.trim();
-        const password = passwordInput.value.trim();
-        
-        if (!employeeId || !password) {
-            showError('사번과 비밀번호를 모두 입력해주세요.');
-            return;
-        }
-        
-        if (employeeId.length < 4) {
-            showError('사번은 4자리 이상이어야 합니다.');
-            return;
-        }
-        
-        if (password.length < 4) {
-            showError('비밀번호는 4자리 이상이어야 합니다.');
-            return;
-        }
-        
-        if (rememberMeCheckbox.checked) {
-            localStorage.setItem('rememberedEmployeeId', employeeId);
-        } else {
-            localStorage.removeItem('rememberedEmployeeId');
-        }
-        
-        const loginBtn = loginForm.querySelector('.login-btn');
-        loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>로그인 중...';
-        loginBtn.disabled = true;
-        
-        setTimeout(function() {
-            window.location.href = 'dashboard.html';
-        }, 1000);
-    });
-    
-    function showError(message) {
-        errorText.textContent = message;
-        errorMessage.classList.add('show');
-        
-        setTimeout(function() {
-            errorMessage.classList.remove('show');
-        }, 3000);
-    }
-    
-    employeeIdInput.addEventListener('input', function() {
-        errorMessage.classList.remove('show');
-    });
-    
-    passwordInput.addEventListener('input', function() {
-        errorMessage.classList.remove('show');
-    });
-    
-    passwordInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            loginForm.dispatchEvent(new Event('submit'));
-        }
-    });
-</script>
+<script src="javascript/login.js"></script>
 
 </body>
 </html>
