@@ -21,8 +21,7 @@
     <div id="app-container" class="grid-layout">
       <div id="sidebar" class="col-sidebar">
         <div class="mb-6">
-          <div
-            class="w-8 h-8 rounded bg-white flex items-center justify-center text-blue-600 font-bold text-lg">
+          <div class="sidebar-logo">
             S</div>
         </div>
         <div data-page="main.html" title="Main" class="nav-item active"><i
@@ -39,14 +38,14 @@
             class="fa-solid fa-gear"></i></div>
       </div>
       <div id="chat-column" class="col-chat">
-        <div class="p-4 border-b border-gray-200 bg-white">
-          <div class="flex items-center gap-2 mb-2"><span
+        <div class="chat-panel-header">
+          <div class="chat-status-row"><span
               class="status-badge status-ib"><i
                 class="fa-solid fa-headset mr-1"></i>I/B</span><span
               class="text-xs text-gray-600 font-medium truncate">신한 고객센터 &gt;
               투자상담</span></div>
-          <div id="ihjea" class="flex flex-col gap-2 mb-3">
-            <div class="flex items-center gap-2 text-sm"><span
+          <div id="ihjea" class="customer-summary">
+            <div class="customer-meta-row"><span
                 class="status-badge status-unauth"><i
                   class="fa-solid fa-lock mr-1"></i>무인증</span><span
                 class="font-bold text-gray-800">박지민(여)</span><span
@@ -55,7 +54,7 @@
                 class="text-gray-500">|</span><span
                 class="text-purple-600 font-medium">고객등급(VVIP)</span></div>
             <div
-              class="bg-amber-50 border border-amber-200 rounded px-3 py-1.5 flex items-start gap-2"
+              class="customer-warning"
               id="iznmv"><i
                 class="fa-solid fa-triangle-exclamation text-amber-600 text-sm mt-0.5"></i>
               <div class="flex-1"><span
@@ -64,24 +63,24 @@
                   강화 대상 - 본인확인 철저</span></div>
             </div>
           </div>
-          <div class="bg-blue-50 rounded-lg p-3 pt-2 border border-blue-100">
-            <div class="grid grid-cols-2 gap-x-4 gap-y-2">
-              <div class="flex items-center gap-2"><label
+          <div class="account-info-panel">
+            <div class="account-info-grid">
+              <div class="account-field-row"><label
                   class="text-[11px] font-bold text-gray-600 w-16 flex-shrink-0">계좌번호</label><input
                   type="text" placeholder="567-890-1234"
                   class="text-[11px] border border-blue-200 rounded px-2 py-1 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white">
               </div>
-              <div class="flex items-center gap-2"><label id="iqioi"
+              <div class="account-field-row"><label id="iqioi"
                   class="text-[11px] font-bold text-gray-600 w-16 flex-shrink-0">계좌비번</label><input
                   type="password" placeholder="••••"
                   class="text-[11px] border border-blue-200 rounded px-2 py-1 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white">
               </div>
-              <div class="flex items-center gap-2"><label
+              <div class="account-field-row"><label
                   class="text-[11px] font-bold text-gray-600 w-16 flex-shrink-0">계좌명</label><input
                   type="text" placeholder="박지민"
                   class="text-[11px] border border-blue-200 rounded px-2 py-1 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white">
               </div>
-              <div class="flex items-center gap-2"><label id="iyn4j"
+              <div class="account-field-row"><label id="iyn4j"
                   class="text-[11px] font-bold text-gray-600 w-16 flex-shrink-0">주민번호</label><input
                   type="text" placeholder="920315-2******"
                   class="text-[11px] border border-blue-200 rounded px-2 py-1 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white">
