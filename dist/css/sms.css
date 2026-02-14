@@ -42,11 +42,7 @@
 
       .col-sidebar
       {
-<<<<<<< ours
         background-color: #2c3e50;
-=======
-        background-color: rgb(0, 70, 255);
->>>>>>> theirs
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -354,11 +350,7 @@
 
       .col-sidebar
       {
-<<<<<<< ours
         background-color: rgb(44, 62, 80);
-=======
-        background-color: rgb(0, 70, 255);
->>>>>>> theirs
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -883,11 +875,7 @@
 
       #sidebar
       {
-<<<<<<< ours
         background-image: linear-gradient(rgb(0, 61, 130) 0%, rgb(0, 40, 85) 100%);
-=======
-        background-image: none;
->>>>>>> theirs
         background-position-x: 0%;
         background-position-y: 0%;
         background-size: auto;
@@ -895,11 +883,7 @@
         background-attachment: scroll;
         background-origin: padding-box;
         background-clip: border-box;
-<<<<<<< ours
         background-color: transparent;
-=======
-        background-color: rgb(0, 70, 255);
->>>>>>> theirs
       }
 
       #ie4lf
@@ -941,11 +925,7 @@
 
       #i5ph2
       {
-<<<<<<< ours
         background-image: linear-gradient(135deg, rgb(0, 61, 130) 0%, rgb(0, 85, 184) 100%);
-=======
-        background-image: none;
->>>>>>> theirs
         background-position-x: 0%;
         background-position-y: 0%;
         background-size: auto;
@@ -953,12 +933,7 @@
         background-attachment: scroll;
         background-origin: padding-box;
         background-clip: border-box;
-<<<<<<< ours
         background-color: transparent;
-=======
-        background-color: rgb(0, 70, 255);
-        border: 1px solid rgb(0, 70, 255);
->>>>>>> theirs
       }
 
       #ikabq
