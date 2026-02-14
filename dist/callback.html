@@ -19,10 +19,10 @@
 
   <body>
     <div id="app-container" class="grid-layout">
-      <div id="sidebar" class="col-sidebar">
+      <div id="sidebar" class="column col-sidebar">
         <div class="mb-6">
           <div
-            class="w-8 h-8 rounded bg-white flex items-center justify-center text-blue-600 font-bold text-lg">
+            class="sidebar-logo">
             S</div>
         </div>
         <div data-page="main.html" title="Main" class="nav-item"><i
@@ -38,7 +38,7 @@
         <div title="Settings" class="nav-item mt-auto mb-4"><i
             class="fa-solid fa-gear"></i></div>
       </div>
-      <div id="sms-column" class="col-sms">
+      <div id="sms-column" class="column col-sms">
         <div class="p-4 border-b border-gray-200 bg-white">
           <div class="flex justify-between items-center mb-3">
             <h2 class="font-bold text-gray-800 text-lg flex items-center gap-2">
@@ -163,7 +163,7 @@
           </div>
         </div>
       </div>
-      <div id="center-column" class="col-center">
+      <div id="center-column" class="column col-center">
         <div class="info-card">
           <div
             class="flex justify-between items-center mb-3 border-b border-gray-100 pb-2">
@@ -278,7 +278,7 @@
           </div>
         </div>
       </div>
-      <div id="right-column" class="col-right">
+      <div id="right-column" class="column col-right">
         <div
           class="flex items-center justify-between border-b border-gray-200 pb-1">
           <div class="flex gap-1">
@@ -295,31 +295,31 @@
         <div class="bg-white p-2 rounded border border-gray-100">
           <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-2 text-sm"><span
-                class="status-badge status-unauth"><i
+                class="badge status-badge status-unauth"><i
                   class="fa-solid fa-lock mr-1"></i>무인증</span><span
                 class="font-bold text-gray-800">이지현(여)</span></div><button
               class="text-gray-400 hover:text-blue-500"><i
                 class="fa-solid fa-rotate-right"></i></button>
           </div>
           <div class="grid grid-cols-6 gap-2 mb-3"><button
-              class="action-btn group border-blue-200 shinhan-bg">
+              class="actionBtn action-btn group border-blue-200 shinhan-bg">
               <div
                 class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mb-1 group-hover:bg-blue-300 transition">
                 <i class="fa-solid fa-coins shinhan-text text-lg"></i></div>
               <span class="shinhan-text font-bold">사고</span>
             </button><button
-              class="action-btn group border-teal-200 bg-teal-50">
+              class="actionBtn action-btn group border-teal-200 bg-teal-50">
               <div
                 class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
                 <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
               <span class="text-teal-800 font-bold">권리발생</span>
-            </button><button class="action-btn group"><i
+            </button><button class="actionBtn action-btn group"><i
                 class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
-              class="action-btn group"><i
+              class="actionBtn action-btn group"><i
                 class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
-              class="action-btn group"><i
+              class="actionBtn action-btn group"><i
                 class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
-              class="action-btn group shinhan-btn border-blue-600 hover:bg-blue-700"><i
+              class="actionBtn action-btn group shinhan-btn border-blue-600 hover:bg-blue-700"><i
                 class="fa-solid fa-users text-white"></i><span
                 class="text-white">캠페인</span></button></div>
           <div
@@ -338,7 +338,7 @@
             </div>
           </div>
         </div>
-        <div class="info-card flex-1 flex flex-col p-0 overflow-hidden">
+        <div class="card info-card flex-1 flex flex-col p-0 overflow-hidden">
           <div class="flex border-b border-gray-200 bg-gray-50"><button
               class="px-4 py-2 text-xs font-bold bg-white border-t-2 shinhan-border shinhan-text">콜백
               요청 이력</button><button
@@ -352,7 +352,7 @@
                   <th>요청일시 <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
                   </th>
                   <th>내용</th>
-                  <th id="i2tg96">상태</th>
+                  <th class="callback-status-col">상태</th>
                   <th>처리일시</th>
                 </tr>
               </thead>
@@ -400,7 +400,7 @@
                 <tr class="hover:bg-blue-50 cursor-pointer">
                   <td>2024-01-08 10:25</td>
                   <td>수수료 우대 문의</td>
-                  <td id="ipto9z"><span
+                  <td class="callback-unhandled-cell"><span
                       class="text-xxs bg-red-100 text-red-700 px-2 py-0.5 rounded">미처리</span>
                   </td>
                   <td class="text-gray-400">-</td>

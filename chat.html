@@ -12,9 +12,9 @@
 </head>
 <body>
   <div id="app-container" class="grid-layout">
-      <div id="sidebar" class="col-sidebar">
+      <div id="sidebar" class="column col-sidebar">
         <div class="mb-6">
-          <div class="w-8 h-8 rounded bg-white flex items-center justify-center text-blue-600 font-bold text-lg">S</div>
+          <div class="sidebar-logo">S</div>
         </div>
         <div data-page="main.html" title="Main" class="nav-item"><i class="fa-solid fa-headset"></i></div>
         <div data-page="chat.html" title="Chat" class="nav-item active"><i class="fa-solid fa-comments"></i></div>
@@ -23,13 +23,13 @@
         <div data-page="callback.html" title="Callback" class="nav-item"><i class="fa-solid fa-phone"></i></div>
         <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
       </div>
-      <div id="chat-column" class="col-chat">
+      <div id="chat-column" class="column col-chat">
         <div class="p-4 border-b border-gray-200 bg-white">
-          <div class="flex items-center gap-2 mb-2"><span class="status-badge status-chat"><i class="fa-solid fa-comments mr-1"></i>채팅</span><span
+          <div class="flex items-center gap-2 mb-2"><span class="badge status-badge status-chat"><i class="fa-solid fa-comments mr-1"></i>채팅</span><span
               class="text-xs text-gray-600 font-medium truncate">웹채팅 &gt;
               일반상담</span></div>
           <div class="chat-customer-meta"><span
-              class="status-badge status-unauth"><i
+              class="badge status-badge status-unauth"><i
                 class="fa-solid fa-lock mr-1"></i>무인증</span><span
               class="font-bold text-gray-800">박민지(여)</span><span
               class="text-gray-500">|</span><span class="font-medium">투자성향(적극형)</span></div>
@@ -49,45 +49,45 @@
               class="text-xs text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-200">2024년
               2월 12일 월요일</span></div>
           <div class="chat-message customer">
-            <div class="message-bubble customer">
+            <div class="chatBubble chatBubble--customer message-bubble customer">
               안녕하세요. ISA 계좌 개설하고 싶은데 도움 받을 수 있을까요?
             </div>
             <div class="message-time">10:15</div>
           </div>
           <div class="chat-message agent">
-            <div class="message-bubble agent">
+            <div class="chatBubble chatBubble--agent message-bubble agent">
               안녕하세요, 박민지 고객님. 신한투자증권 상담사 최서연입니다. ISA 계좌 개설 도와드리겠습니다.
             </div>
             <div class="message-time">10:16</div>
           </div>
           <div class="chat-message customer">
-            <div class="message-bubble customer">
+            <div class="chatBubble chatBubble--customer message-bubble customer">
               ISA 계좌의 장점이 궁금합니다.
             </div>
             <div class="message-time">10:17</div>
           </div>
           <div class="chat-message agent">
-            <div class="message-bubble agent">
+            <div class="chatBubble chatBubble--agent message-bubble agent">
               ISA 계좌는 비과세 혜택이 큰 장점입니다. 일반형은 200만원, 서민형은 400만원까지 비과세가 적용되며, 초과분도
               9.9%의 분리과세로 절세 효과가 뛰어납니다.
             </div>
             <div class="message-time">10:18</div>
           </div>
           <div class="chat-message customer">
-            <div class="message-bubble customer">
+            <div class="chatBubble chatBubble--customer message-bubble customer">
               가입 조건은 어떻게 되나요?
             </div>
             <div class="message-time">10:19</div>
           </div>
           <div class="chat-message agent">
-            <div class="message-bubble agent">
+            <div class="chatBubble chatBubble--agent message-bubble agent">
               만 19세 이상 국내 거주자라면 누구나 가입 가능합니다. 근로소득이 있으신 분은 일반형, 총급여 5천만원 이하 또는
               종합소득 3800만원 이하는 서민형으로 가입하실 수 있습니다.
             </div>
             <div class="message-time">10:20</div>
           </div>
           <div class="chat-message customer">
-            <div class="message-bubble customer">
+            <div class="chatBubble chatBubble--customer message-bubble customer">
               바로 개설하고 싶은데 어떻게 하면 되나요?
             </div>
             <div class="message-time">10:21</div>
@@ -116,7 +116,7 @@
             </button></div>
         </div>
       </div>
-      <div id="center-column" class="col-center p-4">
+      <div id="center-column" class="column col-center p-4">
         <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4">
           <div class="flex items-center justify-between mb-3">
             <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
@@ -283,7 +283,7 @@
           </div>
         </div>
       </div>
-      <div id="right-column" class="col-right">
+      <div id="right-column" class="column col-right">
         <div
           class="flex items-center justify-between border-b border-gray-200 pb-1 px-4 pt-4">
           <div class="flex gap-1">
@@ -300,7 +300,7 @@
         <div class="bg-white p-4 rounded border border-gray-100 mx-4 mt-4">
           <div class="flex justify-between items-start mb-3">
             <div class="chat-customer-meta"><span
-                class="status-badge status-unauth"><i
+                class="badge status-badge status-unauth"><i
                   class="fa-solid fa-lock mr-1"></i>무인증</span><span
                 class="font-bold text-gray-800">박민지(여)</span></div><button
               class="text-gray-400"><i
@@ -321,22 +321,22 @@
             </div>
           </div>
           <div class="grid grid-cols-6 gap-2 mb-3"><button
-              class="action-btn group">
+              class="actionBtn action-btn group">
               <div
                 class="w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:opacity-80 transition"><i class="fa-solid fa-coins text-lg"></i></div><span class="font-bold">사고</span>
             </button><button
-              class="action-btn group border-teal-200 bg-teal-50">
+              class="actionBtn action-btn group border-teal-200 bg-teal-50">
               <div
                 class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
                 <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
               <span class="text-teal-800 font-bold">권리발생</span>
-            </button><button class="action-btn group"><i
+            </button><button class="actionBtn action-btn group"><i
                 class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
-              class="action-btn group"><i
+              class="actionBtn action-btn group"><i
                 class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
-              class="action-btn group"><i
+              class="actionBtn action-btn group"><i
                 class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
-              class="action-btn campaign-btn group hover:opacity-90"><i
+              class="actionBtn action-btn campaign-btn group hover:opacity-90"><i
                 class="fa-solid fa-users text-white"></i><span
                 class="text-white">캠페인</span></button></div>
           <div
@@ -354,7 +354,7 @@
                 class="bg-blue-600 text-white px-1.5 rounded text-[10px] font-bold">1</span></div>
           </div>
         </div>
-        <div class="bg-white border border-gray-200 rounded p-4 mx-4 mt-4">
+        <div class="card bg-white border border-gray-200 rounded p-4 mx-4 mt-4">
           <h3
             class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
             <i class="fa-solid fa-chart-pie text-green-500"></i>
@@ -382,7 +382,7 @@
           </div>
         </div>
         <div
-          class="bg-white border border-gray-200 rounded p-4 mx-4 mt-4 flex-1 flex flex-col">
+          class="card bg-white border border-gray-200 rounded p-4 mx-4 mt-4 flex-1 flex flex-col">
           <h3
             class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
             <i class="fa-solid fa-clock-rotate-left text-purple-500"></i>
