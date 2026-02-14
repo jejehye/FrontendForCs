@@ -42,7 +42,8 @@ loginForm.addEventListener('submit', function (e) {
     loginBtn.disabled = true;
 
     setTimeout(function () {
-        window.location.href = 'main.html';
+        const mainPageUrl = new URL('./main.html', window.location.href);
+        window.location.assign(mainPageUrl.href);
     }, 1000);
 });
 
@@ -65,6 +66,6 @@ passwordInput.addEventListener('input', function () {
 
 passwordInput.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-        loginForm.dispatchEvent(new Event('submit'));
+        loginForm.requestSubmit();
     }
 });
