@@ -2,7 +2,9 @@
 FROM alpine:3.20 AS build
 WORKDIR /app
 COPY . .
-RUN sh ./scripts/build.sh
+
+RUN apk add --no-cache bash
+RUN bash ./scripts/build.sh
 
 # 2) runtime stage
 FROM nginx:1.27-alpine
