@@ -1,0 +1,1921 @@
+<html lang="ko">
+
+  <head>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅 상담</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            colors:
+            {
+              primary: '#007bff',
+              secondary: '#6c757d',
+              success: '#28a745',
+              danger: '#dc3545',
+              warning: '#ffc107',
+              info: '#17a2b8',
+              light: '#f8f9fa',
+              dark: '#343a40',
+              'chat-bg': '#f0f4f8',
+              'agent-bubble': '#ffffff',
+              'customer-bubble': '#eef1f6',
+              'panel-border': '#e2e8f0',
+              'highlight-blue': '#e6f0ff',
+              'tag-blue': '#007bff',
+              'sidebar-bg': '#1e293b',
+            },
+            fontFamily:
+            {
+              sans: ['Pretendard', 'Malgun Gothic', 'Dotum', 'sans-serif'],
+            },
+            fontSize:
+            {
+              'xxs': '0.65rem',
+            }
+          }
+        }
+      }
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+      rel="stylesheet">
+    <style>
+      body
+      {
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: #f3f4f6;
+        overflow: hidden;
+      }
+
+      ::-webkit-scrollbar
+      {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track
+      {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb
+      {
+        background: #cbd5e1;
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover
+      {
+        background: #94a3b8;
+      }
+
+      .grid-layout
+      {
+        display: grid;
+        grid-template-columns: 60px 380px 1fr 420px;
+        height: 100vh;
+        width: 1440px;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .col-sidebar
+      {
+        background-color: #2c3e50;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        z-index: 50;
+      }
+
+      .col-chat
+      {
+        border-right: 1px solid #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+      }
+
+      .col-center
+      {
+        border-right: 1px solid #e2e8f0;
+        background: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .col-right
+      {
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .nav-item
+      {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        margin-bottom: 16px;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+
+      .nav-item:hover,
+      .nav-item.active
+      {
+        background-color: #3b82f6;
+        color: white;
+      }
+
+      .status-badge
+      {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      .status-ib
+      {
+        color: #3b82f6;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+      }
+
+      .status-unauth
+      {
+        color: #ef4444;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+      }
+
+      .chat-message
+      {
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-message.agent
+      {
+        align-items: flex-end;
+      }
+
+      .chat-message.customer
+      {
+        align-items: flex-start;
+      }
+
+      .message-bubble
+      {
+        max-width: 70%;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        position: relative;
+      }
+
+      .message-bubble.agent
+      {
+        background: #3b82f6;
+        color: white;
+        border-bottom-right-radius: 4px;
+      }
+
+      .message-bubble.customer
+      {
+        background: #f1f5f9;
+        color: #1e293b;
+        border-bottom-left-radius: 4px;
+      }
+
+      .message-time
+      {
+        font-size: 0.7rem;
+        color: #94a3b8;
+        margin-top: 4px;
+      }
+
+      .quick-reply
+      {
+        display: inline-block;
+        background: white;
+        border: 1px solid #e2e8f0;
+        padding: 8px 12px;
+        border-radius: 16px;
+        font-size: 0.75rem;
+        margin: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .quick-reply:hover
+      {
+        background: #eff6ff;
+        border-color: #3b82f6;
+        color: #3b82f6;
+      }
+
+      .kms-card
+      {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .kms-card:hover
+      {
+        border-color: #3b82f6;
+        background: #f8fafc;
+      }
+
+      .kms-tag
+      {
+        display: inline-block;
+        background: #eff6ff;
+        color: #3b82f6;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+
+      .tab-item
+      {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #64748b;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tab-item:hover
+      {
+        color: #3b82f6;
+        background: #f8fafc;
+      }
+
+      .tab-item.active
+      {
+        color: #3b82f6;
+        border-bottom-color: #3b82f6;
+        background: white;
+      }
+
+      .action-btn
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        border-radius: 8px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s;
+        height: 80px;
+      }
+
+      .action-btn:hover
+      {
+        border-color: #3b82f6;
+        background: #eff6ff;
+      }
+
+      .action-btn i
+      {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .action-btn span
+      {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #475569;
+      }
+
+      .table-compact th,
+      .table-compact td
+      {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .table-compact th
+      {
+        background: #f8fafc;
+        font-weight: 600;
+        color: #64748b;
+        text-align: left;
+      }
+
+      .typing-indicator
+      {
+        display: flex;
+        gap: 4px;
+        padding: 10px 14px;
+        background: #f1f5f9;
+        border-radius: 12px;
+        width: fit-content;
+      }
+
+      .typing-dot
+      {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #94a3b8;
+        animation: typing 1.4s infinite;
+      }
+
+      .typing-dot:nth-child(2)
+      {
+        animation-delay: 0.2s;
+      }
+
+      .typing-dot:nth-child(3)
+      {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes typing
+      {
+
+        0%,
+        60%,
+        100%
+        {
+          opacity: 0.3;
+        }
+
+        30%
+        {
+          opacity: 1;
+        }
+      }
+    </style>
+    <style data-grapesjs-styles="true">
+      *
+      {
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin: 0;
+      }
+
+      body
+      {
+        font-family: "Noto Sans KR", sans-serif;
+        background-color: rgb(243, 244, 246);
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+      ::-webkit-scrollbar
+      {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(203, 213, 225);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(148, 163, 184);
+      }
+
+      .grid-layout
+      {
+        display: grid;
+        grid-template-columns: 60px 380px 1fr 420px;
+        height: 100vh;
+        width: 1440px;
+        margin-top: 0px;
+        margin-right: auto;
+        margin-bottom: 0px;
+        margin-left: auto;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+      }
+
+      .col-sidebar
+      {
+        background-color: rgb(44, 62, 80);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        z-index: 50;
+      }
+
+      .col-chat
+      {
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgb(226, 232, 240);
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 255, 255);
+      }
+
+      .col-center
+      {
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgb(226, 232, 240);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .col-right
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .nav-item
+      {
+        width: 40px;
+        height: 40px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(148, 163, 184);
+        margin-bottom: 16px;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        position: relative;
+      }
+
+      .nav-item:hover
+      {
+        background-color: rgb(59, 130, 246);
+        color: white;
+      }
+
+      .nav-item.active
+      {
+        background-color: rgb(59, 130, 246);
+        color: white;
+      }
+
+      .status-badge
+      {
+        font-size: 0.75rem;
+        padding-top: 2px;
+        padding-right: 6px;
+        padding-bottom: 2px;
+        padding-left: 6px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        font-weight: 500;
+      }
+
+      .status-unauth
+      {
+        color: rgb(239, 68, 68);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(254, 242, 242);
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(254, 202, 202);
+        border-right-color: rgb(254, 202, 202);
+        border-bottom-color: rgb(254, 202, 202);
+        border-left-color: rgb(254, 202, 202);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+      }
+
+      .chat-message
+      {
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-message.agent
+      {
+        align-items: flex-end;
+      }
+
+      .chat-message.customer
+      {
+        align-items: flex-start;
+      }
+
+      .message-bubble
+      {
+        max-width: 70%;
+        padding-top: 10px;
+        padding-right: 14px;
+        padding-bottom: 10px;
+        padding-left: 14px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        position: relative;
+      }
+
+      .message-bubble.agent
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(59, 130, 246);
+        color: white;
+        border-bottom-right-radius: 4px;
+      }
+
+      .message-bubble.customer
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(241, 245, 249);
+        color: rgb(30, 41, 59);
+        border-bottom-left-radius: 4px;
+      }
+
+      .message-time
+      {
+        font-size: 0.7rem;
+        color: rgb(148, 163, 184);
+        margin-top: 4px;
+      }
+
+      .quick-reply
+      {
+        display: inline-block;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(226, 232, 240);
+        border-right-color: rgb(226, 232, 240);
+        border-bottom-color: rgb(226, 232, 240);
+        border-left-color: rgb(226, 232, 240);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        padding-top: 8px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        font-size: 0.75rem;
+        margin-top: 4px;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        margin-left: 4px;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+      }
+
+      .quick-reply:hover
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(239, 246, 255);
+        border-top-color: rgb(59, 130, 246);
+        border-right-color: rgb(59, 130, 246);
+        border-bottom-color: rgb(59, 130, 246);
+        border-left-color: rgb(59, 130, 246);
+        color: rgb(59, 130, 246);
+      }
+
+      .kms-card
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(226, 232, 240);
+        border-right-color: rgb(226, 232, 240);
+        border-bottom-color: rgb(226, 232, 240);
+        border-left-color: rgb(226, 232, 240);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding-top: 12px;
+        padding-right: 12px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+      }
+
+      .kms-card:hover
+      {
+        border-top-color: rgb(59, 130, 246);
+        border-right-color: rgb(59, 130, 246);
+        border-bottom-color: rgb(59, 130, 246);
+        border-left-color: rgb(59, 130, 246);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+      }
+
+      .kms-tag
+      {
+        display: inline-block;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(239, 246, 255);
+        color: rgb(59, 130, 246);
+        padding-top: 2px;
+        padding-right: 8px;
+        padding-bottom: 2px;
+        padding-left: 8px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+
+      .tab-item
+      {
+        padding-top: 12px;
+        padding-right: 16px;
+        padding-bottom: 12px;
+        padding-left: 16px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: rgb(100, 116, 139);
+        cursor: pointer;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        display: flex;
+        align-items: center;
+        row-gap: 6px;
+        column-gap: 6px;
+      }
+
+      .tab-item:hover
+      {
+        color: rgb(59, 130, 246);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+      }
+
+      .tab-item.active
+      {
+        color: rgb(59, 130, 246);
+        border-bottom-color: rgb(59, 130, 246);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+      }
+
+      .action-btn
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 12px;
+        padding-right: 8px;
+        padding-bottom: 12px;
+        padding-left: 8px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(226, 232, 240);
+        border-right-color: rgb(226, 232, 240);
+        border-bottom-color: rgb(226, 232, 240);
+        border-left-color: rgb(226, 232, 240);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        height: 80px;
+      }
+
+      .action-btn:hover
+      {
+        border-top-color: rgb(59, 130, 246);
+        border-right-color: rgb(59, 130, 246);
+        border-bottom-color: rgb(59, 130, 246);
+        border-left-color: rgb(59, 130, 246);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(239, 246, 255);
+      }
+
+      .action-btn i
+      {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .action-btn span
+      {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: rgb(71, 85, 105);
+      }
+
+      .table-compact th,
+      .table-compact td
+      {
+        padding-top: 8px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        font-size: 0.8rem;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(241, 245, 249);
+      }
+
+      .table-compact th
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+        font-weight: 600;
+        color: rgb(100, 116, 139);
+        text-align: left;
+      }
+
+      .typing-indicator
+      {
+        display: flex;
+        row-gap: 4px;
+        column-gap: 4px;
+        padding-top: 10px;
+        padding-right: 14px;
+        padding-bottom: 10px;
+        padding-left: 14px;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(241, 245, 249);
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        width: fit-content;
+      }
+
+      .typing-dot
+      {
+        width: 8px;
+        height: 8px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(148, 163, 184);
+        animation-duration: 1.4s;
+        animation-timing-function: ease;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        animation-name: typing;
+      }
+
+      .typing-dot:nth-child(2)
+      {
+        animation-delay: 0.2s;
+      }
+
+      .typing-dot:nth-child(3)
+      {
+        animation-delay: 0.4s;
+      }
+
+      #sidebar
+      {
+        background-color: #003DA5;
+      }
+
+      #iy1cl
+      {
+        color: #003DA5;
+      }
+
+      #igfun
+      {
+        background-color: #0066CC;
+      }
+
+      #i9xz5
+      {
+        color: #003DA5;
+        background: #E6F0FF;
+        border: 1px solid #B3D9FF;
+      }
+
+      #inlfc
+      {
+        color: #0066CC;
+        width: 120px;
+        font-size: rem;
+      }
+
+      #i1dyq
+      {
+        background-color: #003DA5;
+      }
+
+      #iwydv
+      {
+        color: #003DA5;
+      }
+
+      #igjiu
+      {
+        background: #003DA5;
+      }
+
+      #ipbg4
+      {
+        background: #003DA5;
+      }
+
+      #i4gii
+      {
+        background: #003DA5;
+      }
+
+      #iu05tl
+      {
+        --tw-ring-color: #003DA5;
+      }
+
+      #ijv46e
+      {
+        background-color: #003DA5;
+      }
+
+      #itq9z6
+      {
+        color: #003DA5;
+      }
+
+      #izodm5
+      {
+        --tw-ring-color: #003DA5;
+      }
+
+      #ixalvc
+      {
+        background-color: #003DA5;
+      }
+
+      #ixidak
+      {
+        background-color: #003DA5;
+      }
+
+      #io0ihz
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #id2awe
+      {
+        hover: color: #003DA5;
+      }
+
+      #i8501b
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #ilpq1b
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #ioe0l6
+      {
+        hover: color: #003DA5;
+      }
+
+      #ior30z
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #imoqkg
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #ixdhe8
+      {
+        hover: color: #003DA5;
+      }
+
+      #i9wmng
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #iw8x0r
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #i9y4og
+      {
+        hover: color: #003DA5;
+      }
+
+      #inwyfg
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #istkkf
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #i4uyfr
+      {
+        hover: color: #003DA5;
+      }
+
+      #i3tqop
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #icrsrf
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #ico1kg
+      {
+        hover: color: #003DA5;
+      }
+
+      #ih8kwj
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #iq0tjv
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #icc9h6
+      {
+        hover: color: #003DA5;
+      }
+
+      #ielsj6
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #i2fd08
+      {
+        background: #E6F0FF;
+        color: #003DA5;
+      }
+
+      #iar05y
+      {
+        hover: color: #003DA5;
+      }
+
+      #iex206
+      {
+        color: #003DA5;
+        hover: color: #0066CC;
+      }
+
+      #i5svu3
+      {
+        color: #003DA5;
+        border-bottom-color: #003DA5;
+      }
+
+      #i9zv13
+      {
+        background-color: #003DA5;
+      }
+
+      #ibbzyq
+      {
+        hover: color: #003DA5;
+      }
+
+      #iwdpp3
+      {
+        color: #0066CC;
+      }
+
+      #if4xbq
+      {
+        color: #FFB800;
+      }
+
+      #i37shb
+      {
+        border-color: #B3D9FF;
+        background-color: #E6F0FF;
+      }
+
+      #ia29x9
+      {
+        background-color: #B3D9FF;
+      }
+
+      #iagv5n
+      {
+        color: #003DA5;
+      }
+
+      #il4q4c
+      {
+        color: #003DA5;
+      }
+
+      #i5rf9v
+      {
+        background-color: #003DA5;
+        border-color: #003DA5;
+      }
+
+      #i3dchc
+      {
+        background-color: #0066CC;
+      }
+
+      #iw177p
+      {
+        color: #0066CC;
+      }
+
+      #ib7fk4
+      {
+        background-color: #003DA5;
+      }
+
+      #iq77i
+      {
+        width: 78px;
+      }
+
+      #iio0a
+      {
+        width: 72px;
+      }
+
+      @keyframes typing
+      {
+
+        0%,
+        60%,
+        100%
+        {
+          opacity: 0.3;
+        }
+
+        30%
+        {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅 상담</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+      rel="stylesheet">
+    <div id="app-container" class="grid-layout">
+      <div id="sidebar" class="col-sidebar">
+        <div class="mb-6">
+          <div
+            class="w-8 h-8 rounded bg-white flex items-center justify-center font-bold text-lg"
+            id="iy1cl">S</div>
+        </div>
+        <div title="SMS" class="nav-item"><i
+            class="fa-solid fa-comment-sms"></i></div>
+        <div title="Chat" class="nav-item active" id="igfun"><i
+            class="fa-solid fa-comments"></i></div>
+        <div title="Consultation" class="nav-item"><i
+            class="fa-solid fa-headset"></i></div>
+        <div title="Customers" class="nav-item"><i
+            class="fa-solid fa-users"></i></div>
+        <div title="History" class="nav-item"><i
+            class="fa-regular fa-clock"></i></div>
+        <div title="Scripts" class="nav-item"><i
+            class="fa-solid fa-book-open"></i></div>
+        <div title="Statistics" class="nav-item"><i
+            class="fa-solid fa-chart-pie"></i></div>
+        <div title="Settings" class="nav-item mt-auto mb-4"><i
+            class="fa-solid fa-gear"></i></div>
+      </div>
+      <div id="chat-column" class="col-chat">
+        <div class="p-4 border-b border-gray-200 bg-white">
+          <div class="flex items-center gap-2 mb-2"><span class="status-badge"
+              id="i9xz5"><i class="fa-solid fa-comments mr-1"></i>채팅</span><span
+              class="text-xs text-gray-600 font-medium truncate">웹채팅 &gt;
+              일반상담</span></div>
+          <div class="flex items-center gap-2 text-sm"><span
+              class="status-badge status-unauth" id="iq77i"><i
+                class="fa-solid fa-lock mr-1"></i>무인증</span><span
+              class="font-bold text-gray-800" id="iio0a">박민지(여)</span><span
+              class="text-gray-500">|</span><span class="font-medium"
+              id="inlfc">투자성향(적극형)</span></div>
+        </div>
+        <div class="p-3 flex items-center justify-between text-white"
+          id="i1dyq"><span class="font-semibold flex items-center gap-2"><i
+              class="fa-solid fa-comments"></i>
+            실시간 채팅 상담
+          </span>
+          <div class="flex items-center gap-2"><span
+              class="bg-white px-2 py-1 rounded text-xs font-bold"
+              id="iwydv">대기: 2</span><button
+              class="text-white hover:opacity-80"><i
+                class="fa-solid fa-rotate-right"></i></button></div>
+        </div>
+        <div
+          class="flex-1 overflow-y-auto p-4 bg-gradient-to-b from-gray-50 to-white">
+          <div class="text-center mb-6"><span
+              class="text-xs text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-200">2024년
+              2월 12일 월요일</span></div>
+          <div class="chat-message customer">
+            <div class="message-bubble customer">
+              안녕하세요. ISA 계좌 개설하고 싶은데 도움 받을 수 있을까요?
+            </div>
+            <div class="message-time">10:15</div>
+          </div>
+          <div class="chat-message agent">
+            <div class="message-bubble agent" id="igjiu">
+              안녕하세요, 박민지 고객님. 신한투자증권 상담사 최서연입니다. ISA 계좌 개설 도와드리겠습니다.
+            </div>
+            <div class="message-time">10:16</div>
+          </div>
+          <div class="chat-message customer">
+            <div class="message-bubble customer">
+              ISA 계좌의 장점이 궁금합니다.
+            </div>
+            <div class="message-time">10:17</div>
+          </div>
+          <div class="chat-message agent">
+            <div class="message-bubble agent" id="ipbg4">
+              ISA 계좌는 비과세 혜택이 큰 장점입니다. 일반형은 200만원, 서민형은 400만원까지 비과세가 적용되며, 초과분도
+              9.9%의 분리과세로 절세 효과가 뛰어납니다.
+            </div>
+            <div class="message-time">10:18</div>
+          </div>
+          <div class="chat-message customer">
+            <div class="message-bubble customer">
+              가입 조건은 어떻게 되나요?
+            </div>
+            <div class="message-time">10:19</div>
+          </div>
+          <div class="chat-message agent">
+            <div class="message-bubble agent" id="i4gii">
+              만 19세 이상 국내 거주자라면 누구나 가입 가능합니다. 근로소득이 있으신 분은 일반형, 총급여 5천만원 이하 또는
+              종합소득 3800만원 이하는 서민형으로 가입하실 수 있습니다.
+            </div>
+            <div class="message-time">10:20</div>
+          </div>
+          <div class="chat-message customer">
+            <div class="message-bubble customer">
+              바로 개설하고 싶은데 어떻게 하면 되나요?
+            </div>
+            <div class="message-time">10:21</div>
+          </div>
+          <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        </div>
+        <div class="p-3 border-t border-gray-200 bg-gray-50">
+          <div class="mb-2 flex flex-wrap gap-1"><button class="quick-reply">ISA
+              계좌 안내</button><button class="quick-reply">비과세 혜택</button><button
+              class="quick-reply">가입 조건</button><button class="quick-reply">개설
+              방법</button><button class="quick-reply">운용 상품</button></div>
+          <div class="flex gap-2"><button title="파일 첨부"
+              class="bg-white border border-gray-300 p-2 rounded hover:bg-gray-100"><i
+                class="fa-solid fa-paperclip text-gray-600"></i></button><button
+              title="이모티콘"
+              class="bg-white border border-gray-300 p-2 rounded hover:bg-gray-100"><i
+                class="fa-regular fa-face-smile text-gray-600"></i></button><input
+              type="text" placeholder="메시지를 입력하세요..."
+              class="flex-1 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 text-sm"
+              id="iu05tl"><button
+              class="text-white px-6 py-2 rounded font-medium hover:opacity-90 flex items-center gap-2"
+              id="ijv46e"><i class="fa-solid fa-paper-plane"></i>
+              전송
+            </button></div>
+        </div>
+      </div>
+      <div id="center-column" class="col-center p-4">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-book" id="itq9z6"></i>
+              KMS 매뉴얼
+            </h3>
+            <div class="flex gap-2"><input type="text" placeholder="검색..."
+                class="px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 w-48"
+                id="izodm5"><button
+                class="text-white px-3 py-1.5 rounded text-xs hover:opacity-90"
+                id="ixalvc"><i class="fa-solid fa-search"></i></button></div>
+          </div>
+          <div class="flex gap-2 mb-3 overflow-x-auto pb-2"><button
+              class="px-3 py-1.5 text-white rounded text-xs font-medium whitespace-nowrap"
+              id="ixidak">전체</button><button
+              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">ISA</button><button
+              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">해외주식</button><button
+              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">ETF</button><button
+              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">연금</button><button
+              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">세금</button>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="io0ihz">ISA</span><span
+                  class="text-sm font-bold text-gray-800">ISA 계좌 비과세 혜택
+                  안내</span></div><button class="text-gray-400" id="id2awe"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              일반형은 200만원, 서민형은 400만원까지 비과세가 적용됩니다. 초과분은 9.9% 분리과세로 일반 금융소득 대비 절세
+              효과가 큽니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-10</span><button class="font-medium" id="i8501b"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="ilpq1b">ISA</span><span
+                  class="text-sm font-bold text-gray-800">ISA 계좌 가입 조건 및
+                  유형</span></div><button class="text-gray-400" id="ioe0l6"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              만 19세 이상 국내 거주자 가입 가능. 일반형(제한 없음), 서민형(총급여 5천만원 이하 또는 종합소득 3800만원
+              이하) 중 선택 가능합니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-09</span><button class="font-medium" id="ior30z"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="imoqkg">ISA</span><span
+                  class="text-sm font-bold text-gray-800">ISA 계좌 개설 절차</span>
+              </div><button class="text-gray-400" id="ixdhe8"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              1) 신한투자증권 앱 접속 → 2) ISA 계좌 메뉴 → 3) 가입 유형 선택 → 4) 본인인증 → 5) 약관동의 →
+              6) 정보입력 → 7) 개설완료 (약 3분 소요)
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-08</span><button class="font-medium" id="i9wmng"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="iw8x0r">해외주식</span><span
+                  class="text-sm font-bold text-gray-800">해외주식 거래 수수료 안내</span>
+              </div><button class="text-gray-400" id="i9y4og"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              미국 주식 온라인 거래 수수료는 0.25%이며, 최소 수수료 $1 적용. GOLD 고객은 0.20% 우대 수수료가
+              적용됩니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-07</span><button class="font-medium" id="inwyfg"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="istkkf">ETF</span><span
+                  class="text-sm font-bold text-gray-800">국내 ETF 거래 안내</span>
+              </div><button class="text-gray-400" id="i4uyfr"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              국내 ETF는 주식과 동일하게 거래 가능하며, 온라인 거래 수수료는 0.015%입니다. 배당소득세는 15.4%
+              원천징수됩니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-06</span><button class="font-medium" id="i3tqop"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="icrsrf">연금</span><span
+                  class="text-sm font-bold text-gray-800">연금저축 세액공제 혜택</span>
+              </div><button class="text-gray-400" id="ico1kg"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              연 최대 600만원까지 납입 시 최대 99만원(16.5%) 세액공제 가능. 총급여 5500만원 이하는 16.5%,
+              초과는 13.2% 적용됩니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-05</span><button class="font-medium" id="ih8kwj"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="iq0tjv">세금</span><span
+                  class="text-sm font-bold text-gray-800">금융소득 종합과세 안내</span>
+              </div><button class="text-gray-400" id="icc9h6"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              연간 금융소득(이자+배당) 2천만원 초과 시 종합과세 대상. 초과분은 다른 소득과 합산하여
+              누진세율(6.6%~49.5%) 적용됩니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-04</span><button class="font-medium" id="ielsj6"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+          <div class="kms-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2"><span class="kms-tag"
+                  id="i2fd08">ISA</span><span
+                  class="text-sm font-bold text-gray-800">ISA 계좌 운용 가능 상품</span>
+              </div><button class="text-gray-400" id="iar05y"><i
+                  class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">
+              국내 상장주식, ETF, 펀드, RP, 예금 등 다양한 금융상품 편입 가능. 파생상품 및 일부 고위험 상품은
+              제외됩니다.
+            </p>
+            <div
+              class="flex items-center justify-between text-xxs text-gray-400">
+              <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
+                2024-02-03</span><button class="font-medium" id="iex206"><i
+                  class="fa-solid fa-copy mr-1"></i>복사
+              </button></div>
+          </div>
+        </div>
+      </div>
+      <div id="right-column" class="col-right">
+        <div
+          class="flex items-center justify-between border-b border-gray-200 pb-1 px-4 pt-4">
+          <div class="flex gap-1">
+            <div class="tab-item active" id="i5svu3"><i
+                class="fa-solid fa-user"></i>
+              박민지
+            </div>
+            <div class="tab-item"><i class="fa-solid fa-history"></i>
+              이력
+            </div>
+          </div><button
+            class="text-white text-xs px-3 py-1.5 rounded hover:opacity-90"
+            id="i9zv13">상담저장</button>
+        </div>
+        <div class="bg-white p-4 rounded border border-gray-100 mx-4 mt-4">
+          <div class="flex justify-between items-start mb-3">
+            <div class="flex items-center gap-2 text-sm"><span
+                class="status-badge status-unauth"><i
+                  class="fa-solid fa-lock mr-1"></i>무인증</span><span
+                class="font-bold text-gray-800">박민지(여)</span></div><button
+              class="text-gray-400" id="ibbzyq"><i
+                class="fa-solid fa-rotate-right"></i></button>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+            <div class="bg-gray-50 p-2 rounded"><span
+                class="text-gray-500">투자성향:</span><span class="font-bold ml-1"
+                id="iwdpp3">적극형</span></div>
+            <div class="bg-gray-50 p-2 rounded"><span
+                class="text-gray-500">고객등급:</span><span class="font-bold ml-1"
+                id="if4xbq">GOLD</span></div>
+            <div class="bg-gray-50 p-2 rounded"><span
+                class="text-gray-500">연락처:</span><span
+                class="text-gray-800 font-medium ml-1">010-9876-5432</span>
+            </div>
+            <div class="bg-gray-50 p-2 rounded"><span
+                class="text-gray-500">이메일:</span><span
+                class="text-gray-800 font-medium ml-1">park@email.com</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-6 gap-2 mb-3"><button
+              class="action-btn group" id="i37shb">
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:opacity-80 transition"
+                id="ia29x9"><i class="fa-solid fa-coins text-lg"
+                  id="iagv5n"></i></div><span class="font-bold"
+                id="il4q4c">사고</span>
+            </button><button
+              class="action-btn group border-teal-200 bg-teal-50">
+              <div
+                class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
+                <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
+              <span class="text-teal-800 font-bold">권리발생</span>
+            </button><button class="action-btn group"><i
+                class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
+              class="action-btn group"><i
+                class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
+              class="action-btn group"><i
+                class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
+              class="action-btn group hover:opacity-90" id="i5rf9v"><i
+                class="fa-solid fa-users text-white"></i><span
+                class="text-white">캠페인</span></button></div>
+          <div
+            class="flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200">
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">서비스요청</span><span
+                class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            </div>
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">콜백서비스</span><span
+                class="bg-yellow-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            </div>
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">상담예약</span><span
+                class="text-white px-1.5 rounded text-[10px] font-bold"
+                id="i3dchc">1</span></div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded p-4 mx-4 mt-4">
+          <h3
+            class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-chart-pie text-green-500"></i>
+            보유 자산 현황
+          </h3>
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs"><span
+                class="text-gray-600">총 평가액</span><span
+                class="font-bold text-gray-800">95,320,000원</span></div>
+            <div class="flex justify-between items-center text-xs"><span
+                class="text-gray-600">국내 주식</span><span
+                class="font-medium text-gray-700">42,150,000원</span></div>
+            <div class="flex justify-between items-center text-xs"><span
+                class="text-gray-600">해외 주식</span><span
+                class="font-medium text-gray-700">28,670,000원</span></div>
+            <div class="flex justify-between items-center text-xs"><span
+                class="text-gray-600">ETF</span><span
+                class="font-medium text-gray-700">18,200,000원</span></div>
+            <div class="flex justify-between items-center text-xs"><span
+                class="text-gray-600">ISA</span><span
+                class="font-medium text-gray-700">6,300,000원</span></div>
+            <div
+              class="flex justify-between items-center text-xs pt-2 border-t border-gray-200">
+              <span class="text-gray-600">평가 손익</span><span class="font-bold"
+                id="iw177p">+5,320,000원 (+5.91%)</span></div>
+          </div>
+        </div>
+        <div
+          class="bg-white border border-gray-200 rounded p-4 mx-4 mt-4 flex-1 flex flex-col">
+          <h3
+            class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-clock-rotate-left text-purple-500"></i>
+            최근 상담 이력
+          </h3>
+          <div class="space-y-3 overflow-y-auto flex-1">
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-1"><span
+                  class="text-xs font-bold text-gray-800">ISA 계좌 개설
+                  문의</span><span
+                  class="text-xxs text-white px-2 py-1 rounded font-medium"
+                  id="ib7fk4">채팅</span></div>
+              <p class="text-xxs text-gray-600 mb-2">
+                ISA 계좌 비과세 혜택 및 가입 조건 안내 완료
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-user mr-1"></i>상담사:
+                  최서연</span><span>2024-02-12 10:15</span></div>
+            </div>
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-1"><span
+                  class="text-xs font-bold text-gray-800">ETF 투자 상담</span><span
+                  class="text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium">전화</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2">
+                국내외 ETF 5종 추천 및 매수 완료
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-user mr-1"></i>상담사:
+                  정우진</span><span>2024-02-09 14:22</span></div>
+            </div>
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-1"><span
+                  class="text-xs font-bold text-gray-800">GOLD 등급 혜택
+                  안내</span><span
+                  class="text-xxs text-purple-600 bg-purple-50 px-2 py-1 rounded font-medium">SMS</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2">
+                수수료 우대 및 전용 이벤트 안내 발송 완료
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-user mr-1"></i>시스템
+                  발송</span><span>2024-02-06 11:30</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.nav-item').forEach(item =>
+      {
+        item.addEventListener('click', function()
+        {
+          document.querySelectorAll('.nav-item').forEach(i => i
+            .classList.remove('active'));
+          this.classList.add('active');
+          if (!this.classList.contains('active'))
+          {
+            this.style.backgroundColor = '';
+          }
+          else
+          {
+            this.style.backgroundColor = '#0066CC';
+          }
+        });
+      });
+
+      document.querySelectorAll('.tab-item').forEach(tab =>
+      {
+        tab.addEventListener('click', function()
+        {
+          document.querySelectorAll('.tab-item').forEach(t =>
+          {
+            t.classList.remove('active');
+            t.style.color = '';
+            t.style.borderBottomColor = '';
+          });
+          this.classList.add('active');
+          this.style.color = '#003DA5';
+          this.style.borderBottomColor = '#003DA5';
+        });
+      });
+
+      document.querySelectorAll('.kms-card').forEach(card =>
+      {
+        card.addEventListener('click', function()
+        {
+          const content = this.querySelector('p').textContent.trim();
+          const messageInput = document.querySelector(
+            'input[type="text"][placeholder="메시지를 입력하세요..."]');
+          if (messageInput)
+          {
+            messageInput.value = content;
+            messageInput.focus();
+          }
+        });
+      });
+
+      document.querySelectorAll('.quick-reply').forEach(button =>
+      {
+        button.addEventListener('click', function()
+        {
+          const messageInput = document.querySelector(
+            'input[type="text"][placeholder="메시지를 입력하세요..."]');
+          if (messageInput)
+          {
+            messageInput.value = this.textContent;
+            messageInput.focus();
+          }
+        });
+      });
+    </script>
+  </body>
+
+</html>

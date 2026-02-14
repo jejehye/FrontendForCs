@@ -7,7 +7,9 @@ DIST_DIR="$ROOT_DIR/dist"
 rm -rf "$DIST_DIR"
 mkdir -p "$DIST_DIR"
 
-cp "$ROOT_DIR/login.html" "$DIST_DIR/"
+for html_file in "$ROOT_DIR"/*.html; do
+  cp "$html_file" "$DIST_DIR/"
+done
 cp -R "$ROOT_DIR/css" "$DIST_DIR/"
 cp -R "$ROOT_DIR/javascript" "$DIST_DIR/"
 cp -R "$ROOT_DIR/design" "$DIST_DIR/"

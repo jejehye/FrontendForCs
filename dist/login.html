@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTI Agent Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="logo-section">
+                <div class="logo-text">신한투자증권</div>
+                <div class="logo-subtext">CTI Web 상담환경</div>
+            </div>
+        </div>
+
+        <div class="login-body">
+            <div id="errorMessage" class="error-message">
+                <span class="error-icon">!</span>
+                <span id="errorText">사번 또는 비밀번호가 올바르지 않습니다.</span>
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="employeeId">사번</label>
+                    <input type="text" id="employeeId" placeholder="사번을 입력하세요" required autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호를 입력하세요" required autocomplete="off">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">사번 저장</label>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    로그인
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <div class="footer-links">
+                    <a href="#">비밀번호 찾기</a>
+                    <span style="color: #ddd;">|</span>
+                    <a href="#">시스템 문의</a>
+                </div>
+                <div class="footer-info">
+                    <p>© 2024 Shinhan Investment Corp. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="javascript/login.js"></script>
+
+</body>
+</html>
