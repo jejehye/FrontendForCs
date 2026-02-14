@@ -1,0 +1,19 @@
+{
+  "name": "frontend-for-cs-offline",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/app.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/app.css --watch",
+    "copy:fontawesome": "mkdir -p ./dist/vendor/fontawesome && cp -R ./node_modules/@fortawesome/fontawesome-free/css ./dist/vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/js ./dist/vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/webfonts ./dist/vendor/fontawesome/ && mkdir -p ./vendor/fontawesome && cp -R ./node_modules/@fortawesome/fontawesome-free/css ./vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/js ./vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/webfonts ./vendor/fontawesome/",
+    "postbuild": "npm run copy:fontawesome && cp ./dist/app.css ./app.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2"
+  }
+}
