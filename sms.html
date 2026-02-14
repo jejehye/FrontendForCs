@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMS 발송</title>
-    <script src="javascript/sms-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="javascript/sms-config.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -26,18 +26,16 @@
             class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-lg">
             <span id="ie4lf" class="font-bold text-blue-900">S</span></div>
         </div>
-        <div title="SMS" id="i34d8" class="nav-item"><i
-            class="fa-solid fa-comment-sms"></i></div>
-        <div title="Consultation" class="nav-item"><i
+        <div data-page="main.html" title="Main" class="nav-item"><i
             class="fa-solid fa-headset"></i></div>
-        <div title="Customers" class="nav-item"><i
-            class="fa-solid fa-users"></i></div>
-        <div title="History" class="nav-item"><i
-            class="fa-regular fa-clock"></i></div>
-        <div title="Scripts" class="nav-item"><i
-            class="fa-solid fa-book-open"></i></div>
-        <div title="Statistics" class="nav-item"><i
-            class="fa-solid fa-chart-pie"></i></div>
+        <div data-page="chat.html" title="Chat" class="nav-item"><i
+            class="fa-solid fa-comments"></i></div>
+        <div data-page="pds.html" title="PDS" class="nav-item"><i
+            class="fa-solid fa-phone-volume"></i></div>
+        <div data-page="sms.html" title="SMS" class="nav-item active"><i
+            class="fa-solid fa-comment-sms"></i></div>
+        <div data-page="callback.html" title="Callback" class="nav-item"><i
+            class="fa-solid fa-phone"></i></div>
         <div title="Settings" class="nav-item mt-auto mb-4"><i
             class="fa-solid fa-gear"></i></div>
       </div>

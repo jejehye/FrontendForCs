@@ -43,6 +43,13 @@ document.querySelectorAll('.nav-item').forEach(item =>
       {
         item.addEventListener('click', function()
         {
+          const targetPage = this.dataset.page;
+          if (targetPage && !window.location.pathname.endsWith(targetPage))
+          {
+            window.location.href = targetPage;
+            return;
+          }
+
           const customerName = this.getAttribute('data-customer');
 
           if (customerName)

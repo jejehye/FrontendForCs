@@ -2,6 +2,13 @@ document.querySelectorAll('.nav-item').forEach(item =>
       {
         item.addEventListener('click', function()
         {
+          const targetPage = this.dataset.page;
+          if (targetPage && !window.location.pathname.endsWith(targetPage))
+          {
+            window.location.href = targetPage;
+            return;
+          }
+
           document.querySelectorAll('.nav-item').forEach(i => i
             .classList.remove('active'));
           this.classList.add('active');

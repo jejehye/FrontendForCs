@@ -42,7 +42,7 @@ loginForm.addEventListener('submit', function (e) {
     loginBtn.disabled = true;
 
     setTimeout(function () {
-        window.location.href = 'dashboard.html';
+        window.location.href = 'main.html';
     }, 1000);
 });
 
