@@ -200,13 +200,31 @@
                 class="text-[11px] border border-gray-300 rounded px-2 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
             </div>
             <div class="flex items-center"><label
-                class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0">상담유형</label><select
-                class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
-                <option>전체</option>
-                <option>일반상담</option>
-                <option>업무처리</option>
-                <option>클레임</option>
-              </select></div>
+                class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0">상담유형</label>
+              <div class="flex items-center gap-1 flex-1">
+                <select
+                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                  <option selected="">대분류</option>
+                  <option>금융상품</option>
+                  <option>계좌/인증</option>
+                  <option>민원/클레임</option>
+                </select>
+                <select
+                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                  <option selected="">중분류</option>
+                  <option>ETF</option>
+                  <option>해외주식</option>
+                  <option>수수료</option>
+                </select>
+                <select
+                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                  <option selected="">소분류</option>
+                  <option>매수방법</option>
+                  <option>이벤트</option>
+                  <option>민원접수</option>
+                </select>
+              </div>
+            </div>
             <div class="flex items-center"><label
                 class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0">상담원</label><input
                 type="text" placeholder="상담원명"
@@ -763,7 +781,7 @@
               class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">UMS
               <i class="fa-solid fa-chevron-down ml-1"></i></button></div>
           <div id="ilsix1"
-            class="p-4 overflow-y-auto custom-scroll relative flex-1">
+            class="p-4 pb-6 overflow-y-auto custom-scroll relative flex-1">
             <div class="grid grid-cols-[60px_1fr] gap-y-4 gap-x-2 mb-6">
               <div class="flex items-center justify-center"><span
                   class="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded w-full text-center">I/B</span>
@@ -841,7 +859,7 @@
             </div><button
               class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white w-6 h-12 rounded-l flex items-center justify-center shadow-md hover:bg-blue-700 z-10"><i
                 class="fa-solid fa-chevron-right text-xs"></i></button>
-            <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="mt-[26px] pt-4 border-t border-gray-200">
               <h4 class="text-sm font-bold text-gray-800 mb-2">상담여정 목록</h4>
               <table class="w-full table-compact text-left">
                 <thead>
