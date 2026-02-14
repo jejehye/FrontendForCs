@@ -1,9 +1,11 @@
 /* Extracted from main.html */
 
 window.FontAwesomeConfig = {
-        autoReplaceSvg: 'nest'
-      };
-      tailwind.config = {
+  autoReplaceSvg: 'nest'
+};
+
+if (window.tailwind) {
+  window.tailwind.config = {
         theme:
         {
           extend:
@@ -36,7 +38,8 @@ window.FontAwesomeConfig = {
             }
           }
         }
-      }
+      };
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.nav-item').forEach(item =>
@@ -138,6 +141,10 @@ document.querySelectorAll('.nav-item').forEach(item =>
 
       const statusSelect = document.querySelector('.agent-status-bar select');
       const statusIndicator = document.querySelector('.status-indicator');
+
+      if (!statusSelect || !statusIndicator) {
+        return;
+      }
 
       statusSelect.addEventListener('change', function()
       {
