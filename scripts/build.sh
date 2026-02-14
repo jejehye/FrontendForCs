@@ -12,6 +12,9 @@ for html_file in "$ROOT_DIR"/*.html; do
 done
 cp -R "$ROOT_DIR/css" "$DIST_DIR/"
 cp -R "$ROOT_DIR/javascript" "$DIST_DIR/"
+if [ -d "$ROOT_DIR/js" ]; then
+  cp -R "$ROOT_DIR/js" "$DIST_DIR/"
+fi
 cp -R "$ROOT_DIR/design" "$DIST_DIR/"
 
 echo "Build completed: $DIST_DIR"

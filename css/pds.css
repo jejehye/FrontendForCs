@@ -81,3 +81,11 @@
 .pds-text-brand { color: #0046ff; }
 .pds-text-success { color: #00c73c; }
 .pds-text-danger { color: #ff3b30; }
+.pds-text-warning { color: #ff9500; }
+.pds-bg-brand { background: #0046ff; }
+.pds-bg-success { background: #00c73c; }
+.pds-bg-danger { background: #ff3b30; }
+.pds-bg-neutral { background: #f0f0f5; }
+.pds-bg-call-start { background: linear-gradient(135deg, #00c73c 0%, #00a032 100%); }
+.pds-badge-vip { background: #e5edff; color: #0046ff; }
+.pds-opacity-disabled { opacity: 0.5; }

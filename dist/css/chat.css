@@ -126,3 +126,17 @@ body {
 .campaign-btn:hover { background: #003da5; border-color: #003da5; }
 .campaign-btn span { color: #fff; }
 .status-chat { color: #0046ff; background: #e6f0ff; border: 1px solid #99c2ff; }
+
+.chat-flex-center-gap-2 { display: flex; align-items: center; gap: 0.5rem; }
+.chat-customer-meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; }
+.chat-gap-2-row { display: flex; gap: 0.5rem; }
+.chat-stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; line-height: 1rem; }
+.chat-info-box { background: #f9fafb; padding: 0.5rem; border-radius: 0.25rem; }
+
+.kms-header-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
+.kms-meta-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.65rem; line-height: 1rem; color: rgb(156 163 175); }
+
+.chat-icon-text-row { display: flex; align-items: center; gap: 0.25rem; }
+.chat-note-card { background: #f9fafb; border-radius: 0.25rem; padding: 0.75rem; border: 1px solid rgb(243 244 246); }
+.chat-note-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem; }
+.chat-note-meta { display: flex; justify-content: space-between; font-size: 0.65rem; line-height: 1rem; color: rgb(156 163 175); }

@@ -185,6 +185,10 @@ body {
     color: var(--color-primary);
 }
 
+.login-separator {
+    color: #ddd;
+}
+
 .footer-info {
     margin-top: 16px;
     font-size: 11px;
