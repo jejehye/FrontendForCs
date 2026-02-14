@@ -1,0 +1,1613 @@
+<html lang="ko">
+
+  <head>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS 발송</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            colors:
+            {
+              primary: '#007bff',
+              secondary: '#6c757d',
+              success: '#28a745',
+              danger: '#dc3545',
+              warning: '#ffc107',
+              info: '#17a2b8',
+              light: '#f8f9fa',
+              dark: '#343a40',
+              'chat-bg': '#f0f4f8',
+              'agent-bubble': '#ffffff',
+              'customer-bubble': '#eef1f6',
+              'panel-border': '#e2e8f0',
+              'highlight-blue': '#e6f0ff',
+              'tag-blue': '#007bff',
+              'sidebar-bg': '#1e293b',
+            },
+            fontFamily:
+            {
+              sans: ['Pretendard', 'Malgun Gothic', 'Dotum', 'sans-serif'],
+            },
+            fontSize:
+            {
+              'xxs': '0.65rem',
+            }
+          }
+        }
+      }
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+      rel="stylesheet">
+    <style>
+      body
+      {
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: #f3f4f6;
+        overflow: hidden;
+      }
+
+      ::-webkit-scrollbar
+      {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track
+      {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb
+      {
+        background: #cbd5e1;
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover
+      {
+        background: #94a3b8;
+      }
+
+      .grid-layout
+      {
+        display: grid;
+        grid-template-columns: 60px 380px 1fr 420px;
+        height: 100vh;
+        width: 1440px;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .col-sidebar
+      {
+        background: linear-gradient(180deg, #0046FF 0%, #003ACC 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        z-index: 50;
+      }
+
+      .col-sms
+      {
+        border-right: 1px solid #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+      }
+
+      .col-center
+      {
+        border-right: 1px solid #e2e8f0;
+        background: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+        overflow-y: auto;
+      }
+
+      .col-right
+      {
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+        overflow-y: auto;
+      }
+
+      .nav-item
+      {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 16px;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+
+      .nav-item:hover,
+      .nav-item.active
+      {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .status-badge
+      {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      .status-ib
+      {
+        color: #0046FF;
+        background: #E6EEFF;
+        border: 1px solid #99BBFF;
+      }
+
+      .status-unauth
+      {
+        color: #FF6B6B;
+        background: #FFE6E6;
+        border: 1px solid #FFCCCC;
+      }
+
+      .info-card
+      {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .template-card
+      {
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .template-card:hover
+      {
+        border-color: #0046FF;
+        background: #F0F4FF;
+      }
+
+      .template-card.selected
+      {
+        border-color: #0046FF;
+        background: #F0F4FF;
+        box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.1);
+      }
+
+      .recipient-chip
+      {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: #E6EEFF;
+        border: 1px solid #99BBFF;
+        color: #0046FF;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin: 2px;
+      }
+
+      .char-counter
+      {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        font-size: 0.7rem;
+        color: #64748b;
+      }
+
+      .action-btn
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        border-radius: 8px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s;
+        height: 80px;
+      }
+
+      .action-btn:hover
+      {
+        border-color: #0046FF;
+        background: #F0F4FF;
+      }
+
+      .action-btn i
+      {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .action-btn span
+      {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #475569;
+      }
+
+      .table-compact th,
+      .table-compact td
+      {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .table-compact th
+      {
+        background: #f8fafc;
+        font-weight: 600;
+        color: #64748b;
+        text-align: left;
+      }
+
+      .tab-item
+      {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #64748b;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tab-item:hover
+      {
+        color: #0046FF;
+        background: #f8fafc;
+      }
+
+      .tab-item.active
+      {
+        color: #0046FF;
+        border-bottom-color: #0046FF;
+        background: white;
+      }
+
+      .callback-card
+      {
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+
+      .callback-card:hover
+      {
+        border-color: #FF8A00;
+        background: #FFF8F0;
+      }
+
+      .callback-card.urgent
+      {
+        border-color: #FF6B6B;
+        background: #FFF5F5;
+      }
+
+      .callback-card.completed
+      {
+        border-color: #00C896;
+        background: #F0FFF9;
+        opacity: 0.7;
+      }
+
+      .modal-overlay
+      {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-overlay.active
+      {
+        display: flex;
+      }
+
+      .modal-content
+      {
+        background: white;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .shinhan-gradient
+      {
+        background: linear-gradient(135deg, #0046FF 0%, #0066FF 100%);
+      }
+
+      .shinhan-btn
+      {
+        background: #0046FF;
+      }
+
+      .shinhan-btn:hover
+      {
+        background: #003ACC;
+      }
+
+      .shinhan-text
+      {
+        color: #0046FF;
+      }
+
+      .shinhan-bg
+      {
+        background: #F0F4FF;
+      }
+
+      .shinhan-border
+      {
+        border-color: #0046FF;
+      }
+    </style>
+    <style data-grapesjs-styles="true">
+      *
+      {
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin: 0;
+      }
+
+      body
+      {
+        font-family: "Noto Sans KR", sans-serif;
+        background-color: rgb(243, 244, 246);
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+      ::-webkit-scrollbar
+      {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(203, 213, 225);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(148, 163, 184);
+      }
+
+      .grid-layout
+      {
+        display: grid;
+        grid-template-columns: 60px 380px 1fr 420px;
+        height: 100vh;
+        width: 1440px;
+        margin-top: 0px;
+        margin-right: auto;
+        margin-bottom: 0px;
+        margin-left: auto;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+      }
+
+      .col-sidebar
+      {
+        background-image: linear-gradient(rgb(0, 70, 255) 0%, rgb(0, 58, 204) 100%);
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        z-index: 50;
+      }
+
+      .col-sms
+      {
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgb(226, 232, 240);
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 255, 255);
+      }
+
+      .col-center
+      {
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgb(226, 232, 240);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+        display: flex;
+        flex-direction: column;
+        padding-top: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        row-gap: 16px;
+        column-gap: 16px;
+        overflow-y: auto;
+      }
+
+      .col-right
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        padding-top: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        row-gap: 16px;
+        column-gap: 16px;
+        overflow-y: auto;
+      }
+
+      .nav-item
+      {
+        width: 40px;
+        height: 40px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 16px;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        position: relative;
+      }
+
+      .nav-item:hover
+      {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .nav-item.active
+      {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .status-badge
+      {
+        font-size: 0.75rem;
+        padding-top: 2px;
+        padding-right: 6px;
+        padding-bottom: 2px;
+        padding-left: 6px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        font-weight: 500;
+      }
+
+      .status-unauth
+      {
+        color: rgb(255, 107, 107);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 230, 230);
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(255, 204, 204);
+        border-right-color: rgb(255, 204, 204);
+        border-bottom-color: rgb(255, 204, 204);
+        border-left-color: rgb(255, 204, 204);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+      }
+
+      .info-card
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(226, 232, 240);
+        border-right-color: rgb(226, 232, 240);
+        border-bottom-color: rgb(226, 232, 240);
+        border-left-color: rgb(226, 232, 240);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding-top: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px;
+      }
+
+      .action-btn
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 12px;
+        padding-right: 8px;
+        padding-bottom: 12px;
+        padding-left: 8px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(226, 232, 240);
+        border-right-color: rgb(226, 232, 240);
+        border-bottom-color: rgb(226, 232, 240);
+        border-left-color: rgb(226, 232, 240);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        height: 80px;
+      }
+
+      .action-btn:hover
+      {
+        border-top-color: rgb(0, 70, 255);
+        border-right-color: rgb(0, 70, 255);
+        border-bottom-color: rgb(0, 70, 255);
+        border-left-color: rgb(0, 70, 255);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(240, 244, 255);
+      }
+
+      .action-btn i
+      {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .action-btn span
+      {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: rgb(71, 85, 105);
+      }
+
+      .table-compact th,
+      .table-compact td
+      {
+        padding-top: 8px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        font-size: 0.8rem;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(241, 245, 249);
+      }
+
+      .table-compact th
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+        font-weight: 600;
+        color: rgb(100, 116, 139);
+        text-align: left;
+      }
+
+      .tab-item
+      {
+        padding-top: 12px;
+        padding-right: 16px;
+        padding-bottom: 12px;
+        padding-left: 16px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: rgb(100, 116, 139);
+        cursor: pointer;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        display: flex;
+        align-items: center;
+        row-gap: 6px;
+        column-gap: 6px;
+      }
+
+      .tab-item:hover
+      {
+        color: rgb(0, 70, 255);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(248, 250, 252);
+      }
+
+      .tab-item.active
+      {
+        color: rgb(0, 70, 255);
+        border-bottom-color: rgb(0, 70, 255);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+      }
+
+      .callback-card
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-width: 2px;
+        border-right-width: 2px;
+        border-bottom-width: 2px;
+        border-left-width: 2px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(226, 232, 240);
+        border-right-color: rgb(226, 232, 240);
+        border-bottom-color: rgb(226, 232, 240);
+        border-left-color: rgb(226, 232, 240);
+        border-image-source: none;
+        border-image-slice: 100%;
+        border-image-width: 1;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding-top: 12px;
+        padding-right: 12px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        margin-bottom: 12px;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+        transition-delay: 0s;
+        transition-behavior: normal;
+        transition-property: all;
+        cursor: pointer;
+      }
+
+      .callback-card:hover
+      {
+        border-top-color: rgb(255, 138, 0);
+        border-right-color: rgb(255, 138, 0);
+        border-bottom-color: rgb(255, 138, 0);
+        border-left-color: rgb(255, 138, 0);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 248, 240);
+      }
+
+      .callback-card.urgent
+      {
+        border-top-color: rgb(255, 107, 107);
+        border-right-color: rgb(255, 107, 107);
+        border-bottom-color: rgb(255, 107, 107);
+        border-left-color: rgb(255, 107, 107);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255, 245, 245);
+      }
+
+      .callback-card.completed
+      {
+        border-top-color: rgb(0, 200, 150);
+        border-right-color: rgb(0, 200, 150);
+        border-bottom-color: rgb(0, 200, 150);
+        border-left-color: rgb(0, 200, 150);
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(240, 255, 249);
+        opacity: 0.7;
+      }
+
+      .modal-overlay
+      {
+        display: none;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-overlay.active
+      {
+        display: flex;
+      }
+
+      .modal-content
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: white;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 60px;
+      }
+
+      .shinhan-gradient
+      {
+        background-image: linear-gradient(135deg, rgb(0, 70, 255) 0%, rgb(0, 102, 255) 100%);
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+      }
+
+      .shinhan-btn
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(0, 70, 255);
+      }
+
+      .shinhan-btn:hover
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(0, 58, 204);
+      }
+
+      .shinhan-text
+      {
+        color: rgb(0, 70, 255);
+      }
+
+      .shinhan-bg
+      {
+        background-image: none;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(240, 244, 255);
+      }
+
+      .shinhan-border
+      {
+        border-top-color: rgb(0, 70, 255);
+        border-right-color: rgb(0, 70, 255);
+        border-bottom-color: rgb(0, 70, 255);
+        border-left-color: rgb(0, 70, 255);
+      }
+
+      #i2tg96
+      {
+        width: 76px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS 발송</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+      rel="stylesheet">
+    <div id="app-container" class="grid-layout">
+      <div id="sidebar" class="col-sidebar">
+        <div class="mb-6">
+          <div
+            class="w-10 h-10 rounded bg-white flex items-center justify-center text-blue-600 font-bold text-lg shadow-lg">
+            S</div>
+        </div>
+        <div title="SMS" class="nav-item"><i
+            class="fa-solid fa-comment-sms"></i></div>
+        <div title="Consultation" class="nav-item active"><i
+            class="fa-solid fa-headset"></i></div>
+        <div title="Customers" class="nav-item"><i
+            class="fa-solid fa-users"></i></div>
+        <div title="History" class="nav-item"><i
+            class="fa-regular fa-clock"></i></div>
+        <div title="Scripts" class="nav-item"><i
+            class="fa-solid fa-book-open"></i></div>
+        <div title="Statistics" class="nav-item"><i
+            class="fa-solid fa-chart-pie"></i></div>
+        <div title="Settings" class="nav-item mt-auto mb-4"><i
+            class="fa-solid fa-gear"></i></div>
+      </div>
+      <div id="sms-column" class="col-sms">
+        <div class="p-4 border-b border-gray-200 bg-white">
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-gray-800 text-lg flex items-center gap-2">
+              <i class="fa-solid fa-phone-volume shinhan-text"></i>
+              콜백 요청 관리
+            </h2><button class="text-gray-500 hover:text-blue-600"><i
+                class="fa-solid fa-rotate-right"></i></button>
+          </div>
+          <div class="flex gap-2"><button
+              class="flex-1 text-xs font-medium px-3 py-2 rounded shinhan-btn text-white hover:bg-blue-700"><i
+                class="fa-solid fa-clock mr-1"></i>대기중 (3)
+            </button><button
+              class="flex-1 text-xs font-medium px-3 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200"><i
+                class="fa-solid fa-check mr-1"></i>완료 (12)
+            </button></div>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4 bg-gray-50">
+          <div class="space-y-3">
+            <div data-callback-id="1" class="callback-card urgent">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-bold text-gray-800">이지현</span><span
+                    class="text-xxs bg-red-500 text-white px-2 py-0.5 rounded font-bold">긴급</span>
+                </div><span class="text-xxs text-gray-400">15분 전</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2"><i
+                  class="fa-solid fa-phone text-red-500 text-xs"></i><span
+                  class="text-xs text-gray-700">010-2345-6789</span></div>
+              <p class="text-xs text-gray-600 mb-2 leading-relaxed">
+                해외주식 ISA 계좌 이전 관련 긴급 문의사항 있습니다.
+              </p>
+              <div class="flex justify-between items-center"><span
+                  class="text-xxs text-gray-500"><i
+                    class="fa-regular fa-clock mr-1"></i>요청: 2024-01-20 14:20
+                </span><button
+                  class="shinhan-btn text-white text-xxs px-3 py-1 rounded font-medium hover:bg-blue-700"><i
+                    class="fa-solid fa-phone mr-1"></i>콜백 걸기
+                </button></div>
+            </div>
+            <div data-callback-id="2" class="callback-card">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-bold text-gray-800">박민수</span><span
+                    class="text-xxs bg-blue-500 text-white px-2 py-0.5 rounded font-bold">일반</span>
+                </div><span class="text-xxs text-gray-400">1시간 전</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2"><i
+                  class="fa-solid fa-phone shinhan-text text-xs"></i><span
+                  class="text-xs text-gray-700">010-8765-4321</span></div>
+              <p class="text-xs text-gray-600 mb-2 leading-relaxed">
+                S-CLASS 멤버십 혜택 문의드립니다.
+              </p>
+              <div class="flex justify-between items-center"><span
+                  class="text-xxs text-gray-500"><i
+                    class="fa-regular fa-clock mr-1"></i>요청: 2024-01-20 13:35
+                </span><button
+                  class="shinhan-btn text-white text-xxs px-3 py-1 rounded font-medium hover:bg-blue-700"><i
+                    class="fa-solid fa-phone mr-1"></i>콜백 걸기
+                </button></div>
+            </div>
+            <div data-callback-id="3" class="callback-card">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-bold text-gray-800">최서연</span><span
+                    class="text-xxs bg-blue-500 text-white px-2 py-0.5 rounded font-bold">일반</span>
+                </div><span class="text-xxs text-gray-400">2시간 전</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2"><i
+                  class="fa-solid fa-phone shinhan-text text-xs"></i><span
+                  class="text-xs text-gray-700">010-5555-7777</span></div>
+              <p class="text-xs text-gray-600 mb-2 leading-relaxed">
+                연금저축펀드 추천 상담 요청
+              </p>
+              <div class="flex justify-between items-center"><span
+                  class="text-xxs text-gray-500"><i
+                    class="fa-regular fa-clock mr-1"></i>요청: 2024-01-20 12:50
+                </span><button
+                  class="shinhan-btn text-white text-xxs px-3 py-1 rounded font-medium hover:bg-blue-700"><i
+                    class="fa-solid fa-phone mr-1"></i>콜백 걸기
+                </button></div>
+            </div>
+            <div data-callback-id="4" class="callback-card completed">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-bold text-gray-800">강동훈</span><span
+                    class="text-xxs bg-green-500 text-white px-2 py-0.5 rounded font-bold">완료</span>
+                </div><span class="text-xxs text-gray-400">어제</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2"><i
+                  class="fa-solid fa-phone text-green-500 text-xs"></i><span
+                  class="text-xs text-gray-700">010-9999-8888</span></div>
+              <p class="text-xs text-gray-600 mb-2 leading-relaxed">
+                신한 알파 랩 서비스 가입 문의
+              </p>
+              <div class="flex justify-between items-center"><span
+                  class="text-xxs text-gray-500"><i
+                    class="fa-solid fa-check-circle mr-1"></i>완료: 2024-01-19
+                  16:30
+                </span><span
+                  class="text-xxs text-green-600 font-medium">상담완료</span></div>
+            </div>
+            <div data-callback-id="5" class="callback-card completed">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-bold text-gray-800">윤정아</span><span
+                    class="text-xxs bg-green-500 text-white px-2 py-0.5 rounded font-bold">완료</span>
+                </div><span class="text-xxs text-gray-400">어제</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2"><i
+                  class="fa-solid fa-phone text-green-500 text-xs"></i><span
+                  class="text-xs text-gray-700">010-3333-4444</span></div>
+              <p class="text-xs text-gray-600 mb-2 leading-relaxed">
+                해외 ETF 투자 상담
+              </p>
+              <div class="flex justify-between items-center"><span
+                  class="text-xxs text-gray-500"><i
+                    class="fa-solid fa-check-circle mr-1"></i>완료: 2024-01-19
+                  14:15
+                </span><span
+                  class="text-xxs text-green-600 font-medium">상담완료</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="center-column" class="col-center">
+        <div class="info-card">
+          <div
+            class="flex justify-between items-center mb-3 border-b border-gray-100 pb-2">
+            <h3 class="font-bold text-gray-800 text-sm">공지사항</h3><button
+              class="text-xs text-gray-500 hover:text-blue-600">더보기 +</button>
+          </div>
+          <ul class="text-xs space-y-2">
+            <li class="flex justify-between items-start"><span
+                class="truncate pr-2 text-gray-700"><span
+                  class="text-blue-600 font-bold">[고정]</span>[일반] 고정공지사항 제목입니다.
+                <i
+                  class="fa-solid fa-paperclip text-gray-400 ml-1"></i></span><span
+                class="text-gray-400 whitespace-nowrap">2021-05-03 14:00</span>
+            </li>
+            <li class="flex justify-between items-start"><span
+                class="truncate pr-2 text-gray-700"><span
+                  class="text-red-500 font-bold">[긴급]</span> 긴급공지사항 제목입니다. <i
+                  class="fa-solid fa-paperclip text-gray-400 ml-1"></i></span><span
+                class="text-gray-400 whitespace-nowrap">2021-05-03 14:00</span>
+            </li>
+            <li class="flex justify-between items-start"><span
+                class="truncate pr-2 text-gray-700">[일반] 일반공지사항 입니다. 확인요청드립니다.
+                <i
+                  class="fa-solid fa-paperclip text-gray-400 ml-1"></i></span><span
+                class="text-gray-400 whitespace-nowrap">2021-05-03 14:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-phone-volume shinhan-text"></i>
+              콜백 통계
+            </h3><select
+              class="text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option>오늘</option>
+              <option>이번 주</option>
+              <option>이번 달</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div
+              class="shinhan-bg rounded p-3 text-center border border-blue-200">
+              <div class="text-2xl font-bold shinhan-text">3</div>
+              <div class="text-xxs text-gray-600 mt-1">대기중</div>
+            </div>
+            <div
+              class="bg-orange-50 rounded p-3 text-center border border-orange-100">
+              <div class="text-2xl font-bold text-orange-600">8</div>
+              <div class="text-xxs text-gray-600 mt-1">처리중</div>
+            </div>
+            <div
+              class="bg-green-50 rounded p-3 text-center border border-green-100">
+              <div class="text-2xl font-bold text-green-600">12</div>
+              <div class="text-xxs text-gray-600 mt-1">완료</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="flex justify-between items-center mb-2"><span
+                class="text-xs text-gray-600">평균 응답 시간</span><span
+                class="text-sm font-bold shinhan-text">8분 32초</span></div>
+            <div class="flex justify-between items-center"><span
+                class="text-xs text-gray-600">완료율</span><span
+                class="text-sm font-bold text-green-600">94.2%</span></div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-blue-500"></i>
+              최근 콜백 처리 내역
+            </h3><button
+              class="text-xs text-blue-600 hover:text-blue-700 font-medium">전체보기</button>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">강동훈</span><span
+                  class="text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium">완료</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+                신한 알파 랩 서비스 가입 문의 - 상담 완료 및 가입 진행
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-phone mr-1"></i>010-9999-8888</span><span>2024-01-19
+                  16:30</span></div>
+            </div>
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">윤정아</span><span
+                  class="text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium">완료</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+                해외 ETF 투자 상담 - 맞춤형 포트폴리오 제안
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-phone mr-1"></i>010-3333-4444</span><span>2024-01-19
+                  14:15</span></div>
+            </div>
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">송민호</span><span
+                  class="text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium">완료</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+                해외주식 수수료 우대 문의 - 안내 완료
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-phone mr-1"></i>010-2222-3333</span><span>2024-01-19
+                  11:45</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="right-column" class="col-right">
+        <div
+          class="flex items-center justify-between border-b border-gray-200 pb-1">
+          <div class="flex gap-1">
+            <div class="tab-item active"><i
+                class="fa-solid fa-phone-volume"></i>
+              콜백
+            </div>
+            <div class="tab-item"><i class="fa-solid fa-user"></i>
+              이지현
+            </div>
+          </div><button
+            class="shinhan-btn text-white text-xs px-3 py-1.5 rounded hover:bg-blue-700">상담저장</button>
+        </div>
+        <div class="bg-white p-2 rounded border border-gray-100">
+          <div class="flex justify-between items-start mb-3">
+            <div class="flex items-center gap-2 text-sm"><span
+                class="status-badge status-unauth"><i
+                  class="fa-solid fa-lock mr-1"></i>무인증</span><span
+                class="font-bold text-gray-800">이지현(여)</span></div><button
+              class="text-gray-400 hover:text-blue-500"><i
+                class="fa-solid fa-rotate-right"></i></button>
+          </div>
+          <div class="grid grid-cols-6 gap-2 mb-3"><button
+              class="action-btn group border-blue-200 shinhan-bg">
+              <div
+                class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mb-1 group-hover:bg-blue-300 transition">
+                <i class="fa-solid fa-coins shinhan-text text-lg"></i></div>
+              <span class="shinhan-text font-bold">사고</span>
+            </button><button
+              class="action-btn group border-teal-200 bg-teal-50">
+              <div
+                class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
+                <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
+              <span class="text-teal-800 font-bold">권리발생</span>
+            </button><button class="action-btn group"><i
+                class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
+              class="action-btn group"><i
+                class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
+              class="action-btn group"><i
+                class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
+              class="action-btn group shinhan-btn border-blue-600 hover:bg-blue-700"><i
+                class="fa-solid fa-users text-white"></i><span
+                class="text-white">캠페인</span></button></div>
+          <div
+            class="flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200">
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">서비스요청</span><span
+                class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            </div>
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">콜백서비스</span><span
+                class="shinhan-btn text-white px-1.5 rounded text-[10px] font-bold">1</span>
+            </div>
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">상담예약</span><span
+                class="bg-teal-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-card flex-1 flex flex-col p-0 overflow-hidden">
+          <div class="flex border-b border-gray-200 bg-gray-50"><button
+              class="px-4 py-2 text-xs font-bold bg-white border-t-2 shinhan-border shinhan-text">콜백
+              요청 이력</button><button
+              class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">고객정보</button><button
+              class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">상담이력</button>
+          </div>
+          <div class="p-4 overflow-y-auto flex-1">
+            <table class="w-full table-compact text-left">
+              <thead>
+                <tr>
+                  <th>요청일시 <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
+                  </th>
+                  <th>내용</th>
+                  <th id="i2tg96">상태</th>
+                  <th>처리일시</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600">
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-20 14:20</td>
+                  <td>해외주식 ISA 계좌 이전</td>
+                  <td><span
+                      class="text-xxs shinhan-bg shinhan-text px-2 py-0.5 rounded">대기중</span>
+                  </td>
+                  <td class="text-gray-400">-</td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-18 11:30</td>
+                  <td>S-CLASS 멤버십 문의</td>
+                  <td><span
+                      class="text-xxs bg-green-100 text-green-700 px-2 py-0.5 rounded">완료</span>
+                  </td>
+                  <td>2024-01-18 15:45</td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-15 09:20</td>
+                  <td>연금저축펀드 추천</td>
+                  <td><span
+                      class="text-xxs bg-green-100 text-green-700 px-2 py-0.5 rounded">완료</span>
+                  </td>
+                  <td>2024-01-15 10:15</td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-12 16:10</td>
+                  <td>알파 랩 서비스 문의</td>
+                  <td><span
+                      class="text-xxs bg-green-100 text-green-700 px-2 py-0.5 rounded">완료</span>
+                  </td>
+                  <td>2024-01-12 16:50</td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-10 13:40</td>
+                  <td>해외 ETF 투자 상담</td>
+                  <td><span
+                      class="text-xxs bg-green-100 text-green-700 px-2 py-0.5 rounded">완료</span>
+                  </td>
+                  <td>2024-01-10 14:20</td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-08 10:25</td>
+                  <td>수수료 우대 문의</td>
+                  <td id="ipto9z"><span
+                      class="text-xxs bg-red-100 text-red-700 px-2 py-0.5 rounded">미처리</span>
+                  </td>
+                  <td class="text-gray-400">-</td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-05 15:30</td>
+                  <td>신탁 상품 문의</td>
+                  <td><span
+                      class="text-xxs bg-green-100 text-green-700 px-2 py-0.5 rounded">완료</span>
+                  </td>
+                  <td>2024-01-05 16:10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="callbackModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="shinhan-gradient text-white p-6 rounded-t-xl">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="text-xl font-bold mb-2">콜백 처리</h2>
+              <p class="text-sm opacity-90">고객님께 콜백을 진행합니다</p>
+            </div><button class="text-white hover:text-gray-200 text-2xl"><i
+                class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><i
+                class="fa-solid fa-user shinhan-text"></i>
+              고객 정보
+            </h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div><span class="text-gray-600">고객명:</span><span
+                  id="modalCustomerName"
+                  class="font-bold text-gray-800 ml-2">이지현</span></div>
+              <div><span class="text-gray-600">연락처:</span><span
+                  id="modalCustomerPhone"
+                  class="font-bold text-gray-800 ml-2">010-2345-6789</span>
+              </div>
+              <div><span class="text-gray-600">고객등급:</span><span
+                  class="font-bold text-purple-600 ml-2">S-CLASS</span></div>
+              <div><span class="text-gray-600">투자성향:</span><span
+                  class="font-bold text-orange-500 ml-2">적극투자형</span></div>
+            </div>
+          </div>
+          <div class="shinhan-bg rounded-lg p-4 border border-blue-200">
+            <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2"><i
+                class="fa-solid fa-comment-dots shinhan-text"></i>
+              콜백 요청 내용
+            </h3>
+            <p id="modalCallbackContent"
+              class="text-sm text-gray-700 leading-relaxed">
+              해외주식 ISA 계좌 이전 관련 긴급 문의사항 있습니다.
+            </p>
+            <div class="mt-2 text-xs text-gray-500"><i
+                class="fa-regular fa-clock mr-1"></i>
+              요청시간: <span id="modalRequestTime">2024-01-20 14:20</span></div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><i
+                class="fa-solid fa-pen-to-square text-green-500"></i>
+              상담 메모
+            </h3>
+            <textarea placeholder="상담 내용을 기록하세요..." class="w-full h-32 px-3 py-2 border border-gray-300 rounded text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><i
+                class="fa-solid fa-list-check text-purple-500"></i>
+              처리 상태
+            </h3>
+            <div class="space-y-2"><label
+                class="flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-50"><input
+                  type="radio" name="callbackStatus" value="completed"
+                  checked="" class="text-green-500 focus:ring-green-500"><span
+                  class="text-sm text-gray-700">상담 완료</span></label><label
+                class="flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-50"><input
+                  type="radio" name="callbackStatus" value="callback"
+                  class="shinhan-text focus:ring-blue-500"><span
+                  class="text-sm text-gray-700">재콜백 필요</span></label><label
+                class="flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-50"><input
+                  type="radio" name="callbackStatus" value="unreachable"
+                  class="text-red-500 focus:ring-red-500"><span
+                  class="text-sm text-gray-700">연결 불가</span></label></div>
+          </div>
+          <div class="flex gap-3 pt-4"><button
+              class="flex-1 bg-gray-200 text-gray-700 px-4 py-3 rounded-lg font-bold hover:bg-gray-300 transition"><i
+                class="fa-solid fa-xmark mr-2"></i>취소
+            </button><button
+              class="flex-1 shinhan-gradient text-white px-4 py-3 rounded-lg font-bold hover:opacity-90 transition shadow-lg"><i
+                class="fa-solid fa-check mr-2"></i>처리 완료
+            </button></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.nav-item').forEach(item =>
+      {
+        item.addEventListener('click', function()
+        {
+          document.querySelectorAll('.nav-item').forEach(i => i
+            .classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      document.querySelectorAll('.tab-item').forEach(tab =>
+      {
+        tab.addEventListener('click', function()
+        {
+          document.querySelectorAll('.tab-item').forEach(t => t
+            .classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      function openCallbackModal(callbackId)
+      {
+        const modal = document.getElementById('callbackModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCallbackModal()
+      {
+        const modal = document.getElementById('callbackModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      function completeCallback()
+      {
+        alert('콜백 처리가 완료되었습니다.');
+        closeCallbackModal();
+      }
+
+      document.getElementById('callbackModal').addEventListener('click',
+        function(e)
+        {
+          if (e.target === this)
+          {
+            closeCallbackModal();
+          }
+        });
+    </script>
+  </body>
+
+</html>
