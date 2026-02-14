@@ -87,17 +87,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #94a3b8;
+        color: rgba(255, 255, 255, 0.6);
         margin-bottom: 16px;
         cursor: pointer;
         transition: all 0.2s;
-        position: relative;
       }
 
       .nav-item:hover,
       .nav-item.active
       {
-        background-color: #3b82f6;
+        background-color: rgba(255, 255, 255, 0.2);
         color: white;
       }
 
@@ -442,7 +441,6 @@
         transition-delay: 0s;
         transition-behavior: normal;
         transition-property: all;
-        position: relative;
       }
 
       .nav-item:hover
