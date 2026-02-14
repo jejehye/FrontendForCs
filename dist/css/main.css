@@ -69,9 +69,13 @@ body
       {
         display: grid;
 <<<<<<< ours
+<<<<<<< ours
         grid-template-columns: 60px minmax(280px, 0.72fr) minmax(980px, 4.78fr) minmax(0, 0.5fr);
 =======
         grid-template-columns: 60px minmax(230px, 0.62fr) minmax(980px, 4.88fr) minmax(0, 0.5fr);
+>>>>>>> theirs
+=======
+        grid-template-columns: 60px minmax(180px, 0.52fr) minmax(980px, 4.98fr) minmax(0, 0.5fr);
 >>>>>>> theirs
         height: 100vh;
         width: 100vw;
