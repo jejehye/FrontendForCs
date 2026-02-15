@@ -352,6 +352,9 @@
   .notice-meta-left { @apply flex items-center gap-2; }
 
   .notice-badge { @apply text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .notice-badge--critical { @apply bg-red-500; }
+  .notice-badge--event { @apply bg-purple-500; }
+  .notice-badge--training { @apply bg-orange-500; }
   .notice-badge--important { @apply bg-blue-500; }
   .notice-badge--normal { @apply bg-green-500; }
 
@@ -359,12 +362,6 @@
   .notice-title { @apply font-bold text-gray-800 mb-1; }
   .notice-desc { @apply text-sm text-gray-600; }
   .notice-chevron { @apply text-gray-400 text-sm; }
-
-  .badge--notice-critical { @apply notice-badge bg-red-500; }
-  .badge--notice-important { @apply notice-badge notice-badge--important; }
-  .badge--notice-normal { @apply notice-badge notice-badge--normal; }
-  .badge--notice-event { @apply notice-badge bg-purple-500; }
-  .badge--notice-training { @apply notice-badge bg-orange-500; }
 
   .card--notice { @apply notice-card; }
 
