@@ -328,6 +328,14 @@
   .field--history-category { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1; }
 
   .table--history { @apply w-full text-left border-collapse; }
+
+  .tbl { @apply w-full text-left border-collapse; }
+  .tbl__row { @apply hover:bg-gray-50 cursor-pointer transition; }
+  .tbl__row.is-active { @apply bg-blue-50 hover:bg-blue-100; }
+  .tbl__cell { @apply p-2 border-b border-gray-100 border-r text-center; }
+  .tbl__cell--accent { @apply font-medium text-blue-600; }
+  .tbl__cell--strong { @apply font-bold; }
+  .tbl__cell--truncate { @apply truncate max-w-[150px]; }
   .table__head { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20; }
   .table__head--narrow { @apply w-10; }
   .table__head--time { @apply w-32 cursor-pointer hover:bg-blue-100 transition; }
