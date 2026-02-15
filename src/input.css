@@ -18,6 +18,21 @@
 }
 
 @layer components {
+  .panel { @apply bg-white border border-gray-200 rounded-lg p-4; }
+  .card { @apply bg-white border border-gray-200 rounded p-3; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded px-3 py-2 text-sm font-medium transition; }
+  .btn-primary { @apply bg-blue-600 text-white hover:bg-blue-700; }
+  .btn-secondary { @apply bg-gray-100 text-gray-700 hover:bg-gray-200; }
+  .tab { @apply px-3 py-1.5 text-xs font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700; }
+  .tab-active { @apply text-blue-600 border-blue-600 font-bold; }
+  .badge { @apply inline-flex items-center rounded px-2 py-0.5 text-xs font-bold; }
+  .badge-neutral { @apply bg-gray-100 text-gray-700; }
+  .field { @apply w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .table { @apply w-full text-left text-sm; }
+  .table-row-interactive { @apply hover:bg-blue-50 cursor-pointer; }
+  .table-cell { @apply p-2 border-b border-gray-100 text-center; }
+  .pagination { @apply flex items-center gap-1; }
+
   .ui-inline-gap-2 { @apply flex items-center gap-2; }
   .ui-between-start-mb2 { @apply flex justify-between items-start mb-2; }
   .ui-title-xs { @apply text-xs font-bold text-gray-800; }
@@ -159,4 +174,97 @@
   .callback-icon-comment { @apply text-blue-600; }
   .callback-icon-pen { @apply text-green-500; }
   .callback-icon-list { @apply text-purple-500; }
+
+
+  /* Auto-migrated semantic utility wrappers */
+  .sem-u-001 { @apply text-[11px] border border-blue-200 rounded px-2 py-1.5 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white; }
+  .sem-u-002 { @apply bg-blue-700 border-none text-white text-sm rounded px-3 py-1 w-48 focus:outline-none focus:ring-1 focus:ring-white; }
+  .sem-u-003 { @apply h-[430px] overflow-y-auto p-4 bg-gray-50 flex flex-col gap-4; }
+  .sem-u-004 { @apply bg-blue-50 text-blue-600 text-xs px-4 py-1 rounded-full border border-blue-100 w-full text-center; }
+  .sem-u-005 { @apply bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg hover:bg-blue-700; }
+  .sem-u-006 { @apply bg-blue-600 p-3 flex items-center justify-between text-white border-t-2 border-blue-700; }
+  .sem-u-007 { @apply bg-blue-700 hover:bg-blue-800 text-xs px-2 py-1 rounded border border-blue-500 transition; }
+  .sem-u-008 { @apply bg-white text-blue-600 hover:bg-blue-50 text-xs px-2 py-1 rounded font-bold transition; }
+  .sem-u-009 { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500; }
+  .sem-u-010 { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 w-24; }
+  .sem-u-011 { @apply text-[11px] border border-gray-300 rounded px-2 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1; }
+  .sem-u-012 { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1; }
+  .sem-u-013 { @apply flex justify-between items-center px-3 py-2 border-b border-gray-200 bg-gray-50; }
+  .sem-u-014 { @apply text-[10px] flex items-center gap-1 text-gray-500 hover:text-gray-700 border border-gray-300 rounded px-2 py-0.5 bg-white; }
+  .sem-u-015 { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-10; }
+  .sem-u-016 { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-32 cursor-pointer hover:bg-blue-100 transition; }
+  .sem-u-017 { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20; }
+  .sem-u-018 { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-16; }
+  .sem-u-019 { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-24; }
+  .sem-u-020 { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center; }
+  .sem-u-021 { @apply p-2 border-b border-gray-100 border-r text-center font-medium text-blue-600; }
+  .sem-u-022 { @apply p-2 border-t border-gray-200 bg-gray-50 flex justify-center items-center gap-2; }
+  .sem-u-023 { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 text-xs; }
+  .sem-u-024 { @apply w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold; }
+  .sem-u-025 { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs; }
+  .sem-u-026 { @apply text-xs bg-blue-500 hover:bg-blue-400 px-3 py-1 rounded transition; }
+  .sem-u-027 { @apply bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition cursor-pointer; }
+  .sem-u-028 { @apply bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .sem-u-029 { @apply bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .sem-u-030 { @apply bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .sem-u-031 { @apply bg-purple-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .sem-u-032 { @apply bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .sem-u-033 { @apply mt-4 p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2; }
+  .sem-u-034 { @apply bg-white border border-gray-200 rounded p-4 h-32 flex flex-col; }
+  .sem-u-035 { @apply flex-1 flex items-center justify-center text-gray-400 text-xs bg-gray-50 rounded border border-dashed border-gray-300; }
+  .sem-u-036 { @apply w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500; }
+  .sem-u-037 { @apply w-full text-[11px] border border-gray-200 rounded-md px-2.5 py-2 bg-gray-50 focus:outline-none focus:border-blue-500 focus:bg-white; }
+  .sem-u-038 { @apply w-full text-[11px] border border-gray-200 rounded-md px-2.5 py-2 bg-gray-50 focus:outline-none focus:border-blue-500 focus:bg-white leading-5; }
+  .sem-u-039 { @apply flex-1 bg-white border border-gray-300 text-gray-700 text-xs py-1.5 rounded hover:bg-gray-50 font-medium; }
+  .sem-u-040 { @apply flex-1 bg-blue-600 text-white text-xs py-1.5 rounded hover:bg-blue-700 font-bold; }
+  .sem-u-041 { @apply bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded w-full text-center; }
+  .sem-u-042 { @apply border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white relative; }
+  .sem-u-043 { @apply w-2 h-2 bg-blue-600 rounded-full absolute top-1/2 transform; }
+  .sem-u-044 { @apply border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white; }
+  .sem-u-045 { @apply bg-blue-50 text-blue-400 text-xs font-bold px-2 py-1 rounded w-full text-center; }
+  .sem-u-046 { @apply w-2 h-2 bg-blue-300 rounded-full absolute top-1/2 transform; }
+  .sem-u-047 { @apply bg-gray-100 text-gray-500 text-xs font-bold px-2 py-1 rounded w-full text-center; }
+  .sem-u-048 { @apply w-2 h-2 bg-gray-300 rounded-full absolute top-1/2 transform; }
+  .sem-u-049 { @apply absolute right-0 top-1/2 transform bg-blue-600 text-white w-6 h-12 rounded-l flex items-center justify-center shadow-md hover:bg-blue-700 z-10; }
+  .sem-u-050 { @apply bg-white text-blue-700 px-2 py-1 rounded text-xs font-bold; }
+  .sem-u-051 { @apply text-xs text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-200; }
+  .sem-u-052 { @apply flex-1 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 text-sm; }
+  .sem-u-053 { @apply text-white px-6 py-2 rounded font-medium hover:opacity-90 flex items-center gap-2; }
+  .sem-u-054 { @apply px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 w-48; }
+  .sem-u-055 { @apply px-3 py-1.5 text-white rounded text-xs font-medium whitespace-nowrap; }
+  .sem-u-056 { @apply px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap; }
+  .sem-u-057 { @apply flex items-center justify-between border-b border-gray-200 pb-1 px-4 pt-4; }
+  .sem-u-058 { @apply bg-white p-4 rounded border border-gray-100 mx-4 mt-4; }
+  .sem-u-059 { @apply w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:opacity-80 transition; }
+  .sem-u-060 { @apply w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition; }
+  .sem-u-061 { @apply flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200; }
+  .sem-u-062 { @apply bg-white border border-gray-200 rounded p-4 mx-4 mt-4; }
+  .sem-u-063 { @apply font-bold text-gray-800 text-sm mb-3 flex items-center gap-2; }
+  .sem-u-064 { @apply flex justify-between items-center text-xs pt-2 border-t border-gray-200; }
+  .sem-u-065 { @apply bg-white border border-gray-200 rounded p-4 mx-4 mt-4 flex-1 flex flex-col; }
+  .sem-u-066 { @apply text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium; }
+  .sem-u-067 { @apply text-xxs text-purple-600 bg-purple-50 px-2 py-1 rounded font-medium; }
+  .sem-u-068 { @apply text-white text-xxs px-3 py-1 rounded font-medium hover:bg-blue-700; }
+  .sem-u-069 { @apply flex justify-between items-center mb-3 border-b border-gray-100 pb-2; }
+  .sem-u-070 { @apply text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .sem-u-071 { @apply w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mb-1 group-hover:bg-blue-300 transition; }
+  .sem-u-072 { @apply w-full h-32 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .sem-u-073 { @apply flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-50; }
+  .sem-u-074 { @apply flex-1 bg-gray-200 text-gray-700 px-4 py-3 rounded-lg font-bold hover:bg-gray-300 transition; }
+  .sem-u-075 { @apply flex-1 text-white px-4 py-3 rounded-lg font-bold hover:opacity-90 transition shadow-lg; }
+  .sem-u-076 { @apply flex-1 text-white px-4 py-3 rounded-xl font-bold transition; }
+  .sem-u-077 { @apply flex-1 bg-gray-500 text-white px-4 py-3 rounded-xl font-bold transition; }
+  .sem-u-078 { @apply flex-1 text-xs border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .sem-u-079 { @apply bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-xs hover:bg-gray-200; }
+  .sem-u-080 { @apply w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center; }
+  .sem-u-081 { @apply w-full h-24 px-3 py-2 border rounded-xl text-xs focus:outline-none focus:ring-2; }
+  .sem-u-082 { @apply text-sm font-bold text-gray-800 mb-3 flex items-center gap-2; }
+  .sem-u-083 { @apply flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2; }
+  .sem-u-084 { @apply text-white px-4 py-2 rounded text-sm font-medium shadow-sm; }
+  .sem-u-085 { @apply flex flex-wrap gap-1 min-h-[40px] p-2 border border-gray-200 rounded bg-gray-50; }
+  .sem-u-086 { @apply flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200; }
+  .sem-u-087 { @apply w-full h-40 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2; }
+  .sem-u-088 { @apply flex-1 text-white px-4 py-3 rounded font-bold shadow-md; }
+  .sem-u-089 { @apply flex-1 bg-white text-gray-700 px-4 py-3 rounded font-bold shadow-md border-2 hover:bg-gray-50; }
+  .sem-u-090 { @apply w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:bg-blue-200 transition; }
 }
