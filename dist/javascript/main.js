@@ -167,10 +167,73 @@ document.querySelectorAll('.nav-item').forEach(item =>
       });
 
       const noticePages = Array.from(document.querySelectorAll('[data-notice-page]'));
-      const noticePageButtons = Array.from(document.querySelectorAll('[data-notice-page-btn]'));
       const noticePrevButton = document.querySelector('[data-notice-nav="prev"]');
       const noticeNextButton = document.querySelector('[data-notice-nav="next"]');
+      const noticeNavContainer = noticePrevButton?.parentElement || null;
+      let noticePageButtons = Array.from(document.querySelectorAll('[data-notice-page-btn]'));
       let activeNoticePage = 1;
+
+      const paginateNoticeItems = pageSize => {
+        if (!noticePages.length) {
+          return;
+        }
+
+        const allNoticeItems = noticePages.flatMap(page =>
+          Array.from(page.children).filter(item => item.classList.contains('bg-white'))
+        );
+
+        if (!allNoticeItems.length) {
+          return;
+        }
+
+        noticePages.forEach(page => {
+          page.innerHTML = '';
+          page.classList.add('hidden');
+        });
+
+        const requiredPages = Math.ceil(allNoticeItems.length / pageSize);
+        const pageClassName = noticePages[0].className;
+
+        for (let index = noticePages.length; index < requiredPages; index += 1) {
+          const newPage = document.createElement('div');
+          newPage.className = pageClassName;
+          newPage.setAttribute('data-notice-page', String(index + 1));
+          noticePages[0].parentElement.appendChild(newPage);
+          noticePages.push(newPage);
+        }
+
+        for (let pageIndex = 0; pageIndex < requiredPages; pageIndex += 1) {
+          const start = pageIndex * pageSize;
+          const end = start + pageSize;
+          allNoticeItems.slice(start, end).forEach(item => {
+            noticePages[pageIndex].appendChild(item);
+          });
+        }
+
+        noticePages.slice(requiredPages).forEach(extraPage => {
+          extraPage.remove();
+        });
+
+        noticePages.splice(requiredPages);
+      };
+
+      const rebuildNoticeButtons = () => {
+        if (!noticeNavContainer || !noticePrevButton || !noticeNextButton) {
+          return;
+        }
+
+        noticePageButtons.forEach(button => button.remove());
+
+        noticePageButtons = noticePages.map((_, index) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.setAttribute('data-notice-page-btn', String(index + 1));
+          button.className = 'w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs';
+          button.textContent = String(index + 1);
+          noticeNavContainer.insertBefore(button, noticeNextButton);
+          return button;
+        });
+      };
 
       const setActiveNoticePage = pageNumber => {
         if (!noticePages.length || !noticePageButtons.length) {
@@ -206,6 +269,9 @@ document.querySelectorAll('.nav-item').forEach(item =>
           noticeNextButton.classList.toggle('opacity-40', activeNoticePage === maxPage);
         }
       };
+
+      paginateNoticeItems(5);
+      rebuildNoticeButtons();
 
       noticePageButtons.forEach(button => {
         button.addEventListener('click', () => {
