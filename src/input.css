@@ -90,4 +90,73 @@
 
   .journey-tab-item { @apply px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700; }
   .journey-tab-item.is-active { @apply font-bold bg-white border-t-2 border-blue-600 text-blue-600; }
+
+  .callback-request-header { @apply p-4 border-b border-gray-200 bg-white; }
+  .callback-request-header-row { @apply flex justify-between items-center mb-3; }
+  .callback-request-title { @apply font-bold text-gray-800 text-lg flex items-center gap-2; }
+  .callback-request-refresh-btn { @apply text-gray-500 hover:text-blue-600; }
+  .callback-request-filter-row { @apply flex gap-2; }
+  .callback-request-filter-btn-active { @apply flex-1 text-xs font-medium px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700; }
+  .callback-request-filter-btn { @apply flex-1 text-xs font-medium px-3 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200; }
+  .callback-request-meta-text { @apply text-xxs text-gray-500; }
+  .callback-request-type-badge-urgent { @apply text-xxs bg-red-500 text-white px-2 py-0.5 rounded font-bold; }
+  .callback-request-type-badge-normal { @apply text-xxs bg-blue-500 text-white px-2 py-0.5 rounded font-bold; }
+  .callback-request-type-badge-completed { @apply text-xxs bg-green-500 text-white px-2 py-0.5 rounded font-bold; }
+  .callback-request-list-wrap { @apply flex-1 overflow-y-auto p-4 bg-gray-50; }
+  .callback-request-list { @apply space-y-3; }
+  .callback-card-header-row { @apply flex justify-between items-start mb-2; }
+  .callback-card-header-left { @apply flex items-center gap-2; }
+  .callback-card-contact-row { @apply flex items-center gap-2 mb-2; }
+  .callback-section-header { @apply flex justify-between items-center mb-3; }
+  .callback-stats-grid { @apply grid grid-cols-3 gap-3; }
+  .callback-stats-summary { @apply mt-4 pt-4 border-t border-gray-200; }
+  .callback-summary-row { @apply flex justify-between items-center mb-2; }
+  .callback-history-card { @apply bg-gray-50 rounded p-3 border border-gray-100; }
+  .callback-pagination { @apply flex gap-1; }
+  .callback-center-panel { @apply bg-white p-2 rounded border border-gray-100; }
+  .callback-panel-header { @apply flex justify-between items-start mb-3; }
+  .callback-badge-row { @apply flex items-center gap-2 text-sm; }
+  .callback-action-grid { @apply grid grid-cols-6 gap-2 mb-3; }
+  .callback-info-body { @apply p-4 overflow-y-auto flex-1; }
+  .callback-modal-body { @apply p-6 space-y-4; }
+  .callback-modal-grid { @apply grid grid-cols-2 gap-3 text-sm; }
+  .callback-modal-meta { @apply mt-2 text-xs text-gray-500; }
+  .callback-modal-actions { @apply flex gap-3 pt-4; }
+  .ui-inline-gap-xs { @apply flex items-center gap-1; }
+  .ui-inline-gap-sm { @apply flex items-center gap-2; }
+  .ui-inline-gap-sm-compact { @apply flex items-center gap-2 mb-2; }
+  .ui-between-start-compact { @apply flex justify-between items-start mb-2; }
+  .ui-between-center-spaced { @apply flex justify-between items-center mb-3; }
+  .ui-stack-md { @apply space-y-3; }
+  .sidebar-top-spacing { @apply mb-6; }
+  .sidebar-settings-item { @apply mt-auto mb-4; }
+  .callback-stat-value-pending { @apply text-2xl font-bold text-blue-600; }
+  .callback-stat-value-progress { @apply text-2xl font-bold text-orange-600; }
+  .callback-stat-value-completed { @apply text-2xl font-bold text-green-600; }
+  .callback-stat-label { @apply text-xxs text-gray-600 mt-1; }
+  .callback-info-panel { @apply flex-1 flex flex-col p-0 overflow-hidden; }
+  .callback-info-tabs { @apply flex border-b border-gray-200 bg-gray-50; }
+  .callback-modal-header { @apply bg-gradient-to-br from-blue-600 to-blue-500 text-white p-6 rounded-t-xl; }
+  .callback-modal-section-muted { @apply bg-gray-50 rounded-lg p-4 border border-gray-200; }
+  .callback-modal-section-highlight { @apply bg-blue-50 rounded-lg p-4 border border-blue-200; }
+  .callback-modal-section { @apply bg-white rounded-lg p-4 border border-gray-200; }
+  .callback-form-stack { @apply space-y-2; }
+  .callback-icon-inline { @apply mr-1; }
+  .callback-icon-phone-volume { @apply text-blue-600; }
+  .callback-icon-phone-urgent { @apply text-red-500 text-xs; }
+  .callback-icon-phone-default { @apply text-blue-600 text-xs; }
+  .callback-icon-phone-completed { @apply text-green-500 text-xs; }
+  .callback-icon-attachment { @apply text-gray-400 ml-1; }
+  .callback-icon-section-title { @apply text-blue-500; }
+  .callback-icon-action-primary { @apply text-blue-600 text-lg; }
+  .callback-icon-action-teal { @apply text-teal-600 text-lg; }
+  .callback-icon-action-muted { @apply text-gray-500; }
+  .callback-icon-action-danger { @apply text-red-500; }
+  .callback-icon-action-warning { @apply text-yellow-500; }
+  .callback-icon-action-inverse { @apply text-white; }
+  .callback-icon-caret { @apply ml-1 text-xs; }
+  .callback-icon-user { @apply text-blue-600; }
+  .callback-icon-comment { @apply text-blue-600; }
+  .callback-icon-pen { @apply text-green-500; }
+  .callback-icon-list { @apply text-purple-500; }
 }
