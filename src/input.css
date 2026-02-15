@@ -268,3 +268,57 @@
   .sem-u-089 { @apply flex-1 bg-white text-gray-700 px-4 py-3 rounded font-bold shadow-md border-2 hover:bg-gray-50; }
   .sem-u-090 { @apply w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:bg-blue-200 transition; }
 }
+
+
+@layer components {
+  .panel__header { @apply flex items-center justify-between; }
+  .panel__body { @apply border-b border-gray-200; }
+  .panel__header--history { @apply bg-blue-600 p-3 flex items-center justify-between text-white border-t-2 border-blue-700; }
+  .panel__header--table { @apply flex justify-between items-center px-3 py-2 border-b border-gray-200 bg-gray-50; }
+  .panel__body--history-filter { @apply p-3 bg-gray-50 border-b border-gray-200; }
+  .panel--history-table { @apply flex-1 overflow-hidden flex flex-col bg-white; }
+
+  .btn--history-reset { @apply bg-blue-700 hover:bg-blue-800 text-xs px-2 py-1 rounded border border-blue-500 transition; }
+  .btn--history-search { @apply bg-white text-blue-600 hover:bg-blue-50 text-xs px-2 py-1 rounded font-bold transition; }
+
+  .field--history-select { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500; }
+  .field--history-date { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 w-24; }
+  .field--history-input { @apply text-[11px] border border-gray-300 rounded px-2 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1; }
+  .field--history-category { @apply text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1; }
+
+  .table--history { @apply w-full text-left border-collapse; }
+  .table__head { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20; }
+  .table__head--narrow { @apply w-10; }
+  .table__head--time { @apply w-32 cursor-pointer hover:bg-blue-100 transition; }
+  .table__head--io { @apply w-16; }
+  .table__head--account { @apply w-24; }
+  .table__head--summary { @apply p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center; }
+  .table__row { @apply hover:bg-gray-50 cursor-pointer transition; }
+  .table__row.is-active { @apply bg-blue-50 hover:bg-blue-100; }
+  .table__cell { @apply p-2 border-b border-gray-100 border-r text-center font-medium text-blue-600; }
+  .table__cell--with-divider { @apply p-2 border-b border-gray-100 border-r text-center; }
+  .table__cell--strong { @apply font-bold; }
+  .table__cell--truncate { @apply truncate max-w-[150px]; }
+
+  .layout-aside .tab { @apply flex items-center gap-1 border-b border-gray-200 pb-1 flex-1; }
+  .layout-aside .tab__item { @apply px-3 py-1.5 bg-gray-100 border border-transparent rounded-t-lg text-xs text-gray-500 hover:bg-gray-200 cursor-pointer; }
+  .layout-aside .tab__item.is-active { @apply bg-white border-gray-300 border-b-white font-bold text-blue-600 relative top-[1px] z-10; }
+
+  .badge--io-in { @apply bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold; }
+  .badge--io-out { @apply bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold; }
+  .badge--notice-critical { @apply bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .badge--notice-important { @apply bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .badge--notice-normal { @apply bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .badge--notice-event { @apply bg-purple-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .badge--notice-training { @apply bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+
+  .card--notice { @apply bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition cursor-pointer; }
+
+  .pagination--history { @apply p-2 border-t border-gray-200 bg-gray-50 flex justify-center items-center gap-2; }
+  .pagination--notice { @apply mt-4 p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2; }
+  .pagination__btn { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 text-xs; }
+  .pagination__btn.is-active { @apply w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold; }
+  .pagination__btn--muted { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs; }
+}
+
+

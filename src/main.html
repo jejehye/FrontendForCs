@@ -1,38 +1,28 @@
 <!doctype html>
 <html lang="ko">
-
-  <head>
-    <link rel="stylesheet" href="./app.css">
-    <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTI Agent Dashboard</title>
-    
-<script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="css/main.css">
-  </head>
-
-  <body>
-    <div id="app-container" class="grid-layout">
-      <div id="sidebar" class="column col-sidebar">
-        <div class="mb-6">
-          <div class="sidebar-logo">
-            S</div>
-        </div>
-        <div data-page="main.html" title="Main" class="nav-item active"><i
-            class="fa-solid fa-headset"></i></div>
-        <div data-page="chat.html" title="Chat" class="nav-item"><i
-            class="fa-solid fa-comments"></i></div>
-        <div data-page="pds.html" title="PDS" class="nav-item"><i
-            class="fa-solid fa-phone-volume"></i></div>
-        <div data-page="sms.html" title="SMS" class="nav-item"><i
-            class="fa-solid fa-comment-sms"></i></div>
-        <div data-page="callback.html" title="Callback" class="nav-item"><i
-            class="fa-solid fa-phone"></i></div>
-        <div title="Settings" class="nav-item mt-auto mb-4"><i
-            class="fa-solid fa-gear"></i></div>
-      </div>
-      <div id="chat-column" class="column col-chat">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTI Agent Dashboard</title>
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
+  <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="app-container" class="grid-layout">
+<div id="sidebar" class="column col-sidebar">
+  <div class="mb-6">
+    <div class="sidebar-logo">S</div>
+  </div>
+  <div data-page="main.html" title="Main" class="nav-item active"><i class="fa-solid fa-headset"></i></div>
+  <div data-page="chat.html" title="Chat" class="nav-item"><i class="fa-solid fa-comments"></i></div>
+  <div data-page="pds.html" title="PDS" class="nav-item"><i class="fa-solid fa-phone-volume"></i></div>
+  <div data-page="sms.html" title="SMS" class="nav-item"><i class="fa-solid fa-comment-sms"></i></div>
+  <div data-page="callback.html" title="Callback" class="nav-item"><i class="fa-solid fa-phone"></i></div>
+  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+</div>
+      <div id="chat-column" class="column col-chat layout-shell">
         <div class="chat-panel-header">
           <div class="chat-status-row"><span
               class="status-badge status-ib"><i
@@ -43,10 +33,10 @@
             <div class="customer-meta-row"><span
                 class="status-badge status-unauth"><i
                   class="fa-solid fa-lock mr-1"></i>무인증</span><span
-                class="ui-title-base">박지민(여)</span><span
-                class="ui-text-subtle">|</span><span
+                class="font-bold text-gray-800">박지민(여)</span><span
+                class="text-gray-500">|</span><span
                 class="text-red-500 font-medium">투자성향(적극투자형)</span><span
-                class="ui-text-subtle">|</span><span
+                class="text-gray-500">|</span><span
                 class="text-purple-600 font-medium">고객등급(VVIP)</span></div>
             <div
               class="customer-warning customer-warning-wide"><i
@@ -68,26 +58,26 @@
                   id="account-number" name="accountNumber" type="text"
                   placeholder="567-890-1234" inputmode="numeric"
                   autocomplete="off" maxlength="20"
-                  class="text-[11px] border border-blue-200 rounded px-2 py-1.5 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white"
+                  class="sem-u-001"
                   aria-label="계좌번호 입력">
               </div>
               <div class="account-field-row"><label for="account-password" class="text-[11px] font-bold text-gray-600 w-20 flex-shrink-0 form-label-right">계좌비번</label><input
                   id="account-password" name="accountPassword" type="password"
                   placeholder="••••" autocomplete="new-password" maxlength="4"
-                  class="text-[11px] border border-blue-200 rounded px-2 py-1.5 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white"
+                  class="sem-u-001"
                   aria-label="계좌비밀번호 입력">
               </div>
               <div class="account-field-row"><label for="account-owner"
                   class="text-[11px] font-bold text-gray-600 w-20 flex-shrink-0">계좌명</label><input
                   id="account-owner" name="accountOwner" type="text" placeholder="박지민"
                   autocomplete="name"
-                  class="text-[11px] border border-blue-200 rounded px-2 py-1.5 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white"
+                  class="sem-u-001"
                   aria-label="계좌명 입력">
               </div>
               <div class="account-field-row account-field-row-full"><label for="resident-id" class="text-[11px] font-bold text-gray-600 w-20 flex-shrink-0 form-label-right">주민번호</label><input
                   id="resident-id" name="residentId" type="text"
                   placeholder="920315-2******" inputmode="numeric" maxlength="14"
-                  class="text-[11px] border border-blue-200 rounded px-2 py-1.5 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white"
+                  class="sem-u-001"
                   aria-label="주민번호 입력">
               </div>
             </div>
@@ -106,24 +96,24 @@
         <div
           class="bg-blue-600 p-3 flex items-center justify-between text-white">
           <span class="font-semibold">실시간 대화</span>
-          <div class="ui-inline-gap-2">
+          <div class="flex items-center gap-2">
             <div class="relative"><input type="text" placeholder="검색어를 입력하세요"
-                class="bg-blue-700 border-none text-white text-sm rounded px-3 py-1 w-48 placeholder-blue-200 focus:outline-none focus:ring-1 focus:ring-white"><i
+                class="placeholder-blue-200 sem-u-002"><i
                 class="fa-solid fa-magnifying-glass absolute right-2 top-1.5 text-blue-200 text-xs"></i>
             </div><button class="text-white hover:text-blue-100"><i
                 class="fa-solid fa-pause"></i></button>
           </div>
         </div>
-        <div class="h-[430px] overflow-y-auto p-4 bg-gray-50 flex flex-col gap-4">
+        <div class="sem-u-003">
           <div class="flex flex-col items-end">
-            <div class="ui-inline-gap-2-mb1"><span
+            <div class="flex items-center gap-2 mb-1"><span
                 class="text-xs text-gray-400">14:23</span><span
                 class="text-xs font-bold text-blue-600">상담사 K</span></div>
             <div class="chat-bubble agent shadow-sm">안녕하세요, 신한투자증권입니다. 무엇을
               도와드릴까요?</div>
           </div>
           <div class="flex flex-col items-start">
-            <div class="ui-inline-gap-2-mb1"><i
+            <div class="flex items-center gap-2 mb-1"><i
                 class="fa-regular fa-user text-gray-400 bg-gray-200 p-1 rounded-full text-xs"></i><span
                 class="text-xs font-bold text-gray-700">고객01</span></div>
             <div class="chat-bubble customer shadow-sm">미국 ETF 투자를 시작하고 싶은데 어떻게
@@ -135,14 +125,14 @@
               class="text-xs text-gray-400 ml-1 mt-1">14:24</span>
           </div>
           <div class="flex flex-col items-end">
-            <div class="ui-inline-gap-2-mb1"><span
+            <div class="flex items-center gap-2 mb-1"><span
                 class="text-xs text-gray-400">14:24</span><span
                 class="text-xs font-bold text-blue-600">상담사 K</span></div>
             <div class="chat-bubble agent shadow-sm">미국 ETF 투자 방법을 안내해 드리겠습니다.
               먼저 해외주식 계좌 개설이 필요합니다.</div>
           </div>
           <div class="flex flex-col items-start">
-            <div class="ui-inline-gap-2-mb1"><i
+            <div class="flex items-center gap-2 mb-1"><i
                 class="fa-regular fa-user text-gray-400 bg-gray-200 p-1 rounded-full text-xs"></i><span
                 class="text-xs font-bold text-gray-700">고객01</span></div>
             <div class="chat-bubble customer shadow-sm">계좌는 이미 있어요. 수수료 혜택이 있나요?
@@ -154,61 +144,61 @@
           </div>
           <div class="flex items-center justify-center my-2">
             <div
-              class="bg-blue-50 text-blue-600 text-xs px-4 py-1 rounded-full border border-blue-100 w-full text-center">
+              class="sem-u-004">
               여기까지 읽었습니다.</div>
           </div>
           <div class="sticky bottom-0 flex justify-end mt-auto pb-2"><button
-              class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg hover:bg-blue-700"><i
+              class="sem-u-005"><i
                 class="fa-solid fa-chevron-down"></i></button></div>
         </div>
         <div
-          class="bg-blue-600 p-3 flex items-center justify-between text-white border-t-2 border-blue-700">
+          class="panel__header panel__header--history">
           <span class="font-semibold">상담이력 조회</span>
-          <div class="ui-flex-gap-2"><button
-              class="bg-blue-700 hover:bg-blue-800 text-xs px-2 py-1 rounded border border-blue-500 transition"><i
+          <div class="flex gap-2"><button
+              class="btn--history-reset"><i
                 class="fa-solid fa-rotate-right mr-1"></i>초기화</button><button
-              class="bg-white text-blue-600 hover:bg-blue-50 text-xs px-2 py-1 rounded font-bold transition"><i
+              class="btn--history-search"><i
                 class="fa-solid fa-magnifying-glass mr-1"></i>조회</button></div>
         </div>
-        <div class="p-3 bg-gray-50 border-b border-gray-200">
+        <div class="panel__body panel__body--history-filter">
           <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-2">
             <div class="flex items-center"><label
                 class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0">조회기간</label>
               <div class="flex items-center gap-1 flex-1"><select
-                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500">
+                  class="field--history-select">
                   <option>1개월</option>
                   <option>3개월</option>
                   <option selected="">6개월</option>
                 </select><input type="date" value="2023-11-23"
-                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 w-24"><span
+                  class="field--history-date"><span
                   class="text-gray-400 text-[10px]">~</span><input type="date"
                   value="2024-05-21"
-                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 w-24">
+                  class="field--history-date">
               </div>
             </div>
             <div class="flex items-center"><label class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0 form-label-compact">고객명</label><input
                 type="text" value="박지민"
-                class="text-[11px] border border-gray-300 rounded px-2 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                class="field--history-input">
             </div>
             <div class="flex items-center"><label
                 class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0">상담유형</label>
               <div class="flex items-center gap-1 flex-1">
                 <select
-                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                  class="field--history-category">
                   <option selected="">대분류</option>
                   <option>금융상품</option>
                   <option>계좌/인증</option>
                   <option>민원/클레임</option>
                 </select>
                 <select
-                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                  class="field--history-category">
                   <option selected="">중분류</option>
                   <option>ETF</option>
                   <option>해외주식</option>
                   <option>수수료</option>
                 </select>
                 <select
-                  class="text-[11px] border border-gray-300 rounded px-1 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                  class="field--history-category">
                   <option selected="">소분류</option>
                   <option>매수방법</option>
                   <option>이벤트</option>
@@ -219,249 +209,249 @@
             <div class="flex items-center"><label
                 class="text-[11px] text-gray-600 font-bold w-16 flex-shrink-0">상담원</label><input
                 type="text" placeholder="상담원명"
-                class="text-[11px] border border-gray-300 rounded px-2 py-1 bg-white focus:outline-none focus:border-blue-500 flex-1">
+                class="field--history-input">
             </div>
           </div>
         </div>
-        <div class="flex-1 overflow-hidden flex flex-col bg-white">
+        <div class="panel--history-table">
           <div
-            class="flex justify-between items-center px-3 py-2 border-b border-gray-200 bg-gray-50">
+            class="panel__header panel__header--table">
             <span class="text-xs font-bold text-gray-700">이력목록 <span
                 class="text-blue-600 font-normal">(총 29건)</span></span><button
-              class="text-[10px] flex items-center gap-1 text-gray-500 hover:text-gray-700 border border-gray-300 rounded px-2 py-0.5 bg-white"><i
+              class="sem-u-014"><i
                 class="fa-regular fa-file-excel text-green-600"></i> 엑셀다운
             </button></div>
           <div class="flex-1 overflow-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="table--history">
               <thead class="bg-blue-50 sticky top-0 z-10">
                 <tr>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-10">
+                    class="table__head table__head--narrow">
                     NO</th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-32 cursor-pointer hover:bg-blue-100 transition">
+                    class="table__head table__head--time">
                     시간 <i class="fa-solid fa-sort ml-1 text-gray-400"></i></th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20">
+                    class="table__head">
                     상담원</th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-16">
+                    class="table__head table__head--io">
                     I/O</th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20">
+                    class="table__head">
                     고객명</th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-24">
+                    class="table__head table__head--account">
                     계좌번호</th>
-                  <th class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20 column-width-sm">
+                  <th class="column-width-sm table__head">
                     상담유형</th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center w-20">
+                    class="table__head">
                     채널</th>
                   <th
-                    class="p-2 text-[11px] font-bold text-gray-600 border-b border-gray-200 border-r text-center">
+                    class="table__head table__head--summary">
                     상담내용</th>
                 </tr>
               </thead>
               <tbody class="text-[11px] text-gray-700">
                 <tr
-                  class="bg-blue-50 hover:bg-blue-100 cursor-pointer transition">
+                  class="table__row is-active">
                   <td
-                    class="p-2 border-b border-gray-100 border-r text-center font-medium text-blue-600">
+                    class="table__cell">
                     1</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-13 09:15</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     김제은</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold">I</span>
+                      class="badge--io-in">I</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     27048891397</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     일반</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     전화</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     계좌 비밀번호 분실 문의</td>
                 </tr>
-                <tr class="ui-hover-row">
-                  <td class="ui-table-cell">
+                <tr class="table__row">
+                  <td class="table__cell table__cell--with-divider">
                     2</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-13 13:40</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     김제은</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold">I</span>
+                      class="badge--io-in">I</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     -</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     매매결제</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     MTS</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     미수 발생 관련 알림 발송</td>
                 </tr>
-                <tr class="ui-hover-row">
-                  <td class="ui-table-cell">
+                <tr class="table__row">
+                  <td class="table__cell table__cell--with-divider">
                     3</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-13 08:22</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     김제은</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold">I</span>
+                      class="badge--io-in">I</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     -</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     일반</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     전화</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     계좌 개설 절차 안내</td>
                 </tr>
-                <tr class="ui-hover-row">
-                  <td class="ui-table-cell">
+                <tr class="table__row">
+                  <td class="table__cell table__cell--with-divider">
                     4</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-21 15:10</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     은방실</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold">O</span>
+                      class="badge--io-out">O</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     27050242869</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     일반</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     전화</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     이벤트 참여 확인 해피콜</td>
                 </tr>
-                <tr class="ui-hover-row">
-                  <td class="ui-table-cell">
+                <tr class="table__row">
+                  <td class="table__cell table__cell--with-divider">
                     5</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-21 15:05</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     은방실</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold">O</span>
+                      class="badge--io-out">O</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     -</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     일반</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     전화</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     부재중 안내 문자 발송</td>
                 </tr>
-                <tr class="ui-hover-row">
-                  <td class="ui-table-cell">
+                <tr class="table__row">
+                  <td class="table__cell table__cell--with-divider">
                     6</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-17 09:30</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     은방실</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold">I</span>
+                      class="badge--io-in">I</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     27050242869</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     업무처리</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     채팅</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     권리 청약 신청 문의</td>
                 </tr>
-                <tr class="ui-hover-row">
-                  <td class="ui-table-cell">
+                <tr class="table__row">
+                  <td class="table__cell table__cell--with-divider">
                     7</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     2024-05-14 16:20</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     은방실</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     <span
-                      class="bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold">O</span>
+                      class="badge--io-out">O</span>
                   </td>
                   <td
-                    class="ui-table-cell-head">
+                    class="table__cell table__cell--with-divider table__cell--strong">
                     박지민</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     27031471900</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     일반</td>
-                  <td class="ui-table-cell">
+                  <td class="table__cell table__cell--with-divider">
                     전화</td>
                   <td
-                    class="ui-table-cell-truncate">
+                    class="table__cell table__cell--with-divider table__cell--truncate">
                     투자 성향 분석 갱신 안내</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div
-            class="p-2 border-t border-gray-200 bg-gray-50 flex justify-center items-center gap-2">
+            class="pagination pagination--history">
             <button
-              class="ui-icon-btn"><i
+              class="pagination__btn"><i
                 class="fa-solid fa-angles-left"></i></button><button
-              class="ui-icon-btn"><i
+              class="pagination__btn"><i
                 class="fa-solid fa-angle-left"></i></button><button
-              class="w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold">1</button><button
-              class="w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs">2</button><button
-              class="w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs">3</button><button
-              class="ui-icon-btn"><i
+              class="pagination__btn is-active">1</button><button
+              class="pagination__btn pagination__btn--muted">2</button><button
+              class="pagination__btn pagination__btn--muted">3</button><button
+              class="pagination__btn"><i
                 class="fa-solid fa-angle-right"></i></button><button
-              class="ui-icon-btn"><i
+              class="pagination__btn"><i
                 class="fa-solid fa-angles-right"></i></button></div>
         </div>
       </div>
-      <div id="center-column" class="column col-center">
+      <div id="center-column" class="column col-center layout-main">
         <div
           class="p-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg">
           <div class="flex items-center justify-between mb-3">
-            <div class="ui-inline-gap-2"><i
+            <div class="flex items-center gap-2"><i
                 class="fa-solid fa-bullhorn text-xl"></i>
               <h3 class="font-bold text-lg">공지사항</h3>
             </div><button
-              class="text-xs bg-blue-500 hover:bg-blue-400 px-3 py-1 rounded transition"><i
+              class="sem-u-026"><i
                 class="fa-solid fa-plus mr-1"></i>더보기
             </button>
           </div>
@@ -470,117 +460,117 @@
           </div>
         </div>
         <div class="flex-1 overflow-y-auto p-4 bg-gray-50">
-          <div class="ui-stack-3" data-notice-page="1">
+          <div class="space-y-3" data-notice-page="1">
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded">긴급</span><span
-                    class="ui-text-xs-subtle">2024-05-13</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-critical">긴급</span><span
+                    class="text-xs text-gray-500">2024-05-13</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">시스템 정기 점검 안내</h4>
-              <p class="ui-text-sm-muted">5월 15일(수) 02:00~06:00 시스템 정기 점검이
+              <h4 class="font-bold text-gray-800 mb-1">시스템 정기 점검 안내</h4>
+              <p class="text-sm text-gray-600">5월 15일(수) 02:00~06:00 시스템 정기 점검이
                 진행됩니다.</p>
             </div>
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded">중요</span><span
-                    class="ui-text-xs-subtle">2024-05-12</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-important">중요</span><span
+                    class="text-xs text-gray-500">2024-05-12</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">개인정보 보호법 개정 안내</h4>
-              <p class="ui-text-sm-muted">고객 상담 시 개인정보 보호 강화 조치가 시행됩니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">개인정보 보호법 개정 안내</h4>
+              <p class="text-sm text-gray-600">고객 상담 시 개인정보 보호 강화 조치가 시행됩니다.</p>
             </div>
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded">일반</span><span
-                    class="ui-text-xs-subtle">2024-05-10</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-normal">일반</span><span
+                    class="text-xs text-gray-500">2024-05-10</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">신규 상품 출시 안내</h4>
-              <p class="ui-text-sm-muted">해외주식 투자 수수료 우대 이벤트가 시작되었습니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">신규 상품 출시 안내</h4>
+              <p class="text-sm text-gray-600">해외주식 투자 수수료 우대 이벤트가 시작되었습니다.</p>
             </div>
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-purple-500 text-white text-xs font-bold px-2 py-0.5 rounded">이벤트</span><span
-                    class="ui-text-xs-subtle">2024-05-08</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-event">이벤트</span><span
+                    class="text-xs text-gray-500">2024-05-08</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">고객 만족도 조사 실시</h4>
-              <p class="ui-text-sm-muted">5월 한 달간 고객 만족도 조사가 진행됩니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">고객 만족도 조사 실시</h4>
+              <p class="text-sm text-gray-600">5월 한 달간 고객 만족도 조사가 진행됩니다.</p>
             </div>
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded">일반</span><span
-                    class="ui-text-xs-subtle">2024-05-05</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-normal">일반</span><span
+                    class="text-xs text-gray-500">2024-05-05</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">상담 스크립트 업데이트</h4>
-              <p class="ui-text-sm-muted">신규 상담 스크립트가 업데이트 되었습니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">상담 스크립트 업데이트</h4>
+              <p class="text-sm text-gray-600">신규 상담 스크립트가 업데이트 되었습니다.</p>
             </div>
           </div>
           <div class="space-y-3 hidden" data-notice-page="2">
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded">교육</span><span
-                    class="ui-text-xs-subtle">2024-05-03</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-training">교육</span><span
+                    class="text-xs text-gray-500">2024-05-03</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">상담원 교육 일정 안내</h4>
-              <p class="ui-text-sm-muted">5월 20일 신규 상품 교육이 진행됩니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">상담원 교육 일정 안내</h4>
+              <p class="text-sm text-gray-600">5월 20일 신규 상품 교육이 진행됩니다.</p>
             </div>
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded">중요</span><span
-                    class="ui-text-xs-subtle">2024-05-01</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-important">중요</span><span
+                    class="text-xs text-gray-500">2024-05-01</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">고객 응대 매뉴얼 개정</h4>
-              <p class="ui-text-sm-muted">새로운 고객 응대 매뉴얼이 배포되었습니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">고객 응대 매뉴얼 개정</h4>
+              <p class="text-sm text-gray-600">새로운 고객 응대 매뉴얼이 배포되었습니다.</p>
             </div>
             <div
-              class="ui-panel-hover">
-              <div class="ui-between-start-mb2-alt">
-                <div class="ui-inline-gap-2"><span
-                    class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded">일반</span><span
-                    class="ui-text-xs-subtle">2024-04-28</span></div><i
+              class="card card--notice">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2"><span
+                    class="badge--notice-normal">일반</span><span
+                    class="text-xs text-gray-500">2024-04-28</span></div><i
                   class="fa-solid fa-chevron-right text-gray-400 text-sm"></i>
               </div>
-              <h4 class="ui-title-base-mb1">휴가 신청 안내</h4>
-              <p class="ui-text-sm-muted">하계 휴가 신청 기간이 시작되었습니다.</p>
+              <h4 class="font-bold text-gray-800 mb-1">휴가 신청 안내</h4>
+              <p class="text-sm text-gray-600">하계 휴가 신청 기간이 시작되었습니다.</p>
             </div>
           </div>
           <div
-            class="mt-4 p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2">
+            class="pagination pagination--notice">
             <button type="button" data-notice-nav="prev"
-              class="ui-icon-btn"><i
+              class="pagination__btn"><i
                 class="fa-solid fa-angle-left"></i></button><button type="button" data-notice-page-btn="1"
-              class="w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold">1</button><button
+              class="pagination__btn is-active">1</button><button
               type="button" data-notice-page-btn="2"
-              class="w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs">2</button><button
+              class="pagination__btn pagination__btn--muted">2</button><button
               type="button" data-notice-nav="next"
-              class="ui-icon-btn"><i
+              class="pagination__btn"><i
                 class="fa-solid fa-angle-right"></i></button>
           </div>
         </div>
         <div
-          class="bg-white border border-gray-200 rounded p-4 h-32 flex flex-col">
+          class="sem-u-034">
           <h3 class="font-bold text-gray-800 text-sm mb-2">실시간 코칭</h3>
           <div
-            class="flex-1 flex items-center justify-center text-gray-400 text-xs bg-gray-50 rounded border border-dashed border-gray-300">
+            class="sem-u-035">
             실시간 코칭내용 주문별 내용 확인하세요.
           </div>
         </div>
@@ -602,27 +592,26 @@
           </div>
         </div>
       </div>
-      <div id="right-column" class="column col-right">
-        <div class="flex items-center justify-between mb-2">
-          <div
-            class="flex items-center gap-1 border-b border-gray-200 pb-1 flex-1">
+      <div id="right-column" class="column col-right layout-aside">
+        <div class="panel-header">
+          <div class="tab">
             <div data-customer="박지민"
-              class="px-3 py-1.5 bg-white border border-gray-300 border-b-white rounded-t-lg text-xs font-bold text-blue-600 relative top-[1px] z-10 cursor-pointer customer-tab active-tab">
+              class="tab__item customer-tab is-active active-tab">
               박지민 <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
             </div>
             <div data-customer="이수현"
-              class="px-3 py-1.5 bg-gray-100 border border-transparent rounded-t-lg text-xs text-gray-500 hover:bg-gray-200 cursor-pointer customer-tab">
-              이수현 <i class="fa-solid fa-xmark ml-1 text-[10px] close-tab"></i>
+              class="tab__item customer-tab">
+              이수현 <i class="fa-solid fa-xmark tab-item-close close-tab"></i>
             </div>
             <div data-customer="최영호"
-              class="px-3 py-1.5 bg-gray-100 border border-transparent rounded-t-lg text-xs text-gray-500 hover:bg-gray-200 cursor-pointer customer-tab">
-              최영호 <i class="fa-solid fa-xmark ml-1 text-[10px] close-tab"></i>
+              class="tab__item customer-tab">
+              최영호 <i class="fa-solid fa-xmark tab-item-close close-tab"></i>
             </div>
           </div>
-          <div class="flex items-center gap-2 ml-2">
+          <div class="panel-header-actions">
             <div class="agent-status-bar">
               <div class="status-indicator status-ready"></div><select
-                class="text-xs font-medium text-gray-700 border-none focus:outline-none bg-transparent cursor-pointer">
+                class="status-select">
                 <option value="ready">업무</option>
                 <option value="away">이석</option>
                 <option value="busy">대기</option>
@@ -630,27 +619,27 @@
                 <option value="meeting">회의</option>
               </select>
             </div><button
-              class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded hover:bg-blue-700">상담저장</button>
+              class="btn-primary">상담저장</button>
           </div>
         </div>
-        <div class="bg-white p-2 rounded border border-gray-100">
-          <div class="flex justify-between items-start mb-3">
-            <div class="flex items-center gap-2 text-sm"><span class="badge status-badge status-unauth status-badge-fixed"><i
-                  class="fa-solid fa-lock mr-1"></i>무인증</span><span class="font-bold text-gray-800 customer-meta-primary">박지민(여), 투자성향(적극투자형),
+        <div class="card">
+          <div class="card-header">
+            <div class="badge-row"><span class="badge status-badge status-unauth status-badge-fixed"><i
+                  class="fa-solid fa-lock mr-1"></i>무인증</span><span class="meta-text-strong customer-meta-primary">박지민(여), 투자성향(적극투자형),
                 고객등급(VVIP)</span></div><button
-              class="text-gray-400 hover:text-blue-500"><i
+              class="icon-refresh-btn"><i
                 class="fa-solid fa-rotate-right"></i></button>
           </div>
-          <div class="grid grid-cols-6 gap-2 mb-3"><button
-              class="actionBtn action-btn group border-blue-200 bg-blue-50">
+          <div class="action-btn-grid"><button
+              class="actionBtn action-btn group action-btn-accent-blue">
               <div
-                class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mb-1 group-hover:bg-blue-200 transition">
+                class="action-btn-icon-wrap action-btn-icon-wrap-blue">
                 <i class="fa-solid fa-chart-line text-blue-600 text-lg"></i>
               </div><span class="text-blue-800 font-bold keyword-tag-compact">주식거래</span>
             </button><button
-              class="actionBtn action-btn group border-teal-200 bg-teal-50">
+              class="actionBtn action-btn group action-btn-accent-teal">
               <div
-                class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
+                class="action-btn-icon-wrap action-btn-icon-wrap-teal">
                 <i class="fa-solid fa-globe text-teal-600 text-lg"></i></div>
               <span class="text-teal-800 font-bold keyword-tag-compact">해외투자</span>
             </button><button class="actionBtn action-btn group"><i
@@ -659,33 +648,32 @@
                 class="fa-solid fa-coins text-yellow-600"></i><span>ISA</span></button><button
               class="actionBtn action-btn group"><i
                 class="fa-solid fa-bell text-yellow-500"></i><span class="keyword-tag-compact">알림설정</span></button><button
-              class="actionBtn action-btn group bg-blue-600 border-blue-600 hover:bg-blue-700"><i
+              class="actionBtn action-btn group action-btn-accent-primary"><i
                 class="fa-solid fa-gift text-white"></i><span
                 class="text-white">이벤트</span></button></div>
-          <div
-            class="flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200">
-            <div class="ui-inline-gap-1"><span
-                class="ui-text-body-muted">서비스요청</span><span
-                class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+          <div class="service-stat-panel">
+            <div class="service-stat-item"><span
+                class="service-stat-label">서비스요청</span><span
+                class="badge badge-danger">0</span>
             </div>
-            <div class="ui-inline-gap-1"><span
-                class="ui-text-body-muted">콜백서비스</span><span
-                class="bg-yellow-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            <div class="service-stat-item"><span
+                class="service-stat-label">콜백서비스</span><span
+                class="badge badge-warning">0</span>
             </div>
-            <div class="ui-inline-gap-1"><span
-                class="ui-text-body-muted">상담예약</span><span
-                class="bg-teal-500 text-white px-1.5 rounded text-[10px] font-bold">2</span>
+            <div class="service-stat-item"><span
+                class="service-stat-label">상담예약</span><span
+                class="badge badge-success">2</span>
             </div>
           </div>
         </div>
         <div class="history-editor-panel border-t border-gray-200 bg-gray-50 p-3">
           <div class="flex items-center justify-between mb-2">
-            <h4 class="ui-title-xs"><i
+            <h4 class="text-xs font-bold text-gray-800"><i
                 class="fa-solid fa-pen-to-square mr-1 text-blue-600"></i>상담이력
               입력</h4><span class="text-[10px] text-gray-500">2024-05-21
               14:23</span>
           </div>
-          <div class="ui-stack-3">
+          <div class="space-y-3">
             <div class="rounded-lg border border-blue-100 bg-blue-50/60 p-2.5">
               <div class="flex items-center justify-between mb-2">
                 <label class="text-[10px] text-gray-700 font-bold">상담유형</label>
@@ -695,7 +683,7 @@
                 <div>
                   <label class="text-[9px] text-gray-500 font-semibold mb-1 block">대분류</label>
                   <select
-                    class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                    class="sem-u-036">
                     <option selected>투자상담</option>
                     <option>업무처리</option>
                     <option>민원/클레임</option>
@@ -704,7 +692,7 @@
                 <div>
                   <label class="text-[9px] text-gray-500 font-semibold mb-1 block">중분류</label>
                   <select
-                    class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                    class="sem-u-036">
                     <option selected>해외투자</option>
                     <option>국내주식</option>
                     <option>펀드/ETF</option>
@@ -714,7 +702,7 @@
                 <div>
                   <label class="text-[9px] text-gray-500 font-semibold mb-1 block">소분류</label>
                   <select
-                    class="w-full text-[11px] border border-gray-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-blue-500">
+                    class="sem-u-036">
                     <option selected>해외주식 매수문의</option>
                     <option>해외주식 수수료</option>
                     <option>환전/외화입출금</option>
@@ -731,7 +719,7 @@
               <div class="grid grid-cols-2 gap-2">
                 <div><label
                     class="text-[10px] text-gray-600 font-bold mb-1 block">처리상태</label><select
-                    class="w-full text-[11px] border border-gray-200 rounded-md px-2.5 py-2 bg-gray-50 focus:outline-none focus:border-blue-500 focus:bg-white">
+                    class="sem-u-037">
                     <option>완료</option>
                     <option>진행중</option>
                     <option>보류</option>
@@ -740,7 +728,7 @@
                   <p class="text-[9px] text-gray-400 mt-1">현재 상담 처리 진행 상태</p>
                 </div>
                 <div><label class="text-[10px] text-gray-600 font-bold mb-1 block">후속조치</label><select
-                    class="w-full text-[11px] border border-gray-200 rounded-md px-2.5 py-2 bg-gray-50 focus:outline-none focus:border-blue-500 focus:bg-white">
+                    class="sem-u-037">
                     <option selected>없음</option>
                     <option>콜백요청</option>
                     <option>전문상담사 연결</option>
@@ -758,105 +746,105 @@
               </div>
               <textarea rows="3" placeholder="1) 고객 문의사항
 2) 안내한 내용
-3) 후속 조치(있다면)" class="consultation-note w-full text-[11px] border border-gray-200 rounded-md px-2.5 py-2 bg-gray-50 focus:outline-none focus:border-blue-500 focus:bg-white resize-none leading-5"></textarea>
+3) 후속 조치(있다면)" class="consultation-note resize-none sem-u-038"></textarea>
               <div class="mt-1.5 flex items-center justify-between text-[9px] text-gray-400">
                 <span>작성 팁: 문의 → 조치 → 결과 순으로 작성</span><span>0 / 500자</span>
               </div>
             </div>
-            <div class="ui-flex-gap-2"><button
-                class="flex-1 bg-white border border-gray-300 text-gray-700 text-xs py-1.5 rounded hover:bg-gray-50 font-medium"><i
+            <div class="flex gap-2"><button
+                class="sem-u-039"><i
                   class="fa-solid fa-rotate-left mr-1"></i>초기화
               </button><button
-                class="flex-1 bg-blue-600 text-white text-xs py-1.5 rounded hover:bg-blue-700 font-bold"><i
+                class="sem-u-040"><i
                   class="fa-solid fa-save mr-1"></i>저장
               </button></div>
           </div>
         </div>
         <div class="info-card flex-1 flex flex-col p-0 overflow-hidden mt-10">
           <div class="flex border-b border-gray-200 bg-gray-50"><button
-              class="px-4 py-2 text-xs font-bold bg-white border-t-2 border-blue-600 text-blue-600">고객여정
+              class="journey-tab-item is-active">고객여정
               <i class="fa-solid fa-chevron-down ml-1"></i></button><button
-              class="ui-tab-btn">온라인여정
+              class="journey-tab-item">온라인여정
               <i class="fa-solid fa-chevron-down ml-1"></i></button><button
-              class="ui-tab-btn">UMS
+              class="journey-tab-item">UMS
               <i class="fa-solid fa-chevron-down ml-1"></i></button></div>
           <div class="journey-scroll-panel p-4 pb-6 overflow-y-auto custom-scroll relative flex-1">
             <div class="grid grid-cols-[60px_1fr] gap-y-4 gap-x-2 mb-6">
               <div class="flex items-center justify-center"><span
-                  class="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded w-full text-center">I/B</span>
+                  class="sem-u-041">I/B</span>
               </div>
               <div
                 class="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white relative">
+                  class="sem-u-042">
                   <div
-                    class="w-2 h-2 bg-blue-600 rounded-full absolute -left-1 top-1/2 transform -translate-y-1/2">
+                    class="-left-1 -translate-y-1/2 sem-u-043">
                   </div>
                   <div class="text-[10px] text-blue-600 font-bold">SOL앱</div>
                   <div class="text-[9px] text-gray-400">12-18 10:35</div>
                 </div>
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white">
+                  class="sem-u-044">
                   <div class="text-[10px] text-blue-600 font-bold">상담센터</div>
                   <div class="text-[9px] text-gray-400">12-10 14:20</div>
                 </div>
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white">
+                  class="sem-u-044">
                   <div class="text-[10px] text-blue-600 font-bold">영업점</div>
                   <div class="text-[9px] text-gray-400">11-28 09:15</div>
                 </div>
               </div>
               <div class="flex items-center justify-center"><span
-                  class="bg-blue-50 text-blue-400 text-xs font-bold px-2 py-1 rounded w-full text-center">O/B</span>
+                  class="sem-u-045">O/B</span>
               </div>
-              <div class="ui-inline-gap-2">
+              <div class="flex items-center gap-2">
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white relative">
+                  class="sem-u-042">
                   <div
-                    class="w-2 h-2 bg-blue-300 rounded-full absolute -left-1 top-1/2 transform -translate-y-1/2">
+                    class="-left-1 -translate-y-1/2 sem-u-046">
                   </div>
                   <div class="text-[10px] text-blue-500 font-bold">PB상담</div>
                   <div class="text-[9px] text-gray-400">11-15 16:40</div>
                 </div>
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white">
+                  class="sem-u-044">
                   <div class="text-[10px] text-gray-600 font-bold">이벤트안내</div>
                   <div class="text-[9px] text-gray-400">10-22 11:30</div>
                 </div>
               </div>
               <div class="flex items-center justify-center"><span
-                  class="bg-gray-100 text-gray-500 text-xs font-bold px-2 py-1 rounded w-full text-center">게시판</span>
+                  class="sem-u-047">게시판</span>
               </div>
-              <div class="ui-inline-gap-2">
+              <div class="flex items-center gap-2">
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white relative">
+                  class="sem-u-042">
                   <div
-                    class="w-2 h-2 bg-gray-300 rounded-full absolute -left-1 top-1/2 transform -translate-y-1/2">
+                    class="-left-1 -translate-y-1/2 sem-u-048">
                   </div>
                   <div class="text-[10px] text-blue-500 font-bold">공지사항</div>
                   <div class="text-[9px] text-gray-400">09-08 13:25</div>
                 </div>
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white">
+                  class="sem-u-044">
                   <div class="text-[10px] text-blue-500 font-bold">이벤트</div>
                   <div class="text-[9px] text-gray-400">08-30 10:00</div>
                 </div>
               </div>
               <div class="flex items-center justify-center"><span
-                  class="bg-gray-100 text-gray-500 text-xs font-bold px-2 py-1 rounded w-full text-center">VOC</span>
+                  class="sem-u-047">VOC</span>
               </div>
-              <div class="ui-inline-gap-2">
+              <div class="flex items-center gap-2">
                 <div
-                  class="border border-gray-200 rounded p-1.5 min-w-[80px] text-center bg-white relative">
+                  class="sem-u-042">
                   <div
-                    class="w-2 h-2 bg-gray-300 rounded-full absolute -left-1 top-1/2 transform -translate-y-1/2">
+                    class="-left-1 -translate-y-1/2 sem-u-048">
                   </div>
                   <div class="text-[10px] text-blue-500 font-bold">칭찬</div>
                   <div class="text-[9px] text-gray-400">07-12 15:45</div>
                 </div>
               </div>
             </div><button
-              class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white w-6 h-12 rounded-l flex items-center justify-center shadow-md hover:bg-blue-700 z-10"><i
+              class="-translate-y-1/2 sem-u-049"><i
                 class="fa-solid fa-chevron-right text-xs"></i></button>
             <div class="mt-[26px] pt-4 border-t border-gray-200">
               <h4 class="text-sm font-bold text-gray-800 mb-2">상담여정 목록</h4>
@@ -871,7 +859,7 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody class="ui-text-body-muted">
+                <tbody class="text-gray-600">
                   <tr>
                     <td>2023-12-18 10:35:22</td>
                     <td>인바운드 &gt; SOL앱</td>
@@ -908,8 +896,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <script src="javascript/main.js"></script>
-  </body>
 
+  </div>
+  <script src="javascript/main.js"></script>
+</body>
 </html>
