@@ -347,13 +347,26 @@
 
   .badge--io-in { @apply bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold; }
   .badge--io-out { @apply bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold; }
-  .badge--notice-critical { @apply bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
-  .badge--notice-important { @apply bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
-  .badge--notice-normal { @apply bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
-  .badge--notice-event { @apply bg-purple-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
-  .badge--notice-training { @apply bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .notice-card { @apply bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition cursor-pointer; }
+  .notice-card__meta { @apply flex items-start justify-between mb-2; }
+  .notice-meta-left { @apply flex items-center gap-2; }
 
-  .card--notice { @apply bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition cursor-pointer; }
+  .notice-badge { @apply text-white text-xs font-bold px-2 py-0.5 rounded; }
+  .notice-badge--important { @apply bg-blue-500; }
+  .notice-badge--normal { @apply bg-green-500; }
+
+  .notice-date { @apply text-xs text-gray-500; }
+  .notice-title { @apply font-bold text-gray-800 mb-1; }
+  .notice-desc { @apply text-sm text-gray-600; }
+  .notice-chevron { @apply text-gray-400 text-sm; }
+
+  .badge--notice-critical { @apply notice-badge bg-red-500; }
+  .badge--notice-important { @apply notice-badge notice-badge--important; }
+  .badge--notice-normal { @apply notice-badge notice-badge--normal; }
+  .badge--notice-event { @apply notice-badge bg-purple-500; }
+  .badge--notice-training { @apply notice-badge bg-orange-500; }
+
+  .card--notice { @apply notice-card; }
 
   .pagination--history { @apply p-2 border-t border-gray-200 bg-gray-50 flex justify-center items-center gap-2; }
   .pagination--notice { @apply mt-4 p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2; }
@@ -361,4 +374,3 @@
   .pagination__btn.is-active { @apply w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold; }
   .pagination__btn--muted { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs; }
 }
-
