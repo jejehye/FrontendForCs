@@ -50,15 +50,21 @@ npm install
 npm ci
 ```
 
-### 5) CSS 빌드
+### 5) 정적 산출물 빌드
 
 ```bash
 npm run build
 ```
 
 빌드 결과:
+- `src/pages/*.njk`가 `dist/*.html`로 렌더링
 - `dist/app.css` 생성
-- `postbuild`로 `app.css` 동기화 및 Font Awesome 로컬 리소스 복사 수행
+
+전체 배포 산출물(`dist/css`, `dist/javascript`, `dist/design`, `dist/vendor`)까지 포함하려면 아래 명령을 사용하세요.
+
+```bash
+./scripts/build.sh
+```
 
 ### 6) 실행 확인 (정적 서버)
 
@@ -90,15 +96,26 @@ rg -n "cdn.tailwindcss|fonts.googleapis|fonts.gstatic|cdnjs|https?://" \
 ---
 
 ## Build
-프로젝트는 번들러 없이 동작하는 정적 리소스 구조입니다.
-배포용 산출물은 아래 명령으로 `dist/`에 생성됩니다.
+프로젝트는 번들러 없이 동작하는 정적 리소스 구조이며, HTML은 템플릿 렌더링으로 `dist/`에 생성합니다.
 
+### 템플릿 구조
+- `src/layouts/`: 공통 레이아웃(`base.njk`, `app-shell.njk`)
+- `src/partials/`: 공통 UI 조각(사이드바, 로그인 폼/푸터, 페이지별 콘텐츠 분리)
+- `src/pages/`: 페이지 엔트리 템플릿(`*.njk` → `dist/*.html`)
+- `scripts/render.mjs`: `src/pages/*.njk`를 정적 HTML로 렌더링
+
+### 명령어
 ```bash
-./scripts/build.sh
+npm install
+npm run render      # pages -> dist/*.html
+npm run build       # render + dist/app.css 생성
+./scripts/build.sh  # render -> css/fontawesome -> assets(css/javascript/design) 복사
 ```
 
 생성 결과:
 - `dist/*.html` (예: `login.html`, `main.html`, `chat.html`, `sms.html` 등)
+- `dist/app.css`
+- `dist/vendor/fontawesome/`
 - `dist/css/`
 - `dist/javascript/`
 - `dist/design/`

@@ -1,0 +1,15 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
+  <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="css/{{ page_css }}">
+{% endblock %}
+
+{% block body %}
+  <div id="app-container" class="grid-layout">
+    {% include "partials/components/sidebar.njk" %}
+    {% block app_content %}{% endblock %}
+  </div>
+{% endblock %}

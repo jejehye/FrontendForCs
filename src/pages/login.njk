@@ -1,0 +1,33 @@
+{% extends "layouts/base.njk" %}
+{% set title = "CTI Agent Login" %}
+
+{% block head %}
+<link rel="stylesheet" href="css/login.css">
+{% endblock %}
+
+{% block body %}
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-section">
+        <div class="logo-text">신한투자증권</div>
+        <div class="logo-subtext">CTI Web 상담환경</div>
+      </div>
+    </div>
+
+    <div class="login-body">
+      <div id="errorMessage" class="error-message">
+        <span class="error-icon">!</span>
+        <span id="errorText">사번 또는 비밀번호가 올바르지 않습니다.</span>
+      </div>
+
+      {% include "partials/pages/login/form.njk" %}
+      {% include "partials/pages/login/footer.njk" %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="javascript/login.js"></script>
+{% endblock %}

@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ko">
+
+  <head>
+    <link rel="stylesheet" href="./app.css">
+    <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS 발송</title>
+    
+    <script src="javascript/sms-config.js"></script>
+    <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="css/sms.css">
+
+  </head>
+
+  <body>
+    <div id="app-container" class="grid-layout">
+      <div id="sidebar" class="column col-sidebar">
+        <div class="mb-6">
+          <div
+            class="sidebar-logo">
+            S</div>
+        </div>
+        <div data-page="main.html" title="Main" class="nav-item"><i
+            class="fa-solid fa-headset"></i></div>
+        <div data-page="chat.html" title="Chat" class="nav-item"><i
+            class="fa-solid fa-comments"></i></div>
+        <div data-page="pds.html" title="PDS" class="nav-item"><i
+            class="fa-solid fa-phone-volume"></i></div>
+        <div data-page="sms.html" title="SMS" class="nav-item active"><i
+            class="fa-solid fa-comment-sms"></i></div>
+        <div data-page="callback.html" title="Callback" class="nav-item"><i
+            class="fa-solid fa-phone"></i></div>
+        <div title="Settings" class="nav-item mt-auto mb-4"><i
+            class="fa-solid fa-gear"></i></div>
+      </div>
+      <div id="sms-column" class="column col-sms">
+        <div class="p-4 border-b border-gray-200 bg-white">
+          <div class="flex items-center gap-2 mb-2"><span class="badge status-badge status-ib"><i
+                class="fa-solid fa-headset mr-1"></i>I/B</span><span
+              class="text-xs text-gray-600 font-medium truncate">ARS 시나리오명1 &gt;
+              ARS 시나리오명2</span></div>
+          <div class="flex items-center gap-2 text-sm"><span
+              class="badge status-badge status-unauth"><i
+                class="fa-solid fa-lock mr-1"></i>무인증</span><span
+              class="font-bold text-gray-800">김신한(남)</span><span
+              class="text-gray-500">|</span><span
+              class="text-orange-600 font-medium">투자성향(적극투자형)</span><span
+              class="text-gray-500">|</span></div>
+        </div>
+        <div class="sms-header-bar p-3 flex items-center justify-between text-white"><span
+            class="font-semibold flex items-center gap-2"><i
+              class="fa-solid fa-comment-sms"></i>
+            SMS 발송
+          </span><button class="text-white hover:text-blue-100"><i
+              class="fa-solid fa-rotate-right"></i></button></div>
+        <div class="flex-1 overflow-y-auto p-4 bg-gray-50">
+          <div class="space-y-4">
+            <div
+              class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              <h3
+                class="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-user-group sms-primary-text"></i>
+                수신자 선택
+              </h3>
+              <div class="mb-3">
+                <div class="flex gap-2 mb-2"><input type="text"
+                    placeholder="전화번호 입력 (010-1234-5678)"
+                    class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2"><button
+                    class="sms-primary-btn text-white px-4 py-2 rounded text-sm font-medium shadow-sm"><i
+                      class="fa-solid fa-plus mr-1"></i>추가
+                  </button></div>
+                <div
+                  class="flex flex-wrap gap-1 min-h-[40px] p-2 border border-gray-200 rounded bg-gray-50">
+                  <span class="recipient-chip recipient-chip-primary">
+                    김신한 (010-1234-5678)
+                    <i
+                      class="fa-solid fa-xmark cursor-pointer hover:text-red-500"></i></span><span
+                    class="recipient-chip recipient-chip-primary">
+                    이투자 (010-9876-5432)
+                    <i
+                      class="fa-solid fa-xmark cursor-pointer hover:text-red-500"></i></span>
+                </div>
+              </div>
+              <div class="flex gap-2"><button
+                  class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200"><i
+                    class="fa-solid fa-address-book mr-1"></i>주소록
+                </button><button
+                  class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200"><i
+                    class="fa-solid fa-file-excel mr-1"></i>엑셀 업로드
+                </button></div>
+            </div>
+            <div
+              class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              <h3
+                class="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-file-lines sms-primary-text"></i>
+                템플릿 선택
+              </h3>
+              <div class="space-y-2 max-h-[280px] overflow-y-auto pr-2">
+                <div data-template="1" class="template-card template-card-primary">
+                  <div class="flex justify-between items-start mb-2"><span
+                      class="text-xs font-bold text-gray-800">해외주식 거래 수수료
+                      이벤트</span><span
+                      class="text-xxs text-gray-400">2024-01-15</span></div>
+                  <p class="text-xs text-gray-600 leading-relaxed">
+                    [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용
+                    1588-xxxx
+                  </p>
+                  <div class="flex justify-between items-center mt-2"><span
+                      class="text-xxs sms-primary-text"><i
+                        class="fa-solid fa-check-circle mr-1"></i>선택됨</span><span
+                      class="text-xxs text-gray-400">72자</span></div>
+                </div>
+                <div data-template="2" class="template-card">
+                  <div class="flex justify-between items-start mb-2"><span
+                      class="text-xs font-bold text-gray-800">ISA 계좌 만기
+                      안내</span><span
+                      class="text-xxs text-gray-400">2024-01-10</span></div>
+                  <p class="text-xs text-gray-600 leading-relaxed">
+                    [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의
+                    1588-xxxx
+                  </p>
+                  <div class="flex justify-end"><span
+                      class="text-xxs text-gray-400">61자</span></div>
+                </div>
+                <div data-template="3" class="template-card">
+                  <div class="flex justify-between items-start mb-2"><span
+                      class="text-xs font-bold text-gray-800">PRIME 고객 투자
+                      세미나</span><span
+                      class="text-xxs text-gray-400">2024-01-08</span></div>
+                  <p class="text-xs text-gray-600 leading-relaxed">
+                    [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00,
+                    장소: 여의도센터 문의: 1588-xxxx
+                  </p>
+                  <div class="flex justify-end"><span
+                      class="text-xxs text-gray-400">85자</span></div>
+                </div>
+                <div data-template="4" class="template-card">
+                  <div class="flex justify-between items-start mb-2"><span
+                      class="text-xs font-bold text-gray-800">계좌 비밀번호 변경
+                      완료</span><span
+                      class="text-xxs text-gray-400">2024-01-05</span></div>
+                  <p class="text-xs text-gray-600 leading-relaxed">
+                    [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
+                  </p>
+                  <div class="flex justify-end"><span
+                      class="text-xxs text-gray-400">58자</span></div>
+                </div>
+                <div data-template="5" class="template-card">
+                  <div class="flex justify-between items-start mb-2"><span
+                      class="text-xs font-bold text-gray-800">자산관리 상담
+                      예약</span><span
+                      class="text-xxs text-gray-400">2024-01-03</span></div>
+                  <p class="text-xs text-gray-600 leading-relaxed">
+                    [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소
+                    1588-xxxx
+                  </p>
+                  <div class="flex justify-end"><span
+                      class="text-xxs text-gray-400">63자</span></div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              <h3
+                class="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square text-purple-600"></i>
+                메시지 내용
+              </h3>
+              <div class="relative">
+                <textarea placeholder="메시지 내용을 입력하세요..." class="w-full h-40 px-3 py-2 border border-gray-300 rounded text-sm resize-none focus:outline-none focus:ring-2">[신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용 1588-xxxx</textarea><span
+                  class="char-counter">72 / 2000</span></div>
+              <div class="flex gap-2 mt-3"><button
+                  class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200"><i
+                    class="fa-solid fa-user mr-1"></i>고객명
+                </button><button
+                  class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200"><i
+                    class="fa-solid fa-phone mr-1"></i>연락처
+                </button><button
+                  class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200"><i
+                    class="fa-solid fa-calendar mr-1"></i>날짜
+                </button></div>
+            </div>
+            <div class="flex gap-2"><button
+                class="flex-1 text-white px-4 py-3 rounded font-bold shadow-md"><i
+                  class="fa-solid fa-paper-plane mr-2"></i>즉시 발송
+              </button><button
+                class="flex-1 bg-white text-gray-700 px-4 py-3 rounded font-bold shadow-md border-2 hover:bg-gray-50"><i
+                  class="fa-regular fa-clock mr-2"></i>예약 발송
+              </button></div>
+          </div>
+        </div>
+      </div>
+      <div id="center-column" class="column col-center">
+        <div class="info-card">
+          <div
+            class="flex justify-between items-center mb-3 border-b border-gray-100 pb-2">
+            <h3 class="font-bold text-gray-800 text-sm">공지사항</h3><button
+              class="text-xs text-gray-500 hover:text-blue-600">더보기 +</button>
+          </div>
+          <ul class="text-xs space-y-2">
+            <li class="flex justify-between items-start"><span
+                class="truncate pr-2 text-gray-700"><span
+                  class="font-bold">[고정]</span>[일반] 고정공지사항 제목입니다. <i
+                  class="fa-solid fa-paperclip text-gray-400 ml-1"></i></span><span
+                class="text-gray-400 whitespace-nowrap">2021-05-03 14:00</span>
+            </li>
+            <li class="flex justify-between items-start"><span
+                class="truncate pr-2 text-gray-700"><span
+                  class="text-red-500 font-bold">[긴급]</span> 긴급공지사항 제목입니다. <i
+                  class="fa-solid fa-paperclip text-gray-400 ml-1"></i></span><span
+                class="text-gray-400 whitespace-nowrap">2021-05-03 14:00</span>
+            </li>
+            <li class="flex justify-between items-start"><span
+                class="truncate pr-2 text-gray-700">[일반] 일반공지사항 입니다. 확인요청드립니다.
+                <i
+                  class="fa-solid fa-paperclip text-gray-400 ml-1"></i></span><span
+                class="text-gray-400 whitespace-nowrap">2021-05-03 14:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+              최근 발송 내역
+            </h3><button class="sms-primary-text text-xs font-medium">전체보기</button>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">해외주식 거래 수수료
+                  이벤트</span><span
+                  class="text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium">발송완료</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+                [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중...
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-user mr-1"></i>김신한 외
+                  2명</span><span>2024-01-20 14:35</span></div>
+            </div>
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">ISA 계좌 만기
+                  안내</span><span
+                  class="text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium">발송완료</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+                [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다...
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-user mr-1"></i>이투자</span><span>2024-01-19
+                  10:22</span></div>
+            </div>
+            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">자산관리 상담 예약</span><span
+                 
+                  class="text-xxs px-2 py-1 rounded font-medium">예약중</span>
+              </div>
+              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+                [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다...
+              </p>
+              <div class="flex justify-between text-xxs text-gray-400"><span><i
+                    class="fa-solid fa-user mr-1"></i>박자산</span><span>발송예정:
+                  2024-01-25 09:00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="right-column" class="column col-right">
+        <div
+          class="flex items-center justify-between border-b border-gray-200 pb-1">
+          <div class="flex gap-1">
+            <div class="tab-item tab-item-primary active"><i
+                class="fa-solid fa-comment-sms"></i>
+              SMS
+            </div>
+            <div class="tab-item"><i class="fa-solid fa-user"></i>
+              김신한
+            </div>
+          </div><button class="sms-primary-btn text-white text-xs px-3 py-1.5 rounded shadow-sm">상담저장</button>
+        </div>
+        <div class="bg-white p-2 rounded border border-gray-100">
+          <div class="flex justify-between items-start mb-3">
+            <div class="flex items-center gap-2 text-sm"><span class="badge status-badge status-unauth"><i
+                  class="fa-solid fa-lock mr-1"></i>무인증</span><span
+                class="font-bold text-gray-800">김신한(남), 투자성향(적극투자형),
+                고객등급(PRIME)</span></div><button
+              class="text-gray-400 hover:text-blue-500"><i
+                class="fa-solid fa-rotate-right"></i></button>
+          </div>
+          <div class="grid grid-cols-6 gap-2 mb-3"><button
+              class="actionBtn action-btn action-btn-primary group border">
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:bg-blue-200 transition">
+                <i class="fa-solid fa-coins text-lg sms-primary-text"></i></div><span class="font-bold sms-primary-text">사고</span>
+            </button><button
+              class="actionBtn action-btn group border-teal-200 bg-teal-50">
+              <div
+                class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
+                <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
+              <span class="text-teal-800 font-bold tag-compact">권리발생</span>
+            </button><button class="actionBtn action-btn group"><i
+                class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
+              class="actionBtn action-btn group"><i
+                class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
+              class="actionBtn action-btn group"><i
+                class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
+              class="sms-primary-btn actionBtn action-btn group border"><i
+                class="fa-solid fa-users text-white"></i><span
+                class="text-white">캠페인</span></button></div>
+          <div
+            class="flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200">
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">서비스요청</span><span
+                class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            </div>
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">콜백서비스</span><span
+                class="bg-yellow-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+            </div>
+            <div class="flex items-center gap-1"><span
+                class="text-gray-600">상담예약</span><span
+                class="bg-teal-500 text-white px-1.5 rounded text-[10px] font-bold">1</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-card flex-1 flex flex-col p-0 overflow-hidden">
+          <div class="flex border-b border-gray-200 bg-gray-50"><button
+             
+              class="px-4 py-2 text-xs font-bold bg-white border-t-2 text-white">SMS
+              발송 이력</button><button
+              class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">고객정보</button><button
+              class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">상담이력</button>
+          </div>
+          <div class="p-4 overflow-y-auto flex-1">
+            <table class="w-full table-compact text-left">
+              <thead>
+                <tr>
+                  <th>발송일시 <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
+                  </th>
+                  <th>템플릿명</th>
+                  <th class="sms-status-col">상태</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600">
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-20 14:35</td>
+                  <td>해외주식 거래 수수료 이벤트</td>
+                  <td></td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-18 11:20</td>
+                  <td>PRIME 고객 투자 세미나</td>
+                  <td></td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-15 09:10</td>
+                  <td>ISA 계좌 만기 안내</td>
+                  <td></td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-12 16:45</td>
+                  <td>계좌 비밀번호 변경 완료</td>
+                  <td></td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-10 13:30</td>
+                  <td>자산관리 상담 예약</td>
+                  <td></td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-08 10:15</td>
+                  <td>해외주식 약정 안내</td>
+                  <td></td>
+                </tr>
+                <tr class="hover:bg-blue-50 cursor-pointer">
+                  <td>2024-01-05 15:00</td>
+                  <td>투자 전략 리포트 발송</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="javascript/sms.js"></script>
+  </body>
+
+</html>

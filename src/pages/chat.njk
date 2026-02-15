@@ -1,0 +1,12 @@
+{% extends "layouts/app-shell.njk" %}
+{% set title = "채팅 상담" %}
+{% set page_css = "chat.css" %}
+{% set active_page = "chat.html" %}
+
+{% block app_content %}
+{% include "partials/pages/chat/content.njk" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="javascript/chat.js"></script>
+{% endblock %}
