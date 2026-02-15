@@ -21,7 +21,7 @@ body {
 
 .grid-layout {
   display: grid;
-  grid-template-columns: 60px 380px 1fr 420px;
+  grid-template-columns: 60px 680px 1fr 420px;
   height: 100vh;
   width: 100%;
   margin: 0;

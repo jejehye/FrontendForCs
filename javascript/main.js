@@ -166,6 +166,63 @@ document.querySelectorAll('.nav-item').forEach(item =>
         });
       });
 
+      const noticePages = Array.from(document.querySelectorAll('[data-notice-page]'));
+      const noticePageButtons = Array.from(document.querySelectorAll('[data-notice-page-btn]'));
+      const noticePrevButton = document.querySelector('[data-notice-nav="prev"]');
+      const noticeNextButton = document.querySelector('[data-notice-nav="next"]');
+      let activeNoticePage = 1;
+
+      const setActiveNoticePage = pageNumber => {
+        if (!noticePages.length || !noticePageButtons.length) {
+          return;
+        }
+
+        const maxPage = noticePages.length;
+        activeNoticePage = Math.min(maxPage, Math.max(1, pageNumber));
+
+        noticePages.forEach(page => {
+          const current = Number(page.getAttribute('data-notice-page'));
+          page.classList.toggle('hidden', current !== activeNoticePage);
+        });
+
+        noticePageButtons.forEach(button => {
+          const page = Number(button.getAttribute('data-notice-page-btn'));
+          button.classList.remove('bg-blue-600', 'text-white', 'font-bold');
+          button.classList.add('border', 'border-gray-300', 'bg-white', 'text-gray-700', 'hover:bg-gray-100');
+
+          if (page === activeNoticePage) {
+            button.classList.remove('border', 'border-gray-300', 'bg-white', 'text-gray-700', 'hover:bg-gray-100');
+            button.classList.add('bg-blue-600', 'text-white', 'font-bold');
+          }
+        });
+
+        if (noticePrevButton) {
+          noticePrevButton.disabled = activeNoticePage === 1;
+          noticePrevButton.classList.toggle('opacity-40', activeNoticePage === 1);
+        }
+
+        if (noticeNextButton) {
+          noticeNextButton.disabled = activeNoticePage === maxPage;
+          noticeNextButton.classList.toggle('opacity-40', activeNoticePage === maxPage);
+        }
+      };
+
+      noticePageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          setActiveNoticePage(Number(button.getAttribute('data-notice-page-btn')));
+        });
+      });
+
+      if (noticePrevButton) {
+        noticePrevButton.addEventListener('click', () => setActiveNoticePage(activeNoticePage - 1));
+      }
+
+      if (noticeNextButton) {
+        noticeNextButton.addEventListener('click', () => setActiveNoticePage(activeNoticePage + 1));
+      }
+
+      setActiveNoticePage(1);
+
       const statusSelect = document.querySelector('.agent-status-bar select');
       const statusIndicator = document.querySelector('.status-indicator');
 
