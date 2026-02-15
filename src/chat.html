@@ -24,7 +24,7 @@
         <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
       </div>
       <div id="chat-column" class="column col-chat">
-        <div class="p-4 border-b border-gray-200 bg-white">
+        <div class="panel__body panel__body--chat-meta">
           <div class="ui-inline-gap-2-mb2"><span class="badge status-badge status-chat"><i class="fa-solid fa-comments mr-1"></i>채팅</span><span
               class="text-xs text-gray-600 font-medium truncate">웹채팅 &gt;
               일반상담</span></div>
@@ -34,7 +34,7 @@
               class="ui-title-base">박민지(여)</span><span
               class="ui-text-subtle">|</span><span class="font-medium">투자성향(적극형)</span></div>
         </div>
-        <div class="p-3 flex items-center justify-between text-white chat-header"><span class="font-semibold flex items-center gap-2"><i
+        <div class="panel__header panel__header--chat-live chat-header"><span class="panel__title panel__title--chat-live"><i
               class="fa-solid fa-comments"></i>
             실시간 채팅 상담
           </span>
@@ -44,9 +44,9 @@
                 class="fa-solid fa-rotate-right"></i></button></div>
         </div>
         <div
-          class="flex-1 overflow-y-auto p-4 bg-gradient-to-b from-gray-50 to-white">
+          class="panel__body panel__body--chat-messages">
           <div class="text-center mb-6"><span
-              class="text-xs text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-200">2024년
+              class="badge badge--date">2024년
               2월 12일 월요일</span></div>
           <div class="chat-message customer">
             <div class="chatBubble chatBubble--customer message-bubble customer">
@@ -98,42 +98,42 @@
             <div class="typing-dot"></div>
           </div>
         </div>
-        <div class="p-3 border-t border-gray-200 bg-gray-50">
+        <div class="panel__body panel__body--chat-compose">
           <div class="mb-2 flex flex-wrap gap-1"><button class="quick-reply">ISA
               계좌 안내</button><button class="quick-reply">비과세 혜택</button><button
               class="quick-reply">가입 조건</button><button class="quick-reply">개설
               방법</button><button class="quick-reply">운용 상품</button></div>
           <div class="chat-gap-2-row"><button title="파일 첨부"
-              class="bg-white border border-gray-300 p-2 rounded hover:bg-gray-100"><i
+              class="btn btn--secondary btn--icon"><i
                 class="fa-solid fa-paperclip text-gray-600"></i></button><button
               title="이모티콘"
-              class="bg-white border border-gray-300 p-2 rounded hover:bg-gray-100"><i
+              class="btn btn--secondary btn--icon"><i
                 class="fa-regular fa-face-smile text-gray-600"></i></button><input
               type="text" placeholder="메시지를 입력하세요..."
-              class="flex-1 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 text-sm"><button
-              class="send-btn text-white px-6 py-2 rounded font-medium hover:opacity-90 flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i>
+              class="field field--chat-message"><button
+              class="send-btn btn btn--primary btn--chat-send"><i class="fa-solid fa-paper-plane"></i>
               전송
             </button></div>
         </div>
       </div>
       <div id="center-column" class="column col-center p-4">
-        <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4">
-          <div class="flex items-center justify-between mb-3">
+        <div class="panel panel--kms">
+          <div class="panel__header panel__header--kms">
             <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
               <i class="fa-solid fa-book"></i>
               KMS 매뉴얼
             </h3>
             <div class="chat-gap-2-row"><input type="text" placeholder="검색..."
-                class="px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 w-48"><button
-                class="primary-btn text-white px-3 py-1.5 rounded text-xs hover:opacity-90"><i class="fa-solid fa-search"></i></button></div>
+                class="field field--kms-search"><button
+                class="btn btn--primary btn--kms-search primary-btn"><i class="fa-solid fa-search"></i></button></div>
           </div>
           <div class="flex gap-2 mb-3 overflow-x-auto pb-2"><button
-              class="primary-btn px-3 py-1.5 text-white rounded text-xs font-medium whitespace-nowrap">전체</button><button
-              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">ISA</button><button
-              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">해외주식</button><button
-              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">ETF</button><button
-              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">연금</button><button
-              class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 whitespace-nowrap">세금</button>
+              class="tab__item is-active tab__item--chat-filter primary-btn">전체</button><button
+              class="tab__item tab__item--chat-filter">ISA</button><button
+              class="tab__item tab__item--chat-filter">해외주식</button><button
+              class="tab__item tab__item--chat-filter">ETF</button><button
+              class="tab__item tab__item--chat-filter">연금</button><button
+              class="tab__item tab__item--chat-filter">세금</button>
           </div>
         </div>
         <div class="ui-stack-3">
@@ -285,7 +285,7 @@
       </div>
       <div id="right-column" class="column col-right">
         <div
-          class="flex items-center justify-between border-b border-gray-200 pb-1 px-4 pt-4">
+          class="panel__header panel__header--chat-side-tabs">
           <div class="flex gap-1">
             <div class="tab-item active"><i
                 class="fa-solid fa-user"></i>
@@ -295,9 +295,9 @@
               이력
             </div>
           </div><button
-            class="primary-btn text-white text-xs px-3 py-1.5 rounded hover:opacity-90">상담저장</button>
+            class="btn btn--primary btn--chat-save primary-btn">상담저장</button>
         </div>
-        <div class="bg-white p-4 rounded border border-gray-100 mx-4 mt-4">
+        <div class="card card--chat-profile">
           <div class="flex justify-between items-start mb-3">
             <div class="chat-customer-meta"><span
                 class="badge status-badge status-unauth"><i
@@ -323,11 +323,11 @@
           <div class="grid grid-cols-6 gap-2 mb-3"><button
               class="actionBtn action-btn group">
               <div
-                class="w-10 h-10 rounded-full flex items-center justify-center mb-1 group-hover:opacity-80 transition"><i class="fa-solid fa-coins text-lg"></i></div><span class="font-bold">사고</span>
+                class="chat-action-icon"><i class="fa-solid fa-coins text-lg"></i></div><span class="font-bold">사고</span>
             </button><button
               class="actionBtn action-btn group border-teal-200 bg-teal-50">
               <div
-                class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition">
+                class="chat-action-icon chat-action-icon--teal">
                 <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
               <span class="text-teal-800 font-bold">권리발생</span>
             </button><button class="actionBtn action-btn group"><i
@@ -354,9 +354,9 @@
                 class="bg-blue-600 text-white px-1.5 rounded text-[10px] font-bold">1</span></div>
           </div>
         </div>
-        <div class="card bg-white border border-gray-200 rounded p-4 mx-4 mt-4">
+        <div class="card card--chat-stats">
           <h3
-            class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
+            class="panel__title panel__title--section">
             <i class="fa-solid fa-chart-pie text-green-500"></i>
             보유 자산 현황
           </h3>
@@ -377,14 +377,14 @@
                 class="ui-text-body-muted">ISA</span><span
                 class="font-medium text-gray-700">6,300,000원</span></div>
             <div
-              class="flex justify-between items-center text-xs pt-2 border-t border-gray-200">
+              class="panel__row panel__row--profit">
               <span class="ui-text-body-muted">평가 손익</span><span class="font-bold">+5,320,000원 (+5.91%)</span></div>
           </div>
         </div>
         <div
-          class="card bg-white border border-gray-200 rounded p-4 mx-4 mt-4 flex-1 flex flex-col">
+          class="card card--chat-history">
           <h3
-            class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
+            class="panel__title panel__title--section">
             <i class="fa-solid fa-clock-rotate-left text-purple-500"></i>
             최근 상담 이력
           </h3>
@@ -393,7 +393,7 @@
               <div class="chat-note-header"><span
                   class="ui-title-xs">ISA 계좌 개설
                   문의</span><span
-                  class="text-xxs text-white px-2 py-1 rounded font-medium">채팅</span></div>
+                  class="badge badge--chat-note">채팅</span></div>
               <p class="text-xxs text-gray-600 mb-2">
                 ISA 계좌 비과세 혜택 및 가입 조건 안내 완료
               </p>
@@ -417,7 +417,7 @@
               <div class="chat-note-header"><span
                   class="ui-title-xs">GOLD 등급 혜택
                   안내</span><span
-                  class="text-xxs text-purple-600 bg-purple-50 px-2 py-1 rounded font-medium">SMS</span>
+                  class="badge badge--chat-note-sms">SMS</span>
               </div>
               <p class="text-xxs text-gray-600 mb-2">
                 수수료 우대 및 전용 이벤트 안내 발송 완료
