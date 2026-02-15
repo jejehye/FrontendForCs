@@ -23,29 +23,29 @@
   <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
       <div id="chat-column" class="column col-chat">
-        <div class="p-4 border-b border-gray-200 bg-white">
-          <div class="flex items-center gap-2 mb-2"><span class="badge status-badge status-chat"><i class="fa-solid fa-comments mr-1"></i>채팅</span><span
+        <div class="panel__body panel__body--chat-meta">
+          <div class="ui-inline-gap-2-mb2"><span class="badge status-badge status-chat"><i class="fa-solid fa-comments mr-1"></i>채팅</span><span
               class="text-xs text-gray-600 font-medium truncate">웹채팅 &gt;
               일반상담</span></div>
           <div class="chat-customer-meta"><span
               class="badge status-badge status-unauth"><i
                 class="fa-solid fa-lock mr-1"></i>무인증</span><span
-              class="font-bold text-gray-800">박민지(여)</span><span
-              class="text-gray-500">|</span><span class="font-medium">투자성향(적극형)</span></div>
+              class="ui-title-base">박민지(여)</span><span
+              class="ui-text-subtle">|</span><span class="font-medium">투자성향(적극형)</span></div>
         </div>
-        <div class="p-3 flex items-center justify-between text-white chat-header"><span class="font-semibold flex items-center gap-2"><i
+        <div class="panel__header panel__header--chat-live chat-header"><span class="panel__title panel__title--chat-live"><i
               class="fa-solid fa-comments"></i>
             실시간 채팅 상담
           </span>
           <div class="chat-flex-center-gap-2"><span
-              class="sem-u-050">대기: 2</span><button
+              class="bg-white text-blue-700 px-2 py-1 rounded text-xs font-bold">대기: 2</span><button
               class="text-white hover:opacity-80"><i
                 class="fa-solid fa-rotate-right"></i></button></div>
         </div>
         <div
-          class="flex-1 overflow-y-auto p-4 bg-gradient-to-b from-gray-50 to-white">
+          class="panel__body panel__body--chat-messages">
           <div class="text-center mb-6"><span
-              class="sem-u-051">2024년
+              class="badge badge--date">2024년
               2월 12일 월요일</span></div>
           <div class="chat-message customer">
             <div class="chatBubble chatBubble--customer message-bubble customer">
@@ -97,50 +97,50 @@
             <div class="typing-dot"></div>
           </div>
         </div>
-        <div class="p-3 border-t border-gray-200 bg-gray-50">
+        <div class="panel__body panel__body--chat-compose">
           <div class="mb-2 flex flex-wrap gap-1"><button class="quick-reply">ISA
               계좌 안내</button><button class="quick-reply">비과세 혜택</button><button
               class="quick-reply">가입 조건</button><button class="quick-reply">개설
               방법</button><button class="quick-reply">운용 상품</button></div>
           <div class="chat-gap-2-row"><button title="파일 첨부"
-              class="bg-white border border-gray-300 p-2 rounded hover:bg-gray-100"><i
+              class="btn btn--secondary btn--icon"><i
                 class="fa-solid fa-paperclip text-gray-600"></i></button><button
               title="이모티콘"
-              class="bg-white border border-gray-300 p-2 rounded hover:bg-gray-100"><i
+              class="btn btn--secondary btn--icon"><i
                 class="fa-regular fa-face-smile text-gray-600"></i></button><input
               type="text" placeholder="메시지를 입력하세요..."
-              class="sem-u-052"><button
-              class="send-btn sem-u-053"><i class="fa-solid fa-paper-plane"></i>
+              class="field field--chat-message"><button
+              class="send-btn btn btn--primary btn--chat-send"><i class="fa-solid fa-paper-plane"></i>
               전송
             </button></div>
         </div>
       </div>
       <div id="center-column" class="column col-center p-4">
-        <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4">
-          <div class="flex items-center justify-between mb-3">
+        <div class="panel panel--kms">
+          <div class="panel__header panel__header--kms">
             <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
               <i class="fa-solid fa-book"></i>
               KMS 매뉴얼
             </h3>
             <div class="chat-gap-2-row"><input type="text" placeholder="검색..."
-                class="sem-u-054"><button
-                class="primary-btn text-white px-3 py-1.5 rounded text-xs hover:opacity-90"><i class="fa-solid fa-search"></i></button></div>
+                class="field field--kms-search"><button
+                class="btn btn--primary btn--kms-search primary-btn"><i class="fa-solid fa-search"></i></button></div>
           </div>
           <div class="flex gap-2 mb-3 overflow-x-auto pb-2"><button
-              class="primary-btn sem-u-055">전체</button><button
-              class="sem-u-056">ISA</button><button
-              class="sem-u-056">해외주식</button><button
-              class="sem-u-056">ETF</button><button
-              class="sem-u-056">연금</button><button
-              class="sem-u-056">세금</button>
+              class="tab__item is-active tab__item--chat-filter primary-btn">전체</button><button
+              class="tab__item tab__item--chat-filter">ISA</button><button
+              class="tab__item tab__item--chat-filter">해외주식</button><button
+              class="tab__item tab__item--chat-filter">ETF</button><button
+              class="tab__item tab__item--chat-filter">연금</button><button
+              class="tab__item tab__item--chat-filter">세금</button>
           </div>
         </div>
-        <div class="space-y-3">
+        <div class="ui-stack-3">
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">ISA</span><span
-                  class="text-sm font-bold text-gray-800">ISA 계좌 비과세 혜택
-                  안내</span></div><button class="text-gray-400"><i
+                  class="ui-title-sm">ISA 계좌 비과세 혜택
+                  안내</span></div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -148,7 +148,7 @@
               효과가 큽니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-10</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -157,8 +157,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">ISA</span><span
-                  class="text-sm font-bold text-gray-800">ISA 계좌 가입 조건 및
-                  유형</span></div><button class="text-gray-400"><i
+                  class="ui-title-sm">ISA 계좌 가입 조건 및
+                  유형</span></div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -166,7 +166,7 @@
               이하) 중 선택 가능합니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-09</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -175,8 +175,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">ISA</span><span
-                  class="text-sm font-bold text-gray-800">ISA 계좌 개설 절차</span>
-              </div><button class="text-gray-400"><i
+                  class="ui-title-sm">ISA 계좌 개설 절차</span>
+              </div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -184,7 +184,7 @@
               6) 정보입력 → 7) 개설완료 (약 3분 소요)
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-08</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -193,8 +193,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">해외주식</span><span
-                  class="text-sm font-bold text-gray-800">해외주식 거래 수수료 안내</span>
-              </div><button class="text-gray-400"><i
+                  class="ui-title-sm">해외주식 거래 수수료 안내</span>
+              </div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -202,7 +202,7 @@
               적용됩니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-07</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -211,8 +211,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">ETF</span><span
-                  class="text-sm font-bold text-gray-800">국내 ETF 거래 안내</span>
-              </div><button class="text-gray-400"><i
+                  class="ui-title-sm">국내 ETF 거래 안내</span>
+              </div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -220,7 +220,7 @@
               원천징수됩니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-06</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -229,8 +229,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">연금</span><span
-                  class="text-sm font-bold text-gray-800">연금저축 세액공제 혜택</span>
-              </div><button class="text-gray-400"><i
+                  class="ui-title-sm">연금저축 세액공제 혜택</span>
+              </div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -238,7 +238,7 @@
               초과는 13.2% 적용됩니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-05</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -247,8 +247,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">세금</span><span
-                  class="text-sm font-bold text-gray-800">금융소득 종합과세 안내</span>
-              </div><button class="text-gray-400"><i
+                  class="ui-title-sm">금융소득 종합과세 안내</span>
+              </div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -256,7 +256,7 @@
               누진세율(6.6%~49.5%) 적용됩니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-04</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -265,8 +265,8 @@
           <div class="kms-card">
             <div class="kms-header-row">
               <div class="chat-flex-center-gap-2"><span class="kms-tag">ISA</span><span
-                  class="text-sm font-bold text-gray-800">ISA 계좌 운용 가능 상품</span>
-              </div><button class="text-gray-400"><i
+                  class="ui-title-sm">ISA 계좌 운용 가능 상품</span>
+              </div><button class="ui-text-muted"><i
                   class="fa-solid fa-chevron-down"></i></button>
             </div>
             <p class="text-xs text-gray-600 leading-relaxed mb-2">
@@ -274,7 +274,7 @@
               제외됩니다.
             </p>
             <div
-              class="flex items-center justify-between text-xxs text-gray-400">
+              class="ui-between-center-meta-xxs">
               <span><i class="fa-solid fa-clock mr-1"></i>최종 수정:
                 2024-02-03</span><button class="font-medium"><i
                   class="fa-solid fa-copy mr-1"></i>복사
@@ -284,7 +284,7 @@
       </div>
       <div id="right-column" class="column col-right">
         <div
-          class="sem-u-057">
+          class="panel__header panel__header--chat-side-tabs">
           <div class="flex gap-1">
             <div class="tab-item active"><i
                 class="fa-solid fa-user"></i>
@@ -294,39 +294,39 @@
               이력
             </div>
           </div><button
-            class="primary-btn text-white text-xs px-3 py-1.5 rounded hover:opacity-90">상담저장</button>
+            class="btn btn--primary btn--chat-save primary-btn">상담저장</button>
         </div>
-        <div class="sem-u-058">
+        <div class="card card--chat-profile">
           <div class="flex justify-between items-start mb-3">
             <div class="chat-customer-meta"><span
                 class="badge status-badge status-unauth"><i
                   class="fa-solid fa-lock mr-1"></i>무인증</span><span
-                class="font-bold text-gray-800">박민지(여)</span></div><button
-              class="text-gray-400"><i
+                class="ui-title-base">박민지(여)</span></div><button
+              class="ui-text-muted"><i
                 class="fa-solid fa-rotate-right"></i></button>
           </div>
           <div class="grid grid-cols-2 gap-2 text-xs mb-3">
             <div class="chat-info-box"><span
-                class="text-gray-500">투자성향:</span><span class="font-bold ml-1">적극형</span></div>
+                class="ui-text-subtle">투자성향:</span><span class="font-bold ml-1">적극형</span></div>
             <div class="chat-info-box"><span
-                class="text-gray-500">고객등급:</span><span class="font-bold ml-1">GOLD</span></div>
+                class="ui-text-subtle">고객등급:</span><span class="font-bold ml-1">GOLD</span></div>
             <div class="chat-info-box"><span
-                class="text-gray-500">연락처:</span><span
+                class="ui-text-subtle">연락처:</span><span
                 class="text-gray-800 font-medium ml-1">010-9876-5432</span>
             </div>
             <div class="chat-info-box"><span
-                class="text-gray-500">이메일:</span><span
+                class="ui-text-subtle">이메일:</span><span
                 class="text-gray-800 font-medium ml-1">park@email.com</span>
             </div>
           </div>
           <div class="grid grid-cols-6 gap-2 mb-3"><button
               class="actionBtn action-btn group">
               <div
-                class="sem-u-059"><i class="fa-solid fa-coins text-lg"></i></div><span class="font-bold">사고</span>
+                class="chat-action-icon"><i class="fa-solid fa-coins text-lg"></i></div><span class="font-bold">사고</span>
             </button><button
               class="actionBtn action-btn group border-teal-200 bg-teal-50">
               <div
-                class="sem-u-060">
+                class="chat-action-icon chat-action-icon--teal">
                 <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
               <span class="text-teal-800 font-bold">권리발생</span>
             </button><button class="actionBtn action-btn group"><i
@@ -339,60 +339,60 @@
                 class="fa-solid fa-users text-white"></i><span
                 class="text-white">캠페인</span></button></div>
           <div
-            class="sem-u-061">
+            class="flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200">
             <div class="chat-icon-text-row"><span
-                class="text-gray-600">서비스요청</span><span
+                class="ui-text-body-muted">서비스요청</span><span
                 class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
             </div>
             <div class="chat-icon-text-row"><span
-                class="text-gray-600">콜백서비스</span><span
+                class="ui-text-body-muted">콜백서비스</span><span
                 class="bg-yellow-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
             </div>
             <div class="chat-icon-text-row"><span
-                class="text-gray-600">상담예약</span><span
+                class="ui-text-body-muted">상담예약</span><span
                 class="bg-blue-600 text-white px-1.5 rounded text-[10px] font-bold">1</span></div>
           </div>
         </div>
-        <div class="card sem-u-062">
+        <div class="card card--chat-stats">
           <h3
-            class="sem-u-063">
+            class="panel__title panel__title--section">
             <i class="fa-solid fa-chart-pie text-green-500"></i>
             보유 자산 현황
           </h3>
           <div class="space-y-2">
             <div class="chat-stat-row"><span
-                class="text-gray-600">총 평가액</span><span
-                class="font-bold text-gray-800">95,320,000원</span></div>
+                class="ui-text-body-muted">총 평가액</span><span
+                class="ui-title-base">95,320,000원</span></div>
             <div class="chat-stat-row"><span
-                class="text-gray-600">국내 주식</span><span
+                class="ui-text-body-muted">국내 주식</span><span
                 class="font-medium text-gray-700">42,150,000원</span></div>
             <div class="chat-stat-row"><span
-                class="text-gray-600">해외 주식</span><span
+                class="ui-text-body-muted">해외 주식</span><span
                 class="font-medium text-gray-700">28,670,000원</span></div>
             <div class="chat-stat-row"><span
-                class="text-gray-600">ETF</span><span
+                class="ui-text-body-muted">ETF</span><span
                 class="font-medium text-gray-700">18,200,000원</span></div>
             <div class="chat-stat-row"><span
-                class="text-gray-600">ISA</span><span
+                class="ui-text-body-muted">ISA</span><span
                 class="font-medium text-gray-700">6,300,000원</span></div>
             <div
-              class="sem-u-064">
-              <span class="text-gray-600">평가 손익</span><span class="font-bold">+5,320,000원 (+5.91%)</span></div>
+              class="panel__row panel__row--profit">
+              <span class="ui-text-body-muted">평가 손익</span><span class="font-bold">+5,320,000원 (+5.91%)</span></div>
           </div>
         </div>
         <div
-          class="card sem-u-065">
+          class="card card--chat-history">
           <h3
-            class="sem-u-063">
+            class="panel__title panel__title--section">
             <i class="fa-solid fa-clock-rotate-left text-purple-500"></i>
             최근 상담 이력
           </h3>
           <div class="space-y-3 overflow-y-auto flex-1">
             <div class="chat-note-card">
               <div class="chat-note-header"><span
-                  class="text-xs font-bold text-gray-800">ISA 계좌 개설
+                  class="ui-title-xs">ISA 계좌 개설
                   문의</span><span
-                  class="text-xxs text-white px-2 py-1 rounded font-medium">채팅</span></div>
+                  class="badge badge--chat-note">채팅</span></div>
               <p class="text-xxs text-gray-600 mb-2">
                 ISA 계좌 비과세 혜택 및 가입 조건 안내 완료
               </p>
@@ -402,8 +402,8 @@
             </div>
             <div class="chat-note-card">
               <div class="chat-note-header"><span
-                  class="text-xs font-bold text-gray-800">ETF 투자 상담</span><span
-                  class="sem-u-066">전화</span>
+                  class="ui-title-xs">ETF 투자 상담</span><span
+                  class="ui-status-success">전화</span>
               </div>
               <p class="text-xxs text-gray-600 mb-2">
                 국내외 ETF 5종 추천 및 매수 완료
@@ -414,9 +414,9 @@
             </div>
             <div class="chat-note-card">
               <div class="chat-note-header"><span
-                  class="text-xs font-bold text-gray-800">GOLD 등급 혜택
+                  class="ui-title-xs">GOLD 등급 혜택
                   안내</span><span
-                  class="sem-u-067">SMS</span>
+                  class="badge badge--chat-note-sms">SMS</span>
               </div>
               <p class="text-xxs text-gray-600 mb-2">
                 수수료 우대 및 전용 이벤트 안내 발송 완료
