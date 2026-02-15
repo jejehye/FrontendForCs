@@ -2,9 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer utilities {
+  .text-xxs {
+    font-size: 0.65rem;
+    line-height: 1rem;
+  }
+}
+
 @layer base {
   html,
   body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   }
+}
+
+@layer components {
+  .ui-inline-gap-2 { @apply flex items-center gap-2; }
+  .ui-between-start-mb2 { @apply flex justify-between items-start mb-2; }
+  .ui-title-xs { @apply text-xs font-bold text-gray-800; }
+  .ui-meta-xxs { @apply text-xxs text-gray-400; }
+  .ui-inline-gap-2-mb1 { @apply flex items-center gap-2 mb-1; }
+  .ui-inline-gap-2-mb2 { @apply flex items-center gap-2 mb-2; }
+  .ui-between-center-mb3 { @apply flex justify-between items-center mb-3; }
+  .ui-stack-3 { @apply space-y-3; }
+  .ui-between-center { @apply flex justify-between items-center; }
+  .ui-between-start { @apply flex justify-between items-start; }
+  .ui-title-base { @apply font-bold text-gray-800; }
+  .ui-text-xs-body { @apply text-xs text-gray-700; }
+  .ui-text-xs-muted-relaxed-mb2 { @apply text-xs text-gray-600 mb-2 leading-relaxed; }
+  .ui-flex-gap-2 { @apply flex gap-2; }
+  .ui-truncate-label { @apply truncate pr-2 text-gray-700; }
+  .ui-date-nowrap { @apply text-gray-400 whitespace-nowrap; }
+  .ui-soft-card { @apply bg-gray-50 rounded p-3 border border-gray-100; }
+  .ui-status-success { @apply text-xxs text-green-600 bg-green-50 px-2 py-1 rounded font-medium; }
+  .ui-text-xxs-muted-relaxed-mb2 { @apply text-xxs text-gray-600 mb-2 leading-relaxed; }
+  .ui-between-meta-xxs { @apply flex justify-between text-xxs text-gray-400; }
+  .ui-tab-btn { @apply px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700; }
+  .ui-hover-row { @apply hover:bg-gray-50 cursor-pointer transition; }
+  .ui-icon-btn { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 text-xs; }
+  .ui-panel-hover { @apply bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition cursor-pointer; }
+  .ui-between-start-mb2-alt { @apply flex items-start justify-between mb-2; }
+  .ui-text-xs-subtle { @apply text-xs text-gray-500; }
+  .ui-title-base-mb1 { @apply font-bold text-gray-800 mb-1; }
+  .ui-text-sm-muted { @apply text-sm text-gray-600; }
+  .ui-between-center-meta-xxs { @apply flex items-center justify-between text-xxs text-gray-400; }
+  .ui-title-sm { @apply text-sm font-bold text-gray-800; }
+  .ui-inline-gap-1 { @apply flex items-center gap-1; }
+  .ui-text-subtle { @apply text-gray-500; }
+  .ui-text-muted { @apply text-gray-400; }
+  .ui-text-body-muted { @apply text-gray-600; }
+  .ui-table-cell { @apply p-2 border-b border-gray-100 border-r text-center; }
+  .ui-table-cell-head { @apply p-2 border-b border-gray-100 border-r text-center font-bold; }
+  .ui-table-cell-truncate { @apply p-2 border-b border-gray-100 border-r truncate max-w-[150px]; }
 }
