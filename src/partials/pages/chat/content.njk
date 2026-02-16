@@ -1,4 +1,16 @@
 {% set chat_data = page_data or {} %}
-{% include "partials/pages/chat/sections/chat-column.njk" %}
-{% include "partials/pages/chat/sections/center-column.njk" %}
-{% include "partials/pages/chat/sections/right-column.njk" %}
+
+<!-- ===================== Chat Column ===================== -->
+<section>
+  {% include "partials/pages/chat/sections/chat-column.njk" %}
+</section>
+
+<!-- ===================== Center Column ===================== -->
+<section>
+  {% include "partials/pages/chat/sections/center-column.njk" %}
+</section>
+
+<!-- ===================== Side Panel ===================== -->
+<section>
+  {% include "partials/pages/chat/sections/right-column.njk" %}
+</section>
