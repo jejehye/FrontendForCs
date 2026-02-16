@@ -120,19 +120,30 @@ body {
 .pds-progress-success { width: 0%; background: #00c73c; }
 .pds-progress-warning { width: 0%; background: #ff9500; }
 .pds-progress-danger { width: 0%; background: #ff3b30; }
+.pds-summary-vip-card,
 .pds-badge-vip-bg { background: #e5edff; border-color: #b3ccff; }
+.pds-input-border,
 .pds-border-subtle { border-color: var(--color-panel-border); }
 .pds-border-light { border-color: #f0f0f5; }
+.pds-body-text,
 .pds-text-primary { color: var(--color-text-primary); }
+.pds-label-text,
 .pds-text-secondary { color: var(--color-text-secondary); }
+.pds-accent-text,
 .pds-text-brand { color: var(--color-primary); }
+.pds-status-text-success,
 .pds-text-success { color: #00c73c; }
+.pds-status-text-danger,
 .pds-text-danger { color: #ff3b30; }
+.pds-status-text-warning,
 .pds-text-warning { color: #ff9500; }
 .pds-bg-brand { background: var(--color-primary); }
+.pds-btn-success-bg,
 .pds-bg-success { background: #00c73c; }
+.pds-btn-danger-bg,
 .pds-bg-danger { background: #ff3b30; }
 .pds-bg-neutral { background: #f0f0f5; }
+.pds-btn-start-bg,
 .pds-bg-call-start { background: linear-gradient(135deg, #00c73c 0%, #00a032 100%); }
 .pds-badge-vip { background: #e5edff; color: var(--color-primary); }
 .pds-opacity-disabled { opacity: 0.5; }
@@ -161,7 +172,9 @@ body {
 .pds-row-contact { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 .pds-row-foot { display: flex; justify-content: space-between; align-items: center; font-size: 0.6875rem; }
 
+.pds-contact-text,
 .pds-text-xs-primary { font-size: 0.75rem; color: var(--color-text-primary); }
+.pds-meta-text,
 .pds-text-xs-secondary { font-size: 0.75rem; color: var(--color-text-secondary); }
 .pds-meta-xxs { font-size: 0.6875rem; color: var(--color-text-secondary); }
 .pds-customer-name { font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
@@ -244,7 +257,9 @@ body {
 .pds-tier-badge--general { background: #f0f0f5; color: var(--color-text-primary); }
 .pds-row-meta { color: var(--color-text-secondary); }
 .pds-icon-muted { font-size: 0.75rem; color: var(--color-text-secondary); }
+.pds-icon-inline-sm,
 .pds-icon-gap-1 { margin-right: 4px; }
+.pds-icon-inline,
 .pds-icon-gap-2 { margin-right: 8px; }
 .pds-current-call-icon { color: #fff; font-size: 1.875rem; }
 .pds-note-textarea { resize: none; }
