@@ -274,6 +274,11 @@ body {
   color: #6b7280;
 }
 .history-editor-actions { display: flex; gap: 0.5rem; }
+.history-editor-panel--compact { padding: 0 0.75rem 0.75rem; }
+.history-editor-icon-brand { color: var(--color-primary); }
+.history-note-icon { color: #60a5fa; }
+.consultation-note-field { resize: none; }
+.history-action-icon-gap { margin-right: 0.25rem; }
 .journey-scroll-panel { height: 800px; }
 .column-width-sm { width: 54px; }
 
