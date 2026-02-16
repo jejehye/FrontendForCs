@@ -307,6 +307,16 @@
 
 .specific-history-table th:nth-child(5),
 .specific-history-table td:nth-child(5) {
+  width: 120px;
+}
+
+.specific-history-table th:nth-child(6),
+.specific-history-table td:nth-child(6) {
+  width: 110px;
+}
+
+.specific-history-table th:nth-child(7),
+.specific-history-table td:nth-child(7) {
   width: 145px;
 }
 

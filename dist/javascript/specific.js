@@ -373,7 +373,7 @@ function renderHistoryTable() {
 
   if (!rows.length) {
     historyBody.replaceChildren(
-      createEmptyRow(7, '조건에 맞는 이전 처리내역이 없습니다.')
+      createEmptyRow(8, '조건에 맞는 이전 처리내역이 없습니다.')
     );
     renderHistoryPagination(0);
     return;
@@ -381,12 +381,14 @@ function renderHistoryTable() {
 
   const fragment = document.createDocumentFragment();
   pagedRows.forEach((item) => {
+    const [requestedDate, requestedTime] = (item.requestedAt || '').split(' ');
     const row = document.createElement('tr');
     row.appendChild(createCell(createStatusBadge(item.status)));
     row.appendChild(createCell(item.empNo || '-'));
     row.appendChild(createCell(item.name));
     row.appendChild(createCell(item.category));
-    row.appendChild(createCell(item.requestedAt));
+    row.appendChild(createCell(requestedDate || '-'));
+    row.appendChild(createCell(requestedTime || '-'));
     row.appendChild(createCell(item.processedAt || '-'));
     row.appendChild(createCell(item.reason, 'specific-reason', item.reason));
     fragment.appendChild(row);
