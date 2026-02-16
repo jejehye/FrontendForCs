@@ -73,36 +73,36 @@
 
     
           <div id="pds-column" class="column col-pds">
-            <div class="p-4 border-b border-gray-200 text-white pds-header-gradient">
-                <div class="flex justify-between items-center mb-3">
-                    <h2 class="font-bold text-lg flex items-center gap-2">
+            <div class="pds-main-header">
+                <div class="pds-between-row-md">
+                    <h2 class="pds-title-lg">
                         <i class="fa-solid fa-phone-volume"></i>
                         PDS 자동다이얼링
                     </h2>
-                    <button class="text-white hover:text-gray-200">
+                    <button class="pds-refresh-btn">
                         <i class="fa-solid fa-rotate-right"></i>
                     </button>
                 </div>
-                <div class="bg-white/15 rounded-xl p-3 backdrop-blur border border-white/20">
-                    <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="pds-summary-card">
+                    <div class="pds-summary-grid">
                         <div>
-                            <div class="text-2xl font-bold" id="totalCount">15</div>
-                            <div class="text-xs opacity-90">총 배정</div>
+                            <div class="pds-count-value" id="totalCount">15</div>
+                            <div class="pds-count-label">총 배정</div>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold" id="remainCount">8</div>
-                            <div class="text-xs opacity-90">남은 콜</div>
+                            <div class="pds-count-value" id="remainCount">8</div>
+                            <div class="pds-count-label">남은 콜</div>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold" id="completedCount">7</div>
-                            <div class="text-xs opacity-90">완료</div>
+                            <div class="pds-count-value" id="completedCount">7</div>
+                            <div class="pds-count-label">완료</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="p-4 border-b border-gray-200 bg-white">
-                <div class="flex gap-2 mb-3">
+            <div class="pds-control-bar">
+                <div class="pds-control-actions">
                     <button id="startDialingBtn" class="pds-bg-call-start sem-u-076 pds-dial-start-btn">
                         <i class="fa-solid fa-play mr-2"></i>다이얼링 시작
                     </button>
@@ -110,7 +110,7 @@
                         <i class="fa-solid fa-pause mr-2"></i>일시정지
                     </button>
                 </div>
-                <div class="flex gap-2">
+                <div class="pds-control-filter-row">
                     <select class="pds-border-subtle sem-u-078 pds-campaign-select">
                         <option>캠페인: VIP 자산관리 서비스</option>
                         <option>캠페인: 신규 펀드 상품 안내</option>
@@ -122,186 +122,186 @@
                 </div>
             </div>
 
-            <div class="flex-1 overflow-y-auto p-4 pds-bg-soft">
-                <div class="mb-3 flex justify-between items-center">
-                    <h3 class="font-bold text-sm pds-text-primary">배정된 고객 리스트</h3>
-                    <span class="text-xs pds-text-secondary">
+            <div class="pds-list-area">
+                <div class="pds-list-head">
+                    <h3 class="pds-section-title">배정된 고객 리스트</h3>
+                    <span class="pds-text-xs-secondary">
                         <i class="fa-solid fa-users mr-1"></i>15명
                     </span>
                 </div>
 
-                <div class="space-y-2" id="customerList">
+                <div class="pds-list-stack" id="customerList">
                     <div class="customer-row" data-customer-id="1" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">김재현</span>
+                                <span class="pds-customer-name">김재현</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-badge-vip">VIP</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-1234-5678</span>
+                            <span class="pds-text-xs-primary">010-1234-5678</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>VIP 자산관리 서비스
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="2" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">이수진</span>
+                                <span class="pds-customer-name">이수진</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-bg-neutral pds-text-primary">일반</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-2345-6789</span>
+                            <span class="pds-text-xs-primary">010-2345-6789</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>신규 펀드 상품 안내
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="3" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">박민호</span>
+                                <span class="pds-customer-name">박민호</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-badge-vip">VIP</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-3456-7890</span>
+                            <span class="pds-text-xs-primary">010-3456-7890</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>VIP 자산관리 서비스
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="4" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">최윤아</span>
+                                <span class="pds-customer-name">최윤아</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-bg-neutral pds-text-primary">일반</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-4567-8901</span>
+                            <span class="pds-text-xs-primary">010-4567-8901</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>ISA 계좌 만기 안내
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="5" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">정하늘</span>
+                                <span class="pds-customer-name">정하늘</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-bg-neutral pds-text-primary">일반</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-5678-9012</span>
+                            <span class="pds-text-xs-primary">010-5678-9012</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>신규 펀드 상품 안내
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="6" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">강서현</span>
+                                <span class="pds-customer-name">강서현</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-badge-vip">VIP</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-6789-0123</span>
+                            <span class="pds-text-xs-primary">010-6789-0123</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>VIP 자산관리 서비스
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="7" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">윤준서</span>
+                                <span class="pds-customer-name">윤준서</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-bg-neutral pds-text-primary">일반</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-7890-1234</span>
+                            <span class="pds-text-xs-primary">010-7890-1234</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>ISA 계좌 만기 안내
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
                     </div>
 
                     <div class="customer-row" data-customer-id="8" data-status="ready">
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="pds-row-head">
                             <div class="flex items-center gap-2">
                                 <span class="dial-status ready"></span>
-                                <span class="text-sm font-bold pds-text-primary">송지우</span>
+                                <span class="pds-customer-name">송지우</span>
                                 <span class="text-xxs px-2 py-0.5 rounded font-bold pds-bg-neutral pds-text-primary">일반</span>
                             </div>
-                            <span class="text-xxs pds-text-secondary">대기</span>
+                            <span class="pds-meta-xxs">대기</span>
                         </div>
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="pds-row-contact">
                             <i class="fa-solid fa-phone text-xs pds-text-secondary"></i>
-                            <span class="text-xs pds-text-primary">010-8901-2345</span>
+                            <span class="pds-text-xs-primary">010-8901-2345</span>
                         </div>
-                        <p class="text-xxs mb-2 pds-text-secondary">
+                        <p class="pds-campaign-text">
                             <i class="fa-solid fa-bullhorn mr-1"></i>신규 펀드 상품 안내
                         </p>
-                        <div class="flex justify-between items-center text-xxs">
+                        <div class="pds-row-foot">
                             <span class="pds-text-secondary">배정: 2024-01-20 09:00</span>
                             <span class="pds-text-secondary">시도: 0회</span>
                         </div>
@@ -318,7 +318,7 @@
                         <i class="fa-solid fa-gauge-high pds-text-brand"></i>
                         다이얼링 현황
                     </h3>
-                    <span class="text-xs pds-text-secondary" id="currentTime">2024-01-20 14:35:22</span>
+                    <span class="pds-text-xs-secondary" id="currentTime">2024-01-20 14:35:22</span>
                 </div>
 
                 <div class="flex justify-center mb-6">
@@ -329,7 +329,7 @@
                         </svg>
                         <div class="absolute inset-0 flex flex-col items-center justify-center">
                             <span class="text-3xl font-bold pds-text-primary" id="progressPercent">0%</span>
-                            <span class="text-xs pds-text-secondary">진행률</span>
+                            <span class="pds-text-xs-secondary">진행률</span>
                         </div>
                     </div>
                 </div>
@@ -338,28 +338,28 @@
                     <div class="rounded-xl p-4 border pds-card-muted">
                         <div class="flex items-center gap-2 mb-2">
                             <i class="fa-solid fa-phone pds-text-brand"></i>
-                            <span class="text-xs pds-text-secondary">발신 시도</span>
+                            <span class="pds-text-xs-secondary">발신 시도</span>
                         </div>
                         <div class="text-2xl font-bold pds-text-primary" id="dialAttempts">0</div>
                     </div>
                     <div class="rounded-xl p-4 border pds-card-success">
                         <div class="flex items-center gap-2 mb-2">
                             <i class="fa-solid fa-check-circle pds-text-success"></i>
-                            <span class="text-xs pds-text-secondary">연결 성공</span>
+                            <span class="pds-text-xs-secondary">연결 성공</span>
                         </div>
                         <div class="text-2xl font-bold pds-text-success" id="dialSuccess">0</div>
                     </div>
                     <div class="rounded-xl p-4 border pds-card-danger">
                         <div class="flex items-center gap-2 mb-2">
                             <i class="fa-solid fa-phone-slash pds-text-danger"></i>
-                            <span class="text-xs pds-text-secondary">연결 실패</span>
+                            <span class="pds-text-xs-secondary">연결 실패</span>
                         </div>
                         <div class="text-2xl font-bold pds-text-danger" id="dialFailed">0</div>
                     </div>
                     <div class="rounded-xl p-4 border pds-card-muted">
                         <div class="flex items-center gap-2 mb-2">
                             <i class="fa-solid fa-clock pds-text-brand"></i>
-                            <span class="text-xs pds-text-secondary">평균 통화시간</span>
+                            <span class="pds-text-xs-secondary">평균 통화시간</span>
                         </div>
                         <div class="text-2xl font-bold pds-text-primary" id="avgCallTime">0:00</div>
                     </div>
@@ -367,7 +367,7 @@
             </div>
 
             <div class="card info-card">
-                <div class="flex justify-between items-center mb-3">
+                <div class="pds-between-row-md">
                     <h3 class="font-bold text-sm flex items-center gap-2 pds-text-primary">
                         <i class="fa-solid fa-list-check pds-text-brand"></i>
                         실시간 다이얼링 로그
@@ -384,7 +384,7 @@
             </div>
 
             <div class="card info-card flex-1">
-                <div class="flex justify-between items-center mb-3">
+                <div class="pds-between-row-md">
                     <h3 class="font-bold text-sm flex items-center gap-2 pds-text-primary">
                         <i class="fa-solid fa-chart-pie pds-text-brand"></i>
                         결과 분석
@@ -424,11 +424,11 @@
                     <div class="grid grid-cols-2 gap-3 text-center">
                         <div class="rounded-lg p-2 border pds-badge-vip-bg">
                             <div class="text-lg font-bold pds-text-brand" id="vipCount">0</div>
-                            <div class="text-xxs pds-text-secondary">VIP 고객</div>
+                            <div class="pds-meta-xxs">VIP 고객</div>
                         </div>
                         <div class="rounded-lg p-2 border pds-card-neutral">
                             <div class="text-lg font-bold pds-text-primary" id="generalCount">0</div>
-                            <div class="text-xxs pds-text-secondary">일반 고객</div>
+                            <div class="pds-meta-xxs">일반 고객</div>
                         </div>
                     </div>
                 </div>
@@ -463,11 +463,11 @@
 
                 <div class="bg-white rounded-xl p-3 mb-3 border pds-border-subtle">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-xs pds-text-secondary">통화 상태</span>
+                        <span class="pds-text-xs-secondary">통화 상태</span>
                         <span class="text-xs font-bold pds-text-primary" id="callStatus">연결 대기</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-xs pds-text-secondary">통화 시간</span>
+                        <span class="pds-text-xs-secondary">통화 시간</span>
                         <span class="text-lg font-bold pds-text-primary" id="callTimer">00:00</span>
                     </div>
                 </div>

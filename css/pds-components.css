@@ -136,3 +136,33 @@ body {
 .pds-bg-call-start { background: linear-gradient(135deg, #00c73c 0%, #00a032 100%); }
 .pds-badge-vip { background: #e5edff; color: var(--color-primary); }
 .pds-opacity-disabled { opacity: 0.5; }
+
+/* De-tailwind phase 3: semantic layout helpers (PDS page) */
+.pds-main-header { padding: 16px; border-bottom: 1px solid #e5e7eb; color: #fff; background: linear-gradient(135deg, #0046ff 0%, #0039cc 100%); }
+.pds-between-row-md { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.pds-title-lg { font-weight: 700; font-size: 1.125rem; display: flex; align-items: center; gap: 8px; }
+.pds-refresh-btn { color: #fff; }
+.pds-refresh-btn:hover { color: #e5e7eb; }
+.pds-summary-card { background: rgba(255, 255, 255, 0.15); border-radius: 0.75rem; padding: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.2); }
+.pds-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: center; }
+.pds-count-value { font-size: 1.5rem; font-weight: 700; }
+.pds-count-label { font-size: 0.75rem; opacity: 0.9; }
+
+.pds-control-bar { padding: 16px; border-bottom: 1px solid #e5e7eb; background: #fff; }
+.pds-control-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+.pds-control-filter-row { display: flex; gap: 8px; }
+
+.pds-list-area { flex: 1; overflow-y: auto; padding: 16px; background: var(--color-surface-soft); }
+.pds-list-head { margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+.pds-section-title { font-weight: 700; font-size: 0.875rem; color: var(--color-text-primary); }
+.pds-list-stack { display: flex; flex-direction: column; gap: 8px; }
+
+.pds-row-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.pds-row-contact { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.pds-row-foot { display: flex; justify-content: space-between; align-items: center; font-size: 0.6875rem; }
+
+.pds-text-xs-primary { font-size: 0.75rem; color: var(--color-text-primary); }
+.pds-text-xs-secondary { font-size: 0.75rem; color: var(--color-text-secondary); }
+.pds-meta-xxs { font-size: 0.6875rem; color: var(--color-text-secondary); }
+.pds-customer-name { font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
+.pds-campaign-text { font-size: 0.6875rem; color: var(--color-text-secondary); margin-bottom: 8px; }
