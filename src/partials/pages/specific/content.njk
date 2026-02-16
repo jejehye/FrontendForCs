@@ -13,15 +13,15 @@
             <div class="specific-form">
               <div class="specific-field">
                 <label for="agentEmpNo">사번</label>
-                <input id="agentEmpNo" type="text" class="specific-input" placeholder="예) 204075" />
+                <input id="agentEmpNo" data-role="agentEmpNo" type="text" class="specific-input" placeholder="예) 204075" />
               </div>
               <div class="specific-field">
                 <label for="agentName">상담원명</label>
-                <input id="agentName" type="text" class="specific-input" placeholder="예) 홍길동" />
+                <input id="agentName" data-role="agentName" type="text" class="specific-input" placeholder="예) 홍길동" />
               </div>
               <div class="specific-field">
                 <label for="excludeType">특이사항 유형</label>
-                <select id="excludeType" class="specific-input">
+                <select id="excludeType" data-role="excludeType" class="specific-input">
                   <option value="콜 미수신">콜 미수신</option>
                   <option value="교육/회의">교육/회의</option>
                   <option value="시스템 점검">시스템 점검</option>
@@ -30,21 +30,21 @@
               </div>
               <div class="specific-field">
                 <label for="excludeDate">일자</label>
-                <input id="excludeDate" type="date" class="specific-input" />
+                <input id="excludeDate" data-role="excludeDate" type="date" class="specific-input" />
               </div>
               <div class="specific-field">
                 <label for="excludeStartTime">시간 범위</label>
                 <div class="specific-time-range">
-                  <input id="excludeStartTime" type="time" class="specific-input" />
+                  <input id="excludeStartTime" data-role="excludeStartTime" type="time" class="specific-input" />
                   <span class="specific-range-sep">~</span>
-                  <input id="excludeEndTime" type="time" class="specific-input" />
+                  <input id="excludeEndTime" data-role="excludeEndTime" type="time" class="specific-input" />
                 </div>
               </div>
               <div class="specific-field">
                 <label for="excludeReason">사유</label>
-                <textarea id="excludeReason" rows="4" class="specific-input specific-textarea" placeholder="특이사항 내용을 입력하세요."></textarea>
+                <textarea id="excludeReason" data-role="excludeReason" rows="4" class="specific-input specific-textarea" placeholder="특이사항 내용을 입력하세요."></textarea>
               </div>
-              <button id="registerExcludeBtn" class="specific-btn specific-btn-primary">
+              <button id="registerExcludeBtn" data-role="registerExcludeBtn" class="specific-btn specific-btn-primary">
                 <i class="fa-solid fa-plus"></i> 승인 요청 등록
               </button>
             </div>
@@ -54,9 +54,9 @@
             <div class="specific-panel-title">나의 신청 내역</div>
             <div class="specific-history-toolbar">
               <div class="specific-history-range">
-                <input id="myDateFrom" class="specific-input specific-date" type="date" />
+                <input id="myDateFrom" data-role="myDateFrom" class="specific-input specific-date" type="date" />
                 <span class="specific-range-sep">~</span>
-                <input id="myDateTo" class="specific-input specific-date" type="date" />
+                <input id="myDateTo" data-role="myDateTo" class="specific-input specific-date" type="date" />
               </div>
             </div>
             <div class="specific-table-wrap specific-history-scroll">
@@ -70,7 +70,7 @@
                     <th>내용</th>
                   </tr>
                 </thead>
-                <tbody id="myRequestBody"></tbody>
+                <tbody id="myRequestBody" data-role="myRequestBody"></tbody>
               </table>
             </div>
           </section>
@@ -81,29 +81,29 @@
             <div class="specific-stats">
               <div class="specific-stat-card">
                 <span>전체</span>
-                <strong id="countAll">0</strong>
+                <strong id="countAll" data-role="countAll">0</strong>
               </div>
               <div class="specific-stat-card">
                 <span>승인대기</span>
-                <strong id="countPending">0</strong>
+                <strong id="countPending" data-role="countPending">0</strong>
               </div>
               <div class="specific-stat-card">
                 <span>승인완료</span>
-                <strong id="countApproved">0</strong>
+                <strong id="countApproved" data-role="countApproved">0</strong>
               </div>
               <div class="specific-stat-card">
                 <span>반려</span>
-                <strong id="countRejected">0</strong>
+                <strong id="countRejected" data-role="countRejected">0</strong>
               </div>
             </div>
             <div class="specific-toolbar">
               <div class="specific-filter-group">
-                <button class="specific-filter-btn is-active" data-filter="all">전체</button>
-                <button class="specific-filter-btn" data-filter="pending">승인대기</button>
-                <button class="specific-filter-btn" data-filter="approved">승인완료</button>
-                <button class="specific-filter-btn" data-filter="rejected">반려</button>
+                <button class="specific-filter-btn is-active" data-action="specific-filter" data-target="all" data-filter="all">전체</button>
+                <button class="specific-filter-btn" data-action="specific-filter" data-target="pending" data-filter="pending">승인대기</button>
+                <button class="specific-filter-btn" data-action="specific-filter" data-target="approved" data-filter="approved">승인완료</button>
+                <button class="specific-filter-btn" data-action="specific-filter" data-target="rejected" data-filter="rejected">반려</button>
               </div>
-              <input id="specificSearch" class="specific-input specific-search" type="text" placeholder="사번/상담원명/사유 검색" />
+              <input id="specificSearch" data-role="specificSearch" class="specific-input specific-search" type="text" placeholder="사번/상담원명/사유 검색" />
             </div>
             <div class="specific-table-wrap">
               <table class="specific-table">
@@ -118,7 +118,7 @@
                     <th>처리</th>
                   </tr>
                 </thead>
-                <tbody id="specificTableBody"></tbody>
+                <tbody id="specificTableBody" data-role="specificTableBody"></tbody>
               </table>
             </div>
         </section>
@@ -127,12 +127,12 @@
           <div class="specific-panel-title">이전 처리내역 조회</div>
           <div class="specific-history-toolbar">
             <div class="specific-history-range">
-              <input id="historyDateFrom" class="specific-input specific-date" type="date" />
+              <input id="historyDateFrom" data-role="historyDateFrom" class="specific-input specific-date" type="date" />
               <span class="specific-range-sep">~</span>
-              <input id="historyDateTo" class="specific-input specific-date" type="date" />
+              <input id="historyDateTo" data-role="historyDateTo" class="specific-input specific-date" type="date" />
             </div>
             <input
-              id="historySearch"
+              id="historySearch" data-role="historySearch"
               class="specific-input specific-search"
               type="text"
               placeholder="사번/상담원명/사유 검색"
@@ -151,9 +151,9 @@
                   <th>사유</th>
                 </tr>
               </thead>
-              <tbody id="specificHistoryBody"></tbody>
+              <tbody id="specificHistoryBody" data-role="specificHistoryBody"></tbody>
             </table>
           </div>
-          <div id="historyPagination" class="specific-history-pagination"></div>
+          <div id="historyPagination" data-role="historyPagination" class="specific-history-pagination"></div>
         </section>
       </div>

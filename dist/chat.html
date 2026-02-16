@@ -23,6 +23,7 @@
     <div
       data-page="main.html"
       title="Main"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-headset"></i>
@@ -31,6 +32,7 @@
     <div
       data-page="pds.html"
       title="PDS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone-volume"></i>
@@ -39,6 +41,7 @@
     <div
       data-page="sms.html"
       title="SMS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comment-sms"></i>
@@ -47,6 +50,7 @@
     <div
       data-page="callback.html"
       title="Callback"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone"></i>
@@ -55,6 +59,7 @@
     <div
       data-page="specific.html"
       title="Specific"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-user-check"></i>
@@ -63,12 +68,13 @@
     <div
       data-page="chat.html"
       title="Chat"
+      data-role="nav-item"
       class="nav-item active"
     >
       <i class="fa-solid fa-comments"></i>
     </div>
   
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
 
     
@@ -182,7 +188,7 @@
         </button>
         <textarea
           placeholder="메시지를 입력하세요..."
-          class="chat__input"
+          class="chat__input" data-role="chat-message-input"
           rows="3"
         ></textarea>
         <button class="chat__send-btn send-btn">
@@ -223,7 +229,7 @@
       </div>
     </div>
     <div class="ui-stack-3">
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
               class="ui-title-sm">ISA 계좌 비과세 혜택
@@ -241,7 +247,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
               class="ui-title-sm">ISA 계좌 가입 조건 및
@@ -259,7 +265,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
               class="ui-title-sm">ISA 계좌 개설 절차</span>
@@ -277,7 +283,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">해외주식</span><span
               class="ui-title-sm">해외주식 거래 수수료 안내</span>
@@ -295,7 +301,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">ETF</span><span
               class="ui-title-sm">국내 ETF 거래 안내</span>
@@ -313,7 +319,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">연금</span><span
               class="ui-title-sm">연금저축 세액공제 혜택</span>
@@ -331,7 +337,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">세금</span><span
               class="ui-title-sm">금융소득 종합과세 안내</span>
@@ -349,7 +355,7 @@
               class="fa-solid fa-copy chat-icon-inline"></i>복사
           </button></div>
       </div>
-      <div class="kms-card">
+      <div class="kms-card" data-role="kms-card">
         <div class="kms-header-row">
           <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
               class="ui-title-sm">ISA 계좌 운용 가능 상품</span>

@@ -23,6 +23,7 @@
     <div
       data-page="main.html"
       title="Main"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-headset"></i>
@@ -31,6 +32,7 @@
     <div
       data-page="pds.html"
       title="PDS"
+      data-role="nav-item"
       class="nav-item active"
     >
       <i class="fa-solid fa-phone-volume"></i>
@@ -39,6 +41,7 @@
     <div
       data-page="sms.html"
       title="SMS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comment-sms"></i>
@@ -47,6 +50,7 @@
     <div
       data-page="callback.html"
       title="Callback"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone"></i>
@@ -55,6 +59,7 @@
     <div
       data-page="specific.html"
       title="Specific"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-user-check"></i>
@@ -63,12 +68,13 @@
     <div
       data-page="chat.html"
       title="Chat"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comments"></i>
     </div>
   
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
 
     
@@ -90,11 +96,11 @@
                             <div class="pds-count-label">총 배정</div>
                         </div>
                         <div>
-                            <div class="pds-count-value" id="remainCount">8</div>
+                            <div class="pds-count-value" id="remainCount" data-role="remainCount">8</div>
                             <div class="pds-count-label">남은 콜</div>
                         </div>
                         <div>
-                            <div class="pds-count-value" id="completedCount">7</div>
+                            <div class="pds-count-value" id="completedCount" data-role="completedCount">7</div>
                             <div class="pds-count-label">완료</div>
                         </div>
                     </div>
@@ -103,10 +109,10 @@
 
             <div class="pds-control-bar">
                 <div class="pds-control-actions">
-                    <button id="startDialingBtn" class="pds-btn-start-bg pds-dial-start-btn">
+                    <button id="startDialingBtn" data-role="startDialingBtn" class="pds-btn-start-bg pds-dial-start-btn">
                         <i class="fa-solid fa-play pds-icon-inline"></i>다이얼링 시작
                     </button>
-                    <button id="pauseDialingBtn" class="pds-opacity-disabled pds-dial-pause-btn" disabled>
+                    <button id="pauseDialingBtn" data-role="pauseDialingBtn" class="pds-opacity-disabled pds-dial-pause-btn" disabled>
                         <i class="fa-solid fa-pause pds-icon-inline"></i>일시정지
                     </button>
                 </div>
@@ -131,7 +137,7 @@
                 </div>
 
                 <div class="pds-list-stack" id="customerList">
-                    <div class="customer-row" data-customer-id="1" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="1" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -153,7 +159,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="2" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="2" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -175,7 +181,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="3" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="3" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -197,7 +203,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="4" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="4" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -219,7 +225,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="5" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="5" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -241,7 +247,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="6" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="6" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -263,7 +269,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="7" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="7" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -285,7 +291,7 @@
                         </div>
                     </div>
 
-                    <div class="customer-row" data-customer-id="8" data-status="ready">
+                    <div class="customer-row" data-role="customer-row" data-customer-id="8" data-status="ready">
                         <div class="pds-row-head">
                             <div class="pds-inline-center-2">
                                 <span class="dial-status ready"></span>
@@ -318,17 +324,17 @@
                         <i class="fa-solid fa-gauge-high pds-accent-text"></i>
                         다이얼링 현황
                     </h3>
-                    <span class="pds-meta-text" id="currentTime">2024-01-20 14:35:22</span>
+                    <span class="pds-meta-text" id="currentTime" data-role="currentTime">2024-01-20 14:35:22</span>
                 </div>
 
                 <div class="pds-progress-wrap">
                     <div class="pds-progress-inner">
                         <svg class="progress-ring" viewBox="0 0 120 120">
                             <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-                            <circle id="progressCircle" class="progress-ring-circle" stroke="#0046ff" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
+                            <circle id="progressCircle" data-role="progressCircle" class="progress-ring-circle" stroke="#0046ff" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
                         </svg>
                         <div class="pds-progress-center">
-                            <span class="pds-progress-percent" id="progressPercent">0%</span>
+                            <span class="pds-progress-percent" id="progressPercent" data-role="progressPercent">0%</span>
                             <span class="pds-meta-text">진행률</span>
                         </div>
                     </div>
@@ -340,21 +346,21 @@
                             <i class="fa-solid fa-phone pds-accent-text"></i>
                             <span class="pds-meta-text">발신 시도</span>
                         </div>
-                        <div class="pds-metric-value pds-body-text" id="dialAttempts">0</div>
+                        <div class="pds-metric-value pds-body-text" id="dialAttempts" data-role="dialAttempts">0</div>
                     </div>
                     <div class="pds-metric-card pds-card-success">
                         <div class="pds-metric-head">
                             <i class="fa-solid fa-check-circle pds-status-text-success"></i>
                             <span class="pds-meta-text">연결 성공</span>
                         </div>
-                        <div class="pds-metric-value pds-status-text-success" id="dialSuccess">0</div>
+                        <div class="pds-metric-value pds-status-text-success" id="dialSuccess" data-role="dialSuccess">0</div>
                     </div>
                     <div class="pds-metric-card pds-card-danger">
                         <div class="pds-metric-head">
                             <i class="fa-solid fa-phone-slash pds-status-text-danger"></i>
                             <span class="pds-meta-text">연결 실패</span>
                         </div>
-                        <div class="pds-metric-value pds-status-text-danger" id="dialFailed">0</div>
+                        <div class="pds-metric-value pds-status-text-danger" id="dialFailed" data-role="dialFailed">0</div>
                     </div>
                     <div class="pds-metric-card pds-card-muted">
                         <div class="pds-metric-head">
@@ -376,7 +382,7 @@
                         <i class="fa-solid fa-download pds-icon-inline-sm"></i>내보내기
                     </button>
                 </div>
-                <div class="pds-log-box" id="dialingLog">
+                <div class="pds-log-box" id="dialingLog" data-role="dialingLog">
                     <div class="pds-log-line--ok">[시스템] PDS 자동다이얼링 시스템 준비완료</div>
                     <div class="pds-log-line--muted">[시스템] 배정된 고객: 15명</div>
                     <div class="pds-accent-text">[시스템] 다이얼링 시작 대기중...</div>
@@ -394,28 +400,28 @@
                     <div class="pds-analysis-item">
                         <div class="pds-analysis-row">
                             <span class="pds-label-text">연결 성공률</span>
-                            <span class="pds-analysis-rate pds-status-text-success" id="successRate">0%</span>
+                            <span class="pds-analysis-rate pds-status-text-success" id="successRate" data-role="successRate">0%</span>
                         </div>
                         <div class="pds-progress-bar pds-progress-track">
-                            <div id="successBar" class="pds-progress-fill pds-progress-success"></div>
+                            <div id="successBar" data-role="successBar" class="pds-progress-fill pds-progress-success"></div>
                         </div>
                     </div>
                     <div class="pds-analysis-item">
                         <div class="pds-analysis-row">
                             <span class="pds-label-text">부재중</span>
-                            <span class="pds-analysis-rate pds-status-text-warning" id="noAnswerRate">0%</span>
+                            <span class="pds-analysis-rate pds-status-text-warning" id="noAnswerRate" data-role="noAnswerRate">0%</span>
                         </div>
                         <div class="pds-progress-bar pds-progress-track">
-                            <div id="noAnswerBar" class="pds-progress-fill pds-progress-warning"></div>
+                            <div id="noAnswerBar" data-role="noAnswerBar" class="pds-progress-fill pds-progress-warning"></div>
                         </div>
                     </div>
                     <div class="pds-analysis-item">
                         <div class="pds-analysis-row">
                             <span class="pds-label-text">통화중/연결불가</span>
-                            <span class="pds-analysis-rate pds-status-text-danger" id="busyRate">0%</span>
+                            <span class="pds-analysis-rate pds-status-text-danger" id="busyRate" data-role="busyRate">0%</span>
                         </div>
                         <div class="pds-progress-bar pds-progress-track">
-                            <div id="busyBar" class="pds-progress-fill pds-progress-danger"></div>
+                            <div id="busyBar" data-role="busyBar" class="pds-progress-fill pds-progress-danger"></div>
                         </div>
                     </div>
                 </div>
@@ -457,18 +463,18 @@
                     <div class="pds-header-gradient pds-current-icon-wrap">
                         <i class="fa-solid fa-phone-volume pds-current-call-icon"></i>
                     </div>
-                    <h3 class="pds-current-name" id="currentCustomerName">대기중</h3>
-                    <p class="pds-current-phone" id="currentCustomerPhone">-</p>
+                    <h3 class="pds-current-name" id="currentCustomerName" data-role="currentCustomerName">대기중</h3>
+                    <p class="pds-current-phone" id="currentCustomerPhone" data-role="currentCustomerPhone">-</p>
                 </div>
 
                 <div class="pds-status-card">
                     <div class="pds-status-row">
                         <span class="pds-meta-text">통화 상태</span>
-                        <span class="pds-status-value" id="callStatus">연결 대기</span>
+                        <span class="pds-status-value" id="callStatus" data-role="callStatus">연결 대기</span>
                     </div>
                     <div class="pds-status-row">
                         <span class="pds-meta-text">통화 시간</span>
-                        <span class="pds-timer-value" id="callTimer">00:00</span>
+                        <span class="pds-timer-value" id="callTimer" data-role="callTimer">00:00</span>
                     </div>
                 </div>
 
@@ -490,19 +496,19 @@
                 <div class="pds-detail-list">
                     <div class="pds-detail-row">
                         <span class="pds-label-text">고객명</span>
-                        <span class="pds-detail-value" id="detailCustomerName">-</span>
+                        <span class="pds-detail-value" id="detailCustomerName" data-role="detailCustomerName">-</span>
                     </div>
                     <div class="pds-detail-row">
                         <span class="pds-label-text">연락처</span>
-                        <span class="pds-detail-value" id="detailCustomerPhone">-</span>
+                        <span class="pds-detail-value" id="detailCustomerPhone" data-role="detailCustomerPhone">-</span>
                     </div>
                     <div class="pds-detail-row">
                         <span class="pds-label-text">고객등급</span>
-                        <span class="pds-detail-value pds-detail-value--brand" id="detailCustomerGrade">-</span>
+                        <span class="pds-detail-value pds-detail-value--brand" id="detailCustomerGrade" data-role="detailCustomerGrade">-</span>
                     </div>
                     <div class="pds-detail-row">
                         <span class="pds-label-text">캠페인</span>
-                        <span class="pds-detail-value pds-detail-value--brand" id="detailCampaign">-</span>
+                        <span class="pds-detail-value pds-detail-value--brand" id="detailCampaign" data-role="detailCampaign">-</span>
                     </div>
                     <div class="pds-detail-row">
                         <span class="pds-label-text">배정시간</span>

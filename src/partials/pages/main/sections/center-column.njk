@@ -14,12 +14,17 @@
       </div>
       <div class="notice-updated">
         <span class="weight-medium">최근 업데이트:</span>
-        <span data-current-date-kor></span>
+        <span data-role="current-date-kor" data-current-date-kor></span>
       </div>
     </header>
     <div class="notice-list-wrap">
       {% for notice_page in main_data.notice_pages %}
-        <div class="notice-list{% if not loop.first %} hidden{% endif %}" data-notice-page="{{ loop.index }}">
+        <div
+          class="notice-list{% if not loop.first %} hidden{% endif %}"
+          data-target="notice-page"
+          data-target-value="{{ loop.index }}"
+          data-notice-page="{{ loop.index }}"
+        >
           {% for notice in notice_page %}
             <div class="notice-card">
               <div class="notice-card__meta">
@@ -38,19 +43,21 @@
         </div>
       {% endfor %}
       <div class="pagination pagination--notice">
-        <button type="button" data-notice-nav="prev" class="pagination__btn">
+        <button type="button" data-action="notice-nav-prev" data-notice-nav="prev" class="pagination__btn">
           <i class="fa-solid fa-angle-left"></i>
         </button>
         {% for notice_page in main_data.notice_pages %}
           <button
             type="button"
+            data-action="notice-page-btn"
+            data-target="{{ loop.index }}"
             data-notice-page-btn="{{ loop.index }}"
             class="pagination__btn{% if loop.first %} is-active{% endif %}"
           >
             {{ loop.index }}
           </button>
         {% endfor %}
-        <button type="button" data-notice-nav="next" class="pagination__btn">
+        <button type="button" data-action="notice-nav-next" data-notice-nav="next" class="pagination__btn">
           <i class="fa-solid fa-angle-right"></i>
         </button>
       </div>
@@ -67,21 +74,21 @@
         <button
           type="button"
           class="warning-tab is-active"
-          data-warning-tab="code"
+          data-action="warning-tab" data-target="code" data-warning-tab="code"
         >
           주의코드
         </button>
         <button
           type="button"
           class="warning-tab"
-          data-warning-tab="voc"
+          data-action="warning-tab" data-target="voc" data-warning-tab="voc"
         >
           VOC
         </button>
       </div>
       <div
         class="warning-tab-panel warning-tab-panel-body is-active"
-        data-warning-panel="code"
+        data-target="warning-panel" data-target-value="code" data-warning-panel="code"
       >
         <p class="main-center-warning-line">
           <span class="main-center-warning-date">(2023-03-22)</span> 고액거래 고객:
@@ -96,7 +103,7 @@
       </div>
       <div
         class="warning-tab-panel warning-tab-panel-body hidden"
-        data-warning-panel="voc"
+        data-target="warning-panel" data-target-value="voc" data-warning-panel="voc"
       >
         <p class="main-center-warning-line">
           <span class="main-center-warning-date">(2024-02-14)</span> 투자성향

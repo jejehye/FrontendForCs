@@ -1,4 +1,15 @@
 window.MainPageCustomerInfo = (() => {
+  const selectOne = (standardSelector, legacySelector) =>
+    document.querySelector(standardSelector) || (legacySelector ? document.querySelector(legacySelector) : null);
+
+  const selectAll = (standardSelector, legacySelector) => {
+    const standardNodes = Array.from(document.querySelectorAll(standardSelector));
+    if (standardNodes.length) {
+      return standardNodes;
+    }
+    return legacySelector ? Array.from(document.querySelectorAll(legacySelector)) : [];
+  };
+
   const pad2 = number => String(number).padStart(2, '0');
 
   const formatCurrentDateTime = date =>
@@ -22,18 +33,18 @@ window.MainPageCustomerInfo = (() => {
   const initDateDisplays = () => {
     const now = new Date();
 
-    document.querySelectorAll('[data-current-datetime]').forEach(node => {
+    selectAll('[data-role="current-datetime"]', '[data-current-datetime]').forEach(node => {
       node.textContent = formatCurrentDateTime(now);
     });
 
-    document.querySelectorAll('[data-current-date-kor]').forEach(node => {
+    selectAll('[data-role="current-date-kor"]', '[data-current-date-kor]').forEach(node => {
       node.textContent = formatCurrentDateKor(now);
     });
   };
 
   const initInputFormatters = () => {
-    const accountNumberInput = document.getElementById('account-number');
-    const residentIdInput = document.getElementById('resident-id');
+    const accountNumberInput = selectOne('[data-role="account-number"]', '#account-number');
+    const residentIdInput = selectOne('[data-role="resident-id"]', '#resident-id');
 
     if (accountNumberInput) {
       accountNumberInput.addEventListener('input', () => {
@@ -49,7 +60,7 @@ window.MainPageCustomerInfo = (() => {
   };
 
   const initAgentDisplay = () => {
-    const agentDisplayNode = document.querySelector('[data-agent-display]');
+    const agentDisplayNode = selectOne('[data-role="agent-display"]', '[data-agent-display]');
     if (!agentDisplayNode) {
       return;
     }

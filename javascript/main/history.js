@@ -1,11 +1,22 @@
 window.MainPageHistory = (() => {
+  const selectOne = (standardSelector, legacySelector) =>
+    document.querySelector(standardSelector) || (legacySelector ? document.querySelector(legacySelector) : null);
+
+  const selectAll = (standardSelector, legacySelector) => {
+    const standardNodes = Array.from(document.querySelectorAll(standardSelector));
+    if (standardNodes.length) {
+      return standardNodes;
+    }
+    return legacySelector ? Array.from(document.querySelectorAll(legacySelector)) : [];
+  };
+
   const initNoticePagination = () => {
-    const noticePages = Array.from(document.querySelectorAll('[data-notice-page]'));
-    const noticePrevButton = document.querySelector('[data-notice-nav="prev"]');
-    const noticeNextButton = document.querySelector('[data-notice-nav="next"]');
+    const noticePages = selectAll('[data-target="notice-page"]', '[data-notice-page]');
+    const noticePrevButton = selectOne('[data-action="notice-nav-prev"]', '[data-notice-nav="prev"]');
+    const noticeNextButton = selectOne('[data-action="notice-nav-next"]', '[data-notice-nav="next"]');
     const noticeNavContainer = noticePrevButton?.parentElement || null;
 
-    let noticePageButtons = Array.from(document.querySelectorAll('[data-notice-page-btn]'));
+    let noticePageButtons = selectAll('[data-action="notice-page-btn"]', '[data-notice-page-btn]');
     let activeNoticePage = 1;
 
     const paginateNoticeItems = pageSize => {
@@ -33,6 +44,8 @@ window.MainPageHistory = (() => {
         const newPage = document.createElement('div');
         newPage.className = pageClassName;
         newPage.setAttribute('data-notice-page', String(index + 1));
+        newPage.setAttribute('data-target', 'notice-page');
+        newPage.setAttribute('data-target-value', String(index + 1));
         noticePages[0].parentElement.appendChild(newPage);
         noticePages.push(newPage);
       }
@@ -60,6 +73,8 @@ window.MainPageHistory = (() => {
         const button = document.createElement('button');
         button.type = 'button';
         button.setAttribute('data-notice-page-btn', String(index + 1));
+        button.setAttribute('data-action', 'notice-page-btn');
+        button.setAttribute('data-target', String(index + 1));
         button.className = 'pagination__btn';
         button.textContent = String(index + 1);
         noticeNavContainer.insertBefore(button, noticeNextButton);
@@ -76,12 +91,12 @@ window.MainPageHistory = (() => {
       activeNoticePage = Math.min(maxPage, Math.max(1, pageNumber));
 
       noticePages.forEach(page => {
-        const current = Number(page.getAttribute('data-notice-page'));
+        const current = Number(page.getAttribute('data-target-value') || page.getAttribute('data-notice-page'));
         page.classList.toggle('hidden', current !== activeNoticePage);
       });
 
       noticePageButtons.forEach(button => {
-        const page = Number(button.getAttribute('data-notice-page-btn'));
+        const page = Number(button.getAttribute('data-target') || button.getAttribute('data-notice-page-btn'));
         button.classList.toggle('is-active', page === activeNoticePage);
       });
 
@@ -101,7 +116,7 @@ window.MainPageHistory = (() => {
 
     noticePageButtons.forEach(button => {
       button.addEventListener('click', () => {
-        setActiveNoticePage(Number(button.getAttribute('data-notice-page-btn')));
+        setActiveNoticePage(Number(button.getAttribute('data-target') || button.getAttribute('data-notice-page-btn')));
       });
     });
 
@@ -122,14 +137,14 @@ window.MainPageHistory = (() => {
   };
 
   const initHistoryPagination = () => {
-    const historyBody = document.querySelector('[data-history-body]');
-    const historyPagination = document.querySelector('[data-history-pagination]');
-    const historyFirstButton = document.querySelector('[data-history-nav="first"]');
-    const historyPrevButton = document.querySelector('[data-history-nav="prev"]');
-    const historyNextButton = document.querySelector('[data-history-nav="next"]');
-    const historyLastButton = document.querySelector('[data-history-nav="last"]');
+    const historyBody = selectOne('[data-role="history-body"]', '[data-history-body]');
+    const historyPagination = selectOne('[data-role="history-pagination"]', '[data-history-pagination]');
+    const historyFirstButton = selectOne('[data-action="history-nav-first"]', '[data-history-nav="first"]');
+    const historyPrevButton = selectOne('[data-action="history-nav-prev"]', '[data-history-nav="prev"]');
+    const historyNextButton = selectOne('[data-action="history-nav-next"]', '[data-history-nav="next"]');
+    const historyLastButton = selectOne('[data-action="history-nav-last"]', '[data-history-nav="last"]');
 
-    let historyPageButtons = Array.from(document.querySelectorAll('[data-history-page-btn]'));
+    let historyPageButtons = selectAll('[data-action="history-page-btn"]', '[data-history-page-btn]');
     let activeHistoryPage = 1;
     const historyPageSize = 5;
 
@@ -161,7 +176,7 @@ window.MainPageHistory = (() => {
       historyBody.replaceChildren(...historyPages[activeHistoryPage - 1]);
 
       historyPageButtons.forEach(button => {
-        const page = Number(button.getAttribute('data-history-page-btn'));
+        const page = Number(button.getAttribute('data-target') || button.getAttribute('data-history-page-btn'));
         button.classList.toggle('is-active', page === activeHistoryPage);
       });
 
@@ -183,6 +198,8 @@ window.MainPageHistory = (() => {
         const button = document.createElement('button');
         button.type = 'button';
         button.setAttribute('data-history-page-btn', String(index + 1));
+        button.setAttribute('data-action', 'history-page-btn');
+        button.setAttribute('data-target', String(index + 1));
         button.className = 'pagination__btn';
         button.textContent = String(index + 1);
         historyPagination.insertBefore(button, historyNextButton);
@@ -191,7 +208,7 @@ window.MainPageHistory = (() => {
 
       historyPageButtons.forEach(button => {
         button.addEventListener('click', () => {
-          setActiveHistoryPage(Number(button.getAttribute('data-history-page-btn')));
+          setActiveHistoryPage(Number(button.getAttribute('data-target') || button.getAttribute('data-history-page-btn')));
         });
       });
     };

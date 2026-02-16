@@ -1,23 +1,31 @@
 window.AppUi?.initSidebarNavigation();
 
-const registerBtn = document.getElementById('registerExcludeBtn');
-const tableBody = document.getElementById('specificTableBody');
-const myRequestBody = document.getElementById('myRequestBody');
-const searchInput = document.getElementById('specificSearch');
-const filterButtons = document.querySelectorAll('.specific-filter-btn');
+const getHook = key =>
+  document.querySelector(`[data-role="${key}"]`) || document.getElementById(key);
+const queryAllHook = (standardSelector, legacySelector) => {
+  const standardNodes = Array.from(document.querySelectorAll(standardSelector));
+  if (standardNodes.length) return standardNodes;
+  return legacySelector ? Array.from(document.querySelectorAll(legacySelector)) : [];
+};
 
-const historyBody = document.getElementById('specificHistoryBody');
-const historyPagination = document.getElementById('historyPagination');
-const historyDateFrom = document.getElementById('historyDateFrom');
-const historyDateTo = document.getElementById('historyDateTo');
-const historySearch = document.getElementById('historySearch');
-const myDateFrom = document.getElementById('myDateFrom');
-const myDateTo = document.getElementById('myDateTo');
+const registerBtn = getHook('registerExcludeBtn');
+const tableBody = getHook('specificTableBody');
+const myRequestBody = getHook('myRequestBody');
+const searchInput = getHook('specificSearch');
+const filterButtons = queryAllHook('[data-action="specific-filter"]', '.specific-filter-btn');
 
-const countAll = document.getElementById('countAll');
-const countPending = document.getElementById('countPending');
-const countApproved = document.getElementById('countApproved');
-const countRejected = document.getElementById('countRejected');
+const historyBody = getHook('specificHistoryBody');
+const historyPagination = getHook('historyPagination');
+const historyDateFrom = getHook('historyDateFrom');
+const historyDateTo = getHook('historyDateTo');
+const historySearch = getHook('historySearch');
+const myDateFrom = getHook('myDateFrom');
+const myDateTo = getHook('myDateTo');
+
+const countAll = getHook('countAll');
+const countPending = getHook('countPending');
+const countApproved = getHook('countApproved');
+const countRejected = getHook('countRejected');
 
 let activeFilter = 'all';
 let currentSearch = '';
@@ -340,13 +348,13 @@ function renderAll() {
 
 if (registerBtn) {
   registerBtn.addEventListener('click', () => {
-    const empNoInput = document.getElementById('agentEmpNo');
-    const nameInput = document.getElementById('agentName');
-    const typeInput = document.getElementById('excludeType');
-    const dateInput = document.getElementById('excludeDate');
-    const startTimeInput = document.getElementById('excludeStartTime');
-    const endTimeInput = document.getElementById('excludeEndTime');
-    const reasonInput = document.getElementById('excludeReason');
+    const empNoInput = getHook('agentEmpNo');
+    const nameInput = getHook('agentName');
+    const typeInput = getHook('excludeType');
+    const dateInput = getHook('excludeDate');
+    const startTimeInput = getHook('excludeStartTime');
+    const endTimeInput = getHook('excludeEndTime');
+    const reasonInput = getHook('excludeReason');
 
     const empNo = empNoInput?.value.trim();
     const name = nameInput?.value.trim();
@@ -392,17 +400,17 @@ if (registerBtn) {
   });
 }
 
-const agentNameInput = document.getElementById('agentName');
+const agentNameInput = getHook('agentName');
 if (agentNameInput && !agentNameInput.value.trim()) {
   agentNameInput.value = currentAgentName;
 }
 
-const agentEmpNoInput = document.getElementById('agentEmpNo');
+const agentEmpNoInput = getHook('agentEmpNo');
 if (agentEmpNoInput && !agentEmpNoInput.value.trim()) {
   agentEmpNoInput.value = currentAgentEmpNo;
 }
 
-const excludeDateInput = document.getElementById('excludeDate');
+const excludeDateInput = getHook('excludeDate');
 if (excludeDateInput && !excludeDateInput.value) {
   excludeDateInput.value = getDateOffset(0);
 }

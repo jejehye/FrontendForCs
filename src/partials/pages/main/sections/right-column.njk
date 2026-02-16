@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="agent-status-bar">
-        <div class="status-indicator status-ready"></div>
-        <select class="status-select">
+        <div class="status-indicator status-ready" data-role="status-indicator"></div>
+        <select class="status-select" data-role="agent-status-select">
           <option value="ready">업무</option>
           <option value="away">이석</option>
           <option value="busy">대기</option>
@@ -35,7 +35,7 @@
         </span>
         <span class="agent-login-chip__meta">
           <span class="agent-login-chip__role">상담원</span>
-          <span class="agent-login-chip__name" data-agent-display>김민수(204075)</span>
+          <span class="agent-login-chip__name" data-role="agent-display" data-agent-display>김민수(204075)</span>
         </span>
       </div>
     </div>
@@ -45,29 +45,29 @@
       <span class="softphone-script-title">
         <i class="fa-solid fa-volume-high"></i> 안내 멘트 송출
       </span>
-      <button type="button" class="softphone-call-toggle" data-call-toggle>
+      <button type="button" class="softphone-call-toggle" data-action="softphone-toggle" data-call-toggle>
         통화중 OFF
       </button>
     </div>
     <div class="softphone-script-grid">
-      <button type="button" class="softphone-script-btn" data-softphone-script="녹취 동의 안내">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="녹취 동의 안내" data-softphone-script="녹취 동의 안내">
         <i class="fa-solid fa-microphone-lines"></i>
         녹취동의
       </button>
-      <button type="button" class="softphone-script-btn" data-softphone-script="개인정보 수집 동의">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="개인정보 수집 동의" data-softphone-script="개인정보 수집 동의">
         <i class="fa-solid fa-user-shield"></i>
         개인정보
       </button>
-      <button type="button" class="softphone-script-btn" data-softphone-script="투자 유의사항">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="투자 유의사항" data-softphone-script="투자 유의사항">
         <i class="fa-solid fa-triangle-exclamation"></i>
         투자유의
       </button>
-      <button type="button" class="softphone-script-btn" data-softphone-script="통화 종료 안내">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="통화 종료 안내" data-softphone-script="통화 종료 안내">
         <i class="fa-solid fa-phone-slash"></i>
         종료안내
       </button>
     </div>
-    <div class="softphone-script-status" data-softphone-output>
+    <div class="softphone-script-status" data-role="softphone-output" data-softphone-output>
       통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.
     </div>
   </div>
@@ -137,7 +137,7 @@
         <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
         상담이력 입력
       </h4>
-      <span class="history-editor-timestamp" data-current-datetime></span>
+      <span class="history-editor-timestamp" data-role="current-datetime" data-current-datetime></span>
     </div>
     <div class="history-editor-form">
       <div class="history-editor-card">

@@ -23,6 +23,7 @@
     <div
       data-page="main.html"
       title="Main"
+      data-role="nav-item"
       class="nav-item active"
     >
       <i class="fa-solid fa-headset"></i>
@@ -31,6 +32,7 @@
     <div
       data-page="pds.html"
       title="PDS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone-volume"></i>
@@ -39,6 +41,7 @@
     <div
       data-page="sms.html"
       title="SMS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comment-sms"></i>
@@ -47,6 +50,7 @@
     <div
       data-page="callback.html"
       title="Callback"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone"></i>
@@ -55,6 +59,7 @@
     <div
       data-page="specific.html"
       title="Specific"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-user-check"></i>
@@ -63,12 +68,13 @@
     <div
       data-page="chat.html"
       title="Chat"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comments"></i>
     </div>
   
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
 
     
@@ -130,7 +136,7 @@
             계좌번호
           </label>
           <input
-            id="account-number"
+            id="account-number" data-role="account-number"
             name="accountNumber"
             type="text"
             placeholder="567-890-1234"
@@ -184,7 +190,7 @@
             주민번호
           </label>
           <input
-            id="resident-id"
+            id="resident-id" data-role="resident-id"
             name="residentId"
             type="text"
             placeholder="920315-2******"
@@ -410,7 +416,7 @@
               <th class="table__head table__head--summary">상담내용</th>
             </tr>
           </thead>
-          <tbody class="main-history-body" data-history-body>
+          <tbody class="main-history-body" data-role="history-body" data-history-body>
             
               <tr class="tbl__row is-active">
                 <td class="tbl__cell tbl__cell--accent">1</td>
@@ -555,17 +561,17 @@
           </tbody>
         </table>
       </div>
-      <div class="pagination pagination--history" data-history-pagination>
-        <button class="pagination__btn" data-history-nav="first">
+      <div class="pagination pagination--history" data-role="history-pagination" data-history-pagination>
+        <button class="pagination__btn" data-action="history-nav-first" data-history-nav="first">
           <i class="fa-solid fa-angles-left"></i></button
-        ><button class="pagination__btn" data-history-nav="prev">
+        ><button class="pagination__btn" data-action="history-nav-prev" data-history-nav="prev">
           <i class="fa-solid fa-angle-left"></i></button
-        ><button class="pagination__btn is-active" data-history-page-btn="1">1</button
-        ><button class="pagination__btn" data-history-page-btn="2">2</button
-        ><button class="pagination__btn" data-history-page-btn="3">3</button
-        ><button class="pagination__btn" data-history-nav="next">
+        ><button class="pagination__btn is-active" data-action="history-page-btn" data-target="1" data-history-page-btn="1">1</button
+        ><button class="pagination__btn" data-action="history-page-btn" data-target="2" data-history-page-btn="2">2</button
+        ><button class="pagination__btn" data-action="history-page-btn" data-target="3" data-history-page-btn="3">3</button
+        ><button class="pagination__btn" data-action="history-nav-next" data-history-nav="next">
           <i class="fa-solid fa-angle-right"></i></button
-        ><button class="pagination__btn" data-history-nav="last">
+        ><button class="pagination__btn" data-action="history-nav-last" data-history-nav="last">
           <i class="fa-solid fa-angles-right"></i>
         </button>
       </div>
@@ -589,12 +595,17 @@
       </div>
       <div class="notice-updated">
         <span class="weight-medium">최근 업데이트:</span>
-        <span data-current-date-kor></span>
+        <span data-role="current-date-kor" data-current-date-kor></span>
       </div>
     </header>
     <div class="notice-list-wrap">
       
-        <div class="notice-list" data-notice-page="1">
+        <div
+          class="notice-list"
+          data-target="notice-page"
+          data-target-value="1"
+          data-notice-page="1"
+        >
           
             <div class="notice-card">
               <div class="notice-card__meta">
@@ -668,7 +679,12 @@
           
         </div>
       
-        <div class="notice-list hidden" data-notice-page="2">
+        <div
+          class="notice-list hidden"
+          data-target="notice-page"
+          data-target-value="2"
+          data-notice-page="2"
+        >
           
             <div class="notice-card">
               <div class="notice-card__meta">
@@ -715,12 +731,14 @@
         </div>
       
       <div class="pagination pagination--notice">
-        <button type="button" data-notice-nav="prev" class="pagination__btn">
+        <button type="button" data-action="notice-nav-prev" data-notice-nav="prev" class="pagination__btn">
           <i class="fa-solid fa-angle-left"></i>
         </button>
         
           <button
             type="button"
+            data-action="notice-page-btn"
+            data-target="1"
             data-notice-page-btn="1"
             class="pagination__btn is-active"
           >
@@ -729,13 +747,15 @@
         
           <button
             type="button"
+            data-action="notice-page-btn"
+            data-target="2"
             data-notice-page-btn="2"
             class="pagination__btn"
           >
             2
           </button>
         
-        <button type="button" data-notice-nav="next" class="pagination__btn">
+        <button type="button" data-action="notice-nav-next" data-notice-nav="next" class="pagination__btn">
           <i class="fa-solid fa-angle-right"></i>
         </button>
       </div>
@@ -752,21 +772,21 @@
         <button
           type="button"
           class="warning-tab is-active"
-          data-warning-tab="code"
+          data-action="warning-tab" data-target="code" data-warning-tab="code"
         >
           주의코드
         </button>
         <button
           type="button"
           class="warning-tab"
-          data-warning-tab="voc"
+          data-action="warning-tab" data-target="voc" data-warning-tab="voc"
         >
           VOC
         </button>
       </div>
       <div
         class="warning-tab-panel warning-tab-panel-body is-active"
-        data-warning-panel="code"
+        data-target="warning-panel" data-target-value="code" data-warning-panel="code"
       >
         <p class="main-center-warning-line">
           <span class="main-center-warning-date">(2023-03-22)</span> 고액거래 고객:
@@ -781,7 +801,7 @@
       </div>
       <div
         class="warning-tab-panel warning-tab-panel-body hidden"
-        data-warning-panel="voc"
+        data-target="warning-panel" data-target-value="voc" data-warning-panel="voc"
       >
         <p class="main-center-warning-line">
           <span class="main-center-warning-date">(2024-02-14)</span> 투자성향
@@ -820,8 +840,8 @@
         </div>
       </div>
       <div class="agent-status-bar">
-        <div class="status-indicator status-ready"></div>
-        <select class="status-select">
+        <div class="status-indicator status-ready" data-role="status-indicator"></div>
+        <select class="status-select" data-role="agent-status-select">
           <option value="ready">업무</option>
           <option value="away">이석</option>
           <option value="busy">대기</option>
@@ -835,7 +855,7 @@
         </span>
         <span class="agent-login-chip__meta">
           <span class="agent-login-chip__role">상담원</span>
-          <span class="agent-login-chip__name" data-agent-display>김민수(204075)</span>
+          <span class="agent-login-chip__name" data-role="agent-display" data-agent-display>김민수(204075)</span>
         </span>
       </div>
     </div>
@@ -845,29 +865,29 @@
       <span class="softphone-script-title">
         <i class="fa-solid fa-volume-high"></i> 안내 멘트 송출
       </span>
-      <button type="button" class="softphone-call-toggle" data-call-toggle>
+      <button type="button" class="softphone-call-toggle" data-action="softphone-toggle" data-call-toggle>
         통화중 OFF
       </button>
     </div>
     <div class="softphone-script-grid">
-      <button type="button" class="softphone-script-btn" data-softphone-script="녹취 동의 안내">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="녹취 동의 안내" data-softphone-script="녹취 동의 안내">
         <i class="fa-solid fa-microphone-lines"></i>
         녹취동의
       </button>
-      <button type="button" class="softphone-script-btn" data-softphone-script="개인정보 수집 동의">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="개인정보 수집 동의" data-softphone-script="개인정보 수집 동의">
         <i class="fa-solid fa-user-shield"></i>
         개인정보
       </button>
-      <button type="button" class="softphone-script-btn" data-softphone-script="투자 유의사항">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="투자 유의사항" data-softphone-script="투자 유의사항">
         <i class="fa-solid fa-triangle-exclamation"></i>
         투자유의
       </button>
-      <button type="button" class="softphone-script-btn" data-softphone-script="통화 종료 안내">
+      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="통화 종료 안내" data-softphone-script="통화 종료 안내">
         <i class="fa-solid fa-phone-slash"></i>
         종료안내
       </button>
     </div>
-    <div class="softphone-script-status" data-softphone-output>
+    <div class="softphone-script-status" data-role="softphone-output" data-softphone-output>
       통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.
     </div>
   </div>
@@ -937,7 +957,7 @@
         <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
         상담이력 입력
       </h4>
-      <span class="history-editor-timestamp" data-current-datetime></span>
+      <span class="history-editor-timestamp" data-role="current-datetime" data-current-datetime></span>
     </div>
     <div class="history-editor-form">
       <div class="history-editor-card">

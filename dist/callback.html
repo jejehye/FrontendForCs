@@ -23,6 +23,7 @@
     <div
       data-page="main.html"
       title="Main"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-headset"></i>
@@ -31,6 +32,7 @@
     <div
       data-page="pds.html"
       title="PDS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone-volume"></i>
@@ -39,6 +41,7 @@
     <div
       data-page="sms.html"
       title="SMS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comment-sms"></i>
@@ -47,6 +50,7 @@
     <div
       data-page="callback.html"
       title="Callback"
+      data-role="nav-item"
       class="nav-item active"
     >
       <i class="fa-solid fa-phone"></i>
@@ -55,6 +59,7 @@
     <div
       data-page="specific.html"
       title="Specific"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-user-check"></i>
@@ -63,12 +68,13 @@
     <div
       data-page="chat.html"
       title="Chat"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comments"></i>
     </div>
   
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
 
     
@@ -108,7 +114,7 @@
                   class="callback-request-meta-text"><i
                     class="fa-regular fa-clock callback-icon-inline"></i>요청: 2024-01-20 14:20
                 </span><button
-                  class="shinhan-btn callback-call-btn"><i
+                  class="shinhan-btn callback-call-btn" data-action="callback-open-modal"><i
                     class="fa-solid fa-phone callback-icon-inline"></i>콜백 걸기
                 </button></div>
             </div>
@@ -129,7 +135,7 @@
                   class="callback-request-meta-text"><i
                     class="fa-regular fa-clock callback-icon-inline"></i>요청: 2024-01-20 13:35
                 </span><button
-                  class="shinhan-btn callback-call-btn"><i
+                  class="shinhan-btn callback-call-btn" data-action="callback-open-modal"><i
                     class="fa-solid fa-phone callback-icon-inline"></i>콜백 걸기
                 </button></div>
             </div>
@@ -150,7 +156,7 @@
                   class="callback-request-meta-text"><i
                     class="fa-regular fa-clock callback-icon-inline"></i>요청: 2024-01-20 12:50
                 </span><button
-                  class="shinhan-btn callback-call-btn"><i
+                  class="shinhan-btn callback-call-btn" data-action="callback-open-modal"><i
                     class="fa-solid fa-phone callback-icon-inline"></i>콜백 걸기
                 </button></div>
             </div>
@@ -452,14 +458,14 @@
       </div>
     </div>
 
-    <div id="callbackModal" class="modal-overlay">
+    <div id="callbackModal" data-role="callback-modal" class="modal-overlay">
       <div class="modal-content">
         <div class="callback-modal-header">
           <div class="callback-modal-header-row">
             <div>
               <h2 class="callback-modal-title">콜백 처리</h2>
               <p class="callback-modal-subtitle">고객님께 콜백을 진행합니다</p>
-            </div><button class="callback-modal-close-btn"><i
+            </div><button class="callback-modal-close-btn" data-action="callback-modal-close"><i
                 class="fa-solid fa-xmark"></i></button>
           </div>
         </div>
@@ -523,10 +529,10 @@
                   class="callback-modal-option-label">연결 불가</span></label></div>
           </div>
           <div class="callback-modal-actions"><button
-              class="callback-note-cancel-btn"><i
+              class="callback-note-cancel-btn" data-action="callback-modal-cancel"><i
                 class="fa-solid fa-xmark callback-icon-inline-md"></i>취소
             </button><button
-              class="shinhan-gradient callback-note-submit-btn"><i
+              class="shinhan-gradient callback-note-submit-btn" data-action="callback-modal-complete"><i
                 class="fa-solid fa-check callback-icon-inline-md"></i>처리 완료
             </button></div>
         </div>

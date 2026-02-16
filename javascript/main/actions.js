@@ -1,7 +1,18 @@
 window.MainPageActions = (() => {
+  const selectOne = (standardSelector, legacySelector) =>
+    document.querySelector(standardSelector) || (legacySelector ? document.querySelector(legacySelector) : null);
+
+  const selectAll = (standardSelector, legacySelector) => {
+    const standardNodes = Array.from(document.querySelectorAll(standardSelector));
+    if (standardNodes.length) {
+      return standardNodes;
+    }
+    return legacySelector ? Array.from(document.querySelectorAll(legacySelector)) : [];
+  };
+
   const initStatusControl = () => {
-    const statusSelect = document.querySelector('.agent-status-bar select');
-    const statusIndicator = document.querySelector('.status-indicator');
+    const statusSelect = selectOne('[data-role="agent-status-select"]', '.agent-status-bar select');
+    const statusIndicator = selectOne('[data-role="status-indicator"]', '.status-indicator');
 
     if (!statusSelect || !statusIndicator) {
       return;
@@ -29,9 +40,9 @@ window.MainPageActions = (() => {
   };
 
   const initSoftphoneScripts = () => {
-    const callToggleButton = document.querySelector('[data-call-toggle]');
-    const scriptButtons = Array.from(document.querySelectorAll('[data-softphone-script]'));
-    const scriptOutput = document.querySelector('[data-softphone-output]');
+    const callToggleButton = selectOne('[data-action="softphone-toggle"]', '[data-call-toggle]');
+    const scriptButtons = selectAll('[data-action="softphone-script"]', '[data-softphone-script]');
+    const scriptOutput = selectOne('[data-role="softphone-output"]', '[data-softphone-output]');
 
     let isCallActive = false;
 
@@ -71,7 +82,7 @@ window.MainPageActions = (() => {
 
     scriptButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const scriptName = button.getAttribute('data-softphone-script') || '안내 멘트';
+        const scriptName = button.getAttribute('data-target') || button.getAttribute('data-softphone-script') || '안내 멘트';
 
         if (!isCallActive) {
           setScriptOutput('통화중 상태가 아닙니다. 통화중 ON 후 멘트를 송출해 주세요.', 'is-warn');

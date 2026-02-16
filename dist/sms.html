@@ -23,6 +23,7 @@
     <div
       data-page="main.html"
       title="Main"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-headset"></i>
@@ -31,6 +32,7 @@
     <div
       data-page="pds.html"
       title="PDS"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone-volume"></i>
@@ -39,6 +41,7 @@
     <div
       data-page="sms.html"
       title="SMS"
+      data-role="nav-item"
       class="nav-item active"
     >
       <i class="fa-solid fa-comment-sms"></i>
@@ -47,6 +50,7 @@
     <div
       data-page="callback.html"
       title="Callback"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-phone"></i>
@@ -55,6 +59,7 @@
     <div
       data-page="specific.html"
       title="Specific"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-user-check"></i>
@@ -63,12 +68,13 @@
     <div
       data-page="chat.html"
       title="Chat"
+      data-role="nav-item"
       class="nav-item"
     >
       <i class="fa-solid fa-comments"></i>
     </div>
   
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
 
     
@@ -136,11 +142,11 @@
                   </button></div>
                 <div
                   class="sms-recipient-list">
-                  <span class="recipient-chip recipient-chip-primary">
+                  <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
                     김신한 (010-1234-5678)
                     <i
                       class="fa-solid fa-xmark sms-icon-danger-hover"></i></span><span
-                    class="recipient-chip recipient-chip-primary">
+                    class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
                     이투자 (010-9876-5432)
                     <i
                       class="fa-solid fa-xmark sms-icon-danger-hover"></i></span>
@@ -162,8 +168,8 @@
                 메시지 내용
               </h3>
               <div class="sms-textarea-wrap">
-                <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input"></textarea><span
-                  class="char-counter">0 / 2000</span></div>
+                <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input" data-role="sms-message-input"></textarea><span
+                  class="char-counter" data-role="sms-char-counter">0 / 2000</span></div>
               <div class="sms-action-row sms-action-row--top"><button
                   class="sms-variable-btn"><i
                     class="fa-solid fa-user sms-icon-inline-sm"></i>고객명
@@ -176,11 +182,11 @@
                 </button></div>
             </div>
             <div class="sms-send-row"><button
-                data-sms-send="instant"
+                data-action="sms-send-instant" data-sms-send="instant"
                 class="sms-primary-btn sms-send-now-btn"><i
                   class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
               </button><button
-                data-sms-send="scheduled"
+                data-action="sms-send-scheduled" data-sms-send="scheduled"
                 class="sms-send-schedule-btn"><i
                   class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
               </button></div>
@@ -225,13 +231,13 @@
                 type="text"
                 class="sms-template-search-input"
                 placeholder="템플릿 검색"
-                data-template-search
+                data-role="template-search" data-template-search
               >
               <button class="sms-template-all-btn">전체보기</button>
             </div>
           </div>
-          <div class="sms-template-list" data-template-list>
-            <div data-template="1" class="template-card">
+          <div class="sms-template-list" data-role="template-list" data-template-list>
+            <div data-template="1" class="template-card" data-action="template-select">
               <div class="sms-template-card-head"><span
                   class="sms-template-card-title">해외주식 거래 수수료
                   이벤트</span><span
@@ -243,7 +249,7 @@
               <div class="sms-template-card-foot sms-template-card-foot--spaced"><span
                   class="sms-template-char-count">72자</span></div>
             </div>
-            <div data-template="2" class="template-card">
+            <div data-template="2" class="template-card" data-action="template-select">
               <div class="sms-template-card-head"><span
                   class="sms-template-card-title">ISA 계좌 만기
                   안내</span><span
@@ -255,7 +261,7 @@
               <div class="sms-template-card-foot"><span
                   class="sms-template-char-count">61자</span></div>
             </div>
-            <div data-template="3" class="template-card">
+            <div data-template="3" class="template-card" data-action="template-select">
               <div class="sms-template-card-head"><span
                   class="sms-template-card-title">PRIME 고객 투자
                   세미나</span><span
@@ -267,7 +273,7 @@
               <div class="sms-template-card-foot"><span
                   class="sms-template-char-count">85자</span></div>
             </div>
-            <div data-template="4" class="template-card">
+            <div data-template="4" class="template-card" data-action="template-select">
               <div class="sms-template-card-head"><span
                   class="sms-template-card-title">계좌 비밀번호 변경
                   완료</span><span
@@ -278,7 +284,7 @@
               <div class="sms-template-card-foot"><span
                   class="sms-template-char-count">58자</span></div>
             </div>
-            <div data-template="5" class="template-card">
+            <div data-template="5" class="template-card" data-action="template-select">
               <div class="sms-template-card-head"><span
                   class="sms-template-card-title">자산관리 상담
                   예약</span><span
@@ -291,18 +297,18 @@
                   class="sms-template-char-count">63자</span></div>
             </div>
           </div>
-          <div class="pagination pagination--history sms-pagination-wrap" data-template-pagination>
-            <button class="pagination__btn" data-template-nav="first">
+          <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
+            <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
               <i class="fa-solid fa-angles-left"></i>
             </button>
-            <button class="pagination__btn" data-template-nav="prev">
+            <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
               <i class="fa-solid fa-angle-left"></i>
             </button>
-            <button class="pagination__btn is-active" data-template-page-btn="1">1</button>
-            <button class="pagination__btn" data-template-nav="next">
+            <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
+            <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
               <i class="fa-solid fa-angle-right"></i>
             </button>
-            <button class="pagination__btn" data-template-nav="last">
+            <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
               <i class="fa-solid fa-angles-right"></i>
             </button>
           </div>
@@ -323,12 +329,12 @@
               inputmode="numeric"
               placeholder="고객전화번호 입력 (예: 010-1234-5678)"
               class="sms-field-input"
-              data-sms-history-phone
+              data-role="sms-history-phone" data-sms-history-phone
             >
             <button
               type="button"
               class="sms-primary-btn sms-btn-primary sms-btn-nowrap"
-              data-sms-history-search
+              data-action="sms-history-search" data-sms-history-search
             >
               조회
             </button>
@@ -342,7 +348,7 @@
                   <th class="sms-status-col">상태</th>
                 </tr>
               </thead>
-              <tbody class="sms-history-body" data-sms-history-body>
+              <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
                 <tr>
                   <td colspan="3" class="sms-history-empty-row">
                     조회할 고객전화번호를 입력해 주세요.

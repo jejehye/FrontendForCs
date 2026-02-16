@@ -14,10 +14,11 @@
     <div
       data-page="{{ item.page }}"
       title="{{ item.title }}"
+      data-role="nav-item"
       class="nav-item{% if active_page == item.page %} active{% endif %}"
     >
       <i class="fa-solid {{ item.icon }}"></i>
     </div>
   {% endfor %}
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
+  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>

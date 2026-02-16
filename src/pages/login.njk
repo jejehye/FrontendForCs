@@ -16,9 +16,9 @@
     </div>
 
     <div class="login-body">
-      <div id="errorMessage" class="error-message">
+      <div id="errorMessage" data-role="error-message" class="error-message">
         <span class="error-icon">!</span>
-        <span id="errorText">사번 또는 비밀번호가 올바르지 않습니다.</span>
+        <span id="errorText" data-role="error-text">사번 또는 비밀번호가 올바르지 않습니다.</span>
       </div>
 
       {% include "partials/pages/login/form.njk" %}
