@@ -43,7 +43,7 @@ body {
 .sidebar-logo {
   width: 2rem; height: 2rem; border-radius: 0.25rem; background: #fff;
   display: flex; align-items: center; justify-content: center;
-  color: #2563eb; font-weight: 700; font-size: 1.125rem;
+  color: #2563eb; font-weight: 700; font-size: 18px;
 }
 
 .nav-item {
@@ -56,16 +56,16 @@ body {
 .chat-status-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
 .customer-summary { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0; }
 .customer-summary-wide { width: 441px; }
-.customer-meta-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+.customer-meta-row { display: flex; align-items: center; gap: 0.5rem; font-size: 14px; }
 .customer-warning { background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.25rem; padding: 0.375rem 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem; }
 .customer-warning-wide { width: 560px; }
-.customer-warning-icon { color: rgb(217 119 6); font-size: 0.875rem; line-height: 1.25rem; margin-top: 0.125rem; }
+.customer-warning-icon { color: rgb(217 119 6); font-size: 14px; line-height: 1.25rem; margin-top: 0.125rem; }
 .customer-warning-body { flex: 1 1 0%; }
-.customer-warning-title { font-size: 0.75rem; line-height: 1rem; font-weight: 700; color: rgb(146 64 14); display: block; margin-bottom: 0.125rem; }
-.customer-warning-text { font-size: 0.75rem; line-height: 1rem; color: rgb(180 83 9); }
+.customer-warning-title { font-size: 12px; line-height: 1rem; font-weight: 700; color: rgb(146 64 14); display: block; margin-bottom: 0.125rem; }
+.customer-warning-text { font-size: 12px; line-height: 1rem; color: rgb(180 83 9); }
 
 .badge,
-.status-badge { font-size: .75rem; padding: 2px 6px; border-radius: 4px; font-weight: 500; display: inline-flex; align-items: center; }
+.status-badge { font-size: 12px; padding: 2px 6px; border-radius: 4px; font-weight: 500; display: inline-flex; align-items: center; }
 .status-ib { color: #003d82; background: var(--color-primary-light); border: 1px solid var(--color-primary-border); }
 .status-unauth { color: #ef4444; background: #fef2f2; border: 1px solid #fecaca; }
 
@@ -75,27 +75,27 @@ body {
 .template-card:hover, .template-card.selected, .template-card-primary { border-color: var(--color-primary); background: var(--color-primary-light); }
 .template-card.selected { box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
 
-.recipient-chip { display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; border: 1px solid #bfdbfe; color: #3b82f6; padding: 4px 8px; border-radius: 12px; font-size: .75rem; margin: 2px; }
+.recipient-chip { display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; border: 1px solid #bfdbfe; color: #3b82f6; padding: 4px 8px; border-radius: 12px; font-size: 12px; margin: 2px; }
 .recipient-chip-primary { background: var(--color-primary-light); border-color: var(--color-primary-border); color: var(--color-primary); }
 
-.char-counter { position: absolute; bottom: 8px; right: 8px; font-size: .7rem; color: #64748b; }
+.char-counter { position: absolute; bottom: 8px; right: 8px; font-size: 11.20px; color: #64748b; }
 
 .actionBtn,
 .action-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 8px; background: #fff; border: 1px solid var(--color-panel-border); transition: all .2s; height: 80px; }
 .actionBtn:hover,
 .action-btn:hover { border-color: #3b82f6; background: #eff6ff; }
 .actionBtn i,
-.action-btn i { font-size: 1.5rem; margin-bottom: 6px; }
+.action-btn i { font-size: 24px; margin-bottom: 6px; }
 .actionBtn span,
-.action-btn span { font-size: .8rem; font-weight: 500; color: #475569; }
+.action-btn span { font-size: 12.80px; font-weight: 500; color: #475569; }
 .action-btn-primary { border-color: var(--color-primary-border); background: var(--color-primary-light); }
 .action-icon-primary { background: #bbdefb; }
 
-.table-compact th, .table-compact td { padding: 8px 12px; font-size: .8rem; border-bottom: 1px solid #f1f5f9; }
+.table-compact th, .table-compact td { padding: 8px 12px; font-size: 12.80px; border-bottom: 1px solid #f1f5f9; }
 .table-compact th { background: #f8fafc; font-weight: 600; color: #64748b; text-align: left; }
 .sms-status-col { width: 76px; }
 
-.tab-item { padding: 12px 16px; font-size: .8rem; font-weight: 500; color: #64748b; cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; display: flex; align-items: center; gap: 6px; }
+.tab-item { padding: 12px 16px; font-size: 12.80px; font-weight: 500; color: #64748b; cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; display: flex; align-items: center; gap: 6px; }
 .tab-item:hover { color: #3b82f6; background: #f8fafc; }
 .tab-item.active { color: #3b82f6; border-bottom-color: #3b82f6; background: #fff; }
 .tab-item-primary.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
@@ -107,7 +107,7 @@ body {
 .sms-soft-bg { background: var(--color-primary-light); }
 .sms-primary-border { border-color: var(--color-primary); }
 .sms-primary-highlight { background: rgba(255,255,255,.15); color: #fff; }
-.sms-icon-lg { font-size: 1.1rem; }
+.sms-icon-lg { font-size: 17.60px; }
 .tag-compact { width: 35px; }
 
 /* De-tailwind phase 1: semantic layout helpers (SMS page) */
@@ -140,10 +140,10 @@ body {
 .sms-accent-icon { color: #9333ea; }
 .sms-btn-nowrap { white-space: nowrap; }
 
-.sms-notice-title { font-weight: 700; color: #1f2937; font-size: 0.875rem; }
-.sms-notice-more-btn { font-size: 0.75rem; color: #6b7280; }
+.sms-notice-title { font-weight: 700; color: #1f2937; font-size: 14px; }
+.sms-notice-more-btn { font-size: 12px; color: #6b7280; }
 .sms-notice-more-btn:hover { color: #2563eb; }
-.sms-notice-list { font-size: 0.75rem; display: flex; flex-direction: column; gap: 8px; }
+.sms-notice-list { font-size: 12px; display: flex; flex-direction: column; gap: 8px; }
 .sms-notice-item { display: flex; justify-content: space-between; align-items: flex-start; }
 .sms-notice-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 8px; color: #374151; }
 .sms-notice-date { color: #9ca3af; white-space: nowrap; }
@@ -151,23 +151,23 @@ body {
 .sms-notice-urgent { color: #ef4444; font-weight: 700; }
 .sms-notice-clip { color: #9ca3af; margin-left: 4px; }
 
-.sms-template-title { font-weight: 700; color: #1f2937; font-size: 0.875rem; display: flex; align-items: center; gap: 8px; }
-.sms-template-all-btn { color: var(--color-primary); font-size: 0.75rem; font-weight: 500; }
+.sms-template-title { font-weight: 700; color: #1f2937; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.sms-template-all-btn { color: var(--color-primary); font-size: 12px; font-weight: 500; }
 .sms-template-list { display: flex; flex-direction: column; gap: 8px; height: 520px; overflow-y: scroll; padding-right: 8px; }
 .sms-template-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-.sms-template-card-title { font-size: 0.75rem; font-weight: 700; color: #1f2937; }
-.sms-template-card-date { font-size: 0.6875rem; color: #9ca3af; }
-.sms-template-card-body { font-size: 0.75rem; color: #4b5563; line-height: 1.625; }
+.sms-template-card-title { font-size: 12px; font-weight: 700; color: #1f2937; }
+.sms-template-card-date { font-size: 11px; color: #9ca3af; }
+.sms-template-card-body { font-size: 12px; color: #4b5563; line-height: 1.625; }
 .sms-template-card-foot { display: flex; justify-content: flex-end; }
 .sms-template-card-foot--spaced { margin-top: 8px; }
-.sms-template-char-count { font-size: 0.6875rem; color: #9ca3af; }
+.sms-template-char-count { font-size: 11px; color: #9ca3af; }
 
 .sms-pagination-wrap { margin-top: 8px; }
 
 .sms-history-panel { height: 360px; display: flex; flex-direction: column; padding: 16px; overflow: hidden; }
-.sms-history-title { font-size: 0.875rem; font-weight: 700; color: #1f2937; display: flex; align-items: center; gap: 8px; }
-.sms-history-meta { font-size: 0.75rem; color: #6b7280; }
+.sms-history-title { font-size: 14px; font-weight: 700; color: #1f2937; display: flex; align-items: center; gap: 8px; }
+.sms-history-meta { font-size: 12px; color: #6b7280; }
 .sms-history-table-wrap { flex: 1; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 0.25rem; }
 .sms-history-table { width: 100%; text-align: left; }
 .sms-history-body { color: #4b5563; }
-.sms-history-empty-row { text-align: center; font-size: 0.75rem; color: #9ca3af; padding: 12px 0; }
+.sms-history-empty-row { text-align: center; font-size: 12px; color: #9ca3af; padding: 12px 0; }
