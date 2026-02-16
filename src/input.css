@@ -484,20 +484,32 @@
 
   .badge--io-in { @apply bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold; }
   .badge--io-out { @apply bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold; }
-  .notice-card__meta { @apply flex items-start justify-between mb-2; }
-  .notice-meta-left { @apply flex items-center gap-2; }
+  .notice-card { @apply flex flex-col gap-1.5; }
+  .notice-card__meta { @apply flex items-start justify-between mb-0.5; }
+  .notice-meta-left { @apply flex items-center gap-2 min-w-0; }
 
-  .notice-badge { @apply text-white text-[12px] font-bold px-2 py-0.5 rounded; }
+  .notice-badge { @apply text-white text-[12px] font-bold px-2 py-0.5 rounded shrink-0; }
   .notice-badge--critical { @apply bg-red-500; }
   .notice-badge--event { @apply bg-purple-500; }
   .notice-badge--training { @apply bg-orange-500; }
   .notice-badge--important { @apply bg-blue-500; }
   .notice-badge--normal { @apply bg-green-500; }
 
-  .notice-date { @apply text-[12px] text-gray-500; }
-  .notice-title { @apply font-bold text-gray-800 mb-1; }
-  .notice-desc { @apply text-[14px] text-gray-600; }
-  .notice-chevron { @apply text-gray-400 text-[14px]; }
+  .notice-date {
+    @apply text-[12px] text-gray-500 whitespace-nowrap shrink-0 text-right;
+  }
+  .notice-title {
+    @apply font-bold text-gray-800 overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+  .notice-desc {
+    @apply text-[14px] text-gray-600 overflow-hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.45;
+    min-height: calc(1.45em * 2);
+  }
+  .notice-chevron { @apply text-gray-400 text-[14px] shrink-0 ml-2; }
 
   .card--notice { @apply notice-card; }
 
