@@ -87,7 +87,7 @@ FrontendForCs/
 1. `src/pages/*.njk`를 `scripts/render.mjs`로 렌더링  
 2. `app.css`를 `dist/app.css`로 복사  
 3. Font Awesome 자산(`vendor/fontawesome`)을 `dist/`에 복사  
-4. 정적 디렉터리(`css`, `javascript`, `js`, `design`)가 존재할 경우 `dist/`에 복사
+4. 정적 디렉터리(`css`, `javascript`, `js`)가 존재할 경우 `dist/`에 복사
 
 ## 실행 방법
 
@@ -155,4 +155,3 @@ docker compose up --build -d
 
 ## 참고
 - 디자인/스타일 가이드: `STYLE_GUIDE.md`
-- 추가 디자인 문서: `design/README.md`, `design/sms/README.md`
