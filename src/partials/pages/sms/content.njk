@@ -6,17 +6,17 @@
             SMS 발송
           </span><button class="text-white hover:text-blue-100"><i
               class="fa-solid fa-rotate-right"></i></button></div>
-        <div class="flex-1 overflow-y-auto p-4 bg-gray-50">
-          <div class="space-y-4">
+        <div class="sms-body">
+          <div class="sms-stack">
             <div
-              class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              class="sms-panel">
               <h3
                 class="sem-u-082 sms-section-title">
                 <i class="fa-solid fa-user-group sms-primary-text"></i>
                 수신자 선택
               </h3>
               <div class="mb-3">
-                <div class="flex gap-2 mb-2"><input type="text"
+                <div class="sms-input-row"><input type="text"
                     placeholder="전화번호 입력 (010-1234-5678)"
                     class="sem-u-083 sms-field-input"><button
                     class="sms-primary-btn sem-u-084 sms-btn-primary"><i
@@ -34,7 +34,7 @@
                       class="fa-solid fa-xmark cursor-pointer hover:text-red-500"></i></span>
                 </div>
               </div>
-              <div class="flex gap-2"><button
+              <div class="sms-action-row"><button
                   class="sem-u-086 sms-variable-btn"><i
                     class="fa-solid fa-address-book mr-1"></i>주소록
                 </button><button
@@ -43,7 +43,7 @@
                 </button></div>
             </div>
             <div
-              class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              class="sms-panel">
               <h3
                 class="sem-u-082 sms-section-title">
                 <i class="fa-solid fa-pen-to-square text-purple-600"></i>
@@ -52,7 +52,7 @@
               <div class="relative">
                 <textarea placeholder="메시지 내용을 입력하세요..." class="resize-none sem-u-087 sms-message-input"></textarea><span
                   class="char-counter">0 / 2000</span></div>
-              <div class="flex gap-2 mt-3"><button
+              <div class="sms-action-row sms-action-row--top"><button
                   class="sem-u-086 sms-variable-btn"><i
                     class="fa-solid fa-user mr-1"></i>고객명
                 </button><button
@@ -63,7 +63,7 @@
                     class="fa-solid fa-calendar mr-1"></i>날짜
                 </button></div>
             </div>
-            <div class="flex gap-2"><button
+            <div class="sms-send-row"><button
                 data-sms-send="instant"
                 class="sms-primary-btn sem-u-088 sms-send-now-btn"><i
                   class="fa-solid fa-paper-plane mr-2"></i>즉시 발송
@@ -77,8 +77,7 @@
       </div>
       <div id="center-column" class="column col-center">
         <div class="info-card">
-          <div
-            class="sem-u-069 history-filter-row">
+          <div class="sem-u-069 history-filter-row sms-notice-header">
             <h3 class="font-bold text-gray-800 text-sm">공지사항</h3><button
               class="text-xs text-gray-500 hover:text-blue-600">더보기 +</button>
           </div>
@@ -104,12 +103,12 @@
           </ul>
         </div>
         <div class="info-card">
-          <div class="flex justify-between items-center mb-3 gap-2">
+          <div class="sms-template-header">
             <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
               <i class="fa-solid fa-file-lines sms-primary-text"></i>
               템플릿 선택
             </h3>
-            <div class="flex items-center gap-2">
+            <div class="sms-template-tools">
               <input
                 type="text"
                 class="sem-u-054 sms-template-search-input"
@@ -199,14 +198,14 @@
       </div>
       <div id="right-column" class="column col-right">
         <div class="info-card h-[360px] flex flex-col p-4 overflow-hidden">
-          <div class="flex items-center justify-between mb-2">
+          <div class="sms-history-top">
             <h4 class="text-sm font-bold text-gray-800 flex items-center gap-2">
               <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
               발송이력 조회
             </h4>
             <span class="text-xs text-gray-500">고객전화번호 기준</span>
           </div>
-          <div class="flex gap-2 mb-2">
+          <div class="sms-history-search">
             <input
               type="text"
               inputmode="numeric"
