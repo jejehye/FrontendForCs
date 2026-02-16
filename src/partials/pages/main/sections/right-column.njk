@@ -141,62 +141,68 @@
     </div>
     <div class="history-editor-form">
       <div class="history-editor-card">
-        <div class="history-editor-card-header">
-          <label class="history-editor-section-title">상담유형</label>
-          <span class="history-editor-section-hint"
-            >대분류 &gt; 중분류 &gt; 소분류</span
-          >
-        </div>
-        <div class="history-category-grid">
-          <div>
-            <label class="history-field-label">대분류</label>
-            <select class="field consultation-category-select">
-              <option selected>투자상담</option>
-              <option>업무처리</option>
-              <option>민원/클레임</option>
-            </select>
+        <div class="history-editor-group history-editor-group--category">
+          <div class="history-editor-card-header">
+            <label class="history-editor-section-title">상담유형</label>
+            <span class="history-editor-section-hint"
+              >대분류 &gt; 중분류 &gt; 소분류</span
+            >
           </div>
-          <div>
-            <label class="history-field-label">중분류</label>
-            <select class="field consultation-category-select">
-              <option selected>해외투자</option>
-              <option>국내주식</option>
-              <option>펀드/ETF</option>
-              <option>ISA/연금</option>
-            </select>
-          </div>
-          <div>
-            <label class="history-field-label">소분류</label>
-            <select class="field consultation-category-select">
-              <option selected>해외주식 매수문의</option>
-              <option>해외주식 수수료</option>
-              <option>환전/외화입출금</option>
-              <option>해외시장 운영시간</option>
-            </select>
+          <div class="history-category-grid">
+            <div>
+              <label class="history-field-label">대분류</label>
+              <select class="field consultation-category-select">
+                <option selected>투자상담</option>
+                <option>업무처리</option>
+                <option>민원/클레임</option>
+              </select>
+            </div>
+            <div>
+              <label class="history-field-label">중분류</label>
+              <select class="field consultation-category-select">
+                <option selected>해외투자</option>
+                <option>국내주식</option>
+                <option>펀드/ETF</option>
+                <option>ISA/연금</option>
+              </select>
+            </div>
+            <div>
+              <label class="history-field-label">소분류</label>
+              <select class="field consultation-category-select">
+                <option selected>해외주식 매수문의</option>
+                <option>해외주식 수수료</option>
+                <option>환전/외화입출금</option>
+                <option>해외시장 운영시간</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div class="history-note-header">
-          <label class="history-note-title"
-            ><i class="fa-regular fa-note-sticky history-note-icon"></i>상담내용</label
-          >
-          <span class="history-note-limit">최대 500자</span>
-        </div>
-        <textarea
-          rows="3"
-          placeholder="1) 고객 문의사항&#10;2) 안내한 내용&#10;3) 후속 조치(있다면)"
-          class="consultation-note field consultation-note-input consultation-note-field"
-        ></textarea>
-        <div class="history-note-meta">
-          <span>작성 팁: 문의 → 조치 → 결과 순으로 작성</span
-          ><span>0 / 500자</span>
+        <div class="history-editor-group history-editor-group--note">
+          <div class="history-note-header">
+            <label class="history-note-title"
+              ><i class="fa-regular fa-note-sticky history-note-icon"></i>상담내용</label
+            >
+            <span class="history-note-limit">최대 500자</span>
+          </div>
+          <textarea
+            rows="3"
+            placeholder="1) 고객 문의사항&#10;2) 안내한 내용&#10;3) 후속 조치(있다면)"
+            class="consultation-note field consultation-note-input consultation-note-field"
+          ></textarea>
+          <div class="history-note-meta">
+            <span>작성 팁: 문의 → 조치 → 결과 순으로 작성</span
+            ><span>0 / 500자</span>
+          </div>
         </div>
       </div>
-      <div class="history-editor-actions">
-        <button class="btn-secondary consultation-reset-btn">
-          <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화</button
-        ><button class="btn-primary consultation-save-btn">
-          <i class="fa-solid fa-save history-action-icon-gap"></i>저장
-        </button>
+      <div class="history-editor-actions-wrap">
+        <div class="history-editor-actions">
+          <button class="btn-secondary consultation-reset-btn">
+            <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화</button
+          ><button class="btn-primary consultation-save-btn">
+            <i class="fa-solid fa-save history-action-icon-gap"></i>저장
+          </button>
+        </div>
       </div>
     </div>
   </div>
