@@ -1,21 +1,27 @@
   <div id="center-column" class="column col-center chat-center-column">
     <div class="panel panel--kms">
-      <div class="panel__header panel__header--kms">
-        <h3 class="chat-kms-title">
-          <i class="fa-solid fa-book"></i>
-          KMS 매뉴얼
-        </h3>
-        <div class="chat-gap-2-row">
-          <input
-            type="text"
-            placeholder="검색..."
-            class="field field--kms-search"
-          >
-          <button class="btn btn--primary btn--kms-search primary-btn">
-            <i class="fa-solid fa-search"></i>
-          </button>
+      <header class="notice-header chat-kms-notice-header">
+        <div class="chat-kms-header-row">
+          <div class="chat-kms-title-row">
+            <i class="fa-solid fa-book"></i>
+            <h3 class="chat-kms-title">KMS 매뉴얼</h3>
+          </div>
+          <div class="chat-kms-tools">
+            <div class="main-live-search-wrap notice-search-wrap">
+              <input
+                type="text"
+                placeholder="KMS에서 검색"
+                class="field placeholder-blue-200 chat-search-input field--kms-search"
+              >
+              <i class="fa-solid fa-magnifying-glass main-live-search-icon"></i>
+            </div>
+            <button class="chat-kms-more-btn">
+              <i class="fa-solid fa-plus chat-icon-inline"></i>
+              더보기
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
       <div class="chat-kms-filter-row">
         {% for filter in chat_data.kms_filters or [] %}
           <button class="tab__item tab__item--chat-filter{% if loop.first %} is-active primary-btn{% endif %}">
