@@ -95,77 +95,6 @@
               class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
               <h3
                 class="sem-u-082">
-                <i class="fa-solid fa-file-lines sms-primary-text"></i>
-                템플릿 선택
-              </h3>
-              <div class="space-y-2 max-h-[280px] overflow-y-auto pr-2">
-                <div data-template="1" class="template-card template-card-primary">
-                  <div class="flex justify-between items-start mb-2"><span
-                      class="text-xs font-bold text-gray-800">해외주식 거래 수수료
-                      이벤트</span><span
-                      class="text-xxs text-gray-400">2024-01-15</span></div>
-                  <p class="text-xs text-gray-600 leading-relaxed">
-                    [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용
-                    1588-xxxx
-                  </p>
-                  <div class="flex justify-between items-center mt-2"><span
-                      class="text-xxs sms-primary-text"><i
-                        class="fa-solid fa-check-circle mr-1"></i>선택됨</span><span
-                      class="text-xxs text-gray-400">72자</span></div>
-                </div>
-                <div data-template="2" class="template-card">
-                  <div class="flex justify-between items-start mb-2"><span
-                      class="text-xs font-bold text-gray-800">ISA 계좌 만기
-                      안내</span><span
-                      class="text-xxs text-gray-400">2024-01-10</span></div>
-                  <p class="text-xs text-gray-600 leading-relaxed">
-                    [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의
-                    1588-xxxx
-                  </p>
-                  <div class="flex justify-end"><span
-                      class="text-xxs text-gray-400">61자</span></div>
-                </div>
-                <div data-template="3" class="template-card">
-                  <div class="flex justify-between items-start mb-2"><span
-                      class="text-xs font-bold text-gray-800">PRIME 고객 투자
-                      세미나</span><span
-                      class="text-xxs text-gray-400">2024-01-08</span></div>
-                  <p class="text-xs text-gray-600 leading-relaxed">
-                    [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00,
-                    장소: 여의도센터 문의: 1588-xxxx
-                  </p>
-                  <div class="flex justify-end"><span
-                      class="text-xxs text-gray-400">85자</span></div>
-                </div>
-                <div data-template="4" class="template-card">
-                  <div class="flex justify-between items-start mb-2"><span
-                      class="text-xs font-bold text-gray-800">계좌 비밀번호 변경
-                      완료</span><span
-                      class="text-xxs text-gray-400">2024-01-05</span></div>
-                  <p class="text-xs text-gray-600 leading-relaxed">
-                    [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
-                  </p>
-                  <div class="flex justify-end"><span
-                      class="text-xxs text-gray-400">58자</span></div>
-                </div>
-                <div data-template="5" class="template-card">
-                  <div class="flex justify-between items-start mb-2"><span
-                      class="text-xs font-bold text-gray-800">자산관리 상담
-                      예약</span><span
-                      class="text-xxs text-gray-400">2024-01-03</span></div>
-                  <p class="text-xs text-gray-600 leading-relaxed">
-                    [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소
-                    1588-xxxx
-                  </p>
-                  <div class="flex justify-end"><span
-                      class="text-xxs text-gray-400">63자</span></div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-              <h3
-                class="sem-u-082">
                 <i class="fa-solid fa-pen-to-square text-purple-600"></i>
                 메시지 내용
               </h3>
@@ -184,9 +113,11 @@
                 </button></div>
             </div>
             <div class="flex gap-2"><button
-                class="sem-u-088"><i
+                data-sms-send="instant"
+                class="sms-primary-btn sem-u-088"><i
                   class="fa-solid fa-paper-plane mr-2"></i>즉시 발송
               </button><button
+                data-sms-send="scheduled"
                 class="sem-u-089"><i
                   class="fa-regular fa-clock mr-2"></i>예약 발송
               </button></div>
@@ -224,49 +155,71 @@
         <div class="info-card">
           <div class="flex justify-between items-center mb-3">
             <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
-              <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
-              최근 발송 내역
+              <i class="fa-solid fa-file-lines sms-primary-text"></i>
+              템플릿 선택
             </h3><button class="sms-primary-text text-xs font-medium">전체보기</button>
           </div>
-          <div class="space-y-3">
-            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+          <div class="space-y-2 max-h-[420px] overflow-y-auto pr-2">
+            <div data-template="1" class="template-card template-card-primary">
               <div class="flex justify-between items-start mb-2"><span
                   class="text-xs font-bold text-gray-800">해외주식 거래 수수료
                   이벤트</span><span
-                  class="sem-u-066">발송완료</span>
-              </div>
-              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
-                [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중...
+                  class="text-xxs text-gray-400">2024-01-15</span></div>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용
+                1588-xxxx
               </p>
-              <div class="flex justify-between text-xxs text-gray-400"><span><i
-                    class="fa-solid fa-user mr-1"></i>김신한 외
-                  2명</span><span>2024-01-20 14:35</span></div>
+              <div class="flex justify-between items-center mt-2"><span
+                  class="text-xxs sms-primary-text"><i
+                    class="fa-solid fa-check-circle mr-1"></i>선택됨</span><span
+                  class="text-xxs text-gray-400">72자</span></div>
             </div>
-            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+            <div data-template="2" class="template-card">
               <div class="flex justify-between items-start mb-2"><span
                   class="text-xs font-bold text-gray-800">ISA 계좌 만기
                   안내</span><span
-                  class="sem-u-066">발송완료</span>
-              </div>
-              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
-                [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다...
+                  class="text-xxs text-gray-400">2024-01-10</span></div>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의
+                1588-xxxx
               </p>
-              <div class="flex justify-between text-xxs text-gray-400"><span><i
-                    class="fa-solid fa-user mr-1"></i>이투자</span><span>2024-01-19
-                  10:22</span></div>
+              <div class="flex justify-end"><span
+                  class="text-xxs text-gray-400">61자</span></div>
             </div>
-            <div class="bg-gray-50 rounded p-3 border border-gray-100">
+            <div data-template="3" class="template-card">
               <div class="flex justify-between items-start mb-2"><span
-                  class="text-xs font-bold text-gray-800">자산관리 상담 예약</span><span
-                 
-                  class="text-xxs px-2 py-1 rounded font-medium">예약중</span>
-              </div>
-              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
-                [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다...
+                  class="text-xs font-bold text-gray-800">PRIME 고객 투자
+                  세미나</span><span
+                  class="text-xxs text-gray-400">2024-01-08</span></div>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00,
+                장소: 여의도센터 문의: 1588-xxxx
               </p>
-              <div class="flex justify-between text-xxs text-gray-400"><span><i
-                    class="fa-solid fa-user mr-1"></i>박자산</span><span>발송예정:
-                  2024-01-25 09:00</span></div>
+              <div class="flex justify-end"><span
+                  class="text-xxs text-gray-400">85자</span></div>
+            </div>
+            <div data-template="4" class="template-card">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">계좌 비밀번호 변경
+                  완료</span><span
+                  class="text-xxs text-gray-400">2024-01-05</span></div>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
+              </p>
+              <div class="flex justify-end"><span
+                  class="text-xxs text-gray-400">58자</span></div>
+            </div>
+            <div data-template="5" class="template-card">
+              <div class="flex justify-between items-start mb-2"><span
+                  class="text-xs font-bold text-gray-800">자산관리 상담
+                  예약</span><span
+                  class="text-xxs text-gray-400">2024-01-03</span></div>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소
+                1588-xxxx
+              </p>
+              <div class="flex justify-end"><span
+                  class="text-xxs text-gray-400">63자</span></div>
             </div>
           </div>
         </div>
