@@ -58,11 +58,11 @@ async function resolveIncludes(template, currentDir, includeStack = []) {
 function renderSidebar(activePage) {
   const navItems = [
     ['main.html', 'Main', 'fa-headset'],
-    ['chat.html', 'Chat', 'fa-comments'],
     ['pds.html', 'PDS', 'fa-phone-volume'],
     ['sms.html', 'SMS', 'fa-comment-sms'],
     ['callback.html', 'Callback', 'fa-phone'],
     ['specific.html', 'Specific', 'fa-user-check'],
+    ['chat.html', 'Chat', 'fa-comments'],
   ];
 
   const navMarkup = navItems
