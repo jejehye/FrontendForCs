@@ -187,7 +187,7 @@ body { background-color: #f3f4f6; }
 .status-busy { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
 .softphone-script-panel { border: 1px solid #e2e8f0; border-radius: 10px; background: #fff; padding: 10px 12px; margin-top: -8px; }
 .softphone-script-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-.softphone-script-title { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: #334155; }
+.softphone-script-title { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #334155; }
 .softphone-call-toggle { border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: 10px; font-weight: 700; padding: 4px 10px; cursor: pointer; }
 .softphone-call-toggle.is-active { border-color: #2563eb; background: #eff6ff; color: #1d4ed8; }
 .softphone-script-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
