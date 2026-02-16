@@ -222,7 +222,7 @@ document.querySelectorAll('.nav-item').forEach(item =>
         }
 
         noticePages.forEach(page => {
-          page.innerHTML = '';
+          page.replaceChildren();
           page.classList.add('hidden');
         });
 
@@ -376,8 +376,7 @@ document.querySelectorAll('.nav-item').forEach(item =>
           const maxPage = historyPages.length;
           activeHistoryPage = Math.min(maxPage, Math.max(1, pageNumber));
 
-          historyBody.innerHTML = '';
-          historyPages[activeHistoryPage - 1].forEach(row => historyBody.appendChild(row));
+          historyBody.replaceChildren(...historyPages[activeHistoryPage - 1]);
 
           historyPageButtons.forEach(button => {
             const page = Number(button.getAttribute('data-history-page-btn'));

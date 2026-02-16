@@ -98,11 +98,10 @@
         const setActiveTemplatePage = pageNumber =>
         {
           if (!templatePages.length) {
-            templateList.innerHTML = `
-              <div class="text-xs text-gray-400 text-center py-6">
-                검색 결과가 없습니다.
-              </div>
-            `;
+            const emptyState = document.createElement('div');
+            emptyState.className = 'text-xs text-gray-400 text-center py-6';
+            emptyState.textContent = '검색 결과가 없습니다.';
+            templateList.replaceChildren(emptyState);
             templatePageButtons.forEach(button => button.classList.remove('is-active'));
             templateFirstButton.disabled = true;
             templatePrevButton.disabled = true;
@@ -114,8 +113,7 @@
           const maxPage = templatePages.length;
           activeTemplatePage = Math.min(maxPage, Math.max(1, pageNumber));
 
-          templateList.innerHTML = '';
-          templatePages[activeTemplatePage - 1].forEach(card => templateList.appendChild(card));
+          templateList.replaceChildren(...templatePages[activeTemplatePage - 1]);
 
           templatePageButtons.forEach(button =>
           {
@@ -174,6 +172,37 @@
 
       const normalizePhone = value => value.replace(/[^0-9]/g, '');
 
+      const createHistoryMessageRow = message =>
+      {
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 3;
+        cell.className = 'text-center text-xs text-gray-400 py-3';
+        cell.textContent = message;
+        row.appendChild(cell);
+        return row;
+      };
+
+      const createHistoryRecordRow = record =>
+      {
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-blue-50 cursor-pointer';
+
+        const sentAtCell = document.createElement('td');
+        sentAtCell.textContent = record.sentAt;
+        row.appendChild(sentAtCell);
+
+        const templateCell = document.createElement('td');
+        templateCell.textContent = record.templateName;
+        row.appendChild(templateCell);
+
+        const statusCell = document.createElement('td');
+        statusCell.textContent = record.status;
+        row.appendChild(statusCell);
+
+        return row;
+      };
+
       const renderSmsHistoryRows = records =>
       {
         if (!smsHistoryBody) {
@@ -181,21 +210,11 @@
         }
 
         if (!records.length) {
-          smsHistoryBody.innerHTML = `
-            <tr>
-              <td colspan="3" class="text-center text-xs text-gray-400 py-3">
-                조회 결과가 없습니다.
-              </td>
-            </tr>`;
+          smsHistoryBody.replaceChildren(createHistoryMessageRow('조회 결과가 없습니다.'));
           return;
         }
 
-        smsHistoryBody.innerHTML = records.map(record => `
-          <tr class="hover:bg-blue-50 cursor-pointer">
-            <td>${record.sentAt}</td>
-            <td>${record.templateName}</td>
-            <td>${record.status}</td>
-          </tr>`).join('');
+        smsHistoryBody.replaceChildren(...records.map(createHistoryRecordRow));
       };
 
       const handleSmsHistorySearch = () =>
@@ -203,12 +222,9 @@
         const keyword = normalizePhone(smsHistoryPhoneInput?.value || '');
         if (!keyword) {
           if (smsHistoryBody) {
-            smsHistoryBody.innerHTML = `
-              <tr>
-                <td colspan="3" class="text-center text-xs text-gray-400 py-3">
-                  조회할 고객전화번호를 입력해 주세요.
-                </td>
-              </tr>`;
+            smsHistoryBody.replaceChildren(
+              createHistoryMessageRow('조회할 고객전화번호를 입력해 주세요.')
+            );
           }
           return;
         }

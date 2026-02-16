@@ -111,6 +111,36 @@ function getStatusLabel(status) {
   return '반려';
 }
 
+function createCell(content, className, title) {
+  const cell = document.createElement('td');
+  if (className) {
+    cell.className = className;
+  }
+  if (title) {
+    cell.title = title;
+  }
+  if (typeof content === 'string') {
+    cell.textContent = content;
+  } else if (content instanceof Node) {
+    cell.appendChild(content);
+  }
+  return cell;
+}
+
+function createEmptyRow(colspan, message) {
+  const row = document.createElement('tr');
+  row.appendChild(createCell(message, 'specific-empty'));
+  row.firstChild.colSpan = colspan;
+  return row;
+}
+
+function createStatusBadge(status) {
+  const badge = document.createElement('span');
+  badge.className = `specific-badge specific-badge-${status}`;
+  badge.textContent = getStatusLabel(status);
+  return badge;
+}
+
 function renderStats() {
   const pending = requests.filter((item) => item.status === 'pending').length;
   const approved = requests.filter((item) => item.status === 'approved').length;
@@ -138,36 +168,54 @@ function getFilteredRequests() {
 function renderTable() {
   const rows = getFilteredRequests();
   if (!rows.length) {
-    tableBody.innerHTML =
-      '<tr><td class="specific-empty" colspan="7">조회 결과가 없습니다.</td></tr>';
+    tableBody.replaceChildren(createEmptyRow(7, '조회 결과가 없습니다.'));
     return;
   }
 
-  tableBody.innerHTML = rows
-    .map((item) => {
-      const disabled = item.status !== 'pending';
-      const actionButtons = disabled
-        ? '<button class="specific-btn specific-btn-disabled" disabled>처리완료</button>'
-        : `
-          <div class="specific-row-actions">
-            <button class="specific-btn specific-btn-secondary" data-action="reject" data-id="${item.id}">반려</button>
-            <button class="specific-btn specific-btn-primary" data-action="approve" data-id="${item.id}">승인</button>
-          </div>
-        `;
+  const fragment = document.createDocumentFragment();
 
-      return `
-        <tr>
-          <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
-          <td>${item.empNo || '-'}</td>
-          <td>${item.name}</td>
-          <td>${item.category}</td>
-          <td>${item.time}</td>
-          <td class="specific-reason" title="${item.reason}">${item.reason}</td>
-          <td>${actionButtons}</td>
-        </tr>
-      `;
-    })
-    .join('');
+  rows.forEach((item) => {
+    const row = document.createElement('tr');
+    row.appendChild(createCell(createStatusBadge(item.status)));
+    row.appendChild(createCell(item.empNo || '-'));
+    row.appendChild(createCell(item.name));
+    row.appendChild(createCell(item.category));
+    row.appendChild(createCell(item.time));
+    row.appendChild(createCell(item.reason, 'specific-reason', item.reason));
+
+    const actionWrap = document.createElement('td');
+    if (item.status !== 'pending') {
+      const doneButton = document.createElement('button');
+      doneButton.className = 'specific-btn specific-btn-disabled';
+      doneButton.disabled = true;
+      doneButton.textContent = '처리완료';
+      actionWrap.appendChild(doneButton);
+    } else {
+      const actionBox = document.createElement('div');
+      actionBox.className = 'specific-row-actions';
+
+      const rejectButton = document.createElement('button');
+      rejectButton.className = 'specific-btn specific-btn-secondary';
+      rejectButton.setAttribute('data-action', 'reject');
+      rejectButton.setAttribute('data-id', String(item.id));
+      rejectButton.textContent = '반려';
+      actionBox.appendChild(rejectButton);
+
+      const approveButton = document.createElement('button');
+      approveButton.className = 'specific-btn specific-btn-primary';
+      approveButton.setAttribute('data-action', 'approve');
+      approveButton.setAttribute('data-id', String(item.id));
+      approveButton.textContent = '승인';
+      actionBox.appendChild(approveButton);
+
+      actionWrap.appendChild(actionBox);
+    }
+
+    row.appendChild(actionWrap);
+    fragment.appendChild(row);
+  });
+
+  tableBody.replaceChildren(fragment);
 }
 
 function renderMyRequestTable() {
@@ -185,24 +233,22 @@ function renderMyRequestTable() {
     .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
 
   if (!rows.length) {
-    myRequestBody.innerHTML =
-      '<tr><td class="specific-empty" colspan="5">본인이 신청한 내역이 없습니다.</td></tr>';
+    myRequestBody.replaceChildren(createEmptyRow(5, '본인이 신청한 내역이 없습니다.'));
     return;
   }
 
-  myRequestBody.innerHTML = rows
-    .map(
-      (item) => `
-      <tr>
-        <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
-        <td>${item.category}</td>
-        <td>${item.time}</td>
-        <td>${item.requestedAt}</td>
-        <td class="specific-reason" title="${item.reason}">${item.reason}</td>
-      </tr>
-    `
-    )
-    .join('');
+  const fragment = document.createDocumentFragment();
+  rows.forEach((item) => {
+    const row = document.createElement('tr');
+    row.appendChild(createCell(createStatusBadge(item.status)));
+    row.appendChild(createCell(item.category));
+    row.appendChild(createCell(item.time));
+    row.appendChild(createCell(item.requestedAt));
+    row.appendChild(createCell(item.reason, 'specific-reason', item.reason));
+    fragment.appendChild(row);
+  });
+
+  myRequestBody.replaceChildren(fragment);
 }
 
 function getFilteredHistory() {
@@ -231,21 +277,31 @@ function renderHistoryPagination(totalItems) {
   const totalPages = Math.max(1, Math.ceil(totalItems / historyPageSize));
   if (historyPage > totalPages) historyPage = totalPages;
 
+  const prevButton = document.createElement('button');
+  prevButton.className = 'specific-page-btn';
+  prevButton.setAttribute('data-history-page-nav', 'prev');
+  prevButton.disabled = historyPage === 1;
+  prevButton.textContent = '<';
+
+  const nextButton = document.createElement('button');
+  nextButton.className = 'specific-page-btn';
+  nextButton.setAttribute('data-history-page-nav', 'next');
+  nextButton.disabled = historyPage === totalPages;
+  nextButton.textContent = '>';
+
   const pageButtons = Array.from({ length: totalPages }, (_, index) => {
     const page = index + 1;
-    const activeClass = page === historyPage ? ' is-active' : '';
-    return `<button class="specific-page-btn${activeClass}" data-history-page="${page}">${page}</button>`;
-  }).join('');
+    const button = document.createElement('button');
+    button.className = 'specific-page-btn';
+    if (page === historyPage) {
+      button.classList.add('is-active');
+    }
+    button.setAttribute('data-history-page', String(page));
+    button.textContent = String(page);
+    return button;
+  });
 
-  historyPagination.innerHTML = `
-    <button class="specific-page-btn" data-history-page-nav="prev" ${
-      historyPage === 1 ? 'disabled' : ''
-    }>&lt;</button>
-    ${pageButtons}
-    <button class="specific-page-btn" data-history-page-nav="next" ${
-      historyPage === totalPages ? 'disabled' : ''
-    }>&gt;</button>
-  `;
+  historyPagination.replaceChildren(prevButton, ...pageButtons, nextButton);
 }
 
 function renderHistoryTable() {
@@ -258,27 +314,27 @@ function renderHistoryTable() {
   const pagedRows = rows.slice(startIndex, startIndex + historyPageSize);
 
   if (!rows.length) {
-    historyBody.innerHTML =
-      '<tr><td class="specific-empty" colspan="7">조건에 맞는 이전 처리내역이 없습니다.</td></tr>';
+    historyBody.replaceChildren(
+      createEmptyRow(7, '조건에 맞는 이전 처리내역이 없습니다.')
+    );
     renderHistoryPagination(0);
     return;
   }
 
-  historyBody.innerHTML = pagedRows
-    .map(
-      (item) => `
-      <tr>
-        <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
-        <td>${item.empNo || '-'}</td>
-        <td>${item.name}</td>
-        <td>${item.category}</td>
-        <td>${item.requestedAt}</td>
-        <td>${item.processedAt}</td>
-        <td class="specific-reason" title="${item.reason}">${item.reason}</td>
-      </tr>
-    `
-    )
-    .join('');
+  const fragment = document.createDocumentFragment();
+  pagedRows.forEach((item) => {
+    const row = document.createElement('tr');
+    row.appendChild(createCell(createStatusBadge(item.status)));
+    row.appendChild(createCell(item.empNo || '-'));
+    row.appendChild(createCell(item.name));
+    row.appendChild(createCell(item.category));
+    row.appendChild(createCell(item.requestedAt));
+    row.appendChild(createCell(item.processedAt));
+    row.appendChild(createCell(item.reason, 'specific-reason', item.reason));
+    fragment.appendChild(row);
+  });
+
+  historyBody.replaceChildren(fragment);
   renderHistoryPagination(rows.length);
 }
 
