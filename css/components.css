@@ -546,6 +546,8 @@ body { background-color: #f3f4f6; }
 .main-section-header .history-export-btn,
 .main-section-header .btn--history-reset,
 .main-section-header .btn--history-search,
+.main-my-history-actions .btn--history-search,
+.sms-history-search .btn--history-search,
 .panel__header--history .btn--history-reset,
 .panel__header--history .btn--history-search {
   min-height: 26px;
@@ -560,6 +562,8 @@ body { background-color: #f3f4f6; }
 .main-section-header .history-export-btn:hover,
 .main-section-header .btn--history-reset:hover,
 .main-section-header .btn--history-search:hover,
+.main-my-history-actions .btn--history-search:hover,
+.sms-history-search .btn--history-search:hover,
 .panel__header--history .btn--history-reset:hover,
 .panel__header--history .btn--history-search:hover {
   background: var(--main-header-control-bg-hover);
