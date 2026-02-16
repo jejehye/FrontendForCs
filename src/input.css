@@ -436,4 +436,32 @@
   .pagination__btn { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 text-xs; }
   .pagination__btn.is-active { @apply w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold; }
   .pagination__btn--muted { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs; }
+
+  /* Legacy sem-u aliases (keep sem-u classes, migrate templates gradually) */
+  .history-filter-row { @apply sem-u-069; }
+
+  .sms-template-search-input { @apply sem-u-054; }
+  .sms-section-title { @apply sem-u-082; }
+  .sms-field-input { @apply sem-u-083; }
+  .sms-btn-primary { @apply sem-u-084; }
+  .sms-recipient-list { @apply sem-u-085; }
+  .sms-variable-btn { @apply sem-u-086; }
+  .sms-message-input { @apply sem-u-087; }
+  .sms-send-now-btn { @apply sem-u-088; }
+  .sms-send-schedule-btn { @apply sem-u-089; }
+
+  .callback-call-btn { @apply sem-u-068; }
+  .callback-period-select { @apply sem-u-070; }
+  .callback-action-icon-blue { @apply sem-u-071; }
+  .callback-action-icon-teal { @apply sem-u-060; }
+  .callback-service-summary-row { @apply sem-u-061; }
+  .callback-note-textarea { @apply sem-u-072; }
+  .callback-note-option-row { @apply sem-u-073; }
+  .callback-note-cancel-btn { @apply sem-u-074; }
+  .callback-note-submit-btn { @apply sem-u-075; }
+
+  .pds-dial-start-btn { @apply sem-u-076; }
+  .pds-dial-pause-btn { @apply sem-u-077; }
+  .pds-campaign-select { @apply sem-u-078; }
+  .pds-filter-btn { @apply sem-u-079; }
 }

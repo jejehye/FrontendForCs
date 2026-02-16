@@ -21,7 +21,7 @@ window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });
         closeCallbackModal();
       }
 
-      document.querySelectorAll('.callback-card .shinhan-btn.sem-u-068').forEach(
+      document.querySelectorAll('.callback-card .callback-call-btn').forEach(
         button =>
         {
           button.addEventListener('click', function()
