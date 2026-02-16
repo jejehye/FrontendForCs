@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formatAccountNumber = value => value
         .replace(/[^0-9]/g, '')
-        .slice(0, 14)
-        .replace(/(\d{3})(\d{0,3})(\d{0,8})/, (_, p1, p2, p3) =>
+        .slice(0, 10)
+        .replace(/(\d{3})(\d{0,3})(\d{0,4})/, (_, p1, p2, p3) =>
         [p1, p2, p3].filter(Boolean).join('-'));
 
       const formatResidentId = value => value
