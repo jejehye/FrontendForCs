@@ -5,6 +5,14 @@ const queryAllHook = (standardSelector, legacySelector) => {
   if (standardNodes.length) return standardNodes;
   return legacySelector ? Array.from(document.querySelectorAll(legacySelector)) : [];
 };
+const setHookText = (key, value) => {
+  const node = getHook(key);
+  if (node) node.textContent = value;
+};
+const setHookWidth = (key, value) => {
+  const node = getHook(key);
+  if (node) node.style.width = value;
+};
 
 let isDialing = false;
         let currentCustomerIndex = 0;
@@ -197,14 +205,14 @@ let isDialing = false;
                 const successRate = Math.round((dialSuccess / dialAttempts) * 100);
                 const failRate = Math.round((dialFailed / dialAttempts) * 100);
                 
-                getHook('successRate').textContent = successRate + '%';
-                getHook('successBar').style.width = successRate + '%';
+                setHookText('successRate', successRate + '%');
+                setHookWidth('successBar', successRate + '%');
                 
-                getHook('noAnswerRate').textContent = Math.round(failRate * 0.6) + '%';
-                getHook('noAnswerBar').style.width = (failRate * 0.6) + '%';
+                setHookText('noAnswerRate', Math.round(failRate * 0.6) + '%');
+                setHookWidth('noAnswerBar', (failRate * 0.6) + '%');
                 
-                getHook('busyRate').textContent = Math.round(failRate * 0.4) + '%';
-                getHook('busyBar').style.width = (failRate * 0.4) + '%';
+                setHookText('busyRate', Math.round(failRate * 0.4) + '%');
+                setHookWidth('busyBar', (failRate * 0.4) + '%');
             }
         }
 

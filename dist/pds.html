@@ -390,53 +390,25 @@
             </div>
 
             <div class="card info-card pds-flex-fill">
-                <div class="pds-between-row-md">
-                    <h3 class="pds-card-title">
-                        <i class="fa-solid fa-chart-pie pds-accent-text"></i>
-                        결과 분석
+                <div class="pds-note-header">
+                    <h3 class="pds-note-title">
+                        <i class="fa-solid fa-pen-to-square pds-accent-text"></i>
+                        상담 메모
                     </h3>
+                    <span class="pds-note-hint">통화 핵심 내용을 간단히 기록하세요.</span>
                 </div>
-                <div class="pds-analysis-list">
-                    <div class="pds-analysis-item">
-                        <div class="pds-analysis-row">
-                            <span class="pds-label-text">연결 성공률</span>
-                            <span class="pds-analysis-rate pds-status-text-success" id="successRate" data-role="successRate">0%</span>
-                        </div>
-                        <div class="pds-progress-bar pds-progress-track">
-                            <div id="successBar" data-role="successBar" class="pds-progress-fill pds-progress-success"></div>
-                        </div>
-                    </div>
-                    <div class="pds-analysis-item">
-                        <div class="pds-analysis-row">
-                            <span class="pds-label-text">부재중</span>
-                            <span class="pds-analysis-rate pds-status-text-warning" id="noAnswerRate" data-role="noAnswerRate">0%</span>
-                        </div>
-                        <div class="pds-progress-bar pds-progress-track">
-                            <div id="noAnswerBar" data-role="noAnswerBar" class="pds-progress-fill pds-progress-warning"></div>
-                        </div>
-                    </div>
-                    <div class="pds-analysis-item">
-                        <div class="pds-analysis-row">
-                            <span class="pds-label-text">통화중/연결불가</span>
-                            <span class="pds-analysis-rate pds-status-text-danger" id="busyRate" data-role="busyRate">0%</span>
-                        </div>
-                        <div class="pds-progress-bar pds-progress-track">
-                            <div id="busyBar" data-role="busyBar" class="pds-progress-fill pds-progress-danger"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pds-summary-footer">
-                    <div class="pds-result-summary-grid">
-                        <div class="pds-result-summary-card pds-summary-vip-card">
-                            <div class="pds-result-summary-value pds-accent-text" id="vipCount">0</div>
-                            <div class="pds-meta-xxs">VIP 고객</div>
-                        </div>
-                        <div class="pds-result-summary-card pds-card-neutral">
-                            <div class="pds-result-summary-value pds-body-text" id="generalCount">0</div>
-                            <div class="pds-meta-xxs">일반 고객</div>
-                        </div>
-                    </div>
+                <textarea
+                    class="pds-note-textarea pds-input-border pds-note-input"
+                    placeholder="상담 내용을 기록하세요..."
+                    data-role="pds-center-note"
+                ></textarea>
+                <div class="pds-note-actions">
+                    <button class="pds-note-btn pds-note-btn--muted">
+                        <i class="fa-solid fa-rotate-left pds-icon-inline-sm"></i>초기화
+                    </button>
+                    <button class="pds-note-btn pds-note-btn--primary">
+                        <i class="fa-solid fa-save pds-icon-inline-sm"></i>메모 저장
+                    </button>
                 </div>
             </div>
 
