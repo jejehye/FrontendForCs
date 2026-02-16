@@ -243,8 +243,8 @@ body { background-color: #f3f4f6; }
 .pds-note-btn { flex: 1; font-size: 12px; font-weight: 600; padding: 9px 12px; border-radius: 10px; border: 1px solid transparent; transition: 0.2s; }
 .pds-note-btn--muted { background: #f5f5f7; color: var(--color-text-primary); border-color: #e5e7eb; }
 .pds-note-btn--muted:hover { background: #ececf0; }
-.pds-note-btn--primary { background: var(--color-primary); color: #fff; box-shadow: 0 4px 10px rgba(0, 70, 255, 0.22); }
-.pds-note-btn--primary:hover { background: #0039cc; }
+.pds-note-btn--primary { background: #2563eb; color: #fff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.22); }
+.pds-note-btn--primary:hover { background: #1d4ed8; }
 .pds-note-input { width: 100%; height: 96px; padding: 10px 12px; border-radius: 12px; font-size: 12px; line-height: 1.5; background: #fbfcff; border: 1px solid #d9deea; outline: none; }
 .pds-note-input::placeholder { color: #9ca3af; }
 .pds-note-input:focus { background: #fff; border-color: #8fb0ff; box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.12); }
