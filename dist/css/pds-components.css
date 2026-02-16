@@ -166,3 +166,70 @@ body {
 .pds-meta-xxs { font-size: 0.6875rem; color: var(--color-text-secondary); }
 .pds-customer-name { font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); }
 .pds-campaign-text { font-size: 0.6875rem; color: var(--color-text-secondary); margin-bottom: 8px; }
+
+.pds-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.pds-card-title { font-weight: 700; font-size: 0.875rem; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-card-title--lg { font-size: 1.125rem; }
+
+.pds-progress-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
+.pds-progress-inner { position: relative; }
+.pds-progress-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.pds-progress-percent { font-size: 1.875rem; font-weight: 700; color: var(--color-text-primary); }
+
+.pds-metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pds-metric-card { border-radius: 0.75rem; padding: 16px; border: 1px solid var(--color-panel-border); }
+.pds-metric-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.pds-metric-value { font-size: 1.5rem; font-weight: 700; }
+
+.pds-export-btn { font-size: 0.75rem; font-weight: 500; color: var(--color-primary); }
+.pds-log-box { border-radius: 0.75rem; padding: 12px; height: 16rem; overflow-y: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.75rem; background: var(--color-text-primary); }
+.pds-log-line--ok { color: #4ade80; }
+.pds-log-line--muted { color: #9ca3af; }
+
+.pds-analysis-list { display: flex; flex-direction: column; gap: 12px; }
+.pds-analysis-item { display: flex; flex-direction: column; gap: 4px; }
+.pds-analysis-row { display: flex; justify-content: space-between; font-size: 0.75rem; }
+.pds-analysis-rate { font-weight: 700; }
+.pds-progress-bar { width: 100%; border-radius: 9999px; height: 0.5rem; background: #e5e7eb; }
+.pds-progress-fill { height: 0.5rem; border-radius: 9999px; transition: all 0.5s; }
+
+.pds-summary-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-panel-border); }
+.pds-result-summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; text-align: center; }
+.pds-result-summary-card { border-radius: 0.5rem; padding: 8px; border: 1px solid var(--color-panel-border); }
+.pds-result-summary-value { font-size: 1.125rem; font-weight: 700; }
+
+.pds-right-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 4px; }
+.pds-right-tabs { display: flex; gap: 4px; }
+.pds-save-btn { color: #fff; font-size: 0.75rem; padding: 6px 12px; border-radius: 0.5rem; background: var(--color-primary); }
+
+.pds-current-call-card { padding: 16px; border-radius: 0.75rem; border: 1px solid var(--color-panel-border); background: #f8fafc; }
+.pds-current-top { text-align: center; margin-bottom: 16px; }
+.pds-current-name { font-weight: 700; font-size: 1.125rem; margin-bottom: 4px; color: var(--color-text-primary); }
+.pds-current-phone { font-size: 0.875rem; color: var(--color-text-secondary); }
+.pds-status-card { background: #fff; border-radius: 0.75rem; padding: 12px; margin-bottom: 12px; border: 1px solid var(--color-panel-border); }
+.pds-status-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.pds-status-row:last-child { margin-bottom: 0; }
+.pds-status-value { font-size: 0.75rem; font-weight: 700; color: var(--color-text-primary); }
+.pds-timer-value { font-size: 1.125rem; font-weight: 700; color: var(--color-text-primary); }
+.pds-call-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pds-call-btn { color: #fff; padding: 12px 16px; border-radius: 0.75rem; font-weight: 700; transition: 0.2s; }
+
+.pds-detail-title { font-weight: 700; font-size: 0.875rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-detail-list { display: flex; flex-direction: column; gap: 0; font-size: 0.75rem; }
+.pds-detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f5; }
+.pds-detail-row:last-child { border-bottom: 0; }
+.pds-detail-value { font-weight: 700; color: var(--color-text-primary); }
+.pds-detail-value--brand { color: var(--color-primary); }
+
+.pds-script-title { font-weight: 700; font-size: 0.875rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-script-block { border-radius: 0.75rem; padding: 12px; border: 1px solid var(--color-panel-border); background: #f8fafc; margin-bottom: 12px; }
+.pds-script-block:last-child { margin-bottom: 0; }
+.pds-script-block-title { font-size: 0.75rem; font-weight: 500; margin-bottom: 8px; color: var(--color-text-primary); }
+.pds-script-copy { font-size: 0.75rem; line-height: 1.625; color: var(--color-text-primary); }
+.pds-script-list { font-size: 0.75rem; line-height: 1.625; color: var(--color-text-primary); display: flex; flex-direction: column; gap: 4px; }
+
+.pds-note-title { font-weight: 700; font-size: 0.875rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-note-actions { display: flex; gap: 8px; margin-top: 8px; }
+.pds-note-btn { flex: 1; font-size: 0.75rem; padding: 8px 12px; border-radius: 0.5rem; }
+.pds-note-btn--muted { background: #f0f0f5; color: var(--color-text-primary); }
+.pds-note-btn--primary { background: var(--color-primary); color: #fff; }

@@ -313,121 +313,121 @@
         <div id="center-column" class="column col-center">
             
             <div class="card info-card">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-bold text-lg flex items-center gap-2 pds-text-primary">
+                <div class="pds-card-header">
+                    <h3 class="pds-card-title pds-card-title--lg">
                         <i class="fa-solid fa-gauge-high pds-text-brand"></i>
                         다이얼링 현황
                     </h3>
                     <span class="pds-text-xs-secondary" id="currentTime">2024-01-20 14:35:22</span>
                 </div>
 
-                <div class="flex justify-center mb-6">
-                    <div class="relative">
+                <div class="pds-progress-wrap">
+                    <div class="pds-progress-inner">
                         <svg class="progress-ring" viewBox="0 0 120 120">
                             <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
                             <circle id="progressCircle" class="progress-ring-circle" stroke="#0046ff" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
                         </svg>
-                        <div class="absolute inset-0 flex flex-col items-center justify-center">
-                            <span class="text-3xl font-bold pds-text-primary" id="progressPercent">0%</span>
+                        <div class="pds-progress-center">
+                            <span class="pds-progress-percent" id="progressPercent">0%</span>
                             <span class="pds-text-xs-secondary">진행률</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="rounded-xl p-4 border pds-card-muted">
-                        <div class="flex items-center gap-2 mb-2">
+                <div class="pds-metric-grid">
+                    <div class="pds-metric-card pds-card-muted">
+                        <div class="pds-metric-head">
                             <i class="fa-solid fa-phone pds-text-brand"></i>
                             <span class="pds-text-xs-secondary">발신 시도</span>
                         </div>
-                        <div class="text-2xl font-bold pds-text-primary" id="dialAttempts">0</div>
+                        <div class="pds-metric-value pds-text-primary" id="dialAttempts">0</div>
                     </div>
-                    <div class="rounded-xl p-4 border pds-card-success">
-                        <div class="flex items-center gap-2 mb-2">
+                    <div class="pds-metric-card pds-card-success">
+                        <div class="pds-metric-head">
                             <i class="fa-solid fa-check-circle pds-text-success"></i>
                             <span class="pds-text-xs-secondary">연결 성공</span>
                         </div>
-                        <div class="text-2xl font-bold pds-text-success" id="dialSuccess">0</div>
+                        <div class="pds-metric-value pds-text-success" id="dialSuccess">0</div>
                     </div>
-                    <div class="rounded-xl p-4 border pds-card-danger">
-                        <div class="flex items-center gap-2 mb-2">
+                    <div class="pds-metric-card pds-card-danger">
+                        <div class="pds-metric-head">
                             <i class="fa-solid fa-phone-slash pds-text-danger"></i>
                             <span class="pds-text-xs-secondary">연결 실패</span>
                         </div>
-                        <div class="text-2xl font-bold pds-text-danger" id="dialFailed">0</div>
+                        <div class="pds-metric-value pds-text-danger" id="dialFailed">0</div>
                     </div>
-                    <div class="rounded-xl p-4 border pds-card-muted">
-                        <div class="flex items-center gap-2 mb-2">
+                    <div class="pds-metric-card pds-card-muted">
+                        <div class="pds-metric-head">
                             <i class="fa-solid fa-clock pds-text-brand"></i>
                             <span class="pds-text-xs-secondary">평균 통화시간</span>
                         </div>
-                        <div class="text-2xl font-bold pds-text-primary" id="avgCallTime">0:00</div>
+                        <div class="pds-metric-value pds-text-primary" id="avgCallTime">0:00</div>
                     </div>
                 </div>
             </div>
 
             <div class="card info-card">
                 <div class="pds-between-row-md">
-                    <h3 class="font-bold text-sm flex items-center gap-2 pds-text-primary">
+                    <h3 class="pds-card-title">
                         <i class="fa-solid fa-list-check pds-text-brand"></i>
                         실시간 다이얼링 로그
                     </h3>
-                    <button class="text-xs font-medium pds-text-brand">
+                    <button class="pds-export-btn">
                         <i class="fa-solid fa-download mr-1"></i>내보내기
                     </button>
                 </div>
-                <div class="rounded-xl p-3 h-64 overflow-y-auto font-mono text-xs pds-log-bg" id="dialingLog">
-                    <div class="text-green-400">[시스템] PDS 자동다이얼링 시스템 준비완료</div>
-                    <div class="text-gray-400">[시스템] 배정된 고객: 15명</div>
+                <div class="pds-log-box" id="dialingLog">
+                    <div class="pds-log-line--ok">[시스템] PDS 자동다이얼링 시스템 준비완료</div>
+                    <div class="pds-log-line--muted">[시스템] 배정된 고객: 15명</div>
                     <div class="pds-text-brand">[시스템] 다이얼링 시작 대기중...</div>
                 </div>
             </div>
 
             <div class="card info-card flex-1">
                 <div class="pds-between-row-md">
-                    <h3 class="font-bold text-sm flex items-center gap-2 pds-text-primary">
+                    <h3 class="pds-card-title">
                         <i class="fa-solid fa-chart-pie pds-text-brand"></i>
                         결과 분석
                     </h3>
                 </div>
-                <div class="space-y-3">
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
+                <div class="pds-analysis-list">
+                    <div class="pds-analysis-item">
+                        <div class="pds-analysis-row">
                             <span class="pds-text-secondary">연결 성공률</span>
-                            <span class="font-bold pds-text-success" id="successRate">0%</span>
+                            <span class="pds-analysis-rate pds-text-success" id="successRate">0%</span>
                         </div>
-                        <div class="w-full rounded-full h-2 pds-progress-track">
-                            <div id="successBar" class="h-2 rounded-full transition-all duration-500 pds-progress-success"></div>
+                        <div class="pds-progress-bar pds-progress-track">
+                            <div id="successBar" class="pds-progress-fill pds-progress-success"></div>
                         </div>
                     </div>
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
+                    <div class="pds-analysis-item">
+                        <div class="pds-analysis-row">
                             <span class="pds-text-secondary">부재중</span>
-                            <span class="font-bold pds-text-warning" id="noAnswerRate">0%</span>
+                            <span class="pds-analysis-rate pds-text-warning" id="noAnswerRate">0%</span>
                         </div>
-                        <div class="w-full rounded-full h-2 pds-progress-track">
-                            <div id="noAnswerBar" class="h-2 rounded-full transition-all duration-500 pds-progress-warning"></div>
+                        <div class="pds-progress-bar pds-progress-track">
+                            <div id="noAnswerBar" class="pds-progress-fill pds-progress-warning"></div>
                         </div>
                     </div>
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
+                    <div class="pds-analysis-item">
+                        <div class="pds-analysis-row">
                             <span class="pds-text-secondary">통화중/연결불가</span>
-                            <span class="font-bold pds-text-danger" id="busyRate">0%</span>
+                            <span class="pds-analysis-rate pds-text-danger" id="busyRate">0%</span>
                         </div>
-                        <div class="w-full rounded-full h-2 pds-progress-track">
-                            <div id="busyBar" class="h-2 rounded-full transition-all duration-500 pds-progress-danger"></div>
+                        <div class="pds-progress-bar pds-progress-track">
+                            <div id="busyBar" class="pds-progress-fill pds-progress-danger"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-4 pt-4 border-t pds-border-subtle">
-                    <div class="grid grid-cols-2 gap-3 text-center">
-                        <div class="rounded-lg p-2 border pds-badge-vip-bg">
-                            <div class="text-lg font-bold pds-text-brand" id="vipCount">0</div>
+                <div class="pds-summary-footer">
+                    <div class="pds-result-summary-grid">
+                        <div class="pds-result-summary-card pds-badge-vip-bg">
+                            <div class="pds-result-summary-value pds-text-brand" id="vipCount">0</div>
                             <div class="pds-meta-xxs">VIP 고객</div>
                         </div>
-                        <div class="rounded-lg p-2 border pds-card-neutral">
-                            <div class="text-lg font-bold pds-text-primary" id="generalCount">0</div>
+                        <div class="pds-result-summary-card pds-card-neutral">
+                            <div class="pds-result-summary-value pds-text-primary" id="generalCount">0</div>
                             <div class="pds-meta-xxs">일반 고객</div>
                         </div>
                     </div>
@@ -438,8 +438,8 @@
 
         <div id="right-column" class="column col-right">
             
-            <div class="flex items-center justify-between border-b pb-1 pds-border-subtle">
-                <div class="flex gap-1">
+            <div class="pds-right-header">
+                <div class="pds-right-tabs">
                     <div class="tab-item tab-item-primary active">
                         <i class="fa-solid fa-phone-volume"></i>
                         현재 통화
@@ -449,113 +449,113 @@
                         고객정보
                     </div>
                 </div>
-                <button class="text-white text-xs px-3 py-1.5 rounded-lg pds-bg-brand">상담저장</button>
+                <button class="pds-save-btn">상담저장</button>
             </div>
 
-            <div class="p-4 rounded-xl border pds-card-muted">
-                <div class="text-center mb-4">
+            <div class="pds-current-call-card pds-card-muted">
+                <div class="pds-current-top">
                     <div class="pds-header-gradient sem-u-080">
                         <i class="fa-solid fa-phone-volume text-white text-3xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 pds-text-primary" id="currentCustomerName">대기중</h3>
-                    <p class="text-sm pds-text-secondary" id="currentCustomerPhone">-</p>
+                    <h3 class="pds-current-name" id="currentCustomerName">대기중</h3>
+                    <p class="pds-current-phone" id="currentCustomerPhone">-</p>
                 </div>
 
-                <div class="bg-white rounded-xl p-3 mb-3 border pds-border-subtle">
-                    <div class="flex justify-between items-center mb-2">
+                <div class="pds-status-card">
+                    <div class="pds-status-row">
                         <span class="pds-text-xs-secondary">통화 상태</span>
-                        <span class="text-xs font-bold pds-text-primary" id="callStatus">연결 대기</span>
+                        <span class="pds-status-value" id="callStatus">연결 대기</span>
                     </div>
-                    <div class="flex justify-between items-center">
+                    <div class="pds-status-row">
                         <span class="pds-text-xs-secondary">통화 시간</span>
-                        <span class="text-lg font-bold pds-text-primary" id="callTimer">00:00</span>
+                        <span class="pds-timer-value" id="callTimer">00:00</span>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2">
-                    <button class="text-white px-4 py-3 rounded-xl font-bold transition pds-bg-danger">
+                <div class="pds-call-actions">
+                    <button class="pds-call-btn pds-bg-danger">
                         <i class="fa-solid fa-phone-slash mr-2"></i>종료
                     </button>
-                    <button class="text-white px-4 py-3 rounded-xl font-bold transition pds-bg-success">
+                    <button class="pds-call-btn pds-bg-success">
                         <i class="fa-solid fa-check mr-2"></i>완료
                     </button>
                 </div>
             </div>
 
             <div class="card info-card">
-                <h3 class="font-bold text-sm mb-3 flex items-center gap-2 pds-text-primary">
+                <h3 class="pds-detail-title">
                     <i class="fa-solid fa-user-circle pds-text-brand"></i>
                     고객 정보
                 </h3>
-                <div class="space-y-2 text-xs">
-                    <div class="flex justify-between py-2 border-b pds-border-light">
+                <div class="pds-detail-list">
+                    <div class="pds-detail-row">
                         <span class="pds-text-secondary">고객명</span>
-                        <span class="font-bold pds-text-primary" id="detailCustomerName">-</span>
+                        <span class="pds-detail-value" id="detailCustomerName">-</span>
                     </div>
-                    <div class="flex justify-between py-2 border-b pds-border-light">
+                    <div class="pds-detail-row">
                         <span class="pds-text-secondary">연락처</span>
-                        <span class="font-bold pds-text-primary" id="detailCustomerPhone">-</span>
+                        <span class="pds-detail-value" id="detailCustomerPhone">-</span>
                     </div>
-                    <div class="flex justify-between py-2 border-b pds-border-light">
+                    <div class="pds-detail-row">
                         <span class="pds-text-secondary">고객등급</span>
-                        <span class="font-bold pds-text-brand" id="detailCustomerGrade">-</span>
+                        <span class="pds-detail-value pds-detail-value--brand" id="detailCustomerGrade">-</span>
                     </div>
-                    <div class="flex justify-between py-2 border-b pds-border-light">
+                    <div class="pds-detail-row">
                         <span class="pds-text-secondary">캠페인</span>
-                        <span class="font-bold pds-text-brand" id="detailCampaign">-</span>
+                        <span class="pds-detail-value pds-detail-value--brand" id="detailCampaign">-</span>
                     </div>
-                    <div class="flex justify-between py-2">
+                    <div class="pds-detail-row">
                         <span class="pds-text-secondary">배정시간</span>
-                        <span class="pds-text-primary" id="detailAssignTime">-</span>
+                        <span class="pds-detail-value" id="detailAssignTime">-</span>
                     </div>
                 </div>
             </div>
 
             <div class="card info-card flex-1">
-                <h3 class="font-bold text-sm mb-3 flex items-center gap-2 pds-text-primary">
+                <h3 class="pds-script-title">
                     <i class="fa-solid fa-book-open pds-text-brand"></i>
                     상담 스크립트
                 </h3>
-                <div class="rounded-xl p-3 border mb-3 pds-card-muted">
-                    <p class="text-xs font-medium mb-2 pds-text-primary">
+                <div class="pds-script-block pds-card-muted">
+                    <p class="pds-script-block-title">
                         <i class="fa-solid fa-lightbulb mr-1 pds-text-warning"></i>인사말
                     </p>
-                    <p class="text-xs leading-relaxed pds-text-primary">
+                    <p class="pds-script-copy">
                         안녕하세요, [고객명]님. 저는 신한투자증권 [상담원명]입니다. 
                         오늘 [캠페인명] 관련하여 연락드렸습니다.
                     </p>
                 </div>
-                <div class="rounded-xl p-3 border mb-3 pds-card-muted">
-                    <p class="text-xs font-medium mb-2 pds-text-primary">
+                <div class="pds-script-block pds-card-muted">
+                    <p class="pds-script-block-title">
                         <i class="fa-solid fa-comments mr-1 pds-text-brand"></i>주요 안내사항
                     </p>
-                    <ul class="text-xs leading-relaxed space-y-1 pds-text-primary">
+                    <ul class="pds-script-list">
                         <li>• 글로벌 자산배분 펀드 신규 출시</li>
                         <li>• VIP 고객 대상 프리미엄 리서치 제공</li>
                         <li>• 포트폴리오 리밸런싱 제안</li>
                     </ul>
                 </div>
-                <div class="rounded-xl p-3 border pds-card-muted">
-                    <p class="text-xs font-medium mb-2 pds-text-primary">
+                <div class="pds-script-block pds-card-muted">
+                    <p class="pds-script-block-title">
                         <i class="fa-solid fa-exclamation-circle mr-1 pds-text-danger"></i>주의사항
                     </p>
-                    <p class="text-xs leading-relaxed pds-text-primary">
+                    <p class="pds-script-copy">
                         고객의 투자 성향을 확인하고, 적합한 상품을 안내합니다.
                     </p>
                 </div>
             </div>
 
             <div class="card info-card">
-                <h3 class="font-bold text-sm mb-3 flex items-center gap-2 pds-text-primary">
+                <h3 class="pds-note-title">
                     <i class="fa-solid fa-pen-to-square pds-text-brand"></i>
                     상담 메모
                 </h3>
                 <textarea class="resize-none pds-border-subtle sem-u-081" placeholder="상담 내용을 기록하세요..."></textarea>
-                <div class="flex gap-2 mt-2">
-                    <button class="flex-1 text-xs px-3 py-2 rounded-lg pds-bg-neutral pds-text-primary">
+                <div class="pds-note-actions">
+                    <button class="pds-note-btn pds-note-btn--muted">
                         <i class="fa-solid fa-clock mr-1"></i>재콜백 예약
                     </button>
-                    <button class="flex-1 text-white text-xs px-3 py-2 rounded-lg pds-bg-brand">
+                    <button class="pds-note-btn pds-note-btn--primary">
                         <i class="fa-solid fa-save mr-1"></i>저장
                     </button>
                 </div>
