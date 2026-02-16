@@ -2,11 +2,22 @@
   <div class="mb-6">
     <div class="sidebar-logo">S</div>
   </div>
-  <div data-page="main.html" title="Main" class="nav-item{% if active_page == 'main.html' %} active{% endif %}"><i class="fa-solid fa-headset"></i></div>
-  <div data-page="pds.html" title="PDS" class="nav-item{% if active_page == 'pds.html' %} active{% endif %}"><i class="fa-solid fa-phone-volume"></i></div>
-  <div data-page="sms.html" title="SMS" class="nav-item{% if active_page == 'sms.html' %} active{% endif %}"><i class="fa-solid fa-comment-sms"></i></div>
-  <div data-page="callback.html" title="Callback" class="nav-item{% if active_page == 'callback.html' %} active{% endif %}"><i class="fa-solid fa-phone"></i></div>
-  <div data-page="specific.html" title="Specific" class="nav-item{% if active_page == 'specific.html' %} active{% endif %}"><i class="fa-solid fa-user-check"></i></div>
-  <div data-page="chat.html" title="Chat" class="nav-item{% if active_page == 'chat.html' %} active{% endif %}"><i class="fa-solid fa-comments"></i></div>
+  {% set nav_items = [
+    { "page": "main.html", "title": "Main", "icon": "fa-headset" },
+    { "page": "pds.html", "title": "PDS", "icon": "fa-phone-volume" },
+    { "page": "sms.html", "title": "SMS", "icon": "fa-comment-sms" },
+    { "page": "callback.html", "title": "Callback", "icon": "fa-phone" },
+    { "page": "specific.html", "title": "Specific", "icon": "fa-user-check" },
+    { "page": "chat.html", "title": "Chat", "icon": "fa-comments" }
+  ] %}
+  {% for item in nav_items %}
+    <div
+      data-page="{{ item.page }}"
+      title="{{ item.title }}"
+      class="nav-item{% if active_page == item.page %} active{% endif %}"
+    >
+      <i class="fa-solid {{ item.icon }}"></i>
+    </div>
+  {% endfor %}
   <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
 </div>
