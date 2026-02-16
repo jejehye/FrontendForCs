@@ -28,7 +28,7 @@ body { background-color: #f3f4f6; }
 
 .col-sidebar { background: #0046ff; align-items: center; padding-top: 20px; z-index: 50; }
 .col-sms { border-right: 1px solid var(--color-panel-border); background: #fff; }
-.col-center { border-right: 1px solid var(--color-panel-border); background: #f8fafc; padding: 16px; gap: 16px; overflow-y: auto; }
+.col-center { border-right: 1px solid var(--color-panel-border); background: #fff; padding: 16px; gap: 16px; overflow-y: auto; }
 .col-right { background: #fff; padding: 16px; gap: 16px; overflow-y: auto; }
 
 .chat-panel-header { padding: 16px; border-bottom: 1px solid #e5e7eb; background: #fff; }
