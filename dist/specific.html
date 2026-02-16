@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>업무 제외 관리</title>
+    <title>특이사항 등록/승인</title>
     <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="css/specific.css" />
   </head>
@@ -28,21 +28,21 @@
         <section class="specific-header">
           <div class="specific-header-title">
             <i class="fa-solid fa-user-check"></i>
-            <h1>콜 미수신/업무제외 관리자 화면</h1>
+            <h1>특이사항 등록/승인 관리자 화면</h1>
           </div>
           <span class="specific-header-meta">등록, 전체조회, 승인/반려를 한 번에 처리합니다.</span>
         </section>
 
         <div class="specific-grid">
           <section class="specific-panel">
-            <div class="specific-panel-title">상담원 등록</div>
+            <div class="specific-panel-title">특이사항 등록</div>
             <div class="specific-form">
               <div class="specific-field">
                 <label for="agentName">상담원명</label>
                 <input id="agentName" type="text" class="specific-input" placeholder="예) 홍길동" />
               </div>
               <div class="specific-field">
-                <label for="excludeType">제외 유형</label>
+                <label for="excludeType">특이사항 유형</label>
                 <select id="excludeType" class="specific-input">
                   <option value="콜 미수신">콜 미수신</option>
                   <option value="교육/회의">교육/회의</option>
@@ -56,7 +56,7 @@
               </div>
               <div class="specific-field">
                 <label for="excludeReason">사유</label>
-                <textarea id="excludeReason" rows="4" class="specific-input specific-textarea" placeholder="업무 제외 사유를 입력하세요."></textarea>
+                <textarea id="excludeReason" rows="4" class="specific-input specific-textarea" placeholder="특이사항 내용을 입력하세요."></textarea>
               </div>
               <button id="registerExcludeBtn" class="specific-btn specific-btn-primary">
                 <i class="fa-solid fa-plus"></i> 승인 요청 등록
