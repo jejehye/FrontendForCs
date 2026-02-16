@@ -86,6 +86,7 @@ body {
 .customer-warning-body { flex: 1 1 0%; }
 .customer-warning-title { font-size: 0.75rem; line-height: 1rem; font-weight: 700; color: rgb(146 64 14); display: block; margin-bottom: 0.125rem; }
 .customer-warning-text { font-size: 0.75rem; line-height: 1rem; color: rgb(180 83 9); }
+.customer-icon-gap-1 { margin-right: 0.25rem; }
 .warning-tabs { display: flex; border-bottom: 1px solid #e5e7eb; }
 .warning-tab { padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 500; color: #475569; background: #f8fafc; border: none; border-right: 1px solid #e5e7eb; }
 .warning-tab:last-child { border-right: none; }
