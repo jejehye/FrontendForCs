@@ -136,6 +136,66 @@ window.MainPageHistory = (() => {
     return Number.isNaN(date.getTime()) ? 0 : date.getTime();
   };
 
+  const initHistoryDetailModal = historyBody => {
+    const detailModal = selectOne('[data-role="history-detail-modal"]');
+    if (!historyBody || !detailModal) {
+      return;
+    }
+
+    const detailFields = {
+      timestamp: selectOne('[data-role="detail-timestamp"]'),
+      agent: selectOne('[data-role="detail-agent"]'),
+      customer: selectOne('[data-role="detail-customer"]'),
+      account: selectOne('[data-role="detail-account"]'),
+      type: selectOne('[data-role="detail-type"]'),
+      channel: selectOne('[data-role="detail-channel"]'),
+      content: selectOne('[data-role="detail-content"]')
+    };
+
+    const closeDetailModal = () => {
+      detailModal.classList.remove('is-active');
+      detailModal.setAttribute('aria-hidden', 'true');
+    };
+
+    const openDetailModal = row => {
+      const cells = row.querySelectorAll('td');
+      detailFields.timestamp.textContent = cells[1]?.textContent.trim() || '-';
+      detailFields.agent.textContent = cells[2]?.textContent.trim() || '-';
+      detailFields.customer.textContent = cells[4]?.textContent.trim() || '-';
+      detailFields.account.textContent = cells[5]?.textContent.trim() || '-';
+      detailFields.type.textContent = cells[6]?.textContent.trim() || '-';
+      detailFields.channel.textContent = cells[7]?.textContent.trim() || '-';
+      detailFields.content.textContent = cells[8]?.textContent.trim() || '-';
+
+      detailModal.classList.add('is-active');
+      detailModal.setAttribute('aria-hidden', 'false');
+    };
+
+    historyBody.addEventListener('click', event => {
+      const row = event.target.closest('tr.tbl__row');
+      if (!row) {
+        return;
+      }
+      openDetailModal(row);
+    });
+
+    selectAll('[data-action="history-detail-close"]').forEach(button => {
+      button.addEventListener('click', closeDetailModal);
+    });
+
+    detailModal.addEventListener('click', event => {
+      if (event.target === detailModal) {
+        closeDetailModal();
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && detailModal.classList.contains('is-active')) {
+        closeDetailModal();
+      }
+    });
+  };
+
   const initHistoryPagination = () => {
     const historyBody = selectOne('[data-role="history-body"]', '[data-history-body]');
     const historyPagination = selectOne('[data-role="history-pagination"]', '[data-history-pagination]');
@@ -220,6 +280,7 @@ window.MainPageHistory = (() => {
     historyNextButton.addEventListener('click', () => setActiveHistoryPage(activeHistoryPage + 1));
     historyLastButton.addEventListener('click', () => setActiveHistoryPage(historyPages.length));
 
+    initHistoryDetailModal(historyBody);
     setActiveHistoryPage(1);
   };
 

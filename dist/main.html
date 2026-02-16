@@ -123,7 +123,7 @@
   <!-- ===================== Verification ===================== -->
   <section>
     <form class="account-info-panel">
-      <header class="account-panel-title-row main-section-header">
+      <header class="account-panel-title-row">
         <span class="account-panel-title">본인확인 정보</span>
         <span class="account-panel-helper">필수 항목을 입력해 주세요</span>
       </header>
@@ -763,10 +763,10 @@
   </section>
   <!-- ===================== Coaching/VOC ===================== -->
   <section>
+    <header class="panel-header main-live-header main-coaching-header">
+      <span class="weight-semibold">실시간 코칭</span>
+    </header>
     <div class="coaching-panel">
-      <header class="main-section-header main-section-header--coaching">
-        <h3 class="main-center-coaching-title">실시간 코칭</h3>
-      </header>
       <div class="coaching-placeholder">실시간 코칭내용 주문별 내용 확인하세요.</div>
     </div>
     <div class="main-center-warning-wrap">
@@ -953,7 +953,7 @@
       </div>
     </div>
   </div>
-  <div class="history-editor-panel history-editor-panel--compact">
+  <div class="info-card history-editor-panel history-editor-panel--compact">
     <div class="history-editor-header main-section-header">
       <h4 class="history-editor-title">
         <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
@@ -1202,6 +1202,50 @@
   </div>
 </div>
 
+
+<div class="history-detail-modal" data-role="history-detail-modal" aria-hidden="true">
+  <div class="history-detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="history-detail-title">
+    <div class="history-detail-modal__header">
+      <h4 id="history-detail-title" class="history-detail-modal__title">상담 상세내역</h4>
+      <button type="button" class="history-detail-modal__close" data-action="history-detail-close" aria-label="닫기">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="history-detail-modal__body">
+      <div class="history-detail-row">
+        <span class="history-detail-label">시간</span>
+        <span class="history-detail-value" data-role="detail-timestamp">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">상담원</span>
+        <span class="history-detail-value" data-role="detail-agent">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">고객명</span>
+        <span class="history-detail-value" data-role="detail-customer">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">계좌번호</span>
+        <span class="history-detail-value" data-role="detail-account">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">상담유형</span>
+        <span class="history-detail-value" data-role="detail-type">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">채널</span>
+        <span class="history-detail-value" data-role="detail-channel">-</span>
+      </div>
+      <div class="history-detail-row history-detail-row--full">
+        <span class="history-detail-label">상담내용</span>
+        <p class="history-detail-content" data-role="detail-content">-</p>
+      </div>
+    </div>
+    <div class="history-detail-modal__footer">
+      <button type="button" class="history-detail-modal__confirm" data-action="history-detail-close">확인</button>
+    </div>
+  </div>
+</div>
 
 
   </div>

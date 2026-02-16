@@ -3,3 +3,47 @@
 {% include "partials/pages/main/sections/chat-column.njk" %}
 {% include "partials/pages/main/sections/center-column.njk" %}
 {% include "partials/pages/main/sections/right-column.njk" %}
+
+<div class="history-detail-modal" data-role="history-detail-modal" aria-hidden="true">
+  <div class="history-detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="history-detail-title">
+    <div class="history-detail-modal__header">
+      <h4 id="history-detail-title" class="history-detail-modal__title">상담 상세내역</h4>
+      <button type="button" class="history-detail-modal__close" data-action="history-detail-close" aria-label="닫기">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="history-detail-modal__body">
+      <div class="history-detail-row">
+        <span class="history-detail-label">시간</span>
+        <span class="history-detail-value" data-role="detail-timestamp">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">상담원</span>
+        <span class="history-detail-value" data-role="detail-agent">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">고객명</span>
+        <span class="history-detail-value" data-role="detail-customer">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">계좌번호</span>
+        <span class="history-detail-value" data-role="detail-account">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">상담유형</span>
+        <span class="history-detail-value" data-role="detail-type">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">채널</span>
+        <span class="history-detail-value" data-role="detail-channel">-</span>
+      </div>
+      <div class="history-detail-row history-detail-row--full">
+        <span class="history-detail-label">상담내용</span>
+        <p class="history-detail-content" data-role="detail-content">-</p>
+      </div>
+    </div>
+    <div class="history-detail-modal__footer">
+      <button type="button" class="history-detail-modal__confirm" data-action="history-detail-close">확인</button>
+    </div>
+  </div>
+</div>
