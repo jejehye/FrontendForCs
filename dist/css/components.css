@@ -174,6 +174,11 @@ body { background-color: #f3f4f6; }
   justify-content: space-between;
   padding: 1.6px 0 2.4px;
 }
+.history-editor-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 .history-editor-title {
   display: inline-flex;
   align-items: center;
@@ -253,6 +258,39 @@ body { background-color: #f3f4f6; }
   color: #6b7280;
 }
 .history-editor-actions { display: flex; gap: 8px; }
+.history-editor-actions--inline { gap: 6px; }
+.history-editor-btn-compact {
+  min-height: 27px;
+  padding: 4px 9px;
+  font-size: 10px;
+  line-height: 1.1;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-weight: 700;
+}
+.history-editor-actions--inline .btn-secondary.history-editor-btn-compact {
+  background: #ffffff;
+  color: #334155;
+}
+.history-editor-actions--inline .btn-secondary.history-editor-btn-compact:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+.history-editor-actions--inline .btn-primary.history-editor-btn-compact {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.24);
+}
+.history-editor-actions--inline .btn-primary.history-editor-btn-compact:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+.history-editor-timestamp--tail {
+  margin-left: 2px;
+  min-width: 112px;
+  text-align: right;
+}
 .history-editor-actions-wrap {
   border: 1px solid #dbeafe;
   background: #ffffff;

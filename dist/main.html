@@ -957,7 +957,16 @@
         <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
         상담이력 입력
       </h4>
-      <span class="history-editor-timestamp" data-role="current-datetime" data-current-datetime></span>
+      <div class="history-editor-header-actions">
+        <div class="history-editor-actions history-editor-actions--inline">
+          <button class="btn-secondary consultation-reset-btn history-editor-btn-compact">
+            <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화</button
+          ><button class="btn-primary consultation-save-btn history-editor-btn-compact">
+            <i class="fa-solid fa-save history-action-icon-gap"></i>저장
+          </button>
+        </div>
+        <span class="history-editor-timestamp history-editor-timestamp--tail" data-role="current-datetime" data-current-datetime></span>
+      </div>
     </div>
     <div class="history-editor-form">
       <div class="history-editor-card">
@@ -1013,15 +1022,6 @@
             <span>작성 팁: 문의 → 조치 → 결과 순으로 작성</span
             ><span>0 / 500자</span>
           </div>
-        </div>
-      </div>
-      <div class="history-editor-actions-wrap">
-        <div class="history-editor-actions">
-          <button class="btn-secondary consultation-reset-btn">
-            <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화</button
-          ><button class="btn-primary consultation-save-btn">
-            <i class="fa-solid fa-save history-action-icon-gap"></i>저장
-          </button>
         </div>
       </div>
     </div>
