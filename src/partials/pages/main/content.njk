@@ -104,27 +104,27 @@
 
   <!-- ===================== Chat ===================== -->
   <section>
-    <header class="panel-header bg-blue-600 p-3 text-inverse">
+    <header class="panel-header main-live-header">
       <span class="weight-semibold">실시간 대화</span>
-      <div class="flex items-center gap-2">
-        <div class="relative">
+      <div class="main-live-header-actions">
+        <div class="main-live-search-wrap">
           <input
             type="text"
             placeholder="검색어를 입력하세요"
             class="field placeholder-blue-200 chat-search-input"
           />
           <i
-            class="fa-solid fa-magnifying-glass absolute right-2 top-1.5 text-inverse-soft font-xs"
+            class="fa-solid fa-magnifying-glass main-live-search-icon"
           ></i>
         </div>
-        <button class="text-inverse hover-text-inverse-soft">
+        <button class="main-live-pause-btn">
           <i class="fa-solid fa-pause"></i>
         </button>
       </div>
     </header>
     <div class="chat-message-list">
-      <div class="flex flex-col items-end">
-        <div class="flex items-center gap-2 mb-1">
+      <div class="main-live-msg main-live-msg--agent">
+        <div class="main-live-msg-meta">
           <span class="font-xs text-muted">14:23</span>
           <span class="font-xs weight-bold text-brand">상담사 K</span>
         </div>
@@ -132,25 +132,25 @@
           안녕하세요, 신한투자증권입니다. 무엇을 도와드릴까요?
         </div>
       </div>
-      <div class="flex flex-col items-start">
-        <div class="flex items-center gap-2 mb-1">
+      <div class="main-live-msg main-live-msg--customer">
+        <div class="main-live-msg-meta">
           <i
-            class="fa-regular fa-user text-muted bg-gray-200 p-1 rounded-full font-xs"
+            class="fa-regular fa-user main-live-user-icon"
           ></i>
           <span class="font-xs weight-bold text-body-strong">고객01</span>
         </div>
         <div class="chat-bubble customer shadow-sm">
           미국 ETF 투자를 시작하고 싶은데 어떻게 하면 될까요?
         </div>
-        <div class="mt-2 ml-1">
-          <span class="tag-pill bg-blue-600">해외투자</span>
-          <span class="tag-pill bg-blue-600">ETF</span>
-          <span class="tag-pill bg-teal-500">신규투자</span>
+        <div class="main-live-tag-row">
+          <span class="tag-pill tag-pill--brand">해외투자</span>
+          <span class="tag-pill tag-pill--brand">ETF</span>
+          <span class="tag-pill tag-pill--teal">신규투자</span>
         </div>
-        <span class="font-xs text-muted ml-1 mt-1">14:24</span>
+        <span class="font-xs text-muted main-live-msg-time">14:24</span>
       </div>
-      <div class="flex flex-col items-end">
-        <div class="flex items-center gap-2 mb-1">
+      <div class="main-live-msg main-live-msg--agent">
+        <div class="main-live-msg-meta">
           <span class="font-xs text-muted">14:24</span>
           <span class="font-xs weight-bold text-brand">상담사 K</span>
         </div>
@@ -159,26 +159,26 @@
           필요합니다.
         </div>
       </div>
-      <div class="flex flex-col items-start">
-        <div class="flex items-center gap-2 mb-1">
+      <div class="main-live-msg main-live-msg--customer">
+        <div class="main-live-msg-meta">
           <i
-            class="fa-regular fa-user text-muted bg-gray-200 p-1 rounded-full font-xs"
+            class="fa-regular fa-user main-live-user-icon"
           ></i>
           <span class="font-xs weight-bold text-body-strong">고객01</span>
         </div>
         <div class="chat-bubble customer shadow-sm">
           계좌는 이미 있어요. 수수료 혜택이 있나요?
         </div>
-        <div class="mt-2 ml-1">
-          <span class="tag-pill bg-blue-600">수수료문의</span>
-          <span class="tag-pill bg-teal-500">이벤트</span>
+        <div class="main-live-tag-row">
+          <span class="tag-pill tag-pill--brand">수수료문의</span>
+          <span class="tag-pill tag-pill--teal">이벤트</span>
         </div>
-        <span class="font-xs text-muted ml-1 mt-1">14:25</span>
+        <span class="font-xs text-muted main-live-msg-time">14:25</span>
       </div>
-      <div class="flex items-center justify-center my-2">
+      <div class="main-live-read-wrap">
         <div class="chat-read-marker">여기까지 읽었습니다.</div>
       </div>
-      <div class="sticky bottom-0 flex justify-end mt-auto pb-2">
+      <div class="main-live-scroll-wrap">
         <button class="chat-scroll-bottom-btn">
           <i class="fa-solid fa-chevron-down"></i>
         </button>

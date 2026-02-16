@@ -146,6 +146,8 @@ body {
 .chat-bubble.customer { background-color: #fff; border: 1px solid var(--color-panel-border); border-top-left-radius: 2px; }
 
 .tag-pill { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: #fff; margin-right: 4px; margin-top: 4px; }
+.tag-pill--brand { background: #2563eb; }
+.tag-pill--teal { background: #14b8a6; }
 .keyword-box { background: linear-gradient(135deg, #0046ff 0%, #0033cc 100%); color: #fff; border-radius: 8px; padding: 20px; }
 .timeline-item { position: relative; padding-left: 20px; padding-bottom: 20px; border-left: 2px solid var(--color-panel-border); }
 .timeline-item::before { content: ''; position: absolute; left: -5px; top: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary); }
@@ -279,6 +281,21 @@ body {
 .history-note-icon { color: #60a5fa; }
 .consultation-note-field { resize: none; }
 .history-action-icon-gap { margin-right: 0.25rem; }
+.main-live-header { background: #2563eb; padding: 0.75rem; color: #fff; }
+.main-live-header-actions { display: flex; align-items: center; gap: 0.5rem; }
+.main-live-search-wrap { position: relative; }
+.main-live-search-icon { position: absolute; right: 0.5rem; top: 0.375rem; color: #bfdbfe; font-size: 0.75rem; }
+.main-live-pause-btn { color: #fff; }
+.main-live-pause-btn:hover { color: #dbeafe; }
+.main-live-msg { display: flex; flex-direction: column; }
+.main-live-msg--agent { align-items: flex-end; }
+.main-live-msg--customer { align-items: flex-start; }
+.main-live-msg-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+.main-live-user-icon { color: #6b7280; background: #e5e7eb; padding: 0.25rem; border-radius: 9999px; font-size: 0.75rem; }
+.main-live-tag-row { margin-top: 0.5rem; margin-left: 0.25rem; }
+.main-live-msg-time { margin-left: 0.25rem; margin-top: 0.25rem; }
+.main-live-read-wrap { display: flex; align-items: center; justify-content: center; margin: 0.5rem 0; }
+.main-live-scroll-wrap { position: sticky; bottom: 0; display: flex; justify-content: flex-end; margin-top: auto; padding-bottom: 0.5rem; }
 .journey-scroll-panel { height: 800px; }
 .column-width-sm { width: 54px; }
 
