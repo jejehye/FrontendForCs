@@ -1,73 +1,5 @@
-<!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMS 발송</title>
-  
-  <link rel="stylesheet" href="./app.css">
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
-  <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="css/sms.css">
-
-</head>
-<body>
-  
-  <div id="app-container" class="grid-layout">
-    <div id="sidebar" class="column col-sidebar">
-  <div class="mb-6">
-    <div class="sidebar-logo">S</div>
-  </div>
-  <div data-page="main.html" title="Main" class="nav-item"><i class="fa-solid fa-headset"></i></div>
-  <div data-page="pds.html" title="PDS" class="nav-item"><i class="fa-solid fa-phone-volume"></i></div>
-  <div data-page="sms.html" title="SMS" class="nav-item active"><i class="fa-solid fa-comment-sms"></i></div>
-  <div data-page="callback.html" title="Callback" class="nav-item"><i class="fa-solid fa-phone"></i></div>
-  <div data-page="specific.html" title="Specific" class="nav-item"><i class="fa-solid fa-user-check"></i></div>
-  <div data-page="chat.html" title="Chat" class="nav-item"><i class="fa-solid fa-comments"></i></div>
-  <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
-</div>
-
-    
-        <div id="sms-column" class="column col-sms">
-        <div class="chat-panel-header">
-  <div class="chat-status-row">
-    <span class="status-badge status-ib">
-      <i class="fa-solid fa-headset mr-1"></i>
-      I/B
-    </span>
-    <span class="font-xs text-body weight-medium truncate">
-      신한 고객센터 &gt; 투자상담
-    </span>
-  </div>
-  <div class="customer-summary customer-summary-wide">
-    <div class="customer-meta-row">
-      <span class="status-badge status-unauth">
-        <i class="fa-solid fa-lock mr-1"></i>
-        무인증
-      </span>
-      <span class="weight-bold text-strong">박지민(여)</span>
-      <span class="text-subtle">|</span>
-      <span class="text-danger weight-medium">투자성향(적극투자형)</span>
-      <span class="text-subtle">|</span>
-      <span class="text-accent weight-medium">고객등급(VVIP)</span>
-    </div>
-    <div class="customer-warning customer-warning-wide">
-      <i
-        class="fa-solid fa-triangle-exclamation text-warning font-sm mt-0.5"
-      ></i>
-      <div class="flex-1">
-        <span class="font-xs weight-bold text-warning-deep block mb-0.5">
-          주의고객
-        </span>
-        <span class="font-xs text-warning-strong">
-          고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 -
-          본인확인 철저
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-
+      <div id="sms-column" class="column col-sms">
+        {% include "partials/shared/customer-info-main.njk" %}
         <div class="sms-header-bar p-3 flex items-center justify-between text-white"><span
             class="font-semibold flex items-center gap-2"><i
               class="fa-solid fa-comment-sms"></i>
@@ -310,13 +242,3 @@
           </div>
         </div>
       </div>
-
-
-  </div>
-
-  
-  <script src="javascript/sms-config.js"></script>
-  <script src="javascript/sms.js"></script>
-
-</body>
-</html>
