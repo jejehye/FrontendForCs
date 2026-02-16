@@ -87,7 +87,7 @@ FrontendForCs/
 1. `src/pages/*.njk`를 `scripts/render.mjs`로 렌더링  
 2. `app.css`를 `dist/app.css`로 복사  
 3. Font Awesome 자산(`vendor/fontawesome`)을 `dist/`에 복사  
-4. 정적 디렉터리(`css`, `javascript`, `js`)가 존재할 경우 `dist/`에 복사
+4. 정적 디렉터리(`css`, `javascript`)가 존재할 경우 `dist/`에 복사
 
 ## 실행 방법
 
