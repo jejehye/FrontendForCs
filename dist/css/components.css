@@ -78,12 +78,13 @@ body { background-color: #f3f4f6; }
   min-height: 34px;
   padding: 8px 12px;
   font-size: 14px;
-  font-weight: 600;
-  color: #475569;
+  font-weight: 700;
+  color: #334155;
   background: transparent;
   border: 0;
   border-right: 1px solid var(--main-header-border);
   border-radius: 0;
+  letter-spacing: -0.01em;
 }
 .warning-tab:last-child { border-right: 0; }
 .warning-tab:hover { background: #e2e8f0; color: #334155; }
@@ -397,7 +398,12 @@ body { background-color: #f3f4f6; }
 .consultation-note-field { resize: none; }
 .history-action-icon-gap { margin-right: 4px; }
 .main-live-header { background: var(--main-header-bg); padding: 12px; color: #334155; border: 1px solid var(--main-header-border); margin-bottom: 0; }
-.main-live-header .weight-semibold { font-size: 14px; }
+.main-live-header .weight-semibold {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: -0.01em;
+}
 .main-coaching-header {
   margin-bottom: 0;
   border-radius: 8px 8px 0 0;
@@ -450,7 +456,9 @@ body { background-color: #f3f4f6; }
 }
 .panel__header--history .weight-semibold {
   font-size: 14px;
+  font-weight: 700;
   color: #334155;
+  letter-spacing: -0.01em;
 }
 .main-history-actions { display: flex; gap: 8px; }
 .main-history-icon-gap { margin-right: 4px; }
@@ -487,6 +495,12 @@ body { background-color: #f3f4f6; }
 .main-center-notice-title { font-size: 14px; font-weight: 700; }
 .main-center-icon-gap { margin-right: 4px; }
 .main-center-coaching-title { font-size: 12px; font-weight: 700; color: #1f2937; margin-bottom: 0; }
+.main-coaching-header .weight-semibold {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: -0.01em;
+}
 .notice-title { font-size: 13px; line-height: 1.4; }
 .main-center-warning-wrap {
   height: 192px;
