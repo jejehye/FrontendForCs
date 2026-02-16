@@ -8,7 +8,7 @@
     "copy:fontawesome": "mkdir -p ./dist/vendor/fontawesome && cp -R ./node_modules/@fortawesome/fontawesome-free/css ./dist/vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/js ./dist/vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/webfonts ./dist/vendor/fontawesome/ && mkdir -p ./vendor/fontawesome && cp -R ./node_modules/@fortawesome/fontawesome-free/css ./vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/js ./vendor/fontawesome/ && cp -R ./node_modules/@fortawesome/fontawesome-free/webfonts ./vendor/fontawesome/",
     "postbuild": "npm run copy:fontawesome && cp ./dist/app.css ./app.css",
     "render": "node ./scripts/render.mjs",
-    "build:css": "tailwindcss -i ./src/input.css -o ./dist/app.css --minify",
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/app.css --minify && node ./scripts/convert-rem-to-px.mjs ./dist/app.css",
     "check:classes": "node scripts/check-class-length.mjs"
   },
   "devDependencies": {

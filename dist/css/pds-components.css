@@ -42,7 +42,7 @@ body {
 .col-right { background: #fff; padding: 16px; gap: 16px; overflow-y: auto; }
 
 .sidebar-logo {
-  width: 2rem; height: 2rem; border-radius: 0.25rem; background: #fff;
+  width: 32px; height: 32px; border-radius: 4px; background: #fff;
   display: flex; align-items: center; justify-content: center;
   color: #2563eb; font-weight: 700; font-size: 18px;
 }
@@ -154,7 +154,7 @@ body {
 .pds-title-lg { font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 8px; }
 .pds-refresh-btn { color: #fff; }
 .pds-refresh-btn:hover { color: #e5e7eb; }
-.pds-summary-card { background: rgba(255, 255, 255, 0.15); border-radius: 0.75rem; padding: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.2); }
+.pds-summary-card { background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.2); }
 .pds-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: center; }
 .pds-count-value { font-size: 24px; font-weight: 700; }
 .pds-count-label { font-size: 12px; opacity: 0.9; }
@@ -190,12 +190,12 @@ body {
 .pds-progress-percent { font-size: 30px; font-weight: 700; color: var(--color-text-primary); }
 
 .pds-metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.pds-metric-card { border-radius: 0.75rem; padding: 16px; border: 1px solid var(--color-panel-border); }
+.pds-metric-card { border-radius: 12px; padding: 16px; border: 1px solid var(--color-panel-border); }
 .pds-metric-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
 .pds-metric-value { font-size: 24px; font-weight: 700; }
 
 .pds-export-btn { font-size: 12px; font-weight: 500; color: var(--color-primary); }
-.pds-log-box { border-radius: 0.75rem; padding: 12px; height: 16rem; overflow-y: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; background: var(--color-text-primary); }
+.pds-log-box { border-radius: 12px; padding: 12px; height: 256px; overflow-y: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; background: var(--color-text-primary); }
 .pds-log-line--ok { color: #4ade80; }
 .pds-log-line--muted { color: #9ca3af; }
 
@@ -203,29 +203,29 @@ body {
 .pds-analysis-item { display: flex; flex-direction: column; gap: 4px; }
 .pds-analysis-row { display: flex; justify-content: space-between; font-size: 12px; }
 .pds-analysis-rate { font-weight: 700; }
-.pds-progress-bar { width: 100%; border-radius: 9999px; height: 0.5rem; background: #e5e7eb; }
-.pds-progress-fill { height: 0.5rem; border-radius: 9999px; transition: all 0.5s; }
+.pds-progress-bar { width: 100%; border-radius: 9999px; height: 8px; background: #e5e7eb; }
+.pds-progress-fill { height: 8px; border-radius: 9999px; transition: all 0.5s; }
 
 .pds-summary-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-panel-border); }
 .pds-result-summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; text-align: center; }
-.pds-result-summary-card { border-radius: 0.5rem; padding: 8px; border: 1px solid var(--color-panel-border); }
+.pds-result-summary-card { border-radius: 8px; padding: 8px; border: 1px solid var(--color-panel-border); }
 .pds-result-summary-value { font-size: 18px; font-weight: 700; }
 
 .pds-right-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 4px; }
 .pds-right-tabs { display: flex; gap: 4px; }
-.pds-save-btn { color: #fff; font-size: 12px; padding: 6px 12px; border-radius: 0.5rem; background: var(--color-primary); }
+.pds-save-btn { color: #fff; font-size: 12px; padding: 6px 12px; border-radius: 8px; background: var(--color-primary); }
 
-.pds-current-call-card { padding: 16px; border-radius: 0.75rem; border: 1px solid var(--color-panel-border); background: #f8fafc; }
+.pds-current-call-card { padding: 16px; border-radius: 12px; border: 1px solid var(--color-panel-border); background: #f8fafc; }
 .pds-current-top { text-align: center; margin-bottom: 16px; }
 .pds-current-name { font-weight: 700; font-size: 18px; margin-bottom: 4px; color: var(--color-text-primary); }
 .pds-current-phone { font-size: 14px; color: var(--color-text-secondary); }
-.pds-status-card { background: #fff; border-radius: 0.75rem; padding: 12px; margin-bottom: 12px; border: 1px solid var(--color-panel-border); }
+.pds-status-card { background: #fff; border-radius: 12px; padding: 12px; margin-bottom: 12px; border: 1px solid var(--color-panel-border); }
 .pds-status-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .pds-status-row:last-child { margin-bottom: 0; }
 .pds-status-value { font-size: 12px; font-weight: 700; color: var(--color-text-primary); }
 .pds-timer-value { font-size: 18px; font-weight: 700; color: var(--color-text-primary); }
 .pds-call-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.pds-call-btn { color: #fff; padding: 12px 16px; border-radius: 0.75rem; font-weight: 700; transition: 0.2s; }
+.pds-call-btn { color: #fff; padding: 12px 16px; border-radius: 12px; font-weight: 700; transition: 0.2s; }
 
 .pds-detail-title { font-weight: 700; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
 .pds-detail-list { display: flex; flex-direction: column; gap: 0; font-size: 12px; }
@@ -235,7 +235,7 @@ body {
 .pds-detail-value--brand { color: var(--color-primary); }
 
 .pds-script-title { font-weight: 700; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
-.pds-script-block { border-radius: 0.75rem; padding: 12px; border: 1px solid var(--color-panel-border); background: #f8fafc; margin-bottom: 12px; }
+.pds-script-block { border-radius: 12px; padding: 12px; border: 1px solid var(--color-panel-border); background: #f8fafc; margin-bottom: 12px; }
 .pds-script-block:last-child { margin-bottom: 0; }
 .pds-script-block-title { font-size: 12px; font-weight: 500; margin-bottom: 8px; color: var(--color-text-primary); }
 .pds-script-copy { font-size: 12px; line-height: 1.625; color: var(--color-text-primary); }
@@ -243,16 +243,16 @@ body {
 
 .pds-note-title { font-weight: 700; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
 .pds-note-actions { display: flex; gap: 8px; margin-top: 8px; }
-.pds-note-btn { flex: 1; font-size: 12px; padding: 8px 12px; border-radius: 0.5rem; }
+.pds-note-btn { flex: 1; font-size: 12px; padding: 8px 12px; border-radius: 8px; }
 .pds-note-btn--muted { background: #f0f0f5; color: var(--color-text-primary); }
 .pds-note-btn--primary { background: var(--color-primary); color: #fff; }
-.pds-note-input { width: 100%; height: 6rem; padding: 8px 12px; border-radius: 0.75rem; font-size: 12px; outline: none; }
+.pds-note-input { width: 100%; height: 96px; padding: 8px 12px; border-radius: 12px; font-size: 12px; outline: none; }
 .pds-note-input:focus { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35); }
-.pds-current-icon-wrap { width: 5rem; height: 5rem; border-radius: 9999px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
+.pds-current-icon-wrap { width: 80px; height: 80px; border-radius: 9999px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
 .pds-flex-fill { flex: 1 1 0%; }
 
 .pds-inline-center-2 { display: flex; align-items: center; gap: 8px; }
-.pds-tier-badge { font-size: 11px; padding: 2px 8px; border-radius: 0.25rem; font-weight: 700; }
+.pds-tier-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
 .pds-tier-badge--vip { background: #e5edff; color: var(--color-primary); }
 .pds-tier-badge--general { background: #f0f0f5; color: var(--color-text-primary); }
 .pds-row-meta { color: var(--color-text-secondary); }

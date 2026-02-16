@@ -6,7 +6,7 @@
 @layer utilities {
   .text-xxs {
     font-size: 10.40px;
-    line-height: 1rem;
+    line-height: 16px;
   }
 }
 
