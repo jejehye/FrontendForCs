@@ -44,8 +44,6 @@ body {
 
 .col-chat { border-right: 1px solid var(--color-panel-border); background: #fff; }
 .col-center {
-  border-right: 1px solid var(--color-panel-border);
-  background: #f8fafc;
   padding: 16px;
   gap: 16px;
   overflow-y: auto;
