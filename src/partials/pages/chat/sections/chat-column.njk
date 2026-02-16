@@ -1,120 +1,154 @@
-  <div id="chat-column" class="column col-chat">
-    <!-- ===================== Chat Header ===================== -->
-    <section>
-      <div class="panel__body panel__body--chat-meta">
-        <div class="ui-inline-gap-2-mb2">
-          <span class="badge status-badge status-chat">
-            <i class="fa-solid fa-comments chat-icon-inline"></i>채팅
-          </span>
-          <span class="chat-channel-label">
-            웹채팅 &gt; 일반상담
-          </span>
-        </div>
-        <div class="chat-customer-meta">
-          <span class="badge status-badge status-unauth">
-            <i class="fa-solid fa-lock chat-icon-inline"></i>무인증
-          </span>
-          <span class="ui-title-base">박민지(여)</span>
-          <span class="chat-text-subtle">|</span>
-          <span class="chat-investment-label">투자성향(적극형)</span>
-        </div>
-      </div>
-      <div class="panel__header panel__header--chat-live chat-header">
-        <span class="panel__title panel__title--chat-live">
-          <i class="fa-solid fa-comments"></i>
-          실시간 채팅 상담
+<div id="chat-column" class="column col-chat">
+  <!-- ===================== Chat Header ===================== -->
+  <section>
+    <div class="panel__body panel__body--chat-meta">
+      <div class="ui-inline-gap-2-mb2">
+        <span class="badge status-badge status-chat">
+          <i class="fa-solid fa-comments chat-icon-inline"></i>채팅
         </span>
-        <div class="chat-inline-center">
-          <span class="chat__wait-badge">
-            대기: 2
-          </span>
-          <button class="chat__refresh-btn">
-            <i class="fa-solid fa-rotate-right"></i>
-          </button>
-        </div>
+        <span class="chat-channel-label">
+          웹채팅 &gt; 일반상담
+        </span>
       </div>
-    </section>
+      <div class="chat-customer-meta">
+        <span class="badge status-badge status-unauth">
+          <i class="fa-solid fa-lock chat-icon-inline"></i>무인증
+        </span>
+        <span class="ui-title-base">박민지(여)</span>
+        <span class="chat-text-subtle">|</span>
+        <span class="chat-investment-label">투자성향(적극형)</span>
+      </div>
+    </div>
+    <header class="panel-header main-live-header">
+      <span class="weight-semibold">실시간 채팅 상담</span>
+      <div class="main-live-header-actions">
+        <div class="main-live-search-wrap">
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            class="field placeholder-blue-200 chat-search-input"
+          />
+          <i class="fa-solid fa-magnifying-glass main-live-search-icon"></i>
+        </div>
+        <button class="main-live-pause-btn">
+          <i class="fa-solid fa-pause"></i>
+        </button>
+      </div>
+    </header>
+  </section>
 
-    <!-- ===================== Messages ===================== -->
-    <section class="chat__messages">
-      <div class="chat-date-row">
-        <span class="badge badge--date">2024년 2월 12일 월요일</span>
+  <!-- ===================== Messages ===================== -->
+  <section class="chat__messages">
+    <div class="chat-date-row">
+      <span class="badge badge--date">2024년 2월 12일 월요일</span>
+    </div>
+    <div class="main-live-msg main-live-msg--customer">
+      <div class="main-live-msg-meta">
+        <i class="fa-regular fa-user main-live-user-icon"></i>
+        <span class="main-live-customer-text">박민지</span>
       </div>
-      <div class="chat-msg chat-msg--customer">
-        <div class="chat-msg__bubble chat-msg__bubble--customer">
-          안녕하세요. ISA 계좌 개설하고 싶은데 도움 받을 수 있을까요?
-        </div>
-        <div class="chat-msg__time">10:15</div>
+      <div class="chat-bubble customer main-live-bubble-elevated">
+        안녕하세요. ISA 계좌 개설하고 싶은데 도움 받을 수 있을까요?
       </div>
-      <div class="chat-msg chat-msg--agent">
-        <div class="chat-msg__bubble chat-msg__bubble--agent">
-          안녕하세요, 박민지 고객님. 신한투자증권 상담사 최서연입니다. ISA 계좌 개설 도와드리겠습니다.
-        </div>
-        <div class="chat-msg__time">10:16</div>
+      <span class="main-live-time-text main-live-msg-time">10:15</span>
+    </div>
+    <div class="main-live-msg main-live-msg--agent">
+      <div class="main-live-msg-meta">
+        <span class="main-live-time-text">10:16</span>
+        <span class="main-live-agent-text">상담사 최서연</span>
       </div>
-      <div class="chat-msg chat-msg--customer">
-        <div class="chat-msg__bubble chat-msg__bubble--customer">
-          ISA 계좌의 장점이 궁금합니다.
-        </div>
-        <div class="chat-msg__time">10:17</div>
+      <div class="chat-bubble agent main-live-bubble-elevated">
+        안녕하세요, 박민지 고객님. 신한투자증권 상담사 최서연입니다. ISA 계좌 개설 도와드리겠습니다.
       </div>
-      <div class="chat-msg chat-msg--agent">
-        <div class="chat-msg__bubble chat-msg__bubble--agent">
-          ISA 계좌는 비과세 혜택이 큰 장점입니다. 일반형은 200만원, 서민형은 400만원까지 비과세가 적용되며, 초과분도
-          9.9%의 분리과세로 절세 효과가 뛰어납니다.
-        </div>
-        <div class="chat-msg__time">10:18</div>
+    </div>
+    <div class="main-live-msg main-live-msg--customer">
+      <div class="main-live-msg-meta">
+        <i class="fa-regular fa-user main-live-user-icon"></i>
+        <span class="main-live-customer-text">박민지</span>
       </div>
-      <div class="chat-msg chat-msg--customer">
-        <div class="chat-msg__bubble chat-msg__bubble--customer">
-          가입 조건은 어떻게 되나요?
-        </div>
-        <div class="chat-msg__time">10:19</div>
+      <div class="chat-bubble customer main-live-bubble-elevated">
+        ISA 계좌의 장점이 궁금합니다.
       </div>
-      <div class="chat-msg chat-msg--agent">
-        <div class="chat-msg__bubble chat-msg__bubble--agent">
-          만 19세 이상 국내 거주자라면 누구나 가입 가능합니다. 근로소득이 있으신 분은 일반형, 총급여 5천만원 이하 또는
-          종합소득 3800만원 이하는 서민형으로 가입하실 수 있습니다.
-        </div>
-        <div class="chat-msg__time">10:20</div>
+      <div class="main-live-tag-row">
+        <span class="tag-pill tag-pill--brand">ISA</span>
+        <span class="tag-pill tag-pill--teal">혜택문의</span>
       </div>
-      <div class="chat-msg chat-msg--customer">
-        <div class="chat-msg__bubble chat-msg__bubble--customer">
-          바로 개설하고 싶은데 어떻게 하면 되나요?
-        </div>
-        <div class="chat-msg__time">10:21</div>
+      <span class="main-live-time-text main-live-msg-time">10:17</span>
+    </div>
+    <div class="main-live-msg main-live-msg--agent">
+      <div class="main-live-msg-meta">
+        <span class="main-live-time-text">10:18</span>
+        <span class="main-live-agent-text">상담사 최서연</span>
       </div>
-      <div class="typing-indicator">
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
+      <div class="chat-bubble agent main-live-bubble-elevated">
+        ISA 계좌는 비과세 혜택이 큰 장점입니다. 일반형은 200만원, 서민형은 400만원까지 비과세가 적용되며, 초과분도
+        9.9%의 분리과세로 절세 효과가 뛰어납니다.
       </div>
-    </section>
+    </div>
+    <div class="main-live-msg main-live-msg--customer">
+      <div class="main-live-msg-meta">
+        <i class="fa-regular fa-user main-live-user-icon"></i>
+        <span class="main-live-customer-text">박민지</span>
+      </div>
+      <div class="chat-bubble customer main-live-bubble-elevated">
+        가입 조건은 어떻게 되나요?
+      </div>
+      <span class="main-live-time-text main-live-msg-time">10:19</span>
+    </div>
+    <div class="main-live-msg main-live-msg--agent">
+      <div class="main-live-msg-meta">
+        <span class="main-live-time-text">10:20</span>
+        <span class="main-live-agent-text">상담사 최서연</span>
+      </div>
+      <div class="chat-bubble agent main-live-bubble-elevated">
+        만 19세 이상 국내 거주자라면 누구나 가입 가능합니다. 근로소득이 있으신 분은 일반형, 총급여 5천만원 이하 또는
+        종합소득 3800만원 이하는 서민형으로 가입하실 수 있습니다.
+      </div>
+    </div>
+    <div class="main-live-msg main-live-msg--customer">
+      <div class="main-live-msg-meta">
+        <i class="fa-regular fa-user main-live-user-icon"></i>
+        <span class="main-live-customer-text">박민지</span>
+      </div>
+      <div class="chat-bubble customer main-live-bubble-elevated">
+        바로 개설하고 싶은데 어떻게 하면 되나요?
+      </div>
+      <span class="main-live-time-text main-live-msg-time">10:21</span>
+    </div>
+    <div class="main-live-read-wrap">
+      <div class="chat-read-marker">여기까지 읽었습니다.</div>
+    </div>
+    <div class="main-live-scroll-wrap">
+      <button class="chat-scroll-bottom-btn">
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </div>
+  </section>
 
-    <!-- ===================== Composer ===================== -->
-    <section class="chat__composer">
-      <div class="chat__actions">
-        <button
-          title="파일 첨부"
-          class="chat__action-btn"
-        >
-          <i class="fa-solid fa-paperclip chat-action-icon-muted"></i>
-        </button>
-        <button
-          title="이모티콘"
-          class="chat__action-btn"
-        >
-          <i class="fa-regular fa-face-smile chat-action-icon-muted"></i>
-        </button>
-        <textarea
-          placeholder="메시지를 입력하세요..."
-          class="chat__input" data-role="chat-message-input"
-          rows="3"
-        ></textarea>
-        <button class="chat__send-btn send-btn">
-          <i class="fa-solid fa-paper-plane"></i>
-          전송
-        </button>
-      </div>
-    </section>
-  </div>
+  <!-- ===================== Composer ===================== -->
+  <section class="chat__composer">
+    <div class="chat__actions">
+      <button
+        title="파일 첨부"
+        class="chat__action-btn"
+      >
+        <i class="fa-solid fa-paperclip chat-action-icon-muted"></i>
+      </button>
+      <button
+        title="이모티콘"
+        class="chat__action-btn"
+      >
+        <i class="fa-regular fa-face-smile chat-action-icon-muted"></i>
+      </button>
+      <textarea
+        placeholder="메시지를 입력하세요..."
+        class="chat__input" data-role="chat-message-input"
+        rows="3"
+      ></textarea>
+      <button class="chat__send-btn send-btn">
+        <i class="fa-solid fa-paper-plane"></i>
+        전송
+      </button>
+    </div>
+  </section>
+</div>

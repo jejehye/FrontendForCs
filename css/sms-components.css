@@ -89,8 +89,8 @@ body { background-color: #f3f4f6; }
 }
 .sms-primary-btn { background: var(--color-primary); }
 .sms-primary-btn:hover { background: #002f66; }
-.sms-send-now-btn { background: #0046ff; }
-.sms-send-now-btn:hover { background: #0039cc; }
+.sms-send-now-btn { background: #2563eb; }
+.sms-send-now-btn:hover { background: #1d4ed8; }
 .sms-primary-text { color: var(--color-primary); }
 .sms-soft-bg { background: var(--color-primary-light); }
 .sms-primary-border { border-color: var(--color-primary); }

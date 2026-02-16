@@ -125,9 +125,9 @@ body { background-color: #f3f4f6; }
 .pds-btn-danger-bg,
 .pds-bg-danger { background: #ff3b30; }
 .pds-bg-neutral { background: #f0f0f5; }
-.pds-btn-start-bg,
+.pds-btn-start-bg { background: #2563eb; }
+.pds-btn-start-bg:hover { background: #1d4ed8; }
 .pds-bg-call-start { background: var(--color-primary); }
-.pds-btn-start-bg:hover { background: #0039cc; }
 .pds-badge-vip { background: #e5edff; color: var(--color-primary); }
 .pds-opacity-disabled { opacity: 0.5; }
 

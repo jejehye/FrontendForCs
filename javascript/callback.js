@@ -67,13 +67,19 @@ function formatPhoneNumber(value) {
 
 function submitOutboundCall() {
   const phoneInput = selectOne('[data-role="outbound-phone-input"]');
+  const callerIdInputs = selectAll('[data-role="callback-outbound-callerid"]');
   const formattedPhone = formatPhoneNumber(phoneInput?.value || '');
+  const selectedCallerId = callerIdInputs.find(input => input.checked)?.value || '';
   if (!formattedPhone || formattedPhone.length < 12) {
     alert('발신할 전화번호를 정확히 입력해 주세요.');
     phoneInput?.focus();
     return;
   }
-  alert(`${formattedPhone} 번호로 아웃바운드 콜을 발신합니다.`);
+  if (!selectedCallerId) {
+    alert('발신 표시번호를 선택해 주세요.');
+    return;
+  }
+  alert(`${formattedPhone} 번호로 아웃바운드 콜을 발신합니다. (표시번호: ${selectedCallerId})`);
   closeOutboundModal();
 }
 
