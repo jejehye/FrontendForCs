@@ -1,11 +1,4 @@
-document.querySelectorAll('.nav-item').forEach((item) => {
-  item.addEventListener('click', () => {
-    const targetPage = item.getAttribute('data-page');
-    if (!targetPage) return;
-    if (window.location.pathname.endsWith(targetPage)) return;
-    window.location.href = targetPage;
-  });
-});
+window.AppUi?.initSidebarNavigation();
 
 const registerBtn = document.getElementById('registerExcludeBtn');
 const tableBody = document.getElementById('specificTableBody');

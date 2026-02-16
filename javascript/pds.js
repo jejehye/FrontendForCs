@@ -221,22 +221,5 @@
             document.getElementById('currentTime').textContent = now.toLocaleString('ko-KR');
         }, 1000);
 
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const targetPage = this.dataset.page;
-                if (targetPage && !window.location.pathname.endsWith(targetPage)) {
-                    window.location.href = targetPage;
-                    return;
-                }
-
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        document.querySelectorAll('.tab-item').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+        window.AppUi?.initSidebarNavigation();
+        window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });

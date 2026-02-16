@@ -1,22 +1,5 @@
-document.querySelectorAll('.nav-item').forEach((item) => {
-  item.addEventListener('click', function handleNavClick() {
-    const targetPage = this.dataset.page;
-    if (targetPage && !window.location.pathname.endsWith(targetPage)) {
-      window.location.href = targetPage;
-      return;
-    }
-
-    document.querySelectorAll('.nav-item').forEach((nav) => nav.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-
-document.querySelectorAll('.tab-item').forEach((tab) => {
-  tab.addEventListener('click', function handleTabClick() {
-    document.querySelectorAll('.tab-item').forEach((item) => item.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
+window.AppUi?.initSidebarNavigation();
+window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });
 
 document.querySelectorAll('.kms-card').forEach((card) => {
   card.addEventListener('click', function handleKmsClick() {
