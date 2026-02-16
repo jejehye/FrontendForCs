@@ -124,6 +124,7 @@
   .card { @apply bg-white p-2 rounded border border-gray-100; }
   .card-header { @apply flex justify-between items-start mb-3; }
   .badge-row { @apply flex items-center gap-2 text-sm; }
+  .main-customer-meta-text,
   .meta-text-strong { @apply font-bold text-gray-800; }
   .icon-refresh-btn { @apply text-gray-400 hover:text-blue-500; }
 
@@ -177,6 +178,7 @@
   .callback-modal-grid { @apply grid grid-cols-2 gap-3 text-sm; }
   .callback-modal-meta { @apply mt-2 text-xs text-gray-500; }
   .callback-modal-actions { @apply flex gap-3 pt-4; }
+  .main-inline-date-range,
   .ui-inline-gap-xs { @apply flex items-center gap-1; }
   .ui-inline-gap-sm { @apply flex items-center gap-2; }
   .ui-inline-gap-sm-compact { @apply flex items-center gap-2 mb-2; }
@@ -185,6 +187,7 @@
   .ui-stack-md { @apply space-y-3; }
   .sidebar-top-spacing { @apply mb-6; }
   .sidebar-settings-item { @apply mt-auto mb-4; }
+  .main-live-bubble-elevated { @apply shadow-sm; }
   .callback-stat-value-pending { @apply text-2xl font-bold text-blue-600; }
   .callback-stat-value-progress { @apply text-2xl font-bold text-orange-600; }
   .callback-stat-value-completed { @apply text-2xl font-bold text-green-600; }
