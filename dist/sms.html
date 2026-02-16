@@ -237,6 +237,49 @@
               <i class="fa-solid fa-angles-right"></i>
             </button>
           </div>
+          <div class="mt-4 pt-3 border-t border-gray-200">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+                발송이력 조회
+              </h4>
+              <span class="text-xs text-gray-500">고객전화번호 기준</span>
+            </div>
+            <div class="flex gap-2 mb-2">
+              <input
+                type="text"
+                inputmode="numeric"
+                placeholder="고객전화번호 입력 (예: 010-1234-5678)"
+                class="sem-u-083"
+                data-sms-history-phone
+              >
+              <button
+                type="button"
+                class="sms-primary-btn sem-u-084 whitespace-nowrap"
+                data-sms-history-search
+              >
+                조회
+              </button>
+            </div>
+            <div class="max-h-[180px] overflow-y-auto border border-gray-200 rounded">
+              <table class="w-full table-compact text-left">
+                <thead>
+                  <tr>
+                    <th>발송일시</th>
+                    <th>템플릿명</th>
+                    <th class="sms-status-col">상태</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600" data-sms-history-body>
+                  <tr>
+                    <td colspan="3" class="text-center text-xs text-gray-400 py-3">
+                      조회할 고객전화번호를 입력해 주세요.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
       <div id="right-column" class="column col-right">

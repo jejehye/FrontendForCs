@@ -133,6 +133,76 @@
         }
       }
 
+      const smsHistoryPhoneInput = document.querySelector('[data-sms-history-phone]');
+      const smsHistorySearchButton = document.querySelector('[data-sms-history-search]');
+      const smsHistoryBody = document.querySelector('[data-sms-history-body]');
+      const smsHistoryRecords = [
+        { sentAt: '2024-01-20 14:35', templateName: '해외주식 거래 수수료 이벤트', status: '발송완료', phone: '01012345678' },
+        { sentAt: '2024-01-19 10:22', templateName: 'ISA 계좌 만기 안내', status: '발송완료', phone: '01098765432' },
+        { sentAt: '2024-01-18 11:20', templateName: 'PRIME 고객 투자 세미나', status: '발송완료', phone: '01012345678' },
+        { sentAt: '2024-01-12 16:45', templateName: '계좌 비밀번호 변경 완료', status: '발송완료', phone: '01077778888' },
+        { sentAt: '2024-01-10 13:30', templateName: '자산관리 상담 예약', status: '예약중', phone: '01012345678' },
+      ];
+
+      const normalizePhone = value => value.replace(/[^0-9]/g, '');
+
+      const renderSmsHistoryRows = records =>
+      {
+        if (!smsHistoryBody) {
+          return;
+        }
+
+        if (!records.length) {
+          smsHistoryBody.innerHTML = `
+            <tr>
+              <td colspan="3" class="text-center text-xs text-gray-400 py-3">
+                조회 결과가 없습니다.
+              </td>
+            </tr>`;
+          return;
+        }
+
+        smsHistoryBody.innerHTML = records.map(record => `
+          <tr class="hover:bg-blue-50 cursor-pointer">
+            <td>${record.sentAt}</td>
+            <td>${record.templateName}</td>
+            <td>${record.status}</td>
+          </tr>`).join('');
+      };
+
+      const handleSmsHistorySearch = () =>
+      {
+        const keyword = normalizePhone(smsHistoryPhoneInput?.value || '');
+        if (!keyword) {
+          if (smsHistoryBody) {
+            smsHistoryBody.innerHTML = `
+              <tr>
+                <td colspan="3" class="text-center text-xs text-gray-400 py-3">
+                  조회할 고객전화번호를 입력해 주세요.
+                </td>
+              </tr>`;
+          }
+          return;
+        }
+
+        const results = smsHistoryRecords.filter(record => record.phone.includes(keyword));
+        renderSmsHistoryRows(results);
+      };
+
+      if (smsHistorySearchButton) {
+        smsHistorySearchButton.addEventListener('click', handleSmsHistorySearch);
+      }
+
+      if (smsHistoryPhoneInput) {
+        smsHistoryPhoneInput.addEventListener('keydown', event =>
+        {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            handleSmsHistorySearch();
+          }
+        });
+      }
+
       const instantSendButton = document.querySelector('[data-sms-send="instant"]');
       const scheduledSendButton = document.querySelector('[data-sms-send="scheduled"]');
       const smsMessageTextarea = document.querySelector('textarea');
