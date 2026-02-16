@@ -431,8 +431,8 @@
 
   .card--notice { @apply notice-card; }
 
-  .pagination--history { @apply p-2 border-t border-gray-200 bg-gray-50 flex justify-center items-center gap-2; }
-  .pagination--notice { @apply mt-4 p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2; }
+  .pagination--history { @apply p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2; }
+  .pagination--notice { @apply p-2 border border-gray-200 rounded bg-white flex justify-center items-center gap-2; }
   .pagination__btn { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 text-xs; }
   .pagination__btn.is-active { @apply w-6 h-6 flex items-center justify-center rounded bg-blue-600 text-white text-xs font-bold; }
   .pagination__btn--muted { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs; }

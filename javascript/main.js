@@ -228,7 +228,7 @@ document.querySelectorAll('.nav-item').forEach(item =>
           const button = document.createElement('button');
           button.type = 'button';
           button.setAttribute('data-notice-page-btn', String(index + 1));
-          button.className = 'w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs';
+          button.className = 'pagination__btn';
           button.textContent = String(index + 1);
           noticeNavContainer.insertBefore(button, noticeNextButton);
           return button;
@@ -250,13 +250,7 @@ document.querySelectorAll('.nav-item').forEach(item =>
 
         noticePageButtons.forEach(button => {
           const page = Number(button.getAttribute('data-notice-page-btn'));
-          button.classList.remove('bg-blue-600', 'text-white', 'font-bold');
-          button.classList.add('border', 'border-gray-300', 'bg-white', 'text-gray-700', 'hover:bg-gray-100');
-
-          if (page === activeNoticePage) {
-            button.classList.remove('border', 'border-gray-300', 'bg-white', 'text-gray-700', 'hover:bg-gray-100');
-            button.classList.add('bg-blue-600', 'text-white', 'font-bold');
-          }
+          button.classList.toggle('is-active', page === activeNoticePage);
         });
 
         if (noticePrevButton) {
@@ -326,7 +320,7 @@ document.querySelectorAll('.nav-item').forEach(item =>
             const button = document.createElement('button');
             button.type = 'button';
             button.setAttribute('data-history-page-btn', String(index + 1));
-            button.className = 'pagination__btn pagination__btn--muted';
+            button.className = 'pagination__btn';
             button.textContent = String(index + 1);
             historyPagination.insertBefore(button, historyNextButton);
             return button;
@@ -353,7 +347,6 @@ document.querySelectorAll('.nav-item').forEach(item =>
           historyPageButtons.forEach(button => {
             const page = Number(button.getAttribute('data-history-page-btn'));
             button.classList.toggle('is-active', page === activeHistoryPage);
-            button.classList.toggle('pagination__btn--muted', page !== activeHistoryPage);
           });
 
           historyFirstButton.disabled = activeHistoryPage === 1;
