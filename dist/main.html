@@ -80,6 +80,7 @@
     
   
 
+<!-- ===================== Chat Column ===================== -->
 <div id="chat-column" class="column col-chat layout-shell">
   <!-- ===================== Customer Info ===================== -->
   <section>
@@ -785,6 +786,7 @@
   </section>
 </div>
 
+<!-- ===================== Center Column ===================== -->
 <div id="center-column" class="column col-center layout-main">
   <!-- ===================== Notices ===================== -->
   <section>
@@ -1028,61 +1030,67 @@
   </section>
 </div>
 
+<!-- ===================== Right Column ===================== -->
 <div id="right-column" class="column col-right layout-aside">
-  <div class="panel-header panel-header-actions-only">
-    <div class="panel-header-actions">
-      <div class="agent-kpi-bar" aria-label="상담 지표">
-        <div class="agent-kpi-item">
-          <span class="agent-kpi-label">금일상담</span>
-          <span class="agent-kpi-value">24건</span>
+  <!-- ===================== Agent Status ===================== -->
+  <section>
+    <header class="panel-header panel-header-actions-only">
+      <div class="panel-header-actions">
+        <div class="agent-kpi-bar" aria-label="상담 지표">
+          <div class="agent-kpi-item">
+            <span class="agent-kpi-label">금일상담</span>
+            <span class="agent-kpi-value">24건</span>
+          </div>
+          <div class="agent-kpi-item">
+            <span class="agent-kpi-label">통화시간</span>
+            <span class="agent-kpi-value">03:42:15</span>
+          </div>
+          <div class="agent-kpi-item">
+            <span class="agent-kpi-label">고객대기</span>
+            <span class="agent-kpi-value">5명</span>
+          </div>
+          <div class="agent-kpi-item">
+            <span class="agent-kpi-label">대기시간</span>
+            <span class="agent-kpi-value">01:28</span>
+          </div>
         </div>
-        <div class="agent-kpi-item">
-          <span class="agent-kpi-label">통화시간</span>
-          <span class="agent-kpi-value">03:42:15</span>
+        <div class="agent-status-bar">
+          <div class="status-indicator status-ready" data-role="status-indicator"></div>
+          <select class="status-select" data-role="agent-status-select">
+            <option value="ready">업무</option>
+            <option value="away">이석</option>
+            <option value="busy">대기</option>
+            <option value="break">휴식</option>
+            <option value="meeting">회의</option>
+          </select>
         </div>
-        <div class="agent-kpi-item">
-          <span class="agent-kpi-label">고객대기</span>
-          <span class="agent-kpi-value">5명</span>
-        </div>
-        <div class="agent-kpi-item">
-          <span class="agent-kpi-label">대기시간</span>
-          <span class="agent-kpi-value">01:28</span>
+        <button type="button" class="softphone-outbound-btn" data-action="main-open-outbound-modal" aria-label="아웃바운드 발신">
+          <i class="fa-solid fa-phone"></i>
+          아웃바운드
+        </button>
+        <div class="agent-login-chip" aria-label="로그인 상담원 정보">
+          <span class="agent-login-chip__avatar">
+            <i class="fa-solid fa-user"></i>
+          </span>
+          <span class="agent-login-chip__meta">
+            <span class="agent-login-chip__role">상담원</span>
+            <span class="agent-login-chip__name" data-role="agent-display" data-agent-display>김민수(204075)</span>
+          </span>
         </div>
       </div>
-      <div class="agent-status-bar">
-        <div class="status-indicator status-ready" data-role="status-indicator"></div>
-        <select class="status-select" data-role="agent-status-select">
-          <option value="ready">업무</option>
-          <option value="away">이석</option>
-          <option value="busy">대기</option>
-          <option value="break">휴식</option>
-          <option value="meeting">회의</option>
-        </select>
-      </div>
-      <button type="button" class="softphone-outbound-btn" data-action="main-open-outbound-modal" aria-label="아웃바운드 발신">
-        <i class="fa-solid fa-phone"></i>
-        아웃바운드
-      </button>
-      <div class="agent-login-chip" aria-label="로그인 상담원 정보">
-        <span class="agent-login-chip__avatar">
-          <i class="fa-solid fa-user"></i>
-        </span>
-        <span class="agent-login-chip__meta">
-          <span class="agent-login-chip__role">상담원</span>
-          <span class="agent-login-chip__name" data-role="agent-display" data-agent-display>김민수(204075)</span>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="softphone-script-panel">
-    <div class="softphone-script-header">
+    </header>
+  </section>
+
+  <!-- ===================== Softphone Scripts ===================== -->
+  <section class="softphone-script-panel">
+    <header class="softphone-script-header">
       <span class="softphone-script-title">
         <i class="fa-solid fa-volume-high"></i> 안내 멘트 송출
       </span>
       <button type="button" class="softphone-call-toggle" data-action="softphone-toggle" data-call-toggle>
         통화중 OFF
       </button>
-    </div>
+    </header>
     <div class="softphone-script-grid">
       <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="녹취 동의 안내" data-softphone-script="녹취 동의 안내">
         <i class="fa-solid fa-microphone-lines"></i>
@@ -1104,8 +1112,10 @@
     <div class="softphone-script-status" data-role="softphone-output" data-softphone-output>
       통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.
     </div>
-  </div>
-  <div class="info-card history-editor-panel history-editor-panel--compact">
+  </section>
+
+  <!-- ===================== History Editor ===================== -->
+  <section class="info-card history-editor-panel history-editor-panel--compact">
     <div class="history-editor-header main-section-header">
       <h4 class="history-editor-title">
         <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
@@ -1179,8 +1189,10 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="info-card main-my-history-panel">
+  </section>
+
+  <!-- ===================== My History ===================== -->
+  <section class="info-card main-my-history-panel">
     <div class="main-my-history-header main-section-header">
       <span class="main-my-history-title">나의 상담이력 조회</span>
       <button class="history-export-btn">
@@ -1597,120 +1609,126 @@
         <i class="fa-solid fa-angles-right"></i>
       </button>
     </div>
-  </div>
+  </section>
 </div>
 
 
-<div class="history-detail-modal" data-role="history-detail-modal" aria-hidden="true">
-  <div class="history-detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="history-detail-title">
-    <div class="history-detail-modal__header">
-      <h4 id="history-detail-title" class="history-detail-modal__title">상담 상세내역</h4>
-      <button type="button" class="history-detail-modal__close" data-action="history-detail-close" aria-label="닫기">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-    <div class="history-detail-modal__body">
-      <div class="history-detail-row">
-        <span class="history-detail-label">시간</span>
-        <span class="history-detail-value" data-role="detail-timestamp">-</span>
+<!-- ===================== History Detail Modal ===================== -->
+<section>
+  <div class="history-detail-modal" data-role="history-detail-modal" aria-hidden="true">
+    <div class="history-detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="history-detail-title">
+      <div class="history-detail-modal__header">
+        <h4 id="history-detail-title" class="history-detail-modal__title">상담 상세내역</h4>
+        <button type="button" class="history-detail-modal__close" data-action="history-detail-close" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
-      <div class="history-detail-row">
-        <span class="history-detail-label">상담원</span>
-        <span class="history-detail-value" data-role="detail-agent">-</span>
+      <div class="history-detail-modal__body">
+        <div class="history-detail-row">
+          <span class="history-detail-label">시간</span>
+          <span class="history-detail-value" data-role="detail-timestamp">-</span>
+        </div>
+        <div class="history-detail-row">
+          <span class="history-detail-label">상담원</span>
+          <span class="history-detail-value" data-role="detail-agent">-</span>
+        </div>
+        <div class="history-detail-row">
+          <span class="history-detail-label">고객명</span>
+          <span class="history-detail-value" data-role="detail-customer">-</span>
+        </div>
+        <div class="history-detail-row">
+          <span class="history-detail-label">전화번호</span>
+          <span class="history-detail-value" data-role="detail-phone">-</span>
+        </div>
+        <div class="history-detail-row">
+          <span class="history-detail-label">계좌번호</span>
+          <span class="history-detail-value" data-role="detail-account">-</span>
+        </div>
+        <div class="history-detail-row">
+          <span class="history-detail-label">상담유형</span>
+          <span class="history-detail-value" data-role="detail-type">-</span>
+        </div>
+        <div class="history-detail-row">
+          <span class="history-detail-label">채널</span>
+          <span class="history-detail-value" data-role="detail-channel">-</span>
+        </div>
+        <div class="history-detail-row history-detail-row--full">
+          <span class="history-detail-label">상담내용</span>
+          <p class="history-detail-content" data-role="detail-content">-</p>
+        </div>
       </div>
-      <div class="history-detail-row">
-        <span class="history-detail-label">고객명</span>
-        <span class="history-detail-value" data-role="detail-customer">-</span>
+      <div class="history-detail-modal__footer">
+        <button type="button" class="history-detail-modal__confirm" data-action="history-detail-close">확인</button>
       </div>
-      <div class="history-detail-row">
-        <span class="history-detail-label">전화번호</span>
-        <span class="history-detail-value" data-role="detail-phone">-</span>
-      </div>
-      <div class="history-detail-row">
-        <span class="history-detail-label">계좌번호</span>
-        <span class="history-detail-value" data-role="detail-account">-</span>
-      </div>
-      <div class="history-detail-row">
-        <span class="history-detail-label">상담유형</span>
-        <span class="history-detail-value" data-role="detail-type">-</span>
-      </div>
-      <div class="history-detail-row">
-        <span class="history-detail-label">채널</span>
-        <span class="history-detail-value" data-role="detail-channel">-</span>
-      </div>
-      <div class="history-detail-row history-detail-row--full">
-        <span class="history-detail-label">상담내용</span>
-        <p class="history-detail-content" data-role="detail-content">-</p>
-      </div>
-    </div>
-    <div class="history-detail-modal__footer">
-      <button type="button" class="history-detail-modal__confirm" data-action="history-detail-close">확인</button>
     </div>
   </div>
-</div>
+</section>
 
-<div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">
-  <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-outbound-title">
-    <div class="main-outbound-modal__header">
-      <h4 id="main-outbound-title" class="main-outbound-modal__title">아웃바운드 발신</h4>
-      <button type="button" class="main-outbound-modal__close" data-action="main-close-outbound-modal" aria-label="닫기">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-    <div class="main-outbound-modal__body">
-      <label class="main-outbound-modal__label" for="mainOutboundPhoneInput">전화번호 입력</label>
-      <input
-        id="mainOutboundPhoneInput"
-        type="text"
-        class="field main-outbound-modal__input"
-        inputmode="numeric"
-        placeholder="예: 010-1234-5678"
-        data-role="main-outbound-phone-input"
-      />
-      <p class="main-outbound-modal__hint">숫자만 입력해도 자동으로 포맷됩니다.</p>
-      <div class="main-outbound-callerid">
-        <div class="main-outbound-callerid__title">발신 표시번호 선택</div>
-        <table class="main-outbound-callerid__table">
-          <thead>
-            <tr>
-              <th>선택</th>
-              <th>표시번호</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input
-                  type="radio"
-                  name="mainOutboundCallerId"
-                  value="1588-0365"
-                  data-role="main-outbound-callerid"
-                  checked
-                />
-              </td>
-              <td>1588-0365</td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="radio"
-                  name="mainOutboundCallerId"
-                  value="3772-1010"
-                  data-role="main-outbound-callerid"
-                />
-              </td>
-              <td>3772-1010</td>
-            </tr>
-          </tbody>
-        </table>
+<!-- ===================== Outbound Modal ===================== -->
+<section>
+  <div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">
+    <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-outbound-title">
+      <div class="main-outbound-modal__header">
+        <h4 id="main-outbound-title" class="main-outbound-modal__title">아웃바운드 발신</h4>
+        <button type="button" class="main-outbound-modal__close" data-action="main-close-outbound-modal" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="main-outbound-modal__body">
+        <label class="main-outbound-modal__label" for="mainOutboundPhoneInput">전화번호 입력</label>
+        <input
+          id="mainOutboundPhoneInput"
+          type="text"
+          class="field main-outbound-modal__input"
+          inputmode="numeric"
+          placeholder="예: 010-1234-5678"
+          data-role="main-outbound-phone-input"
+        />
+        <p class="main-outbound-modal__hint">숫자만 입력해도 자동으로 포맷됩니다.</p>
+        <div class="main-outbound-callerid">
+          <div class="main-outbound-callerid__title">발신 표시번호 선택</div>
+          <table class="main-outbound-callerid__table">
+            <thead>
+              <tr>
+                <th>선택</th>
+                <th>표시번호</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input
+                    type="radio"
+                    name="mainOutboundCallerId"
+                    value="1588-0365"
+                    data-role="main-outbound-callerid"
+                    checked
+                  />
+                </td>
+                <td>1588-0365</td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="radio"
+                    name="mainOutboundCallerId"
+                    value="3772-1010"
+                    data-role="main-outbound-callerid"
+                  />
+                </td>
+                <td>3772-1010</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="main-outbound-modal__footer">
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-outbound-modal">취소</button>
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-outbound-call">콜 발신</button>
       </div>
     </div>
-    <div class="main-outbound-modal__footer">
-      <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-outbound-modal">취소</button>
-      <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-outbound-call">콜 발신</button>
-    </div>
   </div>
-</div>
+</section>
 
 
   </div>
