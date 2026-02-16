@@ -328,6 +328,16 @@ body {
 .main-center-warning-wrap { height: 12rem; border-top: 1px solid #e5e7eb; background: #fff; display: flex; flex-direction: column; }
 .warning-tab-panel-body { padding: 0.75rem; overflow-y: auto; font-size: 0.75rem; color: #1f2937; line-height: 1.625; }
 .main-center-warning-line { margin-bottom: 0.25rem; }
+.main-aside-icon-gap { margin-right: 0.25rem; }
+.main-aside-action-icon-brand { color: var(--color-primary); font-size: 1.125rem; }
+.main-aside-action-label-brand { color: #1e40af; font-weight: 700; }
+.main-aside-action-icon-teal { color: #0d9488; font-size: 1.125rem; }
+.main-aside-action-label-teal { color: #115e59; font-weight: 700; }
+.main-aside-action-icon-subtle { color: #6b7280; }
+.main-aside-action-icon-caution-strong { color: #ca8a04; }
+.main-aside-action-icon-caution { color: #eab308; }
+.main-aside-action-icon-inverse { color: #fff; }
+.main-aside-action-label-inverse { color: #fff; }
 .journey-scroll-panel { height: 800px; }
 .column-width-sm { width: 54px; }
 
