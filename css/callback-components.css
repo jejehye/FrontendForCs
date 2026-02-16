@@ -185,6 +185,7 @@ body { background-color: #f3f4f6; }
 }
 
 .callback-note-textarea { resize: none; }
+.callback-note-card { margin-top: 12px; }
 .callback-radio-completed { color: #22c55e; }
 .callback-radio-completed:focus { outline-color: #22c55e; }
 .callback-radio-callback { color: var(--color-primary); }
