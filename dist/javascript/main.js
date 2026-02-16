@@ -407,6 +407,15 @@ document.querySelectorAll('.nav-item').forEach(item =>
 
       const statusSelect = document.querySelector('.agent-status-bar select');
       const statusIndicator = document.querySelector('.status-indicator');
+      const agentDisplayNode = document.querySelector('[data-agent-display]');
+      const currentAgentId = localStorage.getItem('currentAgentId') ||
+        localStorage.getItem('rememberedEmployeeId') || '204075';
+      const currentAgentName = localStorage.getItem('currentAgentName') ||
+        '김민수';
+
+      if (agentDisplayNode) {
+        agentDisplayNode.textContent = `${currentAgentName}(${currentAgentId})`;
+      }
 
       if (!statusSelect || !statusIndicator) {
         return;
@@ -432,4 +441,53 @@ document.querySelectorAll('.nav-item').forEach(item =>
             break;
         }
       });
+
+      const callToggleButton = document.querySelector('[data-call-toggle]');
+      const scriptButtons = Array.from(document.querySelectorAll('[data-softphone-script]'));
+      const scriptOutput = document.querySelector('[data-softphone-output]');
+      let isCallActive = false;
+
+      const setScriptOutput = (message, mode) => {
+        if (!scriptOutput) {
+          return;
+        }
+        scriptOutput.textContent = message;
+        scriptOutput.classList.remove('is-playing', 'is-warn');
+        if (mode) {
+          scriptOutput.classList.add(mode);
+        }
+      };
+
+      const syncCallUi = () => {
+        if (callToggleButton) {
+          callToggleButton.textContent = isCallActive ? '통화중 ON' : '통화중 OFF';
+          callToggleButton.classList.toggle('is-active', isCallActive);
+        }
+        scriptButtons.forEach(button => {
+          button.disabled = !isCallActive;
+        });
+        if (!isCallActive) {
+          setScriptOutput('통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.', '');
+        }
+      };
+
+      if (callToggleButton) {
+        callToggleButton.addEventListener('click', () => {
+          isCallActive = !isCallActive;
+          syncCallUi();
+        });
+      }
+
+      scriptButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const scriptName = button.getAttribute('data-softphone-script') || '안내 멘트';
+          if (!isCallActive) {
+            setScriptOutput('통화중 상태가 아닙니다. 통화중 ON 후 멘트를 송출해 주세요.', 'is-warn');
+            return;
+          }
+          setScriptOutput(`"${scriptName}" 멘트 송출 중입니다.`, 'is-playing');
+        });
+      });
+
+      syncCallUi();
 });

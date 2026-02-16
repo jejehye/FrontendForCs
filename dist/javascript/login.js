@@ -36,6 +36,7 @@ loginForm.addEventListener('submit', function (e) {
     } else {
         localStorage.removeItem('rememberedEmployeeId');
     }
+    localStorage.setItem('currentAgentId', employeeId);
 
     const loginBtn = loginForm.querySelector('.login-btn');
     loginBtn.innerHTML = '<span class="spinner">⟳</span>로그인 중...';

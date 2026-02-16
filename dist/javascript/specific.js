@@ -13,6 +13,7 @@ const searchInput = document.getElementById('specificSearch');
 const filterButtons = document.querySelectorAll('.specific-filter-btn');
 
 const historyBody = document.getElementById('specificHistoryBody');
+const historyPagination = document.getElementById('historyPagination');
 const historyDateFrom = document.getElementById('historyDateFrom');
 const historyDateTo = document.getElementById('historyDateTo');
 const historySearch = document.getElementById('historySearch');
@@ -24,6 +25,8 @@ const countRejected = document.getElementById('countRejected');
 
 let activeFilter = 'all';
 let currentSearch = '';
+let historyPage = 1;
+const historyPageSize = 5;
 let requestId = 4;
 
 function pad2(value) {
@@ -147,7 +150,8 @@ function getFilteredHistory() {
   const to = historyDateTo?.value || '';
   const keyword = (historySearch?.value || '').trim().toLowerCase();
 
-  return requests.filter((item) => {
+  return requests
+    .filter((item) => {
     if (item.status === 'pending' || !item.processedAt) return false;
     const processedDate = item.processedAt.slice(0, 10);
     const matchesFrom = !from || processedDate >= from;
@@ -156,19 +160,50 @@ function getFilteredHistory() {
       !keyword ||
       item.name.toLowerCase().includes(keyword) ||
       item.reason.toLowerCase().includes(keyword);
-    return matchesFrom && matchesTo && matchesSearch;
-  });
+      return matchesFrom && matchesTo && matchesSearch;
+    })
+    .sort((a, b) => b.processedAt.localeCompare(a.processedAt));
+}
+
+function renderHistoryPagination(totalItems) {
+  if (!historyPagination) return;
+  const totalPages = Math.max(1, Math.ceil(totalItems / historyPageSize));
+  if (historyPage > totalPages) historyPage = totalPages;
+
+  const pageButtons = Array.from({ length: totalPages }, (_, index) => {
+    const page = index + 1;
+    const activeClass = page === historyPage ? ' is-active' : '';
+    return `<button class="specific-page-btn${activeClass}" data-history-page="${page}">${page}</button>`;
+  }).join('');
+
+  historyPagination.innerHTML = `
+    <button class="specific-page-btn" data-history-page-nav="prev" ${
+      historyPage === 1 ? 'disabled' : ''
+    }>&lt;</button>
+    ${pageButtons}
+    <button class="specific-page-btn" data-history-page-nav="next" ${
+      historyPage === totalPages ? 'disabled' : ''
+    }>&gt;</button>
+  `;
 }
 
 function renderHistoryTable() {
   const rows = getFilteredHistory();
+  const totalPages = Math.max(1, Math.ceil(rows.length / historyPageSize));
+  if (historyPage > totalPages) historyPage = totalPages;
+  if (historyPage < 1) historyPage = 1;
+
+  const startIndex = (historyPage - 1) * historyPageSize;
+  const pagedRows = rows.slice(startIndex, startIndex + historyPageSize);
+
   if (!rows.length) {
     historyBody.innerHTML =
       '<tr><td class="specific-empty" colspan="6">조건에 맞는 이전 처리내역이 없습니다.</td></tr>';
+    renderHistoryPagination(0);
     return;
   }
 
-  historyBody.innerHTML = rows
+  historyBody.innerHTML = pagedRows
     .map(
       (item) => `
       <tr>
@@ -182,6 +217,7 @@ function renderHistoryTable() {
     `
     )
     .join('');
+  renderHistoryPagination(rows.length);
 }
 
 function renderAll() {
@@ -267,12 +303,39 @@ if (historyDateFrom && historyDateTo) {
   historyDateFrom.value = getDateOffset(-30);
   historyDateTo.value = getDateOffset(0);
 
-  historyDateFrom.addEventListener('change', renderHistoryTable);
-  historyDateTo.addEventListener('change', renderHistoryTable);
+  historyDateFrom.addEventListener('change', () => {
+    historyPage = 1;
+    renderHistoryTable();
+  });
+  historyDateTo.addEventListener('change', () => {
+    historyPage = 1;
+    renderHistoryTable();
+  });
 }
 
 if (historySearch) {
-  historySearch.addEventListener('input', renderHistoryTable);
+  historySearch.addEventListener('input', () => {
+    historyPage = 1;
+    renderHistoryTable();
+  });
+}
+
+if (historyPagination) {
+  historyPagination.addEventListener('click', (event) => {
+    const pageButton = event.target.closest('button[data-history-page]');
+    const navButton = event.target.closest('button[data-history-page-nav]');
+
+    if (pageButton) {
+      historyPage = Number(pageButton.dataset.historyPage);
+      renderHistoryTable();
+      return;
+    }
+
+    if (!navButton) return;
+    if (navButton.dataset.historyPageNav === 'prev') historyPage -= 1;
+    if (navButton.dataset.historyPageNav === 'next') historyPage += 1;
+    renderHistoryTable();
+  });
 }
 
 renderAll();

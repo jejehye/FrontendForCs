@@ -225,6 +225,11 @@
   overflow: hidden;
 }
 
+.specific-history-scroll {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
 .specific-table {
   width: 100%;
   min-width: 760px;
@@ -295,6 +300,43 @@
 .specific-empty {
   text-align: center;
   color: #94a3b8;
+}
+
+.specific-history-pagination {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.specific-page-btn {
+  min-width: 26px;
+  height: 26px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.specific-page-btn:hover {
+  background: #f8fafc;
+}
+
+.specific-page-btn.is-active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.specific-page-btn:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
 }
 
 .specific-badge {

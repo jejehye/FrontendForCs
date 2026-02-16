@@ -757,6 +757,46 @@
           <option value="meeting">회의</option>
         </select>
       </div>
+      <div class="agent-login-chip" aria-label="로그인 상담원 정보">
+        <span class="agent-login-chip__avatar">
+          <i class="fa-solid fa-user"></i>
+        </span>
+        <span class="agent-login-chip__meta">
+          <span class="agent-login-chip__role">상담원</span>
+          <span class="agent-login-chip__name" data-agent-display>김민수(204075)</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="softphone-script-panel">
+    <div class="softphone-script-header">
+      <span class="softphone-script-title">
+        <i class="fa-solid fa-volume-high"></i> 안내 멘트 송출
+      </span>
+      <button type="button" class="softphone-call-toggle" data-call-toggle>
+        통화중 OFF
+      </button>
+    </div>
+    <div class="softphone-script-grid">
+      <button type="button" class="softphone-script-btn" data-softphone-script="녹취 동의 안내">
+        <i class="fa-solid fa-microphone-lines"></i>
+        녹취동의
+      </button>
+      <button type="button" class="softphone-script-btn" data-softphone-script="개인정보 수집 동의">
+        <i class="fa-solid fa-user-shield"></i>
+        개인정보
+      </button>
+      <button type="button" class="softphone-script-btn" data-softphone-script="투자 유의사항">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        투자유의
+      </button>
+      <button type="button" class="softphone-script-btn" data-softphone-script="통화 종료 안내">
+        <i class="fa-solid fa-phone-slash"></i>
+        종료안내
+      </button>
+    </div>
+    <div class="softphone-script-status" data-softphone-output>
+      통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.
     </div>
   </div>
   <div class="card">
@@ -889,131 +929,175 @@
     </div>
   </div>
   <div class="info-card flex-1 flex flex-col p-0 overflow-hidden mt-10">
-    <div class="flex border-b border-gray-200 bg-gray-50">
-      <button class="journey-tab-item is-active">
-        고객여정 <i class="fa-solid fa-chevron-down ml-1"></i></button
-      ><button class="journey-tab-item">
-        온라인여정 <i class="fa-solid fa-chevron-down ml-1"></i></button
-      ><button class="journey-tab-item">
-        UMS <i class="fa-solid fa-chevron-down ml-1"></i>
+    <div class="flex items-center justify-between px-3 py-2 border-b border-gray-200 bg-white">
+      <span class="font-sm weight-bold text-strong">나의 상담이력 조회</span>
+      <button class="history-export-btn">
+        <i class="fa-solid fa-download"></i>내역 다운로드
       </button>
     </div>
-    <div
-      class="journey-scroll-panel p-4 pb-6 overflow-y-auto custom-scroll relative flex-1"
-    >
-      <div class="grid grid-cols-[60px_1fr] gap-y-4 gap-x-2 mb-6">
-        <div class="flex items-center justify-center">
-          <span class="journey-channel-badge-inbound">I/B</span>
-        </div>
-        <div
-          class="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar"
-        >
-          <div class="journey-touchpoint-card">
-            <div class="-left-1 -translate-y-1/2 journey-status-dot-primary"></div>
-            <div class="font-2xs-plus text-brand weight-bold">SOL앱</div>
-            <div class="font-2xs text-muted">12-18 10:35</div>
-          </div>
-          <div class="journey-touchpoint-card-muted">
-            <div class="font-2xs-plus text-brand weight-bold">상담센터</div>
-            <div class="font-2xs text-muted">12-10 14:20</div>
-          </div>
-          <div class="journey-touchpoint-card-muted">
-            <div class="font-2xs-plus text-brand weight-bold">영업점</div>
-            <div class="font-2xs text-muted">11-28 09:15</div>
+    <div class="panel__body panel__body--history-filter mx-3 mt-2 rounded">
+      <div class="grid grid-cols-3 gap-x-3 gap-y-2 mb-2">
+        <div class="flex items-center">
+          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+            조회기간
+          </label>
+          <div class="ui-inline-gap-xs w-full">
+            <input type="date" value="2026-02-01" class="field field--history-date" />
+            <span class="font-2xs text-subtle">~</span>
+            <input type="date" value="2026-02-16" class="field field--history-date" />
           </div>
         </div>
-        <div class="flex items-center justify-center">
-          <span class="journey-channel-badge-outbound">O/B</span>
+        <div class="flex items-center">
+          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+            고객명
+          </label>
+          <input type="text" placeholder="고객명" class="field field--history-input" />
         </div>
-        <div class="flex items-center gap-2">
-          <div class="journey-touchpoint-card">
-            <div class="-left-1 -translate-y-1/2 journey-status-dot-secondary"></div>
-            <div class="font-2xs-plus text-brand-soft weight-bold">PB상담</div>
-            <div class="font-2xs text-muted">11-15 16:40</div>
-          </div>
-          <div class="journey-touchpoint-card-muted">
-            <div class="font-2xs-plus text-body weight-bold">이벤트안내</div>
-            <div class="font-2xs text-muted">10-22 11:30</div>
-          </div>
+        <div class="flex items-center">
+          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+            계좌번호
+          </label>
+          <input type="text" placeholder="계좌번호" class="field field--history-input" />
         </div>
-        <div class="flex items-center justify-center">
-          <span class="journey-channel-badge-neutral">게시판</span>
+        <div class="flex items-center">
+          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+            전화번호
+          </label>
+          <input type="text" placeholder="전화번호" class="field field--history-input" />
         </div>
-        <div class="flex items-center gap-2">
-          <div class="journey-touchpoint-card">
-            <div class="-left-1 -translate-y-1/2 journey-status-dot-neutral"></div>
-            <div class="font-2xs-plus text-brand-soft weight-bold">공지사항</div>
-            <div class="font-2xs text-muted">09-08 13:25</div>
-          </div>
-          <div class="journey-touchpoint-card-muted">
-            <div class="font-2xs-plus text-brand-soft weight-bold">이벤트</div>
-            <div class="font-2xs text-muted">08-30 10:00</div>
-          </div>
+        <div class="flex items-center">
+          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+            상담유형
+          </label>
+          <select class="field field--history-category">
+            <option>전체</option>
+            <option>일반</option>
+            <option>업무처리</option>
+            <option>민원</option>
+            <option>해외투자</option>
+          </select>
         </div>
-        <div class="flex items-center justify-center">
-          <span class="journey-channel-badge-neutral">VOC</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="journey-touchpoint-card">
-            <div class="-left-1 -translate-y-1/2 journey-status-dot-neutral"></div>
-            <div class="font-2xs-plus text-brand-soft weight-bold">칭찬</div>
-            <div class="font-2xs text-muted">07-12 15:45</div>
-          </div>
+        <div class="flex items-center">
+          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+            상담내용
+          </label>
+          <input type="text" placeholder="상담내용" class="field field--history-input" />
         </div>
       </div>
-      <button class="-translate-y-1/2 journey-scroll-next-btn">
-        <i class="fa-solid fa-chevron-right font-xs"></i>
+      <div class="flex justify-end gap-1.5">
+        <button class="btn--history-reset bg-white hover:bg-gray-100 border-gray-300 text-gray-700">
+          <i class="fa-solid fa-rotate-right mr-1"></i>초기화
+        </button>
+        <button class="btn--history-search bg-white hover:bg-gray-100 text-gray-700">
+          <i class="fa-solid fa-magnifying-glass mr-1"></i>조회
+        </button>
+      </div>
+    </div>
+    <div class="h-[220px] overflow-x-auto overflow-y-scroll px-3">
+      <table class="tbl table--history">
+        <thead class="bg-blue-50 sticky top-0 z-10">
+          <tr>
+            <th class="table__head table__head--narrow">NO</th>
+            <th class="table__head table__head--time">
+              시간 <i class="fa-solid fa-sort ml-1 text-muted"></i>
+            </th>
+            <th class="table__head">상담원</th>
+            <th class="table__head table__head--io">I/O</th>
+            <th class="table__head">고객명</th>
+            <th class="table__head">전화번호</th>
+            <th class="table__head table__head--account">계좌번호</th>
+            <th class="column-width-sm table__head">상담유형</th>
+            <th class="table__head">채널</th>
+            <th class="table__head table__head--summary">상담내용</th>
+          </tr>
+        </thead>
+        <tbody class="font-2xs-tight text-body-strong">
+          <tr class="tbl__row">
+            <td class="tbl__cell tbl__cell--accent">1</td>
+            <td class="tbl__cell">2026-02-16 14:12:03</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-in">I</span></td>
+            <td class="tbl__cell">박지민</td>
+            <td class="tbl__cell">010-1234-5678</td>
+            <td class="tbl__cell">2040750012</td>
+            <td class="tbl__cell">해외투자</td>
+            <td class="tbl__cell">전화</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              해외주식 주문 가능시간 및 수수료 재안내
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">2</td>
+            <td class="tbl__cell">2026-02-16 11:42:17</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-in">I</span></td>
+            <td class="tbl__cell">이수호</td>
+            <td class="tbl__cell">010-6621-0987</td>
+            <td class="tbl__cell">2040751045</td>
+            <td class="tbl__cell">업무처리</td>
+            <td class="tbl__cell">채팅</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              계좌 비밀번호 변경 절차 및 본인확인 안내
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">3</td>
+            <td class="tbl__cell">2026-02-15 16:08:55</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-out">O</span></td>
+            <td class="tbl__cell">최영호</td>
+            <td class="tbl__cell">010-9981-2244</td>
+            <td class="tbl__cell">2040752201</td>
+            <td class="tbl__cell">민원</td>
+            <td class="tbl__cell">전화</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              접수건 처리 일정 및 회신 예정 시간 안내
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">4</td>
+            <td class="tbl__cell">2026-02-15 10:21:34</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-in">I</span></td>
+            <td class="tbl__cell">김제은</td>
+            <td class="tbl__cell">010-3011-7742</td>
+            <td class="tbl__cell">2040753008</td>
+            <td class="tbl__cell">일반</td>
+            <td class="tbl__cell">전화</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              ISA 만기 후 운용 방식 및 이전 가능 여부 상담
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">5</td>
+            <td class="tbl__cell">2026-02-14 15:36:09</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-out">O</span></td>
+            <td class="tbl__cell">은방실</td>
+            <td class="tbl__cell">010-4219-6610</td>
+            <td class="tbl__cell">2040754479</td>
+            <td class="tbl__cell">일반</td>
+            <td class="tbl__cell">MTS</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              인증 오류 해결 가이드 및 앱 재로그인 처리
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination pagination--history px-3 pb-3 pt-2">
+      <button class="pagination__btn">
+        <i class="fa-solid fa-angles-left"></i></button
+      ><button class="pagination__btn">
+        <i class="fa-solid fa-angle-left"></i></button
+      ><button class="pagination__btn is-active">1</button
+      ><button class="pagination__btn">2</button
+      ><button class="pagination__btn">3</button
+      ><button class="pagination__btn">
+        <i class="fa-solid fa-angle-right"></i></button
+      ><button class="pagination__btn">
+        <i class="fa-solid fa-angles-right"></i>
       </button>
-      <div class="mt-[26px] pt-4 border-t border-gray-200">
-        <h4 class="font-sm weight-bold text-strong mb-2">상담여정 목록</h4>
-        <table class="table w-full table-compact text-left">
-          <thead>
-            <tr>
-              <th>
-                발생일시 <i class="fa-solid fa-caret-up ml-1 font-xs"></i>
-              </th>
-              <th>
-                채널유형 <i class="fa-solid fa-caret-down ml-1 font-xs"></i>
-              </th>
-              <th>
-                상담유형 <i class="fa-solid fa-caret-down ml-1 font-xs"></i>
-              </th>
-            </tr>
-          </thead>
-          <tbody class="text-body">
-            <tr>
-              <td>2023-12-18 10:35:22</td>
-              <td>인바운드 &gt; SOL앱</td>
-              <td>해외주식 &gt; ETF &gt; 매수상담</td>
-            </tr>
-            <tr>
-              <td>2023-12-10 14:20:18</td>
-              <td>인바운드 &gt; 상담센터</td>
-              <td>계좌 &gt; 서비스 &gt; 비밀번호 변경</td>
-            </tr>
-            <tr>
-              <td>2023-11-28 09:15:33</td>
-              <td>인바운드 &gt; 영업점</td>
-              <td>펀드 &gt; 신규 &gt; 가입상담</td>
-            </tr>
-            <tr>
-              <td>2023-11-15 16:40:55</td>
-              <td>아웃바운드 &gt; PB상담</td>
-              <td>자산관리 &gt; 포트폴리오 &gt; 리밸런싱</td>
-            </tr>
-            <tr>
-              <td>2023-10-22 11:30:10</td>
-              <td>아웃바운드 &gt; 이벤트</td>
-              <td>프로모션 &gt; 수수료 &gt; 안내</td>
-            </tr>
-            <tr>
-              <td>2023-09-08 13:25:42</td>
-              <td>인바운드 &gt; 게시판</td>
-              <td>공지 &gt; 시스템 &gt; 점검안내</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>
