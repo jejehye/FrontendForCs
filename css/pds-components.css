@@ -84,7 +84,7 @@ body { background-color: #f3f4f6; }
 .modal-overlay.active { display: flex; }
 .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
 
-.pds-header-gradient { background: linear-gradient(135deg, #0046ff 0%, #0039cc 100%); }
+.pds-header-gradient { background: linear-gradient(135deg, #003da5 0%, #002f80 100%); }
 .pds-bg-soft { background: var(--color-surface-soft); }
 .pds-card-muted { background: var(--color-surface-soft); border-color: var(--color-panel-border); }
 .pds-card-success { background: #f0fdf4; border-color: #86efac; }
@@ -124,7 +124,7 @@ body { background-color: #f3f4f6; }
 .pds-opacity-disabled { opacity: 0.5; }
 
 /* De-tailwind phase 3: semantic layout helpers (PDS page) */
-.pds-main-header { padding: 16px; border-bottom: 1px solid #e5e7eb; color: #fff; background: linear-gradient(135deg, #0046ff 0%, #0039cc 100%); }
+.pds-main-header { padding: 16px; border-bottom: 1px solid #e5e7eb; color: #fff; background: linear-gradient(135deg, #003da5 0%, #002f80 100%); }
 .pds-between-row-md { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .pds-title-lg { font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 8px; }
 .pds-refresh-btn { color: #fff; }

@@ -75,7 +75,7 @@ body { background-color: #f3f4f6; }
 .tab-item.active { color: #3b82f6; border-bottom-color: #3b82f6; background: #fff; }
 .tab-item-primary.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
 
-.sms-header-bar { background: #2563eb; }
+.sms-header-bar { background: #003da5; }
 .sms-primary-btn { background: var(--color-primary); }
 .sms-primary-btn:hover { background: #002f66; }
 .sms-primary-text { color: var(--color-primary); }

@@ -15,9 +15,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #002f80;
   border-radius: 10px;
-  background: #f8fafc;
+  background: linear-gradient(135deg, #003da5 0%, #002f80 100%);
   padding: 12px 14px;
 }
 
@@ -25,7 +25,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #1e3a8a;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -36,7 +36,7 @@
 
 .specific-header-meta {
   font-size: 11px;
-  color: #64748b;
+  color: #dbeafe;
 }
 
 .specific-grid {

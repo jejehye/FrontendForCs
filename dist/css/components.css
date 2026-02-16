@@ -5,6 +5,8 @@
   --color-accent: #1d4ed8;
   --color-highlight-blue: #e6f0ff;
   --color-panel-border: #e2e8f0;
+  --main-header-bg: #003da5;
+  --main-header-bg-dark: #002f80;
 }
 
 
@@ -126,7 +128,7 @@ body { background-color: #f3f4f6; }
 .tbl__cell--customer { font-weight: 700; }
 .tbl__cell--summary { max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.notice-header { padding: 16px; background-image: linear-gradient(to right, rgb(37 99 235), rgb(29 78 216)); color: #fff; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+.notice-header { padding: 16px; background-image: linear-gradient(to right, var(--main-header-bg), var(--main-header-bg-dark)); color: #fff; border-top-left-radius: 8px; border-top-right-radius: 8px; }
 .notice-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .notice-header-title-row { display: flex; align-items: center; gap: 8px; }
 .notice-updated { font-size: 12px; line-height: 16px; background-color: rgb(59 130 246 / 0.3); border-radius: 4px; padding: 8px 12px; }
@@ -139,7 +141,7 @@ body { background-color: #f3f4f6; }
   gap: 8px;
   padding: 12px;
   border-radius: 0;
-  background: #2563eb;
+  background: var(--main-header-bg);
   color: #fff;
 }
 .main-section-header--coaching { margin-bottom: 8px; }
@@ -161,9 +163,10 @@ body { background-color: #f3f4f6; }
 .main-section-header .history-editor-icon-brand { color: #bfdbfe; }
 .main-section-header .history-editor-header-actions { gap: 8px; }
 .main-section-header .history-editor-btn-compact {
-  min-height: 24px;
-  padding: 3px 8px;
-  font-size: 11px;
+  min-height: 20px;
+  padding: 2px 7px;
+  font-size: 10px;
+  line-height: 1;
 }
 
 .panel-header-actions-only { justify-content: flex-end; }
@@ -217,6 +220,7 @@ body { background-color: #f3f4f6; }
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  margin: 0;
   font-size: 12px;
   font-weight: 700;
   color: #1f2937;
@@ -322,7 +326,7 @@ body { background-color: #f3f4f6; }
 }
 .history-editor-timestamp--tail {
   margin-left: 2px;
-  min-width: 112px;
+  min-width: 96px;
   text-align: right;
 }
 .history-editor-actions-wrap {
@@ -337,7 +341,7 @@ body { background-color: #f3f4f6; }
 .history-note-icon { color: #60a5fa; }
 .consultation-note-field { resize: none; }
 .history-action-icon-gap { margin-right: 4px; }
-.main-live-header { background: #2563eb; padding: 12px; color: #fff; }
+.main-live-header { background: var(--main-header-bg); padding: 12px; color: #fff; }
 .main-coaching-header { margin-bottom: 0; }
 .main-live-header-actions { display: flex; align-items: center; gap: 8px; }
 .main-live-search-wrap { position: relative; }
@@ -356,8 +360,18 @@ body { background-color: #f3f4f6; }
 .main-live-msg-time { margin-left: 4px; margin-top: 4px; }
 .main-live-read-wrap { display: flex; align-items: center; justify-content: center; margin: 8px 0; }
 .main-live-scroll-wrap { position: sticky; bottom: 0; display: flex; justify-content: flex-end; margin-top: auto; padding-bottom: 8px; }
+.panel__header--history {
+  background: var(--main-header-bg);
+  border-top-color: var(--main-header-bg-dark);
+}
 .main-history-actions { display: flex; gap: 8px; }
 .main-history-icon-gap { margin-right: 4px; }
+.history-editor-save-btn {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+.history-editor-save-btn:hover { background: #1d4ed8; border-color: #1e40af; }
 .main-history-filter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 8px; margin-bottom: 8px; }
 .main-history-filter-row { display: flex; align-items: center; }
 .main-history-filter-label { font-size: 11px; color: #374151; font-weight: 700; width: 64px; flex-shrink: 0; }
@@ -427,7 +441,7 @@ body { background-color: #f3f4f6; }
   align-items: center;
   justify-content: space-between;
   padding: 12px 14px;
-  background: #2563eb;
+  background: var(--main-header-bg);
   color: #fff;
 }
 .history-detail-modal__title { margin: 0; font-size: 14px; font-weight: 700; }
