@@ -1,42 +1,44 @@
-<div class="chat-panel-header">
+<!-- ===================== Customer Header ===================== -->
+<header class="chat-panel-header">
+  <!-- ===================== Status Row ===================== -->
   <div class="chat-status-row">
     <span class="status-badge status-ib">
-      <i class="fa-solid fa-headset mr-1"></i>
+      <i class="fa-solid fa-headset customer-icon-gap-1"></i>
       I/B
     </span>
-    <span class="font-xs text-body weight-medium truncate">
+    <span class="customer-status-text">
       신한 고객센터 &gt; 투자상담
     </span>
     <span class="status-badge status-cti">
-      <i class="fa-solid fa-link mr-1"></i>
+      <i class="fa-solid fa-link customer-icon-gap-1"></i>
       CTI 연결여부 ON
     </span>
   </div>
-  <div class="customer-summary customer-summary-wide">
+
+  <!-- ===================== Customer Summary ===================== -->
+  <section class="customer-summary customer-summary-wide">
     <div class="customer-meta-row">
       <span class="status-badge status-unauth">
-        <i class="fa-solid fa-lock mr-1"></i>
+        <i class="fa-solid fa-lock customer-icon-gap-1"></i>
         무인증
       </span>
-      <span class="weight-bold text-strong">박지민(여)</span>
-      <span class="text-subtle">|</span>
-      <span class="text-danger weight-medium">투자성향(적극투자형)</span>
-      <span class="text-subtle">|</span>
-      <span class="text-accent weight-medium">고객등급(VVIP)</span>
+      <span class="customer-name">박지민(여)</span>
+      <span class="customer-divider">|</span>
+      <span class="customer-investment-profile">투자성향(적극투자형)</span>
+      <span class="customer-divider">|</span>
+      <span class="customer-grade">고객등급(VVIP)</span>
     </div>
     <div class="customer-warning customer-warning-wide">
-      <i
-        class="fa-solid fa-triangle-exclamation text-warning font-sm mt-0.5"
-      ></i>
-      <div class="flex-1">
-        <span class="font-xs weight-bold text-warning-deep block mb-0.5">
+      <i class="fa-solid fa-triangle-exclamation customer-warning-icon"></i>
+      <div class="customer-warning-body">
+        <span class="customer-warning-title">
           주의고객
         </span>
-        <span class="font-xs text-warning-strong">
+        <span class="customer-warning-text">
           고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 -
           본인확인 철저
         </span>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+</header>
