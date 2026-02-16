@@ -87,12 +87,12 @@ body {
 .customer-warning-title { font-size: 0.75rem; line-height: 1rem; font-weight: 700; color: rgb(146 64 14); display: block; margin-bottom: 0.125rem; }
 .customer-warning-text { font-size: 0.75rem; line-height: 1rem; color: rgb(180 83 9); }
 
-.account-info-panel { background: #fff; border-radius: 0.625rem; padding: 0.75rem 0.875rem 0.875rem; border: none; box-shadow: none; }
+.account-info-panel { background: #fff; border-radius: 0.625rem; padding: 0.625rem 0.75rem 0.75rem; border: none; box-shadow: none; }
 .account-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0.75rem; row-gap: 0.625rem; }
 .account-panel-title-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.625rem; }
 .account-panel-title { font-size: 0.78rem; font-weight: 700; color: #1e3a8a; letter-spacing: -0.01em; }
 .account-panel-helper { font-size: 0.625rem; color: #64748b; background: #eff6ff; border: none; border-radius: 9999px; padding: 0.1rem 0.45rem; white-space: nowrap; }
-.account-field-row { display: flex; align-items: center; gap: 0.5rem; border: none; border-radius: 0.5rem; background: #f8fafc; min-height: 2.35rem; padding: 0.35rem 0.55rem; transition: box-shadow 0.2s ease, background-color 0.2s ease; }
+.account-field-row { display: flex; align-items: center; gap: 0.5rem; border: none; border-radius: 0.5rem; background: #f8fafc; min-height: 2.1rem; padding: 0.25rem 0.5rem; transition: box-shadow 0.2s ease, background-color 0.2s ease; }
 .account-field-row:focus-within { background: #f1f5f9; box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.22); }
 .account-field-row-full { grid-column: 1 / -1; }
 .account-field-label { width: 4.6rem; flex-shrink: 0; font-size: 0.68rem; font-weight: 700; color: #475569; letter-spacing: -0.01em; text-align: left; }
@@ -104,8 +104,8 @@ body {
 .account-input::placeholder { color: #94a3b8; }
 .account-input:focus { outline: none; }
 
-.verify-transfer-actions { margin-top: 0.625rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
-.verify-transfer-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 2.1rem; padding: 0.45rem 0.625rem; border-radius: 0.5rem; border: none; background: #eff6ff; color: #1d4ed8; font-size: 0.69rem; font-weight: 700; line-height: 1.2; transition: all 0.2s ease; }
+.verify-transfer-actions { margin-top: 0.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+.verify-transfer-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 1.95rem; padding: 0.35rem 0.55rem; border-radius: 0.5rem; border: none; background: #eff6ff; color: #1d4ed8; font-size: 0.68rem; font-weight: 700; line-height: 1.2; transition: all 0.2s ease; }
 .verify-transfer-btn:hover { background: #dbeafe; transform: translateY(-1px); }
 .verify-transfer-btn:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
 .verify-transfer-btn-goldnet { background: #f0fdfa; color: #0f766e; }
