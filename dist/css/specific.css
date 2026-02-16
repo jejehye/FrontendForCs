@@ -15,9 +15,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #002f80;
+  border: 1px solid var(--main-header-border);
   border-radius: 10px;
-  background: linear-gradient(135deg, #003da5 0%, #002f80 100%);
+  background: linear-gradient(to right, var(--main-header-bg), var(--main-header-bg-dark));
   padding: 12px 14px;
 }
 
@@ -25,7 +25,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #ffffff;
+  color: #334155;
   font-weight: 700;
 }
 
@@ -36,7 +36,7 @@
 
 .specific-header-meta {
   font-size: 11px;
-  color: #dbeafe;
+  color: #64748b;
 }
 
 .specific-grid {

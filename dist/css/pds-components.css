@@ -6,6 +6,13 @@
   --color-surface-soft: #fafbfc;
   --color-text-primary: #1d1d1f;
   --color-text-secondary: #86868b;
+  --main-header-bg: #f1f5f9;
+  --main-header-bg-dark: #e2e8f0;
+  --main-header-border: #d7dee8;
+  --main-header-control-bg: #ffffff;
+  --main-header-control-bg-hover: #f8fafc;
+  --main-header-control-border: #cbd5e1;
+  --main-header-control-text: #334155;
 }
 
 
@@ -124,12 +131,24 @@ body { background-color: #f3f4f6; }
 .pds-opacity-disabled { opacity: 0.5; }
 
 /* De-tailwind phase 3: semantic layout helpers (PDS page) */
-.pds-main-header { padding: 16px; border-bottom: 1px solid #e5e7eb; color: #fff; background: linear-gradient(135deg, #003da5 0%, #002f80 100%); }
+.pds-main-header {
+  padding: 16px;
+  border: 1px solid var(--main-header-border);
+  color: #334155;
+  background: linear-gradient(to right, var(--main-header-bg), var(--main-header-bg-dark));
+}
 .pds-between-row-md { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .pds-title-lg { font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 8px; }
-.pds-refresh-btn { color: #fff; }
-.pds-refresh-btn:hover { color: #e5e7eb; }
-.pds-summary-card { background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.2); }
+.pds-refresh-btn {
+  color: var(--main-header-control-text);
+  border: 1px solid var(--main-header-control-border);
+  background: var(--main-header-control-bg);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+}
+.pds-refresh-btn:hover { background: var(--main-header-control-bg-hover); }
+.pds-summary-card { background: #ffffff; border-radius: 12px; padding: 12px; border: 1px solid var(--main-header-control-border); }
 .pds-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: center; }
 .pds-count-value { font-size: 24px; font-weight: 700; }
 .pds-count-label { font-size: 12px; opacity: 0.9; }

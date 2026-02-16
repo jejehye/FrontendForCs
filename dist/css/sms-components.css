@@ -5,6 +5,13 @@
   --color-primary-light: #e3f2fd;
   --color-primary-border: #90caf9;
   --color-panel-border: #e2e8f0;
+  --main-header-bg: #f1f5f9;
+  --main-header-bg-dark: #e2e8f0;
+  --main-header-border: #d7dee8;
+  --main-header-control-bg: #ffffff;
+  --main-header-control-bg-hover: #f8fafc;
+  --main-header-control-border: #cbd5e1;
+  --main-header-control-text: #334155;
 }
 
 
@@ -75,7 +82,10 @@ body { background-color: #f3f4f6; }
 .tab-item.active { color: #3b82f6; border-bottom-color: #3b82f6; background: #fff; }
 .tab-item-primary.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
 
-.sms-header-bar { background: #003da5; }
+.sms-header-bar {
+  background: linear-gradient(to right, var(--main-header-bg), var(--main-header-bg-dark));
+  border: 1px solid var(--main-header-border);
+}
 .sms-primary-btn { background: var(--color-primary); }
 .sms-primary-btn:hover { background: #002f66; }
 .sms-primary-text { color: var(--color-primary); }
@@ -100,10 +110,17 @@ body { background-color: #f3f4f6; }
 .sms-history-search { display: flex; gap: 8px; margin-bottom: 8px; }
 
 /* De-tailwind phase 2: semantic content helpers (SMS page) */
-.sms-header-inner { padding: 12px; display: flex; align-items: center; justify-content: space-between; color: #fff; }
+.sms-header-inner { padding: 12px; display: flex; align-items: center; justify-content: space-between; color: #334155; }
 .sms-header-title { font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.sms-header-refresh { color: #fff; }
-.sms-header-refresh:hover { color: #dbeafe; }
+.sms-header-refresh {
+  color: var(--main-header-control-text);
+  border: 1px solid var(--main-header-control-border);
+  background: var(--main-header-control-bg);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+}
+.sms-header-refresh:hover { background: var(--main-header-control-bg-hover); }
 
 .sms-section-block { margin-bottom: 12px; }
 .sms-textarea-wrap { position: relative; }

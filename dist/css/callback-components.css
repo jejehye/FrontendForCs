@@ -5,6 +5,13 @@
   --color-primary-dark: #003acc;
   --color-panel-border: #e2e8f0;
   --color-highlight-blue: #f0f4ff;
+  --main-header-bg: #f1f5f9;
+  --main-header-bg-dark: #e2e8f0;
+  --main-header-border: #d7dee8;
+  --main-header-control-bg: #ffffff;
+  --main-header-control-bg-hover: #f8fafc;
+  --main-header-control-border: #cbd5e1;
+  --main-header-control-text: #334155;
 }
 
 
@@ -186,3 +193,26 @@ body { background-color: #f3f4f6; }
 .callback-radio-unreachable:focus { outline-color: #ef4444; }
 .callback-icon-inline-md,
 .callback-icon-gap-2 { margin-right: 8px; }
+
+/* Header tone sync with main page */
+.callback-request-header {
+  border: 1px solid var(--main-header-border);
+  background: linear-gradient(to right, var(--main-header-bg), var(--main-header-bg-dark));
+}
+
+.callback-request-title {
+  color: #334155;
+}
+
+.callback-request-refresh-btn {
+  color: var(--main-header-control-text);
+  border: 1px solid var(--main-header-control-border);
+  background: var(--main-header-control-bg);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+}
+
+.callback-request-refresh-btn:hover {
+  background: var(--main-header-control-bg-hover);
+}
