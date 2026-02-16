@@ -76,90 +76,92 @@
           </section>
         </div>
 
-        <section class="specific-panel">
-            <div class="specific-panel-title">관리자 전체 조회/처리</div>
-            <div class="specific-stats">
-              <div class="specific-stat-card">
-                <span>전체</span>
-                <strong id="countAll" data-role="countAll">0</strong>
+        <div class="specific-bottom-grid">
+          <section class="specific-panel">
+              <div class="specific-panel-title">관리자 전체 조회/처리</div>
+              <div class="specific-stats">
+                <div class="specific-stat-card">
+                  <span>전체</span>
+                  <strong id="countAll" data-role="countAll">0</strong>
+                </div>
+                <div class="specific-stat-card">
+                  <span>승인대기</span>
+                  <strong id="countPending" data-role="countPending">0</strong>
+                </div>
+                <div class="specific-stat-card">
+                  <span>승인완료</span>
+                  <strong id="countApproved" data-role="countApproved">0</strong>
+                </div>
+                <div class="specific-stat-card">
+                  <span>반려</span>
+                  <strong id="countRejected" data-role="countRejected">0</strong>
+                </div>
               </div>
-              <div class="specific-stat-card">
-                <span>승인대기</span>
-                <strong id="countPending" data-role="countPending">0</strong>
+              <div class="specific-toolbar">
+                <div class="specific-filter-group">
+                  <button class="specific-filter-btn is-active" data-action="specific-filter" data-target="all" data-filter="all">전체</button>
+                  <button class="specific-filter-btn" data-action="specific-filter" data-target="pending" data-filter="pending">승인대기</button>
+                  <button class="specific-filter-btn" data-action="specific-filter" data-target="approved" data-filter="approved">승인완료</button>
+                  <button class="specific-filter-btn" data-action="specific-filter" data-target="rejected" data-filter="rejected">반려</button>
+                </div>
+                <div class="specific-history-range">
+                  <input id="adminDateFrom" data-role="adminDateFrom" class="specific-input specific-date" type="date" />
+                  <span class="specific-range-sep">~</span>
+                  <input id="adminDateTo" data-role="adminDateTo" class="specific-input specific-date" type="date" />
+                </div>
+                <input id="specificSearch" data-role="specificSearch" class="specific-input specific-search" type="text" placeholder="사번/상담원명/사유 검색" />
               </div>
-              <div class="specific-stat-card">
-                <span>승인완료</span>
-                <strong id="countApproved" data-role="countApproved">0</strong>
+              <div class="specific-table-wrap">
+                <table class="specific-table">
+                  <thead>
+                    <tr>
+                      <th>상태</th>
+                      <th>사번</th>
+                      <th>상담원명</th>
+                      <th>유형</th>
+                      <th>일자</th>
+                      <th>시간</th>
+                      <th>사유</th>
+                      <th>처리</th>
+                    </tr>
+                  </thead>
+                  <tbody id="specificTableBody" data-role="specificTableBody"></tbody>
+                </table>
               </div>
-              <div class="specific-stat-card">
-                <span>반려</span>
-                <strong id="countRejected" data-role="countRejected">0</strong>
-              </div>
-            </div>
-            <div class="specific-toolbar">
-              <div class="specific-filter-group">
-                <button class="specific-filter-btn is-active" data-action="specific-filter" data-target="all" data-filter="all">전체</button>
-                <button class="specific-filter-btn" data-action="specific-filter" data-target="pending" data-filter="pending">승인대기</button>
-                <button class="specific-filter-btn" data-action="specific-filter" data-target="approved" data-filter="approved">승인완료</button>
-                <button class="specific-filter-btn" data-action="specific-filter" data-target="rejected" data-filter="rejected">반려</button>
-              </div>
+          </section>
+
+          <section class="specific-panel">
+            <div class="specific-panel-title">이전 처리내역 조회</div>
+            <div class="specific-history-toolbar">
               <div class="specific-history-range">
-                <input id="adminDateFrom" data-role="adminDateFrom" class="specific-input specific-date" type="date" />
+                <input id="historyDateFrom" data-role="historyDateFrom" class="specific-input specific-date" type="date" />
                 <span class="specific-range-sep">~</span>
-                <input id="adminDateTo" data-role="adminDateTo" class="specific-input specific-date" type="date" />
+                <input id="historyDateTo" data-role="historyDateTo" class="specific-input specific-date" type="date" />
               </div>
-              <input id="specificSearch" data-role="specificSearch" class="specific-input specific-search" type="text" placeholder="사번/상담원명/사유 검색" />
+              <input
+                id="historySearch" data-role="historySearch"
+                class="specific-input specific-search"
+                type="text"
+                placeholder="사번/상담원명/사유 검색"
+              />
             </div>
-            <div class="specific-table-wrap">
-              <table class="specific-table">
+            <div class="specific-table-wrap specific-history-scroll">
+              <table class="specific-table specific-history-table">
                 <thead>
                   <tr>
                     <th>상태</th>
                     <th>사번</th>
                     <th>상담원명</th>
                     <th>유형</th>
-                    <th>일자</th>
-                    <th>시간</th>
+                    <th>요청시간</th>
+                    <th>처리일시</th>
                     <th>사유</th>
-                    <th>처리</th>
                   </tr>
                 </thead>
-                <tbody id="specificTableBody" data-role="specificTableBody"></tbody>
+                <tbody id="specificHistoryBody" data-role="specificHistoryBody"></tbody>
               </table>
             </div>
-        </section>
-
-        <section class="specific-panel">
-          <div class="specific-panel-title">이전 처리내역 조회</div>
-          <div class="specific-history-toolbar">
-            <div class="specific-history-range">
-              <input id="historyDateFrom" data-role="historyDateFrom" class="specific-input specific-date" type="date" />
-              <span class="specific-range-sep">~</span>
-              <input id="historyDateTo" data-role="historyDateTo" class="specific-input specific-date" type="date" />
-            </div>
-            <input
-              id="historySearch" data-role="historySearch"
-              class="specific-input specific-search"
-              type="text"
-              placeholder="사번/상담원명/사유 검색"
-            />
-          </div>
-          <div class="specific-table-wrap specific-history-scroll">
-            <table class="specific-table specific-history-table">
-              <thead>
-                <tr>
-                  <th>상태</th>
-                  <th>사번</th>
-                  <th>상담원명</th>
-                  <th>유형</th>
-                  <th>요청시간</th>
-                  <th>처리일시</th>
-                  <th>사유</th>
-                </tr>
-              </thead>
-              <tbody id="specificHistoryBody" data-role="specificHistoryBody"></tbody>
-            </table>
-          </div>
-          <div id="historyPagination" data-role="historyPagination" class="specific-history-pagination"></div>
-        </section>
+            <div id="historyPagination" data-role="historyPagination" class="specific-history-pagination"></div>
+          </section>
+        </div>
       </div>
