@@ -1,5 +1,6 @@
 window.AppUi?.initSidebarNavigation();
 window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });
+const pageData = window.__PAGE_DATA__ || {};
 
 const selectOne = (standardSelector, legacySelector) =>
   document.querySelector(standardSelector) || (legacySelector ? document.querySelector(legacySelector) : null);
@@ -149,13 +150,16 @@ if (templateList && templatePagination && templateFirstButton && templatePrevBut
 const smsHistoryPhoneInput = selectOne('[data-role="sms-history-phone"]', '[data-sms-history-phone]');
 const smsHistorySearchButton = selectOne('[data-action="sms-history-search"]', '[data-sms-history-search]');
 const smsHistoryBody = selectOne('[data-role="sms-history-body"]', '[data-sms-history-body]');
-const smsHistoryRecords = [
+const defaultSmsHistoryRecords = [
   { sentAt: '2024-01-20 14:35', templateName: '해외주식 거래 수수료 이벤트', status: '발송완료', phone: '01012345678' },
   { sentAt: '2024-01-19 10:22', templateName: 'ISA 계좌 만기 안내', status: '발송완료', phone: '01098765432' },
   { sentAt: '2024-01-18 11:20', templateName: 'PRIME 고객 투자 세미나', status: '발송완료', phone: '01012345678' },
   { sentAt: '2024-01-12 16:45', templateName: '계좌 비밀번호 변경 완료', status: '발송완료', phone: '01077778888' },
-  { sentAt: '2024-01-10 13:30', templateName: '자산관리 상담 예약', status: '예약중', phone: '01012345678' }
+  { sentAt: '2024-01-10 13:30', templateName: '자산관리 상담 예약', status: '예약중', phone: '01012345678' },
 ];
+const smsHistoryRecords = Array.isArray(pageData.sms_history_records) && pageData.sms_history_records.length
+  ? pageData.sms_history_records
+  : defaultSmsHistoryRecords;
 
 const normalizePhone = value => value.replace(/[^0-9]/g, '');
 

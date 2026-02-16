@@ -17,161 +17,32 @@
         </div>
       </div>
       <div class="chat-kms-filter-row">
-        <button class="tab__item is-active tab__item--chat-filter primary-btn">
-          전체
-        </button>
-        <button class="tab__item tab__item--chat-filter">ISA</button>
-        <button class="tab__item tab__item--chat-filter">해외주식</button>
-        <button class="tab__item tab__item--chat-filter">ETF</button>
-        <button class="tab__item tab__item--chat-filter">연금</button>
-        <button class="tab__item tab__item--chat-filter">세금</button>
+        {% for filter in chat_data.kms_filters or [] %}
+          <button class="tab__item tab__item--chat-filter{% if loop.first %} is-active primary-btn{% endif %}">
+            {{ filter }}
+          </button>
+        {% endfor %}
       </div>
     </div>
     <div class="ui-stack-3">
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
-              class="ui-title-sm">ISA 계좌 비과세 혜택
-              안내</span></div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
+      {% for item in chat_data.kms_items or [] %}
+        <div class="kms-card" data-role="kms-card">
+          <div class="kms-header-row">
+            <div class="chat-inline-center"><span class="kms-tag">{{ item.tag }}</span><span
+                class="ui-title-sm">{{ item.title }}</span></div><button class="chat-text-muted"><i
+                class="fa-solid fa-chevron-down"></i></button>
+          </div>
+          <p class="chat-kms-description">
+            {{ item.description }}
+          </p>
+          <div
+            class="ui-between-center-meta-xxs">
+            <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
+              {{ item.updated_at }}</span><button class="chat-kms-copy-btn"><i
+                class="fa-solid fa-copy chat-icon-inline"></i>복사
+            </button></div>
         </div>
-        <p class="chat-kms-description">
-          일반형은 200만원, 서민형은 400만원까지 비과세가 적용됩니다. 초과분은 9.9% 분리과세로 일반 금융소득 대비 절세
-          효과가 큽니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-10</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
-              class="ui-title-sm">ISA 계좌 가입 조건 및
-              유형</span></div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          만 19세 이상 국내 거주자 가입 가능. 일반형(제한 없음), 서민형(총급여 5천만원 이하 또는 종합소득 3800만원
-          이하) 중 선택 가능합니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-09</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
-              class="ui-title-sm">ISA 계좌 개설 절차</span>
-          </div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          1) 신한투자증권 앱 접속 → 2) ISA 계좌 메뉴 → 3) 가입 유형 선택 → 4) 본인인증 → 5) 약관동의 →
-          6) 정보입력 → 7) 개설완료 (약 3분 소요)
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-08</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">해외주식</span><span
-              class="ui-title-sm">해외주식 거래 수수료 안내</span>
-          </div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          미국 주식 온라인 거래 수수료는 0.25%이며, 최소 수수료 $1 적용. GOLD 고객은 0.20% 우대 수수료가
-          적용됩니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-07</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">ETF</span><span
-              class="ui-title-sm">국내 ETF 거래 안내</span>
-          </div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          국내 ETF는 주식과 동일하게 거래 가능하며, 온라인 거래 수수료는 0.015%입니다. 배당소득세는 15.4%
-          원천징수됩니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-06</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">연금</span><span
-              class="ui-title-sm">연금저축 세액공제 혜택</span>
-          </div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          연 최대 600만원까지 납입 시 최대 99만원(16.5%) 세액공제 가능. 총급여 5500만원 이하는 16.5%,
-          초과는 13.2% 적용됩니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-05</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">세금</span><span
-              class="ui-title-sm">금융소득 종합과세 안내</span>
-          </div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          연간 금융소득(이자+배당) 2천만원 초과 시 종합과세 대상. 초과분은 다른 소득과 합산하여
-          누진세율(6.6%~49.5%) 적용됩니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-04</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
-      <div class="kms-card" data-role="kms-card">
-        <div class="kms-header-row">
-          <div class="chat-inline-center"><span class="kms-tag">ISA</span><span
-              class="ui-title-sm">ISA 계좌 운용 가능 상품</span>
-          </div><button class="chat-text-muted"><i
-              class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <p class="chat-kms-description">
-          국내 상장주식, ETF, 펀드, RP, 예금 등 다양한 금융상품 편입 가능. 파생상품 및 일부 고위험 상품은
-          제외됩니다.
-        </p>
-        <div
-          class="ui-between-center-meta-xxs">
-          <span><i class="fa-solid fa-clock chat-icon-inline"></i>최종 수정:
-            2024-02-03</span><button class="chat-kms-copy-btn"><i
-              class="fa-solid fa-copy chat-icon-inline"></i>복사
-          </button></div>
-      </div>
+      {% endfor %}
     </div>
   </div>
   <!-- ===================== Side Panel ===================== -->

@@ -1,0 +1,57 @@
+{
+  "notices": [
+    {
+      "prefix_text": "[고정]",
+      "prefix_class": "callback-notice-fixed",
+      "text": "[일반] 고정공지사항 제목입니다.",
+      "date": "2021-05-03 14:00",
+      "has_attachment": true
+    },
+    {
+      "prefix_text": "[긴급]",
+      "prefix_class": "callback-notice-urgent",
+      "text": "긴급공지사항 제목입니다.",
+      "date": "2021-05-03 14:00",
+      "has_attachment": true
+    },
+    {
+      "prefix_text": "",
+      "prefix_class": "",
+      "text": "[일반] 일반공지사항 입니다. 확인요청드립니다.",
+      "date": "2021-05-03 14:00",
+      "has_attachment": true
+    }
+  ],
+  "recent_callback_histories": [
+    {
+      "name": "강동훈",
+      "status": "완료",
+      "desc": "신한 알파 랩 서비스 가입 문의 - 상담 완료 및 가입 진행",
+      "phone": "010-9999-8888",
+      "date": "2024-01-19 16:30"
+    },
+    {
+      "name": "윤정아",
+      "status": "완료",
+      "desc": "해외 ETF 투자 상담 - 맞춤형 포트폴리오 제안",
+      "phone": "010-3333-4444",
+      "date": "2024-01-19 14:15"
+    },
+    {
+      "name": "송민호",
+      "status": "완료",
+      "desc": "해외주식 수수료 우대 문의 - 안내 완료",
+      "phone": "010-2222-3333",
+      "date": "2024-01-19 11:45"
+    }
+  ],
+  "callback_request_histories": [
+    { "requested_at": "2024-01-20 14:20", "content": "해외주식 ISA 계좌 이전", "status_text": "대기중", "status_class": "pending", "processed_at": "-" },
+    { "requested_at": "2024-01-18 11:30", "content": "S-CLASS 멤버십 문의", "status_text": "완료", "status_class": "completed", "processed_at": "2024-01-18 15:45" },
+    { "requested_at": "2024-01-15 09:20", "content": "연금저축펀드 추천", "status_text": "완료", "status_class": "completed", "processed_at": "2024-01-15 10:15" },
+    { "requested_at": "2024-01-12 16:10", "content": "알파 랩 서비스 문의", "status_text": "완료", "status_class": "completed", "processed_at": "2024-01-12 16:50" },
+    { "requested_at": "2024-01-10 13:40", "content": "해외 ETF 투자 상담", "status_text": "완료", "status_class": "completed", "processed_at": "2024-01-10 14:20" },
+    { "requested_at": "2024-01-08 10:25", "content": "수수료 우대 문의", "status_text": "미처리", "status_class": "unhandled", "processed_at": "-" },
+    { "requested_at": "2024-01-05 15:30", "content": "신탁 상품 문의", "status_text": "완료", "status_class": "completed", "processed_at": "2024-01-05 16:10" }
+  ]
+}

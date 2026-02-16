@@ -1,3 +1,4 @@
+      {% set sms_data = page_data or {} %}
       <div id="sms-column" class="column col-sms">
         {% include "partials/shared/customer-info-main.njk" %}
         <div class="sms-header-bar sms-header-inner"><span
@@ -24,14 +25,13 @@
                   </button></div>
                 <div
                   class="sms-recipient-list">
-                  <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
-                    김신한 (010-1234-5678)
-                    <i
-                      class="fa-solid fa-xmark sms-icon-danger-hover"></i></span><span
-                    class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
-                    이투자 (010-9876-5432)
-                    <i
-                      class="fa-solid fa-xmark sms-icon-danger-hover"></i></span>
+                  {% for recipient in sms_data.recipients or [] %}
+                    <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
+                      {{ recipient.name }} ({{ recipient.phone }})
+                      <i
+                        class="fa-solid fa-xmark sms-icon-danger-hover"></i>
+                    </span>
+                  {% endfor %}
                 </div>
               </div>
               <div class="sms-action-row"><button
@@ -82,24 +82,15 @@
               class="sms-notice-more-btn">더보기 +</button>
           </div>
           <ul class="sms-notice-list">
-            <li class="sms-notice-item"><span
-                class="sms-notice-text"><span
-                  class="sms-notice-fixed">[고정]</span>[일반] 고정공지사항 제목입니다. <i
-                  class="fa-solid fa-paperclip sms-notice-clip"></i></span><span
-                class="sms-notice-date">2021-05-03 14:00</span>
-            </li>
-            <li class="sms-notice-item"><span
-                class="sms-notice-text"><span
-                  class="sms-notice-urgent">[긴급]</span> 긴급공지사항 제목입니다. <i
-                  class="fa-solid fa-paperclip sms-notice-clip"></i></span><span
-                class="sms-notice-date">2021-05-03 14:00</span>
-            </li>
-            <li class="sms-notice-item"><span
-                class="sms-notice-text">[일반] 일반공지사항 입니다. 확인요청드립니다.
-                <i
-                  class="fa-solid fa-paperclip sms-notice-clip"></i></span><span
-                class="sms-notice-date">2021-05-03 14:00</span>
-            </li>
+            {% for notice in sms_data.notices or [] %}
+              <li class="sms-notice-item"><span
+                  class="sms-notice-text">{% if notice.prefix_text %}<span
+                    class="{{ notice.prefix_class }}">{{ notice.prefix_text }}</span>{% endif %}{{ notice.text }} {% if notice.has_attachment %}
+                    <i
+                      class="fa-solid fa-paperclip sms-notice-clip"></i>{% endif %}</span><span
+                  class="sms-notice-date">{{ notice.date }}</span>
+              </li>
+            {% endfor %}
           </ul>
         </div>
         <div class="info-card">
@@ -119,65 +110,18 @@
             </div>
           </div>
           <div class="sms-template-list" data-role="template-list" data-template-list>
-            <div data-template="1" class="template-card" data-action="template-select">
-              <div class="sms-template-card-head"><span
-                  class="sms-template-card-title">해외주식 거래 수수료
-                  이벤트</span><span
-                  class="sms-template-card-date">2024-01-15</span></div>
-              <p class="sms-template-card-body">
-                [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용
-                1588-xxxx
-              </p>
-              <div class="sms-template-card-foot sms-template-card-foot--spaced"><span
-                  class="sms-template-char-count">72자</span></div>
-            </div>
-            <div data-template="2" class="template-card" data-action="template-select">
-              <div class="sms-template-card-head"><span
-                  class="sms-template-card-title">ISA 계좌 만기
-                  안내</span><span
-                  class="sms-template-card-date">2024-01-10</span></div>
-              <p class="sms-template-card-body">
-                [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의
-                1588-xxxx
-              </p>
-              <div class="sms-template-card-foot"><span
-                  class="sms-template-char-count">61자</span></div>
-            </div>
-            <div data-template="3" class="template-card" data-action="template-select">
-              <div class="sms-template-card-head"><span
-                  class="sms-template-card-title">PRIME 고객 투자
-                  세미나</span><span
-                  class="sms-template-card-date">2024-01-08</span></div>
-              <p class="sms-template-card-body">
-                [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00,
-                장소: 여의도센터 문의: 1588-xxxx
-              </p>
-              <div class="sms-template-card-foot"><span
-                  class="sms-template-char-count">85자</span></div>
-            </div>
-            <div data-template="4" class="template-card" data-action="template-select">
-              <div class="sms-template-card-head"><span
-                  class="sms-template-card-title">계좌 비밀번호 변경
-                  완료</span><span
-                  class="sms-template-card-date">2024-01-05</span></div>
-              <p class="sms-template-card-body">
-                [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
-              </p>
-              <div class="sms-template-card-foot"><span
-                  class="sms-template-char-count">58자</span></div>
-            </div>
-            <div data-template="5" class="template-card" data-action="template-select">
-              <div class="sms-template-card-head"><span
-                  class="sms-template-card-title">자산관리 상담
-                  예약</span><span
-                  class="sms-template-card-date">2024-01-03</span></div>
-              <p class="sms-template-card-body">
-                [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소
-                1588-xxxx
-              </p>
-              <div class="sms-template-card-foot"><span
-                  class="sms-template-char-count">63자</span></div>
-            </div>
+            {% for template in sms_data.templates or [] %}
+              <div data-template="{{ template.id }}" class="template-card" data-action="template-select">
+                <div class="sms-template-card-head"><span
+                    class="sms-template-card-title">{{ template.title }}</span><span
+                    class="sms-template-card-date">{{ template.date }}</span></div>
+                <p class="sms-template-card-body">
+                  {{ template.body }}
+                </p>
+                <div class="sms-template-card-foot{% if template.spaced %} sms-template-card-foot--spaced{% endif %}"><span
+                    class="sms-template-char-count">{{ template.char_count }}</span></div>
+              </div>
+            {% endfor %}
           </div>
           <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
             <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">

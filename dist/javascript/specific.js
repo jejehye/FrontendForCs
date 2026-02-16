@@ -1,4 +1,5 @@
 window.AppUi?.initSidebarNavigation();
+const pageData = window.__PAGE_DATA__ || {};
 
 const getHook = key =>
   document.querySelector(`[data-role="${key}"]`) || document.getElementById(key);
@@ -31,7 +32,7 @@ let activeFilter = 'all';
 let currentSearch = '';
 let historyPage = 1;
 const historyPageSize = 5;
-let requestId = 4;
+let requestId = 1;
 const currentAgentName = localStorage.getItem('currentAgentName') || '김민수';
 const currentAgentEmpNo = localStorage.getItem('currentAgentEmpNo') || '204075';
 
@@ -70,7 +71,7 @@ function getDateOffset(days) {
   return formatDate(date);
 }
 
-const requests = [
+const defaultRequests = [
   {
     id: 1,
     name: currentAgentName,
@@ -105,6 +106,11 @@ const requests = [
     processedAt: `${getDateOffset(-2)} 11:41`,
   },
 ];
+
+const requests = Array.isArray(pageData.initial_requests) && pageData.initial_requests.length
+  ? pageData.initial_requests.map(item => ({ ...item }))
+  : defaultRequests;
+requestId = requests.reduce((maxId, item) => Math.max(maxId, Number(item.id) || 0), 0) + 1;
 
 function getStatusLabel(status) {
   if (status === 'pending') return '승인대기';

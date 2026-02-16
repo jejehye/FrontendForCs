@@ -78,7 +78,8 @@
 </div>
 
     
-        <div class="column col-center specific-main specific-main-frame">
+        
+      <div class="column col-center specific-main specific-main-frame">
         <section class="specific-header">
           <div class="specific-header-title">
             <i class="fa-solid fa-user-check"></i>
@@ -102,10 +103,15 @@
               <div class="specific-field">
                 <label for="excludeType">특이사항 유형</label>
                 <select id="excludeType" data-role="excludeType" class="specific-input">
-                  <option value="콜 미수신">콜 미수신</option>
-                  <option value="교육/회의">교육/회의</option>
-                  <option value="시스템 점검">시스템 점검</option>
-                  <option value="기타">기타</option>
+                  
+                    <option value="콜 미수신">콜 미수신</option>
+                  
+                    <option value="교육/회의">교육/회의</option>
+                  
+                    <option value="시스템 점검">시스템 점검</option>
+                  
+                    <option value="기타">기타</option>
+                  
                 </select>
               </div>
               <div class="specific-field">
@@ -240,6 +246,21 @@
 
 
   </div>
+  <script id="page-data-json" type="application/json">{"exclude_types":["콜 미수신","교육/회의","시스템 점검","기타"],"initial_requests":[{"id":1,"name":"김민수","empNo":"204075","category":"콜 미수신","time":"09:00~11:00 (2시간)","reason":"연결 실패 반복으로 재배정 요청","status":"pending","requestedAt":"2026-02-16 09:00","processedAt":""},{"id":2,"name":"김민수","empNo":"204075","category":"교육/회의","time":"13:00~14:30 (1시간 30분)","reason":"신규 상품 교육 참석","status":"approved","requestedAt":"2026-02-15 13:00","processedAt":"2026-02-15 10:12"},{"id":3,"name":"최영호","empNo":"203114","category":"기타","time":"15:00~16:00 (1시간)","reason":"사유 불충분으로 재요청 안내","status":"rejected","requestedAt":"2026-02-14 15:00","processedAt":"2026-02-14 11:41"}]}</script>
+  <script>
+    (() => {
+      const pageDataNode = document.getElementById('page-data-json');
+      if (!pageDataNode) {
+        window.__PAGE_DATA__ = {};
+        return;
+      }
+      try {
+        window.__PAGE_DATA__ = JSON.parse(pageDataNode.textContent || '{}');
+      } catch (error) {
+        window.__PAGE_DATA__ = {};
+      }
+    })();
+  </script>
 
   
   <script src="javascript/common/ui.js"></script>

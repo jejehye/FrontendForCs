@@ -1,0 +1,38 @@
+{
+  "exclude_types": ["콜 미수신", "교육/회의", "시스템 점검", "기타"],
+  "initial_requests": [
+    {
+      "id": 1,
+      "name": "김민수",
+      "empNo": "204075",
+      "category": "콜 미수신",
+      "time": "09:00~11:00 (2시간)",
+      "reason": "연결 실패 반복으로 재배정 요청",
+      "status": "pending",
+      "requestedAt": "2026-02-16 09:00",
+      "processedAt": ""
+    },
+    {
+      "id": 2,
+      "name": "김민수",
+      "empNo": "204075",
+      "category": "교육/회의",
+      "time": "13:00~14:30 (1시간 30분)",
+      "reason": "신규 상품 교육 참석",
+      "status": "approved",
+      "requestedAt": "2026-02-15 13:00",
+      "processedAt": "2026-02-15 10:12"
+    },
+    {
+      "id": 3,
+      "name": "최영호",
+      "empNo": "203114",
+      "category": "기타",
+      "time": "15:00~16:00 (1시간)",
+      "reason": "사유 불충분으로 재요청 안내",
+      "status": "rejected",
+      "requestedAt": "2026-02-14 15:00",
+      "processedAt": "2026-02-14 11:41"
+    }
+  ]
+}

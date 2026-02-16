@@ -105,43 +105,18 @@
         최근 상담 이력
       </h3>
       <div class="chat-history-list">
-        <div class="chat-note-card">
-          <div class="chat-note-header"><span
-              class="ui-title-xs">ISA 계좌 개설
-              문의</span><span
-              class="badge badge--chat-note">채팅</span></div>
-          <p class="chat-history-desc">
-            ISA 계좌 비과세 혜택 및 가입 조건 안내 완료
-          </p>
-          <div class="chat-note-meta"><span><i
-                class="fa-solid fa-user chat-icon-inline"></i>상담사:
-              최서연</span><span>2024-02-12 10:15</span></div>
-        </div>
-        <div class="chat-note-card">
-          <div class="chat-note-header"><span
-              class="ui-title-xs">ETF 투자 상담</span><span
-              class="ui-status-success">전화</span>
+        {% for note in chat_data.recent_history_notes or [] %}
+          <div class="chat-note-card">
+            <div class="chat-note-header"><span
+                class="ui-title-xs">{{ note.title }}</span><span
+                class="{{ note.badge_class }}">{{ note.channel }}</span></div>
+            <p class="chat-history-desc">
+              {{ note.desc }}
+            </p>
+            <div class="chat-note-meta"><span><i
+                  class="fa-solid fa-user chat-icon-inline"></i>{{ note.owner }}</span><span>{{ note.date }}</span></div>
           </div>
-          <p class="chat-history-desc">
-            국내외 ETF 5종 추천 및 매수 완료
-          </p>
-          <div class="chat-note-meta"><span><i
-                class="fa-solid fa-user chat-icon-inline"></i>상담사:
-              정우진</span><span>2024-02-09 14:22</span></div>
-        </div>
-        <div class="chat-note-card">
-          <div class="chat-note-header"><span
-              class="ui-title-xs">GOLD 등급 혜택
-              안내</span><span
-              class="badge badge--chat-note-sms">SMS</span>
-          </div>
-          <p class="chat-history-desc">
-            수수료 우대 및 전용 이벤트 안내 발송 완료
-          </p>
-          <div class="chat-note-meta"><span><i
-                class="fa-solid fa-user chat-icon-inline"></i>시스템
-              발송</span><span>2024-02-06 11:30</span></div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>

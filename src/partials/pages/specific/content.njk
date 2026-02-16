@@ -1,3 +1,4 @@
+      {% set specific_data = page_data or {} %}
       <div class="column col-center specific-main specific-main-frame">
         <section class="specific-header">
           <div class="specific-header-title">
@@ -22,10 +23,9 @@
               <div class="specific-field">
                 <label for="excludeType">특이사항 유형</label>
                 <select id="excludeType" data-role="excludeType" class="specific-input">
-                  <option value="콜 미수신">콜 미수신</option>
-                  <option value="교육/회의">교육/회의</option>
-                  <option value="시스템 점검">시스템 점검</option>
-                  <option value="기타">기타</option>
+                  {% for exclude_type in specific_data.exclude_types or ["콜 미수신", "교육/회의", "시스템 점검", "기타"] %}
+                    <option value="{{ exclude_type }}">{{ exclude_type }}</option>
+                  {% endfor %}
                 </select>
               </div>
               <div class="specific-field">

@@ -571,6 +571,21 @@
 
 
   </div>
+  <script id="page-data-json" type="application/json">{}</script>
+  <script>
+    (() => {
+      const pageDataNode = document.getElementById('page-data-json');
+      if (!pageDataNode) {
+        window.__PAGE_DATA__ = {};
+        return;
+      }
+      try {
+        window.__PAGE_DATA__ = JSON.parse(pageDataNode.textContent || '{}');
+      } catch (error) {
+        window.__PAGE_DATA__ = {};
+      }
+    })();
+  </script>
 
   
   <script src="javascript/pds-config.js"></script>

@@ -15,6 +15,7 @@ const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(srcDir, {
   trimBlocks: false,
   lstripBlocks: false,
 });
+env.addFilter('tojson', value => JSON.stringify(value ?? {}));
 
 function renderTemplate(templatePath, context = {}) {
   return new Promise((resolve, reject) => {
