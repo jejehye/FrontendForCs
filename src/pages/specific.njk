@@ -28,9 +28,9 @@
         <section class="specific-header">
           <div class="specific-header-title">
             <i class="fa-solid fa-user-check"></i>
-            <h1>콜 미수신/업무제외 등록</h1>
+            <h1>콜 미수신/업무제외 관리자 화면</h1>
           </div>
-          <span class="specific-header-meta">등록 즉시 승인 대기 상태로 전환됩니다.</span>
+          <span class="specific-header-meta">등록, 전체조회, 승인/반려를 한 번에 처리합니다.</span>
         </section>
 
         <div class="specific-grid">
@@ -51,6 +51,10 @@
                 </select>
               </div>
               <div class="specific-field">
+                <label for="excludeTime">시간</label>
+                <input id="excludeTime" type="time" class="specific-input" />
+              </div>
+              <div class="specific-field">
                 <label for="excludeReason">사유</label>
                 <textarea id="excludeReason" rows="4" class="specific-input specific-textarea" placeholder="업무 제외 사유를 입력하세요."></textarea>
               </div>
@@ -61,28 +65,51 @@
           </section>
 
           <section class="specific-panel">
-            <div class="specific-panel-title">관리자 승인 대기</div>
-            <div id="pendingList" class="specific-list">
-              <article class="specific-item" data-status="pending">
-                <div class="specific-item-head">
-                  <strong>박지민</strong>
-                  <span class="specific-badge specific-badge-pending">승인대기</span>
-                </div>
-                <p>유형: 콜 미수신</p>
-                <p>사유: 연결 실패 반복으로 재배정 요청</p>
-                <div class="specific-item-actions">
-                  <button class="specific-btn specific-btn-secondary" data-action="reject">반려</button>
-                  <button class="specific-btn specific-btn-primary" data-action="approve">승인</button>
-                </div>
-              </article>
+            <div class="specific-panel-title">관리자 전체 조회/처리</div>
+            <div class="specific-stats">
+              <div class="specific-stat-card">
+                <span>전체</span>
+                <strong id="countAll">0</strong>
+              </div>
+              <div class="specific-stat-card">
+                <span>승인대기</span>
+                <strong id="countPending">0</strong>
+              </div>
+              <div class="specific-stat-card">
+                <span>승인완료</span>
+                <strong id="countApproved">0</strong>
+              </div>
+              <div class="specific-stat-card">
+                <span>반려</span>
+                <strong id="countRejected">0</strong>
+              </div>
+            </div>
+            <div class="specific-toolbar">
+              <div class="specific-filter-group">
+                <button class="specific-filter-btn is-active" data-filter="all">전체</button>
+                <button class="specific-filter-btn" data-filter="pending">승인대기</button>
+                <button class="specific-filter-btn" data-filter="approved">승인완료</button>
+                <button class="specific-filter-btn" data-filter="rejected">반려</button>
+              </div>
+              <input id="specificSearch" class="specific-input specific-search" type="text" placeholder="상담원명/사유 검색" />
+            </div>
+            <div class="specific-table-wrap">
+              <table class="specific-table">
+                <thead>
+                  <tr>
+                    <th>상태</th>
+                    <th>상담원</th>
+                    <th>유형</th>
+                    <th>시간</th>
+                    <th>사유</th>
+                    <th>처리</th>
+                  </tr>
+                </thead>
+                <tbody id="specificTableBody"></tbody>
+              </table>
             </div>
           </section>
         </div>
-
-        <section class="specific-panel">
-          <div class="specific-panel-title">처리 이력</div>
-          <div id="historyList" class="specific-list"></div>
-        </section>
       </div>
     </div>
     <script src="javascript/specific.js"></script>
