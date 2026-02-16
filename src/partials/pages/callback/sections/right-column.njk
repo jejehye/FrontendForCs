@@ -1,62 +1,4 @@
       <div id="right-column" class="column col-right">
-        <div class="callback-right-header">
-          <div class="callback-pagination">
-            <div class="tab-item active"><i
-                class="fa-solid fa-phone-volume"></i>
-              콜백
-            </div>
-            <div class="tab-item"><i class="fa-solid fa-user"></i>
-              이지현
-            </div>
-          </div><button
-            class="callback-save-btn">상담저장</button>
-        </div>
-        <div class="callback-center-panel">
-          <div class="callback-panel-header">
-            <div class="callback-badge-row"><span
-                class="badge status-badge status-unauth"><i
-                  class="fa-solid fa-lock callback-icon-inline"></i>무인증</span><span
-                class="callback-customer-name">이지현(여)</span></div><button
-              class="callback-refresh-icon-btn"><i
-                class="fa-solid fa-rotate-right"></i></button>
-          </div>
-          <div class="callback-action-grid"><button
-              class="actionBtn action-btn group callback-action-btn--blue">
-              <div
-                class="callback-action-icon-blue">
-                <i class="fa-solid fa-coins callback-icon-action-primary"></i></div>
-              <span class="callback-action-label-primary">사고</span>
-            </button><button
-              class="actionBtn action-btn group callback-action-btn--teal">
-              <div
-                class="callback-action-icon-teal">
-                <i class="fa-solid fa-gavel callback-icon-action-teal"></i></div>
-              <span class="callback-action-label-teal">권리발생</span>
-            </button><button class="actionBtn action-btn group"><i
-                class="fa-solid fa-arrow-rotate-left callback-icon-action-muted"></i><span>반송</span></button><button
-              class="actionBtn action-btn group"><i
-                class="fa-solid fa-ban callback-icon-action-danger"></i><span>지급정지</span></button><button
-              class="actionBtn action-btn group"><i
-                class="fa-solid fa-bell callback-icon-action-warning"></i><span>만기통보</span></button><button
-              class="actionBtn action-btn group callback-action-btn--campaign"><i
-                class="fa-solid fa-users callback-icon-action-inverse"></i><span
-                class="callback-action-label-inverse">캠페인</span></button></div>
-          <div
-            class="callback-service-summary-row">
-            <div class="callback-inline-gap-xs"><span
-                class="callback-service-label">서비스요청</span><span
-                class="callback-service-badge callback-service-badge--danger">0</span>
-            </div>
-            <div class="callback-inline-gap-xs"><span
-                class="callback-service-label">콜백서비스</span><span
-                class="callback-service-badge callback-service-badge--brand">1</span>
-            </div>
-            <div class="callback-inline-gap-xs"><span
-                class="callback-service-label">상담예약</span><span
-                class="callback-service-badge callback-service-badge--teal">0</span>
-            </div>
-          </div>
-        </div>
         <div class="card info-card callback-info-panel">
           <div class="callback-info-tabs"><button
               class="callback-info-tab-btn is-active">콜백
@@ -88,6 +30,27 @@
                 {% endfor %}
               </tbody>
             </table>
+          </div>
+        </div>
+        <div class="card info-card">
+          <div class="callback-section-header">
+            <h3 class="callback-section-title">
+              <i class="fa-solid fa-pen-to-square callback-icon-section-title"></i>
+              상담 메모
+            </h3>
+          </div>
+          <textarea
+            class="callback-note-textarea"
+            rows="5"
+            placeholder="상담 핵심 내용을 기록하세요..."
+          ></textarea>
+          <div class="callback-modal-actions">
+            <button class="callback-note-cancel-btn">
+              <i class="fa-solid fa-rotate-left callback-icon-inline"></i>초기화
+            </button>
+            <button class="shinhan-gradient callback-note-submit-btn">
+              <i class="fa-solid fa-save callback-icon-inline"></i>메모 저장
+            </button>
           </div>
         </div>
       </div>
