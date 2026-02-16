@@ -1,8 +1,9 @@
 {% extends "layouts/base.njk" %}
 
+{% block title %}{{ title or "CTI Agent Dashboard" }}{% endblock %}
+
 {% block head %}
-  <!-- ===================== Global Styles ===================== -->
-  <link rel="stylesheet" href="./app.css">
+  <!-- ===================== Vendor Styles ===================== -->
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
   <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
