@@ -1,7 +1,7 @@
 # FrontendForCs
 
 콜센터 상담 화면용 정적 프론트엔드 프로젝트입니다.  
-Nunjucks 템플릿(`src/`)을 HTML(`dist/`)로 렌더링하고, Tailwind 입력 CSS를 빌드해 최종 스타일을 생성합니다.
+Nunjucks 템플릿(`src/`)을 HTML(`dist/`)로 렌더링하고, 정적 CSS/JS 자산을 함께 패키징합니다.
 
 ## 프로젝트 설명
 이 프로젝트는 상담원이 한 화면에서 주요 업무를 빠르게 처리할 수 있도록 구성된 CTI 업무 UI 모음입니다.
@@ -19,10 +19,10 @@ Nunjucks 템플릿(`src/`)을 HTML(`dist/`)로 렌더링하고, Tailwind 입력 
   - `src/pages/*.njk`가 페이지 엔트리
   - `src/layouts/base.njk`, `src/layouts/app-shell.njk`로 공통 레이아웃 구성
   - `src/partials/**`를 `include`해 섹션 단위로 조립
-- 스타일 기반: `Tailwind + 컴포넌트 CSS`
-  - 입력 파일: `src/input.css` (`@tailwind base/components/utilities`)
-  - 페이지별 스타일: `css/main.css`, `css/sms.css`, `css/callback.css` 등
-  - 공통/컴포넌트 스타일: `css/components.css`, `css/*-components.css`
+- 스타일 기반: `정적 CSS`
+  - 공통 스타일: `app.css`, `css/foundation.css`, `css/components.css`
+  - 페이지별 스타일: `css/main.css`, `css/chat.css`, `css/sms.css`, `css/callback.css`, `css/pds.css`, `css/specific.css`
+  - 컴포넌트 스타일: `css/*-components.css`
 - 스크립트 형식: 바닐라 JS 모듈
   - 공통 유틸: `javascript/common/ui.js`
   - 페이지별 로직: `javascript/main/*`, `javascript/sms.js`, `javascript/callback.js` 등
@@ -35,9 +35,10 @@ Nunjucks 템플릿(`src/`)을 HTML(`dist/`)로 렌더링하고, Tailwind 입력 
 
 ## 기술 스택
 - Template: `Nunjucks`
-- Style: `Tailwind CSS` + 페이지별 컴포넌트 CSS
+- Style: 정적 CSS (`app.css` + `css/*`)
 - Script: Vanilla JavaScript (페이지별 모듈)
 - Build: Node.js scripts (`scripts/render.mjs`, `scripts/build.sh`)
+- Runtime: `nginx:1.27-alpine` (Docker 멀티스테이지)
 
 ## 프로젝트 구조
 ```text
@@ -61,7 +62,7 @@ FrontendForCs/
 │  │  ├─ shared/customer-info-main.njk
 │  │  └─ pages/*/content.njk + sections/*.njk
 │  ├─ data/*.json
-│  └─ input.css
+│  └─ ...
 ├─ css/
 │  ├─ foundation.css
 │  ├─ components.css
@@ -74,18 +75,19 @@ FrontendForCs/
 ├─ scripts/
 │  ├─ render.mjs
 │  ├─ build.sh
-│  └─ convert-rem-to-px.mjs
+│  └─ check-class-length.mjs
 ├─ dist/                # 빌드 산출물
-├─ app.css              # dist/app.css 복사본
+├─ app.css              # 공통 스타일(빌드 시 dist/app.css로 복사)
 ├─ package.json
-└─ tailwind.config.js
+├─ Dockerfile
+└─ docker-compose.yml
 ```
 
 ## 렌더링/빌드 흐름
 1. `src/pages/*.njk`를 `scripts/render.mjs`로 렌더링  
-2. `src/input.css`를 Tailwind로 컴파일해 `dist/app.css` 생성  
-3. rem→px 변환 스크립트 적용  
-4. 정적 자산(`css`, `javascript`, `design`, `vendor/fontawesome`)을 `dist/`에 복사
+2. `app.css`를 `dist/app.css`로 복사  
+3. Font Awesome 자산(`vendor/fontawesome`)을 `dist/`에 복사  
+4. 정적 디렉터리(`css`, `javascript`, `js`, `design`)가 존재할 경우 `dist/`에 복사
 
 ## 실행 방법
 
@@ -116,11 +118,18 @@ python3 -m http.server 4173 --directory dist
 - `http://localhost:4173/main.html`
 - `http://localhost:4173/login.html`
 
+### 6) Docker 실행
+```bash
+docker compose up --build -d
+```
+- `http://localhost/main.html`
+
 ## npm 스크립트
 - `npm run render`: `src/pages/*.njk` -> `dist/*.html`
-- `npm run build:css`: Tailwind 컴파일 + rem→px 변환
-- `npm run build`: `render + build:css`
-- `npm run watch`: Tailwind watch
+- `npm run build:css`: `app.css` -> `dist/app.css` 복사
+- `npm run copy:fontawesome`: Font Awesome 정적 파일 복사
+- `npm run build`: `render + build:css + copy:fontawesome`
+- `npm run watch`: Tailwind 제거 안내 메시지 출력(감시 빌드 미사용)
 - `npm run check:classes`: 클래스 길이 점검
 
 ## 페이지 구성
@@ -137,6 +146,7 @@ python3 -m http.server 4173 --directory dist
 - 페이지별 `content.njk`는 엔트리, 세부 UI는 `sections/*.njk`로 분리
 - 공통 레이아웃은 `base.njk` + `app-shell.njk`에서 관리
 - 공통 선택자는 `data-role`, `data-action`, `data-target` 계약을 우선 사용
+- Tailwind는 현재 사용하지 않으며, 스타일 변경은 `app.css` 및 `css/*`에서 직접 관리
 
 ## 동적 웹 전환 준비 포인트
 - 샘플 데이터는 `src/data/*.json` 기반으로 분리
