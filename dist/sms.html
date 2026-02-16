@@ -78,9 +78,11 @@
 </div>
 
     
-        
-      <div id="sms-column" class="column col-sms">
-        <div class="chat-panel-header">
+  
+
+<!-- ===================== SMS Column ===================== -->
+<section id="sms-column" class="column col-sms">
+  <div class="chat-panel-header">
   <div class="chat-status-row">
     <span class="status-badge status-ib">
       <i class="fa-solid fa-headset mr-1"></i>
@@ -123,255 +125,290 @@
   </div>
 </div>
 
-        <div class="sms-header-bar sms-header-inner"><span
-            class="sms-header-title"><i
-              class="fa-solid fa-comment-sms"></i>
-            SMS 발송
-          </span><button class="sms-header-refresh"><i
-              class="fa-solid fa-rotate-right"></i></button></div>
-        <div class="sms-body">
-          <div class="sms-stack">
-            <div
-              class="sms-panel">
-              <h3
-                class="sms-section-title">
-                <i class="fa-solid fa-user-group sms-primary-text"></i>
-                수신자 선택
-              </h3>
-              <div class="sms-section-block">
-                <div class="sms-input-row"><input type="text"
-                    placeholder="전화번호 입력 (010-1234-5678)"
-                    class="sms-field-input"><button
-                    class="sms-recipient-btn"><i
-                      class="fa-solid fa-plus sms-icon-inline-sm"></i>추가
-                  </button></div>
-                <div
-                  class="sms-recipient-list">
-                  
-                    <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
-                      김신한 (010-1234-5678)
-                      <i
-                        class="fa-solid fa-xmark sms-icon-danger-hover"></i>
-                    </span>
-                  
-                    <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
-                      이투자 (010-9876-5432)
-                      <i
-                        class="fa-solid fa-xmark sms-icon-danger-hover"></i>
-                    </span>
-                  
-                </div>
-              </div>
-              <div class="sms-action-row"><button
-                  class="sms-recipient-btn"><i
-                    class="fa-solid fa-address-book sms-icon-inline-sm"></i>주소록
-                </button><button
-                  class="sms-recipient-btn"><i
-                    class="fa-solid fa-file-excel sms-icon-inline-sm"></i>엑셀 업로드
-                </button></div>
-            </div>
-            <div
-              class="sms-panel">
-              <h3
-                class="sms-section-title">
-                <i class="fa-solid fa-pen-to-square sms-accent-icon"></i>
-                메시지 내용
-              </h3>
-              <div class="sms-textarea-wrap">
-                <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input" data-role="sms-message-input"></textarea><span
-                  class="char-counter" data-role="sms-char-counter">0 / 2000</span></div>
-              <div class="sms-action-row sms-action-row--top"><button
-                  class="sms-variable-btn"><i
-                    class="fa-solid fa-user sms-icon-inline-sm"></i>고객명
-                </button><button
-                  class="sms-variable-btn"><i
-                    class="fa-solid fa-phone sms-icon-inline-sm"></i>연락처
-                </button><button
-                  class="sms-variable-btn"><i
-                    class="fa-solid fa-calendar sms-icon-inline-sm"></i>날짜
-                </button></div>
-            </div>
-            <div class="sms-send-row"><button
-                data-action="sms-send-instant" data-sms-send="instant"
-                class="sms-primary-btn sms-send-now-btn"><i
-                  class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
-              </button><button
-                data-action="sms-send-scheduled" data-sms-send="scheduled"
-                class="sms-send-schedule-btn"><i
-                  class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
-              </button></div>
+  <div class="sms-header-bar sms-header-inner">
+    <span class="sms-header-title">
+      <i class="fa-solid fa-comment-sms"></i>
+      SMS 발송
+    </span>
+    <button class="sms-header-refresh">
+      <i class="fa-solid fa-rotate-right"></i>
+    </button>
+  </div>
+
+  <div class="sms-body">
+    <div class="sms-stack">
+      <div class="sms-panel">
+        <h3 class="sms-section-title">
+          <i class="fa-solid fa-user-group sms-primary-text"></i>
+          수신자 선택
+        </h3>
+        <div class="sms-section-block">
+          <div class="sms-input-row">
+            <input type="text" placeholder="전화번호 입력 (010-1234-5678)" class="sms-field-input">
+            <button class="sms-recipient-btn">
+              <i class="fa-solid fa-plus sms-icon-inline-sm"></i>추가
+            </button>
           </div>
+          <div class="sms-recipient-list">
+            
+              <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
+                김신한 (010-1234-5678)
+                <i class="fa-solid fa-xmark sms-icon-danger-hover"></i>
+              </span>
+            
+              <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
+                이투자 (010-9876-5432)
+                <i class="fa-solid fa-xmark sms-icon-danger-hover"></i>
+              </span>
+            
+          </div>
+        </div>
+        <div class="sms-action-row">
+          <button class="sms-recipient-btn">
+            <i class="fa-solid fa-address-book sms-icon-inline-sm"></i>주소록
+          </button>
+          <button class="sms-recipient-btn">
+            <i class="fa-solid fa-file-excel sms-icon-inline-sm"></i>엑셀 업로드
+          </button>
         </div>
       </div>
-      <div id="center-column" class="column col-center">
-        <div class="info-card">
-          <div class="history-filter-row sms-notice-header">
-            <h3 class="sms-notice-title">공지사항</h3><button
-              class="sms-notice-more-btn">더보기 +</button>
-          </div>
-          <ul class="sms-notice-list">
-            
-              <li class="sms-notice-item"><span
-                  class="sms-notice-text"><span
-                    class="sms-notice-fixed">[고정]</span>[일반] 고정공지사항 제목입니다. 
-                    <i
-                      class="fa-solid fa-paperclip sms-notice-clip"></i></span><span
-                  class="sms-notice-date">2021-05-03 14:00</span>
-              </li>
-            
-              <li class="sms-notice-item"><span
-                  class="sms-notice-text"><span
-                    class="sms-notice-urgent">[긴급]</span>긴급공지사항 제목입니다. 
-                    <i
-                      class="fa-solid fa-paperclip sms-notice-clip"></i></span><span
-                  class="sms-notice-date">2021-05-03 14:00</span>
-              </li>
-            
-              <li class="sms-notice-item"><span
-                  class="sms-notice-text">[일반] 일반공지사항 입니다. 확인요청드립니다. 
-                    <i
-                      class="fa-solid fa-paperclip sms-notice-clip"></i></span><span
-                  class="sms-notice-date">2021-05-03 14:00</span>
-              </li>
-            
-          </ul>
+
+      <div class="sms-panel">
+        <h3 class="sms-section-title">
+          <i class="fa-solid fa-pen-to-square sms-accent-icon"></i>
+          메시지 내용
+        </h3>
+        <div class="sms-textarea-wrap">
+          <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input" data-role="sms-message-input"></textarea>
+          <span class="char-counter" data-role="sms-char-counter">0 / 2000</span>
         </div>
-        <div class="info-card">
-          <div class="sms-template-header">
-            <h3 class="sms-template-title">
-              <i class="fa-solid fa-file-lines sms-primary-text"></i>
-              템플릿 선택
-            </h3>
-            <div class="sms-template-tools">
-              <input
-                type="text"
-                class="sms-template-search-input"
-                placeholder="템플릿 검색"
-                data-role="template-search" data-template-search
-              >
-              <button class="sms-template-all-btn">전체보기</button>
-            </div>
-          </div>
-          <div class="sms-template-list" data-role="template-list" data-template-list>
-            
-              <div data-template="1" class="template-card" data-action="template-select">
-                <div class="sms-template-card-head"><span
-                    class="sms-template-card-title">해외주식 거래 수수료 이벤트</span><span
-                    class="sms-template-card-date">2024-01-15</span></div>
-                <p class="sms-template-card-body">
-                  [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용 1588-xxxx
-                </p>
-                <div class="sms-template-card-foot sms-template-card-foot--spaced"><span
-                    class="sms-template-char-count">72자</span></div>
-              </div>
-            
-              <div data-template="2" class="template-card" data-action="template-select">
-                <div class="sms-template-card-head"><span
-                    class="sms-template-card-title">ISA 계좌 만기 안내</span><span
-                    class="sms-template-card-date">2024-01-10</span></div>
-                <p class="sms-template-card-body">
-                  [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의 1588-xxxx
-                </p>
-                <div class="sms-template-card-foot"><span
-                    class="sms-template-char-count">61자</span></div>
-              </div>
-            
-              <div data-template="3" class="template-card" data-action="template-select">
-                <div class="sms-template-card-head"><span
-                    class="sms-template-card-title">PRIME 고객 투자 세미나</span><span
-                    class="sms-template-card-date">2024-01-08</span></div>
-                <p class="sms-template-card-body">
-                  [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00, 장소: 여의도센터 문의: 1588-xxxx
-                </p>
-                <div class="sms-template-card-foot"><span
-                    class="sms-template-char-count">85자</span></div>
-              </div>
-            
-              <div data-template="4" class="template-card" data-action="template-select">
-                <div class="sms-template-card-head"><span
-                    class="sms-template-card-title">계좌 비밀번호 변경 완료</span><span
-                    class="sms-template-card-date">2024-01-05</span></div>
-                <p class="sms-template-card-body">
-                  [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
-                </p>
-                <div class="sms-template-card-foot"><span
-                    class="sms-template-char-count">58자</span></div>
-              </div>
-            
-              <div data-template="5" class="template-card" data-action="template-select">
-                <div class="sms-template-card-head"><span
-                    class="sms-template-card-title">자산관리 상담 예약</span><span
-                    class="sms-template-card-date">2024-01-03</span></div>
-                <p class="sms-template-card-body">
-                  [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소 1588-xxxx
-                </p>
-                <div class="sms-template-card-foot"><span
-                    class="sms-template-char-count">63자</span></div>
-              </div>
-            
-          </div>
-          <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
-            <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
-              <i class="fa-solid fa-angles-left"></i>
-            </button>
-            <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
-              <i class="fa-solid fa-angle-left"></i>
-            </button>
-            <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
-            <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
-              <i class="fa-solid fa-angle-right"></i>
-            </button>
-            <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
-              <i class="fa-solid fa-angles-right"></i>
-            </button>
-          </div>
+        <div class="sms-action-row sms-action-row--top">
+          <button class="sms-variable-btn">
+            <i class="fa-solid fa-user sms-icon-inline-sm"></i>고객명
+          </button>
+          <button class="sms-variable-btn">
+            <i class="fa-solid fa-phone sms-icon-inline-sm"></i>연락처
+          </button>
+          <button class="sms-variable-btn">
+            <i class="fa-solid fa-calendar sms-icon-inline-sm"></i>날짜
+          </button>
         </div>
       </div>
-      <div id="right-column" class="column col-right">
-        <div class="info-card sms-history-panel">
-          <div class="sms-history-top">
-            <h4 class="sms-history-title">
-              <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
-              발송이력 조회
-            </h4>
-            <span class="sms-history-meta">고객전화번호 기준</span>
+
+      <div class="sms-send-row">
+        <button data-action="sms-send-instant" data-sms-send="instant" class="sms-primary-btn sms-send-now-btn">
+          <i class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
+        </button>
+        <button data-action="sms-send-scheduled" data-sms-send="scheduled" class="sms-send-schedule-btn">
+          <i class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Center Column ===================== -->
+<section id="center-column" class="column col-center">
+  <div class="info-card">
+    <div class="history-filter-row sms-notice-header">
+      <h3 class="sms-notice-title">공지사항</h3>
+      <button class="sms-notice-more-btn">더보기 +</button>
+    </div>
+    <ul class="sms-notice-list">
+      
+        <li class="sms-notice-item">
+          <span class="sms-notice-text">
+            
+              <span class="sms-notice-fixed">[고정]</span>
+            
+            [일반] 고정공지사항 제목입니다.
+            
+              <i class="fa-solid fa-paperclip sms-notice-clip"></i>
+            
+          </span>
+          <span class="sms-notice-date">2021-05-03 14:00</span>
+        </li>
+      
+        <li class="sms-notice-item">
+          <span class="sms-notice-text">
+            
+              <span class="sms-notice-urgent">[긴급]</span>
+            
+            긴급공지사항 제목입니다.
+            
+              <i class="fa-solid fa-paperclip sms-notice-clip"></i>
+            
+          </span>
+          <span class="sms-notice-date">2021-05-03 14:00</span>
+        </li>
+      
+        <li class="sms-notice-item">
+          <span class="sms-notice-text">
+            
+            [일반] 일반공지사항 입니다. 확인요청드립니다.
+            
+              <i class="fa-solid fa-paperclip sms-notice-clip"></i>
+            
+          </span>
+          <span class="sms-notice-date">2021-05-03 14:00</span>
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="info-card">
+    <div class="sms-template-header">
+      <h3 class="sms-template-title">
+        <i class="fa-solid fa-file-lines sms-primary-text"></i>
+        템플릿 선택
+      </h3>
+      <div class="sms-template-tools">
+        <input
+          type="text"
+          class="sms-template-search-input"
+          placeholder="템플릿 검색"
+          data-role="template-search"
+          data-template-search
+        >
+        <button class="sms-template-all-btn">전체보기</button>
+      </div>
+    </div>
+
+    <div class="sms-template-list" data-role="template-list" data-template-list>
+      
+        <div data-template="1" class="template-card" data-action="template-select">
+          <div class="sms-template-card-head">
+            <span class="sms-template-card-title">해외주식 거래 수수료 이벤트</span>
+            <span class="sms-template-card-date">2024-01-15</span>
           </div>
-          <div class="sms-history-search">
-            <input
-              type="text"
-              inputmode="numeric"
-              placeholder="고객전화번호 입력 (예: 010-1234-5678)"
-              class="sms-field-input"
-              data-role="sms-history-phone" data-sms-history-phone
-            >
-            <button
-              type="button"
-              class="sms-primary-btn sms-btn-primary sms-btn-nowrap"
-              data-action="sms-history-search" data-sms-history-search
-            >
-              조회
-            </button>
-          </div>
-          <div class="sms-history-table-wrap">
-            <table class="sms-history-table table-compact">
-              <thead>
-                <tr>
-                  <th>발송일시</th>
-                  <th>템플릿명</th>
-                  <th class="sms-status-col">상태</th>
-                </tr>
-              </thead>
-              <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
-                <tr>
-                  <td colspan="3" class="sms-history-empty-row">
-                    조회할 고객전화번호를 입력해 주세요.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <p class="sms-template-card-body">
+            [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용 1588-xxxx
+          </p>
+          <div class="sms-template-card-foot sms-template-card-foot--spaced">
+            <span class="sms-template-char-count">72자</span>
           </div>
         </div>
-      </div>
+      
+        <div data-template="2" class="template-card" data-action="template-select">
+          <div class="sms-template-card-head">
+            <span class="sms-template-card-title">ISA 계좌 만기 안내</span>
+            <span class="sms-template-card-date">2024-01-10</span>
+          </div>
+          <p class="sms-template-card-body">
+            [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의 1588-xxxx
+          </p>
+          <div class="sms-template-card-foot">
+            <span class="sms-template-char-count">61자</span>
+          </div>
+        </div>
+      
+        <div data-template="3" class="template-card" data-action="template-select">
+          <div class="sms-template-card-head">
+            <span class="sms-template-card-title">PRIME 고객 투자 세미나</span>
+            <span class="sms-template-card-date">2024-01-08</span>
+          </div>
+          <p class="sms-template-card-body">
+            [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00, 장소: 여의도센터 문의: 1588-xxxx
+          </p>
+          <div class="sms-template-card-foot">
+            <span class="sms-template-char-count">85자</span>
+          </div>
+        </div>
+      
+        <div data-template="4" class="template-card" data-action="template-select">
+          <div class="sms-template-card-head">
+            <span class="sms-template-card-title">계좌 비밀번호 변경 완료</span>
+            <span class="sms-template-card-date">2024-01-05</span>
+          </div>
+          <p class="sms-template-card-body">
+            [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
+          </p>
+          <div class="sms-template-card-foot">
+            <span class="sms-template-char-count">58자</span>
+          </div>
+        </div>
+      
+        <div data-template="5" class="template-card" data-action="template-select">
+          <div class="sms-template-card-head">
+            <span class="sms-template-card-title">자산관리 상담 예약</span>
+            <span class="sms-template-card-date">2024-01-03</span>
+          </div>
+          <p class="sms-template-card-body">
+            [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소 1588-xxxx
+          </p>
+          <div class="sms-template-card-foot">
+            <span class="sms-template-char-count">63자</span>
+          </div>
+        </div>
+      
+    </div>
+
+    <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
+      <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+      <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
+      <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+      <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Side Panel ===================== -->
+<section id="right-column" class="column col-right">
+  <div class="info-card sms-history-panel">
+    <div class="sms-history-top">
+      <h4 class="sms-history-title">
+        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+        발송이력 조회
+      </h4>
+      <span class="sms-history-meta">고객전화번호 기준</span>
+    </div>
+    <div class="sms-history-search">
+      <input
+        type="text"
+        inputmode="numeric"
+        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
+        class="sms-field-input"
+        data-role="sms-history-phone"
+        data-sms-history-phone
+      >
+      <button
+        type="button"
+        class="sms-primary-btn sms-btn-primary sms-btn-nowrap"
+        data-action="sms-history-search"
+        data-sms-history-search
+      >
+        조회
+      </button>
+    </div>
+    <div class="sms-history-table-wrap">
+      <table class="sms-history-table table-compact">
+        <thead>
+          <tr>
+            <th>발송일시</th>
+            <th>템플릿명</th>
+            <th class="sms-status-col">상태</th>
+          </tr>
+        </thead>
+        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
+          <tr>
+            <td colspan="3" class="sms-history-empty-row">
+              조회할 고객전화번호를 입력해 주세요.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 
   </div>
