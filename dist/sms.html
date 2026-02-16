@@ -159,7 +159,7 @@
               템플릿 선택
             </h3><button class="sms-primary-text text-xs font-medium">전체보기</button>
           </div>
-          <div class="space-y-2 max-h-[420px] overflow-y-auto pr-2">
+          <div class="space-y-2 h-[520px] overflow-hidden pr-2" data-template-list>
             <div data-template="1" class="template-card template-card-primary">
               <div class="flex justify-between items-start mb-2"><span
                   class="text-xs font-bold text-gray-800">해외주식 거래 수수료
@@ -221,6 +221,21 @@
               <div class="flex justify-end"><span
                   class="text-xxs text-gray-400">63자</span></div>
             </div>
+          </div>
+          <div class="pagination pagination--history mt-2 hidden" data-template-pagination>
+            <button class="pagination__btn" data-template-nav="first">
+              <i class="fa-solid fa-angles-left"></i>
+            </button>
+            <button class="pagination__btn" data-template-nav="prev">
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <button class="pagination__btn is-active" data-template-page-btn="1">1</button>
+            <button class="pagination__btn" data-template-nav="next">
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+            <button class="pagination__btn" data-template-nav="last">
+              <i class="fa-solid fa-angles-right"></i>
+            </button>
           </div>
         </div>
       </div>

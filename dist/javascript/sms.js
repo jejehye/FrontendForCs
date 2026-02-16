@@ -50,6 +50,91 @@
         });
       });
 
+      const templateList = document.querySelector('[data-template-list]');
+      const templatePagination = document.querySelector('[data-template-pagination]');
+      const templateFirstButton = document.querySelector('[data-template-nav="first"]');
+      const templatePrevButton = document.querySelector('[data-template-nav="prev"]');
+      const templateNextButton = document.querySelector('[data-template-nav="next"]');
+      const templateLastButton = document.querySelector('[data-template-nav="last"]');
+      let templatePageButtons = Array.from(document.querySelectorAll('[data-template-page-btn]'));
+      let activeTemplatePage = 1;
+      const templatePageSize = 10;
+
+      if (templateList && templatePagination && templateFirstButton && templatePrevButton && templateNextButton && templateLastButton) {
+        const templateCards = Array.from(templateList.querySelectorAll('.template-card'));
+        const templatePages = [];
+
+        for (let index = 0; index < templateCards.length; index += templatePageSize) {
+          templatePages.push(templateCards.slice(index, index + templatePageSize));
+        }
+
+        const rebuildTemplateButtons = () =>
+        {
+          templatePageButtons.forEach(button => button.remove());
+
+          templatePageButtons = templatePages.map((_, index) =>
+          {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('data-template-page-btn', String(index + 1));
+            button.className = 'pagination__btn';
+            button.textContent = String(index + 1);
+            templatePagination.insertBefore(button, templateNextButton);
+            return button;
+          });
+
+          templatePageButtons.forEach(button =>
+          {
+            button.addEventListener('click', () =>
+            {
+              setActiveTemplatePage(Number(button.getAttribute('data-template-page-btn')));
+            });
+          });
+        };
+
+        const setActiveTemplatePage = pageNumber =>
+        {
+          if (!templatePages.length) {
+            return;
+          }
+
+          const maxPage = templatePages.length;
+          activeTemplatePage = Math.min(maxPage, Math.max(1, pageNumber));
+
+          templateList.innerHTML = '';
+          templatePages[activeTemplatePage - 1].forEach(card => templateList.appendChild(card));
+
+          templatePageButtons.forEach(button =>
+          {
+            const page = Number(button.getAttribute('data-template-page-btn'));
+            button.classList.toggle('is-active', page === activeTemplatePage);
+          });
+
+          templateFirstButton.disabled = activeTemplatePage === 1;
+          templatePrevButton.disabled = activeTemplatePage === 1;
+          templateNextButton.disabled = activeTemplatePage === maxPage;
+          templateLastButton.disabled = activeTemplatePage === maxPage;
+
+          templateFirstButton.classList.toggle('opacity-40', activeTemplatePage === 1);
+          templatePrevButton.classList.toggle('opacity-40', activeTemplatePage === 1);
+          templateNextButton.classList.toggle('opacity-40', activeTemplatePage === maxPage);
+          templateLastButton.classList.toggle('opacity-40', activeTemplatePage === maxPage);
+        };
+
+        if (templatePages.length > 1) {
+          templatePagination.classList.remove('hidden');
+          rebuildTemplateButtons();
+          setActiveTemplatePage(1);
+
+          templateFirstButton.addEventListener('click', () => setActiveTemplatePage(1));
+          templatePrevButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage - 1));
+          templateNextButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage + 1));
+          templateLastButton.addEventListener('click', () => setActiveTemplatePage(templatePages.length));
+        } else {
+          templatePagination.classList.add('hidden');
+        }
+      }
+
       const instantSendButton = document.querySelector('[data-sms-send="instant"]');
       const scheduledSendButton = document.querySelector('[data-sms-send="scheduled"]');
       const smsMessageTextarea = document.querySelector('textarea');
