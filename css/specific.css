@@ -5,6 +5,12 @@
   min-width: 0;
 }
 
+.specific-main-frame {
+  padding: 16px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
 .specific-header {
   display: flex;
   align-items: center;
