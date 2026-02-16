@@ -21,7 +21,7 @@ document.querySelectorAll('.tab-item').forEach((tab) => {
 document.querySelectorAll('.kms-card').forEach((card) => {
   card.addEventListener('click', function handleKmsClick() {
     const content = this.querySelector('p')?.textContent?.trim();
-    const messageInput = document.querySelector('input[type="text"][placeholder="메시지를 입력하세요..."]');
+    const messageInput = document.querySelector('.chat__input');
 
     if (content && messageInput) {
       messageInput.value = content;
@@ -32,7 +32,7 @@ document.querySelectorAll('.kms-card').forEach((card) => {
 
 document.querySelectorAll('.quick-reply').forEach((button) => {
   button.addEventListener('click', function handleQuickReplyClick() {
-    const messageInput = document.querySelector('input[type="text"][placeholder="메시지를 입력하세요..."]');
+    const messageInput = document.querySelector('.chat__input');
 
     if (messageInput) {
       messageInput.value = this.textContent;
