@@ -18,6 +18,7 @@
 }
 
 @layer components {
+  /* ===================== Core Primitives ===================== */
   .panel { @apply bg-white border border-gray-200 rounded-lg p-4; }
   .card { @apply bg-white border border-gray-200 rounded p-3; }
   .btn { @apply inline-flex items-center justify-center gap-2 rounded px-3 py-2 text-[14px] font-medium transition; }
@@ -71,7 +72,7 @@
   .ui-table-cell-head { @apply p-2 border-b border-gray-100 border-r text-center font-bold; }
   .ui-table-cell-truncate { @apply p-2 border-b border-gray-100 border-r truncate max-w-[150px]; }
 
-  /* MAIN typography tokens */
+  /* ===================== Shared Typography Tokens ===================== */
   .font-2xs { @apply text-[9px]; }
   .font-2xs-plus { @apply text-[10px]; }
   .font-2xs-tight { @apply text-[11px]; }
@@ -219,7 +220,7 @@
   .callback-icon-list { @apply text-purple-500; }
 
 
-  /* Auto-migrated semantic utility wrappers */
+  /* ===================== Legacy Alias Bridge (sem-u -> semantic) ===================== */
   .account-input { @apply text-[11px] border border-blue-200 rounded px-2 py-1.5 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition flex-1 bg-white; }
   .chat-search-input { @apply bg-blue-700 border-none text-white text-[14px] rounded px-3 py-1 w-48 focus:outline-none focus:ring-1 focus:ring-white; }
   .chat-message-list { @apply h-[430px] overflow-y-auto p-4 bg-gray-50 flex flex-col gap-4; }
@@ -483,7 +484,6 @@
 
   .badge--io-in { @apply bg-blue-100 text-blue-600 px-1.5 rounded text-[10px] font-bold; }
   .badge--io-out { @apply bg-orange-100 text-orange-600 px-1.5 rounded text-[10px] font-bold; }
-  .notice-card { @apply bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition cursor-pointer; }
   .notice-card__meta { @apply flex items-start justify-between mb-2; }
   .notice-meta-left { @apply flex items-center gap-2; }
 
