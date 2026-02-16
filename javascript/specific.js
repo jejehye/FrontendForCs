@@ -22,6 +22,8 @@ const historyDateTo = getHook('historyDateTo');
 const historySearch = getHook('historySearch');
 const myDateFrom = getHook('myDateFrom');
 const myDateTo = getHook('myDateTo');
+const adminDateFrom = getHook('adminDateFrom');
+const adminDateTo = getHook('adminDateTo');
 
 const countAll = getHook('countAll');
 const countPending = getHook('countPending');
@@ -163,12 +165,17 @@ function getFilteredRequests() {
   return requests.filter((item) => {
     const matchesFilter = activeFilter === 'all' || item.status === activeFilter;
     const keyword = currentSearch.toLowerCase();
+    const requestedDate = item.requestedAt.slice(0, 10);
+    const from = adminDateFrom?.value || '';
+    const to = adminDateTo?.value || '';
+    const matchesFrom = !from || requestedDate >= from;
+    const matchesTo = !to || requestedDate <= to;
     const matchesSearch =
       !keyword ||
       item.name.toLowerCase().includes(keyword) ||
       (item.empNo || '').toLowerCase().includes(keyword) ||
       item.reason.toLowerCase().includes(keyword);
-    return matchesFilter && matchesSearch;
+    return matchesFilter && matchesFrom && matchesTo && matchesSearch;
   });
 }
 
@@ -426,6 +433,13 @@ if (searchInput) {
     currentSearch = event.target.value.trim();
     renderTable();
   });
+}
+
+if (adminDateFrom && adminDateTo) {
+  adminDateFrom.value = getDateOffset(-30);
+  adminDateTo.value = getDateOffset(0);
+  adminDateFrom.addEventListener('change', renderTable);
+  adminDateTo.addEventListener('change', renderTable);
 }
 
 filterButtons.forEach((btn) => {
