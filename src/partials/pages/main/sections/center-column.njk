@@ -30,7 +30,7 @@
     <div class="notice-list-wrap">
       {% for notice_page in main_data.notice_pages %}
         <div
-          class="notice-list{% if not loop.first %} hidden{% endif %}"
+          class="notice-list{% if not loop.first %} is-hidden{% endif %}"
           data-target="notice-page"
           data-target-value="{{ loop.index }}"
           data-notice-page="{{ loop.index }}"
@@ -113,7 +113,7 @@
         <p class="main-center-warning-highlight">우수고객 VIP</p>
       </div>
       <div
-        class="warning-tab-panel warning-tab-panel-body hidden"
+        class="warning-tab-panel warning-tab-panel-body is-hidden"
         data-target="warning-panel" data-target-value="voc" data-warning-panel="voc"
       >
         <p class="main-center-warning-line">

@@ -1,4 +1,6 @@
 window.MainPageHistory = (() => {
+  const HIDDEN_CLASS = 'is-hidden';
+
   const selectOne = (standardSelector, legacySelector) =>
     document.querySelector(standardSelector) || (legacySelector ? document.querySelector(legacySelector) : null);
 
@@ -34,7 +36,7 @@ window.MainPageHistory = (() => {
 
       noticePages.forEach(page => {
         page.replaceChildren();
-        page.classList.add('hidden');
+        page.classList.add(HIDDEN_CLASS);
       });
 
       const requiredPages = Math.ceil(allNoticeItems.length / pageSize);
@@ -92,7 +94,7 @@ window.MainPageHistory = (() => {
 
       noticePages.forEach(page => {
         const current = Number(page.getAttribute('data-target-value') || page.getAttribute('data-notice-page'));
-        page.classList.toggle('hidden', current !== activeNoticePage);
+        page.classList.toggle(HIDDEN_CLASS, current !== activeNoticePage);
       });
 
       noticePageButtons.forEach(button => {

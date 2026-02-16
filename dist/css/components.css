@@ -752,6 +752,10 @@ body { background-color: #f3f4f6; }
 }
 .main-outbound-modal__btn--submit:hover { background: #1d4ed8; }
 
+/* Tailwind residual cleanup aliases */
+.is-hidden { display: none; }
+.full-width { width: 100%; }
+
 @media (max-width: 1280px) {
   .agent-kpi-bar { display: none; }
   .account-info-grid,

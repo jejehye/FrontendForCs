@@ -1,4 +1,6 @@
 window.MainPageTabs = (() => {
+  const HIDDEN_CLASS = 'is-hidden';
+
   const selectAll = (standardSelector, legacySelector) => {
     const standardNodes = Array.from(document.querySelectorAll(standardSelector));
     if (standardNodes.length) {
@@ -25,7 +27,7 @@ window.MainPageTabs = (() => {
         warningPanels.forEach(panel => {
           const panelTarget = panel.getAttribute('data-target-value') || panel.getAttribute('data-warning-panel');
           const matches = panelTarget === target;
-          panel.classList.toggle('hidden', !matches);
+          panel.classList.toggle(HIDDEN_CLASS, !matches);
           panel.classList.toggle('is-active', matches);
         });
       });
