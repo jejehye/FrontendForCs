@@ -99,3 +99,22 @@ body {
   text-align: left;
 }
 
+/* Keep button typography lightweight across pages */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.btn,
+.actionBtn,
+.action-btn,
+.pagination__btn {
+  font-weight: 400 !important;
+}
+
+button span,
+.btn span,
+.actionBtn span,
+.action-btn span,
+.pagination__btn span {
+  font-weight: 400 !important;
+}
