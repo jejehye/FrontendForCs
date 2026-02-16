@@ -11,6 +11,7 @@ const queryAllHook = (standardSelector, legacySelector) => {
 
 const registerBtn = getHook('registerExcludeBtn');
 const tableBody = getHook('specificTableBody');
+const adminPagination = getHook('adminPagination');
 const myRequestBody = getHook('myRequestBody');
 const searchInput = getHook('specificSearch');
 const filterButtons = queryAllHook('[data-action="specific-filter"]', '.specific-filter-btn');
@@ -32,6 +33,8 @@ const countRejected = getHook('countRejected');
 
 let activeFilter = 'all';
 let currentSearch = '';
+let adminPage = 1;
+const adminPageSize = 5;
 let historyPage = 1;
 const historyPageSize = 5;
 let requestId = 1;
@@ -163,7 +166,7 @@ function renderStats() {
 
 function getFilteredRequests() {
   return requests.filter((item) => {
-    const matchesFilter = activeFilter === 'all' || item.status === activeFilter;
+    const matchesPendingOnly = item.status === 'pending';
     const keyword = currentSearch.toLowerCase();
     const requestedDate = item.requestedAt.slice(0, 10);
     const from = adminDateFrom?.value || '';
@@ -175,20 +178,60 @@ function getFilteredRequests() {
       item.name.toLowerCase().includes(keyword) ||
       (item.empNo || '').toLowerCase().includes(keyword) ||
       item.reason.toLowerCase().includes(keyword);
-    return matchesFilter && matchesFrom && matchesTo && matchesSearch;
+    return matchesPendingOnly && matchesFrom && matchesTo && matchesSearch;
   });
+}
+
+function renderAdminPagination(totalItems) {
+  if (!adminPagination) return;
+  const totalPages = Math.max(1, Math.ceil(totalItems / adminPageSize));
+  if (adminPage > totalPages) adminPage = totalPages;
+
+  const prevButton = document.createElement('button');
+  prevButton.className = 'specific-page-btn';
+  prevButton.setAttribute('data-admin-page-nav', 'prev');
+  prevButton.disabled = adminPage === 1;
+  prevButton.textContent = '<';
+
+  const nextButton = document.createElement('button');
+  nextButton.className = 'specific-page-btn';
+  nextButton.setAttribute('data-admin-page-nav', 'next');
+  nextButton.disabled = adminPage === totalPages;
+  nextButton.textContent = '>';
+
+  const pageButtons = Array.from({ length: totalPages }, (_, index) => {
+    const page = index + 1;
+    const button = document.createElement('button');
+    button.className = 'specific-page-btn';
+    if (page === adminPage) {
+      button.classList.add('is-active');
+    }
+    button.setAttribute('data-admin-page', String(page));
+    button.textContent = String(page);
+    return button;
+  });
+
+  adminPagination.replaceChildren(prevButton, ...pageButtons, nextButton);
 }
 
 function renderTable() {
   const rows = getFilteredRequests();
+  const totalPages = Math.max(1, Math.ceil(rows.length / adminPageSize));
+  if (adminPage > totalPages) adminPage = totalPages;
+  if (adminPage < 1) adminPage = 1;
+
+  const startIndex = (adminPage - 1) * adminPageSize;
+  const pagedRows = rows.slice(startIndex, startIndex + adminPageSize);
+
   if (!rows.length) {
     tableBody.replaceChildren(createEmptyRow(8, '조회 결과가 없습니다.'));
+    renderAdminPagination(0);
     return;
   }
 
   const fragment = document.createDocumentFragment();
 
-  rows.forEach((item) => {
+  pagedRows.forEach((item) => {
     const row = document.createElement('tr');
     row.appendChild(createCell(createStatusBadge(item.status)));
     row.appendChild(createCell(item.empNo || '-'));
@@ -231,6 +274,7 @@ function renderTable() {
   });
 
   tableBody.replaceChildren(fragment);
+  renderAdminPagination(rows.length);
 }
 
 function renderMyRequestTable() {
@@ -273,18 +317,17 @@ function getFilteredHistory() {
 
   return requests
     .filter((item) => {
-    if (item.status === 'pending' || !item.processedAt) return false;
-    const processedDate = item.processedAt.slice(0, 10);
-    const matchesFrom = !from || processedDate >= from;
-    const matchesTo = !to || processedDate <= to;
-    const matchesSearch =
-      !keyword ||
-      item.name.toLowerCase().includes(keyword) ||
-      (item.empNo || '').toLowerCase().includes(keyword) ||
-      item.reason.toLowerCase().includes(keyword);
+      const requestedDate = item.requestedAt.slice(0, 10);
+      const matchesFrom = !from || requestedDate >= from;
+      const matchesTo = !to || requestedDate <= to;
+      const matchesSearch =
+        !keyword ||
+        item.name.toLowerCase().includes(keyword) ||
+        (item.empNo || '').toLowerCase().includes(keyword) ||
+        item.reason.toLowerCase().includes(keyword);
       return matchesFrom && matchesTo && matchesSearch;
     })
-    .sort((a, b) => b.processedAt.localeCompare(a.processedAt));
+    .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
 }
 
 function renderHistoryPagination(totalItems) {
@@ -344,7 +387,7 @@ function renderHistoryTable() {
     row.appendChild(createCell(item.name));
     row.appendChild(createCell(item.category));
     row.appendChild(createCell(item.requestedAt));
-    row.appendChild(createCell(item.processedAt));
+    row.appendChild(createCell(item.processedAt || '-'));
     row.appendChild(createCell(item.reason, 'specific-reason', item.reason));
     fragment.appendChild(row);
   });
@@ -406,6 +449,7 @@ if (registerBtn) {
     startTimeInput.value = '';
     endTimeInput.value = '';
     reasonInput.value = '';
+    adminPage = 1;
     activeFilter = 'all';
     filterButtons.forEach((btn) =>
       btn.classList.toggle('is-active', btn.dataset.filter === 'all')
@@ -432,6 +476,7 @@ if (excludeDateInput && !excludeDateInput.value) {
 if (searchInput) {
   searchInput.addEventListener('input', (event) => {
     currentSearch = event.target.value.trim();
+    adminPage = 1;
     renderTable();
   });
 }
@@ -439,8 +484,14 @@ if (searchInput) {
 if (adminDateFrom && adminDateTo) {
   adminDateFrom.value = getDateOffset(-30);
   adminDateTo.value = getDateOffset(0);
-  adminDateFrom.addEventListener('change', renderTable);
-  adminDateTo.addEventListener('change', renderTable);
+  adminDateFrom.addEventListener('change', () => {
+    adminPage = 1;
+    renderTable();
+  });
+  adminDateTo.addEventListener('change', () => {
+    adminPage = 1;
+    renderTable();
+  });
 }
 
 filterButtons.forEach((btn) => {
@@ -449,6 +500,7 @@ filterButtons.forEach((btn) => {
     filterButtons.forEach((item) =>
       item.classList.toggle('is-active', item === btn)
     );
+    adminPage = 1;
     renderTable();
   });
 });
@@ -513,6 +565,24 @@ if (historyPagination) {
     if (navButton.dataset.historyPageNav === 'prev') historyPage -= 1;
     if (navButton.dataset.historyPageNav === 'next') historyPage += 1;
     renderHistoryTable();
+  });
+}
+
+if (adminPagination) {
+  adminPagination.addEventListener('click', (event) => {
+    const pageButton = event.target.closest('button[data-admin-page]');
+    const navButton = event.target.closest('button[data-admin-page-nav]');
+
+    if (pageButton) {
+      adminPage = Number(pageButton.dataset.adminPage);
+      renderTable();
+      return;
+    }
+
+    if (!navButton) return;
+    if (navButton.dataset.adminPageNav === 'prev') adminPage -= 1;
+    if (navButton.dataset.adminPageNav === 'next') adminPage += 1;
+    renderTable();
   });
 }
 
