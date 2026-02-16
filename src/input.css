@@ -440,15 +440,15 @@
   /* Legacy sem-u aliases (keep sem-u classes, migrate templates gradually) */
   .history-filter-row { @apply flex justify-between items-center mb-3 border-b border-gray-100 pb-2; }
 
-  .sms-template-search-input { @apply sem-u-054; }
-  .sms-section-title { @apply sem-u-082; }
-  .sms-field-input { @apply sem-u-083; }
-  .sms-btn-primary { @apply sem-u-084; }
-  .sms-recipient-list { @apply sem-u-085; }
-  .sms-variable-btn { @apply sem-u-086; }
-  .sms-message-input { @apply sem-u-087; }
-  .sms-send-now-btn { @apply sem-u-088; }
-  .sms-send-schedule-btn { @apply sem-u-089; }
+  .sms-template-search-input { @apply px-3 py-1.5 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2 w-48; }
+  .sms-section-title { @apply text-sm font-bold text-gray-800 mb-3 flex items-center gap-2; }
+  .sms-field-input { @apply flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2; }
+  .sms-btn-primary { @apply text-white px-4 py-2 rounded text-sm font-medium shadow-sm; }
+  .sms-recipient-list { @apply flex flex-wrap gap-1 min-h-[40px] p-2 border border-gray-200 rounded bg-gray-50; }
+  .sms-variable-btn { @apply flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded text-xs font-medium hover:bg-gray-200; }
+  .sms-message-input { @apply w-full h-40 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2; }
+  .sms-send-now-btn { @apply flex-1 text-white px-4 py-3 rounded font-bold shadow-md; }
+  .sms-send-schedule-btn { @apply flex-1 bg-white text-gray-700 px-4 py-3 rounded font-bold shadow-md border-2 hover:bg-gray-50; }
 
   .callback-call-btn { @apply text-white text-xxs px-3 py-1 rounded font-medium hover:bg-blue-700; }
   .callback-period-select { @apply text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500; }

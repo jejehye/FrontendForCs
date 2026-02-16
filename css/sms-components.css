@@ -131,10 +131,12 @@ body {
 .sms-header-refresh:hover { color: #dbeafe; }
 
 .sms-section-block { margin-bottom: 12px; }
+.sms-textarea-wrap { position: relative; }
 .sms-icon-gap-1 { margin-right: 4px; }
 .sms-icon-gap-2 { margin-right: 8px; }
 .sms-icon-danger-hover:hover { color: #ef4444; }
 .sms-accent-icon { color: #9333ea; }
+.sms-btn-nowrap { white-space: nowrap; }
 
 .sms-notice-title { font-weight: 700; color: #1f2937; font-size: 0.875rem; }
 .sms-notice-more-btn { font-size: 0.75rem; color: #6b7280; }
