@@ -44,6 +44,21 @@ if (window.tailwind) {
 document.addEventListener('DOMContentLoaded', () => {
       const accountNumberInput = document.getElementById('account-number');
       const residentIdInput = document.getElementById('resident-id');
+      const now = new Date();
+
+      const pad2 = number => String(number).padStart(2, '0');
+      const formatCurrentDateTime = date =>
+        `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())} ${pad2(date.getHours())}:${pad2(date.getMinutes())}`;
+      const formatCurrentDateKor = date =>
+        `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+
+      document.querySelectorAll('[data-current-datetime]').forEach(node => {
+        node.textContent = formatCurrentDateTime(now);
+      });
+
+      document.querySelectorAll('[data-current-date-kor]').forEach(node => {
+        node.textContent = formatCurrentDateKor(now);
+      });
 
       const formatAccountNumber = value => value
         .replace(/[^0-9]/g, '')
