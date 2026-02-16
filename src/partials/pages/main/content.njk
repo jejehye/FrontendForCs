@@ -661,45 +661,45 @@
       </div>
     </div>
   </div>
-  <div class="info-card flex-1 flex flex-col p-0 overflow-hidden mt-10">
-    <div class="flex items-center justify-between px-3 py-2 border-b border-gray-200 bg-white">
-      <span class="font-sm weight-bold text-strong">나의 상담이력 조회</span>
+  <div class="info-card main-my-history-panel">
+    <div class="main-my-history-header">
+      <span class="main-my-history-title">나의 상담이력 조회</span>
       <button class="history-export-btn">
         <i class="fa-solid fa-download"></i>내역 다운로드
       </button>
     </div>
-    <div class="panel__body panel__body--history-filter mx-3 mt-2 rounded">
-      <div class="grid grid-cols-3 gap-x-3 gap-y-2 mb-2">
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+    <div class="panel__body panel__body--history-filter main-my-history-filter">
+      <div class="main-my-history-filter-grid">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             조회기간
           </label>
           <div class="ui-inline-gap-xs w-full">
             <input type="date" value="2026-02-01" class="field field--history-date" />
-            <span class="font-2xs text-subtle">~</span>
+            <span class="main-my-history-date-sep">~</span>
             <input type="date" value="2026-02-16" class="field field--history-date" />
           </div>
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             고객명
           </label>
           <input type="text" placeholder="고객명" class="field field--history-input" />
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             계좌번호
           </label>
           <input type="text" placeholder="계좌번호" class="field field--history-input" />
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             전화번호
           </label>
           <input type="text" placeholder="전화번호" class="field field--history-input" />
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             상담유형
           </label>
           <select class="field field--history-category">
@@ -710,29 +710,29 @@
             <option>해외투자</option>
           </select>
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             상담내용
           </label>
           <input type="text" placeholder="상담내용" class="field field--history-input" />
         </div>
       </div>
-      <div class="flex justify-end gap-1.5">
-        <button class="btn--history-reset bg-white hover:bg-gray-100 border-gray-300 text-gray-700">
-          <i class="fa-solid fa-rotate-right mr-1"></i>초기화
+      <div class="main-my-history-actions">
+        <button class="btn--history-reset main-my-history-btn">
+          <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>초기화
         </button>
-        <button class="btn--history-search bg-white hover:bg-gray-100 text-gray-700">
-          <i class="fa-solid fa-magnifying-glass mr-1"></i>조회
+        <button class="btn--history-search main-my-history-btn">
+          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
         </button>
       </div>
     </div>
-    <div class="h-[220px] overflow-x-auto overflow-y-scroll px-3">
+    <div class="main-my-history-table-wrap">
       <table class="tbl table--history">
-        <thead class="bg-blue-50 sticky top-0 z-10">
+        <thead class="main-history-thead">
           <tr>
             <th class="table__head table__head--narrow">NO</th>
             <th class="table__head table__head--time">
-              시간 <i class="fa-solid fa-sort ml-1 text-muted"></i>
+              시간 <i class="fa-solid fa-sort main-history-sort-icon"></i>
             </th>
             <th class="table__head">상담원</th>
             <th class="table__head table__head--io">I/O</th>
@@ -744,7 +744,7 @@
             <th class="table__head table__head--summary">상담내용</th>
           </tr>
         </thead>
-        <tbody class="font-2xs-tight text-body-strong">
+        <tbody class="main-history-body">
           <tr class="tbl__row">
             <td class="tbl__cell tbl__cell--accent">1</td>
             <td class="tbl__cell">2026-02-16 14:12:03</td>
@@ -818,7 +818,7 @@
         </tbody>
       </table>
     </div>
-    <div class="pagination pagination--history px-3 pb-3 pt-2">
+    <div class="pagination pagination--history main-my-history-pagination">
       <button class="pagination__btn">
         <i class="fa-solid fa-angles-left"></i></button
       ><button class="pagination__btn">

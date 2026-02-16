@@ -310,6 +310,17 @@ body {
 .main-history-thead { background: #eff6ff; position: sticky; top: 0; z-index: 10; }
 .main-history-sort-icon { margin-left: 0.25rem; color: #6b7280; }
 .main-history-body { font-size: 11px; color: #1f2937; }
+.main-my-history-panel { flex: 1 1 0%; display: flex; flex-direction: column; padding: 0; overflow: hidden; margin-top: 2.5rem; }
+.main-my-history-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-bottom: 1px solid #e5e7eb; background: #fff; }
+.main-my-history-title { font-size: 13px; font-weight: 700; color: #1f2937; }
+.main-my-history-filter { margin: 0.5rem 0.75rem 0; border-radius: 0.25rem; }
+.main-my-history-filter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0.75rem; row-gap: 0.5rem; margin-bottom: 0.5rem; }
+.main-my-history-date-sep { font-size: 10px; color: #6b7280; }
+.main-my-history-actions { display: flex; justify-content: flex-end; gap: 0.375rem; }
+.main-my-history-btn { background: #fff; color: #374151; border-color: #d1d5db; }
+.main-my-history-btn:hover { background: #f3f4f6; }
+.main-my-history-table-wrap { height: 220px; overflow-x: auto; overflow-y: scroll; padding: 0 0.75rem; }
+.main-my-history-pagination { padding: 0.5rem 0.75rem 0.75rem; }
 .journey-scroll-panel { height: 800px; }
 .column-width-sm { width: 54px; }
 
