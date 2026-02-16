@@ -182,7 +182,7 @@ function getFilteredRequests() {
 function renderTable() {
   const rows = getFilteredRequests();
   if (!rows.length) {
-    tableBody.replaceChildren(createEmptyRow(7, '조회 결과가 없습니다.'));
+    tableBody.replaceChildren(createEmptyRow(8, '조회 결과가 없습니다.'));
     return;
   }
 
@@ -194,6 +194,7 @@ function renderTable() {
     row.appendChild(createCell(item.empNo || '-'));
     row.appendChild(createCell(item.name));
     row.appendChild(createCell(item.category));
+    row.appendChild(createCell(item.requestedAt.slice(0, 10)));
     row.appendChild(createCell(item.time));
     row.appendChild(createCell(item.reason, 'specific-reason', item.reason));
 
