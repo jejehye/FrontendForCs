@@ -1,5 +1,5 @@
 # 1) build stage (npm)
-FROM node:20-alpine AS build
+FROM node:18-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
@@ -12,12 +12,7 @@ RUN npm ci
 
 COPY . .
 
-RUN rm -rf dist \
-  && mkdir -p dist \
-  && npm run build \
-  && cp ./*.html dist/ \
-  && cp -R css javascript design dist/ \
-  && if [ -d js ]; then cp -R js dist/; fi
+RUN ./scripts/build.sh
 
 # 2) runtime stage
 FROM nginx:1.27-alpine
