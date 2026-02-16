@@ -51,8 +51,16 @@
                 </select>
               </div>
               <div class="specific-field">
-                <label for="excludeTime">시간</label>
-                <input id="excludeTime" type="time" class="specific-input" />
+                <label for="excludeDate">일자</label>
+                <input id="excludeDate" type="date" class="specific-input" />
+              </div>
+              <div class="specific-field">
+                <label for="excludeStartTime">시간 범위</label>
+                <div class="specific-time-range">
+                  <input id="excludeStartTime" type="time" class="specific-input" />
+                  <span class="specific-range-sep">~</span>
+                  <input id="excludeEndTime" type="time" class="specific-input" />
+                </div>
               </div>
               <div class="specific-field">
                 <label for="excludeReason">사유</label>
@@ -65,6 +73,32 @@
           </section>
 
           <section class="specific-panel">
+            <div class="specific-panel-title">나의 신청 내역</div>
+            <div class="specific-history-toolbar">
+              <div class="specific-history-range">
+                <input id="myDateFrom" class="specific-input specific-date" type="date" />
+                <span class="specific-range-sep">~</span>
+                <input id="myDateTo" class="specific-input specific-date" type="date" />
+              </div>
+            </div>
+            <div class="specific-table-wrap specific-history-scroll custom-scroll">
+              <table class="specific-table specific-my-table">
+                <thead>
+                  <tr>
+                    <th>상태</th>
+                    <th>유형</th>
+                    <th>시간</th>
+                    <th>신청일시</th>
+                    <th>내용</th>
+                  </tr>
+                </thead>
+                <tbody id="myRequestBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <section class="specific-panel">
             <div class="specific-panel-title">관리자 전체 조회/처리</div>
             <div class="specific-stats">
               <div class="specific-stat-card">
@@ -108,8 +142,7 @@
                 <tbody id="specificTableBody"></tbody>
               </table>
             </div>
-          </section>
-        </div>
+        </section>
 
         <section class="specific-panel">
           <div class="specific-panel-title">이전 처리내역 조회</div>

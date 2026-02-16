@@ -9,6 +9,7 @@ document.querySelectorAll('.nav-item').forEach((item) => {
 
 const registerBtn = document.getElementById('registerExcludeBtn');
 const tableBody = document.getElementById('specificTableBody');
+const myRequestBody = document.getElementById('myRequestBody');
 const searchInput = document.getElementById('specificSearch');
 const filterButtons = document.querySelectorAll('.specific-filter-btn');
 
@@ -17,6 +18,8 @@ const historyPagination = document.getElementById('historyPagination');
 const historyDateFrom = document.getElementById('historyDateFrom');
 const historyDateTo = document.getElementById('historyDateTo');
 const historySearch = document.getElementById('historySearch');
+const myDateFrom = document.getElementById('myDateFrom');
+const myDateTo = document.getElementById('myDateTo');
 
 const countAll = document.getElementById('countAll');
 const countPending = document.getElementById('countPending');
@@ -28,6 +31,7 @@ let currentSearch = '';
 let historyPage = 1;
 const historyPageSize = 5;
 let requestId = 4;
+const currentAgentName = localStorage.getItem('currentAgentName') || '김민수';
 
 function pad2(value) {
   return String(value).padStart(2, '0');
@@ -43,6 +47,21 @@ function formatDateTime(date) {
   return `${formatDate(date)} ${pad2(date.getHours())}:${pad2(date.getMinutes())}`;
 }
 
+function timeToMinutes(timeText) {
+  const [hours, minutes] = timeText.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function formatDuration(startTime, endTime) {
+  const diff = timeToMinutes(endTime) - timeToMinutes(startTime);
+  const hours = Math.floor(diff / 60);
+  const minutes = diff % 60;
+  if (minutes === 0) {
+    return `${hours}시간`;
+  }
+  return `${hours}시간 ${minutes}분`;
+}
+
 function getDateOffset(days) {
   const date = new Date();
   date.setDate(date.getDate() + days);
@@ -52,32 +71,32 @@ function getDateOffset(days) {
 const requests = [
   {
     id: 1,
-    name: '박지민',
+    name: currentAgentName,
     category: '콜 미수신',
-    time: '14:20',
+    time: '09:00~11:00 (2시간)',
     reason: '연결 실패 반복으로 재배정 요청',
     status: 'pending',
-    requestedAt: `${getDateOffset(0)} 14:20`,
+    requestedAt: `${getDateOffset(0)} 09:00`,
     processedAt: '',
   },
   {
     id: 2,
-    name: '이수호',
+    name: currentAgentName,
     category: '교육/회의',
-    time: '10:00',
+    time: '13:00~14:30 (1시간 30분)',
     reason: '신규 상품 교육 참석',
     status: 'approved',
-    requestedAt: `${getDateOffset(-1)} 10:00`,
+    requestedAt: `${getDateOffset(-1)} 13:00`,
     processedAt: `${getDateOffset(-1)} 10:12`,
   },
   {
     id: 3,
     name: '최영호',
     category: '기타',
-    time: '11:30',
+    time: '15:00~16:00 (1시간)',
     reason: '사유 불충분으로 재요청 안내',
     status: 'rejected',
-    requestedAt: `${getDateOffset(-2)} 11:30`,
+    requestedAt: `${getDateOffset(-2)} 15:00`,
     processedAt: `${getDateOffset(-2)} 11:41`,
   },
 ];
@@ -142,6 +161,41 @@ function renderTable() {
         </tr>
       `;
     })
+    .join('');
+}
+
+function renderMyRequestTable() {
+  if (!myRequestBody) return;
+  const rows = requests
+    .filter((item) => {
+      const from = myDateFrom?.value || '';
+      const to = myDateTo?.value || '';
+      const requestedDate = item.requestedAt.slice(0, 10);
+      const matchesFrom = !from || requestedDate >= from;
+      const matchesTo = !to || requestedDate <= to;
+      return matchesFrom && matchesTo;
+    })
+    .filter((item) => item.name === currentAgentName)
+    .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
+
+  if (!rows.length) {
+    myRequestBody.innerHTML =
+      '<tr><td class="specific-empty" colspan="5">본인이 신청한 내역이 없습니다.</td></tr>';
+    return;
+  }
+
+  myRequestBody.innerHTML = rows
+    .map(
+      (item) => `
+      <tr>
+        <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
+        <td>${item.category}</td>
+        <td>${item.time}</td>
+        <td>${item.requestedAt}</td>
+        <td class="specific-reason" title="${item.reason}">${item.reason}</td>
+      </tr>
+    `
+    )
     .join('');
 }
 
@@ -222,6 +276,7 @@ function renderHistoryTable() {
 
 function renderAll() {
   renderStats();
+  renderMyRequestTable();
   renderTable();
   renderHistoryTable();
 }
@@ -230,18 +285,30 @@ if (registerBtn) {
   registerBtn.addEventListener('click', () => {
     const nameInput = document.getElementById('agentName');
     const typeInput = document.getElementById('excludeType');
-    const timeInput = document.getElementById('excludeTime');
+    const dateInput = document.getElementById('excludeDate');
+    const startTimeInput = document.getElementById('excludeStartTime');
+    const endTimeInput = document.getElementById('excludeEndTime');
     const reasonInput = document.getElementById('excludeReason');
 
     const name = nameInput?.value.trim();
     const category = typeInput?.value.trim();
-    const time = timeInput?.value.trim();
+    const date = dateInput?.value.trim();
+    const startTime = startTimeInput?.value.trim();
+    const endTime = endTimeInput?.value.trim();
     const reason = reasonInput?.value.trim();
 
-    if (!name || !category || !time || !reason) {
-      alert('상담원명, 제외 유형, 시간, 사유를 모두 입력해 주세요.');
+    if (!name || !category || !date || !startTime || !endTime || !reason) {
+      alert('상담원명, 특이사항 유형, 일자, 시작/종료시간, 사유를 모두 입력해 주세요.');
       return;
     }
+
+    if (timeToMinutes(endTime) <= timeToMinutes(startTime)) {
+      alert('종료시간은 시작시간보다 늦어야 합니다.');
+      return;
+    }
+
+    const durationText = formatDuration(startTime, endTime);
+    const time = `${startTime}~${endTime} (${durationText})`;
 
     requests.unshift({
       id: requestId++,
@@ -250,12 +317,13 @@ if (registerBtn) {
       time,
       reason,
       status: 'pending',
-      requestedAt: `${formatDate(new Date())} ${time}`,
+      requestedAt: `${date} ${startTime}`,
       processedAt: '',
     });
 
     nameInput.value = '';
-    timeInput.value = '';
+    startTimeInput.value = '';
+    endTimeInput.value = '';
     reasonInput.value = '';
     activeFilter = 'all';
     filterButtons.forEach((btn) =>
@@ -263,6 +331,16 @@ if (registerBtn) {
     );
     renderAll();
   });
+}
+
+const agentNameInput = document.getElementById('agentName');
+if (agentNameInput && !agentNameInput.value.trim()) {
+  agentNameInput.value = currentAgentName;
+}
+
+const excludeDateInput = document.getElementById('excludeDate');
+if (excludeDateInput && !excludeDateInput.value) {
+  excludeDateInput.value = getDateOffset(0);
 }
 
 if (searchInput) {
@@ -311,6 +389,13 @@ if (historyDateFrom && historyDateTo) {
     historyPage = 1;
     renderHistoryTable();
   });
+}
+
+if (myDateFrom && myDateTo) {
+  myDateFrom.value = getDateOffset(-30);
+  myDateTo.value = getDateOffset(0);
+  myDateFrom.addEventListener('change', renderMyRequestTable);
+  myDateTo.addEventListener('change', renderMyRequestTable);
 }
 
 if (historySearch) {

@@ -71,6 +71,12 @@
   color: #475569;
 }
 
+.specific-time-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .specific-input {
   width: 100%;
   border: 1px solid #cbd5e1;
@@ -268,7 +274,7 @@
 
 .specific-table th:nth-child(4),
 .specific-table td:nth-child(4) {
-  width: 72px;
+  width: 130px;
 }
 
 .specific-table th:nth-child(6),
@@ -284,6 +290,16 @@
 .specific-history-table th:nth-child(5),
 .specific-history-table td:nth-child(5) {
   width: 145px;
+}
+
+.specific-my-table th:nth-child(4),
+.specific-my-table td:nth-child(4) {
+  width: 135px;
+}
+
+.specific-my-table th:nth-child(5),
+.specific-my-table td:nth-child(5) {
+  width: 220px;
 }
 
 .specific-reason {
