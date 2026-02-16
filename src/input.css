@@ -337,7 +337,7 @@
   .chat-msg__bubble { @apply max-w-[70%] px-[14px] py-[10px] rounded-[12px] text-[14px] leading-[1.5]; }
   .chat-msg__bubble--agent { @apply bg-blue-700 text-white rounded-br; }
   .chat-msg__bubble--customer { @apply bg-slate-100 text-slate-800 rounded-bl; }
-  .chat-msg__time { @apply mt-1 text-[0.7rem] text-slate-400; }
+  .chat-msg__time { @apply mt-1 text-[11px] text-slate-400; }
 
   .chat__composer { @apply p-3 border-t border-b border-gray-200 bg-gray-50; }
   .chat__quick-replies { @apply mb-2 flex flex-wrap gap-1; }
