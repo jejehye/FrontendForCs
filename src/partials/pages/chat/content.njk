@@ -6,7 +6,7 @@
           <span class="badge status-badge status-chat">
             <i class="fa-solid fa-comments chat-icon-gap-1"></i>채팅
           </span>
-          <span class="text-xs text-gray-600 font-medium truncate">
+          <span class="chat-channel-label">
             웹채팅 &gt; 일반상담
           </span>
         </div>
@@ -16,7 +16,7 @@
           </span>
           <span class="ui-title-base">박민지(여)</span>
           <span class="ui-text-subtle">|</span>
-          <span class="font-medium">투자성향(적극형)</span>
+          <span class="chat-investment-label">투자성향(적극형)</span>
         </div>
       </div>
       <div class="panel__header panel__header--chat-live chat-header">
@@ -37,7 +37,7 @@
 
     <!-- ===================== Messages ===================== -->
     <section class="chat__messages">
-      <div class="text-center mb-6">
+      <div class="chat-date-row">
         <span class="badge badge--date">2024년 2월 12일 월요일</span>
       </div>
       <div class="chat-msg chat-msg--customer">
@@ -108,7 +108,7 @@
         </button>
         <textarea
           placeholder="메시지를 입력하세요..."
-          class="chat__input resize-none"
+          class="chat__input"
           rows="3"
         ></textarea>
         <button class="chat__send-btn send-btn">
@@ -118,10 +118,10 @@
       </div>
     </section>
   </div>
-  <div id="center-column" class="column col-center p-4">
+  <div id="center-column" class="column col-center chat-center-column">
     <div class="panel panel--kms">
       <div class="panel__header panel__header--kms">
-        <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
+        <h3 class="chat-kms-title">
           <i class="fa-solid fa-book"></i>
           KMS 매뉴얼
         </h3>
@@ -136,7 +136,7 @@
           </button>
         </div>
       </div>
-      <div class="flex gap-2 mb-3 overflow-x-auto pb-2">
+      <div class="chat-kms-filter-row">
         <button class="tab__item is-active tab__item--chat-filter primary-btn">
           전체
         </button>
@@ -337,22 +337,22 @@
       <div class="chat-action-grid"><button
           class="actionBtn action-btn group">
           <div
-            class="chat-action-icon"><i class="fa-solid fa-coins text-lg"></i></div><span class="font-bold">사고</span>
+            class="chat-action-icon"><i class="fa-solid fa-coins chat-action-icon-lg"></i></div><span class="chat-action-label-strong">사고</span>
         </button><button
-          class="actionBtn action-btn group border-teal-200 bg-teal-50">
+          class="actionBtn action-btn group chat-action-btn-teal">
           <div
             class="chat-action-icon chat-action-icon--teal">
-            <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
-          <span class="text-teal-800 font-bold">권리발생</span>
+            <i class="fa-solid fa-gavel chat-action-icon-teal chat-action-icon-lg"></i></div>
+          <span class="chat-action-label-teal">권리발생</span>
         </button><button class="actionBtn action-btn group"><i
-            class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
+            class="fa-solid fa-arrow-rotate-left chat-action-icon-gray"></i><span>반송</span></button><button
           class="actionBtn action-btn group"><i
-            class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
+            class="fa-solid fa-ban chat-action-icon-red"></i><span>지급정지</span></button><button
           class="actionBtn action-btn group"><i
-            class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
-          class="actionBtn action-btn campaign-btn group hover:opacity-90"><i
-            class="fa-solid fa-users text-white"></i><span
-            class="text-white">캠페인</span></button></div>
+            class="fa-solid fa-bell chat-action-icon-yellow"></i><span>만기통보</span></button><button
+          class="actionBtn action-btn campaign-btn group chat-action-campaign-btn"><i
+            class="fa-solid fa-users chat-action-icon-white"></i><span
+            class="chat-action-label-white">캠페인</span></button></div>
       <div class="chat-service-strip">
         <div class="chat-icon-text-row"><span
             class="ui-text-body-muted">서비스요청</span><span
@@ -370,7 +370,7 @@
     <div class="card card--chat-stats">
       <h3
         class="panel__title panel__title--section">
-        <i class="fa-solid fa-chart-pie text-green-500"></i>
+        <i class="fa-solid fa-chart-pie chat-stats-icon"></i>
         보유 자산 현황
       </h3>
       <div class="chat-stat-list">
@@ -398,7 +398,7 @@
       class="card card--chat-history">
       <h3
         class="panel__title panel__title--section">
-        <i class="fa-solid fa-clock-rotate-left text-purple-500"></i>
+        <i class="fa-solid fa-clock-rotate-left chat-history-icon"></i>
         최근 상담 이력
       </h3>
       <div class="chat-history-list">

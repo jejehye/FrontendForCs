@@ -340,7 +340,7 @@
   .chat__quick-replies { @apply mb-2 flex flex-wrap gap-1; }
   .chat__actions { @apply flex items-center gap-2; }
   .chat__action-btn { @apply inline-flex items-center justify-center gap-2 rounded p-2 text-sm font-medium transition bg-white border border-gray-300 hover:bg-gray-100; }
-  .chat__input { @apply flex-1 min-h-[100px] px-4 py-4 border border-gray-300 rounded text-xs focus:outline-none focus:ring-2; }
+  .chat__input { @apply flex-1 min-h-[100px] px-4 py-4 border border-gray-300 rounded text-xs resize-none focus:outline-none focus:ring-2; }
   .chat__send-btn { @apply inline-flex items-center justify-center gap-1.5 rounded px-4 py-1.5 text-[11px] leading-tight whitespace-nowrap font-medium text-white transition hover:opacity-90 bg-blue-600 hover:bg-blue-700; }
   .panel--kms { @apply bg-white rounded-lg border border-gray-200 p-4 mb-4; }
   .panel__header--kms { @apply flex items-center justify-between mb-3; }
