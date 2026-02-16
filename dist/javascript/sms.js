@@ -121,7 +121,7 @@
           templateLastButton.classList.toggle('opacity-40', activeTemplatePage === maxPage);
         };
 
-        if (templatePages.length > 1) {
+        if (templatePages.length) {
           templatePagination.classList.remove('hidden');
           rebuildTemplateButtons();
           setActiveTemplatePage(1);
@@ -130,8 +130,6 @@
           templatePrevButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage - 1));
           templateNextButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage + 1));
           templateLastButton.addEventListener('click', () => setActiveTemplatePage(templatePages.length));
-        } else {
-          templatePagination.classList.add('hidden');
         }
       }
 
