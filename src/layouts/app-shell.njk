@@ -17,7 +17,9 @@
     {% include "partials/components/sidebar.njk" %}
 
     <!-- ===================== Page Content ===================== -->
-    {% block app_content %}{% endblock %}
+    <main id="page-main" class="layout-main-content" data-role="page-main">
+      {% block app_content %}{% endblock %}
+    </main>
   </div>
 
   <!-- ===================== Server Data Payload ===================== -->

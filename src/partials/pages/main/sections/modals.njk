@@ -49,6 +49,46 @@
   </div>
 </section>
 
+<!-- ===================== Group Switch Modal ===================== -->
+<section>
+  <div class="main-outbound-modal" data-role="main-group-switch-modal" aria-hidden="true">
+    <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-group-switch-title">
+      <div class="main-outbound-modal__header">
+        <h4 id="main-group-switch-title" class="main-outbound-modal__title">그룹전환</h4>
+        <button type="button" class="main-outbound-modal__close" data-action="main-close-group-switch-modal" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="main-outbound-modal__body">
+        <label class="main-outbound-modal__label" for="mainGroupSkillSelect">전환 그룹 선택</label>
+        <select
+          id="mainGroupSkillSelect"
+          class="field main-outbound-modal__input"
+          data-role="main-group-skill-select"
+        >
+          <option value="온라인스킬">온라인스킬</option>
+          <option value="투자상담스킬">투자상담스킬</option>
+          <option value="해외주식스킬">해외주식스킬</option>
+        </select>
+        <label class="main-outbound-modal__label" for="mainGroupSwitchNumber">전환 번호 입력</label>
+        <input
+          id="mainGroupSwitchNumber"
+          type="text"
+          class="field main-outbound-modal__input"
+          inputmode="numeric"
+          placeholder="예: 1010"
+          data-role="main-group-switch-number"
+        />
+        <p class="main-outbound-modal__hint">숫자만 입력해 주세요.</p>
+      </div>
+      <div class="main-outbound-modal__footer">
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-group-switch-modal">취소</button>
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-group-switch">전환</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== Outbound Modal ===================== -->
 <section>
   <div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">

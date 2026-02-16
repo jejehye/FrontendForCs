@@ -99,13 +99,14 @@
 
 
     <!-- ===================== Page Content ===================== -->
-    
+    <main id="page-main" class="layout-main-content" data-role="page-main">
+      
   
 
 <!-- ===================== Chat Column ===================== -->
 <section id="chat-column" class="column col-chat layout-shell">
   <!-- ===================== Customer Info ===================== -->
-  <section>
+  <section id="customer-info" data-role="customer-info">
     <div class="chat-panel-header">
   <div class="chat-status-row">
     <span class="status-badge status-ib">
@@ -150,10 +151,10 @@
   </section>
 
   <!-- ===================== Verification ===================== -->
-  <section>
+  <section id="verify-form" data-role="verify-form">
     <form class="account-info-panel">
       <header class="account-panel-title-row">
-        <span class="account-panel-title">본인확인 정보</span>
+        <h3 class="account-panel-title heading-reset">본인확인 정보</h3>
         <span class="account-panel-helper">필수 항목을 입력해 주세요</span>
       </header>
       <div class="account-info-grid">
@@ -247,9 +248,9 @@
   </section>
 
   <!-- ===================== Chat ===================== -->
-  <section>
+  <section id="chat-area" data-role="chat-area">
     <header class="panel-header main-live-header">
-      <span class="weight-semibold">실시간 대화</span>
+      <h3 class="weight-semibold heading-reset">실시간 대화</h3>
       <div class="main-live-header-actions">
         <div class="main-live-search-wrap">
           <input
@@ -331,9 +332,9 @@
   </section>
 
   <!-- ===================== History Table ===================== -->
-  <section>
+  <section id="history-area" data-role="history-area">
     <header class="panel__header panel__header--history">
-      <span class="weight-semibold">상담이력 조회</span>
+      <h3 class="weight-semibold heading-reset">상담이력 조회</h3>
       <div class="main-history-actions">
         <button class="btn--history-reset">
           <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>
@@ -812,7 +813,7 @@
 <!-- ===================== Center Column ===================== -->
 <section id="center-column" class="column col-center layout-main">
   <!-- ===================== Notices ===================== -->
-  <section>
+  <section id="notice-area" data-role="notice-area">
     <header class="notice-header">
       <div class="notice-header-row">
         <div class="notice-header-title-row">
@@ -995,9 +996,9 @@
     </div>
   </section>
   <!-- ===================== Coaching/VOC ===================== -->
-  <section>
+  <section id="coaching-area" data-role="coaching-area">
     <header class="panel-header main-live-header main-coaching-header">
-      <span class="weight-semibold">실시간 코칭</span>
+      <h3 class="weight-semibold heading-reset">실시간 코칭</h3>
     </header>
     <div class="coaching-panel">
       <div class="coaching-placeholder">실시간 코칭내용 주문별 내용 확인하세요.</div>
@@ -1088,6 +1089,10 @@
             <option value="meeting">회의</option>
           </select>
         </div>
+        <button type="button" class="softphone-outbound-btn" data-action="main-open-group-switch-modal" aria-label="그룹전환">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          그룹전환
+        </button>
         <button type="button" class="softphone-outbound-btn" data-action="main-open-outbound-modal" aria-label="아웃바운드 발신">
           <i class="fa-solid fa-phone"></i>
           아웃바운드
@@ -1689,6 +1694,46 @@
   </div>
 </section>
 
+<!-- ===================== Group Switch Modal ===================== -->
+<section>
+  <div class="main-outbound-modal" data-role="main-group-switch-modal" aria-hidden="true">
+    <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-group-switch-title">
+      <div class="main-outbound-modal__header">
+        <h4 id="main-group-switch-title" class="main-outbound-modal__title">그룹전환</h4>
+        <button type="button" class="main-outbound-modal__close" data-action="main-close-group-switch-modal" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="main-outbound-modal__body">
+        <label class="main-outbound-modal__label" for="mainGroupSkillSelect">전환 그룹 선택</label>
+        <select
+          id="mainGroupSkillSelect"
+          class="field main-outbound-modal__input"
+          data-role="main-group-skill-select"
+        >
+          <option value="온라인스킬">온라인스킬</option>
+          <option value="투자상담스킬">투자상담스킬</option>
+          <option value="해외주식스킬">해외주식스킬</option>
+        </select>
+        <label class="main-outbound-modal__label" for="mainGroupSwitchNumber">전환 번호 입력</label>
+        <input
+          id="mainGroupSwitchNumber"
+          type="text"
+          class="field main-outbound-modal__input"
+          inputmode="numeric"
+          placeholder="예: 1010"
+          data-role="main-group-switch-number"
+        />
+        <p class="main-outbound-modal__hint">숫자만 입력해 주세요.</p>
+      </div>
+      <div class="main-outbound-modal__footer">
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-group-switch-modal">취소</button>
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-group-switch">전환</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== Outbound Modal ===================== -->
 <section>
   <div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">
@@ -1757,6 +1802,7 @@
 
 
 
+    </main>
   </div>
 
   <!-- ===================== Server Data Payload ===================== -->

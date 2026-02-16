@@ -171,10 +171,86 @@ window.MainPageActions = (() => {
     }
   };
 
+  const initGroupSwitchModal = () => {
+    const modal = selectOne('[data-role="main-group-switch-modal"]');
+    const openButton = selectOne('[data-action="main-open-group-switch-modal"]');
+    const closeButtons = selectAll('[data-action="main-close-group-switch-modal"]');
+    const submitButton = selectOne('[data-action="main-submit-group-switch"]');
+    const skillSelect = selectOne('[data-role="main-group-skill-select"]');
+    const numberInput = selectOne('[data-role="main-group-switch-number"]');
+
+    if (!modal || !openButton || !skillSelect || !numberInput) {
+      return;
+    }
+
+    const normalizeNumber = value => (value || '').replace(/\D/g, '').slice(0, 8);
+
+    const openModal = () => {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      numberInput.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const submitGroupSwitch = () => {
+      const targetSkill = skillSelect.value || '';
+      const targetNumber = normalizeNumber(numberInput.value);
+
+      if (!targetSkill) {
+        alert('전환할 그룹을 선택해 주세요.');
+        skillSelect.focus();
+        return;
+      }
+
+      if (!targetNumber) {
+        alert('전환 번호를 입력해 주세요.');
+        numberInput.focus();
+        return;
+      }
+
+      alert(`${targetSkill} (${targetNumber}) 그룹으로 전환합니다.`);
+      closeModal();
+    };
+
+    openButton.addEventListener('click', openModal);
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    numberInput.addEventListener('input', event => {
+      event.target.value = normalizeNumber(event.target.value);
+    });
+
+    numberInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submitGroupSwitch();
+      }
+    });
+
+    if (submitButton) {
+      submitButton.addEventListener('click', submitGroupSwitch);
+    }
+  };
+
   const init = () => {
     initStatusControl();
     initSoftphoneScripts();
     initOutboundDialer();
+    initGroupSwitchModal();
   };
 
   return { init };

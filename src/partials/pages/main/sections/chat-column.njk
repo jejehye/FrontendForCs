@@ -1,14 +1,14 @@
 <section id="chat-column" class="column col-chat layout-shell">
   <!-- ===================== Customer Info ===================== -->
-  <section>
+  <section id="customer-info" data-role="customer-info">
     {% include "partials/pages/main/customer-info.njk" %}
   </section>
 
   <!-- ===================== Verification ===================== -->
-  <section>
+  <section id="verify-form" data-role="verify-form">
     <form class="account-info-panel">
       <header class="account-panel-title-row">
-        <span class="account-panel-title">본인확인 정보</span>
+        <h3 class="account-panel-title heading-reset">본인확인 정보</h3>
         <span class="account-panel-helper">필수 항목을 입력해 주세요</span>
       </header>
       <div class="account-info-grid">
@@ -102,9 +102,9 @@
   </section>
 
   <!-- ===================== Chat ===================== -->
-  <section>
+  <section id="chat-area" data-role="chat-area">
     <header class="panel-header main-live-header">
-      <span class="weight-semibold">실시간 대화</span>
+      <h3 class="weight-semibold heading-reset">실시간 대화</h3>
       <div class="main-live-header-actions">
         <div class="main-live-search-wrap">
           <input
@@ -186,9 +186,9 @@
   </section>
 
   <!-- ===================== History Table ===================== -->
-  <section>
+  <section id="history-area" data-role="history-area">
     <header class="panel__header panel__header--history">
-      <span class="weight-semibold">상담이력 조회</span>
+      <h3 class="weight-semibold heading-reset">상담이력 조회</h3>
       <div class="main-history-actions">
         <button class="btn--history-reset">
           <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>

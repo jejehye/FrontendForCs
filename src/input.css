@@ -189,6 +189,11 @@
   .sidebar-top-spacing { @apply mb-6; }
   .sidebar-settings-item { @apply mt-auto mb-4; }
   .main-live-bubble-elevated { @apply shadow-sm; }
+  .layout-main-content { display: contents; }
+  .heading-reset {
+    margin: 0;
+    font: inherit;
+  }
   .callback-stat-value-pending { @apply text-[24px] font-bold text-blue-600; }
   .callback-stat-value-progress { @apply text-[24px] font-bold text-orange-600; }
   .callback-stat-value-completed { @apply text-[24px] font-bold text-green-600; }
