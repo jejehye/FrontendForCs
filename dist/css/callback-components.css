@@ -163,3 +163,31 @@ body {
 .callback-modal-value--accent { color: #9333ea; }
 .callback-modal-value--warning { color: #f97316; }
 .callback-modal-option-label { font-size: 0.875rem; color: #374151; }
+
+/* Callback cleanup pass */
+.callback-notice-title { font-weight: 700; color: #1f2937; font-size: 0.875rem; }
+.callback-notice-more-btn { font-size: 0.75rem; color: #6b7280; }
+.callback-notice-more-btn:hover { color: #2563eb; }
+.callback-history-desc { font-size: 0.6875rem; color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
+
+.callback-action-btn--blue { border-color: #bfdbfe; background: var(--color-highlight-blue); }
+.callback-action-btn--teal { border-color: #99f6e4; background: #ccfbf1; }
+.callback-action-label-teal { color: #115e59; font-weight: 700; }
+.callback-action-btn--campaign { background: var(--color-primary); border-color: #2563eb; }
+.callback-action-btn--campaign:hover { background: var(--color-primary-dark); }
+.callback-action-label-inverse { color: #fff; }
+
+.callback-service-label { color: #4b5563; }
+.callback-service-badge { color: #fff; padding: 0 6px; border-radius: 0.25rem; font-size: 10px; font-weight: 700; }
+.callback-service-badge--danger { background: #ef4444; }
+.callback-service-badge--brand { background: var(--color-primary); }
+.callback-service-badge--teal { background: #14b8a6; }
+
+.callback-note-textarea { resize: none; }
+.callback-radio-completed { color: #22c55e; }
+.callback-radio-completed:focus { outline-color: #22c55e; }
+.callback-radio-callback { color: var(--color-primary); }
+.callback-radio-callback:focus { outline-color: #3b82f6; }
+.callback-radio-unreachable { color: #ef4444; }
+.callback-radio-unreachable:focus { outline-color: #ef4444; }
+.callback-icon-gap-2 { margin-right: 8px; }

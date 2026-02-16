@@ -127,8 +127,8 @@
         <div class="info-card">
           <div
             class="sem-u-069 history-filter-row">
-            <h3 class="font-bold text-gray-800 text-sm">공지사항</h3><button
-              class="text-xs text-gray-500 hover:text-blue-600">더보기 +</button>
+            <h3 class="callback-notice-title">공지사항</h3><button
+              class="callback-notice-more-btn">더보기 +</button>
           </div>
           <ul class="callback-notice-list">
             <li class="callback-notice-item"><span
@@ -201,7 +201,7 @@
                   class="ui-title-xs">강동훈</span><span
                   class="ui-status-success">완료</span>
               </div>
-              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+              <p class="callback-history-desc">
                 신한 알파 랩 서비스 가입 문의 - 상담 완료 및 가입 진행
               </p>
               <div class="ui-between-meta-xxs"><span><i
@@ -213,7 +213,7 @@
                   class="ui-title-xs">윤정아</span><span
                   class="ui-status-success">완료</span>
               </div>
-              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+              <p class="callback-history-desc">
                 해외 ETF 투자 상담 - 맞춤형 포트폴리오 제안
               </p>
               <div class="ui-between-meta-xxs"><span><i
@@ -225,7 +225,7 @@
                   class="ui-title-xs">송민호</span><span
                   class="ui-status-success">완료</span>
               </div>
-              <p class="text-xxs text-gray-600 mb-2 leading-relaxed">
+              <p class="callback-history-desc">
                 해외주식 수수료 우대 문의 - 안내 완료
               </p>
               <div class="ui-between-meta-xxs"><span><i
@@ -258,39 +258,39 @@
                 class="fa-solid fa-rotate-right"></i></button>
           </div>
           <div class="callback-action-grid"><button
-              class="actionBtn action-btn group border-blue-200 shinhan-bg">
+              class="actionBtn action-btn group callback-action-btn--blue">
               <div
                 class="sem-u-071 callback-action-icon-blue">
                 <i class="fa-solid fa-coins callback-icon-action-primary"></i></div>
               <span class="shinhan-text font-bold">사고</span>
             </button><button
-              class="actionBtn action-btn group border-teal-200 bg-teal-50">
+              class="actionBtn action-btn group callback-action-btn--teal">
               <div
                 class="sem-u-060 callback-action-icon-teal">
                 <i class="fa-solid fa-gavel callback-icon-action-teal"></i></div>
-              <span class="text-teal-800 font-bold">권리발생</span>
+              <span class="callback-action-label-teal">권리발생</span>
             </button><button class="actionBtn action-btn group"><i
                 class="fa-solid fa-arrow-rotate-left callback-icon-action-muted"></i><span>반송</span></button><button
               class="actionBtn action-btn group"><i
                 class="fa-solid fa-ban callback-icon-action-danger"></i><span>지급정지</span></button><button
               class="actionBtn action-btn group"><i
                 class="fa-solid fa-bell callback-icon-action-warning"></i><span>만기통보</span></button><button
-              class="actionBtn action-btn group shinhan-btn border-blue-600 hover:bg-blue-700"><i
+              class="actionBtn action-btn group callback-action-btn--campaign"><i
                 class="fa-solid fa-users callback-icon-action-inverse"></i><span
-                class="text-white">캠페인</span></button></div>
+                class="callback-action-label-inverse">캠페인</span></button></div>
           <div
             class="sem-u-061 callback-service-summary-row">
             <div class="ui-inline-gap-xs"><span
-                class="text-gray-600">서비스요청</span><span
-                class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+                class="callback-service-label">서비스요청</span><span
+                class="callback-service-badge callback-service-badge--danger">0</span>
             </div>
             <div class="ui-inline-gap-xs"><span
-                class="text-gray-600">콜백서비스</span><span
-                class="shinhan-btn text-white px-1.5 rounded text-[10px] font-bold">1</span>
+                class="callback-service-label">콜백서비스</span><span
+                class="callback-service-badge callback-service-badge--brand">1</span>
             </div>
             <div class="ui-inline-gap-xs"><span
-                class="text-gray-600">상담예약</span><span
-                class="bg-teal-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
+                class="callback-service-label">상담예약</span><span
+                class="callback-service-badge callback-service-badge--teal">0</span>
             </div>
           </div>
         </div>
@@ -424,7 +424,7 @@
                 class="fa-solid fa-pen-to-square callback-icon-pen"></i>
               상담 메모
             </h3>
-            <textarea placeholder="상담 내용을 기록하세요..." class="resize-none sem-u-072 callback-note-textarea"></textarea>
+            <textarea placeholder="상담 내용을 기록하세요..." class="sem-u-072 callback-note-textarea"></textarea>
           </div>
           <div class="callback-modal-section">
             <h3 class="callback-modal-section-title"><i
@@ -434,23 +434,23 @@
             <div class="callback-form-stack"><label
                 class="sem-u-073 callback-note-option-row"><input
                   type="radio" name="callbackStatus" value="completed"
-                  checked="" class="text-green-500 focus:ring-green-500"><span
+                  checked="" class="callback-radio-completed"><span
                   class="callback-modal-option-label">상담 완료</span></label><label
                 class="sem-u-073 callback-note-option-row"><input
                   type="radio" name="callbackStatus" value="callback"
-                  class="shinhan-text focus:ring-blue-500"><span
+                  class="callback-radio-callback"><span
                   class="callback-modal-option-label">재콜백 필요</span></label><label
                 class="sem-u-073 callback-note-option-row"><input
                   type="radio" name="callbackStatus" value="unreachable"
-                  class="text-red-500 focus:ring-red-500"><span
+                  class="callback-radio-unreachable"><span
                   class="callback-modal-option-label">연결 불가</span></label></div>
           </div>
           <div class="callback-modal-actions"><button
               class="sem-u-074 callback-note-cancel-btn"><i
-                class="fa-solid fa-xmark mr-2"></i>취소
+                class="fa-solid fa-xmark callback-icon-gap-2"></i>취소
             </button><button
               class="shinhan-gradient sem-u-075 callback-note-submit-btn"><i
-                class="fa-solid fa-check mr-2"></i>처리 완료
+                class="fa-solid fa-check callback-icon-gap-2"></i>처리 완료
             </button></div>
         </div>
       </div>
