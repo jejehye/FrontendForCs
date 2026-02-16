@@ -136,9 +136,11 @@ window.MainPageHistory = (() => {
     return Number.isNaN(date.getTime()) ? 0 : date.getTime();
   };
 
-  const initHistoryDetailModal = historyBody => {
+  const initHistoryDetailModal = () => {
     const detailModal = selectOne('[data-role="history-detail-modal"]');
-    if (!historyBody || !detailModal) {
+    const historyBodies = selectAll('[data-role="history-detail-source"]', '[data-history-detail-source]');
+
+    if (!historyBodies.length || !detailModal) {
       return;
     }
 
@@ -146,6 +148,7 @@ window.MainPageHistory = (() => {
       timestamp: selectOne('[data-role="detail-timestamp"]'),
       agent: selectOne('[data-role="detail-agent"]'),
       customer: selectOne('[data-role="detail-customer"]'),
+      phone: selectOne('[data-role="detail-phone"]'),
       account: selectOne('[data-role="detail-account"]'),
       type: selectOne('[data-role="detail-type"]'),
       channel: selectOne('[data-role="detail-channel"]'),
@@ -159,24 +162,37 @@ window.MainPageHistory = (() => {
 
     const openDetailModal = row => {
       const cells = row.querySelectorAll('td');
+      const hasPhoneColumn = cells.length >= 10;
+
       detailFields.timestamp.textContent = cells[1]?.textContent.trim() || '-';
       detailFields.agent.textContent = cells[2]?.textContent.trim() || '-';
       detailFields.customer.textContent = cells[4]?.textContent.trim() || '-';
-      detailFields.account.textContent = cells[5]?.textContent.trim() || '-';
-      detailFields.type.textContent = cells[6]?.textContent.trim() || '-';
-      detailFields.channel.textContent = cells[7]?.textContent.trim() || '-';
-      detailFields.content.textContent = cells[8]?.textContent.trim() || '-';
+      detailFields.phone.textContent = hasPhoneColumn ? (cells[5]?.textContent.trim() || '-') : '-';
+      detailFields.account.textContent = hasPhoneColumn
+        ? (cells[6]?.textContent.trim() || '-')
+        : (cells[5]?.textContent.trim() || '-');
+      detailFields.type.textContent = hasPhoneColumn
+        ? (cells[7]?.textContent.trim() || '-')
+        : (cells[6]?.textContent.trim() || '-');
+      detailFields.channel.textContent = hasPhoneColumn
+        ? (cells[8]?.textContent.trim() || '-')
+        : (cells[7]?.textContent.trim() || '-');
+      detailFields.content.textContent = hasPhoneColumn
+        ? (cells[9]?.textContent.trim() || '-')
+        : (cells[8]?.textContent.trim() || '-');
 
       detailModal.classList.add('is-active');
       detailModal.setAttribute('aria-hidden', 'false');
     };
 
-    historyBody.addEventListener('click', event => {
-      const row = event.target.closest('tr.tbl__row');
-      if (!row) {
-        return;
-      }
-      openDetailModal(row);
+    historyBodies.forEach(historyBody => {
+      historyBody.addEventListener('click', event => {
+        const row = event.target.closest('tr.tbl__row');
+        if (!row) {
+          return;
+        }
+        openDetailModal(row);
+      });
     });
 
     selectAll('[data-action="history-detail-close"]').forEach(button => {
@@ -280,7 +296,7 @@ window.MainPageHistory = (() => {
     historyNextButton.addEventListener('click', () => setActiveHistoryPage(activeHistoryPage + 1));
     historyLastButton.addEventListener('click', () => setActiveHistoryPage(historyPages.length));
 
-    initHistoryDetailModal(historyBody);
+    initHistoryDetailModal();
     setActiveHistoryPage(1);
   };
 

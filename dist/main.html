@@ -416,7 +416,7 @@
               <th class="table__head table__head--summary">상담내용</th>
             </tr>
           </thead>
-          <tbody class="main-history-body" data-role="history-body" data-history-body>
+          <tbody class="main-history-body" data-role="history-body history-detail-source" data-history-body data-history-detail-source>
             
               <tr class="tbl__row is-active">
                 <td class="tbl__cell tbl__cell--accent">1</td>
@@ -1111,7 +1111,7 @@
             <th class="table__head table__head--summary">상담내용</th>
           </tr>
         </thead>
-        <tbody class="main-history-body">
+        <tbody class="main-history-body" data-role="my-history-body history-detail-source" data-history-detail-source>
           <tr class="tbl__row">
             <td class="tbl__cell tbl__cell--accent">1</td>
             <td class="tbl__cell">2026-02-16 14:12:03</td>
@@ -1223,6 +1223,10 @@
       <div class="history-detail-row">
         <span class="history-detail-label">고객명</span>
         <span class="history-detail-value" data-role="detail-customer">-</span>
+      </div>
+      <div class="history-detail-row">
+        <span class="history-detail-label">전화번호</span>
+        <span class="history-detail-value" data-role="detail-phone">-</span>
       </div>
       <div class="history-detail-row">
         <span class="history-detail-label">계좌번호</span>
