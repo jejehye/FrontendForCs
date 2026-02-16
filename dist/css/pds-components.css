@@ -233,3 +233,14 @@ body {
 .pds-note-btn { flex: 1; font-size: 0.75rem; padding: 8px 12px; border-radius: 0.5rem; }
 .pds-note-btn--muted { background: #f0f0f5; color: var(--color-text-primary); }
 .pds-note-btn--primary { background: var(--color-primary); color: #fff; }
+
+.pds-inline-center-2 { display: flex; align-items: center; gap: 8px; }
+.pds-tier-badge { font-size: 0.6875rem; padding: 2px 8px; border-radius: 0.25rem; font-weight: 700; }
+.pds-tier-badge--vip { background: #e5edff; color: var(--color-primary); }
+.pds-tier-badge--general { background: #f0f0f5; color: var(--color-text-primary); }
+.pds-row-meta { color: var(--color-text-secondary); }
+.pds-icon-muted { font-size: 0.75rem; color: var(--color-text-secondary); }
+.pds-icon-gap-1 { margin-right: 4px; }
+.pds-icon-gap-2 { margin-right: 8px; }
+.pds-current-call-icon { color: #fff; font-size: 1.875rem; }
+.pds-note-textarea { resize: none; }
