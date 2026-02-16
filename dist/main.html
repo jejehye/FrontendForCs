@@ -702,18 +702,26 @@
     <div class="coaching-placeholder">실시간 코칭내용 주문별 내용 확인하세요.</div>
   </div>
   <div class="h-48 border-t border-gray-200 bg-white flex flex-col">
-    <div class="tab-list flex border-b border-gray-200">
+    <div class="warning-tabs">
       <button
-        class="tab-item px-4 py-2 font-sm weight-medium bg-blue-600 text-inverse"
+        type="button"
+        class="warning-tab is-active"
+        data-warning-tab="code"
       >
-        주의코드</button
-      ><button
-        class="tab-item px-4 py-2 font-sm weight-medium text-body hover:bg-gray-50"
+        주의코드
+      </button>
+      <button
+        type="button"
+        class="warning-tab"
+        data-warning-tab="voc"
       >
         VOC
       </button>
     </div>
-    <div class="p-3 overflow-y-auto font-xs text-body-strong leading-relaxed">
+    <div
+      class="warning-tab-panel is-active p-3 overflow-y-auto font-xs text-body-strong leading-relaxed"
+      data-warning-panel="code"
+    >
       <p class="mb-1">
         <span class="weight-bold text-strongest">(2023-03-22)</span> 고액거래 고객:
         담당PB 연결 필수
@@ -724,6 +732,21 @@
       </p>
       <p class="mb-1">서류확인 필요(관리점)</p>
       <p class="weight-bold text-brand">우수고객 VIP</p>
+    </div>
+    <div
+      class="warning-tab-panel p-3 overflow-y-auto font-xs text-body-strong leading-relaxed hidden"
+      data-warning-panel="voc"
+    >
+      <p class="mb-1">
+        <span class="weight-bold text-strongest">(2024-02-14)</span> 투자성향
+        고위험 발언 감지
+      </p>
+      <p class="mb-1">
+        <span class="weight-bold text-strongest">(2024-03-08)</span> 민원
+        사전경고 이력 확인 필요
+      </p>
+      <p class="mb-1">상담 스크립트 준수 모니터링 대상</p>
+      <p class="weight-bold text-brand">VOC 관심고객</p>
     </div>
   </div>
 </div>

@@ -69,6 +69,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      const warningTabs = Array.from(document.querySelectorAll('[data-warning-tab]'));
+      const warningPanels = Array.from(document.querySelectorAll('[data-warning-panel]'));
+
+      if (warningTabs.length && warningPanels.length) {
+        warningTabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-warning-tab');
+
+            warningTabs.forEach(item => item.classList.remove('is-active'));
+            tab.classList.add('is-active');
+
+            warningPanels.forEach(panel => {
+              const matches = panel.getAttribute('data-warning-panel') === target;
+              panel.classList.toggle('hidden', !matches);
+              panel.classList.toggle('is-active', matches);
+            });
+          });
+        });
+      }
+
 document.querySelectorAll('.nav-item').forEach(item =>
       {
         item.addEventListener('click', function()
