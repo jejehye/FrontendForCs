@@ -38,19 +38,45 @@
             class="fa-solid fa-gear"></i></div>
       </div>
       <div id="sms-column" class="column col-sms">
-        <div class="p-4 border-b border-gray-200 bg-white">
-          <div class="flex items-center gap-2 mb-2"><span class="badge status-badge status-ib"><i
-                class="fa-solid fa-headset mr-1"></i>I/B</span><span
-              class="text-xs text-gray-600 font-medium truncate">ARS 시나리오명1 &gt;
-              ARS 시나리오명2</span></div>
-          <div class="flex items-center gap-2 text-sm"><span
-              class="badge status-badge status-unauth"><i
-                class="fa-solid fa-lock mr-1"></i>무인증</span><span
-              class="font-bold text-gray-800">김신한(남)</span><span
-              class="text-gray-500">|</span><span
-              class="text-orange-600 font-medium">투자성향(적극투자형)</span><span
-              class="text-gray-500">|</span></div>
-        </div>
+        <div class="chat-panel-header">
+  <div class="chat-status-row">
+    <span class="status-badge status-ib">
+      <i class="fa-solid fa-headset mr-1"></i>
+      I/B
+    </span>
+    <span class="font-xs text-body weight-medium truncate">
+      신한 고객센터 &gt; 투자상담
+    </span>
+  </div>
+  <div class="customer-summary customer-summary-wide">
+    <div class="customer-meta-row">
+      <span class="status-badge status-unauth">
+        <i class="fa-solid fa-lock mr-1"></i>
+        무인증
+      </span>
+      <span class="weight-bold text-strong">박지민(여)</span>
+      <span class="text-subtle">|</span>
+      <span class="text-danger weight-medium">투자성향(적극투자형)</span>
+      <span class="text-subtle">|</span>
+      <span class="text-accent weight-medium">고객등급(VVIP)</span>
+    </div>
+    <div class="customer-warning customer-warning-wide">
+      <i
+        class="fa-solid fa-triangle-exclamation text-warning font-sm mt-0.5"
+      ></i>
+      <div class="flex-1">
+        <span class="font-xs weight-bold text-warning-deep block mb-0.5">
+          주의고객
+        </span>
+        <span class="font-xs text-warning-strong">
+          고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 -
+          본인확인 철저
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
         <div class="sms-header-bar p-3 flex items-center justify-between text-white"><span
             class="font-semibold flex items-center gap-2"><i
               class="fa-solid fa-comment-sms"></i>
@@ -246,162 +272,47 @@
               <i class="fa-solid fa-angles-right"></i>
             </button>
           </div>
-          <div class="mt-4 pt-3 border-t border-gray-200">
-            <div class="flex items-center justify-between mb-2">
-              <h4 class="text-sm font-bold text-gray-800 flex items-center gap-2">
-                <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
-                발송이력 조회
-              </h4>
-              <span class="text-xs text-gray-500">고객전화번호 기준</span>
-            </div>
-            <div class="flex gap-2 mb-2">
-              <input
-                type="text"
-                inputmode="numeric"
-                placeholder="고객전화번호 입력 (예: 010-1234-5678)"
-                class="sem-u-083"
-                data-sms-history-phone
-              >
-              <button
-                type="button"
-                class="sms-primary-btn sem-u-084 whitespace-nowrap"
-                data-sms-history-search
-              >
-                조회
-              </button>
-            </div>
-            <div class="max-h-[180px] overflow-y-auto border border-gray-200 rounded">
-              <table class="w-full table-compact text-left">
-                <thead>
-                  <tr>
-                    <th>발송일시</th>
-                    <th>템플릿명</th>
-                    <th class="sms-status-col">상태</th>
-                  </tr>
-                </thead>
-                <tbody class="text-gray-600" data-sms-history-body>
-                  <tr>
-                    <td colspan="3" class="text-center text-xs text-gray-400 py-3">
-                      조회할 고객전화번호를 입력해 주세요.
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
       </div>
       <div id="right-column" class="column col-right">
-        <div
-          class="flex items-center justify-between border-b border-gray-200 pb-1">
-          <div class="flex gap-1">
-            <div class="tab-item tab-item-primary active"><i
-                class="fa-solid fa-comment-sms"></i>
-              SMS
-            </div>
-            <div class="tab-item"><i class="fa-solid fa-user"></i>
-              김신한
-            </div>
-          </div><button class="sms-primary-btn text-white text-xs px-3 py-1.5 rounded shadow-sm">상담저장</button>
-        </div>
-        <div class="bg-white p-2 rounded border border-gray-100">
-          <div class="flex justify-between items-start mb-3">
-            <div class="flex items-center gap-2 text-sm"><span class="badge status-badge status-unauth"><i
-                  class="fa-solid fa-lock mr-1"></i>무인증</span><span
-                class="font-bold text-gray-800">김신한(남), 투자성향(적극투자형),
-                고객등급(PRIME)</span></div><button
-              class="text-gray-400 hover:text-blue-500"><i
-                class="fa-solid fa-rotate-right"></i></button>
+        <div class="info-card h-[360px] flex flex-col p-4 overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+              발송이력 조회
+            </h4>
+            <span class="text-xs text-gray-500">고객전화번호 기준</span>
           </div>
-          <div class="grid grid-cols-6 gap-2 mb-3"><button
-              class="actionBtn action-btn action-btn-primary group border">
-              <div
-                class="sem-u-090">
-                <i class="fa-solid fa-coins text-lg sms-primary-text"></i></div><span class="font-bold sms-primary-text">사고</span>
-            </button><button
-              class="actionBtn action-btn group border-teal-200 bg-teal-50">
-              <div
-                class="sem-u-060">
-                <i class="fa-solid fa-gavel text-teal-600 text-lg"></i></div>
-              <span class="text-teal-800 font-bold tag-compact">권리발생</span>
-            </button><button class="actionBtn action-btn group"><i
-                class="fa-solid fa-arrow-rotate-left text-gray-500"></i><span>반송</span></button><button
-              class="actionBtn action-btn group"><i
-                class="fa-solid fa-ban text-red-500"></i><span>지급정지</span></button><button
-              class="actionBtn action-btn group"><i
-                class="fa-solid fa-bell text-yellow-500"></i><span>만기통보</span></button><button
-              class="sms-primary-btn actionBtn action-btn group border"><i
-                class="fa-solid fa-users text-white"></i><span
-                class="text-white">캠페인</span></button></div>
-          <div
-            class="sem-u-061">
-            <div class="flex items-center gap-1"><span
-                class="text-gray-600">서비스요청</span><span
-                class="bg-red-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
-            </div>
-            <div class="flex items-center gap-1"><span
-                class="text-gray-600">콜백서비스</span><span
-                class="bg-yellow-500 text-white px-1.5 rounded text-[10px] font-bold">0</span>
-            </div>
-            <div class="flex items-center gap-1"><span
-                class="text-gray-600">상담예약</span><span
-                class="bg-teal-500 text-white px-1.5 rounded text-[10px] font-bold">1</span>
-            </div>
+          <div class="flex gap-2 mb-2">
+            <input
+              type="text"
+              inputmode="numeric"
+              placeholder="고객전화번호 입력 (예: 010-1234-5678)"
+              class="sem-u-083"
+              data-sms-history-phone
+            >
+            <button
+              type="button"
+              class="sms-primary-btn sem-u-084 whitespace-nowrap"
+              data-sms-history-search
+            >
+              조회
+            </button>
           </div>
-        </div>
-        <div class="info-card flex-1 flex flex-col p-0 overflow-hidden">
-          <div class="flex border-b border-gray-200 bg-gray-50"><button
-             
-              class="px-4 py-2 text-xs font-bold bg-white border-t-2 shinhan-border shinhan-text">SMS
-              발송 이력</button><button
-              class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">고객정보</button><button
-              class="px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-700">상담이력</button>
-          </div>
-          <div class="p-4 overflow-y-auto flex-1">
+          <div class="flex-1 overflow-y-auto border border-gray-200 rounded">
             <table class="w-full table-compact text-left">
               <thead>
                 <tr>
-                  <th>발송일시 <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
-                  </th>
+                  <th>발송일시</th>
                   <th>템플릿명</th>
                   <th class="sms-status-col">상태</th>
                 </tr>
               </thead>
-              <tbody class="text-gray-600">
-                <tr class="table-row-interactive">
-                  <td>2024-01-20 14:35</td>
-                  <td>해외주식 거래 수수료 이벤트</td>
-                  <td></td>
-                </tr>
-                <tr class="hover:bg-blue-50 cursor-pointer">
-                  <td>2024-01-18 11:20</td>
-                  <td>PRIME 고객 투자 세미나</td>
-                  <td></td>
-                </tr>
-                <tr class="hover:bg-blue-50 cursor-pointer">
-                  <td>2024-01-15 09:10</td>
-                  <td>ISA 계좌 만기 안내</td>
-                  <td></td>
-                </tr>
-                <tr class="hover:bg-blue-50 cursor-pointer">
-                  <td>2024-01-12 16:45</td>
-                  <td>계좌 비밀번호 변경 완료</td>
-                  <td></td>
-                </tr>
-                <tr class="hover:bg-blue-50 cursor-pointer">
-                  <td>2024-01-10 13:30</td>
-                  <td>자산관리 상담 예약</td>
-                  <td></td>
-                </tr>
-                <tr class="hover:bg-blue-50 cursor-pointer">
-                  <td>2024-01-08 10:15</td>
-                  <td>해외주식 약정 안내</td>
-                  <td></td>
-                </tr>
-                <tr class="hover:bg-blue-50 cursor-pointer">
-                  <td>2024-01-05 15:00</td>
-                  <td>투자 전략 리포트 발송</td>
-                  <td></td>
+              <tbody class="text-gray-600" data-sms-history-body>
+                <tr>
+                  <td colspan="3" class="text-center text-xs text-gray-400 py-3">
+                    조회할 고객전화번호를 입력해 주세요.
+                  </td>
                 </tr>
               </tbody>
             </table>

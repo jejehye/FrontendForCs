@@ -32,6 +32,7 @@ let historyPage = 1;
 const historyPageSize = 5;
 let requestId = 4;
 const currentAgentName = localStorage.getItem('currentAgentName') || '김민수';
+const currentAgentEmpNo = localStorage.getItem('currentAgentEmpNo') || '204075';
 
 function pad2(value) {
   return String(value).padStart(2, '0');
@@ -72,6 +73,7 @@ const requests = [
   {
     id: 1,
     name: currentAgentName,
+    empNo: currentAgentEmpNo,
     category: '콜 미수신',
     time: '09:00~11:00 (2시간)',
     reason: '연결 실패 반복으로 재배정 요청',
@@ -82,6 +84,7 @@ const requests = [
   {
     id: 2,
     name: currentAgentName,
+    empNo: currentAgentEmpNo,
     category: '교육/회의',
     time: '13:00~14:30 (1시간 30분)',
     reason: '신규 상품 교육 참석',
@@ -92,6 +95,7 @@ const requests = [
   {
     id: 3,
     name: '최영호',
+    empNo: '203114',
     category: '기타',
     time: '15:00~16:00 (1시간)',
     reason: '사유 불충분으로 재요청 안내',
@@ -125,6 +129,7 @@ function getFilteredRequests() {
     const matchesSearch =
       !keyword ||
       item.name.toLowerCase().includes(keyword) ||
+      (item.empNo || '').toLowerCase().includes(keyword) ||
       item.reason.toLowerCase().includes(keyword);
     return matchesFilter && matchesSearch;
   });
@@ -134,7 +139,7 @@ function renderTable() {
   const rows = getFilteredRequests();
   if (!rows.length) {
     tableBody.innerHTML =
-      '<tr><td class="specific-empty" colspan="6">조회 결과가 없습니다.</td></tr>';
+      '<tr><td class="specific-empty" colspan="7">조회 결과가 없습니다.</td></tr>';
     return;
   }
 
@@ -153,6 +158,7 @@ function renderTable() {
       return `
         <tr>
           <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
+          <td>${item.empNo || '-'}</td>
           <td>${item.name}</td>
           <td>${item.category}</td>
           <td>${item.time}</td>
@@ -175,7 +181,7 @@ function renderMyRequestTable() {
       const matchesTo = !to || requestedDate <= to;
       return matchesFrom && matchesTo;
     })
-    .filter((item) => item.name === currentAgentName)
+    .filter((item) => item.name === currentAgentName && item.empNo === currentAgentEmpNo)
     .sort((a, b) => b.requestedAt.localeCompare(a.requestedAt));
 
   if (!rows.length) {
@@ -213,6 +219,7 @@ function getFilteredHistory() {
     const matchesSearch =
       !keyword ||
       item.name.toLowerCase().includes(keyword) ||
+      (item.empNo || '').toLowerCase().includes(keyword) ||
       item.reason.toLowerCase().includes(keyword);
       return matchesFrom && matchesTo && matchesSearch;
     })
@@ -252,7 +259,7 @@ function renderHistoryTable() {
 
   if (!rows.length) {
     historyBody.innerHTML =
-      '<tr><td class="specific-empty" colspan="6">조건에 맞는 이전 처리내역이 없습니다.</td></tr>';
+      '<tr><td class="specific-empty" colspan="7">조건에 맞는 이전 처리내역이 없습니다.</td></tr>';
     renderHistoryPagination(0);
     return;
   }
@@ -262,6 +269,7 @@ function renderHistoryTable() {
       (item) => `
       <tr>
         <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
+        <td>${item.empNo || '-'}</td>
         <td>${item.name}</td>
         <td>${item.category}</td>
         <td>${item.requestedAt}</td>
@@ -283,6 +291,7 @@ function renderAll() {
 
 if (registerBtn) {
   registerBtn.addEventListener('click', () => {
+    const empNoInput = document.getElementById('agentEmpNo');
     const nameInput = document.getElementById('agentName');
     const typeInput = document.getElementById('excludeType');
     const dateInput = document.getElementById('excludeDate');
@@ -290,6 +299,7 @@ if (registerBtn) {
     const endTimeInput = document.getElementById('excludeEndTime');
     const reasonInput = document.getElementById('excludeReason');
 
+    const empNo = empNoInput?.value.trim();
     const name = nameInput?.value.trim();
     const category = typeInput?.value.trim();
     const date = dateInput?.value.trim();
@@ -297,8 +307,8 @@ if (registerBtn) {
     const endTime = endTimeInput?.value.trim();
     const reason = reasonInput?.value.trim();
 
-    if (!name || !category || !date || !startTime || !endTime || !reason) {
-      alert('상담원명, 특이사항 유형, 일자, 시작/종료시간, 사유를 모두 입력해 주세요.');
+    if (!empNo || !name || !category || !date || !startTime || !endTime || !reason) {
+      alert('사번, 상담원명, 특이사항 유형, 일자, 시작/종료시간, 사유를 모두 입력해 주세요.');
       return;
     }
 
@@ -313,6 +323,7 @@ if (registerBtn) {
     requests.unshift({
       id: requestId++,
       name,
+      empNo,
       category,
       time,
       reason,
@@ -321,7 +332,6 @@ if (registerBtn) {
       processedAt: '',
     });
 
-    nameInput.value = '';
     startTimeInput.value = '';
     endTimeInput.value = '';
     reasonInput.value = '';
@@ -336,6 +346,11 @@ if (registerBtn) {
 const agentNameInput = document.getElementById('agentName');
 if (agentNameInput && !agentNameInput.value.trim()) {
   agentNameInput.value = currentAgentName;
+}
+
+const agentEmpNoInput = document.getElementById('agentEmpNo');
+if (agentEmpNoInput && !agentEmpNoInput.value.trim()) {
+  agentEmpNoInput.value = currentAgentEmpNo;
 }
 
 const excludeDateInput = document.getElementById('excludeDate');

@@ -1,44 +1,7 @@
 <div id="chat-column" class="column col-chat layout-shell">
   <!-- ===================== Customer Info ===================== -->
   <section>
-    <div class="chat-panel-header">
-      <div class="chat-status-row">
-        <span class="status-badge status-ib">
-          <i class="fa-solid fa-headset mr-1"></i>
-          I/B
-        </span>
-        <span class="font-xs text-body weight-medium truncate">
-          신한 고객센터 &gt; 투자상담
-        </span>
-      </div>
-      <div class="customer-summary customer-summary-wide">
-        <div class="customer-meta-row">
-          <span class="status-badge status-unauth">
-            <i class="fa-solid fa-lock mr-1"></i>
-            무인증
-          </span>
-          <span class="weight-bold text-strong">박지민(여)</span>
-          <span class="text-subtle">|</span>
-          <span class="text-danger weight-medium">투자성향(적극투자형)</span>
-          <span class="text-subtle">|</span>
-          <span class="text-accent weight-medium">고객등급(VVIP)</span>
-        </div>
-        <div class="customer-warning customer-warning-wide">
-          <i
-            class="fa-solid fa-triangle-exclamation text-warning font-sm mt-0.5"
-          ></i>
-          <div class="flex-1">
-            <span class="font-xs weight-bold text-warning-deep block mb-0.5">
-              주의고객
-            </span>
-            <span class="font-xs text-warning-strong">
-              고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 -
-              본인확인 철저
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% include "partials/shared/customer-info-main.njk" %}
   </section>
 
   <!-- ===================== Verification ===================== -->

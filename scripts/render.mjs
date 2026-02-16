@@ -23,6 +23,38 @@ const appPageConfigs = {
   },
 };
 
+async function resolveIncludes(template, currentDir, includeStack = []) {
+  const includeRegex = /\{%\s*include\s+"([^"]+)"\s*%\}/;
+  let resolved = template;
+
+  while (true) {
+    const match = resolved.match(includeRegex);
+    if (!match) {
+      break;
+    }
+
+    const includePath = match[1];
+    const absolutePath = includePath.startsWith('.')
+      ? path.resolve(currentDir, includePath)
+      : path.join(rootDir, 'src', includePath);
+
+    if (includeStack.includes(absolutePath)) {
+      throw new Error(`Circular include detected: ${includePath}`);
+    }
+
+    const includeContent = await fs.readFile(absolutePath, 'utf8');
+    const nestedContent = await resolveIncludes(
+      includeContent,
+      path.dirname(absolutePath),
+      [...includeStack, absolutePath],
+    );
+
+    resolved = resolved.replace(match[0], nestedContent);
+  }
+
+  return resolved;
+}
+
 function renderSidebar(activePage) {
   const navItems = [
     ['main.html', 'Main', 'fa-headset'],
@@ -139,6 +171,7 @@ for (const entry of entries) {
     html = await fs.readFile(path.join(pagesDir, entry.name), 'utf8');
   }
 
+  html = await resolveIncludes(html, pagesDir);
   await fs.writeFile(outputPath, html, 'utf8');
   console.log(`Rendered src/pages/${entry.name} -> dist/${outputFileName}`);
 }
