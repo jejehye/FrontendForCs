@@ -320,7 +320,7 @@
           <i class="fa-regular fa-file-excel text-success"></i> 엑셀다운
         </button>
       </div>
-      <div class="flex-1 overflow-auto">
+      <div class="flex-1 overflow-x-auto overflow-y-scroll">
         <table class="tbl table--history">
           <thead class="bg-blue-50 sticky top-0 z-10">
             <tr>
@@ -337,7 +337,7 @@
               <th class="table__head table__head--summary">상담내용</th>
             </tr>
           </thead>
-          <tbody class="font-2xs-tight text-body-strong">
+          <tbody class="font-2xs-tight text-body-strong" data-history-body>
             <tr class="tbl__row is-active">
               <td class="tbl__cell tbl__cell--accent">1</td>
               <td class="tbl__cell">
@@ -502,17 +502,17 @@
           </tbody>
         </table>
       </div>
-      <div class="pagination pagination--history">
-        <button class="pagination__btn">
+      <div class="pagination pagination--history" data-history-pagination>
+        <button class="pagination__btn" data-history-nav="first">
           <i class="fa-solid fa-angles-left"></i></button
-        ><button class="pagination__btn">
+        ><button class="pagination__btn" data-history-nav="prev">
           <i class="fa-solid fa-angle-left"></i></button
-        ><button class="pagination__btn is-active">1</button
-        ><button class="pagination__btn pagination__btn--muted">2</button
-        ><button class="pagination__btn pagination__btn--muted">3</button
-        ><button class="pagination__btn">
+        ><button class="pagination__btn is-active" data-history-page-btn="1">1</button
+        ><button class="pagination__btn pagination__btn--muted" data-history-page-btn="2">2</button
+        ><button class="pagination__btn pagination__btn--muted" data-history-page-btn="3">3</button
+        ><button class="pagination__btn" data-history-nav="next">
           <i class="fa-solid fa-angle-right"></i></button
-        ><button class="pagination__btn">
+        ><button class="pagination__btn" data-history-nav="last">
           <i class="fa-solid fa-angles-right"></i>
         </button>
       </div>

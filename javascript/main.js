@@ -289,6 +289,94 @@ document.querySelectorAll('.nav-item').forEach(item =>
 
       setActiveNoticePage(1);
 
+      const historyBody = document.querySelector('[data-history-body]');
+      const historyPagination = document.querySelector('[data-history-pagination]');
+      const historyFirstButton = document.querySelector('[data-history-nav="first"]');
+      const historyPrevButton = document.querySelector('[data-history-nav="prev"]');
+      const historyNextButton = document.querySelector('[data-history-nav="next"]');
+      const historyLastButton = document.querySelector('[data-history-nav="last"]');
+
+      let historyPageButtons = Array.from(document.querySelectorAll('[data-history-page-btn]'));
+      let activeHistoryPage = 1;
+      const historyPageSize = 5;
+
+      const parseHistoryDate = value => {
+        const date = new Date(value.replace(' ', 'T'));
+        return Number.isNaN(date.getTime()) ? 0 : date.getTime();
+      };
+
+      if (historyBody && historyPagination && historyFirstButton && historyPrevButton && historyNextButton && historyLastButton) {
+        const historyRows = Array.from(historyBody.querySelectorAll('tr.tbl__row'));
+
+        historyRows.sort((leftRow, rightRow) => {
+          const leftDateText = leftRow.children[1]?.textContent.trim() || '';
+          const rightDateText = rightRow.children[1]?.textContent.trim() || '';
+          return parseHistoryDate(rightDateText) - parseHistoryDate(leftDateText);
+        });
+
+        const historyPages = [];
+        for (let index = 0; index < historyRows.length; index += historyPageSize) {
+          historyPages.push(historyRows.slice(index, index + historyPageSize));
+        }
+
+        const rebuildHistoryButtons = () => {
+          historyPageButtons.forEach(button => button.remove());
+
+          historyPageButtons = historyPages.map((_, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('data-history-page-btn', String(index + 1));
+            button.className = 'pagination__btn pagination__btn--muted';
+            button.textContent = String(index + 1);
+            historyPagination.insertBefore(button, historyNextButton);
+            return button;
+          });
+
+          historyPageButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              setActiveHistoryPage(Number(button.getAttribute('data-history-page-btn')));
+            });
+          });
+        };
+
+        const setActiveHistoryPage = pageNumber => {
+          if (!historyPages.length) {
+            return;
+          }
+
+          const maxPage = historyPages.length;
+          activeHistoryPage = Math.min(maxPage, Math.max(1, pageNumber));
+
+          historyBody.innerHTML = '';
+          historyPages[activeHistoryPage - 1].forEach(row => historyBody.appendChild(row));
+
+          historyPageButtons.forEach(button => {
+            const page = Number(button.getAttribute('data-history-page-btn'));
+            button.classList.toggle('is-active', page === activeHistoryPage);
+            button.classList.toggle('pagination__btn--muted', page !== activeHistoryPage);
+          });
+
+          historyFirstButton.disabled = activeHistoryPage === 1;
+          historyPrevButton.disabled = activeHistoryPage === 1;
+          historyNextButton.disabled = activeHistoryPage === maxPage;
+          historyLastButton.disabled = activeHistoryPage === maxPage;
+
+          historyFirstButton.classList.toggle('opacity-40', activeHistoryPage === 1);
+          historyPrevButton.classList.toggle('opacity-40', activeHistoryPage === 1);
+          historyNextButton.classList.toggle('opacity-40', activeHistoryPage === maxPage);
+          historyLastButton.classList.toggle('opacity-40', activeHistoryPage === maxPage);
+        };
+
+        rebuildHistoryButtons();
+
+        historyFirstButton.addEventListener('click', () => setActiveHistoryPage(1));
+        historyPrevButton.addEventListener('click', () => setActiveHistoryPage(activeHistoryPage - 1));
+        historyNextButton.addEventListener('click', () => setActiveHistoryPage(activeHistoryPage + 1));
+        historyLastButton.addEventListener('click', () => setActiveHistoryPage(historyPages.length));
+
+        setActiveHistoryPage(1);
+      }
+
       const statusSelect = document.querySelector('.agent-status-bar select');
       const statusIndicator = document.querySelector('.status-indicator');
 
