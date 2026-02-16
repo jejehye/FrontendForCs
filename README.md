@@ -1,279 +1,148 @@
 # FrontendForCs
 
-정적 HTML 페이지 모음 프로젝트입니다.
+콜센터 상담 화면용 정적 프론트엔드 프로젝트입니다.  
+Nunjucks 템플릿(`src/`)을 HTML(`dist/`)로 렌더링하고, Tailwind 입력 CSS를 빌드해 최종 스타일을 생성합니다.
 
-## 프로젝트 개요
-- 런타임은 **정적 파일 서빙**만으로 동작합니다.
-- 외부 CDN(Tailwind CDN/Google Fonts/cdnjs) 없이 동작하도록 구성되어 있습니다.
-- 배포 시 `dist/` 폴더만 복사해도 실행 가능하도록 맞춰져 있습니다.
+## 프로젝트 설명
+이 프로젝트는 상담원이 한 화면에서 주요 업무를 빠르게 처리할 수 있도록 구성된 CTI 업무 UI 모음입니다.
 
----
+- 상담 채널별 화면 제공: `Main`, `Chat`, `SMS`, `Callback`, `PDS`, `Specific`
+- 상담 업무 흐름 중심 구성: 고객 정보 확인 → 상담 진행 → 이력/메모 관리
+- 정적 템플릿 기반 운영: 복잡한 런타임 프레임워크 없이 빠르게 빌드/배포 가능
+- 동적 전환 준비 구조: 페이지/섹션/JS 모듈 분리로 API 연동 확장에 유리
 
-## 폐쇄망(외부 인터넷 차단) 환경 가이드
+현재는 목업/샘플 데이터 중심 정적 구조이며, 추후 백엔드 API 연동 시
+`src/data/*.json`과 페이지별 JS 모듈(`javascript/*`)을 단계적으로 교체하는 방식으로 확장할 수 있습니다.
 
-> 전제
-> - 외부 인터넷 접근 불가
-> - 사내 Nexus(NPM registry)만 접근 가능
-> - 인증 방식: Nexus ID/PW
+## 소스 기반과 구성 형식
+- 템플릿 기반: `Nunjucks`
+  - `src/pages/*.njk`가 페이지 엔트리
+  - `src/layouts/base.njk`, `src/layouts/app-shell.njk`로 공통 레이아웃 구성
+  - `src/partials/**`를 `include`해 섹션 단위로 조립
+- 스타일 기반: `Tailwind + 컴포넌트 CSS`
+  - 입력 파일: `src/input.css` (`@tailwind base/components/utilities`)
+  - 페이지별 스타일: `css/main.css`, `css/sms.css`, `css/callback.css` 등
+  - 공통/컴포넌트 스타일: `css/components.css`, `css/*-components.css`
+- 스크립트 형식: 바닐라 JS 모듈
+  - 공통 유틸: `javascript/common/ui.js`
+  - 페이지별 로직: `javascript/main/*`, `javascript/sms.js`, `javascript/callback.js` 등
+  - DOM 계약은 `data-role`, `data-action`, `data-target` 중심
+- 데이터 형식: JSON 샘플 데이터
+  - `src/data/*.json`을 `page_data`로 렌더 시 주입
+- 최종 배포 형식: 정적 파일
+  - `dist/*.html`, `dist/app.css`, `dist/css/*`, `dist/javascript/*`
+  - 웹서버(Nginx/정적 서버)로 바로 배포 가능한 구조
 
-### 1) Nexus 인증 환경변수 설정
+## 기술 스택
+- Template: `Nunjucks`
+- Style: `Tailwind CSS` + 페이지별 컴포넌트 CSS
+- Script: Vanilla JavaScript (페이지별 모듈)
+- Build: Node.js scripts (`scripts/render.mjs`, `scripts/build.sh`)
 
-```bash
-export NEXUS_USERNAME='사번또는ID'
-export NEXUS_PASSWORD='비밀번호'
+## 프로젝트 구조
+```text
+FrontendForCs/
+├─ src/
+│  ├─ layouts/
+│  │  ├─ base.njk
+│  │  └─ app-shell.njk
+│  ├─ pages/
+│  │  ├─ main.njk
+│  │  ├─ chat.njk
+│  │  ├─ sms.njk
+│  │  ├─ callback.njk
+│  │  ├─ pds.njk
+│  │  ├─ specific.njk
+│  │  ├─ login.njk
+│  │  ├─ index.njk
+│  │  └─ 404.njk
+│  ├─ partials/
+│  │  ├─ components/sidebar.njk
+│  │  ├─ shared/customer-info-main.njk
+│  │  └─ pages/*/content.njk + sections/*.njk
+│  ├─ data/*.json
+│  └─ input.css
+├─ css/
+│  ├─ foundation.css
+│  ├─ components.css
+│  ├─ *-components.css
+│  └─ main.css/chat.css/sms.css/callback.css/pds.css/specific.css/login.css
+├─ javascript/
+│  ├─ common/ui.js
+│  ├─ main/*.js
+│  └─ page scripts (chat/sms/callback/pds/specific/login)
+├─ scripts/
+│  ├─ render.mjs
+│  ├─ build.sh
+│  └─ convert-rem-to-px.mjs
+├─ dist/                # 빌드 산출물
+├─ app.css              # dist/app.css 복사본
+├─ package.json
+└─ tailwind.config.js
 ```
 
-### 2) npm auth(_auth) 값 생성
+## 렌더링/빌드 흐름
+1. `src/pages/*.njk`를 `scripts/render.mjs`로 렌더링  
+2. `src/input.css`를 Tailwind로 컴파일해 `dist/app.css` 생성  
+3. rem→px 변환 스크립트 적용  
+4. 정적 자산(`css`, `javascript`, `design`, `vendor/fontawesome`)을 `dist/`에 복사
 
-```bash
-echo -n "$NEXUS_USERNAME:$NEXUS_PASSWORD" | base64
-export NPM_CONFIG__AUTH="$(echo -n "$NEXUS_USERNAME:$NEXUS_PASSWORD" | base64)"
-```
+## 실행 방법
 
-### 3) `.npmrc` 확인
-레포 루트 `.npmrc`는 아래 정책을 전제로 합니다.
-
-```ini
-registry=https://<NEXUS_REGISTRY_URL>/repository/npm-group/
-always-auth=true
-email=unused@example.com
-@company:registry=https://<NEXUS_REGISTRY_URL>/repository/npm-group/
-```
-
-> `<NEXUS_REGISTRY_URL>`은 실제 사내 Nexus 주소로 교체하세요.
-
-### 4) 패키지 설치
-
+### 1) 의존성 설치
 ```bash
 npm install
-# 또는 lockfile을 운영할 경우
-npm ci
 ```
 
-### 5) 정적 산출물 빌드
-
+### 2) 템플릿 렌더
 ```bash
-npm run build
+npm run render
 ```
 
-빌드 결과:
-- `src/pages/*.njk`가 `dist/*.html`로 렌더링
-- `dist/app.css` 생성
+### 3) CSS 빌드
+```bash
+npm run build:css
+```
 
-전체 배포 산출물(`dist/css`, `dist/javascript`, `dist/design`, `dist/vendor`)까지 포함하려면 아래 명령을 사용하세요.
-
+### 4) 전체 빌드(권장)
 ```bash
 ./scripts/build.sh
 ```
 
-### 6) 실행 확인 (정적 서버)
-
+### 5) 로컬 확인
 ```bash
 python3 -m http.server 4173 --directory dist
 ```
-
-브라우저 접속:
 - `http://localhost:4173/main.html`
 - `http://localhost:4173/login.html`
 
----
+## npm 스크립트
+- `npm run render`: `src/pages/*.njk` -> `dist/*.html`
+- `npm run build:css`: Tailwind 컴파일 + rem→px 변환
+- `npm run build`: `render + build:css`
+- `npm run watch`: Tailwind watch
+- `npm run check:classes`: 클래스 길이 점검
 
-## 외부 네트워크 요청 0개 점검 체크리스트
+## 페이지 구성
+- `main.html`: 상담 메인 대시보드
+- `chat.html`: 채팅 상담
+- `sms.html`: SMS 발송
+- `callback.html`: 콜백 요청 관리
+- `pds.html`: PDS 자동다이얼링
+- `specific.html`: 특이사항 등록/승인
+- `login.html`: 로그인 화면
 
-아래 명령 결과에 CDN URL 매치가 없어야 합니다.
+## 유지보수 원칙
+- `src/**`를 수정하고 `dist/**`는 빌드 결과로 관리
+- 페이지별 `content.njk`는 엔트리, 세부 UI는 `sections/*.njk`로 분리
+- 공통 레이아웃은 `base.njk` + `app-shell.njk`에서 관리
+- 공통 선택자는 `data-role`, `data-action`, `data-target` 계약을 우선 사용
 
-```bash
-rg -n "cdn.tailwindcss|fonts.googleapis|fonts.gstatic|cdnjs|https?://" \
-  *.html dist/*.html css/*.css dist/css/*.css src/*.html src/*.css
-```
+## 동적 웹 전환 준비 포인트
+- 샘플 데이터는 `src/data/*.json` 기반으로 분리
+- JS는 페이지 단위 모듈 구조(특히 `javascript/main/*`)로 분해
+- 템플릿은 section 단위로 분리되어 API 응답 바인딩으로 교체하기 쉬운 구조
 
-추가 확인 포인트:
-- 모든 페이지 `<head>`는 1개만 존재
-- `dist/index.html`은 `./app.css`를 로드
-- Google Fonts 대신 시스템 폰트 스택 사용
-- `dist/`만 복사해도 페이지 진입 가능
-
----
-
-## Build
-프로젝트는 번들러 없이 동작하는 정적 리소스 구조이며, HTML은 템플릿 렌더링으로 `dist/`에 생성합니다.
-
-### 템플릿 구조
-- `src/layouts/`: 공통 레이아웃(`base.njk`, `app-shell.njk`)
-- `src/partials/`: 공통 UI 조각(사이드바, 로그인 폼/푸터, 페이지별 콘텐츠 분리)
-- `src/pages/`: 페이지 엔트리 템플릿(`*.njk` → `dist/*.html`)
-- `scripts/render.mjs`: `src/pages/*.njk`를 정적 HTML로 렌더링
-
-### 명령어
-```bash
-npm install
-npm run render      # pages -> dist/*.html
-npm run build       # render + dist/app.css 생성
-./scripts/build.sh  # render -> css/fontawesome -> assets(css/javascript/design) 복사
-```
-
-생성 결과:
-- `dist/*.html` (예: `login.html`, `main.html`, `chat.html`, `sms.html` 등)
-- `dist/app.css`
-- `dist/vendor/fontawesome/`
-- `dist/css/`
-- `dist/javascript/`
-- `dist/design/`
-
-## 로컬 소스 반영하기
-원격 저장소에 반영된 변경사항은 자동으로 로컬에 내려오지 않습니다.
-아래 순서로 동기화한 뒤 빌드하세요.
-
-```bash
-git checkout main
-git pull origin main
-./scripts/build.sh
-```
-
-브랜치가 `work`라면 필요 시 `git checkout work && git pull origin work`로 동일하게 반영할 수 있습니다.
-
-## 로컬에서 바로 확인하기
-빌드 후 간단한 정적 서버로 확인할 수 있습니다.
-
-```bash
-./scripts/build.sh
-python3 -m http.server 4173 --directory dist
-```
-
-브라우저에서 `http://localhost:4173/main.html` 또는 `http://localhost:4173/login.html`에 접속하세요.
-
-## 리눅스 서버 배포 (Docker + Nginx)
-이 프로젝트는 정적 리소스(`dist/`)를 서빙하는 구조이므로 Docker로 배포하는 방식이 가장 빠르고 단순합니다.
-
-### 1) Dockerfile
-레포 루트의 `Dockerfile`을 사용합니다.
-
-```dockerfile
-# 1) build stage
-FROM alpine:3.20 AS build
-WORKDIR /app
-COPY . .
-RUN sh ./scripts/build.sh
-
-# 2) runtime stage
-FROM nginx:1.27-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-
-### 2) 이미지 빌드
-
-```bash
-docker build -t frontend-for-cs:latest .
-```
-
-### 3) 컨테이너 실행 (docker run)
-
-```bash
-docker run -d \
-  --name frontend-for-cs \
-  -p 80:80 \
-  --restart unless-stopped \
-  frontend-for-cs:latest
-```
-
-브라우저에서 `http://<서버IP>/main.html` 또는 `http://<서버IP>/login.html`로 확인하세요.
-
-### 4) docker-compose로 실행
-레포 루트의 `docker-compose.yml`을 사용하면 동일한 설정으로 더 간단하게 실행/재시작할 수 있습니다.
-
-```bash
-docker compose up -d --build
-```
-
-중지/정리:
-
-```bash
-docker compose down
-```
-
-로그 확인:
-
-```bash
-docker compose logs -f
-```
-
-### 5) 운영 서버 반영 절차 (권장)
-일반적으로는 아래 순서가 안전합니다.
-
-1. CI 또는 로컬에서 이미지 빌드
-2. 레지스트리에 push
-3. 서버에서 pull 후 교체 실행
-
-```bash
-# 빌드/배포 환경
-docker build -t your-registry/frontend-for-cs:2026-02-14 .
-docker push your-registry/frontend-for-cs:2026-02-14
-
-# 운영 서버
-docker pull your-registry/frontend-for-cs:2026-02-14
-docker rm -f frontend-for-cs || true
-docker run -d \
-  --name frontend-for-cs \
-  -p 80:80 \
-  --restart unless-stopped \
-  your-registry/frontend-for-cs:2026-02-14
-```
-
----
-
-## 정적 웹에서 동적 웹으로 전환 가이드
-
-현재 구조는 `dist/` 정적 리소스를 Nginx로 서빙하는 방식입니다. 동적 웹으로 전환할 때는 **전면 교체보다 단계적 전환(BFF/API 추가)** 을 권장합니다.
-
-### 1) 전환 목표 정의
-- 사용자별 화면/권한 제어
-- DB 기반 실시간 데이터 조회
-- 관리자에서 콘텐츠를 수정하면 즉시 반영
-
-### 2) 아키텍처 선택
-- **권장**: 프론트(현재 정적) + 백엔드 API 분리
-  - 프론트: 기존 HTML/CSS/JS 유지, API 호출 추가
-  - 백엔드: 인증/인가, 비즈니스 로직, DB 접근 담당
-- 대안: SSR(서버 렌더링) 프레임워크로 재구성(초기 마이그레이션 비용 큼)
-
-### 3) 최소 전환 순서 (리스크 낮은 방식)
-1. 인증 API 도입(로그인/세션 또는 JWT)
-2. 사용자 정보 API 도입(`/api/me`)
-3. 화면별 데이터 API 도입(예: 상담 목록, 콜백 상태)
-4. 기존 정적 JS에서 API 연동(fetch/axios)
-5. 관리자성 데이터(공지/문구)부터 CMS성 CRUD 제공
-
-### 4) 백엔드에서 먼저 가져가야 하는 책임
-- 인증/인가(권한 체크)
-- 민감정보 처리(비밀번호, 토큰, 개인정보)
-- 감사 로그/접근 로그
-- 입력 검증/비즈니스 규칙
-
-### 5) 프론트 코드 변경 체크리스트
-- 하드코딩 데이터 제거 후 API 응답으로 렌더링
-- 로딩/빈 상태/에러 상태 UI 추가
-- 토큰 만료 처리(재로그인 유도)
-- API 실패 재시도/사용자 메시지 표준화
-
-### 6) 배포 구조 예시
-- 프론트 컨테이너(Nginx): 정적 리소스 서빙
-- 백엔드 컨테이너(Node/Spring 등): `/api/*`
-- 리버스 프록시(Nginx/Ingress):
-  - `/` → 프론트
-  - `/api` → 백엔드
-
-### 7) 전환 시 흔한 실수
-- 프론트에 권한 로직만 두고 서버 검증 생략
-- API 에러 스펙 미정의(화면별 예외 처리 지옥)
-- CORS/쿠키 정책(SameSite, Secure) 미정리
-
-### 8) 빠른 시작 템플릿(예시)
-```text
-Phase 1 (1~2주): 로그인 + /api/me + 메인 대시보드 데이터 API
-Phase 2 (2~4주): 상담/콜백/문자 기능 API화 + 권한체계 정리
-Phase 3 (지속): 관리자 화면, 감사로그, 모니터링/알림 체계
-```
-
-필요하다면 현재 파일 구조(`main.html`, `login.html`, `javascript/*.js`) 기준으로 어떤 API부터 붙일지 상세 전환안까지 작성할 수 있습니다.
+## 참고
+- 디자인/스타일 가이드: `STYLE_GUIDE.md`
+- 추가 디자인 문서: `design/README.md`, `design/sms/README.md`
