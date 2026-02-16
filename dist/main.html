@@ -298,24 +298,24 @@
   <section>
     <header class="panel__header panel__header--history">
       <span class="weight-semibold">상담이력 조회</span>
-      <div class="flex gap-2">
+      <div class="main-history-actions">
         <button class="btn--history-reset">
-          <i class="fa-solid fa-rotate-right mr-1"></i>
+          <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>
           초기화
         </button>
         <button class="btn--history-search">
-          <i class="fa-solid fa-magnifying-glass mr-1"></i>
+          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
           조회
         </button>
       </div>
     </header>
     <div class="panel__body panel__body--history-filter">
-      <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-2">
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+      <div class="main-history-filter-grid">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             조회기간
           </label>
-          <div class="flex items-center gap-1 flex-1">
+          <div class="main-history-filter-controls">
             <select class="field field--history-select">
               <option>1개월</option>
               <option>3개월</option>
@@ -326,7 +326,7 @@
               value="2023-11-23"
               class="field field--history-date"
             />
-            <span class="text-muted font-2xs-plus">~</span>
+            <span class="main-history-date-sep">~</span>
             <input
               type="date"
               value="2024-05-21"
@@ -334,9 +334,9 @@
             />
           </div>
         </div>
-        <div class="flex items-center">
+        <div class="main-history-filter-row">
           <label
-            class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0 form-label-compact"
+            class="main-history-filter-label form-label-compact"
           >
             고객명
           </label>
@@ -346,11 +346,11 @@
             class="field field--history-input"
           />
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             상담유형
           </label>
-          <div class="flex items-center gap-1 flex-1">
+          <div class="main-history-filter-controls">
             <select class="field field--history-category">
               <option selected="">대분류</option>
               <option>금융상품</option>
@@ -371,8 +371,8 @@
             </select>
           </div>
         </div>
-        <div class="flex items-center">
-          <label class="font-2xs-tight text-body weight-bold w-16 flex-shrink-0">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
             상담원
           </label>
           <input
@@ -385,20 +385,20 @@
     </div>
     <div class="panel--history-table">
       <div class="panel__header panel__header--table">
-        <span class="font-xs weight-bold text-body-strong"
+        <span class="main-history-list-title"
           >이력목록
-          <span class="text-brand weight-normal">(총 29건)</span></span
+          <span class="main-history-count">(총 29건)</span></span
         ><button class="history-export-btn">
-          <i class="fa-regular fa-file-excel text-success"></i> 엑셀다운
+          <i class="fa-regular fa-file-excel main-history-export-icon"></i> 엑셀다운
         </button>
       </div>
-      <div class="h-[220px] overflow-x-auto overflow-y-scroll">
+      <div class="main-history-table-wrap">
         <table class="tbl table--history">
-          <thead class="bg-blue-50 sticky top-0 z-10">
+          <thead class="main-history-thead">
             <tr>
               <th class="table__head table__head--narrow">NO</th>
               <th class="table__head table__head--time">
-                시간 <i class="fa-solid fa-sort ml-1 text-muted"></i>
+                시간 <i class="fa-solid fa-sort main-history-sort-icon"></i>
               </th>
               <th class="table__head">상담원</th>
               <th class="table__head table__head--io">I/O</th>
@@ -409,7 +409,7 @@
               <th class="table__head table__head--summary">상담내용</th>
             </tr>
           </thead>
-          <tbody class="font-2xs-tight text-body-strong" data-history-body>
+          <tbody class="main-history-body" data-history-body>
             
               <tr class="tbl__row is-active">
                 <td class="tbl__cell tbl__cell--accent">1</td>
