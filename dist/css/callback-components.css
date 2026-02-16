@@ -172,6 +172,7 @@ body {
 
 .callback-action-btn--blue { border-color: #bfdbfe; background: var(--color-highlight-blue); }
 .callback-action-btn--teal { border-color: #99f6e4; background: #ccfbf1; }
+.callback-action-label-primary { color: var(--color-primary); font-weight: 700; }
 .callback-action-label-teal { color: #115e59; font-weight: 700; }
 .callback-action-btn--campaign { background: var(--color-primary); border-color: #2563eb; }
 .callback-action-btn--campaign:hover { background: var(--color-primary-dark); }

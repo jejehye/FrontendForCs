@@ -438,7 +438,7 @@
   .pagination__btn--muted { @apply w-6 h-6 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 text-xs; }
 
   /* Legacy sem-u aliases (keep sem-u classes, migrate templates gradually) */
-  .history-filter-row { @apply sem-u-069; }
+  .history-filter-row { @apply flex justify-between items-center mb-3 border-b border-gray-100 pb-2; }
 
   .sms-template-search-input { @apply sem-u-054; }
   .sms-section-title { @apply sem-u-082; }
@@ -450,15 +450,15 @@
   .sms-send-now-btn { @apply sem-u-088; }
   .sms-send-schedule-btn { @apply sem-u-089; }
 
-  .callback-call-btn { @apply sem-u-068; }
-  .callback-period-select { @apply sem-u-070; }
-  .callback-action-icon-blue { @apply sem-u-071; }
-  .callback-action-icon-teal { @apply sem-u-060; }
-  .callback-service-summary-row { @apply sem-u-061; }
-  .callback-note-textarea { @apply sem-u-072; }
-  .callback-note-option-row { @apply sem-u-073; }
-  .callback-note-cancel-btn { @apply sem-u-074; }
-  .callback-note-submit-btn { @apply sem-u-075; }
+  .callback-call-btn { @apply text-white text-xxs px-3 py-1 rounded font-medium hover:bg-blue-700; }
+  .callback-period-select { @apply text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .callback-action-icon-blue { @apply w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mb-1 group-hover:bg-blue-300 transition; }
+  .callback-action-icon-teal { @apply w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mb-1 group-hover:bg-teal-200 transition; }
+  .callback-service-summary-row { @apply flex gap-4 text-xs bg-gray-50 p-2 rounded border border-gray-200; }
+  .callback-note-textarea { @apply w-full h-32 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .callback-note-option-row { @apply flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-50; }
+  .callback-note-cancel-btn { @apply flex-1 bg-gray-200 text-gray-700 px-4 py-3 rounded-lg font-bold hover:bg-gray-300 transition; }
+  .callback-note-submit-btn { @apply flex-1 text-white px-4 py-3 rounded-lg font-bold hover:opacity-90 transition shadow-lg; }
 
   .pds-dial-start-btn { @apply sem-u-076; }
   .pds-dial-pause-btn { @apply sem-u-077; }
