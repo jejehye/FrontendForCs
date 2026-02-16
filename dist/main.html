@@ -1059,6 +1059,10 @@
           <option value="meeting">회의</option>
         </select>
       </div>
+      <button type="button" class="softphone-outbound-btn" data-action="main-open-outbound-modal" aria-label="아웃바운드 발신">
+        <i class="fa-solid fa-phone"></i>
+        아웃바운드
+      </button>
       <div class="agent-login-chip" aria-label="로그인 상담원 정보">
         <span class="agent-login-chip__avatar">
           <i class="fa-solid fa-user"></i>
@@ -1641,6 +1645,69 @@
     </div>
     <div class="history-detail-modal__footer">
       <button type="button" class="history-detail-modal__confirm" data-action="history-detail-close">확인</button>
+    </div>
+  </div>
+</div>
+
+<div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">
+  <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-outbound-title">
+    <div class="main-outbound-modal__header">
+      <h4 id="main-outbound-title" class="main-outbound-modal__title">아웃바운드 발신</h4>
+      <button type="button" class="main-outbound-modal__close" data-action="main-close-outbound-modal" aria-label="닫기">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="main-outbound-modal__body">
+      <label class="main-outbound-modal__label" for="mainOutboundPhoneInput">전화번호 입력</label>
+      <input
+        id="mainOutboundPhoneInput"
+        type="text"
+        class="field main-outbound-modal__input"
+        inputmode="numeric"
+        placeholder="예: 010-1234-5678"
+        data-role="main-outbound-phone-input"
+      />
+      <p class="main-outbound-modal__hint">숫자만 입력해도 자동으로 포맷됩니다.</p>
+      <div class="main-outbound-callerid">
+        <div class="main-outbound-callerid__title">발신 표시번호 선택</div>
+        <table class="main-outbound-callerid__table">
+          <thead>
+            <tr>
+              <th>선택</th>
+              <th>표시번호</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="radio"
+                  name="mainOutboundCallerId"
+                  value="155-0365"
+                  data-role="main-outbound-callerid"
+                  checked
+                />
+              </td>
+              <td>155-0365</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="radio"
+                  name="mainOutboundCallerId"
+                  value="3772-1010"
+                  data-role="main-outbound-callerid"
+                />
+              </td>
+              <td>3772-1010</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="main-outbound-modal__footer">
+      <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-outbound-modal">취소</button>
+      <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-outbound-call">콜 발신</button>
     </div>
   </div>
 </div>

@@ -96,9 +96,85 @@ window.MainPageActions = (() => {
     syncCallUi();
   };
 
+  const initOutboundDialer = () => {
+    const modal = selectOne('[data-role="main-outbound-modal"]');
+    const openButton = selectOne('[data-action="main-open-outbound-modal"]');
+    const closeButtons = selectAll('[data-action="main-close-outbound-modal"]');
+    const submitButton = selectOne('[data-action="main-submit-outbound-call"]');
+    const phoneInput = selectOne('[data-role="main-outbound-phone-input"]');
+    const callerIdInputs = selectAll('[data-role="main-outbound-callerid"]');
+
+    if (!modal || !openButton || !phoneInput) {
+      return;
+    }
+
+    const formatPhoneNumber = value => {
+      const digits = (value || '').replace(/\D/g, '').slice(0, 11);
+      if (digits.length <= 3) return digits;
+      if (digits.length <= 7) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+      return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+    };
+
+    const openModal = () => {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      phoneInput.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const submitOutboundCall = () => {
+      const formattedPhone = formatPhoneNumber(phoneInput.value);
+      const selectedCallerId = callerIdInputs.find(input => input.checked)?.value || '';
+      if (formattedPhone.length < 12) {
+        alert('발신할 번호를 정확히 입력해 주세요.');
+        phoneInput.focus();
+        return;
+      }
+      if (!selectedCallerId) {
+        alert('발신 표시번호를 선택해 주세요.');
+        return;
+      }
+      alert(`${formattedPhone} 번호로 아웃바운드 콜을 발신합니다. (표시번호: ${selectedCallerId})`);
+      closeModal();
+    };
+
+    openButton.addEventListener('click', openModal);
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    phoneInput.addEventListener('input', event => {
+      event.target.value = formatPhoneNumber(event.target.value);
+    });
+
+    phoneInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submitOutboundCall();
+      }
+    });
+
+    if (submitButton) {
+      submitButton.addEventListener('click', submitOutboundCall);
+    }
+  };
+
   const init = () => {
     initStatusControl();
     initSoftphoneScripts();
+    initOutboundDialer();
   };
 
   return { init };

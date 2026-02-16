@@ -1,79 +1,112 @@
-    <div id="callbackModal" data-role="callback-modal" class="modal-overlay">
-      <div class="modal-content">
-        <div class="callback-modal-header">
-          <div class="callback-modal-header-row">
-            <div>
-              <h2 class="callback-modal-title">콜백 처리</h2>
-              <p class="callback-modal-subtitle">고객님께 콜백을 진행합니다</p>
-            </div><button class="callback-modal-close-btn" data-action="callback-modal-close"><i
-                class="fa-solid fa-xmark"></i></button>
-          </div>
+<div id="callbackModal" data-role="callback-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="callback-modal-header">
+      <div class="callback-modal-header-row">
+        <div>
+          <h2 class="callback-modal-title">콜백 처리</h2>
+          <p class="callback-modal-subtitle">고객님께 콜백을 진행합니다</p>
         </div>
-        <div class="callback-modal-body">
-          <div class="callback-modal-section-muted">
-            <h3 class="callback-modal-section-title"><i
-                class="fa-solid fa-user callback-icon-user"></i>
-              고객 정보
-            </h3>
-            <div class="callback-modal-grid">
-              <div><span class="callback-modal-label">고객명:</span><span
-                  id="modalCustomerName"
-                  class="callback-modal-value">이지현</span></div>
-              <div><span class="callback-modal-label">연락처:</span><span
-                  id="modalCustomerPhone"
-                  class="callback-modal-value">010-2345-6789</span>
-              </div>
-              <div><span class="callback-modal-label">고객등급:</span><span
-                  class="callback-modal-value callback-modal-value--accent">S-CLASS</span></div>
-              <div><span class="callback-modal-label">투자성향:</span><span
-                  class="callback-modal-value callback-modal-value--warning">적극투자형</span></div>
-            </div>
-          </div>
-          <div class="callback-modal-section-highlight">
-            <h3 class="callback-modal-section-title callback-modal-section-title--compact"><i
-                class="fa-solid fa-comment-dots callback-icon-comment"></i>
-              콜백 요청 내용
-            </h3>
-            <p id="modalCallbackContent"
-              class="callback-modal-copy">
-              해외주식 ISA 계좌 이전 관련 긴급 문의사항 있습니다.
-            </p>
-            <div class="callback-modal-meta"><i
-                class="fa-regular fa-clock callback-icon-inline"></i>
-              요청시간: <span id="modalRequestTime">2024-01-20 14:20</span></div>
-          </div>
-          <div class="callback-modal-section">
-            <h3 class="callback-modal-section-title"><i
-                class="fa-solid fa-pen-to-square callback-icon-pen"></i>
-              상담 메모
-            </h3>
-            <textarea placeholder="상담 내용을 기록하세요..." class="callback-note-textarea"></textarea>
-          </div>
-          <div class="callback-modal-section">
-            <h3 class="callback-modal-section-title"><i
-                class="fa-solid fa-list-check callback-icon-list"></i>
-              처리 상태
-            </h3>
-            <div class="callback-form-stack"><label
-                class="callback-note-option-row"><input
-                  type="radio" name="callbackStatus" value="completed"
-                  checked="" class="callback-radio-completed"><span
-                  class="callback-modal-option-label">상담 완료</span></label><label
-                class="callback-note-option-row"><input
-                  type="radio" name="callbackStatus" value="callback"
-                  class="callback-radio-callback"><span
-                  class="callback-modal-option-label">재콜백 필요</span></label><label
-                class="callback-note-option-row"><input
-                  type="radio" name="callbackStatus" value="unreachable"
-                  class="callback-radio-unreachable"><span
-                  class="callback-modal-option-label">연결 불가</span></label></div>
-          </div>
-          <div class="callback-modal-actions"><button
-              class="callback-note-cancel-btn" data-action="callback-modal-cancel"><i
-                class="fa-solid fa-xmark callback-icon-inline-md"></i>취소
-            </button><button
-              class="shinhan-gradient callback-note-submit-btn" data-action="callback-modal-complete"><i
-                class="fa-solid fa-check callback-icon-inline-md"></i>처리 완료
-            </button></div>
+        <button class="callback-modal-close-btn" data-action="callback-modal-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+    <div class="callback-modal-body">
+      <div class="callback-modal-section-muted">
+        <h3 class="callback-modal-section-title">
+          <i class="fa-solid fa-user callback-icon-user"></i>
+          고객 정보
+        </h3>
+        <div class="callback-modal-grid">
+          <div><span class="callback-modal-label">고객명:</span><span id="modalCustomerName" class="callback-modal-value">이지현</span></div>
+          <div><span class="callback-modal-label">연락처:</span><span id="modalCustomerPhone" class="callback-modal-value">010-2345-6789</span></div>
+          <div><span class="callback-modal-label">고객등급:</span><span class="callback-modal-value callback-modal-value--accent">S-CLASS</span></div>
+          <div><span class="callback-modal-label">투자성향:</span><span class="callback-modal-value callback-modal-value--warning">적극투자형</span></div>
         </div>
       </div>
+      <div class="callback-modal-section-highlight">
+        <h3 class="callback-modal-section-title callback-modal-section-title--compact">
+          <i class="fa-solid fa-comment-dots callback-icon-comment"></i>
+          콜백 요청 내용
+        </h3>
+        <p id="modalCallbackContent" class="callback-modal-copy">
+          해외주식 ISA 계좌 이전 관련 긴급 문의사항 있습니다.
+        </p>
+        <div class="callback-modal-meta">
+          <i class="fa-regular fa-clock callback-icon-inline"></i>
+          요청시간: <span id="modalRequestTime">2024-01-20 14:20</span>
+        </div>
+      </div>
+      <div class="callback-modal-section">
+        <h3 class="callback-modal-section-title">
+          <i class="fa-solid fa-pen-to-square callback-icon-pen"></i>
+          상담 메모
+        </h3>
+        <textarea placeholder="상담 내용을 기록하세요..." class="callback-note-textarea"></textarea>
+      </div>
+      <div class="callback-modal-section">
+        <h3 class="callback-modal-section-title">
+          <i class="fa-solid fa-list-check callback-icon-list"></i>
+          처리 상태
+        </h3>
+        <div class="callback-form-stack">
+          <label class="callback-note-option-row"><input type="radio" name="callbackStatus" value="completed" checked="" class="callback-radio-completed"><span class="callback-modal-option-label">상담 완료</span></label>
+          <label class="callback-note-option-row"><input type="radio" name="callbackStatus" value="callback" class="callback-radio-callback"><span class="callback-modal-option-label">재콜백 필요</span></label>
+          <label class="callback-note-option-row"><input type="radio" name="callbackStatus" value="unreachable" class="callback-radio-unreachable"><span class="callback-modal-option-label">연결 불가</span></label>
+        </div>
+      </div>
+      <div class="callback-modal-actions">
+        <button class="callback-note-cancel-btn" data-action="callback-modal-cancel">
+          <i class="fa-solid fa-xmark callback-icon-inline-md"></i>취소
+        </button>
+        <button class="shinhan-gradient callback-note-submit-btn" data-action="callback-modal-complete">
+          <i class="fa-solid fa-check callback-icon-inline-md"></i>처리 완료
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="outboundCallModal" data-role="outbound-modal" class="modal-overlay">
+  <div class="modal-content callback-outbound-modal">
+    <div class="callback-modal-header">
+      <div class="callback-modal-header-row">
+        <div>
+          <h2 class="callback-modal-title">아웃바운드 발신</h2>
+          <p class="callback-modal-subtitle">전화번호를 입력하고 즉시 발신합니다</p>
+        </div>
+        <button class="callback-modal-close-btn" data-action="outbound-modal-close" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+    <div class="callback-modal-body">
+      <div class="callback-modal-section-muted">
+        <h3 class="callback-modal-section-title">
+          <i class="fa-solid fa-phone callback-icon-phone-volume"></i>
+          발신 번호 입력
+        </h3>
+        <div class="callback-outbound-form">
+          <input
+            type="text"
+            class="field callback-outbound-input"
+            placeholder="예: 010-1234-5678"
+            inputmode="numeric"
+            data-role="outbound-phone-input"
+          />
+          <p class="callback-outbound-hint">
+            숫자만 입력해도 자동으로 포맷됩니다.
+          </p>
+        </div>
+      </div>
+      <div class="callback-modal-actions">
+        <button class="callback-note-cancel-btn" data-action="outbound-modal-cancel">
+          <i class="fa-solid fa-xmark callback-icon-inline-md"></i>취소
+        </button>
+        <button class="shinhan-gradient callback-note-submit-btn" data-action="outbound-call-submit">
+          <i class="fa-solid fa-phone callback-icon-inline-md"></i>콜 발신
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
