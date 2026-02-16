@@ -102,6 +102,8 @@ body {
 
 /* De-tailwind phase 2: semantic layout helpers (Callback page) */
 .callback-card-footer { display: flex; justify-content: space-between; align-items: center; }
+.callback-card-title { font-size: 0.75rem; font-weight: 700; color: #1f2937; }
+.callback-card-time { font-size: 0.65rem; line-height: 1rem; color: #9ca3af; }
 .callback-card-phone { font-size: 0.75rem; color: #374151; }
 .callback-card-desc { font-size: 0.75rem; color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
 .callback-done-label { font-size: 0.6875rem; color: #16a34a; font-weight: 500; }
@@ -183,6 +185,23 @@ body {
 .callback-service-badge--danger { background: #ef4444; }
 .callback-service-badge--brand { background: var(--color-primary); }
 .callback-service-badge--teal { background: #14b8a6; }
+.callback-inline-gap-xs { display: flex; align-items: center; gap: 0.25rem; }
+.callback-status-success-badge {
+  font-size: 0.65rem;
+  line-height: 1rem;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+.callback-history-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  line-height: 1rem;
+  color: #9ca3af;
+}
 
 .callback-note-textarea { resize: none; }
 .callback-radio-completed { color: #22c55e; }
@@ -191,4 +210,5 @@ body {
 .callback-radio-callback:focus { outline-color: #3b82f6; }
 .callback-radio-unreachable { color: #ef4444; }
 .callback-radio-unreachable:focus { outline-color: #ef4444; }
+.callback-icon-inline-md,
 .callback-icon-gap-2 { margin-right: 8px; }

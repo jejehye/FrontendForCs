@@ -132,7 +132,9 @@ body {
 
 .sms-section-block { margin-bottom: 12px; }
 .sms-textarea-wrap { position: relative; }
+.sms-icon-inline-sm,
 .sms-icon-gap-1 { margin-right: 4px; }
+.sms-icon-inline-md,
 .sms-icon-gap-2 { margin-right: 8px; }
 .sms-icon-danger-hover:hover { color: #ef4444; }
 .sms-accent-icon { color: #9333ea; }
