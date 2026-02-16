@@ -56,17 +56,20 @@
       const templatePrevButton = document.querySelector('[data-template-nav="prev"]');
       const templateNextButton = document.querySelector('[data-template-nav="next"]');
       const templateLastButton = document.querySelector('[data-template-nav="last"]');
+      const templateSearchInput = document.querySelector('[data-template-search]');
       let templatePageButtons = Array.from(document.querySelectorAll('[data-template-page-btn]'));
       let activeTemplatePage = 1;
       const templatePageSize = 10;
+      let templatePages = [];
 
       if (templateList && templatePagination && templateFirstButton && templatePrevButton && templateNextButton && templateLastButton) {
         const templateCards = Array.from(templateList.querySelectorAll('.template-card'));
-        const templatePages = [];
-
-        for (let index = 0; index < templateCards.length; index += templatePageSize) {
-          templatePages.push(templateCards.slice(index, index + templatePageSize));
-        }
+        const buildTemplatePages = cards => {
+          templatePages = [];
+          for (let index = 0; index < cards.length; index += templatePageSize) {
+            templatePages.push(cards.slice(index, index + templatePageSize));
+          }
+        };
 
         const rebuildTemplateButtons = () =>
         {
@@ -95,6 +98,16 @@
         const setActiveTemplatePage = pageNumber =>
         {
           if (!templatePages.length) {
+            templateList.innerHTML = `
+              <div class="text-xs text-gray-400 text-center py-6">
+                검색 결과가 없습니다.
+              </div>
+            `;
+            templatePageButtons.forEach(button => button.classList.remove('is-active'));
+            templateFirstButton.disabled = true;
+            templatePrevButton.disabled = true;
+            templateNextButton.disabled = true;
+            templateLastButton.disabled = true;
             return;
           }
 
@@ -121,15 +134,30 @@
           templateLastButton.classList.toggle('opacity-40', activeTemplatePage === maxPage);
         };
 
-        if (templatePages.length) {
-          templatePagination.classList.remove('hidden');
+        const applyTemplateFilter = () => {
+          const keyword = (templateSearchInput?.value || '').trim().toLowerCase();
+          const filteredCards = templateCards.filter(card =>
+            card.textContent.toLowerCase().includes(keyword)
+          );
+
+          buildTemplatePages(filteredCards);
+          activeTemplatePage = 1;
           rebuildTemplateButtons();
           setActiveTemplatePage(1);
+        };
 
-          templateFirstButton.addEventListener('click', () => setActiveTemplatePage(1));
-          templatePrevButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage - 1));
-          templateNextButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage + 1));
-          templateLastButton.addEventListener('click', () => setActiveTemplatePage(templatePages.length));
+        templatePagination.classList.remove('hidden');
+        buildTemplatePages(templateCards);
+        rebuildTemplateButtons();
+        setActiveTemplatePage(1);
+
+        templateFirstButton.addEventListener('click', () => setActiveTemplatePage(1));
+        templatePrevButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage - 1));
+        templateNextButton.addEventListener('click', () => setActiveTemplatePage(activeTemplatePage + 1));
+        templateLastButton.addEventListener('click', () => setActiveTemplatePage(templatePages.length));
+
+        if (templateSearchInput) {
+          templateSearchInput.addEventListener('input', applyTemplateFilter);
         }
       }
 

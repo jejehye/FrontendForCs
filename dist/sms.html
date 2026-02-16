@@ -155,11 +155,20 @@
           </ul>
         </div>
         <div class="info-card">
-          <div class="flex justify-between items-center mb-3">
+          <div class="flex justify-between items-center mb-3 gap-2">
             <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
               <i class="fa-solid fa-file-lines sms-primary-text"></i>
               템플릿 선택
-            </h3><button class="sms-primary-text text-xs font-medium">전체보기</button>
+            </h3>
+            <div class="flex items-center gap-2">
+              <input
+                type="text"
+                class="sem-u-054"
+                placeholder="템플릿 검색"
+                data-template-search
+              >
+              <button class="sms-primary-text text-xs font-medium">전체보기</button>
+            </div>
           </div>
           <div class="space-y-2 h-[520px] overflow-y-scroll pr-2" data-template-list>
             <div data-template="1" class="template-card">
