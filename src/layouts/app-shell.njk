@@ -1,18 +1,29 @@
 {% extends "layouts/base.njk" %}
 
 {% block head %}
+  <!-- ===================== Global Styles ===================== -->
   <link rel="stylesheet" href="./app.css">
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
   <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- ===================== Page Styles ===================== -->
   <link rel="stylesheet" href="css/{{ page_css }}">
 {% endblock %}
 
 {% block body %}
-  <div id="app-container" class="grid-layout">
+  <!-- ===================== App Shell ===================== -->
+  <div id="app-container" class="grid-layout" data-role="app-shell">
+    <!-- ===================== Global Navigation ===================== -->
     {% include "partials/components/sidebar.njk" %}
+
+    <!-- ===================== Page Content ===================== -->
     {% block app_content %}{% endblock %}
   </div>
+
+  <!-- ===================== Server Data Payload ===================== -->
   <script id="page-data-json" type="application/json">{{ page_data | tojson }}</script>
+
+  <!-- ===================== Client Data Bootstrap ===================== -->
   <script>
     (() => {
       const pageDataNode = document.getElementById('page-data-json');

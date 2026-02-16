@@ -5,78 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SMS 발송</title>
   
+  <!-- ===================== Global Styles ===================== -->
   <link rel="stylesheet" href="./app.css">
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
   <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- ===================== Page Styles ===================== -->
   <link rel="stylesheet" href="css/callback.css">
 
 </head>
 <body>
   
-  <div id="app-container" class="grid-layout">
-    <div id="sidebar" class="column col-sidebar">
+  <!-- ===================== App Shell ===================== -->
+  <div id="app-container" class="grid-layout" data-role="app-shell">
+    <!-- ===================== Global Navigation ===================== -->
+    <aside id="sidebar" class="column col-sidebar" data-role="global-sidebar" aria-label="사이드바 메뉴">
+  <!-- ===================== Sidebar Brand ===================== -->
   <div class="mb-6">
-    <div class="sidebar-logo">S</div>
+    <div class="sidebar-logo" aria-hidden="true">S</div>
   </div>
-  
-  
-    <div
-      data-page="main.html"
-      title="Main"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-headset"></i>
-    </div>
-  
-    <div
-      data-page="pds.html"
-      title="PDS"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-phone-volume"></i>
-    </div>
-  
-    <div
-      data-page="sms.html"
-      title="SMS"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-comment-sms"></i>
-    </div>
-  
-    <div
-      data-page="callback.html"
-      title="Callback"
-      data-role="nav-item"
-      class="nav-item active"
-    >
-      <i class="fa-solid fa-phone"></i>
-    </div>
-  
-    <div
-      data-page="specific.html"
-      title="Specific"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-user-check"></i>
-    </div>
-  
-    <div
-      data-page="chat.html"
-      title="Chat"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-comments"></i>
-    </div>
-  
-  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
-</div>
 
+  <!-- ===================== Sidebar Navigation ===================== -->
+  
+  <nav aria-label="주요 메뉴">
+    
+      <div
+        data-page="main.html"
+        title="Main"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-headset"></i>
+      </div>
+    
+      <div
+        data-page="pds.html"
+        title="PDS"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-phone-volume"></i>
+      </div>
+    
+      <div
+        data-page="sms.html"
+        title="SMS"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-comment-sms"></i>
+      </div>
+    
+      <div
+        data-page="callback.html"
+        title="Callback"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item active"
+      >
+        <i class="fa-solid fa-phone"></i>
+      </div>
+    
+      <div
+        data-page="specific.html"
+        title="Specific"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-user-check"></i>
+      </div>
+    
+      <div
+        data-page="chat.html"
+        title="Chat"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-comments"></i>
+      </div>
+    
+  </nav>
+
+  <!-- ===================== Sidebar Settings ===================== -->
+  <div title="Settings" data-role="nav-item" data-action="navigate" class="nav-item mt-auto mb-4">
+    <i class="fa-solid fa-gear"></i>
+  </div>
+</aside>
+
+
+    <!-- ===================== Page Content ===================== -->
     
   
 
@@ -654,7 +676,11 @@
 
 
   </div>
+
+  <!-- ===================== Server Data Payload ===================== -->
   <script id="page-data-json" type="application/json">{"notices":[{"prefix_text":"[고정]","prefix_class":"callback-notice-fixed","text":"[일반] 고정공지사항 제목입니다.","date":"2021-05-03 14:00","has_attachment":true},{"prefix_text":"[긴급]","prefix_class":"callback-notice-urgent","text":"긴급공지사항 제목입니다.","date":"2021-05-03 14:00","has_attachment":true},{"prefix_text":"","prefix_class":"","text":"[일반] 일반공지사항 입니다. 확인요청드립니다.","date":"2021-05-03 14:00","has_attachment":true}],"recent_callback_histories":[{"name":"강동훈","status":"완료","desc":"신한 알파 랩 서비스 가입 문의 - 상담 완료 및 가입 진행","phone":"010-9999-8888","date":"2024-01-19 16:30"},{"name":"윤정아","status":"완료","desc":"해외 ETF 투자 상담 - 맞춤형 포트폴리오 제안","phone":"010-3333-4444","date":"2024-01-19 14:15"},{"name":"송민호","status":"완료","desc":"해외주식 수수료 우대 문의 - 안내 완료","phone":"010-2222-3333","date":"2024-01-19 11:45"}],"callback_request_histories":[{"requested_at":"2024-01-20 14:20","content":"해외주식 ISA 계좌 이전","status_text":"대기중","status_class":"pending","processed_at":"-"},{"requested_at":"2024-01-18 11:30","content":"S-CLASS 멤버십 문의","status_text":"완료","status_class":"completed","processed_at":"2024-01-18 15:45"},{"requested_at":"2024-01-15 09:20","content":"연금저축펀드 추천","status_text":"완료","status_class":"completed","processed_at":"2024-01-15 10:15"},{"requested_at":"2024-01-12 16:10","content":"알파 랩 서비스 문의","status_text":"완료","status_class":"completed","processed_at":"2024-01-12 16:50"},{"requested_at":"2024-01-10 13:40","content":"해외 ETF 투자 상담","status_text":"완료","status_class":"completed","processed_at":"2024-01-10 14:20"},{"requested_at":"2024-01-08 10:25","content":"수수료 우대 문의","status_text":"미처리","status_class":"unhandled","processed_at":"-"},{"requested_at":"2024-01-05 15:30","content":"신탁 상품 문의","status_text":"완료","status_class":"completed","processed_at":"2024-01-05 16:10"}]}</script>
+
+  <!-- ===================== Client Data Bootstrap ===================== -->
   <script>
     (() => {
       const pageDataNode = document.getElementById('page-data-json');

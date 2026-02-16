@@ -5,78 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>특이사항 등록/승인</title>
   
+  <!-- ===================== Global Styles ===================== -->
   <link rel="stylesheet" href="./app.css">
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
   <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- ===================== Page Styles ===================== -->
   <link rel="stylesheet" href="css/specific.css">
 
 </head>
 <body>
   
-  <div id="app-container" class="grid-layout">
-    <div id="sidebar" class="column col-sidebar">
+  <!-- ===================== App Shell ===================== -->
+  <div id="app-container" class="grid-layout" data-role="app-shell">
+    <!-- ===================== Global Navigation ===================== -->
+    <aside id="sidebar" class="column col-sidebar" data-role="global-sidebar" aria-label="사이드바 메뉴">
+  <!-- ===================== Sidebar Brand ===================== -->
   <div class="mb-6">
-    <div class="sidebar-logo">S</div>
+    <div class="sidebar-logo" aria-hidden="true">S</div>
   </div>
-  
-  
-    <div
-      data-page="main.html"
-      title="Main"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-headset"></i>
-    </div>
-  
-    <div
-      data-page="pds.html"
-      title="PDS"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-phone-volume"></i>
-    </div>
-  
-    <div
-      data-page="sms.html"
-      title="SMS"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-comment-sms"></i>
-    </div>
-  
-    <div
-      data-page="callback.html"
-      title="Callback"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-phone"></i>
-    </div>
-  
-    <div
-      data-page="specific.html"
-      title="Specific"
-      data-role="nav-item"
-      class="nav-item active"
-    >
-      <i class="fa-solid fa-user-check"></i>
-    </div>
-  
-    <div
-      data-page="chat.html"
-      title="Chat"
-      data-role="nav-item"
-      class="nav-item"
-    >
-      <i class="fa-solid fa-comments"></i>
-    </div>
-  
-  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
-</div>
 
+  <!-- ===================== Sidebar Navigation ===================== -->
+  
+  <nav aria-label="주요 메뉴">
+    
+      <div
+        data-page="main.html"
+        title="Main"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-headset"></i>
+      </div>
+    
+      <div
+        data-page="pds.html"
+        title="PDS"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-phone-volume"></i>
+      </div>
+    
+      <div
+        data-page="sms.html"
+        title="SMS"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-comment-sms"></i>
+      </div>
+    
+      <div
+        data-page="callback.html"
+        title="Callback"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-phone"></i>
+      </div>
+    
+      <div
+        data-page="specific.html"
+        title="Specific"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item active"
+      >
+        <i class="fa-solid fa-user-check"></i>
+      </div>
+    
+      <div
+        data-page="chat.html"
+        title="Chat"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-comments"></i>
+      </div>
+    
+  </nav>
+
+  <!-- ===================== Sidebar Settings ===================== -->
+  <div title="Settings" data-role="nav-item" data-action="navigate" class="nav-item mt-auto mb-4">
+    <i class="fa-solid fa-gear"></i>
+  </div>
+</aside>
+
+
+    <!-- ===================== Page Content ===================== -->
     
   
 <div class="column col-center specific-main specific-main-frame">
@@ -262,7 +284,11 @@
 
 
   </div>
+
+  <!-- ===================== Server Data Payload ===================== -->
   <script id="page-data-json" type="application/json">{"exclude_types":["콜 미수신","교육/회의","시스템 점검","기타"],"initial_requests":[{"id":1,"name":"김민수","empNo":"204075","category":"콜 미수신","time":"09:00~11:00 (2시간)","reason":"연결 실패 반복으로 재배정 요청","status":"pending","requestedAt":"2026-02-16 09:00","processedAt":""},{"id":2,"name":"김민수","empNo":"204075","category":"교육/회의","time":"13:00~14:30 (1시간 30분)","reason":"신규 상품 교육 참석","status":"approved","requestedAt":"2026-02-15 13:00","processedAt":"2026-02-15 10:12"},{"id":3,"name":"최영호","empNo":"203114","category":"기타","time":"15:00~16:00 (1시간)","reason":"사유 불충분으로 재요청 안내","status":"rejected","requestedAt":"2026-02-14 15:00","processedAt":"2026-02-14 11:41"}]}</script>
+
+  <!-- ===================== Client Data Bootstrap ===================== -->
   <script>
     (() => {
       const pageDataNode = document.getElementById('page-data-json');

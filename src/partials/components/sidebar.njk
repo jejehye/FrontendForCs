@@ -1,7 +1,10 @@
-<div id="sidebar" class="column col-sidebar">
+<aside id="sidebar" class="column col-sidebar" data-role="global-sidebar" aria-label="사이드바 메뉴">
+  <!-- ===================== Sidebar Brand ===================== -->
   <div class="mb-6">
-    <div class="sidebar-logo">S</div>
+    <div class="sidebar-logo" aria-hidden="true">S</div>
   </div>
+
+  <!-- ===================== Sidebar Navigation ===================== -->
   {% set nav_items = [
     { "page": "main.html", "title": "Main", "icon": "fa-headset" },
     { "page": "pds.html", "title": "PDS", "icon": "fa-phone-volume" },
@@ -10,15 +13,22 @@
     { "page": "specific.html", "title": "Specific", "icon": "fa-user-check" },
     { "page": "chat.html", "title": "Chat", "icon": "fa-comments" }
   ] %}
-  {% for item in nav_items %}
-    <div
-      data-page="{{ item.page }}"
-      title="{{ item.title }}"
-      data-role="nav-item"
-      class="nav-item{% if active_page == item.page %} active{% endif %}"
-    >
-      <i class="fa-solid {{ item.icon }}"></i>
-    </div>
-  {% endfor %}
-  <div title="Settings" data-role="nav-item" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
-</div>
+  <nav aria-label="주요 메뉴">
+    {% for item in nav_items %}
+      <div
+        data-page="{{ item.page }}"
+        title="{{ item.title }}"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item{% if active_page == item.page %} active{% endif %}"
+      >
+        <i class="fa-solid {{ item.icon }}"></i>
+      </div>
+    {% endfor %}
+  </nav>
+
+  <!-- ===================== Sidebar Settings ===================== -->
+  <div title="Settings" data-role="nav-item" data-action="navigate" class="nav-item mt-auto mb-4">
+    <i class="fa-solid fa-gear"></i>
+  </div>
+</aside>
