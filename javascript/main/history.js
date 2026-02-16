@@ -300,9 +300,97 @@ window.MainPageHistory = (() => {
     setActiveHistoryPage(1);
   };
 
+  const initMyHistoryPagination = () => {
+    const historyBody = selectOne('[data-role="my-history-body"]');
+    const historyPagination = selectOne('[data-role="my-history-pagination"]');
+    const historyFirstButton = selectOne('[data-action="my-history-nav-first"]', '[data-my-history-nav="first"]');
+    const historyPrevButton = selectOne('[data-action="my-history-nav-prev"]', '[data-my-history-nav="prev"]');
+    const historyNextButton = selectOne('[data-action="my-history-nav-next"]', '[data-my-history-nav="next"]');
+    const historyLastButton = selectOne('[data-action="my-history-nav-last"]', '[data-my-history-nav="last"]');
+
+    let historyPageButtons = selectAll('[data-action="my-history-page-btn"]', '[data-my-history-page-btn]');
+    let activeHistoryPage = 1;
+    const historyPageSize = 5;
+
+    if (!historyBody || !historyPagination || !historyFirstButton || !historyPrevButton || !historyNextButton || !historyLastButton) {
+      return;
+    }
+
+    const historyRows = Array.from(historyBody.querySelectorAll('tr.tbl__row'));
+
+    historyRows.sort((leftRow, rightRow) => {
+      const leftDateText = leftRow.children[1]?.textContent.trim() || '';
+      const rightDateText = rightRow.children[1]?.textContent.trim() || '';
+      return parseHistoryDate(rightDateText) - parseHistoryDate(leftDateText);
+    });
+
+    const historyPages = [];
+    for (let index = 0; index < historyRows.length; index += historyPageSize) {
+      historyPages.push(historyRows.slice(index, index + historyPageSize));
+    }
+
+    const setActiveHistoryPage = pageNumber => {
+      if (!historyPages.length) {
+        return;
+      }
+
+      const maxPage = historyPages.length;
+      activeHistoryPage = Math.min(maxPage, Math.max(1, pageNumber));
+
+      historyBody.replaceChildren(...historyPages[activeHistoryPage - 1]);
+
+      historyPageButtons.forEach(button => {
+        const page = Number(button.getAttribute('data-target') || button.getAttribute('data-my-history-page-btn'));
+        button.classList.toggle('is-active', page === activeHistoryPage);
+      });
+
+      historyFirstButton.disabled = activeHistoryPage === 1;
+      historyPrevButton.disabled = activeHistoryPage === 1;
+      historyNextButton.disabled = activeHistoryPage === maxPage;
+      historyLastButton.disabled = activeHistoryPage === maxPage;
+
+      historyFirstButton.classList.toggle('opacity-40', activeHistoryPage === 1);
+      historyPrevButton.classList.toggle('opacity-40', activeHistoryPage === 1);
+      historyNextButton.classList.toggle('opacity-40', activeHistoryPage === maxPage);
+      historyLastButton.classList.toggle('opacity-40', activeHistoryPage === maxPage);
+    };
+
+    const rebuildHistoryButtons = () => {
+      historyPageButtons.forEach(button => button.remove());
+
+      historyPageButtons = historyPages.map((_, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.setAttribute('data-my-history-page-btn', String(index + 1));
+        button.setAttribute('data-action', 'my-history-page-btn');
+        button.setAttribute('data-target', String(index + 1));
+        button.className = 'pagination__btn';
+        button.textContent = String(index + 1);
+        historyPagination.insertBefore(button, historyNextButton);
+        return button;
+      });
+
+      historyPageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          setActiveHistoryPage(Number(button.getAttribute('data-target') || button.getAttribute('data-my-history-page-btn')));
+        });
+      });
+    };
+
+    rebuildHistoryButtons();
+
+    historyFirstButton.addEventListener('click', () => setActiveHistoryPage(1));
+    historyPrevButton.addEventListener('click', () => setActiveHistoryPage(activeHistoryPage - 1));
+    historyNextButton.addEventListener('click', () => setActiveHistoryPage(activeHistoryPage + 1));
+    historyLastButton.addEventListener('click', () => setActiveHistoryPage(historyPages.length));
+
+    setActiveHistoryPage(1);
+  };
+
   const init = () => {
     initNoticePagination();
     initHistoryPagination();
+    initMyHistoryPagination();
   };
 
   return { init };
