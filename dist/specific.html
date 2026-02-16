@@ -24,7 +24,7 @@
         <div title="Settings" class="nav-item mt-auto mb-4"><i class="fa-solid fa-gear"></i></div>
       </div>
 
-      <div class="column col-center p-4 gap-4 overflow-y-auto">
+      <div class="column col-center p-4 gap-4 overflow-y-auto specific-main">
         <section class="specific-header">
           <div class="specific-header-title">
             <i class="fa-solid fa-user-check"></i>
@@ -110,6 +110,38 @@
             </div>
           </section>
         </div>
+
+        <section class="specific-panel">
+          <div class="specific-panel-title">이전 처리내역 조회</div>
+          <div class="specific-history-toolbar">
+            <div class="specific-history-range">
+              <input id="historyDateFrom" class="specific-input specific-date" type="date" />
+              <span class="specific-range-sep">~</span>
+              <input id="historyDateTo" class="specific-input specific-date" type="date" />
+            </div>
+            <input
+              id="historySearch"
+              class="specific-input specific-search"
+              type="text"
+              placeholder="상담원명/사유 검색"
+            />
+          </div>
+          <div class="specific-table-wrap">
+            <table class="specific-table specific-history-table">
+              <thead>
+                <tr>
+                  <th>상태</th>
+                  <th>상담원</th>
+                  <th>유형</th>
+                  <th>요청시간</th>
+                  <th>처리일시</th>
+                  <th>사유</th>
+                </tr>
+              </thead>
+              <tbody id="specificHistoryBody"></tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
     <script src="javascript/specific.js"></script>

@@ -12,6 +12,11 @@ const tableBody = document.getElementById('specificTableBody');
 const searchInput = document.getElementById('specificSearch');
 const filterButtons = document.querySelectorAll('.specific-filter-btn');
 
+const historyBody = document.getElementById('specificHistoryBody');
+const historyDateFrom = document.getElementById('historyDateFrom');
+const historyDateTo = document.getElementById('historyDateTo');
+const historySearch = document.getElementById('historySearch');
+
 const countAll = document.getElementById('countAll');
 const countPending = document.getElementById('countPending');
 const countApproved = document.getElementById('countApproved');
@@ -21,6 +26,26 @@ let activeFilter = 'all';
 let currentSearch = '';
 let requestId = 4;
 
+function pad2(value) {
+  return String(value).padStart(2, '0');
+}
+
+function formatDate(date) {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(
+    date.getDate()
+  )}`;
+}
+
+function formatDateTime(date) {
+  return `${formatDate(date)} ${pad2(date.getHours())}:${pad2(date.getMinutes())}`;
+}
+
+function getDateOffset(days) {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return formatDate(date);
+}
+
 const requests = [
   {
     id: 1,
@@ -29,6 +54,8 @@ const requests = [
     time: '14:20',
     reason: '연결 실패 반복으로 재배정 요청',
     status: 'pending',
+    requestedAt: `${getDateOffset(0)} 14:20`,
+    processedAt: '',
   },
   {
     id: 2,
@@ -37,6 +64,8 @@ const requests = [
     time: '10:00',
     reason: '신규 상품 교육 참석',
     status: 'approved',
+    requestedAt: `${getDateOffset(-1)} 10:00`,
+    processedAt: `${getDateOffset(-1)} 10:12`,
   },
   {
     id: 3,
@@ -45,6 +74,8 @@ const requests = [
     time: '11:30',
     reason: '사유 불충분으로 재요청 안내',
     status: 'rejected',
+    requestedAt: `${getDateOffset(-2)} 11:30`,
+    processedAt: `${getDateOffset(-2)} 11:41`,
   },
 ];
 
@@ -111,9 +142,52 @@ function renderTable() {
     .join('');
 }
 
+function getFilteredHistory() {
+  const from = historyDateFrom?.value || '';
+  const to = historyDateTo?.value || '';
+  const keyword = (historySearch?.value || '').trim().toLowerCase();
+
+  return requests.filter((item) => {
+    if (item.status === 'pending' || !item.processedAt) return false;
+    const processedDate = item.processedAt.slice(0, 10);
+    const matchesFrom = !from || processedDate >= from;
+    const matchesTo = !to || processedDate <= to;
+    const matchesSearch =
+      !keyword ||
+      item.name.toLowerCase().includes(keyword) ||
+      item.reason.toLowerCase().includes(keyword);
+    return matchesFrom && matchesTo && matchesSearch;
+  });
+}
+
+function renderHistoryTable() {
+  const rows = getFilteredHistory();
+  if (!rows.length) {
+    historyBody.innerHTML =
+      '<tr><td class="specific-empty" colspan="6">조건에 맞는 이전 처리내역이 없습니다.</td></tr>';
+    return;
+  }
+
+  historyBody.innerHTML = rows
+    .map(
+      (item) => `
+      <tr>
+        <td><span class="specific-badge specific-badge-${item.status}">${getStatusLabel(item.status)}</span></td>
+        <td>${item.name}</td>
+        <td>${item.category}</td>
+        <td>${item.requestedAt}</td>
+        <td>${item.processedAt}</td>
+        <td class="specific-reason" title="${item.reason}">${item.reason}</td>
+      </tr>
+    `
+    )
+    .join('');
+}
+
 function renderAll() {
   renderStats();
   renderTable();
+  renderHistoryTable();
 }
 
 if (registerBtn) {
@@ -140,6 +214,8 @@ if (registerBtn) {
       time,
       reason,
       status: 'pending',
+      requestedAt: `${formatDate(new Date())} ${time}`,
+      processedAt: '',
     });
 
     nameInput.value = '';
@@ -182,8 +258,21 @@ if (tableBody) {
 
     if (action === 'approve') target.status = 'approved';
     if (action === 'reject') target.status = 'rejected';
+    target.processedAt = formatDateTime(new Date());
     renderAll();
   });
+}
+
+if (historyDateFrom && historyDateTo) {
+  historyDateFrom.value = getDateOffset(-30);
+  historyDateTo.value = getDateOffset(0);
+
+  historyDateFrom.addEventListener('change', renderHistoryTable);
+  historyDateTo.addEventListener('change', renderHistoryTable);
+}
+
+if (historySearch) {
+  historySearch.addEventListener('input', renderHistoryTable);
 }
 
 renderAll();
