@@ -1,0 +1,375 @@
+<div id="right-column" class="column col-right layout-aside">
+  <div class="panel-header panel-header-actions-only">
+    <div class="panel-header-actions">
+      <div class="agent-kpi-bar" aria-label="상담 지표">
+        <div class="agent-kpi-item">
+          <span class="agent-kpi-label">금일상담</span>
+          <span class="agent-kpi-value">24건</span>
+        </div>
+        <div class="agent-kpi-item">
+          <span class="agent-kpi-label">통화시간</span>
+          <span class="agent-kpi-value">03:42:15</span>
+        </div>
+        <div class="agent-kpi-item">
+          <span class="agent-kpi-label">고객대기</span>
+          <span class="agent-kpi-value">5명</span>
+        </div>
+        <div class="agent-kpi-item">
+          <span class="agent-kpi-label">대기시간</span>
+          <span class="agent-kpi-value">01:28</span>
+        </div>
+      </div>
+      <div class="agent-status-bar">
+        <div class="status-indicator status-ready"></div>
+        <select class="status-select">
+          <option value="ready">업무</option>
+          <option value="away">이석</option>
+          <option value="busy">대기</option>
+          <option value="break">휴식</option>
+          <option value="meeting">회의</option>
+        </select>
+      </div>
+      <div class="agent-login-chip" aria-label="로그인 상담원 정보">
+        <span class="agent-login-chip__avatar">
+          <i class="fa-solid fa-user"></i>
+        </span>
+        <span class="agent-login-chip__meta">
+          <span class="agent-login-chip__role">상담원</span>
+          <span class="agent-login-chip__name" data-agent-display>김민수(204075)</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="softphone-script-panel">
+    <div class="softphone-script-header">
+      <span class="softphone-script-title">
+        <i class="fa-solid fa-volume-high"></i> 안내 멘트 송출
+      </span>
+      <button type="button" class="softphone-call-toggle" data-call-toggle>
+        통화중 OFF
+      </button>
+    </div>
+    <div class="softphone-script-grid">
+      <button type="button" class="softphone-script-btn" data-softphone-script="녹취 동의 안내">
+        <i class="fa-solid fa-microphone-lines"></i>
+        녹취동의
+      </button>
+      <button type="button" class="softphone-script-btn" data-softphone-script="개인정보 수집 동의">
+        <i class="fa-solid fa-user-shield"></i>
+        개인정보
+      </button>
+      <button type="button" class="softphone-script-btn" data-softphone-script="투자 유의사항">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        투자유의
+      </button>
+      <button type="button" class="softphone-script-btn" data-softphone-script="통화 종료 안내">
+        <i class="fa-solid fa-phone-slash"></i>
+        종료안내
+      </button>
+    </div>
+    <div class="softphone-script-status" data-softphone-output>
+      통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="badge-row">
+        <span class="badge status-badge status-unauth status-badge-fixed"
+          ><i class="fa-solid fa-lock main-aside-icon-gap"></i>무인증</span
+        ><span class="main-customer-meta-text customer-meta-primary"
+          >박지민(여), 투자성향(적극투자형), 고객등급(VVIP)</span
+        >
+      </div>
+      <button class="icon-refresh-btn">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
+    <!-- ===================== Action Buttons ===================== -->
+    <section>
+      <div class="action-btn-grid">
+        <button class="actionBtn action-btn group action-btn-accent-blue">
+          <div class="action-btn-icon-wrap action-btn-icon-wrap-blue">
+            <i class="fa-solid fa-chart-line main-aside-action-icon-brand"></i>
+          </div>
+          <span class="main-aside-action-label-brand keyword-tag-compact"
+            >주식거래</span
+          ></button
+        ><button class="actionBtn action-btn group action-btn-accent-teal">
+          <div class="action-btn-icon-wrap action-btn-icon-wrap-teal">
+            <i class="fa-solid fa-globe main-aside-action-icon-teal"></i>
+          </div>
+          <span class="main-aside-action-label-teal keyword-tag-compact"
+            >해외투자</span
+          ></button
+        ><button class="actionBtn action-btn group">
+          <i class="fa-solid fa-building-columns main-aside-action-icon-subtle"></i
+          ><span>펀드</span></button
+        ><button class="actionBtn action-btn group">
+          <i class="fa-solid fa-coins main-aside-action-icon-caution-strong"></i
+          ><span>ISA</span></button
+        ><button class="actionBtn action-btn group">
+          <i class="fa-solid fa-bell main-aside-action-icon-caution"></i
+          ><span class="keyword-tag-compact">알림설정</span></button
+        ><button class="actionBtn action-btn group action-btn-accent-primary">
+          <i class="fa-solid fa-gift main-aside-action-icon-inverse"></i
+          ><span class="main-aside-action-label-inverse">이벤트</span>
+        </button>
+      </div>
+    </section>
+    <div class="service-stat-panel">
+      <div class="service-stat-item">
+        <span class="service-stat-label">서비스요청</span
+        ><span class="badge badge-danger">0</span>
+      </div>
+      <div class="service-stat-item">
+        <span class="service-stat-label">콜백서비스</span
+        ><span class="badge badge-warning">0</span>
+      </div>
+      <div class="service-stat-item">
+        <span class="service-stat-label">상담예약</span
+        ><span class="badge badge-success">2</span>
+      </div>
+    </div>
+  </div>
+  <div class="history-editor-panel history-editor-panel--compact">
+    <div class="history-editor-header">
+      <h4 class="history-editor-title">
+        <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
+        상담이력 입력
+      </h4>
+      <span class="history-editor-timestamp" data-current-datetime></span>
+    </div>
+    <div class="history-editor-form">
+      <div class="history-editor-card">
+        <div class="history-editor-card-header">
+          <label class="history-editor-section-title">상담유형</label>
+          <span class="history-editor-section-hint"
+            >대분류 &gt; 중분류 &gt; 소분류</span
+          >
+        </div>
+        <div class="history-category-grid">
+          <div>
+            <label class="history-field-label">대분류</label>
+            <select class="field consultation-category-select">
+              <option selected>투자상담</option>
+              <option>업무처리</option>
+              <option>민원/클레임</option>
+            </select>
+          </div>
+          <div>
+            <label class="history-field-label">중분류</label>
+            <select class="field consultation-category-select">
+              <option selected>해외투자</option>
+              <option>국내주식</option>
+              <option>펀드/ETF</option>
+              <option>ISA/연금</option>
+            </select>
+          </div>
+          <div>
+            <label class="history-field-label">소분류</label>
+            <select class="field consultation-category-select">
+              <option selected>해외주식 매수문의</option>
+              <option>해외주식 수수료</option>
+              <option>환전/외화입출금</option>
+              <option>해외시장 운영시간</option>
+            </select>
+          </div>
+        </div>
+        <div class="history-note-header">
+          <label class="history-note-title"
+            ><i class="fa-regular fa-note-sticky history-note-icon"></i>상담내용</label
+          >
+          <span class="history-note-limit">최대 500자</span>
+        </div>
+        <textarea
+          rows="3"
+          placeholder="1) 고객 문의사항&#10;2) 안내한 내용&#10;3) 후속 조치(있다면)"
+          class="consultation-note field consultation-note-input consultation-note-field"
+        ></textarea>
+        <div class="history-note-meta">
+          <span>작성 팁: 문의 → 조치 → 결과 순으로 작성</span
+          ><span>0 / 500자</span>
+        </div>
+      </div>
+      <div class="history-editor-actions">
+        <button class="btn-secondary consultation-reset-btn">
+          <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화</button
+        ><button class="btn-primary consultation-save-btn">
+          <i class="fa-solid fa-save history-action-icon-gap"></i>저장
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="info-card main-my-history-panel">
+    <div class="main-my-history-header">
+      <span class="main-my-history-title">나의 상담이력 조회</span>
+      <button class="history-export-btn">
+        <i class="fa-solid fa-download"></i>내역 다운로드
+      </button>
+    </div>
+    <div class="panel__body panel__body--history-filter main-my-history-filter">
+      <div class="main-my-history-filter-grid">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
+            조회기간
+          </label>
+          <div class="main-inline-date-range w-full">
+            <input type="date" value="2026-02-01" class="field field--history-date" />
+            <span class="main-my-history-date-sep">~</span>
+            <input type="date" value="2026-02-16" class="field field--history-date" />
+          </div>
+        </div>
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
+            고객명
+          </label>
+          <input type="text" placeholder="고객명" class="field field--history-input" />
+        </div>
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
+            계좌번호
+          </label>
+          <input type="text" placeholder="계좌번호" class="field field--history-input" />
+        </div>
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
+            전화번호
+          </label>
+          <input type="text" placeholder="전화번호" class="field field--history-input" />
+        </div>
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
+            상담유형
+          </label>
+          <select class="field field--history-category">
+            <option>전체</option>
+            <option>일반</option>
+            <option>업무처리</option>
+            <option>민원</option>
+            <option>해외투자</option>
+          </select>
+        </div>
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">
+            상담내용
+          </label>
+          <input type="text" placeholder="상담내용" class="field field--history-input" />
+        </div>
+      </div>
+      <div class="main-my-history-actions">
+        <button class="btn--history-reset main-my-history-btn">
+          <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>초기화
+        </button>
+        <button class="btn--history-search main-my-history-btn">
+          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
+        </button>
+      </div>
+    </div>
+    <div class="main-my-history-table-wrap">
+      <table class="tbl table--history">
+        <thead class="main-history-thead">
+          <tr>
+            <th class="table__head table__head--narrow">NO</th>
+            <th class="table__head table__head--time">
+              시간 <i class="fa-solid fa-sort main-history-sort-icon"></i>
+            </th>
+            <th class="table__head">상담원</th>
+            <th class="table__head table__head--io">I/O</th>
+            <th class="table__head">고객명</th>
+            <th class="table__head">전화번호</th>
+            <th class="table__head table__head--account">계좌번호</th>
+            <th class="column-width-sm table__head">상담유형</th>
+            <th class="table__head">채널</th>
+            <th class="table__head table__head--summary">상담내용</th>
+          </tr>
+        </thead>
+        <tbody class="main-history-body">
+          <tr class="tbl__row">
+            <td class="tbl__cell tbl__cell--accent">1</td>
+            <td class="tbl__cell">2026-02-16 14:12:03</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-in">I</span></td>
+            <td class="tbl__cell">박지민</td>
+            <td class="tbl__cell">010-1234-5678</td>
+            <td class="tbl__cell">2040750012</td>
+            <td class="tbl__cell">해외투자</td>
+            <td class="tbl__cell">전화</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              해외주식 주문 가능시간 및 수수료 재안내
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">2</td>
+            <td class="tbl__cell">2026-02-16 11:42:17</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-in">I</span></td>
+            <td class="tbl__cell">이수호</td>
+            <td class="tbl__cell">010-6621-0987</td>
+            <td class="tbl__cell">2040751045</td>
+            <td class="tbl__cell">업무처리</td>
+            <td class="tbl__cell">채팅</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              계좌 비밀번호 변경 절차 및 본인확인 안내
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">3</td>
+            <td class="tbl__cell">2026-02-15 16:08:55</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-out">O</span></td>
+            <td class="tbl__cell">최영호</td>
+            <td class="tbl__cell">010-9981-2244</td>
+            <td class="tbl__cell">2040752201</td>
+            <td class="tbl__cell">민원</td>
+            <td class="tbl__cell">전화</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              접수건 처리 일정 및 회신 예정 시간 안내
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">4</td>
+            <td class="tbl__cell">2026-02-15 10:21:34</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-in">I</span></td>
+            <td class="tbl__cell">김제은</td>
+            <td class="tbl__cell">010-3011-7742</td>
+            <td class="tbl__cell">2040753008</td>
+            <td class="tbl__cell">일반</td>
+            <td class="tbl__cell">전화</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              ISA 만기 후 운용 방식 및 이전 가능 여부 상담
+            </td>
+          </tr>
+          <tr class="tbl__row">
+            <td class="tbl__cell">5</td>
+            <td class="tbl__cell">2026-02-14 15:36:09</td>
+            <td class="tbl__cell">김민수</td>
+            <td class="tbl__cell"><span class="badge--io-out">O</span></td>
+            <td class="tbl__cell">은방실</td>
+            <td class="tbl__cell">010-4219-6610</td>
+            <td class="tbl__cell">2040754479</td>
+            <td class="tbl__cell">일반</td>
+            <td class="tbl__cell">MTS</td>
+            <td class="tbl__cell tbl__cell--truncate">
+              인증 오류 해결 가이드 및 앱 재로그인 처리
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination pagination--history main-my-history-pagination">
+      <button class="pagination__btn">
+        <i class="fa-solid fa-angles-left"></i></button
+      ><button class="pagination__btn">
+        <i class="fa-solid fa-angle-left"></i></button
+      ><button class="pagination__btn is-active">1</button
+      ><button class="pagination__btn">2</button
+      ><button class="pagination__btn">3</button
+      ><button class="pagination__btn">
+        <i class="fa-solid fa-angle-right"></i></button
+      ><button class="pagination__btn">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

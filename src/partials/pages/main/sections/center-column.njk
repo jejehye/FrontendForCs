@@ -1,0 +1,114 @@
+<div id="center-column" class="column col-center layout-main">
+  <!-- ===================== Notices ===================== -->
+  <section>
+    <header class="notice-header">
+      <div class="notice-header-row">
+        <div class="notice-header-title-row">
+          <i class="fa-solid fa-bullhorn main-center-notice-icon"></i>
+          <h3 class="main-center-notice-title">공지사항</h3>
+        </div>
+        <button class="notices-more-btn">
+          <i class="fa-solid fa-plus main-center-icon-gap"></i>
+          더보기
+        </button>
+      </div>
+      <div class="notice-updated">
+        <span class="weight-medium">최근 업데이트:</span>
+        <span data-current-date-kor></span>
+      </div>
+    </header>
+    <div class="notice-list-wrap">
+      {% for notice_page in main_data.notice_pages %}
+        <div class="notice-list{% if not loop.first %} hidden{% endif %}" data-notice-page="{{ loop.index }}">
+          {% for notice in notice_page %}
+            <div class="notice-card">
+              <div class="notice-card__meta">
+                <div class="notice-meta-left">
+                  <span class="notice-badge {{ notice.badge_class }}">{{ notice.badge }}</span>
+                  <span class="notice-date">{{ notice.date }}</span>
+                </div>
+                <i class="fa-solid fa-chevron-right notice-chevron"></i>
+              </div>
+              <h4 class="notice-title">{{ notice.title }}</h4>
+              <p class="notice-desc">
+                {{ notice.desc }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      <div class="pagination pagination--notice">
+        <button type="button" data-notice-nav="prev" class="pagination__btn">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        {% for notice_page in main_data.notice_pages %}
+          <button
+            type="button"
+            data-notice-page-btn="{{ loop.index }}"
+            class="pagination__btn{% if loop.first %} is-active{% endif %}"
+          >
+            {{ loop.index }}
+          </button>
+        {% endfor %}
+        <button type="button" data-notice-nav="next" class="pagination__btn">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== Coaching/VOC ===================== -->
+  <section>
+    <div class="coaching-panel">
+      <h3 class="main-center-coaching-title">실시간 코칭</h3>
+      <div class="coaching-placeholder">실시간 코칭내용 주문별 내용 확인하세요.</div>
+    </div>
+    <div class="main-center-warning-wrap">
+      <div class="warning-tabs">
+        <button
+          type="button"
+          class="warning-tab is-active"
+          data-warning-tab="code"
+        >
+          주의코드
+        </button>
+        <button
+          type="button"
+          class="warning-tab"
+          data-warning-tab="voc"
+        >
+          VOC
+        </button>
+      </div>
+      <div
+        class="warning-tab-panel warning-tab-panel-body is-active"
+        data-warning-panel="code"
+      >
+        <p class="main-center-warning-line">
+          <span class="main-center-warning-date">(2023-03-22)</span> 고액거래 고객:
+          담당PB 연결 필수
+        </p>
+        <p class="main-center-warning-line">
+          <span class="main-center-warning-date">(2023-05-15)</span> 개인정보 보호
+          강화 대상: 본인확인 철저
+        </p>
+        <p class="main-center-warning-line">서류확인 필요(관리점)</p>
+        <p class="main-center-warning-highlight">우수고객 VIP</p>
+      </div>
+      <div
+        class="warning-tab-panel warning-tab-panel-body hidden"
+        data-warning-panel="voc"
+      >
+        <p class="main-center-warning-line">
+          <span class="main-center-warning-date">(2024-02-14)</span> 투자성향
+          고위험 발언 감지
+        </p>
+        <p class="main-center-warning-line">
+          <span class="main-center-warning-date">(2024-03-08)</span> 민원
+          사전경고 이력 확인 필요
+        </p>
+        <p class="main-center-warning-line">상담 스크립트 준수 모니터링 대상</p>
+        <p class="main-center-warning-highlight">VOC 관심고객</p>
+      </div>
+    </div>
+  </section>
+</div>
