@@ -132,6 +132,39 @@ body { background-color: #f3f4f6; }
 .notice-updated { font-size: 12px; line-height: 16px; background-color: rgb(59 130 246 / 0.3); border-radius: 4px; padding: 8px 12px; }
 .notice-list-wrap { flex: 1 1 0%; overflow-y: auto; padding: 16px; background: #f9fafb; }
 .notice-list > :not([hidden]) ~ :not([hidden]) { margin-top: 12px; }
+.main-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 0;
+  background: #2563eb;
+  color: #fff;
+}
+.main-section-header--coaching { margin-bottom: 8px; }
+.main-section-header .account-panel-title,
+.main-section-header .history-editor-title,
+.main-section-header .main-my-history-title,
+.main-section-header .main-center-coaching-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.main-section-header .account-panel-helper,
+.main-section-header .history-editor-timestamp {
+  color: #dbeafe;
+  background: transparent;
+  font-size: 12px;
+}
+.main-section-header .history-editor-icon-brand { color: #bfdbfe; }
+.main-section-header .history-editor-header-actions { gap: 8px; }
+.main-section-header .history-editor-btn-compact {
+  min-height: 24px;
+  padding: 3px 8px;
+  font-size: 11px;
+}
 
 .panel-header-actions-only { justify-content: flex-end; }
 .agent-kpi-bar { display: flex; align-items: center; gap: 8px; padding: 5.6px 9.6px; background: #f8fafc; border: 1px solid var(--color-panel-border); border-radius: 8px; }
@@ -172,7 +205,8 @@ body { background-color: #f3f4f6; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.6px 0 2.4px;
+  padding: 12px;
+  border-radius: 0;
 }
 .history-editor-header-actions {
   display: inline-flex;
@@ -335,7 +369,7 @@ body { background-color: #f3f4f6; }
 .main-history-sort-icon { margin-left: 4px; color: #6b7280; }
 .main-history-body { font-size: 11px; color: #1f2937; }
 .main-my-history-panel { flex: 1 1 0%; display: flex; flex-direction: column; padding: 0; overflow: hidden; margin-top: 40px; }
-.main-my-history-header { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-bottom: 1px solid #e5e7eb; background: #fff; }
+.main-my-history-header { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-radius: 0; }
 .main-my-history-title { font-size: 12px; font-weight: 700; color: #1f2937; }
 .main-my-history-filter { margin: 8px 12px 0; border-radius: 4px; }
 .main-my-history-filter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 12px; row-gap: 8px; margin-bottom: 8px; }
@@ -348,7 +382,7 @@ body { background-color: #f3f4f6; }
 .main-center-notice-icon { font-size: 20px; }
 .main-center-notice-title { font-size: 13px; font-weight: 700; }
 .main-center-icon-gap { margin-right: 4px; }
-.main-center-coaching-title { font-size: 12px; font-weight: 700; color: #1f2937; margin-bottom: 8px; }
+.main-center-coaching-title { font-size: 12px; font-weight: 700; color: #1f2937; margin-bottom: 0; }
 .notice-title { font-size: 13px; line-height: 1.4; }
 .main-center-warning-wrap { height: 192px; border-top: 1px solid #e5e7eb; background: #fff; display: flex; flex-direction: column; }
 .warning-tab-panel-body { padding: 12px; overflow-y: auto; font-size: 12px; color: #1f2937; line-height: 1.625; }
