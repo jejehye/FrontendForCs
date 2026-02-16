@@ -15,7 +15,7 @@ document.querySelectorAll('.nav-item').forEach(item =>
         });
       });
 
-      document.querySelectorAll('.tab-item').forEach(tab =>
+document.querySelectorAll('.tab-item').forEach(tab =>
       {
         tab.addEventListener('click', function()
         {
@@ -43,6 +43,38 @@ document.querySelectorAll('.nav-item').forEach(item =>
       {
         alert('콜백 처리가 완료되었습니다.');
         closeCallbackModal();
+      }
+
+      document.querySelectorAll('.callback-card .shinhan-btn.sem-u-068').forEach(
+        button =>
+        {
+          button.addEventListener('click', function()
+          {
+            const card = this.closest('[data-callback-id]');
+            const callbackId = card ? card.dataset.callbackId : null;
+            openCallbackModal(callbackId);
+          });
+        });
+
+      const modalCloseButton = document.querySelector(
+        '#callbackModal .callback-modal-header button');
+      if (modalCloseButton)
+      {
+        modalCloseButton.addEventListener('click', closeCallbackModal);
+      }
+
+      const modalCancelButton = document.querySelector(
+        '#callbackModal .callback-modal-actions button:first-child');
+      if (modalCancelButton)
+      {
+        modalCancelButton.addEventListener('click', closeCallbackModal);
+      }
+
+      const modalCompleteButton = document.querySelector(
+        '#callbackModal .callback-modal-actions button:last-child');
+      if (modalCompleteButton)
+      {
+        modalCompleteButton.addEventListener('click', completeCallback);
       }
 
       document.getElementById('callbackModal').addEventListener('click',
