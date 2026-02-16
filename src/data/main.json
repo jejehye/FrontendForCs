@@ -1,0 +1,150 @@
+{
+  "history_rows": [
+    {
+      "id": 1,
+      "timestamp": "2024-05-13 09:15",
+      "agent": "김제은",
+      "direction": "I",
+      "customer": "박지민",
+      "account": "27048891397",
+      "type": "일반",
+      "channel": "전화",
+      "content": "계좌 비밀번호 분실 문의",
+      "is_active": true
+    },
+    {
+      "id": 2,
+      "timestamp": "2024-05-13 13:40",
+      "agent": "김제은",
+      "direction": "I",
+      "customer": "박지민",
+      "account": "-",
+      "type": "매매결제",
+      "channel": "MTS",
+      "content": "미수 발생 관련 알림 발송",
+      "is_active": false
+    },
+    {
+      "id": 3,
+      "timestamp": "2024-05-13 08:22",
+      "agent": "김제은",
+      "direction": "I",
+      "customer": "박지민",
+      "account": "-",
+      "type": "일반",
+      "channel": "전화",
+      "content": "계좌 개설 절차 안내",
+      "is_active": false
+    },
+    {
+      "id": 4,
+      "timestamp": "2024-05-21 15:10",
+      "agent": "은방실",
+      "direction": "O",
+      "customer": "박지민",
+      "account": "27050242869",
+      "type": "일반",
+      "channel": "전화",
+      "content": "이벤트 참여 확인 해피콜",
+      "is_active": false
+    },
+    {
+      "id": 5,
+      "timestamp": "2024-05-21 15:05",
+      "agent": "은방실",
+      "direction": "O",
+      "customer": "박지민",
+      "account": "-",
+      "type": "일반",
+      "channel": "전화",
+      "content": "부재중 안내 문자 발송",
+      "is_active": false
+    },
+    {
+      "id": 6,
+      "timestamp": "2024-05-17 09:30",
+      "agent": "은방실",
+      "direction": "I",
+      "customer": "박지민",
+      "account": "27050242869",
+      "type": "업무처리",
+      "channel": "채팅",
+      "content": "권리 청약 신청 문의",
+      "is_active": false
+    },
+    {
+      "id": 7,
+      "timestamp": "2024-05-14 16:20",
+      "agent": "은방실",
+      "direction": "O",
+      "customer": "박지민",
+      "account": "27031471900",
+      "type": "일반",
+      "channel": "전화",
+      "content": "투자 성향 분석 갱신 안내",
+      "is_active": false
+    }
+  ],
+  "notice_pages": [
+    [
+      {
+        "badge_class": "notice-badge--critical",
+        "badge": "긴급",
+        "date": "2024-05-13",
+        "title": "시스템 정기 점검 안내",
+        "desc": "5월 15일(수) 02:00~06:00 시스템 정기 점검이 진행됩니다."
+      },
+      {
+        "badge_class": "notice-badge--important",
+        "badge": "중요",
+        "date": "2024-05-12",
+        "title": "개인정보 보호법 개정 안내",
+        "desc": "고객 상담 시 개인정보 보호 강화 조치가 시행됩니다."
+      },
+      {
+        "badge_class": "notice-badge--normal",
+        "badge": "일반",
+        "date": "2024-05-10",
+        "title": "신규 상품 출시 안내",
+        "desc": "해외주식 투자 수수료 우대 이벤트가 시작되었습니다."
+      },
+      {
+        "badge_class": "notice-badge--event",
+        "badge": "이벤트",
+        "date": "2024-05-08",
+        "title": "고객 만족도 조사 실시",
+        "desc": "5월 한 달간 고객 만족도 조사가 진행됩니다."
+      },
+      {
+        "badge_class": "notice-badge--normal",
+        "badge": "일반",
+        "date": "2024-05-05",
+        "title": "상담 스크립트 업데이트",
+        "desc": "신규 상담 스크립트가 업데이트 되었습니다."
+      }
+    ],
+    [
+      {
+        "badge_class": "notice-badge--training",
+        "badge": "교육",
+        "date": "2024-05-03",
+        "title": "상담원 교육 일정 안내",
+        "desc": "5월 20일 신규 상품 교육이 진행됩니다."
+      },
+      {
+        "badge_class": "notice-badge--important",
+        "badge": "중요",
+        "date": "2024-05-01",
+        "title": "고객 응대 매뉴얼 개정",
+        "desc": "새로운 고객 응대 매뉴얼이 배포되었습니다."
+      },
+      {
+        "badge_class": "notice-badge--normal",
+        "badge": "일반",
+        "date": "2024-04-28",
+        "title": "휴가 신청 안내",
+        "desc": "하계 휴가 신청 기간이 시작되었습니다."
+      }
+    ]
+  ]
+}
