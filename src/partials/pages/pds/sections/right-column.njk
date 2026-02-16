@@ -1,0 +1,108 @@
+<section id="right-column" class="column col-right">
+  <div class="pds-right-header">
+    <div class="pds-right-tabs">
+      <div class="tab-item tab-item-primary active">
+        <i class="fa-solid fa-phone-volume"></i>
+        현재 통화
+      </div>
+      <div class="tab-item">
+        <i class="fa-solid fa-user"></i>
+        고객정보
+      </div>
+    </div>
+    <button class="pds-save-btn">상담저장</button>
+  </div>
+
+  <div class="pds-current-call-card pds-card-muted">
+    <div class="pds-current-top">
+      <div class="pds-header-gradient pds-current-icon-wrap">
+        <i class="fa-solid fa-phone-volume pds-current-call-icon"></i>
+      </div>
+      <h3 class="pds-current-name" id="currentCustomerName" data-role="currentCustomerName">대기중</h3>
+      <p class="pds-current-phone" id="currentCustomerPhone" data-role="currentCustomerPhone">-</p>
+    </div>
+
+    <div class="pds-status-card">
+      <div class="pds-status-row">
+        <span class="pds-meta-text">통화 상태</span>
+        <span class="pds-status-value" id="callStatus" data-role="callStatus">연결 대기</span>
+      </div>
+      <div class="pds-status-row">
+        <span class="pds-meta-text">통화 시간</span>
+        <span class="pds-timer-value" id="callTimer" data-role="callTimer">00:00</span>
+      </div>
+    </div>
+
+    <div class="pds-call-actions">
+      <button class="pds-call-btn pds-btn-danger-bg">
+        <i class="fa-solid fa-phone-slash pds-icon-inline"></i>종료
+      </button>
+      <button class="pds-call-btn pds-btn-success-bg">
+        <i class="fa-solid fa-check pds-icon-inline"></i>완료
+      </button>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <h3 class="pds-detail-title">
+      <i class="fa-solid fa-user-circle pds-accent-text"></i>
+      고객 정보
+    </h3>
+    <div class="pds-detail-list">
+      <div class="pds-detail-row">
+        <span class="pds-label-text">고객명</span>
+        <span class="pds-detail-value" id="detailCustomerName" data-role="detailCustomerName">-</span>
+      </div>
+      <div class="pds-detail-row">
+        <span class="pds-label-text">연락처</span>
+        <span class="pds-detail-value" id="detailCustomerPhone" data-role="detailCustomerPhone">-</span>
+      </div>
+      <div class="pds-detail-row">
+        <span class="pds-label-text">고객등급</span>
+        <span class="pds-detail-value pds-detail-value--brand" id="detailCustomerGrade" data-role="detailCustomerGrade">-</span>
+      </div>
+      <div class="pds-detail-row">
+        <span class="pds-label-text">캠페인</span>
+        <span class="pds-detail-value pds-detail-value--brand" id="detailCampaign" data-role="detailCampaign">-</span>
+      </div>
+      <div class="pds-detail-row">
+        <span class="pds-label-text">배정시간</span>
+        <span class="pds-detail-value" id="detailAssignTime">-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <h3 class="pds-script-title">
+      <i class="fa-solid fa-book-open pds-accent-text"></i>
+      상담 스크립트
+    </h3>
+    <div class="pds-script-block pds-card-muted">
+      <p class="pds-script-block-title">
+        <i class="fa-solid fa-lightbulb pds-icon-inline-sm pds-status-text-warning"></i>인사말
+      </p>
+      <p class="pds-script-copy">
+        안녕하세요, [고객명]님. 저는 신한투자증권 [상담원명]입니다.
+        오늘 [캠페인명] 관련하여 연락드렸습니다.
+      </p>
+    </div>
+    <div class="pds-script-block pds-card-muted">
+      <p class="pds-script-block-title">
+        <i class="fa-solid fa-comments pds-icon-inline-sm pds-accent-text"></i>주요 안내사항
+      </p>
+      <ul class="pds-script-list">
+        <li>• 글로벌 자산배분 펀드 신규 출시</li>
+        <li>• VIP 고객 대상 프리미엄 리서치 제공</li>
+        <li>• 포트폴리오 리밸런싱 제안</li>
+      </ul>
+    </div>
+    <div class="pds-script-block pds-card-muted">
+      <p class="pds-script-block-title">
+        <i class="fa-solid fa-exclamation-circle pds-icon-inline-sm pds-status-text-danger"></i>주의사항
+      </p>
+      <p class="pds-script-copy">
+        고객의 투자 성향을 확인하고, 적합한 상품을 안내합니다.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,237 @@
+<section id="pds-column" class="column col-pds">
+  <div class="pds-main-header">
+    <div class="pds-between-row-md">
+      <h2 class="pds-title-lg">
+        <i class="fa-solid fa-phone-volume"></i>
+        PDS 자동다이얼링
+      </h2>
+      <button class="pds-refresh-btn">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
+    <div class="pds-summary-card">
+      <div class="pds-summary-grid">
+        <div>
+          <div class="pds-count-value" id="totalCount">15</div>
+          <div class="pds-count-label">총 배정</div>
+        </div>
+        <div>
+          <div class="pds-count-value" id="remainCount" data-role="remainCount">8</div>
+          <div class="pds-count-label">남은 콜</div>
+        </div>
+        <div>
+          <div class="pds-count-value" id="completedCount" data-role="completedCount">7</div>
+          <div class="pds-count-label">완료</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pds-control-bar">
+    <div class="pds-control-actions">
+      <button id="startDialingBtn" data-role="startDialingBtn" class="pds-btn-start-bg pds-dial-start-btn">
+        <i class="fa-solid fa-play pds-icon-inline"></i>다이얼링 시작
+      </button>
+      <button id="pauseDialingBtn" data-role="pauseDialingBtn" class="pds-opacity-disabled pds-dial-pause-btn" disabled>
+        <i class="fa-solid fa-pause pds-icon-inline"></i>일시정지
+      </button>
+    </div>
+    <div class="pds-control-filter-row">
+      <select class="pds-input-border pds-campaign-select">
+        <option>캠페인: VIP 자산관리 서비스</option>
+        <option>캠페인: 신규 펀드 상품 안내</option>
+        <option>캠페인: ISA 계좌 만기 안내</option>
+      </select>
+      <button class="pds-filter-btn">
+        <i class="fa-solid fa-filter"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="pds-list-area">
+    <div class="pds-list-head">
+      <h3 class="pds-section-title">배정된 고객 리스트</h3>
+      <span class="pds-meta-text">
+        <i class="fa-solid fa-users pds-icon-inline-sm"></i>15명
+      </span>
+    </div>
+
+    <div class="pds-list-stack" id="customerList">
+      <div class="customer-row" data-role="customer-row" data-customer-id="1" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">김재현</span>
+            <span class="pds-tier-badge pds-tier-badge--vip">VIP</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-1234-5678</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>VIP 자산관리 서비스
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="2" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">이수진</span>
+            <span class="pds-tier-badge pds-tier-badge--general">일반</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-2345-6789</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>신규 펀드 상품 안내
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="3" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">박민호</span>
+            <span class="pds-tier-badge pds-tier-badge--vip">VIP</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-3456-7890</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>VIP 자산관리 서비스
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="4" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">최윤아</span>
+            <span class="pds-tier-badge pds-tier-badge--general">일반</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-4567-8901</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>ISA 계좌 만기 안내
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="5" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">정하늘</span>
+            <span class="pds-tier-badge pds-tier-badge--general">일반</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-5678-9012</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>신규 펀드 상품 안내
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="6" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">강서현</span>
+            <span class="pds-tier-badge pds-tier-badge--vip">VIP</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-6789-0123</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>VIP 자산관리 서비스
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="7" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">윤준서</span>
+            <span class="pds-tier-badge pds-tier-badge--general">일반</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-7890-1234</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>ISA 계좌 만기 안내
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+
+      <div class="customer-row" data-role="customer-row" data-customer-id="8" data-status="ready">
+        <div class="pds-row-head">
+          <div class="pds-inline-center-2">
+            <span class="dial-status ready"></span>
+            <span class="pds-customer-name">송지우</span>
+            <span class="pds-tier-badge pds-tier-badge--general">일반</span>
+          </div>
+          <span class="pds-meta-xxs">대기</span>
+        </div>
+        <div class="pds-row-contact">
+          <i class="fa-solid fa-phone pds-icon-muted"></i>
+          <span class="pds-contact-text">010-8901-2345</span>
+        </div>
+        <p class="pds-campaign-text">
+          <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>신규 펀드 상품 안내
+        </p>
+        <div class="pds-row-foot">
+          <span class="pds-row-meta">배정: 2024-01-20 09:00</span>
+          <span class="pds-row-meta">시도: 0회</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,95 @@
+<section id="center-column" class="column col-center">
+  <div class="card info-card">
+    <div class="pds-card-header">
+      <h3 class="pds-card-title pds-card-title--lg">
+        <i class="fa-solid fa-gauge-high pds-accent-text"></i>
+        다이얼링 현황
+      </h3>
+      <span class="pds-meta-text" id="currentTime" data-role="currentTime">2024-01-20 14:35:22</span>
+    </div>
+
+    <div class="pds-progress-wrap">
+      <div class="pds-progress-inner">
+        <svg class="progress-ring" viewBox="0 0 120 120">
+          <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+          <circle id="progressCircle" data-role="progressCircle" class="progress-ring-circle" stroke="#0046ff" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
+        </svg>
+        <div class="pds-progress-center">
+          <span class="pds-progress-percent" id="progressPercent" data-role="progressPercent">0%</span>
+          <span class="pds-meta-text">진행률</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pds-metric-grid">
+      <div class="pds-metric-card pds-card-muted">
+        <div class="pds-metric-head">
+          <i class="fa-solid fa-phone pds-accent-text"></i>
+          <span class="pds-meta-text">발신 시도</span>
+        </div>
+        <div class="pds-metric-value pds-body-text" id="dialAttempts" data-role="dialAttempts">0</div>
+      </div>
+      <div class="pds-metric-card pds-card-success">
+        <div class="pds-metric-head">
+          <i class="fa-solid fa-check-circle pds-status-text-success"></i>
+          <span class="pds-meta-text">연결 성공</span>
+        </div>
+        <div class="pds-metric-value pds-status-text-success" id="dialSuccess" data-role="dialSuccess">0</div>
+      </div>
+      <div class="pds-metric-card pds-card-danger">
+        <div class="pds-metric-head">
+          <i class="fa-solid fa-phone-slash pds-status-text-danger"></i>
+          <span class="pds-meta-text">연결 실패</span>
+        </div>
+        <div class="pds-metric-value pds-status-text-danger" id="dialFailed" data-role="dialFailed">0</div>
+      </div>
+      <div class="pds-metric-card pds-card-muted">
+        <div class="pds-metric-head">
+          <i class="fa-solid fa-clock pds-accent-text"></i>
+          <span class="pds-meta-text">평균 통화시간</span>
+        </div>
+        <div class="pds-metric-value pds-body-text" id="avgCallTime">0:00</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="pds-between-row-md">
+      <h3 class="pds-card-title">
+        <i class="fa-solid fa-list-check pds-accent-text"></i>
+        실시간 다이얼링 로그
+      </h3>
+      <button class="pds-export-btn">
+        <i class="fa-solid fa-download pds-icon-inline-sm"></i>내보내기
+      </button>
+    </div>
+    <div class="pds-log-box" id="dialingLog" data-role="dialingLog">
+      <div class="pds-log-line--ok">[시스템] PDS 자동다이얼링 시스템 준비완료</div>
+      <div class="pds-log-line--muted">[시스템] 배정된 고객: 15명</div>
+      <div class="pds-accent-text">[시스템] 다이얼링 시작 대기중...</div>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="pds-note-header">
+      <h3 class="pds-note-title">
+        <i class="fa-solid fa-pen-to-square pds-accent-text"></i>
+        상담 메모
+      </h3>
+      <span class="pds-note-hint">통화 핵심 내용을 간단히 기록하세요.</span>
+    </div>
+    <textarea
+      class="pds-note-textarea pds-input-border pds-note-input"
+      placeholder="상담 내용을 기록하세요..."
+      data-role="pds-center-note"
+    ></textarea>
+    <div class="pds-note-actions">
+      <button class="pds-note-btn pds-note-btn--muted">
+        <i class="fa-solid fa-rotate-left pds-icon-inline-sm"></i>초기화
+      </button>
+      <button class="pds-note-btn pds-note-btn--primary">
+        <i class="fa-solid fa-save pds-icon-inline-sm"></i>메모 저장
+      </button>
+    </div>
+  </div>
+</section>
