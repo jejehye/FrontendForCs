@@ -30,6 +30,7 @@ function renderSidebar(activePage) {
     ['pds.html', 'PDS', 'fa-phone-volume'],
     ['sms.html', 'SMS', 'fa-comment-sms'],
     ['callback.html', 'Callback', 'fa-phone'],
+    ['specific.html', 'Specific', 'fa-user-check'],
   ];
 
   const navMarkup = navItems

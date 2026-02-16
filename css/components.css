@@ -174,8 +174,88 @@ body {
 .status-away { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
 .status-busy { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
 
-.history-editor-panel { height: 360px; }
+.history-editor-panel {
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.history-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.1rem 0 0.15rem;
+}
+.history-editor-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+.history-editor-timestamp { font-size: 10px; color: #6b7280; }
+.history-editor-form { display: flex; flex-direction: column; gap: 0.5rem; }
+.history-editor-card {
+  border: 1px solid #bfdbfe;
+  background: #f8fbff;
+  border-radius: 10px;
+  padding: 0.55rem 0.6rem;
+}
+.history-editor-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+.history-editor-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
+}
+.history-editor-section-hint {
+  font-size: 10px;
+  font-weight: 600;
+  color: #2563eb;
+}
+.history-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+}
+.history-field-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+}
+.history-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+.history-note-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
+}
+.history-note-limit { font-size: 10px; color: #9ca3af; }
 .consultation-note { height: 200px; }
+.history-note-meta {
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #6b7280;
+}
+.history-editor-actions { display: flex; gap: 0.5rem; }
 .journey-scroll-panel { height: 800px; }
 .column-width-sm { width: 54px; }
 
@@ -186,4 +266,5 @@ body {
   .account-field-row,
   .account-field-row-full { grid-column: 1 / -1; }
   .account-field-label { width: 4.2rem; }
+  .history-category-grid { grid-template-columns: minmax(0, 1fr); }
 }
