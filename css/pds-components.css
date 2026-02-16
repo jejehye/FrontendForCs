@@ -233,6 +233,10 @@ body {
 .pds-note-btn { flex: 1; font-size: 0.75rem; padding: 8px 12px; border-radius: 0.5rem; }
 .pds-note-btn--muted { background: #f0f0f5; color: var(--color-text-primary); }
 .pds-note-btn--primary { background: var(--color-primary); color: #fff; }
+.pds-note-input { width: 100%; height: 6rem; padding: 8px 12px; border-radius: 0.75rem; font-size: 0.75rem; outline: none; }
+.pds-note-input:focus { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35); }
+.pds-current-icon-wrap { width: 5rem; height: 5rem; border-radius: 9999px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
+.pds-flex-fill { flex: 1 1 0%; }
 
 .pds-inline-center-2 { display: flex; align-items: center; gap: 8px; }
 .pds-tier-badge { font-size: 0.6875rem; padding: 2px 8px; border-radius: 0.25rem; font-weight: 700; }
