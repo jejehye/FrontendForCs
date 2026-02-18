@@ -1,5 +1,6 @@
 window.AppUi?.initSidebarNavigation();
 const pageData = window.__PAGE_DATA__ || {};
+const specificDataEndpoint = window.__APP_ENDPOINTS__?.specificData || '/api/specific';
 
 const getHook = key =>
   document.querySelector(`[data-role="${key}"]`) || document.getElementById(key);
@@ -38,6 +39,7 @@ const adminPageSize = 5;
 let historyPage = 1;
 const historyPageSize = 5;
 let requestId = 1;
+let requests = [];
 const currentAgentName = localStorage.getItem('currentAgentName') || '김민수';
 const currentAgentEmpNo = localStorage.getItem('currentAgentEmpNo') || '204075';
 
@@ -112,10 +114,53 @@ const defaultRequests = [
   },
 ];
 
-const requests = Array.isArray(pageData.initial_requests) && pageData.initial_requests.length
-  ? pageData.initial_requests.map(item => ({ ...item }))
-  : defaultRequests;
-requestId = requests.reduce((maxId, item) => Math.max(maxId, Number(item.id) || 0), 0) + 1;
+const defaultExcludeTypes = ['콜 미수신', '교육/회의', '시스템 점검', '기타'];
+
+function populateExcludeTypes(types) {
+  const excludeTypeSelect = getHook('excludeType');
+  if (!excludeTypeSelect) return;
+
+  const values = Array.isArray(types) && types.length ? types : defaultExcludeTypes;
+  const fragment = document.createDocumentFragment();
+  values.forEach((type, index) => {
+    const option = document.createElement('option');
+    option.value = type;
+    option.textContent = type;
+    if (index === 0) {
+      option.selected = true;
+    }
+    fragment.appendChild(option);
+  });
+
+  excludeTypeSelect.replaceChildren(fragment);
+}
+
+function hydrateSpecificData(data) {
+  const sourceRequests = Array.isArray(data?.initial_requests) && data.initial_requests.length
+    ? data.initial_requests.map(item => ({ ...item }))
+    : defaultRequests.map(item => ({ ...item }));
+
+  requests = sourceRequests;
+  requestId = requests.reduce((maxId, item) => Math.max(maxId, Number(item.id) || 0), 0) + 1;
+  populateExcludeTypes(data?.exclude_types);
+}
+
+async function loadSpecificData() {
+  if (!window.AppApi?.fetchJson) {
+    return pageData;
+  }
+
+  try {
+    const remoteData = await window.AppApi.fetchJson(specificDataEndpoint);
+    if (remoteData && typeof remoteData === 'object') {
+      return remoteData;
+    }
+  } catch (error) {
+    console.warn('[specific] API 데이터 로드 실패, 기본 데이터로 대체합니다.', error);
+  }
+
+  return pageData;
+}
 
 function getStatusLabel(status) {
   if (status === 'pending') return '승인대기';
@@ -588,4 +633,10 @@ if (adminPagination) {
   });
 }
 
-renderAll();
+async function initSpecificPage() {
+  const loadedData = await loadSpecificData();
+  hydrateSpecificData(loadedData);
+  renderAll();
+}
+
+initSpecificPage();
