@@ -52,6 +52,9 @@ const templateSearchInput = selectOne('[data-role="template-search"]', '[data-te
 const smsHistoryPhoneInput = selectOne('[data-role="sms-history-phone"]', '[data-sms-history-phone]');
 const smsHistorySearchButton = selectOne('[data-action="sms-history-search"]', '[data-sms-history-search]');
 const smsHistoryBody = selectOne('[data-role="sms-history-body"]', '[data-sms-history-body]');
+const recipientInput = selectOne('[data-role="sms-recipient-input"]');
+const recipientAddButton = selectOne('[data-action="sms-recipient-add"]');
+const recipientList = document.querySelector('.sms-recipient-list');
 
 const instantSendButton = selectOne('[data-action="sms-send-instant"]', '[data-sms-send="instant"]');
 const scheduledSendButton = selectOne('[data-action="sms-send-scheduled"]', '[data-sms-send="scheduled"]');
@@ -65,7 +68,8 @@ function createRecipientChip(recipient) {
   const chip = document.createElement('span');
   chip.className = 'recipient-chip recipient-chip-primary';
   chip.setAttribute('data-role', 'recipient-chip');
-  chip.innerHTML = `${recipient.name} (${recipient.phone}) <i class="fa-solid fa-xmark sms-icon-danger-hover"></i>`;
+  chip.setAttribute('data-phone', recipient.phone || '');
+  chip.innerHTML = `${recipient.name} (${recipient.phone}) <button type="button" class="sms-recipient-remove-btn" data-action="sms-recipient-remove" aria-label="수신자 삭제"><i class="fa-solid fa-xmark sms-icon-danger-hover"></i></button>`;
   return chip;
 }
 
@@ -147,7 +151,6 @@ function renderSmsDynamicBlocks(data) {
   const notices = Array.isArray(data.notices) ? data.notices : [];
   const templates = Array.isArray(data.templates) ? data.templates : [];
 
-  const recipientList = document.querySelector('.sms-recipient-list');
   if (recipientList) {
     recipientList.replaceChildren(...recipients.map(createRecipientChip));
   }
@@ -272,6 +275,83 @@ function initializeTemplatePagination() {
 }
 
 const normalizePhone = value => value.replace(/[^0-9]/g, '');
+
+const formatRecipientPhone = value => {
+  const digits = normalizePhone(value).slice(0, 11);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 7) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+  return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+};
+
+function addRecipientByPhone(phoneValue) {
+  const digits = normalizePhone(phoneValue);
+  if (digits.length < 10) {
+    alert('전화번호를 정확히 입력해 주세요.');
+    recipientInput?.focus();
+    return;
+  }
+
+  const recipients = Array.isArray(smsData.recipients) ? smsData.recipients : [];
+  const exists = recipients.some(item => normalizePhone(item.phone || '') === digits);
+  if (exists) {
+    alert('이미 추가된 수신자입니다.');
+    recipientInput?.focus();
+    return;
+  }
+
+  recipients.push({
+    name: '고객',
+    phone: formatRecipientPhone(digits)
+  });
+  smsData.recipients = recipients;
+  renderSmsDynamicBlocks(smsData);
+
+  if (recipientInput) {
+    recipientInput.value = '';
+    recipientInput.focus();
+  }
+}
+
+function bindRecipientActions() {
+  if (recipientInput) {
+    recipientInput.addEventListener('input', () => {
+      recipientInput.value = formatRecipientPhone(recipientInput.value);
+    });
+
+    recipientInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        addRecipientByPhone(recipientInput.value);
+      }
+    });
+  }
+
+  if (recipientAddButton) {
+    recipientAddButton.addEventListener('click', () => {
+      addRecipientByPhone(recipientInput?.value || '');
+    });
+  }
+
+  if (recipientList) {
+    recipientList.addEventListener('click', event => {
+      const removeButton = event.target.closest('[data-action="sms-recipient-remove"]');
+      const fallbackIcon = event.target.closest('.sms-icon-danger-hover');
+      if (!removeButton && !fallbackIcon) {
+        return;
+      }
+
+      const chip = event.target.closest('[data-role="recipient-chip"]');
+      if (!chip) {
+        return;
+      }
+
+      const phone = normalizePhone(chip.getAttribute('data-phone') || chip.textContent || '');
+      const recipients = Array.isArray(smsData.recipients) ? smsData.recipients : [];
+      smsData.recipients = recipients.filter(item => normalizePhone(item.phone || '') !== phone);
+      renderSmsDynamicBlocks(smsData);
+    });
+  }
+}
 
 function createHistoryMessageRow(message) {
   const row = document.createElement('tr');
@@ -415,6 +495,7 @@ async function initSmsPage() {
     : defaultSmsHistoryRecords;
 
   renderSmsDynamicBlocks(smsData);
+  bindRecipientActions();
   bindBasicEvents();
   initializeTemplatePagination();
   bindSendActions();

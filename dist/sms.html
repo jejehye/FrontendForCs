@@ -165,8 +165,14 @@
         </h3>
         <div class="sms-section-block">
           <div class="sms-input-row">
-            <input type="text" placeholder="전화번호 입력 (010-1234-5678)" class="sms-field-input">
-            <button class="sms-recipient-btn">
+            <input
+              type="text"
+              placeholder="전화번호 입력 (010-1234-5678)"
+              class="sms-field-input"
+              data-role="sms-recipient-input"
+              inputmode="numeric"
+            >
+            <button type="button" class="sms-recipient-btn" data-action="sms-recipient-add">
               <i class="fa-solid fa-plus sms-icon-inline-sm"></i>추가
             </button>
           </div>
