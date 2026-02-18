@@ -250,7 +250,7 @@
             <th class="table__head table__head--summary">상담내용</th>
           </tr>
         </thead>
-        <tbody class="main-history-body" data-role="my-history-body history-detail-source" data-history-detail-source>
+        <tbody class="main-history-body" data-role="my-history-body" data-history-detail-source>
           {% for row in main_data.my_history_rows %}
             <tr class="tbl__row{% if row.is_active %} is-active{% endif %}">
               <td class="tbl__cell{% if row.is_active %} tbl__cell--accent{% endif %}">{{ row.id }}</td>

@@ -312,7 +312,7 @@ window.MainPageHistory = (() => {
 
     let historyPageButtons = selectAll('[data-action="my-history-page-btn"]', '[data-my-history-page-btn]');
     let activeHistoryPage = 1;
-    const historyPageSize = 5;
+    const historyPageSize = 8;
 
     if (!historyBody || !historyPagination || !historyFirstButton || !historyPrevButton || !historyNextButton || !historyLastButton) {
       return;
