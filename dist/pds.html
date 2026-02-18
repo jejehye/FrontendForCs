@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PDS 자동다이얼링</title>
+  <script>
+    (() => {
+      const { pathname, search, hash } = window.location;
+      if (!pathname.endsWith('.html')) return;
+
+      const targetPath = pathname
+        .replace(/\/index\.html$/, '/')
+        .replace(/\.html$/, '');
+
+      if (targetPath !== pathname) {
+        window.location.replace(`${targetPath}${search}${hash}`);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="/app.css">
   
   <!-- ===================== Vendor Styles ===================== -->
@@ -16,6 +30,8 @@
 </head>
 <body>
   
+  <script src="/app-config.js"></script>
+
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">
     <!-- ===================== Global Navigation ===================== -->

@@ -9,6 +9,16 @@ services:
     container_name: frontend-for-cs
     ports:
       - "80:80"
+    environment:
+      APP_API_BASE: ${APP_API_BASE:-}
+      APP_ENDPOINT_MAIN_DATA: ${APP_ENDPOINT_MAIN_DATA:-}
+      APP_ENDPOINT_CHAT_DATA: ${APP_ENDPOINT_CHAT_DATA:-}
+      APP_ENDPOINT_PDS_DATA: ${APP_ENDPOINT_PDS_DATA:-}
+      APP_ENDPOINT_SMS_DATA: ${APP_ENDPOINT_SMS_DATA:-}
+      APP_ENDPOINT_CALLBACK_DATA: ${APP_ENDPOINT_CALLBACK_DATA:-}
+      APP_ENDPOINT_SPECIFIC_DATA: ${APP_ENDPOINT_SPECIFIC_DATA:-}
+      APP_ENDPOINT_MAIN_TRANSFER_HTS: ${APP_ENDPOINT_MAIN_TRANSFER_HTS:-}
+      APP_ENDPOINT_MAIN_TRANSFER_GOLDNET: ${APP_ENDPOINT_MAIN_TRANSFER_GOLDNET:-}
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost/main.html || exit 1"]

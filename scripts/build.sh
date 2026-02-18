@@ -17,4 +17,8 @@ for static_dir in css javascript; do
   fi
 done
 
+if [ -f "$ROOT_DIR/app-config.js" ]; then
+  cp "$ROOT_DIR/app-config.js" "$DIST_DIR/app-config.js"
+fi
+
 echo "Build completed: $DIST_DIR"

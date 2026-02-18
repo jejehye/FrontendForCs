@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}CTI Agent Dashboard{% endblock %}</title>
+  <script>
+    (() => {
+      const { pathname, search, hash } = window.location;
+      if (!pathname.endsWith('.html')) return;
+
+      const targetPath = pathname
+        .replace(/\/index\.html$/, '/')
+        .replace(/\.html$/, '');
+
+      if (targetPath !== pathname) {
+        window.location.replace(`${targetPath}${search}${hash}`);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="/app.css">
   {% block head %}{% endblock %}
 </head>
