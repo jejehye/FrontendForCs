@@ -1,6 +1,10 @@
 /* Main page bootstrap entry */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  if (window.MainPageData && typeof window.MainPageData.load === 'function') {
+    await window.MainPageData.load();
+  }
+
   const modules = [
     window.MainPageCustomerInfo,
     window.MainPageTabs,
