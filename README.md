@@ -153,5 +153,42 @@ docker compose up --build -d
 - JS는 페이지 단위 모듈 구조(특히 `javascript/main/*`)로 분해
 - 템플릿은 section 단위로 분리되어 API 응답 바인딩으로 교체하기 쉬운 구조
 
+## API 엔드포인트 주입 방식
+정적 리소스는 그대로 배포하고, 데이터만 API(AJAX/fetch)로 조회하는 방식을 권장합니다.
+
+- 공통 호출 유틸: `javascript/common/api.js` (`window.AppApi.fetchJson`)
+- 페이지별 우선 엔드포인트:
+  - `specific`: `window.__APP_ENDPOINTS__.specificData` (기본: `/api/specific`)
+  - `sms`: `window.__APP_ENDPOINTS__.smsData` (기본: `/api/sms`)
+- API 실패 시: 페이지별 기존 정적 데이터(`page_data`)로 fallback
+
+### 1) 페이지별 개별 URL 주입 (권장)
+`src/layouts/app-shell.njk` 또는 서버 템플릿에서 전역 객체로 주입합니다.
+
+```html
+<script>
+  window.__APP_ENDPOINTS__ = {
+    specificData: "https://api.example.com/specific",
+    smsData: "https://api.example.com/sms",
+    smsTemplates: "https://api.example.com/sms/templates",
+    smsHistory: "https://api.example.com/sms/history"
+  };
+</script>
+```
+
+### 2) 공통 Base URL 주입
+개별 URL 대신 Base URL만 주입하고, 코드에서 상대 경로(`/api/...`)를 사용합니다.
+
+```html
+<script>
+  window.APP_API_BASE = "https://api.example.com";
+</script>
+```
+
+### 다중 엔드포인트 사용 규칙
+- 한 페이지에서 endpoint를 여러 개 써도 됨
+- `window.__APP_ENDPOINTS__`에 키를 추가하고 JS에서 키로 접근
+- 예: `sms` 화면에서 `smsData`, `smsTemplates`, `smsHistory` 분리 호출
+
 ## 참고
 - 디자인/스타일 가이드: `STYLE_GUIDE.md`
