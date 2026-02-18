@@ -2,7 +2,7 @@
 {% set title = "CTI Agent Login" %}
 
 {% block head %}
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -29,5 +29,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="javascript/login.js"></script>
+<script src="{{ asset('javascript/login.js') }}"></script>
 {% endblock %}

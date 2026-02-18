@@ -4,16 +4,16 @@
 
 {% block head %}
   <!-- ===================== Vendor Styles ===================== -->
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
-  <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="{{ asset('./vendor/fontawesome/css/all.min.css') }}">
+  <script src="{{ asset('./vendor/fontawesome/js/all.min.js') }}" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- ===================== Page Styles ===================== -->
-  <link rel="stylesheet" href="css/{{ page_css }}">
+  <link rel="stylesheet" href="{{ asset('css/' ~ page_css) }}">
 {% endblock %}
 
 {% block body %}
-  <script src="/app-config.js"></script>
-  <script src="/javascript/common/page-module.js"></script>
+  <script src="{{ asset('/app-config.js') }}"></script>
+  <script src="{{ asset('/javascript/common/page-module.js') }}"></script>
 
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">

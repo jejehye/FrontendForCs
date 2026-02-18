@@ -16,6 +16,14 @@ const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(srcDir, {
   lstripBlocks: false,
 });
 env.addFilter('tojson', value => JSON.stringify(value ?? {}));
+const assetVersion = process.env.ASSET_VERSION || Date.now().toString();
+env.addGlobal('asset', (assetPath) => {
+  if (typeof assetPath !== 'string' || assetPath.length === 0) {
+    return assetPath;
+  }
+  const delimiter = assetPath.includes('?') ? '&' : '?';
+  return `${assetPath}${delimiter}v=${encodeURIComponent(assetVersion)}`;
+});
 
 function renderTemplate(templatePath, context = {}) {
   return new Promise((resolve, reject) => {
