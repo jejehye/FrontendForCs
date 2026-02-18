@@ -10,6 +10,7 @@ services:
     ports:
       - "80:80"
     environment:
+      USE_MOCK: ${USE_MOCK:-true}
       APP_API_BASE: ${APP_API_BASE:-}
       APP_ENDPOINT_MAIN_DATA: ${APP_ENDPOINT_MAIN_DATA:-}
       APP_ENDPOINT_CHAT_DATA: ${APP_ENDPOINT_CHAT_DATA:-}

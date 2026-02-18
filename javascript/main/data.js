@@ -204,6 +204,10 @@ window.MainPageData = (() => {
     const localData = window.__PAGE_DATA__ || {};
     applyData(localData);
 
+    if (window.AppApi?.isMockEnabled?.()) {
+      return localData;
+    }
+
     if (!window.AppApi?.fetchJson) {
       return localData;
     }

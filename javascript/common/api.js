@@ -10,6 +10,18 @@ window.AppApi = (() => {
 
   const normalizePath = value => (value || '').replace(/^\/+/, '');
 
+  const parseBoolean = (value, fallback = false) => {
+    if (typeof value === 'boolean') return value;
+    if (typeof value === 'string') {
+      const normalized = value.trim().toLowerCase();
+      if (['true', '1', 'yes', 'y', 'on'].includes(normalized)) return true;
+      if (['false', '0', 'no', 'n', 'off'].includes(normalized)) return false;
+    }
+    return fallback;
+  };
+
+  const isMockEnabled = () => parseBoolean(window.USE_MOCK ?? window.APP_USE_MOCK, false);
+
   const resolveBaseUrl = explicitBase =>
     explicitBase || window.APP_API_BASE || document.body?.dataset?.apiBase || '';
 
@@ -219,5 +231,5 @@ window.AppApi = (() => {
     }
   };
 
-  return { fetchJson };
+  return { fetchJson, isMockEnabled };
 })();

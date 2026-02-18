@@ -137,6 +137,10 @@ function renderChatDynamicBlocks(data) {
 }
 
 async function loadRemoteChatData() {
+  if (window.AppApi?.isMockEnabled?.()) {
+    return null;
+  }
+
   if (!window.AppApi?.fetchJson) {
     return null;
   }

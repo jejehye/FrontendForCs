@@ -333,6 +333,10 @@ function parseCustomersFromDom() {
 }
 
 async function loadPdsData() {
+  if (window.AppApi?.isMockEnabled?.()) {
+    return {};
+  }
+
   if (!window.AppApi?.fetchJson) {
     return {};
   }

@@ -146,6 +146,10 @@ function hydrateSpecificData(data) {
 }
 
 async function loadSpecificData() {
+  if (window.AppApi?.isMockEnabled?.()) {
+    return pageData;
+  }
+
   if (!window.AppApi?.fetchJson) {
     return pageData;
   }

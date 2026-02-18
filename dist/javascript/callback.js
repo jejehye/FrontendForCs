@@ -509,6 +509,10 @@ function applyCallbackData(data) {
 }
 
 async function loadCallbackData() {
+  if (window.AppApi?.isMockEnabled?.()) {
+    return pageData;
+  }
+
   if (!window.AppApi?.fetchJson) {
     return pageData;
   }

@@ -471,6 +471,10 @@ function bindBasicEvents() {
 }
 
 async function loadSmsData() {
+  if (window.AppApi?.isMockEnabled?.()) {
+    return pageData;
+  }
+
   if (!window.AppApi?.fetchJson) {
     return pageData;
   }
