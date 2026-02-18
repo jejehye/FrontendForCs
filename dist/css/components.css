@@ -229,11 +229,36 @@ body { background-color: #f3f4f6; }
 .agent-kpi-label { font-size: 10px; color: #64748b; }
 .agent-kpi-value { font-size: 11px; font-weight: 700; color: #1e293b; }
 .agent-status-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #fff; border: 1px solid var(--color-panel-border); border-radius: 8px; }
-.agent-login-chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid var(--color-panel-border); border-radius: 10px; background: linear-gradient(180deg, #f8fafc, #f1f5f9); color: #334155; min-width: 162px; }
+.agent-login-chip { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 6px 9px; border: 1px solid var(--color-panel-border); border-radius: 10px; background: linear-gradient(180deg, #f8fafc, #f1f5f9); color: #334155; }
 .agent-login-chip__avatar { width: 27px; height: 27px; border-radius: 50%; background: #dbeafe; color: #1d4ed8; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
 .agent-login-chip__meta { display: inline-flex; flex-direction: column; line-height: 1.15; }
 .agent-login-chip__role { font-size: 10px; font-weight: 600; color: #64748b; }
 .agent-login-chip__name { font-size: 12px; color: #1e293b; font-weight: 700; letter-spacing: -0.01em; }
+.agent-logout-btn {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  min-height: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.agent-login-chip .agent-logout-btn {
+  width: auto;
+  justify-content: flex-start;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+.agent-logout-btn:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #1f2937;
+}
 .status-indicator { width: 10px; height: 10px; border-radius: 50%; }
 .status-ready { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.5); }
 .status-away { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
