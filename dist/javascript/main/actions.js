@@ -39,6 +39,19 @@ window.MainPageActions = (() => {
     });
   };
 
+  const initLogoutAction = () => {
+    const logoutButton = selectOne('[data-action="main-logout"]');
+    if (!logoutButton) {
+      return;
+    }
+
+    logoutButton.addEventListener('click', () => {
+      localStorage.removeItem('currentAgentId');
+      localStorage.removeItem('currentAgentName');
+      window.location.assign(new URL('./login', window.location.href).href);
+    });
+  };
+
   const initCustomerTransferActions = () => {
     const htsButton = selectOne('[data-action="main-transfer-hts"]', '.verify-transfer-actions .verify-transfer-btn:not(.verify-transfer-btn-goldnet)');
     const goldnetButton = selectOne('[data-action="main-transfer-goldnet"]', '.verify-transfer-actions .verify-transfer-btn-goldnet');
@@ -330,6 +343,7 @@ window.MainPageActions = (() => {
 
   const init = () => {
     initStatusControl();
+    initLogoutAction();
     initCustomerTransferActions();
     initSoftphoneScripts();
     initOutboundDialer();
