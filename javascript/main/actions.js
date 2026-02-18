@@ -39,6 +39,88 @@ window.MainPageActions = (() => {
     });
   };
 
+  const initCustomerTransferActions = () => {
+    const htsButton = selectOne('[data-action="main-transfer-hts"]', '.verify-transfer-actions .verify-transfer-btn:not(.verify-transfer-btn-goldnet)');
+    const goldnetButton = selectOne('[data-action="main-transfer-goldnet"]', '.verify-transfer-actions .verify-transfer-btn-goldnet');
+
+    if (!htsButton && !goldnetButton) {
+      return;
+    }
+
+    const resolveApiUrl = path => {
+      if (!path) {
+        return '';
+      }
+
+      if (/^https?:\/\//i.test(path)) {
+        return path;
+      }
+
+      const base = (window.APP_API_BASE || document.body?.dataset?.apiBase || '').replace(/\/+$/, '');
+      const normalizedPath = String(path).replace(/^\/+/, '');
+      return base ? `${base}/${normalizedPath}` : `/${normalizedPath}`;
+    };
+
+    const gatherCustomerPayload = () => ({
+      customerName: document.querySelector('#account-owner')?.value?.trim() || '',
+      accountNumber: document.querySelector('#account-number')?.value?.trim() || '',
+      residentId: document.querySelector('#resident-id')?.value?.trim() || '',
+      accountPassword: document.querySelector('#account-password')?.value?.trim() || '',
+      transmittedAt: new Date().toISOString()
+    });
+
+    const sendCustomerInfo = async (endpoint, channelLabel, buttonNode) => {
+      const url = resolveApiUrl(endpoint);
+      if (!url) {
+        alert(`${channelLabel} 전송 API URL이 설정되지 않았습니다.`);
+        return;
+      }
+
+      const originalDisabled = buttonNode?.disabled;
+      if (buttonNode) {
+        buttonNode.disabled = true;
+      }
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(gatherCustomerPayload())
+        });
+
+        if (response.status === 200) {
+          alert(`${channelLabel} 고객정보 전송이 완료되었습니다. (200 OK)`);
+          return;
+        }
+
+        alert(`${channelLabel} 전송 실패: HTTP ${response.status}`);
+      } catch (error) {
+        alert(`${channelLabel} 전송 실패: 네트워크 오류`);
+      } finally {
+        if (buttonNode) {
+          buttonNode.disabled = Boolean(originalDisabled);
+        }
+      }
+    };
+
+    const htsEndpoint = window.__APP_ENDPOINTS__?.mainTransferHts || '/api/main/transfer/hts';
+    const goldnetEndpoint = window.__APP_ENDPOINTS__?.mainTransferGoldnet || '/api/main/transfer/goldnet';
+
+    if (htsButton) {
+      htsButton.addEventListener('click', () => {
+        void sendCustomerInfo(htsEndpoint, 'HTS', htsButton);
+      });
+    }
+
+    if (goldnetButton) {
+      goldnetButton.addEventListener('click', () => {
+        void sendCustomerInfo(goldnetEndpoint, '골드넷+', goldnetButton);
+      });
+    }
+  };
+
   const initSoftphoneScripts = () => {
     const callToggleButton = selectOne('[data-action="softphone-toggle"]', '[data-call-toggle]');
     const scriptButtons = selectAll('[data-action="softphone-script"]', '[data-softphone-script]');
@@ -248,6 +330,7 @@ window.MainPageActions = (() => {
 
   const init = () => {
     initStatusControl();
+    initCustomerTransferActions();
     initSoftphoneScripts();
     initOutboundDialer();
     initGroupSwitchModal();
