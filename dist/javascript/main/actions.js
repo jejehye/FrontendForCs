@@ -46,6 +46,10 @@ window.MainPageActions = (() => {
     }
 
     logoutButton.addEventListener('click', () => {
+      const shouldLogout = window.confirm('로그아웃하시겠습니까?');
+      if (!shouldLogout) {
+        return;
+      }
       localStorage.removeItem('currentAgentId');
       localStorage.removeItem('currentAgentName');
       window.location.assign('/login');
