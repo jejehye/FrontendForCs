@@ -1,241 +1,397 @@
+window.AppUi?.initSidebarNavigation();
+window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });
+
+const pdsDataEndpoint = window.__APP_ENDPOINTS__?.pdsData || '/api/pds';
+
 const getHook = key =>
   document.querySelector(`[data-role="${key}"]`) || document.getElementById(key);
-const queryAllHook = (standardSelector, legacySelector) => {
-  const standardNodes = Array.from(document.querySelectorAll(standardSelector));
-  if (standardNodes.length) return standardNodes;
-  return legacySelector ? Array.from(document.querySelectorAll(legacySelector)) : [];
-};
-const setHookText = (key, value) => {
-  const node = getHook(key);
-  if (node) node.textContent = value;
-};
-const setHookWidth = (key, value) => {
-  const node = getHook(key);
-  if (node) node.style.width = value;
+
+const getOne = selector => document.querySelector(selector);
+
+const pad2 = value => String(value).padStart(2, '0');
+
+const formatTime = seconds => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${pad2(mins)}:${pad2(secs)}`;
 };
 
+const nowKoreanDateTime = () => {
+  const now = new Date();
+  return `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())} ${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
+};
+
+const defaultCustomers = [
+  { id: 1, name: '김재현', tier: 'VIP', phone: '010-1234-5678', campaign: 'VIP 자산관리 서비스', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 2, name: '이수진', tier: '일반', phone: '010-2345-6789', campaign: '신규 펀드 상품 안내', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 3, name: '박민호', tier: 'VIP', phone: '010-3456-7890', campaign: 'VIP 자산관리 서비스', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 4, name: '최윤아', tier: '일반', phone: '010-4567-8901', campaign: 'ISA 계좌 만기 안내', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 5, name: '정하늘', tier: '일반', phone: '010-5678-9012', campaign: '신규 펀드 상품 안내', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 6, name: '강서현', tier: 'VIP', phone: '010-6789-0123', campaign: 'VIP 자산관리 서비스', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 7, name: '윤준서', tier: '일반', phone: '010-7890-1234', campaign: 'ISA 계좌 만기 안내', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 },
+  { id: 8, name: '송지우', tier: '일반', phone: '010-8901-2345', campaign: '신규 펀드 상품 안내', assignedAt: '2024-01-20 09:00', status: 'ready', attempts: 0 }
+];
+
+let pdsData = {
+  customers: defaultCustomers,
+  campaigns: ['VIP 자산관리 서비스', '신규 펀드 상품 안내', 'ISA 계좌 만기 안내']
+};
+
+let customers = [];
 let isDialing = false;
-        let currentCustomerIndex = 0;
-        let dialAttempts = 0;
-        let dialSuccess = 0;
-        let dialFailed = 0;
-        let callTimerInterval = null;
-        let callSeconds = 0;
+let callTimerInterval = null;
+let callSeconds = 0;
+let dialAttempts = 0;
+let dialSuccess = 0;
+let dialFailed = 0;
 
-        const customers = queryAllHook('[data-role="customer-row"]', '.customer-row');
-        const totalCount = customers.length;
+const startButton = getHook('startDialingBtn');
+const pauseButton = getHook('pauseDialingBtn');
+const customerList = getOne('#customerList');
+const campaignSelect = getOne('.pds-campaign-select');
 
-        getHook('startDialingBtn').addEventListener('click', startDialing);
-        getHook('pauseDialingBtn').addEventListener('click', pauseDialing);
+function setText(key, value) {
+  const node = getHook(key);
+  if (node) node.textContent = String(value);
+}
 
-        function startDialing() {
-            if (isDialing) return;
-            
-            isDialing = true;
-            getHook('startDialingBtn').disabled = true;
-            getHook('startDialingBtn').style.opacity = '0.5';
-            getHook('pauseDialingBtn').disabled = false;
-            getHook('pauseDialingBtn').style.opacity = '1';
-            
-            addLog('[시스템] 자동 다이얼링을 시작합니다...', 'green');
-            
-            processNextCustomer();
-        }
+function getStatusLabel(status) {
+  if (status === 'calling') return '발신중';
+  if (status === 'oncall') return '통화중';
+  if (status === 'failed') return '연결실패';
+  if (status === 'completed') return '완료';
+  return '대기';
+}
 
-        function pauseDialing() {
-            isDialing = false;
-            getHook('startDialingBtn').disabled = false;
-            getHook('startDialingBtn').style.opacity = '1';
-            getHook('pauseDialingBtn').disabled = true;
-            getHook('pauseDialingBtn').style.opacity = '0.5';
-            
-            addLog('[시스템] 다이얼링이 일시정지되었습니다.', 'yellow');
-            
-            if (callTimerInterval) {
-                clearInterval(callTimerInterval);
-                callTimerInterval = null;
-            }
-        }
+function getDialBadgeClass(status) {
+  if (status === 'calling') return 'calling';
+  if (status === 'failed') return 'failed';
+  if (status === 'oncall' || status === 'completed') return 'completed';
+  return 'ready';
+}
 
-        function processNextCustomer() {
-            if (!isDialing) return;
-            
-            const readyCustomers = Array.from(customers).filter(c => c.dataset.status === 'ready');
-            
-            if (readyCustomers.length === 0) {
-                addLog('[시스템] 모든 고객에 대한 다이얼링이 완료되었습니다.', 'green');
-                pauseDialing();
-                return;
-            }
-            
-            const customer = readyCustomers[0];
-            const customerId = customer.dataset.customerId;
-            const customerName = customer.querySelector('.font-bold').textContent;
-            const customerPhone = customer.querySelectorAll('.text-xs')[0].textContent;
-            
-            customer.dataset.status = 'calling';
-            customer.classList.add('calling');
-            customer.querySelector('.dial-status').classList.remove('ready');
-            customer.querySelector('.dial-status').classList.add('calling');
-            customer.querySelector('.text-xxs.text-gray-400').textContent = '발신중';
-            
-            getHook('currentCustomerName').textContent = customerName;
-            getHook('currentCustomerPhone').textContent = customerPhone;
-            getHook('callStatus').textContent = '발신중...';
-            
-            getHook('detailCustomerName').textContent = customerName;
-            getHook('detailCustomerPhone').textContent = customerPhone;
-            getHook('detailCustomerGrade').textContent = customer.querySelector('.text-xxs.bg-purple-100, .text-xxs.bg-blue-100').textContent;
-            getHook('detailCampaign').textContent = customer.querySelector('.text-xxs.text-gray-500').textContent.replace('📢 ', '');
-            
-            dialAttempts++;
-            getHook('dialAttempts').textContent = dialAttempts;
-            
-            addLog(`[발신] ${customerName} (${customerPhone}) 연결 시도중...`, 'blue');
-            
-            setTimeout(() => {
-                const isSuccess = Math.random() > 0.3;
-                
-                if (isSuccess) {
-                    handleCallSuccess(customer, customerName);
-                } else {
-                    handleCallFailure(customer, customerName);
-                }
-                
-                updateStats();
-            }, 2000);
-        }
+function renderCampaignOptions() {
+  if (!campaignSelect) return;
 
-        function handleCallSuccess(customer, customerName) {
-            customer.querySelector('.dial-status').classList.remove('calling');
-            customer.querySelector('.dial-status').classList.add('completed');
-            customer.querySelector('.text-xxs.text-gray-400').textContent = '통화중';
-            
-            getHook('callStatus').textContent = '통화중';
-            
-            dialSuccess++;
-            getHook('dialSuccess').textContent = dialSuccess;
-            
-            addLog(`[성공] ${customerName} 연결 성공 - 통화 시작`, 'green');
-            
-            callSeconds = 0;
-            startCallTimer();
-            
-            setTimeout(() => {
-                endCall(customer, customerName, true);
-            }, Math.random() * 5000 + 3000);
-        }
+  const values = Array.isArray(pdsData.campaigns) && pdsData.campaigns.length
+    ? pdsData.campaigns
+    : ['VIP 자산관리 서비스', '신규 펀드 상품 안내', 'ISA 계좌 만기 안내'];
 
-        function handleCallFailure(customer, customerName) {
-            customer.dataset.status = 'completed';
-            customer.classList.remove('calling');
-            customer.classList.add('completed');
-            customer.querySelector('.dial-status').classList.remove('calling');
-            customer.querySelector('.dial-status').classList.add('failed');
-            customer.querySelector('.text-xxs.text-gray-400').textContent = '연결실패';
-            
-            dialFailed++;
-            getHook('dialFailed').textContent = dialFailed;
-            
-            const failReasons = ['부재중', '통화중', '전원꺼짐', '번호없음'];
-            const reason = failReasons[Math.floor(Math.random() * failReasons.length)];
-            
-            addLog(`[실패] ${customerName} 연결 실패 (${reason})`, 'red');
-            
-            getHook('currentCustomerName').textContent = '대기중';
-            getHook('currentCustomerPhone').textContent = '-';
-            getHook('callStatus').textContent = '연결 대기';
-            
-            setTimeout(() => {
-                processNextCustomer();
-            }, 1000);
-        }
+  const fragment = document.createDocumentFragment();
+  values.forEach(campaign => {
+    const option = document.createElement('option');
+    option.textContent = `캠페인: ${campaign}`;
+    fragment.appendChild(option);
+  });
+  campaignSelect.replaceChildren(fragment);
+}
 
-        function endCall(customer, customerName, success) {
-            if (callTimerInterval) {
-                clearInterval(callTimerInterval);
-                callTimerInterval = null;
-            }
-            
-            customer.dataset.status = 'completed';
-            customer.classList.remove('calling');
-            customer.classList.add('completed');
-            customer.querySelector('.text-xxs.text-gray-400').textContent = '완료';
-            
-            addLog(`[완료] ${customerName} 통화 종료 (${formatTime(callSeconds)})`, 'green');
-            
-            getHook('currentCustomerName').textContent = '대기중';
-            getHook('currentCustomerPhone').textContent = '-';
-            getHook('callStatus').textContent = '연결 대기';
-            getHook('callTimer').textContent = '00:00';
-            
-            setTimeout(() => {
-                processNextCustomer();
-            }, 1000);
-        }
+function createCustomerRow(customer) {
+  const row = document.createElement('div');
+  row.className = `customer-row${customer.status === 'calling' ? ' calling' : ''}${customer.status === 'completed' || customer.status === 'failed' ? ' completed' : ''}`;
+  row.setAttribute('data-role', 'customer-row');
+  row.setAttribute('data-customer-id', String(customer.id));
+  row.setAttribute('data-status', customer.status);
 
-        function startCallTimer() {
-            callTimerInterval = setInterval(() => {
-                callSeconds++;
-                getHook('callTimer').textContent = formatTime(callSeconds);
-            }, 1000);
-        }
+  const tierClass = customer.tier === 'VIP' ? 'pds-tier-badge--vip' : 'pds-tier-badge--general';
 
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
+  row.innerHTML = `
+    <div class="pds-row-head">
+      <div class="pds-inline-center-2">
+        <span class="dial-status ${getDialBadgeClass(customer.status)}"></span>
+        <span class="pds-customer-name">${customer.name}</span>
+        <span class="pds-tier-badge ${tierClass}">${customer.tier}</span>
+      </div>
+      <span class="pds-meta-xxs">${getStatusLabel(customer.status)}</span>
+    </div>
+    <div class="pds-row-contact">
+      <i class="fa-solid fa-phone pds-icon-muted"></i>
+      <span class="pds-contact-text">${customer.phone}</span>
+    </div>
+    <p class="pds-campaign-text">
+      <i class="fa-solid fa-bullhorn pds-icon-inline-sm"></i>${customer.campaign}
+    </p>
+    <div class="pds-row-foot">
+      <span class="pds-row-meta">배정: ${customer.assignedAt}</span>
+      <span class="pds-row-meta">시도: ${customer.attempts || 0}회</span>
+    </div>
+  `;
 
-        function updateStats() {
-            const completed = dialSuccess + dialFailed;
-            const remain = totalCount - completed;
-            
-            getHook('completedCount').textContent = completed;
-            getHook('remainCount').textContent = remain;
-            
-            const progress = (completed / totalCount) * 100;
-            getHook('progressPercent').textContent = Math.round(progress) + '%';
-            
-            const circumference = 2 * Math.PI * 52;
-            const offset = circumference - (progress / 100) * circumference;
-            getHook('progressCircle').style.strokeDashoffset = offset;
-            
-            if (dialAttempts > 0) {
-                const successRate = Math.round((dialSuccess / dialAttempts) * 100);
-                const failRate = Math.round((dialFailed / dialAttempts) * 100);
-                
-                setHookText('successRate', successRate + '%');
-                setHookWidth('successBar', successRate + '%');
-                
-                setHookText('noAnswerRate', Math.round(failRate * 0.6) + '%');
-                setHookWidth('noAnswerBar', (failRate * 0.6) + '%');
-                
-                setHookText('busyRate', Math.round(failRate * 0.4) + '%');
-                setHookWidth('busyBar', (failRate * 0.4) + '%');
-            }
-        }
+  return row;
+}
 
-        function addLog(message, color) {
-            const log = getHook('dialingLog');
-            const time = new Date().toLocaleTimeString('ko-KR');
-            const colorClass = color === 'green' ? 'text-green-400' : 
-                              color === 'blue' ? 'text-blue-400' : 
-                              color === 'red' ? 'text-red-400' : 
-                              color === 'yellow' ? 'text-yellow-400' : 'text-gray-400';
-            
-            const entry = document.createElement('div');
-            entry.className = colorClass;
-            entry.textContent = `[${time}] ${message}`;
-            
-            log.appendChild(entry);
-            log.scrollTop = log.scrollHeight;
-        }
+function renderCustomers() {
+  if (!customerList) return;
+  customerList.replaceChildren(...customers.map(createCustomerRow));
+}
 
-        setInterval(() => {
-            const now = new Date();
-            getHook('currentTime').textContent = now.toLocaleString('ko-KR');
-        }, 1000);
+function addLog(message, level = 'muted') {
+  const log = getHook('dialingLog');
+  if (!log) return;
 
-        window.AppUi?.initSidebarNavigation();
-        window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });
+  const line = document.createElement('div');
+  if (level === 'ok') line.className = 'pds-log-line--ok';
+  else if (level === 'error') line.className = 'pds-log-line--error';
+  else line.className = 'pds-log-line--muted';
+  line.textContent = `[${nowKoreanDateTime()}] ${message}`;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+function updateSummary() {
+  const total = customers.length;
+  const completed = customers.filter(item => item.status === 'completed' || item.status === 'failed').length;
+  const remain = Math.max(0, total - completed);
+  const progress = total ? Math.round((completed / total) * 100) : 0;
+
+  setText('totalCount', total);
+  setText('completedCount', completed);
+  setText('remainCount', remain);
+  setText('dialAttempts', dialAttempts);
+  setText('dialSuccess', dialSuccess);
+  setText('dialFailed', dialFailed);
+  setText('progressPercent', `${progress}%`);
+
+  const circle = getHook('progressCircle');
+  if (circle) {
+    const circumference = 2 * Math.PI * 52;
+    const offset = circumference - (progress / 100) * circumference;
+    circle.style.strokeDashoffset = String(offset);
+  }
+}
+
+function setCurrentCustomer(customer) {
+  if (!customer) {
+    setText('currentCustomerName', '대기중');
+    setText('currentCustomerPhone', '-');
+    setText('callStatus', '연결 대기');
+    setText('detailCustomerName', '-');
+    setText('detailCustomerPhone', '-');
+    setText('detailCustomerGrade', '-');
+    setText('detailCampaign', '-');
+    const assignNode = getHook('detailAssignTime');
+    if (assignNode) assignNode.textContent = '-';
+    return;
+  }
+
+  setText('currentCustomerName', customer.name);
+  setText('currentCustomerPhone', customer.phone);
+  setText('detailCustomerName', customer.name);
+  setText('detailCustomerPhone', customer.phone);
+  setText('detailCustomerGrade', customer.tier);
+  setText('detailCampaign', customer.campaign);
+  const assignNode = getHook('detailAssignTime');
+  if (assignNode) assignNode.textContent = customer.assignedAt || '-';
+}
+
+function stopCallTimer() {
+  if (callTimerInterval) {
+    clearInterval(callTimerInterval);
+    callTimerInterval = null;
+  }
+}
+
+function startCallTimer() {
+  stopCallTimer();
+  callSeconds = 0;
+  setText('callTimer', '00:00');
+  callTimerInterval = setInterval(() => {
+    callSeconds += 1;
+    setText('callTimer', formatTime(callSeconds));
+  }, 1000);
+}
+
+function getNextReadyCustomer() {
+  return customers.find(item => item.status === 'ready');
+}
+
+function completeCurrentCall(customer, success) {
+  stopCallTimer();
+  customer.status = success ? 'completed' : 'failed';
+  setText('callStatus', success ? '연결 대기' : '연결 실패');
+  setText('callTimer', '00:00');
+  renderCustomers();
+  updateSummary();
+  setCurrentCustomer(null);
+
+  addLog(
+    success
+      ? `[완료] ${customer.name} 통화 종료 (${formatTime(callSeconds)})`
+      : `[실패] ${customer.name} 연결 실패`,
+    success ? 'ok' : 'error'
+  );
+
+  setTimeout(() => {
+    processNextCustomer();
+  }, 800);
+}
+
+function processNextCustomer() {
+  if (!isDialing) return;
+
+  const target = getNextReadyCustomer();
+  if (!target) {
+    addLog('[시스템] 모든 고객에 대한 다이얼링이 완료되었습니다.', 'ok');
+    pauseDialing();
+    return;
+  }
+
+  target.status = 'calling';
+  target.attempts = (target.attempts || 0) + 1;
+  dialAttempts += 1;
+  renderCustomers();
+  updateSummary();
+
+  setCurrentCustomer(target);
+  setText('callStatus', '발신중...');
+  addLog(`[발신] ${target.name} (${target.phone}) 연결 시도중...`, 'muted');
+
+  setTimeout(() => {
+    if (!isDialing) return;
+
+    const success = Math.random() > 0.3;
+    if (success) {
+      dialSuccess += 1;
+      target.status = 'oncall';
+      renderCustomers();
+      updateSummary();
+      setText('callStatus', '통화중');
+      addLog(`[성공] ${target.name} 연결 성공 - 통화 시작`, 'ok');
+      startCallTimer();
+
+      setTimeout(() => {
+        completeCurrentCall(target, true);
+      }, Math.floor(Math.random() * 5000) + 3000);
+    } else {
+      dialFailed += 1;
+      completeCurrentCall(target, false);
+    }
+  }, 2000);
+}
+
+function startDialing() {
+  if (isDialing) return;
+  isDialing = true;
+
+  if (startButton) {
+    startButton.disabled = true;
+    startButton.style.opacity = '0.5';
+  }
+  if (pauseButton) {
+    pauseButton.disabled = false;
+    pauseButton.style.opacity = '1';
+  }
+
+  addLog('[시스템] 자동 다이얼링을 시작합니다...', 'ok');
+  processNextCustomer();
+}
+
+function pauseDialing() {
+  isDialing = false;
+  stopCallTimer();
+
+  if (startButton) {
+    startButton.disabled = false;
+    startButton.style.opacity = '1';
+  }
+  if (pauseButton) {
+    pauseButton.disabled = true;
+    pauseButton.style.opacity = '0.5';
+  }
+
+  setText('callStatus', '연결 대기');
+  addLog('[시스템] 다이얼링이 일시정지되었습니다.', 'muted');
+}
+
+function parseCustomersFromDom() {
+  const rows = Array.from(document.querySelectorAll('#customerList .customer-row'));
+  if (!rows.length) {
+    return defaultCustomers.map(item => ({ ...item }));
+  }
+
+  return rows.map((row, index) => {
+    const name = row.querySelector('.pds-customer-name')?.textContent?.trim() || `고객${index + 1}`;
+    const tier = row.querySelector('.pds-tier-badge')?.textContent?.trim() || '일반';
+    const phone = row.querySelector('.pds-contact-text')?.textContent?.trim() || '-';
+    const campaignText = row.querySelector('.pds-campaign-text')?.textContent?.trim() || '';
+    const campaign = campaignText.replace(/^📢\s*/, '').trim();
+    const assignText = row.querySelector('.pds-row-foot .pds-row-meta')?.textContent?.trim() || '';
+    const assignedAt = assignText.replace(/^배정:\s*/, '') || '-';
+    const status = row.getAttribute('data-status') || 'ready';
+
+    return {
+      id: Number(row.getAttribute('data-customer-id')) || index + 1,
+      name,
+      tier,
+      phone,
+      campaign,
+      assignedAt,
+      status,
+      attempts: 0
+    };
+  });
+}
+
+async function loadPdsData() {
+  if (!window.AppApi?.fetchJson) {
+    return {};
+  }
+
+  try {
+    const remoteData = await window.AppApi.fetchJson(pdsDataEndpoint);
+    if (remoteData && typeof remoteData === 'object') {
+      return remoteData;
+    }
+  } catch (error) {
+    console.warn('[pds] API 데이터 로드 실패, 기본 데이터로 대체합니다.', error);
+  }
+
+  return {};
+}
+
+function applyPdsData(data) {
+  pdsData = {
+    ...pdsData,
+    ...data
+  };
+
+  const sourceCustomers = Array.isArray(data.customers) && data.customers.length
+    ? data.customers
+    : parseCustomersFromDom();
+
+  customers = sourceCustomers.map((item, index) => ({
+    id: Number(item.id) || index + 1,
+    name: item.name || `고객${index + 1}`,
+    tier: item.tier || '일반',
+    phone: item.phone || '-',
+    campaign: item.campaign || '일반 상담',
+    assignedAt: item.assignedAt || nowKoreanDateTime(),
+    status: item.status || 'ready',
+    attempts: Number(item.attempts) || 0
+  }));
+}
+
+function initRealtimeClock() {
+  setText('currentTime', nowKoreanDateTime());
+  setInterval(() => {
+    setText('currentTime', nowKoreanDateTime());
+  }, 1000);
+}
+
+function bindActions() {
+  startButton?.addEventListener('click', startDialing);
+  pauseButton?.addEventListener('click', pauseDialing);
+}
+
+async function initPdsPage() {
+  const loaded = await loadPdsData();
+  applyPdsData(loaded);
+  renderCampaignOptions();
+  renderCustomers();
+  updateSummary();
+  setCurrentCustomer(null);
+  bindActions();
+  initRealtimeClock();
+}
+
+initPdsPage();
