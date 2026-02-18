@@ -70,13 +70,21 @@ FrontendForCs/
 │  └─ main.css/chat.css/sms.css/callback.css/pds.css/specific.css/login.css
 ├─ javascript/
 │  ├─ common/ui.js
+│  ├─ common/api.js
+│  ├─ common/page-module.js
 │  ├─ main/*.js
 │  └─ page scripts (chat/sms/callback/pds/specific/login)
+├─ nginx/
+│  ├─ default.conf
+│  └─ app-config.template.js
+├─ docker-entrypoint.d/
+│  └─ 40-env-app-config.sh
 ├─ scripts/
 │  ├─ render.mjs
 │  ├─ build.sh
 │  └─ check-class-length.mjs
 ├─ dist/                # 빌드 산출물
+├─ app-config.js        # 기본 앱 런타임 설정(USE_MOCK, endpoint 기본값)
 ├─ app.css              # 공통 스타일(빌드 시 dist/app.css로 복사)
 ├─ package.json
 ├─ Dockerfile
@@ -115,14 +123,19 @@ npm run build:css
 ```bash
 python3 -m http.server 4173 --directory dist
 ```
-- `http://localhost:4173/main.html`
-- `http://localhost:4173/login.html`
+- `http://localhost:4173/main`
+- `http://localhost:4173/login`
+
+주의:
+- 기본 레이아웃에서 `.html -> 확장자 없는 경로`로 canonical redirect를 수행합니다.
+- 따라서 로컬 정적 서버 사용 시에도 `/main`, `/login`으로 접속하는 것을 권장합니다.
 
 ### 6) Docker 실행
 ```bash
 docker compose up --build -d
 ```
-- `http://localhost/main.html`
+- `http://localhost/main`
+- `http://localhost/login`
 
 ## npm 스크립트
 - `npm run render`: `src/pages/*.njk` -> `dist/*.html`
@@ -158,20 +171,30 @@ docker compose up --build -d
 
 - 공통 호출 유틸: `javascript/common/api.js` (`window.AppApi.fetchJson`)
 - 페이지별 우선 엔드포인트:
-  - `specific`: `window.__APP_ENDPOINTS__.specificData` (기본: `/api/specific`)
+  - `main`: `window.__APP_ENDPOINTS__.mainData` (기본: `/api/main`)
+  - `chat`: `window.__APP_ENDPOINTS__.chatData` (기본: `/api/chat`)
+  - `pds`: `window.__APP_ENDPOINTS__.pdsData` (기본: `/api/pds`)
   - `sms`: `window.__APP_ENDPOINTS__.smsData` (기본: `/api/sms`)
+  - `callback`: `window.__APP_ENDPOINTS__.callbackData` (기본: `/api/callback`)
+  - `specific`: `window.__APP_ENDPOINTS__.specificData` (기본: `/api/specific`)
+  - `main 전송`: `mainTransferHts`, `mainTransferGoldnet`
 - API 실패 시: 페이지별 기존 정적 데이터(`page_data`)로 fallback
 
 ### 1) 페이지별 개별 URL 주입 (권장)
-`src/layouts/app-shell.njk` 또는 서버 템플릿에서 전역 객체로 주입합니다.
+Docker 런타임에서는 `nginx/app-config.template.js` + 환경변수로 자동 주입됩니다.
+필요하면 서버 템플릿에서 직접 전역 객체를 주입할 수도 있습니다.
 
 ```html
 <script>
   window.__APP_ENDPOINTS__ = {
+    mainData: "https://api.example.com/cti/main",
+    chatData: "https://api.example.com/cti/chat",
+    pdsData: "https://api.example.com/cti/pds",
+    callbackData: "https://api.example.com/cti/callback",
     specificData: "https://api.example.com/specific",
     smsData: "https://api.example.com/sms",
-    smsTemplates: "https://api.example.com/sms/templates",
-    smsHistory: "https://api.example.com/sms/history"
+    mainTransferHts: "https://api.example.com/cti/main/transfer/hts",
+    mainTransferGoldnet: "https://api.example.com/cti/main/transfer/goldnet"
   };
 </script>
 ```
@@ -188,7 +211,7 @@ docker compose up --build -d
 ### 다중 엔드포인트 사용 규칙
 - 한 페이지에서 endpoint를 여러 개 써도 됨
 - `window.__APP_ENDPOINTS__`에 키를 추가하고 JS에서 키로 접근
-- 예: `sms` 화면에서 `smsData`, `smsTemplates`, `smsHistory` 분리 호출
+- 예: `main` 화면에서 조회 API와 전송 API를 키 단위로 분리 호출
 
 ## MOCK -> 실데이터 전환 가이드 (`USE_MOCK`)
 
