@@ -52,8 +52,7 @@ loginForm.addEventListener('submit', function onLoginSubmit(event) {
   }
 
   setTimeout(function redirectToMain() {
-    const mainPageUrl = new URL('./main', window.location.href);
-    window.location.assign(mainPageUrl.href);
+    window.location.assign('/main');
   }, 1000);
 });
 

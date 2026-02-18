@@ -48,7 +48,7 @@ window.MainPageActions = (() => {
     logoutButton.addEventListener('click', () => {
       localStorage.removeItem('currentAgentId');
       localStorage.removeItem('currentAgentName');
-      window.location.assign(new URL('./login', window.location.href).href);
+      window.location.assign('/login');
     });
   };
 
