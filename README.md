@@ -190,5 +190,73 @@ docker compose up --build -d
 - `window.__APP_ENDPOINTS__`에 키를 추가하고 JS에서 키로 접근
 - 예: `sms` 화면에서 `smsData`, `smsTemplates`, `smsHistory` 분리 호출
 
+## MOCK -> 실데이터 전환 가이드 (`USE_MOCK`)
+
+이 프로젝트는 `USE_MOCK` 스위치로 목데이터/실데이터를 전환합니다.
+
+- `USE_MOCK=true` : `src/data/*.json` 기반 목데이터 사용 (API 호출 스킵)
+- `USE_MOCK=false` : 실데이터 API 호출 사용
+
+기본값:
+- Docker Compose 기본: `USE_MOCK=true`
+- 로컬 정적 파일 기본: `app-config.js`의 `useMock: true`
+
+### 1) Docker에서 실데이터로 전환 (권장)
+아래처럼 환경변수를 주입해서 실행합니다.
+
+```bash
+USE_MOCK=false \
+APP_API_BASE=https://api.example.com \
+APP_ENDPOINT_MAIN_DATA=/cti/main \
+APP_ENDPOINT_CHAT_DATA=/cti/chat \
+APP_ENDPOINT_PDS_DATA=/cti/pds \
+APP_ENDPOINT_SMS_DATA=/cti/sms \
+APP_ENDPOINT_CALLBACK_DATA=/cti/callback \
+APP_ENDPOINT_SPECIFIC_DATA=/cti/specific \
+APP_ENDPOINT_MAIN_TRANSFER_HTS=/cti/main/transfer/hts \
+APP_ENDPOINT_MAIN_TRANSFER_GOLDNET=/cti/main/transfer/goldnet \
+docker compose up -d --build
+```
+
+팁:
+- 운영에서는 `.env` 파일로 같은 키를 관리하는 방식을 권장
+- endpoint를 비워두면 기본값(`/api/...`)을 사용
+
+### 2) 로컬 정적 실행에서 실데이터로 전환
+`app-config.js`에서 `useMock`을 `false`로 바꿉니다.
+
+```js
+const defaults = {
+  useMock: false,
+  ...
+}
+```
+
+그 후 다시 빌드:
+
+```bash
+./scripts/build.sh
+```
+
+### 3) 전환 확인 방법
+브라우저 콘솔에서 아래를 확인합니다.
+
+```js
+window.USE_MOCK
+window.__APP_ENDPOINTS__
+window.APP_API_BASE
+```
+
+- `window.USE_MOCK === false` 이면 실데이터 모드
+- API 응답 실패 시 페이지별 fallback 로그가 콘솔에 출력될 수 있음
+
+### 4) 자주 발생하는 실수
+- `docker compose up -d`만 실행해서 예전 이미지가 계속 실행됨  
+  -> 반드시 `--build` 포함
+- 브라우저 캐시로 이전 `app-config.js`가 남아 있음  
+  -> 강력 새로고침(`Cmd+Shift+R`) 또는 캐시 삭제
+- `APP_API_BASE`/endpoint 오타로 404 발생  
+  -> 네트워크 탭에서 실제 요청 URL 확인
+
 ## 참고
 - 디자인/스타일 가이드: `STYLE_GUIDE.md`
