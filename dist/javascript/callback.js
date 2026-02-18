@@ -543,4 +543,33 @@ async function initCallbackPage() {
   bindModalActions();
 }
 
-initCallbackPage();
+const callbackPageModule = window.PageModule?.create({
+  name: 'callback',
+  state: {
+    data: callbackData
+  },
+  data: {
+    load: loadCallbackData,
+    hydrate: loaded => {
+      applyCallbackData(loaded);
+    }
+  },
+  render: {
+    all: () => {
+      renderAll();
+    }
+  },
+  events: {
+    bind: () => {
+      bindFilterActions();
+      bindCardActions();
+      bindModalActions();
+    }
+  }
+});
+
+if (callbackPageModule) {
+  void callbackPageModule.init();
+} else {
+  initCallbackPage();
+}

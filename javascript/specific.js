@@ -639,4 +639,29 @@ async function initSpecificPage() {
   renderAll();
 }
 
-initSpecificPage();
+const specificPageModule = window.PageModule?.create({
+  name: 'specific',
+  state: {},
+  data: {
+    load: loadSpecificData,
+    hydrate: loadedData => {
+      hydrateSpecificData(loadedData);
+    }
+  },
+  render: {
+    all: () => {
+      renderAll();
+    }
+  },
+  events: {
+    bind: () => {
+      // 기존 이벤트 리스너는 상단에서 바인딩되어 있어 중복 바인딩을 방지합니다.
+    }
+  }
+});
+
+if (specificPageModule) {
+  void specificPageModule.init();
+} else {
+  initSpecificPage();
+}

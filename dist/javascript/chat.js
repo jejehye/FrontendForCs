@@ -138,34 +138,73 @@ function renderChatDynamicBlocks(data) {
 
 async function loadRemoteChatData() {
   if (!window.AppApi?.fetchJson) {
-    return false;
+    return null;
   }
 
   try {
     const remoteData = await window.AppApi.fetchJson(chatDataEndpoint);
     if (!remoteData || typeof remoteData !== 'object') {
-      return false;
+      return null;
     }
 
-    chatData = { ...chatData, ...remoteData };
-    renderChatDynamicBlocks(chatData);
-    return true;
+    return remoteData;
   } catch (error) {
     console.warn('[chat] failed to load remote data:', error);
-    return false;
+    return null;
   }
 }
 
-selectAll('[data-action="quick-reply"]', '.quick-reply').forEach(button => {
-  button.addEventListener('click', function handleQuickReplyClick() {
-    const messageInput = selectOne('[data-role="chat-message-input"]', '.chat__input');
-
-    if (messageInput) {
-      messageInput.value = this.textContent;
-      messageInput.focus();
+function bindQuickReplyActions() {
+  selectAll('[data-action="quick-reply"]', '.quick-reply').forEach(button => {
+    if (button.dataset.boundQuickReply === 'true') {
+      return;
     }
+    button.dataset.boundQuickReply = 'true';
+    button.addEventListener('click', function handleQuickReplyClick() {
+      const messageInput = selectOne('[data-role="chat-message-input"]', '.chat__input');
+
+      if (messageInput) {
+        messageInput.value = this.textContent;
+        messageInput.focus();
+      }
+    });
   });
+}
+
+const chatPageModule = window.PageModule?.create({
+  name: 'chat',
+  state: {
+    data: chatData
+  },
+  data: {
+    load: loadRemoteChatData,
+    hydrate: loaded => {
+      if (loaded && typeof loaded === 'object') {
+        chatData = { ...chatData, ...loaded };
+      }
+    }
+  },
+  render: {
+    all: () => {
+      renderChatDynamicBlocks(chatData);
+    }
+  },
+  events: {
+    bind: () => {
+      bindQuickReplyActions();
+    }
+  }
 });
 
-renderChatDynamicBlocks(chatData);
-void loadRemoteChatData();
+if (chatPageModule) {
+  void chatPageModule.init();
+} else {
+  renderChatDynamicBlocks(chatData);
+  bindQuickReplyActions();
+  void loadRemoteChatData().then(loaded => {
+    if (loaded && typeof loaded === 'object') {
+      chatData = { ...chatData, ...loaded };
+      renderChatDynamicBlocks(chatData);
+    }
+  });
+}

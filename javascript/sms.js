@@ -501,4 +501,37 @@ async function initSmsPage() {
   bindSendActions();
 }
 
-initSmsPage();
+const smsPageModule = window.PageModule?.create({
+  name: 'sms',
+  state: {
+    data: smsData
+  },
+  data: {
+    load: loadSmsData,
+    hydrate: loaded => {
+      smsData = { ...defaultSmsData, ...(loaded || {}) };
+      smsHistoryRecords = Array.isArray(smsData.sms_history_records) && smsData.sms_history_records.length
+        ? smsData.sms_history_records
+        : defaultSmsHistoryRecords;
+    }
+  },
+  render: {
+    all: () => {
+      renderSmsDynamicBlocks(smsData);
+      initializeTemplatePagination();
+    }
+  },
+  events: {
+    bind: () => {
+      bindRecipientActions();
+      bindBasicEvents();
+      bindSendActions();
+    }
+  }
+});
+
+if (smsPageModule) {
+  void smsPageModule.init();
+} else {
+  initSmsPage();
+}

@@ -394,4 +394,35 @@ async function initPdsPage() {
   initRealtimeClock();
 }
 
-initPdsPage();
+const pdsPageModule = window.PageModule?.create({
+  name: 'pds',
+  state: {
+    data: pdsData
+  },
+  data: {
+    load: loadPdsData,
+    hydrate: loaded => {
+      applyPdsData(loaded || {});
+    }
+  },
+  render: {
+    all: () => {
+      renderCampaignOptions();
+      renderCustomers();
+      updateSummary();
+      setCurrentCustomer(null);
+    }
+  },
+  events: {
+    bind: () => {
+      bindActions();
+      initRealtimeClock();
+    }
+  }
+});
+
+if (pdsPageModule) {
+  void pdsPageModule.init();
+} else {
+  initPdsPage();
+}
