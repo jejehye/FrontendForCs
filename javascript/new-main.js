@@ -123,7 +123,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="new-main-topbar-statuses">
         <div class="new-main-status-item">
           <span class="new-main-status-label">업무상태</span>
-          <span class="new-main-status-value is-ready">업무</span>
+          <select class="new-main-status-control" data-role="agent-status-select" aria-label="업무상태">
+            <option value="ready" selected>업무</option>
+            <option value="away">이석</option>
+            <option value="busy">대기</option>
+            <option value="break">휴식</option>
+            <option value="meeting">회의</option>
+          </select>
         </div>
         <div class="new-main-status-item">
           <span class="new-main-status-label">로그인여부</span>
@@ -131,11 +137,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
         <div class="new-main-status-item">
           <span class="new-main-status-label">호전환</span>
-          <span class="new-main-status-value is-ready">대기</span>
+          <button type="button" class="new-main-status-btn" data-action="new-main-call-transfer">호전환</button>
         </div>
         <div class="new-main-status-item">
           <span class="new-main-status-label">지점전환</span>
-          <span class="new-main-status-value is-ready">가능</span>
+          <button type="button" class="new-main-status-btn" data-action="main-open-group-switch-modal">지점전환</button>
         </div>
       </div>
       <div class="new-main-topbar-actions">
@@ -219,13 +225,25 @@ document.addEventListener('DOMContentLoaded', async () => {
               <span class="new-main-routing-speaker">고객</span>
               <span class="new-main-routing-time">17:08:44</span>
             </div>
-            <div class="new-main-routing-text">수수료</div>
+            <div class="new-main-routing-text">수수료 문의</div>
           </article>
         </div>
       </div>
     `;
     historyArea.parentElement?.insertBefore(utteranceSection, historyArea);
   }
+
+  const rightHistoryEditor = document.querySelector('#right-column .history-editor-panel');
+  if (rightHistoryEditor) {
+    rightHistoryEditor.remove();
+  }
+
+  const callTransferButtons = document.querySelectorAll('[data-action="new-main-call-transfer"]');
+  callTransferButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      window.alert('호전환 처리 요청이 접수되었습니다.');
+    });
+  });
 
   const warningTabsWrap = document.querySelector('#coaching-area .main-center-warning-wrap');
   if (warningTabsWrap) {

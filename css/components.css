@@ -815,31 +815,33 @@ body { background-color: #f3f4f6; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-  border: 1px solid #dbeafe;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
-  padding: 10px 12px;
+  gap: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #d6e2f0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fbfdff 0%, #edf4fc 100%);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  padding: 10px;
 }
 .new-main-topbar-statuses {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
   flex: 1 1 auto;
 }
 .new-main-status-item {
-  border: 1px solid #bfdbfe;
+  border: 1px solid #d8e3f1;
   border-radius: 8px;
   background: #ffffff;
-  padding: 7px 8px;
+  padding: 7px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 .new-main-status-label {
-  font-size: 11px;
+  font-size: 10px;
   color: #64748b;
+  letter-spacing: 0.01em;
 }
 .new-main-status-value {
   display: inline-flex;
@@ -865,14 +867,48 @@ body { background-color: #f3f4f6; }
   border-color: #93c5fd;
   background: #eff6ff;
 }
-.new-main-topbar-actions {
+.new-main-status-control {
+  width: 100%;
+  min-height: 26px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+}
+.new-main-status-btn,
+.new-main-topbar .new-main-topbar-action {
+  min-height: 26px;
+  border: 1px solid #8fb0d4;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #5f88ae 0%, #4b769e 100%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 5px;
+}
+.new-main-status-btn:hover,
+.new-main-topbar .new-main-topbar-action:hover {
+  background: linear-gradient(180deg, #557da2 0%, #436a91 100%);
+  border-color: #7899bd;
+  color: #ffffff;
+}
+.new-main-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px;
 }
 .new-main-topbar-action {
-  min-height: 34px;
-  padding: 6px 12px;
+  min-height: 30px;
 }
 .new-main-topbar-left {
   display: inline-flex;
@@ -935,25 +971,25 @@ body { background-color: #f3f4f6; }
   background: #ffffff;
 }
 .new-main-routing-slot {
-  padding: 0 12px 8px;
+  padding: 0 12px 6px;
   background: #ffffff;
 }
 .new-main-routing-panel {
   border: 1px solid #cbd5e1;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #f8fafc;
   overflow: hidden;
 }
 .new-main-routing-title {
-  padding: 8px 10px;
-  font-size: 12px;
+  padding: 6px 8px;
+  font-size: 11px;
   font-weight: 700;
   color: #334155;
   border-bottom: 1px solid #dbe3ee;
   background: #eef2f7;
 }
 .new-main-routing-list {
-  padding: 8px;
+  padding: 6px;
 }
 .new-main-routing-item {
   border: 1px solid #9ca3af;
@@ -962,27 +998,27 @@ body { background-color: #f3f4f6; }
 .new-main-routing-item-head {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 8px;
+  gap: 8px;
+  padding: 4px 6px;
   border-bottom: 1px solid #d1d5db;
 }
 .new-main-routing-speaker {
   color: #1d4ed8;
-  font-size: 24px;
+  font-size: 14px;
   line-height: 1;
   font-weight: 700;
 }
 .new-main-routing-time {
   color: #111827;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
 }
 .new-main-routing-text {
-  padding: 6px 8px 8px;
+  padding: 4px 6px 6px;
   color: #111827;
-  font-size: 20px;
-  line-height: 1.1;
+  font-size: 13px;
+  line-height: 1.35;
   font-weight: 500;
 }
 .new-main-status-row-wrap {
@@ -1318,19 +1354,22 @@ body.new-main-mode .new-main-history-editor {
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 }
 body.new-main-mode .new-main-routing-speaker {
-  font-size: 20px;
+  font-size: 14px;
 }
 body.new-main-mode .new-main-routing-time {
-  font-size: 15px;
+  font-size: 12px;
 }
 body.new-main-mode .new-main-routing-text {
-  font-size: 17px;
+  font-size: 13px;
 }
 body.new-main-mode .new-main-schedule-table th {
   background: #e8f1ff;
 }
 body.new-main-mode .new-main-schedule-table tbody tr:nth-child(even) {
   background: #f8fbff;
+}
+body.new-main-mode #right-column .history-editor-panel {
+  display: none;
 }
 
 /* Tailwind residual cleanup aliases */
