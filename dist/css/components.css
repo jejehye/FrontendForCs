@@ -1267,1075 +1267,158 @@ body { background-color: #f3f4f6; }
   cursor: default;
 }
 
-body.new-main-mode #center-column {
-  display: grid;
-  grid-template-rows: minmax(420px, 1fr) minmax(420px, 1fr) auto;
-  min-height: 0;
-  overflow: hidden;
-}
-body.new-main-mode {
-  font-weight: 400;
-  color: #334155;
-  background: #f4f7fb;
-  --new-main-header-font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --new-main-header-font-size: 14px;
-  --new-main-header-font-weight: 800;
-  --new-main-header-line-height: 1.25;
-}
-body.new-main-mode .main-shell {
-  background: linear-gradient(180deg, #f6f9fd 0%, #f3f6fb 100%);
-}
-body.new-main-mode .main-column {
-  gap: 10px;
-}
-body.new-main-mode .panel {
-  border: 1px solid #dbe5f0;
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
-}
-body.new-main-mode #notice-area,
-body.new-main-mode #chat-area {
-  min-height: 0;
-  height: 100%;
-}
-body.new-main-mode .new-main-schedule-panel {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-body.new-main-mode .new-main-schedule-body {
-  max-height: none;
-  flex: 1 1 auto;
-}
-body.new-main-mode .new-main-schedule-table-wrap {
-  flex: 0 0 auto;
-}
-body.new-main-mode #chat-area {
-  display: flex;
-  flex-direction: column;
-}
-body.new-main-mode #chat-area .chat-message-list {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: auto;
-}
-body.new-main-mode .new-main-header-strong {
-  font-family: var(--new-main-header-font-family);
-  font-size: var(--new-main-header-font-size);
-  font-weight: var(--new-main-header-font-weight);
-  line-height: var(--new-main-header-line-height);
-  letter-spacing: -0.01em;
-}
-body.new-main-mode .main-section-header,
-body.new-main-mode .main-live-header,
-body.new-main-mode .panel__header--history,
-body.new-main-mode .main-my-history-header {
-  padding: 11px 12px;
-  background: linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
-  border-color: #d6e2ee;
-}
-body.new-main-mode .field,
-body.new-main-mode .consultation-note-field,
-body.new-main-mode .chat-search-input,
-body.new-main-mode select,
-body.new-main-mode textarea,
-body.new-main-mode input {
-  font-size: 13px;
-  line-height: 1.45;
-  border-color: #cfd9e6;
-}
-body.new-main-mode .field:focus,
-body.new-main-mode .chat-search-input:focus,
-body.new-main-mode select:focus,
-body.new-main-mode textarea:focus,
-body.new-main-mode input:focus {
-  border-color: #7aa5e8;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
-}
-body.new-main-mode .chat-bubble {
-  font-size: 13px;
-  line-height: 1.5;
-  border-radius: 11px;
-}
-body.new-main-mode .new-main-schedule-list,
-body.new-main-mode .new-main-warning-content,
-body.new-main-mode .main-live-time-text,
-body.new-main-mode .history-note-limit {
-  color: #475569;
-}
-body.new-main-mode .btn--history-reset,
-body.new-main-mode .btn--history-search,
-body.new-main-mode .softphone-outbound-btn,
-body.new-main-mode .main-my-history-btn,
-body.new-main-mode .new-main-status-btn,
-body.new-main-mode .new-main-topbar .new-main-topbar-action,
-body.new-main-mode .verify-transfer-btn {
-  min-height: 34px;
-  border-radius: 10px;
-  border: 1px solid #9fb8d3;
-  background: linear-gradient(180deg, #6f96bd 0%, #5781ab 100%);
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  box-shadow: 0 1px 2px rgba(30, 58, 138, 0.18);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-body.new-main-mode .btn--history-reset:hover,
-body.new-main-mode .btn--history-search:hover,
-body.new-main-mode .softphone-outbound-btn:hover,
-body.new-main-mode .main-my-history-btn:hover,
-body.new-main-mode .new-main-status-btn:hover,
-body.new-main-mode .new-main-topbar .new-main-topbar-action:hover,
-body.new-main-mode .verify-transfer-btn:hover {
-  background: linear-gradient(180deg, #648bb2 0%, #4f789f 100%);
-  border-color: #84a2c1;
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-body.new-main-mode .history-editor-save-btn {
-  border-color: #2f6dd2;
-  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
-}
-body.new-main-mode .history-editor-save-btn:hover {
-  border-color: #2557bf;
-  background: linear-gradient(180deg, #3475e3 0%, #1f56cc 100%);
-}
-body.new-main-mode .new-main-routing-panel,
-body.new-main-mode .new-main-warning-panel,
-body.new-main-mode .new-main-history-editor {
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
-}
-body.new-main-mode .new-main-routing-speaker {
-  font-size: 14px;
-}
-body.new-main-mode .new-main-routing-time {
-  font-size: 12px;
-}
-body.new-main-mode .new-main-routing-text {
-  font-size: 13px;
-}
-body.new-main-mode .new-main-schedule-table th {
-  background: #e8f1ff;
-}
-body.new-main-mode .new-main-schedule-table tbody tr:nth-child(even) {
-  background: #f8fbff;
-}
-body.new-main-mode #right-column .history-editor-panel {
-  display: none;
-}
-
-/* new_main visual pass: cohesive tone & manner */
-body.new-main-mode {
-  --nm-bg: #f3f6fa;
-  --nm-surface: #ffffff;
-  --nm-surface-soft: #f8fbff;
-  --nm-border: #d7e1ec;
-  --nm-border-strong: #c7d5e4;
-  --nm-text: #334155;
-  --nm-text-muted: #64748b;
-  --nm-primary: #2f7f88;
-  --nm-primary-hover: #276b73;
-  --nm-primary-border: #6ea5ad;
-  --nm-header-bg: linear-gradient(180deg, #f9fbff 0%, #eef4fb 100%);
-}
-body.new-main-mode,
-body.new-main-mode .main-shell {
-  background: linear-gradient(180deg, #f7f9fc 0%, var(--nm-bg) 100%);
-}
-body.new-main-mode .panel {
-  border-color: var(--nm-border);
-  border-radius: 12px;
-  background: var(--nm-surface);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
-}
-body.new-main-mode .main-section-header,
-body.new-main-mode .main-live-header,
-body.new-main-mode .panel__header--history,
-body.new-main-mode .main-my-history-header {
-  background: var(--nm-header-bg);
-  border-color: var(--nm-border);
-}
-body.new-main-mode .new-main-topbar {
-  border-color: var(--nm-border);
-  background: radial-gradient(120% 140% at 0% 0%, #ffffff 0%, #f7fbff 58%, #f2f7ff 100%);
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.07);
-}
-body.new-main-mode .new-main-status-item {
-  border-color: #dbe5f0;
-  background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
-}
-body.new-main-mode .new-main-status-item--work {
-  border-color: var(--nm-border-strong);
-  background: linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
-}
-body.new-main-mode .new-main-status-label {
-  color: var(--nm-text-muted);
-}
-body.new-main-mode .new-main-status-control {
-  border-color: #d4deea;
-  background: linear-gradient(180deg, #ffffff 0%, #f7fafe 100%);
-  color: #1f2937;
-}
-body.new-main-mode .new-main-status-btn,
-body.new-main-mode .new-main-topbar .new-main-topbar-action,
-body.new-main-mode .btn--history-reset,
-body.new-main-mode .btn--history-search,
-body.new-main-mode .softphone-outbound-btn,
-body.new-main-mode .main-my-history-btn,
-body.new-main-mode .verify-transfer-btn {
-  border-color: var(--nm-primary-border);
-  background: linear-gradient(180deg, #4c98a0 0%, var(--nm-primary) 100%);
-  color: #ffffff;
-}
-body.new-main-mode .new-main-status-btn:hover,
-body.new-main-mode .new-main-topbar .new-main-topbar-action:hover,
-body.new-main-mode .btn--history-reset:hover,
-body.new-main-mode .btn--history-search:hover,
-body.new-main-mode .softphone-outbound-btn:hover,
-body.new-main-mode .main-my-history-btn:hover,
-body.new-main-mode .verify-transfer-btn:hover {
-  background: linear-gradient(180deg, #41868e 0%, var(--nm-primary-hover) 100%);
-  border-color: #7798ba;
-}
-body.new-main-mode .history-editor-save-btn {
-  border-color: #0f766e;
-  background: linear-gradient(180deg, #14b8a6 0%, #0f8f83 100%);
-}
-body.new-main-mode .history-editor-save-btn:hover {
-  border-color: #0d6a63;
-  background: linear-gradient(180deg, #10a89a 0%, #0d7f75 100%);
-}
-body.new-main-mode .new-main-routing-panel {
-  border-color: #d4dee9;
-  background: #f8fbff;
-}
-body.new-main-mode .new-main-routing-title {
-  background: #eef3f9;
-  border-bottom-color: #dbe5f0;
-  color: var(--nm-text);
-}
-body.new-main-mode .new-main-routing-item {
-  border-color: #ced9e6;
-}
-body.new-main-mode .new-main-warning-panel {
-  border-color: #f1d39a;
-  background: linear-gradient(180deg, #fffdf8 0%, #fff8eb 100%);
-}
-body.new-main-mode .new-main-warning-head {
-  border-bottom-color: #f4dcad;
-}
-body.new-main-mode .new-main-warning-content {
-  color: #9a5a16;
-}
-body.new-main-mode .new-main-history-editor {
-  border-color: #d8e4f1;
-}
-body.new-main-mode .new-main-history-body {
-  background: #f7fbff;
-}
-body.new-main-mode .new-main-schedule-panel {
-  border-color: #d4dfec;
-  border-radius: 10px;
-}
-body.new-main-mode .new-main-schedule-header {
-  height: 32px;
-  background: linear-gradient(180deg, #5e88b1 0%, #4d789f 100%);
-}
-body.new-main-mode .new-main-schedule-table th {
-  background: #eaf2fc;
-  border-color: #cddcee;
-  color: #2d4a67;
-}
-body.new-main-mode .new-main-schedule-table td {
-  border-color: #dee8f2;
-}
-body.new-main-mode #right-column .agent-status-bar {
-  display: none;
-}
-
-/* Tailwind residual cleanup aliases */
-.is-hidden { display: none; }
-.full-width { width: 100%; }
-
-@media (max-width: 1280px) {
-  .agent-kpi-bar { display: none; }
-  .account-info-grid,
-  .verify-transfer-actions { grid-template-columns: minmax(0, 1fr); }
-  .account-field-row,
-  .account-field-row-full { grid-column: 1 / -1; }
-  .account-field-label { width: 72px; }
-  .history-category-grid { grid-template-columns: minmax(0, 1fr); }
-  .softphone-script-grid,
-  .softphone-script-grid--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .new-main-linked-grid { grid-template-columns: minmax(0, 1fr); }
-  .new-main-topbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .new-main-topbar-statuses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .new-main-topbar-actions { justify-content: flex-end; }
-}
-
-/* new_main layout + responsive stability pass (UI only) */
-body.new-main-mode {
-  --nm-radius: 12px;
-  --nm-space-1: 8px;
-  --nm-space-2: 12px;
-  --nm-space-3: 16px;
-  --nm-space-4: 20px;
-  --nm-space-5: 24px;
-  --nm-color-bg: #f6f8fb;
-  --nm-color-col-side: #f9fafb;
-  --nm-color-surface: #ffffff;
-  --nm-color-border: #e5e7eb;
-  --nm-color-text: #1f2937;
-  --nm-color-text-subtle: #4b5563;
-  --nm-color-primary: #2563eb;
-  --nm-color-primary-hover: #1d4ed8;
-  --nm-color-risk-bg: #fef2f2;
-  --nm-color-risk-text: #b91c1c;
-}
-body.new-main-mode,
-body.new-main-mode .main-shell {
-  background: var(--nm-color-bg);
-  color: var(--nm-color-text);
-}
-body.new-main-mode {
-  overflow: hidden;
-}
-body.new-main-mode #app-container.grid-layout {
-  grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.1fr) minmax(420px, 1.1fr);
-  width: 100vw;
-  max-width: none;
-  min-width: 0;
-  height: 100vh;
-  margin: 0;
-  border-radius: 0;
-  overflow: hidden;
-  box-shadow: none;
-}
-body.new-main-mode #page-main {
-  min-width: 0;
-  overflow: hidden;
-}
-body.new-main-mode .col-chat,
-body.new-main-mode .col-center,
-body.new-main-mode .col-right {
-  overflow: hidden;
-  min-height: 0;
-  padding: var(--nm-space-3);
-  gap: var(--nm-space-3);
-}
-body.new-main-mode .col-chat {
-  background: var(--nm-color-col-side);
-  border-right: 1px solid var(--nm-color-border);
-}
-body.new-main-mode .col-center {
-  background: var(--nm-color-surface);
-}
-body.new-main-mode .col-right {
-  background: var(--nm-color-col-side);
-  border-left: 1px solid var(--nm-color-border);
-}
-body.new-main-mode #chat-column,
-body.new-main-mode #center-column,
-body.new-main-mode #right-column {
-  min-height: 0;
-}
-body.new-main-mode #center-column {
-  grid-template-rows: minmax(360px, 1fr) minmax(360px, 1fr) minmax(180px, 0.55fr);
-  gap: var(--nm-space-3);
-}
-body.new-main-mode .panel,
-body.new-main-mode .info-card,
-body.new-main-mode .softphone-script-panel,
-body.new-main-mode #notice-area,
-body.new-main-mode #chat-area,
-body.new-main-mode #history-area,
-body.new-main-mode #coaching-area {
-  border-radius: var(--nm-radius);
-  border: 1px solid var(--nm-color-border);
-  background: var(--nm-color-surface);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-}
-body.new-main-mode .softphone-script-panel,
-body.new-main-mode .history-editor-panel,
-body.new-main-mode .main-my-history-panel {
-  padding: var(--nm-space-4);
-}
-body.new-main-mode .main-section-header,
-body.new-main-mode .main-live-header,
-body.new-main-mode .panel__header--history,
-body.new-main-mode .main-my-history-header,
-body.new-main-mode .softphone-script-header,
-body.new-main-mode .notice-header {
-  padding: var(--nm-space-3) var(--nm-space-4);
-  border-radius: var(--nm-radius) var(--nm-radius) 0 0;
-}
-body.new-main-mode .new-main-header-strong,
-body.new-main-mode .main-center-notice-title,
-body.new-main-mode .softphone-script-title {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-body.new-main-mode .new-main-warning-title {
-  font-size: 16px;
-  font-weight: 600;
-}
-body.new-main-mode .new-main-warning-panel {
-  border-color: #fecaca;
-  background: var(--nm-color-risk-bg);
-}
-body.new-main-mode .new-main-warning-title,
-body.new-main-mode .new-main-warning-content,
-body.new-main-mode .new-main-warning-badge {
-  color: var(--nm-color-risk-text);
-}
-body.new-main-mode .field,
-body.new-main-mode .consultation-note-field,
-body.new-main-mode .chat-search-input,
-body.new-main-mode select,
-body.new-main-mode textarea,
-body.new-main-mode input {
-  min-height: 36px;
-  font-size: 13px;
-  line-height: 1.45;
-  border-radius: 8px;
-  border-color: #d1d5db;
-}
-body.new-main-mode .customer-status-text,
-body.new-main-mode .main-live-time-text,
-body.new-main-mode .history-note-limit,
-body.new-main-mode .softphone-script-duration {
-  font-size: 12px;
-  color: var(--nm-color-text-subtle);
-}
-body.new-main-mode .btn--history-reset,
-body.new-main-mode .btn--history-search,
-body.new-main-mode .softphone-outbound-btn,
-body.new-main-mode .main-my-history-btn,
-body.new-main-mode .new-main-status-btn,
-body.new-main-mode .new-main-topbar .new-main-topbar-action,
-body.new-main-mode .verify-transfer-btn {
-  min-height: 36px;
-  border-radius: 10px;
-  border: 1px solid #93c5fd;
-  background: linear-gradient(180deg, #3b82f6 0%, var(--nm-color-primary) 100%);
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 0 14px;
-}
-body.new-main-mode .btn--history-reset:hover,
-body.new-main-mode .btn--history-search:hover,
-body.new-main-mode .softphone-outbound-btn:hover,
-body.new-main-mode .main-my-history-btn:hover,
-body.new-main-mode .new-main-status-btn:hover,
-body.new-main-mode .new-main-topbar .new-main-topbar-action:hover,
-body.new-main-mode .verify-transfer-btn:hover {
-  background: linear-gradient(180deg, #2f74ee 0%, var(--nm-color-primary-hover) 100%);
-  border-color: #60a5fa;
-  color: #ffffff;
-}
-body.new-main-mode .history-editor-save-btn {
-  border-color: #1d4ed8;
-  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
-}
-body.new-main-mode .history-editor-save-btn:hover {
-  border-color: #1e40af;
-  background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%);
-}
-body.new-main-mode #chat-area,
-body.new-main-mode #history-area,
-body.new-main-mode #notice-area,
-body.new-main-mode #coaching-area,
-body.new-main-mode .main-my-history-panel {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-body.new-main-mode .chat-message-list {
-  flex: 1 1 auto;
-  min-height: 260px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: var(--nm-space-4);
-}
-body.new-main-mode .chat-bubble {
-  max-width: 90%;
-  font-size: 13px;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-body.new-main-mode .main-live-scroll-wrap {
-  position: sticky;
-  bottom: 0;
-  background: linear-gradient(to top, #f9fafb 40%, rgba(249, 250, 251, 0));
-  padding-top: var(--nm-space-2);
-}
-body.new-main-mode .main-history-table-wrap,
-body.new-main-mode .main-my-history-table-wrap,
-body.new-main-mode .notice-list-wrap,
-body.new-main-mode .new-main-schedule-body,
-body.new-main-mode .new-main-schedule-table-wrap,
-body.new-main-mode .coaching-panel {
-  min-height: 0;
-  overflow-y: auto;
-}
-body.new-main-mode .main-history-table-wrap,
-body.new-main-mode .main-my-history-table-wrap,
-body.new-main-mode .new-main-schedule-table-wrap {
-  overflow-x: auto;
-}
-body.new-main-mode .main-history-thead,
-body.new-main-mode .new-main-schedule-table thead {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-body.new-main-mode .tbl,
-body.new-main-mode .new-main-schedule-table {
-  table-layout: fixed;
-  min-width: 860px;
-}
-body.new-main-mode .tbl__cell,
-body.new-main-mode .new-main-schedule-table td,
-body.new-main-mode .new-main-schedule-table th {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* breakpoints: 1600-, 1440-, 1280- */
-@media (max-width: 1600px) {
-  body.new-main-mode #app-container.grid-layout {
-    grid-template-columns: 56px minmax(340px, 1fr) minmax(400px, 1.08fr) minmax(400px, 1.08fr);
-  }
-}
-@media (max-width: 1440px) {
-  body.new-main-mode #app-container.grid-layout {
-    grid-template-columns: 54px minmax(330px, 1fr) minmax(380px, 1.05fr) minmax(380px, 1.05fr);
-  }
-  body.new-main-mode .col-chat,
-  body.new-main-mode .col-center,
-  body.new-main-mode .col-right {
-    padding: var(--nm-space-2);
-    gap: var(--nm-space-2);
-  }
-}
-@media (max-width: 1280px) {
-  body.new-main-mode #app-container.grid-layout {
-    grid-template-columns: 52px minmax(320px, 1fr) minmax(360px, 1fr) minmax(360px, 1fr);
-  }
-  body.new-main-mode .new-main-topbar-statuses {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  body.new-main-mode .new-main-topbar-actions {
-    justify-content: flex-end;
-    flex-wrap: wrap;
-  }
-}
-
 /* ==========================================================================
-   new_main product polish v2 (UI only: no layout structure/logic changes)
+   new_main unified design system (UI only)
+   - Layout and logic are unchanged.
+   - Styling, spacing, typography and responsive stability only.
    ========================================================================== */
 body.new-main-mode {
-  --nm-radius: 12px;
+  --nm-radius-card: 12px;
+  --nm-radius-control: 8px;
+
   --nm-space-1: 8px;
   --nm-space-2: 12px;
   --nm-space-3: 16px;
   --nm-space-4: 20px;
   --nm-space-5: 24px;
+
   --nm-color-primary: #2563eb;
   --nm-color-primary-hover: #1d4ed8;
-  --nm-color-gray-50: #f9fafb;
+
   --nm-color-gray-100: #f3f4f6;
   --nm-color-gray-200: #e5e7eb;
   --nm-color-gray-300: #d1d5db;
   --nm-color-gray-500: #6b7280;
   --nm-color-gray-600: #4b5563;
   --nm-color-gray-700: #374151;
-  --nm-color-text: #1f2937;
-  --nm-color-risk: #ef4444;
+
+  --nm-color-left-right-bg: #f9fafb;
+  --nm-color-surface: #ffffff;
+  --nm-color-chat-bg: #f9fafb;
+
   --nm-color-risk-bg: #fef2f2;
   --nm-color-risk-text: #b91c1c;
-  color: var(--nm-color-text);
+
+  --nm-transition-fast: 150ms ease;
+
   background: var(--nm-color-gray-100);
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.5;
   overflow: hidden;
 }
+
+body.new-main-mode,
+body.new-main-mode .main-shell {
+  min-height: 100vh;
+}
+
+/* Keep full screen usage while avoiding over-stretch */
 body.new-main-mode #app-container.grid-layout {
-  grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.08fr) minmax(420px, 1.08fr);
-  width: min(1560px, calc(100vw - 24px));
-  max-width: 1560px;
-  min-width: 0;
-  height: calc(100vh - 24px);
-  margin: 12px auto;
-  border-radius: var(--nm-radius);
-  overflow: hidden;
+  grid-template-columns: 56px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
+  width: min(100vw, 1600px);
+  height: 100vh;
+  max-width: 1600px;
+  min-width: 1280px;
+  margin: 0 auto;
   background: #ffffff;
-  box-shadow: 0 1px 6px rgba(15, 23, 42, 0.05);
-}
-body.new-main-mode #page-main {
-  min-width: 0;
+  box-shadow: none;
   overflow: hidden;
 }
+
+body.new-main-mode #page-main {
+  min-height: 0;
+  height: 100%;
+}
+
 body.new-main-mode .col-chat,
 body.new-main-mode .col-center,
 body.new-main-mode .col-right {
   min-height: 0;
   overflow: hidden;
-  padding: var(--nm-space-5);
-  gap: var(--nm-space-5);
+  padding: var(--nm-space-4);
+  gap: var(--nm-space-4);
 }
+
 body.new-main-mode .col-chat,
 body.new-main-mode .col-right {
-  background: var(--nm-color-gray-50);
+  background: var(--nm-color-left-right-bg);
 }
+
 body.new-main-mode .col-center {
   background: #ffffff;
 }
+
 body.new-main-mode #chat-column,
 body.new-main-mode #center-column,
 body.new-main-mode #right-column {
   min-height: 0;
 }
+
 body.new-main-mode #center-column {
   display: grid;
-  grid-template-rows: minmax(380px, 1fr) minmax(300px, 1fr) minmax(220px, auto);
-  gap: var(--nm-space-5);
+  grid-template-rows: minmax(360px, 1fr) minmax(360px, 1fr) auto;
+  gap: var(--nm-space-4);
   min-height: 0;
   overflow: hidden;
 }
 
-/* cards / sections */
+/* Card and panel unification */
 body.new-main-mode .panel,
 body.new-main-mode .info-card,
 body.new-main-mode #verify-form .account-info-panel,
-body.new-main-mode .new-main-warning-panel,
-body.new-main-mode .new-main-routing-panel,
-body.new-main-mode .new-main-history-editor,
-body.new-main-mode .softphone-script-panel,
 body.new-main-mode #notice-area,
 body.new-main-mode #chat-area,
 body.new-main-mode #history-area,
 body.new-main-mode #coaching-area,
-body.new-main-mode .main-my-history-panel {
-  border: 1px solid var(--nm-color-gray-200);
-  border-radius: var(--nm-radius);
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-}
 body.new-main-mode .softphone-script-panel,
 body.new-main-mode .main-my-history-panel,
-body.new-main-mode .new-main-history-editor,
-body.new-main-mode #verify-form .account-info-panel {
+body.new-main-mode .new-main-warning-panel,
+body.new-main-mode .new-main-routing-panel,
+body.new-main-mode .new-main-history-editor {
+  border: 1px solid var(--nm-color-gray-200);
+  border-radius: var(--nm-radius-card);
+  background: var(--nm-color-surface);
+  box-shadow: none;
+}
+
+body.new-main-mode .softphone-script-panel,
+body.new-main-mode #verify-form .account-info-panel,
+body.new-main-mode .main-my-history-panel,
+body.new-main-mode .new-main-history-editor {
   padding: var(--nm-space-4);
 }
 
-/* typography hierarchy */
-body.new-main-mode .new-main-header-strong,
-body.new-main-mode .main-center-notice-title,
-body.new-main-mode .softphone-script-title,
-body.new-main-mode .main-live-header .weight-semibold,
-body.new-main-mode .panel__header--history .weight-semibold,
-body.new-main-mode .main-coaching-header .weight-semibold {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--nm-color-gray-700);
-}
-body.new-main-mode .field,
-body.new-main-mode .consultation-note-field,
-body.new-main-mode .chat-search-input,
-body.new-main-mode select,
-body.new-main-mode textarea,
-body.new-main-mode input,
-body.new-main-mode .tbl__cell,
-body.new-main-mode .new-main-schedule-table td {
-  font-size: 13px;
-  line-height: 1.5;
-}
-body.new-main-mode .customer-status-text,
-body.new-main-mode .main-live-time-text,
-body.new-main-mode .history-note-limit,
-body.new-main-mode .softphone-script-duration,
-body.new-main-mode .account-panel-helper,
-body.new-main-mode .history-editor-timestamp {
-  color: var(--nm-color-gray-600);
-}
-
-/* left-top actions: 1 primary + ghost group */
-body.new-main-mode .new-main-topbar {
-  border: 1px solid var(--nm-color-gray-200);
-  background: #ffffff;
-  box-shadow: none;
-  padding: var(--nm-space-3);
-  gap: var(--nm-space-3);
-}
-body.new-main-mode .new-main-topbar-statuses {
-  gap: var(--nm-space-2);
-}
-body.new-main-mode .new-main-status-item {
-  border: 1px solid var(--nm-color-gray-200);
-  background: #ffffff;
-  min-height: 62px;
-}
-body.new-main-mode .new-main-status-label {
-  color: var(--nm-color-gray-600);
-}
-body.new-main-mode .new-main-status-control {
-  min-height: 38px;
-  border: 1px solid var(--nm-color-gray-300);
-  border-radius: 10px;
-  background: #ffffff;
-}
-body.new-main-mode .new-main-topbar-actions,
-body.new-main-mode .history-editor-actions,
-body.new-main-mode .main-history-actions,
-body.new-main-mode .main-my-history-actions {
-  gap: var(--nm-space-2);
-}
-body.new-main-mode .new-main-status-btn,
-body.new-main-mode .btn--history-reset,
-body.new-main-mode .btn--history-search,
-body.new-main-mode .main-my-history-btn,
-body.new-main-mode .verify-transfer-btn,
-body.new-main-mode .softphone-outbound-btn {
-  min-height: 38px;
-  padding: 0 14px;
-  border-radius: 10px;
-  border: 1px solid var(--nm-color-gray-200);
-  background: #ffffff;
-  color: var(--nm-color-gray-700);
-  font-size: 13px;
-  font-weight: 600;
-}
-body.new-main-mode .new-main-status-btn:hover,
-body.new-main-mode .btn--history-reset:hover,
-body.new-main-mode .btn--history-search:hover,
-body.new-main-mode .main-my-history-btn:hover,
-body.new-main-mode .verify-transfer-btn:hover,
-body.new-main-mode .softphone-outbound-btn:hover {
-  background: var(--nm-color-gray-100);
-  border-color: var(--nm-color-gray-300);
-  color: var(--nm-color-gray-700);
-}
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"] {
-  min-height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--nm-color-primary);
-  background: linear-gradient(180deg, #3b82f6 0%, var(--nm-color-primary) 100%);
-  color: #ffffff;
-}
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"]:hover {
-  background: linear-gradient(180deg, #2f74ee 0%, var(--nm-color-primary-hover) 100%);
-  border-color: var(--nm-color-primary-hover);
-  color: #ffffff;
-}
-body.new-main-mode .history-editor-save-btn {
-  border: 1px solid var(--nm-color-primary);
-  background: linear-gradient(180deg, #3b82f6 0%, var(--nm-color-primary) 100%);
-  color: #ffffff;
-}
-body.new-main-mode .history-editor-save-btn:hover {
-  background: linear-gradient(180deg, #2f74ee 0%, var(--nm-color-primary-hover) 100%);
-  border-color: var(--nm-color-primary-hover);
-}
-
-/* warning emphasis */
-body.new-main-mode .new-main-warning-panel {
-  border-color: #fecaca;
-  background: var(--nm-color-risk-bg);
-}
-body.new-main-mode .new-main-warning-title,
-body.new-main-mode .new-main-warning-content,
-body.new-main-mode .new-main-warning-badge {
-  color: var(--nm-color-risk-text);
-}
-
-/* table system */
-body.new-main-mode .main-history-table-wrap,
-body.new-main-mode .main-my-history-table-wrap,
-body.new-main-mode .new-main-schedule-table-wrap {
-  overflow-x: auto;
-  overflow-y: auto;
-  min-height: 0;
-}
-body.new-main-mode .main-history-thead,
-body.new-main-mode .new-main-schedule-table thead {
-  position: sticky;
-  top: 0;
-  z-index: 3;
-}
-body.new-main-mode .table__head,
-body.new-main-mode .new-main-schedule-table th {
-  background: var(--nm-color-gray-100);
-  color: var(--nm-color-gray-600);
-  padding: 12px 14px;
-}
-body.new-main-mode .tbl__cell,
-body.new-main-mode .new-main-schedule-table td {
-  padding: 12px 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-body.new-main-mode .tbl__row:hover {
-  background: #f8fbff;
-}
-body.new-main-mode .tbl,
-body.new-main-mode .new-main-schedule-table {
-  min-width: 860px;
-  table-layout: fixed;
-}
-
-/* center live chat stabilization */
-body.new-main-mode #chat-area {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-  background: #ffffff;
-}
-body.new-main-mode #chat-area .main-live-header {
-  flex: 0 0 auto;
-  margin: 0;
-  border-bottom: 1px solid var(--nm-color-gray-200);
-}
-body.new-main-mode #chat-area .chat-message-list {
-  flex: 1 1 auto;
-  min-height: 0;
-  margin: 0;
-  padding: 18px;
-  background: var(--nm-color-gray-50);
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-body.new-main-mode #chat-area .chat-bubble {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  line-height: 1.5;
-}
-body.new-main-mode #chat-area .main-live-scroll-wrap {
-  position: sticky;
-  bottom: 0;
-  margin-top: auto;
-  padding: 8px 0 0;
-  background: linear-gradient(to top, var(--nm-color-gray-50) 55%, rgba(249, 250, 251, 0));
-}
-body.new-main-mode #chat-area .main-live-input-wrap {
-  flex: 0 0 auto;
-  border-top: 1px solid var(--nm-color-gray-200);
-  background: #ffffff;
-  padding: 12px 16px;
-}
-
-/* section-level scroll only (no page horizontal scroll) */
-body.new-main-mode #notice-area,
-body.new-main-mode #chat-area,
-body.new-main-mode #history-area,
-body.new-main-mode #coaching-area,
-body.new-main-mode .main-my-history-panel {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-body.new-main-mode .notice-list-wrap,
-body.new-main-mode .coaching-panel,
-body.new-main-mode .new-main-schedule-body {
-  overflow-y: auto;
-  min-height: 0;
-}
-
-/* normalize badges/icons/labels */
-body.new-main-mode .status-badge,
-body.new-main-mode .tag-pill,
-body.new-main-mode .softphone-script-duration {
-  border-radius: 999px;
-  font-size: 12px;
-}
-body.new-main-mode .fa-solid,
-body.new-main-mode .fa-regular {
-  font-size: 14px;
-}
-body.new-main-mode .account-info-grid,
-body.new-main-mode .history-category-grid,
-body.new-main-mode .main-history-filter-grid {
-  row-gap: 12px;
-}
-
-/* responsive stability breakpoints */
-@media (max-width: 1600px) {
-  body.new-main-mode #app-container.grid-layout {
-    width: calc(100vw - 16px);
-    height: calc(100vh - 16px);
-    margin: 8px auto;
-    grid-template-columns: 56px minmax(350px, 1fr) minmax(410px, 1.05fr) minmax(410px, 1.05fr);
-  }
-}
-@media (max-width: 1440px) {
-  body.new-main-mode #app-container.grid-layout {
-    grid-template-columns: 54px minmax(330px, 1fr) minmax(390px, 1.02fr) minmax(390px, 1.02fr);
-  }
-  body.new-main-mode .col-chat,
-  body.new-main-mode .col-center,
-  body.new-main-mode .col-right {
-    padding: var(--nm-space-4);
-    gap: var(--nm-space-4);
-  }
-}
-@media (max-width: 1366px) {
-  body.new-main-mode #app-container.grid-layout {
-    width: calc(100vw - 8px);
-    height: calc(100vh - 8px);
-    margin: 4px auto;
-    grid-template-columns: 52px minmax(320px, 1fr) minmax(380px, 1fr) minmax(380px, 1fr);
-  }
-  body.new-main-mode .new-main-topbar-statuses {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  body.new-main-mode .new-main-topbar-actions {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-}
-
-/* emergency override: keep new_main truly full-screen */
-body.new-main-mode #app-container.grid-layout {
-  width: 100vw !important;
-  max-width: none !important;
-  height: 100vh !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-
-/* ==========================================================================
-   new_main design system v3 (product-grade visual consistency, UI only)
-   ========================================================================== */
-body.new-main-mode {
-  --radius: 12px;
-  --space-1: 8px;
-  --space-2: 12px;
-  --space-3: 16px;
-  --space-4: 20px;
-  --space-5: 24px;
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-risk: #ef4444;
-  --transition: 150ms ease;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-gray-700);
-  background: var(--color-gray-100);
-  overflow: hidden;
-}
-body.new-main-mode #app-container.grid-layout {
-  grid-template-columns: 56px minmax(320px, 1fr) minmax(390px, 1.08fr) minmax(390px, 1.08fr);
-  width: min(1560px, calc(100vw - 24px)) !important;
-  max-width: 1560px !important;
-  min-width: 0 !important;
-  height: calc(100vh - 24px) !important;
-  margin: 12px auto !important;
-  border-radius: var(--radius) !important;
-  overflow: hidden;
-  box-shadow: 0 1px 6px rgba(15, 23, 42, 0.05) !important;
-}
-body.new-main-mode #page-main {
-  min-width: 0;
-  overflow: hidden;
-}
-body.new-main-mode .col-chat,
-body.new-main-mode .col-center,
-body.new-main-mode .col-right {
-  min-height: 0;
-  overflow: hidden;
-  padding: var(--space-5);
-  gap: var(--space-5);
-}
-body.new-main-mode .col-chat,
-body.new-main-mode .col-right {
-  background: var(--color-gray-50);
-}
-body.new-main-mode .col-center {
-  background: #ffffff;
-}
-body.new-main-mode #chat-column,
-body.new-main-mode #center-column,
-body.new-main-mode #right-column {
-  min-height: 0;
-}
-body.new-main-mode #center-column {
-  display: grid;
-  grid-template-rows: minmax(360px, 1fr) minmax(300px, 1fr) minmax(220px, auto);
-  gap: var(--space-5);
-  overflow: hidden;
-}
-
-/* card system */
-body.new-main-mode .panel,
-body.new-main-mode .info-card,
-body.new-main-mode #verify-form .account-info-panel,
-body.new-main-mode #notice-area,
-body.new-main-mode #chat-area,
-body.new-main-mode #history-area,
-body.new-main-mode #coaching-area,
-body.new-main-mode .softphone-script-panel,
-body.new-main-mode .main-my-history-panel,
-body.new-main-mode .new-main-warning-panel,
-body.new-main-mode .new-main-routing-panel,
-body.new-main-mode .new-main-history-editor {
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius);
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-}
-body.new-main-mode .softphone-script-panel,
-body.new-main-mode #verify-form .account-info-panel,
-body.new-main-mode .main-my-history-panel,
-body.new-main-mode .new-main-history-editor {
-  padding: var(--space-5);
-}
+/* Typography hierarchy */
 body.new-main-mode .main-section-header,
 body.new-main-mode .main-live-header,
 body.new-main-mode .panel__header--history,
 body.new-main-mode .main-my-history-header,
 body.new-main-mode .notice-header,
-body.new-main-mode .softphone-script-header {
-  padding: var(--space-4) var(--space-5);
-  background: #ffffff;
-  border-color: var(--color-gray-200);
+body.new-main-mode .softphone-script-header,
+body.new-main-mode .account-panel-title,
+body.new-main-mode .history-editor-title,
+body.new-main-mode .main-my-history-title,
+body.new-main-mode .main-center-coaching-title {
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  color: #111827;
 }
 
-/* type hierarchy */
 body.new-main-mode .new-main-header-strong,
 body.new-main-mode .main-center-notice-title,
 body.new-main-mode .softphone-script-title,
 body.new-main-mode .main-live-header .weight-semibold,
 body.new-main-mode .panel__header--history .weight-semibold,
 body.new-main-mode .main-coaching-header .weight-semibold {
-  font-size: 16px;
+  font-size: 17px;
+  line-height: 1.35;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
-  line-height: 1.4;
-  color: var(--color-gray-700);
 }
+
 body.new-main-mode .customer-status-text,
 body.new-main-mode .main-live-time-text,
 body.new-main-mode .history-note-limit,
@@ -2343,10 +1426,11 @@ body.new-main-mode .softphone-script-duration,
 body.new-main-mode .account-panel-helper,
 body.new-main-mode .history-editor-timestamp {
   font-size: 13px;
-  color: var(--color-gray-600);
+  line-height: 1.5;
+  color: var(--nm-color-gray-600);
 }
 
-/* unified form controls */
+/* Inputs and controls */
 body.new-main-mode .field,
 body.new-main-mode .consultation-note-field,
 body.new-main-mode .chat-search-input,
@@ -2354,12 +1438,18 @@ body.new-main-mode select,
 body.new-main-mode textarea,
 body.new-main-mode input {
   min-height: 38px;
-  border: 1px solid var(--color-gray-300);
-  border-radius: 8px;
-  background: #ffffff;
+  border: 1px solid var(--nm-color-gray-200);
+  border-radius: var(--nm-radius-control);
   font-size: 14px;
-  line-height: 1.5;
+  color: #1f2937;
+  background: #ffffff;
 }
+
+body.new-main-mode textarea,
+body.new-main-mode .consultation-note-field {
+  min-height: 108px;
+}
+
 body.new-main-mode .field:focus,
 body.new-main-mode .chat-search-input:focus,
 body.new-main-mode select:focus,
@@ -2370,102 +1460,163 @@ body.new-main-mode input:focus {
   outline: none;
 }
 
-/* button system: Primary / Secondary / Ghost */
+/* Button system: Primary / Secondary / Ghost
+   Mapping
+   - Primary: .history-editor-save-btn, outbound open/submit actions
+   - Secondary: transfer/search/reset/group-switch/history buttons
+   - Ghost: .notices-more-btn, icon-only close controls
+*/
 body.new-main-mode .new-main-status-btn,
 body.new-main-mode .btn--history-reset,
 body.new-main-mode .btn--history-search,
 body.new-main-mode .main-my-history-btn,
 body.new-main-mode .verify-transfer-btn,
 body.new-main-mode .softphone-outbound-btn,
-body.new-main-mode .new-main-topbar .new-main-topbar-action {
+body.new-main-mode .new-main-topbar .new-main-topbar-action,
+body.new-main-mode .history-export-btn,
+body.new-main-mode .pagination__btn,
+body.new-main-mode .main-outbound-modal__btn {
   min-height: 38px;
   padding: 0 14px;
-  border-radius: 8px;
+  border-radius: var(--nm-radius-control);
   font-size: 14px;
   font-weight: 500;
-  transition: background-color var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
+  transition: background-color var(--nm-transition-fast), border-color var(--nm-transition-fast), color var(--nm-transition-fast);
 }
+
+/* Secondary (default) */
 body.new-main-mode .new-main-status-btn,
 body.new-main-mode .btn--history-reset,
 body.new-main-mode .btn--history-search,
 body.new-main-mode .main-my-history-btn,
 body.new-main-mode .verify-transfer-btn,
 body.new-main-mode .softphone-outbound-btn,
-body.new-main-mode .new-main-topbar .new-main-topbar-action {
+body.new-main-mode .new-main-topbar .new-main-topbar-action,
+body.new-main-mode .history-export-btn,
+body.new-main-mode .pagination__btn,
+body.new-main-mode .main-outbound-modal__btn {
   background: #ffffff;
-  border: 1px solid var(--color-gray-200);
-  color: var(--color-gray-700);
+  border: 1px solid var(--nm-color-gray-200);
+  color: var(--nm-color-gray-700);
 }
+
 body.new-main-mode .new-main-status-btn:hover,
 body.new-main-mode .btn--history-reset:hover,
 body.new-main-mode .btn--history-search:hover,
 body.new-main-mode .main-my-history-btn:hover,
 body.new-main-mode .verify-transfer-btn:hover,
 body.new-main-mode .softphone-outbound-btn:hover,
-body.new-main-mode .new-main-topbar .new-main-topbar-action:hover {
-  background: var(--color-gray-100);
-  border-color: var(--color-gray-300);
-  color: var(--color-gray-700);
+body.new-main-mode .new-main-topbar .new-main-topbar-action:hover,
+body.new-main-mode .history-export-btn:hover,
+body.new-main-mode .pagination__btn:hover,
+body.new-main-mode .main-outbound-modal__btn:hover {
+  background: var(--nm-color-gray-100);
+  border-color: var(--nm-color-gray-300);
+  color: var(--nm-color-gray-700);
 }
-/* keep one clear primary in key groups */
+
+/* Primary */
 body.new-main-mode .history-editor-save-btn,
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"] {
-  background: var(--color-primary);
-  border: none;
+body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"],
+body.new-main-mode .main-outbound-modal__btn--submit {
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: var(--nm-radius-control);
+  background: var(--nm-color-primary);
+  border: 0;
   color: #ffffff;
-  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.24);
+  font-weight: 500;
+  transition: background-color var(--nm-transition-fast);
 }
+
 body.new-main-mode .history-editor-save-btn:hover,
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"]:hover {
-  background: var(--color-primary-hover);
-  color: #ffffff;
+body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"]:hover,
+body.new-main-mode .main-outbound-modal__btn--submit:hover {
+  background: var(--nm-color-primary-hover);
 }
-/* example ghost-style utility in existing UI */
+
+body.new-main-mode .main-outbound-modal__btn--cancel {
+  background: #ffffff;
+  border: 1px solid var(--nm-color-gray-200);
+  color: var(--nm-color-gray-700);
+}
+
+body.new-main-mode .main-outbound-modal__btn--cancel:hover {
+  background: var(--nm-color-gray-100);
+  border-color: var(--nm-color-gray-300);
+}
+
+/* Ghost */
 body.new-main-mode .notices-more-btn {
   min-height: 32px;
   padding: 0 10px;
   border: 0;
   background: transparent;
-  color: var(--color-gray-600);
-  border-radius: 8px;
-}
-body.new-main-mode .notices-more-btn:hover {
-  background: #eef2ff;
-  color: var(--color-primary);
+  color: var(--nm-color-gray-600);
+  border-radius: var(--nm-radius-control);
 }
 
-/* top action group spacing (left-top area clean-up) */
+body.new-main-mode .notices-more-btn:hover {
+  background: #eef2ff;
+  color: var(--nm-color-primary);
+}
+
+body.new-main-mode .history-detail-modal__close,
+body.new-main-mode .main-outbound-modal__close,
+body.new-main-mode .agent-logout-btn {
+  background: transparent;
+  border: 0;
+  color: var(--nm-color-gray-600);
+  border-radius: var(--nm-radius-control);
+  transition: background-color var(--nm-transition-fast), color var(--nm-transition-fast);
+}
+
+body.new-main-mode .history-detail-modal__close:hover,
+body.new-main-mode .main-outbound-modal__close:hover,
+body.new-main-mode .agent-logout-btn:hover {
+  background: var(--nm-color-gray-100);
+  color: #111827;
+}
+
+/* Top action visual cleanup */
 body.new-main-mode .new-main-topbar {
-  gap: var(--space-3);
-  padding: var(--space-3);
-  border: 1px solid var(--color-gray-200);
+  gap: var(--nm-space-3);
+  padding: var(--nm-space-3);
+  border: 1px solid var(--nm-color-gray-200);
+  border-radius: var(--nm-radius-card);
+  background: #ffffff;
   box-shadow: none;
 }
+
 body.new-main-mode .new-main-topbar-statuses,
 body.new-main-mode .new-main-topbar-actions {
   gap: 10px;
 }
+
 body.new-main-mode .new-main-topbar-actions {
   margin-left: 16px;
 }
 
-/* warning and pills */
+/* High-risk visual */
 body.new-main-mode .new-main-warning-panel {
   border-color: #fecaca;
-  background: #fef2f2;
+  background: var(--nm-color-risk-bg);
 }
+
 body.new-main-mode .new-main-warning-title,
 body.new-main-mode .new-main-warning-content,
 body.new-main-mode .new-main-warning-badge {
-  color: #b91c1c;
+  color: var(--nm-color-risk-text);
 }
+
+/* Pills / tags */
 body.new-main-mode .status-badge,
 body.new-main-mode .tag-pill,
 body.new-main-mode .softphone-script-duration {
   border-radius: 999px;
 }
 
-/* table quality */
+/* Tables */
 body.new-main-mode .main-history-table-wrap,
 body.new-main-mode .main-my-history-table-wrap,
 body.new-main-mode .new-main-schedule-table-wrap {
@@ -2473,18 +1624,21 @@ body.new-main-mode .new-main-schedule-table-wrap {
   overflow-y: auto;
   min-height: 0;
 }
+
 body.new-main-mode .main-history-thead,
 body.new-main-mode .new-main-schedule-table thead {
   position: sticky;
   top: 0;
   z-index: 3;
 }
+
 body.new-main-mode .table__head,
 body.new-main-mode .new-main-schedule-table th {
-  background: var(--color-gray-100);
-  color: var(--color-gray-600);
+  background: var(--nm-color-gray-100);
+  color: var(--nm-color-gray-600);
   padding: 12px 14px;
 }
+
 body.new-main-mode .tbl__cell,
 body.new-main-mode .new-main-schedule-table td {
   padding: 12px 14px;
@@ -2492,16 +1646,18 @@ body.new-main-mode .new-main-schedule-table td {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 body.new-main-mode .tbl__row:hover {
   background: #f8fbff;
 }
+
 body.new-main-mode .tbl,
 body.new-main-mode .new-main-schedule-table {
   min-width: 860px;
   table-layout: fixed;
 }
 
-/* center emphasis + chat flex stability */
+/* Center chat stabilization */
 body.new-main-mode #chat-area {
   display: flex;
   flex-direction: column;
@@ -2510,39 +1666,36 @@ body.new-main-mode #chat-area {
   overflow: hidden;
   background: #ffffff;
 }
+
 body.new-main-mode #chat-area .main-live-header {
   flex: 0 0 auto;
   margin: 0;
-  border-bottom: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--nm-color-gray-200);
 }
+
 body.new-main-mode #chat-area .chat-message-list {
   flex: 1 1 auto;
   min-height: 0;
   margin: 0;
   padding: 18px;
-  background: var(--color-gray-50);
+  background: var(--nm-color-chat-bg);
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 body.new-main-mode #chat-area .chat-bubble {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-body.new-main-mode #chat-area .main-live-scroll-wrap {
-  position: sticky;
-  bottom: 0;
-  margin-top: auto;
-  padding-top: 8px;
-  background: linear-gradient(to top, var(--color-gray-50) 55%, rgba(249, 250, 251, 0));
-}
+
 body.new-main-mode #chat-area .main-live-input-wrap {
   flex: 0 0 auto;
-  border-top: 1px solid var(--color-gray-200);
+  border-top: 1px solid var(--nm-color-gray-200);
   background: #ffffff;
   padding: 12px 16px;
 }
 
-/* section-scoped scrolling only */
+/* Section-level scrolling only */
 body.new-main-mode #notice-area,
 body.new-main-mode #chat-area,
 body.new-main-mode #history-area,
@@ -2552,6 +1705,7 @@ body.new-main-mode .main-my-history-panel {
   flex-direction: column;
   min-height: 0;
 }
+
 body.new-main-mode .notice-list-wrap,
 body.new-main-mode .coaching-panel,
 body.new-main-mode .new-main-schedule-body {
@@ -2559,81 +1713,47 @@ body.new-main-mode .new-main-schedule-body {
   overflow-y: auto;
 }
 
-/* responsive: 1600 / 1440 / 1366 */
+/* Breakpoints: 1600 / 1440 / 1366 */
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {
-    width: calc(100vw - 16px) !important;
-    height: calc(100vh - 16px) !important;
-    margin: 8px auto !important;
-    grid-template-columns: 56px minmax(320px, 1fr) minmax(380px, 1.05fr) minmax(380px, 1.05fr);
+    width: calc(100vw - 16px);
+    height: calc(100vh - 8px);
+    margin: 4px auto;
+    grid-template-columns: 56px minmax(340px, 1fr) minmax(400px, 1.05fr) minmax(400px, 1.05fr);
   }
 }
+
 @media (max-width: 1440px) {
   body.new-main-mode #app-container.grid-layout {
-    grid-template-columns: 54px minmax(310px, 1fr) minmax(360px, 1.03fr) minmax(360px, 1.03fr);
+    min-width: 0;
+    width: calc(100vw - 8px);
+    height: calc(100vh - 8px);
+    grid-template-columns: 54px minmax(320px, 1fr) minmax(380px, 1.03fr) minmax(380px, 1.03fr);
   }
+
   body.new-main-mode .col-chat,
   body.new-main-mode .col-center,
   body.new-main-mode .col-right {
-    padding: var(--space-4);
-    gap: var(--space-4);
+    padding: var(--nm-space-3);
+    gap: var(--nm-space-3);
   }
 }
+
 @media (max-width: 1366px) {
   body.new-main-mode #app-container.grid-layout {
-    width: calc(100vw - 8px) !important;
-    height: calc(100vh - 8px) !important;
-    margin: 4px auto !important;
-    grid-template-columns: 52px minmax(300px, 1fr) minmax(340px, 1fr) minmax(340px, 1fr);
+    min-width: 0;
+    width: calc(100vw - 4px);
+    height: calc(100vh - 4px);
+    margin: 2px auto;
+    grid-template-columns: 52px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
   }
+
   body.new-main-mode .new-main-topbar-statuses {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   body.new-main-mode .new-main-topbar-actions {
     justify-content: flex-end;
     flex-wrap: wrap;
   }
-}
-
-/* new_main center chat card stabilization (layout unchanged) */
-body.new-main-mode #chat-area {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-  background: #ffffff;
-}
-body.new-main-mode #chat-area .main-live-header {
-  flex: 0 0 auto;
-  min-height: 64px;
-  margin: 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-body.new-main-mode #chat-area .chat-message-list {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: auto;
-  margin: 0;
-  padding: 18px;
-  background: #f9fafb;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-body.new-main-mode #chat-area .chat-bubble {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-body.new-main-mode #chat-area .main-live-scroll-wrap {
-  position: sticky;
-  bottom: 0;
-  margin-top: auto;
-  padding: 8px 0 0;
-  background: linear-gradient(to top, #f9fafb 55%, rgba(249, 250, 251, 0));
-}
-body.new-main-mode #chat-area .main-live-input-wrap {
-  flex: 0 0 auto;
-  border-top: 1px solid #e5e7eb;
-  background: #ffffff;
-  padding: 12px 16px;
 }
