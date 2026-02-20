@@ -6,29 +6,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     customerInfoSection.remove();
   }
 
-  const chatColumn = document.querySelector('#chat-column');
-  if (chatColumn && !chatColumn.querySelector('[data-role="new-main-topbar"]')) {
+  const rightColumn = document.querySelector('#right-column');
+  if (rightColumn && !rightColumn.querySelector('[data-role="new-main-right-topbar"]')) {
     const topbar = document.createElement('section');
-    topbar.className = 'new-main-topbar';
-    topbar.setAttribute('data-role', 'new-main-topbar');
+    topbar.className = 'new-main-right-topbar';
+    topbar.setAttribute('data-role', 'new-main-right-topbar');
     topbar.innerHTML = `
-      <div class="new-main-topbar-left">
-        <button type="button" class="new-main-work-btn" aria-label="업무 상태">
-          <span class="new-main-work-dot"></span>
-          <span>업무</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </button>
-        <button type="button" class="new-main-vertical-btn" aria-label="그룹전환">
-          <i class="fa-solid fa-arrows-rotate"></i>
-          <span>그룹전환</span>
-        </button>
-        <button type="button" class="new-main-vertical-btn" aria-label="아웃바운드">
-          <i class="fa-solid fa-phone"></i>
-          <span>아웃바운드</span>
-        </button>
+      <div class="new-main-right-topbar-title">상담 상태</div>
+      <div class="new-main-right-topbar-grid">
+        <div class="new-main-status-item">
+          <span class="new-main-status-label">로그인여부</span>
+          <span class="new-main-status-value is-on">ON</span>
+        </div>
+        <div class="new-main-status-item">
+          <span class="new-main-status-label">호전환</span>
+          <span class="new-main-status-value is-ready">대기</span>
+        </div>
+        <div class="new-main-status-item">
+          <span class="new-main-status-label">지점전환</span>
+          <span class="new-main-status-value is-ready">가능</span>
+        </div>
       </div>
     `;
-    chatColumn.prepend(topbar);
+    rightColumn.prepend(topbar);
   }
 
   const verifyFormSection = document.querySelector('#verify-form');
