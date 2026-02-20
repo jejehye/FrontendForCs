@@ -121,15 +121,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     topbar.setAttribute('data-role', 'new-main-topbar');
     topbar.innerHTML = `
       <div class="new-main-topbar-statuses">
-        <div class="new-main-status-item">
+        <div class="new-main-status-item new-main-status-item--work">
           <span class="new-main-status-label">업무상태</span>
-          <select class="new-main-status-control" data-role="agent-status-select" aria-label="업무상태">
-            <option value="ready" selected>업무</option>
-            <option value="away">이석</option>
-            <option value="busy">대기</option>
-            <option value="break">휴식</option>
-            <option value="meeting">회의</option>
-          </select>
+          <div class="new-main-work-select-wrap">
+            <span class="new-main-work-dot" aria-hidden="true"></span>
+            <select class="new-main-status-control" data-role="agent-status-select" aria-label="업무상태">
+              <option value="ready" selected>업무</option>
+              <option value="away">이석</option>
+              <option value="busy">대기</option>
+              <option value="break">휴식</option>
+              <option value="meeting">회의</option>
+            </select>
+          </div>
         </div>
         <div class="new-main-status-item">
           <span class="new-main-status-label">로그인여부</span>
