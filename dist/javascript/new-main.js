@@ -205,6 +205,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     verifyFormSection.insertAdjacentElement('afterend', warningSection);
   }
 
+  const historyArea = document.querySelector('#history-area');
+  if (historyArea && !document.querySelector('[data-role="new-main-routing-utterance"]')) {
+    const utteranceSection = document.createElement('section');
+    utteranceSection.className = 'new-main-routing-slot';
+    utteranceSection.setAttribute('data-role', 'new-main-routing-utterance');
+    utteranceSection.innerHTML = `
+      <div class="new-main-routing-panel">
+        <div class="new-main-routing-title">음성봇 라우팅 발화</div>
+        <div class="new-main-routing-list">
+          <article class="new-main-routing-item">
+            <div class="new-main-routing-item-head">
+              <span class="new-main-routing-speaker">고객</span>
+              <span class="new-main-routing-time">17:08:44</span>
+            </div>
+            <div class="new-main-routing-text">수수료</div>
+          </article>
+        </div>
+      </div>
+    `;
+    historyArea.parentElement?.insertBefore(utteranceSection, historyArea);
+  }
+
   const warningTabsWrap = document.querySelector('#coaching-area .main-center-warning-wrap');
   if (warningTabsWrap) {
     warningTabsWrap.remove();
@@ -217,7 +239,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     coachingArea.parentElement.insertBefore(chatArea, coachingArea);
   }
 
-  const historyArea = document.querySelector('#history-area');
   if (historyArea && !historyArea.querySelector('[data-role="new-main-history-editor"]')) {
     historyArea.innerHTML = `
       <div class="new-main-history-editor" data-role="new-main-history-editor">

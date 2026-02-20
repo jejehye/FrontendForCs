@@ -928,6 +928,57 @@ body { background-color: #f3f4f6; }
   padding: 0 12px 8px;
   background: #ffffff;
 }
+.new-main-routing-slot {
+  padding: 0 12px 8px;
+  background: #ffffff;
+}
+.new-main-routing-panel {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  overflow: hidden;
+}
+.new-main-routing-title {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  border-bottom: 1px solid #dbe3ee;
+  background: #eef2f7;
+}
+.new-main-routing-list {
+  padding: 8px;
+}
+.new-main-routing-item {
+  border: 1px solid #9ca3af;
+  background: #ffffff;
+}
+.new-main-routing-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #d1d5db;
+}
+.new-main-routing-speaker {
+  color: #1d4ed8;
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 700;
+}
+.new-main-routing-time {
+  color: #111827;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+}
+.new-main-routing-text {
+  padding: 6px 8px 8px;
+  color: #111827;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 500;
+}
 .new-main-status-row-wrap {
   padding: 0 12px 8px;
   background: #ffffff;
