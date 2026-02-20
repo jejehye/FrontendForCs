@@ -9,3 +9,27 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "OneShinhanLight";
+  src:
+    local("OneShinhanMedium"),
+    url("../fonts/OneShinhanMedium.woff2") format("woff2"),
+    url("../fonts/OneShinhanMedium.woff") format("woff"),
+    url("../fonts/OneShinhanMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OneShinhanLight";
+  src:
+    local("OneShinhanBold"),
+    url("../fonts/OneShinhanBold.woff2") format("woff2"),
+    url("../fonts/OneShinhanBold.woff") format("woff"),
+    url("../fonts/OneShinhanBold.ttf") format("truetype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
