@@ -1,6 +1,11 @@
 /* New-main page bootstrap entry */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const customerInfoSection = document.querySelector('#customer-info');
+  if (customerInfoSection) {
+    customerInfoSection.remove();
+  }
+
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
     await window.MainPageData.load();
   }
