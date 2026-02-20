@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  overflow: hidden;
+  overflow: auto;
 }
 
 ::-webkit-scrollbar {
