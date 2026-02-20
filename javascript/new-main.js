@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     warningSection.className = 'new-main-warning-slot';
     warningSection.setAttribute('data-role', 'new-main-warning');
     warningSection.innerHTML = `
-      <div class="customer-warning customer-warning-wide">
-        <i class="fa-solid fa-triangle-exclamation customer-warning-icon"></i>
-        <div class="customer-warning-body">
-          <span class="customer-warning-title">주의고객</span>
-          <span class="customer-warning-text">고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 - 본인확인 철저</span>
+      <div class="new-main-warning-panel">
+        <div class="new-main-warning-title">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          주의고객정보
         </div>
+        <div class="new-main-warning-content">고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 - 본인확인 철저</div>
       </div>
     `;
     verifyFormSection.insertAdjacentElement('afterend', warningSection);
