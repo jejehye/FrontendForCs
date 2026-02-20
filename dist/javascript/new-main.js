@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const todayRowLabel = `${yyyy}.${mm}.${dd}`;
     const currentStamp = `${yyyy}-${mm}-${dd} ${hh}:${min}:00`;
 
-    const scheduleRows = [
-      { no: 1, title: `${todayRowLabel} (금) 업무일정`, updated: currentStamp },
-      { no: 2, title: `${todayRowLabel} (금) 점검일정`, updated: currentStamp },
-      { no: 3, title: `${todayRowLabel} (금) 안내일정`, updated: currentStamp },
-    ];
+    const scheduleRows = Array.from({ length: 12 }, (_, index) => ({
+      no: index + 1,
+      title: `${todayRowLabel} (${['업무', '점검', '안내'][index % 3]}) 일정`,
+      updated: currentStamp
+    }));
 
     noticeArea.innerHTML = `
       <section class="new-main-schedule-panel" data-role="new-main-schedule">
@@ -47,19 +47,64 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <th>수정일시</th>
               </tr>
             </thead>
-            <tbody>
-              ${scheduleRows.map(row => `
-                <tr>
-                  <td>${row.no}</td>
-                  <td>${row.title}</td>
-                  <td>${row.updated}</td>
-                </tr>
-              `).join('')}
-            </tbody>
+            <tbody data-role="new-main-schedule-body"></tbody>
           </table>
+          <div class="new-main-schedule-pagination" data-role="new-main-schedule-pagination">
+            <button type="button" class="new-main-schedule-page-btn" data-action="schedule-prev" aria-label="이전 페이지">
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <div class="new-main-schedule-page-tabs" data-role="new-main-schedule-page-tabs"></div>
+            <button type="button" class="new-main-schedule-page-btn" data-action="schedule-next" aria-label="다음 페이지">
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+          </div>
         </div>
       </section>
     `;
+
+    const pageSize = 4;
+    const totalPages = Math.ceil(scheduleRows.length / pageSize);
+    let currentPage = 1;
+
+    const scheduleBody = noticeArea.querySelector('[data-role="new-main-schedule-body"]');
+    const pageTabs = noticeArea.querySelector('[data-role="new-main-schedule-page-tabs"]');
+    const prevBtn = noticeArea.querySelector('[data-action="schedule-prev"]');
+    const nextBtn = noticeArea.querySelector('[data-action="schedule-next"]');
+
+    if (!scheduleBody || !pageTabs || !prevBtn || !nextBtn) {
+      return;
+    }
+
+    const renderPage = page => {
+      currentPage = Math.min(totalPages, Math.max(1, page));
+      const start = (currentPage - 1) * pageSize;
+      const rows = scheduleRows.slice(start, start + pageSize);
+
+      scheduleBody.innerHTML = rows.map(row => `
+        <tr>
+          <td>${row.no}</td>
+          <td>${row.title}</td>
+          <td>${row.updated}</td>
+        </tr>
+      `).join('');
+
+      pageTabs.innerHTML = Array.from({ length: totalPages }, (_, idx) => {
+        const pageNo = idx + 1;
+        const activeClass = pageNo === currentPage ? ' is-active' : '';
+        return `<button type="button" class="new-main-schedule-page-btn${activeClass}" data-action="schedule-page" data-page="${pageNo}">${pageNo}</button>`;
+      }).join('');
+
+      pageTabs.querySelectorAll('[data-action="schedule-page"]').forEach(button => {
+        button.addEventListener('click', () => renderPage(Number(button.dataset.page)));
+      });
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+    };
+
+    prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
+    nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
+    renderPage(1);
   };
 
   const customerInfoSection = document.querySelector('#customer-info');

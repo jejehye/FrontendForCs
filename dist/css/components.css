@@ -1106,6 +1106,41 @@ body { background-color: #f3f4f6; }
   width: 40px;
   text-align: center;
 }
+.new-main-schedule-pagination {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.new-main-schedule-page-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.new-main-schedule-page-btn {
+  min-width: 24px;
+  height: 24px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+.new-main-schedule-page-btn.is-active {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+}
+.new-main-schedule-page-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
 
 /* Tailwind residual cleanup aliases */
 .is-hidden { display: none; }
