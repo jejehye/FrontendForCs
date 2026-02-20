@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CTI Agent Dashboard</title>
-  <link rel="stylesheet" href="app.css?v=1771603451507">
+  <link rel="stylesheet" href="app.css?v=1771603610874">
   
   <!-- ===================== Vendor Styles ===================== -->
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771603451507">
-  <script src="./vendor/fontawesome/js/all.min.js?v=1771603451507" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771603610874">
+  <script src="./vendor/fontawesome/js/all.min.js?v=1771603610874" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- ===================== Page Styles ===================== -->
-  <link rel="stylesheet" href="css/main.css?v=1771603451507">
+  <link rel="stylesheet" href="css/main.css?v=1771603610874">
 
 </head>
 <body>
   
-  <script src="app-config.js?v=1771603451507"></script>
-  <script src="javascript/common/page-module.js?v=1771603451507"></script>
+  <script src="app-config.js?v=1771603610874"></script>
+  <script src="javascript/common/page-module.js?v=1771603610874"></script>
 
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">
@@ -656,23 +656,72 @@
         통화중 OFF
       </button>
     </header>
-    <div class="softphone-script-grid">
-      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="녹취 동의 안내" data-softphone-script="녹취 동의 안내">
-        <i class="fa-solid fa-microphone-lines"></i>
-        녹취동의
-      </button>
-      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="개인정보 수집 동의" data-softphone-script="개인정보 수집 동의">
-        <i class="fa-solid fa-user-shield"></i>
-        개인정보
-      </button>
-      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="투자 유의사항" data-softphone-script="투자 유의사항">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        투자유의
-      </button>
-      <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="통화 종료 안내" data-softphone-script="통화 종료 안내">
-        <i class="fa-solid fa-phone-slash"></i>
-        종료안내
-      </button>
+    <div class="softphone-script-groups">
+      <section class="softphone-script-group">
+        <h4 class="softphone-script-group-title">본인확인</h4>
+        <div class="softphone-script-grid softphone-script-grid--three">
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="휴대폰 본인인증" data-softphone-script="휴대폰 본인인증">휴대폰 본인인증</button>
+            <span class="softphone-script-duration">1분1초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="주민번호" data-softphone-script="주민번호">주민번호</button>
+            <span class="softphone-script-duration">12초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="개인정보" data-softphone-script="개인정보">개인정보</button>
+            <span class="softphone-script-duration">27초</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="softphone-script-group">
+        <h4 class="softphone-script-group-title">상품가입</h4>
+        <div class="softphone-script-grid softphone-script-grid--three">
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="K-OTC시장" data-softphone-script="K-OTC시장">K-OTC시장</button>
+            <span class="softphone-script-duration">8분57초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="코넥스 거래등록" data-softphone-script="코넥스 거래등록">코넥스 거래등록</button>
+            <span class="softphone-script-duration">3분45초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="대여서비스등록" data-softphone-script="대여서비스등록">대여서비스등록</button>
+            <span class="softphone-script-duration">1분53초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="원화RP가입" data-softphone-script="원화RP가입">원화RP가입</button>
+            <span class="softphone-script-duration">1분28초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="소수점거래" data-softphone-script="소수점거래">소수점거래</button>
+            <span class="softphone-script-duration">1분52초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="파생ETF" data-softphone-script="파생ETF">파생ETF</button>
+            <span class="softphone-script-duration">48초</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="softphone-script-group">
+        <h4 class="softphone-script-group-title">안내사항</h4>
+        <div class="softphone-script-grid softphone-script-grid--three">
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="ISA 만기연장" data-softphone-script="ISA 만기연장">ISA 만기연장</button>
+            <span class="softphone-script-duration">1분40초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="일괄지급정지" data-softphone-script="일괄지급정지">일괄지급정지</button>
+            <span class="softphone-script-duration">1분6초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="전문투자자 위험고지" data-softphone-script="전문투자자 위험고지">전문투자자 위험고지</button>
+            <span class="softphone-script-duration">1분3초</span>
+          </div>
+        </div>
+      </section>
     </div>
     <div class="softphone-script-status" data-role="softphone-output" data-softphone-output>
       통화중 상태에서 버튼을 누르면 멘트가 송출됩니다.
@@ -1046,15 +1095,15 @@
   </script>
 
   
-  <script src="javascript/common/ui.js?v=1771603451507"></script>
-  <script src="javascript/common/api.js?v=1771603451507"></script>
-  <script src="javascript/main/config.js?v=1771603451507"></script>
-  <script src="javascript/main/data.js?v=1771603451507"></script>
-  <script src="javascript/main/customer-info.js?v=1771603451507"></script>
-  <script src="javascript/main/tabs.js?v=1771603451507"></script>
-  <script src="javascript/main/history.js?v=1771603451507"></script>
-  <script src="javascript/main/actions.js?v=1771603451507"></script>
-  <script src="javascript/main.js?v=1771603451507"></script>
+  <script src="javascript/common/ui.js?v=1771603610874"></script>
+  <script src="javascript/common/api.js?v=1771603610874"></script>
+  <script src="javascript/main/config.js?v=1771603610874"></script>
+  <script src="javascript/main/data.js?v=1771603610874"></script>
+  <script src="javascript/main/customer-info.js?v=1771603610874"></script>
+  <script src="javascript/main/tabs.js?v=1771603610874"></script>
+  <script src="javascript/main/history.js?v=1771603610874"></script>
+  <script src="javascript/main/actions.js?v=1771603610874"></script>
+  <script src="javascript/main.js?v=1771603610874"></script>
 
 </body>
 </html>
