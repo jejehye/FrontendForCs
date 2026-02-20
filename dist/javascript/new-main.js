@@ -1,6 +1,8 @@
 /* New-main page bootstrap entry */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  document.body.classList.add('new-main-mode');
+
   const renderTodaySchedulePanel = () => {
     const noticeArea = document.querySelector('#notice-area');
     if (!noticeArea) {
