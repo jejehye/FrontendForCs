@@ -45,6 +45,11 @@ window.MainPageActions = (() => {
       return;
     }
 
+    const resolvePageHref = (page) => {
+      const useHtml = window.location.protocol === 'file:' || window.location.pathname.endsWith('.html');
+      return useHtml ? `${page}.html` : `/${page}`;
+    };
+
     logoutButton.addEventListener('click', () => {
       const shouldLogout = window.confirm('로그아웃하시겠습니까?');
       if (!shouldLogout) {
@@ -52,7 +57,7 @@ window.MainPageActions = (() => {
       }
       localStorage.removeItem('currentAgentId');
       localStorage.removeItem('currentAgentName');
-      window.location.assign('/login');
+      window.location.assign(resolvePageHref('login'));
     });
   };
 

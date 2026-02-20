@@ -61,6 +61,7 @@ for (const entry of entries) {
   }
 
   const pageTemplate = path.posix.join('pages', entry.name);
+  const pageName = entry.name.replace(/\.njk$/, '');
   const outputFileName = entry.name.replace(/\.njk$/, '.html');
   const outputPath = path.join(distDir, outputFileName);
   const pageData = await loadPageData(entry.name);
@@ -68,4 +69,13 @@ for (const entry of entries) {
 
   await fs.writeFile(outputPath, html, 'utf8');
   console.log(`Rendered src/${pageTemplate} -> dist/${outputFileName}`);
+
+  // Also emit pretty-URL entry points so /page works on static servers without rewrite rules.
+  if (pageName !== 'index') {
+    const prettyDir = path.join(distDir, pageName);
+    const prettyIndexPath = path.join(prettyDir, 'index.html');
+    await fs.mkdir(prettyDir, { recursive: true });
+    await fs.writeFile(prettyIndexPath, html, 'utf8');
+    console.log(`Rendered src/${pageTemplate} -> dist/${pageName}/index.html`);
+  }
 }

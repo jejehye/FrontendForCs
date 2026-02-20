@@ -38,8 +38,15 @@ window.MainPageTabs = (() => {
     selectAll('[data-role="nav-item"]', '.nav-item').forEach(item => {
       item.addEventListener('click', function onNavClick() {
         const targetPage = this.dataset.page;
-        if (targetPage && !window.location.pathname.endsWith(targetPage)) {
-          window.location.href = targetPage;
+        const isSamePage = window.AppUi?.isSamePagePath
+          ? window.AppUi.isSamePagePath(targetPage)
+          : window.location.pathname.endsWith(targetPage || '');
+
+        if (targetPage && !isSamePage) {
+          const href = window.AppUi?.resolvePageHref
+            ? window.AppUi.resolvePageHref(targetPage)
+            : targetPage;
+          window.location.href = href;
           return;
         }
 

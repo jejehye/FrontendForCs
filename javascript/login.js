@@ -7,6 +7,10 @@ const passwordInput = selectOne('[data-role="password"]', '#password');
 const rememberMeCheckbox = selectOne('[data-role="remember-me"]', '#rememberMe');
 const errorMessage = selectOne('[data-role="error-message"]', '#errorMessage');
 const errorText = selectOne('[data-role="error-text"]', '#errorText');
+const resolvePageHref = (page) => {
+  const useHtml = window.location.protocol === 'file:' || window.location.pathname.endsWith('.html');
+  return useHtml ? `${page}.html` : `/${page}`;
+};
 
 if (!loginForm || !employeeIdInput || !passwordInput || !rememberMeCheckbox || !errorMessage || !errorText) {
   throw new Error('Login DOM hooks are missing.');
@@ -52,7 +56,7 @@ loginForm.addEventListener('submit', function onLoginSubmit(event) {
   }
 
   setTimeout(function redirectToMain() {
-    window.location.assign('/main');
+    window.location.assign(resolvePageHref('main'));
   }, 1000);
 });
 

@@ -1,4 +1,23 @@
 (function initAppUi(windowObject) {
+  function shouldUseHtmlExtension() {
+    return window.location.protocol === 'file:' || window.location.pathname.endsWith('.html');
+  }
+
+  function resolvePageHref(targetPage) {
+    if (!targetPage) {
+      return '';
+    }
+    return shouldUseHtmlExtension() ? `${targetPage}.html` : targetPage;
+  }
+
+  function isSamePagePath(targetPage) {
+    if (!targetPage) {
+      return true;
+    }
+    const pathname = window.location.pathname;
+    return pathname.endsWith(`/${targetPage}`) || pathname.endsWith(`/${targetPage}.html`);
+  }
+
   function initSidebarNavigation(options = {}) {
     const {
       itemSelector = '.nav-item',
@@ -14,12 +33,10 @@
     items.forEach((item) => {
       item.addEventListener('click', (event) => {
         const targetPage = item.getAttribute('data-page');
-        const isSamePage = targetPage
-          ? window.location.pathname.endsWith(targetPage)
-          : true;
+        const isSamePage = isSamePagePath(targetPage);
 
         if (targetPage && !isSamePage) {
-          window.location.href = targetPage;
+          window.location.href = resolvePageHref(targetPage);
           return;
         }
 
@@ -59,5 +76,7 @@
   windowObject.AppUi = {
     initSidebarNavigation,
     initSingleActiveToggle,
+    resolvePageHref,
+    isSamePagePath,
   };
 })(window);
