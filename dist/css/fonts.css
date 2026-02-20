@@ -11,7 +11,7 @@
 }
 
 @font-face {
-  font-family: "OneShinhanLight";
+  font-family: "OneShinhanMedium";
   src:
     local("OneShinhanMedium"),
     url("../fonts/OneShinhanMedium.woff2") format("woff2"),
@@ -23,13 +23,13 @@
 }
 
 @font-face {
-  font-family: "OneShinhanLight";
+  font-family: "OneShinhanBold";
   src:
     local("OneShinhanBold"),
     url("../fonts/OneShinhanBold.woff2") format("woff2"),
     url("../fonts/OneShinhanBold.woff") format("woff"),
     url("../fonts/OneShinhanBold.ttf") format("truetype");
-  font-weight: 700 900;
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
