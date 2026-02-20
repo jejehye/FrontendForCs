@@ -813,39 +813,44 @@ body { background-color: #f3f4f6; }
   top: 0;
   z-index: 35;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #dbe5ef;
-  border-radius: 12px;
-  background: #f8fbff;
-  box-shadow: 0 1px 6px rgba(15, 23, 42, 0.05);
-  padding: 9px 10px;
+  gap: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #d7e1ec;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 140% at 0% 0%, #ffffff 0%, #f7fbff 56%, #f1f7ff 100%);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  padding: 10px 12px;
 }
 .new-main-topbar-statuses {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px;
+  gap: 8px;
   flex: 1 1 auto;
 }
 .new-main-status-item {
-  border: 1px solid #dde6f0;
-  border-radius: 8px;
+  border: 1px solid #dbe6f2;
+  border-radius: 10px;
   background: #ffffff;
-  padding: 6px 7px;
+  padding: 7px 9px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  gap: 5px;
+  min-height: 64px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 .new-main-status-item--work {
-  border-color: #d1d5db;
-  background: #f9fbfd;
+  border-color: #d3dbe6;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafd 100%);
 }
 .new-main-status-label {
-  font-size: 10px;
+  font-size: 11px;
   color: #64748b;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 .new-main-status-value {
   display: inline-flex;
@@ -862,30 +867,31 @@ body { background-color: #f3f4f6; }
   background: #f8fafc;
 }
 .new-main-status-value.is-on {
-  color: #065f46;
-  border-color: #86efac;
+  color: #047857;
+  border-color: #a7f3d0;
   background: #ecfdf5;
 }
 .new-main-status-value.is-ready {
-  color: #1e3a8a;
-  border-color: #93c5fd;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
   background: #eff6ff;
 }
 .new-main-status-control {
   width: 100%;
-  min-height: 30px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background: #f8fafc;
+  min-height: 34px;
+  border: 1px solid #d3dde9;
+  border-radius: 11px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafd 100%);
   color: #1f2937;
   font-size: 13px;
   font-weight: 600;
-  padding: 4px 10px 4px 28px;
+  padding: 5px 12px 5px 30px;
   appearance: none;
   -webkit-appearance: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 .new-main-status-item--work .new-main-status-label {
-  margin-bottom: 1px;
+  margin-bottom: 0;
 }
 .new-main-work-select-wrap {
   position: relative;
@@ -895,44 +901,46 @@ body { background-color: #f3f4f6; }
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 999px;
   background: #10b981;
-  border: 1px solid #86efac;
+  border: 1px solid #6ee7b7;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
   z-index: 1;
 }
 .new-main-status-btn,
 .new-main-topbar .new-main-topbar-action {
-  min-height: 30px;
-  border: 1px solid #9eb8d4;
-  border-radius: 6px;
-  background: linear-gradient(180deg, #5f86ac 0%, #50779f 100%);
+  min-height: 34px;
+  border: 1px solid #8cabcb;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #6e95bc 0%, #557fa9 100%);
   color: #ffffff;
   font-size: 12px;
   font-weight: 600;
-  padding: 5px 11px;
+  padding: 6px 12px;
   cursor: pointer;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  box-shadow: 0 1px 2px rgba(30, 58, 138, 0.2);
 }
 .new-main-status-btn:hover,
 .new-main-topbar .new-main-topbar-action:hover {
-  background: linear-gradient(180deg, #577ea4 0%, #486f96 100%);
-  border-color: #7899bd;
+  background: linear-gradient(180deg, #648bb1 0%, #4d759b 100%);
+  border-color: #7e9ec0;
   color: #ffffff;
 }
 .new-main-topbar-actions {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  align-items: stretch;
+  gap: 8px;
   padding: 0;
 }
 .new-main-topbar-action {
-  min-height: 30px;
+  min-height: 34px;
 }
 .new-main-topbar-left {
   display: inline-flex;
