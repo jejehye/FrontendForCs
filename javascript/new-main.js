@@ -59,6 +59,113 @@ document.addEventListener('DOMContentLoaded', async () => {
     verifyFormSection.insertAdjacentElement('afterend', warningSection);
   }
 
+  const historyArea = document.querySelector('#history-area');
+  if (historyArea && !historyArea.querySelector('[data-role="new-main-history-editor"]')) {
+    historyArea.innerHTML = `
+      <div class="new-main-history-editor" data-role="new-main-history-editor">
+        <div class="main-section-header">
+          <h3 class="history-editor-title heading-reset">
+            <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
+            상담이력 입력
+          </h3>
+          <div class="history-editor-actions history-editor-actions--inline">
+            <button type="button" class="btn--history-reset">초기화</button>
+            <button type="button" class="btn--history-reset history-editor-save-btn">저장</button>
+            <span class="history-editor-timestamp" data-role="current-datetime"></span>
+          </div>
+        </div>
+        <div class="new-main-history-body">
+          <div class="new-main-linked-customer">
+            <div class="new-main-linked-title">
+              <i class="fa-solid fa-link"></i>
+              고객정보 자동연동
+            </div>
+            <div class="new-main-linked-grid">
+              <div class="new-main-linked-item">
+                <span class="new-main-linked-label">고객명</span>
+                <span class="new-main-linked-value" data-role="new-main-linked-name">-</span>
+              </div>
+              <div class="new-main-linked-item">
+                <span class="new-main-linked-label">계좌번호</span>
+                <span class="new-main-linked-value" data-role="new-main-linked-account">-</span>
+              </div>
+              <div class="new-main-linked-item">
+                <span class="new-main-linked-label">주민번호</span>
+                <span class="new-main-linked-value" data-role="new-main-linked-resident">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="history-category-grid">
+            <div>
+              <label class="history-field-label">대분류</label>
+              <select class="field consultation-category-select">
+                <option selected>투자상담</option>
+                <option>업무처리</option>
+                <option>민원/클레임</option>
+              </select>
+            </div>
+            <div>
+              <label class="history-field-label">중분류</label>
+              <select class="field consultation-category-select">
+                <option selected>해외투자</option>
+                <option>국내주식</option>
+                <option>펀드/ETF</option>
+                <option>ISA/연금</option>
+              </select>
+            </div>
+            <div>
+              <label class="history-field-label">소분류</label>
+              <select class="field consultation-category-select">
+                <option selected>해외주식 매수문의</option>
+                <option>해외주식 수수료</option>
+                <option>환전/외화입출금</option>
+                <option>해외시장 운영시간</option>
+              </select>
+            </div>
+          </div>
+          <div class="history-note-header">
+            <label class="history-note-title">
+              <i class="fa-regular fa-note-sticky history-note-icon"></i>상담내용
+            </label>
+            <span class="history-note-limit">최대 500자</span>
+          </div>
+          <textarea
+            rows="4"
+            maxlength="500"
+            placeholder="1) 고객 문의사항&#10;2) 안내한 내용&#10;3) 후속 조치(있다면)"
+            class="consultation-note field consultation-note-input consultation-note-field"
+          ></textarea>
+        </div>
+      </div>
+    `;
+
+    const accountOwnerInput = document.querySelector('#account-owner');
+    const accountNumberInput = document.querySelector('#account-number');
+    const residentIdInput = document.querySelector('#resident-id');
+    const linkedName = historyArea.querySelector('[data-role="new-main-linked-name"]');
+    const linkedAccount = historyArea.querySelector('[data-role="new-main-linked-account"]');
+    const linkedResident = historyArea.querySelector('[data-role="new-main-linked-resident"]');
+
+    const syncLinkedCustomer = () => {
+      if (linkedName) {
+        linkedName.textContent = accountOwnerInput?.value?.trim() || '박지민';
+      }
+      if (linkedAccount) {
+        linkedAccount.textContent = accountNumberInput?.value?.trim() || '567-890-1234';
+      }
+      if (linkedResident) {
+        linkedResident.textContent = residentIdInput?.value?.trim() || '920315-2******';
+      }
+    };
+
+    [accountOwnerInput, accountNumberInput, residentIdInput].forEach(input => {
+      if (input) {
+        input.addEventListener('input', syncLinkedCustomer);
+      }
+    });
+    syncLinkedCustomer();
+  }
+
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
     await window.MainPageData.load();
   }
