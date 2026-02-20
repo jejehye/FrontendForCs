@@ -1184,8 +1184,8 @@ body.new-main-mode .new-main-warning-title,
 body.new-main-mode .main-my-history-title,
 body.new-main-mode .history-detail-modal__title,
 body.new-main-mode .main-outbound-modal__title {
-  font-family: "OneShinhanBold", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 700;
+  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
 }
 
 /* Tailwind residual cleanup aliases */
