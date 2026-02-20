@@ -1,6 +1,67 @@
 /* New-main page bootstrap entry */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const renderTodaySchedulePanel = () => {
+    const noticeArea = document.querySelector('#notice-area');
+    if (!noticeArea) {
+      return;
+    }
+
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    const hh = String(now.getHours()).padStart(2, '0');
+    const min = String(now.getMinutes()).padStart(2, '0');
+    const todayLabel = `${yyyy}년 ${Number(mm)}월 ${Number(dd)}일`;
+    const todayRowLabel = `${yyyy}.${mm}.${dd}`;
+    const currentStamp = `${yyyy}-${mm}-${dd} ${hh}:${min}:00`;
+
+    const scheduleRows = [
+      { no: 1, title: `${todayRowLabel} (금) 업무일정`, updated: currentStamp },
+      { no: 2, title: `${todayRowLabel} (금) 점검일정`, updated: currentStamp },
+      { no: 3, title: `${todayRowLabel} (금) 안내일정`, updated: currentStamp },
+    ];
+
+    noticeArea.innerHTML = `
+      <section class="new-main-schedule-panel" data-role="new-main-schedule">
+        <header class="new-main-schedule-header">
+          <h3 class="new-main-schedule-title">주요일정</h3>
+          <button type="button" class="new-main-schedule-close" aria-label="주요일정 닫기">×</button>
+        </header>
+        <div class="new-main-schedule-body">
+          <p class="new-main-schedule-date">${todayLabel} 당일일정</p>
+          <ul class="new-main-schedule-list">
+            <li><strong>[공지사항]</strong></li>
+            <li>한국거래소 거래시스템 한시적 인하 종목 안내 (시행일: ${mm}/${dd})</li>
+            <li>개인연금 주요 약관 변경 및 수익률 공지</li>
+            <li>해외주식 주문 가능시간 / 수수료 안내</li>
+          </ul>
+        </div>
+        <div class="new-main-schedule-table-wrap">
+          <table class="new-main-schedule-table">
+            <thead>
+              <tr>
+                <th>NO</th>
+                <th>주요일정</th>
+                <th>수정일시</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${scheduleRows.map(row => `
+                <tr>
+                  <td>${row.no}</td>
+                  <td>${row.title}</td>
+                  <td>${row.updated}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    `;
+  };
+
   const customerInfoSection = document.querySelector('#customer-info');
   if (customerInfoSection) {
     customerInfoSection.remove();
@@ -207,6 +268,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
     await window.MainPageData.load();
   }
+
+  renderTodaySchedulePanel();
 
   const modules = [
     window.MainPageCustomerInfo,
