@@ -928,6 +928,13 @@ body { background-color: #f3f4f6; }
   padding: 0 12px 8px;
   background: #ffffff;
 }
+.new-main-status-row-wrap {
+  padding: 0 12px 8px;
+  background: #ffffff;
+}
+.new-main-status-row-wrap .chat-status-row {
+  margin-bottom: 0;
+}
 .new-main-warning-panel {
   border: 1px solid #f5d28a;
   background: linear-gradient(180deg, #fffdf7 0%, #fff8e8 100%);

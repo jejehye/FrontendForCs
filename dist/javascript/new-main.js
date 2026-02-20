@@ -52,6 +52,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const verifyFormSection = document.querySelector('#verify-form');
+  if (verifyFormSection && !document.querySelector('[data-role="new-main-status-row"]')) {
+    const statusRowSection = document.createElement('section');
+    statusRowSection.className = 'new-main-status-row-wrap';
+    statusRowSection.setAttribute('data-role', 'new-main-status-row');
+    statusRowSection.innerHTML = `
+      <div class="chat-status-row">
+        <span class="status-badge status-ib">
+          <i class="fa-solid fa-headset customer-icon-gap-1"></i>
+          I/B
+        </span>
+        <span class="customer-status-text">
+          신한 고객센터 &gt; 투자상담
+        </span>
+      </div>
+    `;
+    verifyFormSection.insertAdjacentElement('beforebegin', statusRowSection);
+  }
+
   if (verifyFormSection && !document.querySelector('[data-role="new-main-warning"]')) {
     const warningSection = document.createElement('section');
     warningSection.className = 'new-main-warning-slot';
