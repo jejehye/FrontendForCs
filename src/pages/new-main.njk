@@ -1,7 +1,7 @@
 {% extends "layouts/app-shell.njk" %}
 {% set title = "CTI Agent Dashboard" %}
 {% set page_css = "main.css" %}
-{% set active_page = "main" %}
+{% set active_page = "new-main" %}
 
 {% block app_content %}
   {% include "partials/pages/main/content.njk" %}
@@ -16,5 +16,5 @@
   <script src="{{ asset('javascript/main/tabs.js') }}"></script>
   <script src="{{ asset('javascript/main/history.js') }}"></script>
   <script src="{{ asset('javascript/main/actions.js') }}"></script>
-  <script src="{{ asset('javascript/main.js') }}"></script>
+  <script src="{{ asset('javascript/new-main.js') }}"></script>
 {% endblock %}
