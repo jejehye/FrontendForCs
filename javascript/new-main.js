@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     noticeArea.innerHTML = `
       <section class="new-main-schedule-panel" data-role="new-main-schedule">
         <header class="new-main-schedule-header">
-          <h3 class="new-main-schedule-title">주요일정</h3>
+          <h3 class="new-main-schedule-title new-main-header-strong">주요일정</h3>
           <button type="button" class="new-main-schedule-close" aria-label="주요일정 닫기">×</button>
         </header>
         <div class="new-main-schedule-body">
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     warningSection.innerHTML = `
       <div class="new-main-warning-panel">
         <div class="new-main-warning-head">
-          <div class="new-main-warning-title">
+          <div class="new-main-warning-title new-main-header-strong">
             <i class="fa-solid fa-triangle-exclamation"></i>
             주의고객정보
           </div>
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     utteranceSection.setAttribute('data-role', 'new-main-routing-utterance');
     utteranceSection.innerHTML = `
       <div class="new-main-routing-panel">
-        <div class="new-main-routing-title">음성봇 라우팅 발화</div>
+        <div class="new-main-routing-title new-main-header-strong">음성봇 라우팅 발화</div>
         <div class="new-main-routing-list">
           <article class="new-main-routing-item">
             <div class="new-main-routing-item-head">
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     historyArea.innerHTML = `
       <div class="new-main-history-editor" data-role="new-main-history-editor">
         <div class="main-section-header">
-          <h3 class="history-editor-title heading-reset">
+          <h3 class="history-editor-title heading-reset new-main-header-strong">
             <i class="fa-solid fa-pen-to-square history-editor-icon-brand"></i>
             상담이력 입력
           </h3>
@@ -350,6 +350,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   renderTodaySchedulePanel();
+
+  const headerTargets = document.querySelectorAll(
+    '.account-panel-title, .main-my-history-title, #chat-area .main-live-header .weight-semibold, #coaching-area .main-coaching-header .weight-semibold'
+  );
+  headerTargets.forEach(element => {
+    element.classList.add('new-main-header-strong');
+  });
 
   const modules = [
     window.MainPageCustomerInfo,

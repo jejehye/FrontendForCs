@@ -1201,6 +1201,10 @@ body.new-main-mode #center-column {
 }
 body.new-main-mode {
   font-weight: 500;
+  --new-main-header-font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --new-main-header-font-size: 14px;
+  --new-main-header-font-weight: 900;
+  --new-main-header-line-height: 1.25;
 }
 body.new-main-mode #notice-area,
 body.new-main-mode #chat-area {
@@ -1228,16 +1232,12 @@ body.new-main-mode #chat-area .chat-message-list {
   min-height: 0;
   height: auto;
 }
-body.new-main-mode .main-section-header .account-panel-title,
-body.new-main-mode .main-section-header .history-editor-title,
-body.new-main-mode .main-live-header .weight-semibold,
-body.new-main-mode .main-center-notice-title,
-body.new-main-mode .new-main-schedule-title,
-body.new-main-mode .new-main-routing-title,
-body.new-main-mode .new-main-warning-title,
-body.new-main-mode .main-coaching-header .weight-semibold {
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 900;
+body.new-main-mode .new-main-header-strong {
+  font-family: var(--new-main-header-font-family);
+  font-size: var(--new-main-header-font-size);
+  font-weight: var(--new-main-header-font-weight);
+  line-height: var(--new-main-header-line-height);
+  letter-spacing: -0.01em;
 }
 
 /* Tailwind residual cleanup aliases */
