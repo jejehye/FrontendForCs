@@ -38,11 +38,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     warningSection.setAttribute('data-role', 'new-main-warning');
     warningSection.innerHTML = `
       <div class="new-main-warning-panel">
-        <div class="new-main-warning-title">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          주의고객정보
+        <div class="new-main-warning-head">
+          <div class="new-main-warning-title">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            주의고객정보
+          </div>
+          <span class="new-main-warning-badge">HIGH RISK</span>
         </div>
-        <div class="new-main-warning-content">고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 - 본인확인 철저</div>
+        <div class="new-main-warning-content">
+          <span class="new-main-warning-item">고액거래 고객</span>
+          <span class="new-main-warning-sep">|</span>
+          <span class="new-main-warning-item">담당PB 연결 필수</span>
+          <span class="new-main-warning-sep">|</span>
+          <span class="new-main-warning-item">개인정보 보호 강화 대상</span>
+          <span class="new-main-warning-sep">|</span>
+          <span class="new-main-warning-item">본인확인 철저</span>
+        </div>
       </div>
     `;
     verifyFormSection.insertAdjacentElement('afterend', warningSection);
