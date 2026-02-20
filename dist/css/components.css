@@ -2210,6 +2210,16 @@ body.new-main-mode .main-history-filter-grid {
   }
 }
 
+/* emergency override: keep new_main truly full-screen */
+body.new-main-mode #app-container.grid-layout {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
 /* new_main center chat card stabilization (layout unchanged) */
 body.new-main-mode #chat-area {
   display: flex;
