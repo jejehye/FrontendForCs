@@ -1200,11 +1200,25 @@ body.new-main-mode #center-column {
   overflow: hidden;
 }
 body.new-main-mode {
-  font-weight: 500;
+  font-weight: 400;
+  color: #334155;
+  background: #f4f7fb;
   --new-main-header-font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --new-main-header-font-size: 14px;
-  --new-main-header-font-weight: 900;
+  --new-main-header-font-weight: 800;
   --new-main-header-line-height: 1.25;
+}
+body.new-main-mode .main-shell {
+  background: linear-gradient(180deg, #f6f9fd 0%, #f3f6fb 100%);
+}
+body.new-main-mode .main-column {
+  gap: 10px;
+}
+body.new-main-mode .panel {
+  border: 1px solid #dbe5f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
 }
 body.new-main-mode #notice-area,
 body.new-main-mode #chat-area {
@@ -1238,6 +1252,79 @@ body.new-main-mode .new-main-header-strong {
   font-weight: var(--new-main-header-font-weight);
   line-height: var(--new-main-header-line-height);
   letter-spacing: -0.01em;
+}
+body.new-main-mode .main-section-header,
+body.new-main-mode .main-live-header,
+body.new-main-mode .panel__header--history,
+body.new-main-mode .main-my-history-header {
+  padding: 11px 12px;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
+  border-color: #d6e2ee;
+}
+body.new-main-mode .field,
+body.new-main-mode .consultation-note-field,
+body.new-main-mode .chat-search-input,
+body.new-main-mode select,
+body.new-main-mode textarea,
+body.new-main-mode input {
+  font-size: 13px;
+  line-height: 1.45;
+  border-color: #cfd9e6;
+}
+body.new-main-mode .field:focus,
+body.new-main-mode .chat-search-input:focus,
+body.new-main-mode select:focus,
+body.new-main-mode textarea:focus,
+body.new-main-mode input:focus {
+  border-color: #7aa5e8;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
+}
+body.new-main-mode .chat-bubble {
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 11px;
+}
+body.new-main-mode .new-main-schedule-list,
+body.new-main-mode .new-main-warning-content,
+body.new-main-mode .main-live-time-text,
+body.new-main-mode .history-note-limit {
+  color: #475569;
+}
+body.new-main-mode .btn--history-reset,
+body.new-main-mode .btn--history-search,
+body.new-main-mode .softphone-outbound-btn,
+body.new-main-mode .main-my-history-btn {
+  border-radius: 8px;
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+}
+body.new-main-mode .btn--history-reset:hover,
+body.new-main-mode .btn--history-search:hover,
+body.new-main-mode .softphone-outbound-btn:hover,
+body.new-main-mode .main-my-history-btn:hover {
+  background: #eef2f7;
+}
+body.new-main-mode .new-main-routing-panel,
+body.new-main-mode .new-main-warning-panel,
+body.new-main-mode .new-main-history-editor {
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+}
+body.new-main-mode .new-main-routing-speaker {
+  font-size: 20px;
+}
+body.new-main-mode .new-main-routing-time {
+  font-size: 15px;
+}
+body.new-main-mode .new-main-routing-text {
+  font-size: 17px;
+}
+body.new-main-mode .new-main-schedule-table th {
+  background: #e8f1ff;
+}
+body.new-main-mode .new-main-schedule-table tbody tr:nth-child(even) {
+  background: #f8fbff;
 }
 
 /* Tailwind residual cleanup aliases */
