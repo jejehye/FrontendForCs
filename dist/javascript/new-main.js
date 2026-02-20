@@ -31,6 +31,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     chatColumn.prepend(topbar);
   }
 
+  const verifyFormSection = document.querySelector('#verify-form');
+  if (verifyFormSection && !document.querySelector('[data-role="new-main-warning"]')) {
+    const warningSection = document.createElement('section');
+    warningSection.className = 'new-main-warning-slot';
+    warningSection.setAttribute('data-role', 'new-main-warning');
+    warningSection.innerHTML = `
+      <div class="customer-warning customer-warning-wide">
+        <i class="fa-solid fa-triangle-exclamation customer-warning-icon"></i>
+        <div class="customer-warning-body">
+          <span class="customer-warning-title">주의고객</span>
+          <span class="customer-warning-text">고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 - 본인확인 철저</span>
+        </div>
+      </div>
+    `;
+    verifyFormSection.insertAdjacentElement('afterend', warningSection);
+  }
+
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
     await window.MainPageData.load();
   }

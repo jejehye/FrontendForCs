@@ -870,6 +870,13 @@ body { background-color: #f3f4f6; }
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.new-main-warning-slot {
+  padding: 0 12px 8px;
+  background: #ffffff;
+}
+.new-main-warning-slot .customer-warning {
+  margin: 0;
+}
 
 /* Tailwind residual cleanup aliases */
 .is-hidden { display: none; }
