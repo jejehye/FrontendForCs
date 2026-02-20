@@ -1174,6 +1174,18 @@ body.new-main-mode #chat-area .chat-message-list {
   min-height: 0;
   height: auto;
 }
+body.new-main-mode .main-section-header .account-panel-title,
+body.new-main-mode .main-section-header .history-editor-title,
+body.new-main-mode .main-live-header .weight-semibold,
+body.new-main-mode .panel__header--history .weight-semibold,
+body.new-main-mode .main-center-notice-title,
+body.new-main-mode .new-main-schedule-title,
+body.new-main-mode .new-main-warning-title,
+body.new-main-mode .main-my-history-title,
+body.new-main-mode .history-detail-modal__title,
+body.new-main-mode .main-outbound-modal__title {
+  font-weight: 800;
+}
 
 /* Tailwind residual cleanup aliases */
 .is-hidden { display: none; }
