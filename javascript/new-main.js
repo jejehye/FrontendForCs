@@ -1,8 +1,13 @@
 /* New-main page bootstrap entry */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const rightColumn = document.querySelector('#right-column');
-  if (rightColumn && !rightColumn.querySelector('[data-role="new-main-topbar"]')) {
+  const customerInfoSection = document.querySelector('#customer-info');
+  if (customerInfoSection) {
+    customerInfoSection.remove();
+  }
+
+  const chatColumn = document.querySelector('#chat-column');
+  if (chatColumn && !chatColumn.querySelector('[data-role="new-main-topbar"]')) {
     const topbar = document.createElement('section');
     topbar.className = 'new-main-topbar';
     topbar.setAttribute('data-role', 'new-main-topbar');
@@ -24,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       </div>
       <div class="new-main-topbar-note">로그인뷰, 호전환,보류키,지점전화키 없음</div>
     `;
-    rightColumn.prepend(topbar);
+    chatColumn.prepend(topbar);
   }
 
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
