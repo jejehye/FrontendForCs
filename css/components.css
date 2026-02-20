@@ -227,17 +227,24 @@ body { background-color: #f3f4f6; }
 }
 
 .panel-header-actions-only { justify-content: flex-end; }
+.panel-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
 .agent-kpi-bar { display: flex; align-items: center; gap: 8px; padding: 5.6px 9.6px; background: #f8fafc; border: 1px solid var(--color-panel-border); border-radius: 8px; }
 .agent-kpi-item { display: flex; align-items: center; gap: 3.2px; padding-right: 7.2px; border-right: 1px solid #e2e8f0; }
 .agent-kpi-item:last-child { border-right: none; padding-right: 0; }
 .agent-kpi-label { font-size: 10px; color: #64748b; }
 .agent-kpi-value { font-size: 11px; font-weight: 700; color: #1e293b; }
 .agent-status-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #fff; border: 1px solid var(--color-panel-border); border-radius: 8px; }
-.agent-login-chip { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 6px 9px; border: 1px solid var(--color-panel-border); border-radius: 10px; background: linear-gradient(180deg, #f8fafc, #f1f5f9); color: #334155; }
+.agent-login-chip { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 6px 9px; border: 1px solid var(--color-panel-border); border-radius: 10px; background: linear-gradient(180deg, #f8fafc, #f1f5f9); color: #334155; max-width: 100%; }
 .agent-login-chip__avatar { width: 27px; height: 27px; border-radius: 50%; background: #dbeafe; color: #1d4ed8; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
-.agent-login-chip__meta { display: inline-flex; flex-direction: column; line-height: 1.15; }
+.agent-login-chip__meta { display: inline-flex; flex-direction: column; line-height: 1.15; min-width: 0; }
 .agent-login-chip__role { font-size: 10px; font-weight: 600; color: #64748b; }
-.agent-login-chip__name { font-size: 12px; color: #1e293b; font-weight: 700; letter-spacing: -0.01em; }
+.agent-login-chip__name { font-size: 12px; color: #1e293b; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
 .agent-logout-btn {
   border: 1px solid #cbd5e1;
   border-radius: 999px;
@@ -271,7 +278,7 @@ body { background-color: #f3f4f6; }
 .softphone-script-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .softphone-script-title { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #334155; }
 .softphone-script-tools { display: inline-flex; align-items: center; gap: 6px; }
-.softphone-outbound-btn { border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: 12px; font-weight: 500; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.softphone-outbound-btn { border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: 12px; font-weight: 500; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; }
 .softphone-outbound-btn:hover { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
 .softphone-call-toggle { border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: 12px; font-weight: 700; padding: 4px 10px; cursor: pointer; }
 .softphone-call-toggle.is-active { border-color: #2563eb; background: #eff6ff; color: #1d4ed8; }
