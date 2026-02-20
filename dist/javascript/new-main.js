@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           <span>아웃바운드</span>
         </button>
       </div>
-      <div class="new-main-topbar-note">로그인뷰, 호전환,보류키,지점전화키 없음</div>
     `;
     chatColumn.prepend(topbar);
   }
