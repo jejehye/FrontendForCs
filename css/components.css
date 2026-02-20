@@ -1237,7 +1237,7 @@ body.new-main-mode .new-main-routing-title,
 body.new-main-mode .new-main-warning-title,
 body.new-main-mode .main-coaching-header .weight-semibold {
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 /* Tailwind residual cleanup aliases */
