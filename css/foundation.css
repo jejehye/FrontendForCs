@@ -1,4 +1,5 @@
 /* Shared foundation layer: global reset + common shell UI */
+@import url("./fonts.css");
 
 * {
   box-sizing: border-box;
@@ -6,7 +7,7 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   overflow: hidden;
 }
 
