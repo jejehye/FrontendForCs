@@ -1556,6 +1556,9 @@ body.new-main-mode .new-main-schedule-table th {
 body.new-main-mode .new-main-schedule-table td {
   border-color: #dee8f2;
 }
+body.new-main-mode #right-column .agent-status-bar {
+  display: none;
+}
 
 /* Tailwind residual cleanup aliases */
 .is-hidden { display: none; }
