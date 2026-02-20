@@ -1368,17 +1368,44 @@ body.new-main-mode .history-note-limit {
 body.new-main-mode .btn--history-reset,
 body.new-main-mode .btn--history-search,
 body.new-main-mode .softphone-outbound-btn,
-body.new-main-mode .main-my-history-btn {
-  border-radius: 8px;
-  border-color: #cbd5e1;
-  background: #f8fafc;
-  color: #334155;
+body.new-main-mode .main-my-history-btn,
+body.new-main-mode .new-main-status-btn,
+body.new-main-mode .new-main-topbar .new-main-topbar-action,
+body.new-main-mode .verify-transfer-btn {
+  min-height: 34px;
+  border-radius: 10px;
+  border: 1px solid #9fb8d3;
+  background: linear-gradient(180deg, #6f96bd 0%, #5781ab 100%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(30, 58, 138, 0.18);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 body.new-main-mode .btn--history-reset:hover,
 body.new-main-mode .btn--history-search:hover,
 body.new-main-mode .softphone-outbound-btn:hover,
-body.new-main-mode .main-my-history-btn:hover {
-  background: #eef2f7;
+body.new-main-mode .main-my-history-btn:hover,
+body.new-main-mode .new-main-status-btn:hover,
+body.new-main-mode .new-main-topbar .new-main-topbar-action:hover,
+body.new-main-mode .verify-transfer-btn:hover {
+  background: linear-gradient(180deg, #648bb2 0%, #4f789f 100%);
+  border-color: #84a2c1;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+body.new-main-mode .history-editor-save-btn {
+  border-color: #2f6dd2;
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+}
+body.new-main-mode .history-editor-save-btn:hover {
+  border-color: #2557bf;
+  background: linear-gradient(180deg, #3475e3 0%, #1f56cc 100%);
 }
 body.new-main-mode .new-main-routing-panel,
 body.new-main-mode .new-main-warning-panel,
