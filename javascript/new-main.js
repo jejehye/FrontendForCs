@@ -203,6 +203,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     verifyFormSection.insertAdjacentElement('afterend', warningSection);
   }
 
+  const warningTabsWrap = document.querySelector('#coaching-area .main-center-warning-wrap');
+  if (warningTabsWrap) {
+    warningTabsWrap.remove();
+  }
+
+  const chatArea = document.querySelector('#chat-area');
+  const coachingArea = document.querySelector('#coaching-area');
+  if (chatArea && coachingArea && coachingArea.parentElement) {
+    chatArea.classList.add('new-main-chat-relocated');
+    coachingArea.parentElement.insertBefore(chatArea, coachingArea);
+  }
+
   const historyArea = document.querySelector('#history-area');
   if (historyArea && !historyArea.querySelector('[data-role="new-main-history-editor"]')) {
     historyArea.innerHTML = `
