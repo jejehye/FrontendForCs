@@ -6,17 +6,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     customerInfoSection.remove();
   }
 
-  const rightColumn = document.querySelector('#right-column');
-  if (rightColumn && !rightColumn.querySelector('[data-role="new-main-right-topbar"]')) {
+  const chatColumn = document.querySelector('#chat-column');
+  if (chatColumn && !chatColumn.querySelector('[data-role="new-main-topbar"]')) {
     const topbar = document.createElement('section');
-    topbar.className = 'new-main-right-topbar';
-    topbar.setAttribute('data-role', 'new-main-right-topbar');
+    topbar.className = 'new-main-topbar';
+    topbar.setAttribute('data-role', 'new-main-topbar');
     topbar.innerHTML = `
-      <div class="new-main-right-topbar-title">상담 상태</div>
-      <div class="new-main-right-topbar-grid">
+      <div class="new-main-topbar-statuses">
+        <div class="new-main-status-item">
+          <span class="new-main-status-label">업무상태</span>
+          <span class="new-main-status-value is-ready">업무</span>
+        </div>
         <div class="new-main-status-item">
           <span class="new-main-status-label">로그인여부</span>
-          <span class="new-main-status-value is-on">ON</span>
+          <span class="new-main-status-value is-on">로그인</span>
         </div>
         <div class="new-main-status-item">
           <span class="new-main-status-label">호전환</span>
@@ -27,8 +30,25 @@ document.addEventListener('DOMContentLoaded', async () => {
           <span class="new-main-status-value is-ready">가능</span>
         </div>
       </div>
+      <div class="new-main-topbar-actions">
+        <button type="button" class="softphone-outbound-btn new-main-topbar-action" data-action="main-open-group-switch-modal" aria-label="그룹전환">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          그룹전환
+        </button>
+        <button type="button" class="softphone-outbound-btn new-main-topbar-action" data-action="main-open-outbound-modal" aria-label="아웃바운드">
+          <i class="fa-solid fa-phone"></i>
+          아웃바운드
+        </button>
+      </div>
     `;
-    rightColumn.prepend(topbar);
+    chatColumn.prepend(topbar);
+  }
+
+  const rightColumn = document.querySelector('#right-column');
+  if (rightColumn) {
+    rightColumn.querySelectorAll('[data-action="main-open-group-switch-modal"], [data-action="main-open-outbound-modal"]').forEach(button => {
+      button.remove();
+    });
   }
 
   const verifyFormSection = document.querySelector('#verify-form');
