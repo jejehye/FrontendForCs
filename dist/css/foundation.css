@@ -174,7 +174,15 @@ input[type="reset"],
 .btn,
 .actionBtn,
 .action-btn,
-.pagination__btn {
+.pagination__btn,
+.btn-common-action,
+.new-main-status-btn,
+.new-main-topbar .new-main-topbar-action,
+.verify-transfer-btn,
+.softphone-outbound-btn,
+.history-editor-save-btn,
+.main-outbound-modal__btn {
+  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
   font-weight: 400 !important;
 }
 
@@ -182,6 +190,14 @@ button span,
 .btn span,
 .actionBtn span,
 .action-btn span,
-.pagination__btn span {
+.pagination__btn span,
+.btn-common-action span,
+.new-main-status-btn span,
+.new-main-topbar .new-main-topbar-action span,
+.verify-transfer-btn span,
+.softphone-outbound-btn span,
+.history-editor-save-btn span,
+.main-outbound-modal__btn span {
+  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
   font-weight: 400 !important;
 }
