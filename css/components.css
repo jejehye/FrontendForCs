@@ -13,6 +13,11 @@
   --main-header-control-border: #cbd5e1;
   --main-header-control-text: #334155;
   --main-header-control-placeholder: #94a3b8;
+  --text-primary: #0F172A;
+  --text-secondary: #1F2937;
+  --text-muted: #64748B;
+  --text-accent: #1E3A8A;
+  --text-danger: #B91C1C;
 }
 
 
@@ -1318,9 +1323,9 @@ body.new-main-mode .main-shell {
 body.new-main-mode #app-container.grid-layout {
   grid-template-columns: 56px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 48px);
   min-width: 0;
-  margin: 0;
+  margin: 48px 0 0;
   background: var(--surface);
   box-shadow: none;
   overflow: hidden;
@@ -2766,6 +2771,61 @@ body.new-main-mode .new-main-schedule-table-wrap {
 }
 
 /* topbar ux final */
+body.new-main-mode .new-main-global-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  height: 48px;
+  min-height: 48px;
+  width: 100%;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
+  box-shadow: none;
+  margin: 0;
+  padding: 0 20px;
+}
+
+body.new-main-mode .new-main-global-header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+body.new-main-mode .new-main-global-user-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body.new-main-mode .new-main-global-user {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1F2937;
+  line-height: 1.5;
+}
+
+body.new-main-mode .new-main-global-logout {
+  height: 30px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #1E3A8A;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+body.new-main-mode .new-main-global-logout:hover {
+  text-decoration: underline;
+  background: #F8FAFC;
+}
+
 body.new-main-mode .new-main-topbar {
   display: flex;
   align-items: flex-start;
@@ -3034,4 +3094,71 @@ body.new-main-mode .new-main-login-inline.is-offline .new-main-login-inline-dot 
     margin-left: 0;
     width: 100%;
   }
+}
+
+/* text hierarchy system: color-only refinements */
+body.new-main-mode {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+body.new-main-mode .new-main-header-strong,
+body.new-main-mode .account-panel-title,
+body.new-main-mode .history-editor-title,
+body.new-main-mode .main-my-history-title,
+body.new-main-mode .main-center-coaching-title,
+body.new-main-mode .main-live-header .weight-semibold,
+body.new-main-mode .main-center-notice-title,
+body.new-main-mode .new-main-routing-title,
+body.new-main-mode .new-main-schedule-title,
+body.new-main-mode .tbl__head,
+body.new-main-mode thead th {
+  color: var(--text-primary);
+}
+
+body.new-main-mode .tbl__cell,
+body.new-main-mode tbody td,
+body.new-main-mode .notice-desc,
+body.new-main-mode .new-main-routing-text,
+body.new-main-mode .history-note-title,
+body.new-main-mode .main-live-customer-text,
+body.new-main-mode .customer-name {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+body.new-main-mode .account-panel-helper,
+body.new-main-mode .customer-status-text,
+body.new-main-mode .history-editor-timestamp,
+body.new-main-mode .history-note-limit,
+body.new-main-mode .history-note-meta,
+body.new-main-mode .history-field-label,
+body.new-main-mode .main-live-time-text,
+body.new-main-mode .notice-date,
+body.new-main-mode .notice-updated,
+body.new-main-mode .new-main-routing-time,
+body.new-main-mode .softphone-script-duration,
+body.new-main-mode .main-history-date-sep,
+body.new-main-mode .main-my-history-date-sep,
+body.new-main-mode .agent-kpi-label,
+body.new-main-mode input::placeholder,
+body.new-main-mode textarea::placeholder,
+body.new-main-mode .chat-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+body.new-main-mode .main-live-agent-text,
+body.new-main-mode .status-badge.status-ib,
+body.new-main-mode .warning-tab.is-active,
+body.new-main-mode .pagination__btn.is-active,
+body.new-main-mode a {
+  color: var(--text-accent);
+}
+
+body.new-main-mode .customer-warning-title,
+body.new-main-mode .customer-warning-text,
+body.new-main-mode .new-main-warning-title,
+body.new-main-mode .new-main-warning-item,
+body.new-main-mode .status-badge.status-unauth {
+  color: var(--text-danger);
 }
