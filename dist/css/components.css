@@ -2281,6 +2281,17 @@ body.new-main-mode .new-main-routing-item {
   background: transparent;
 }
 
+/* align routing utterance card width with consultation-history card */
+body.new-main-mode .new-main-routing-slot {
+  padding: 0;
+  margin: 0;
+}
+
+body.new-main-mode .new-main-routing-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* real notice header in new_main is .new-main-schedule-header (rendered by JS) */
 body.new-main-mode .new-main-schedule-header {
   padding: 20px var(--nm-header-pad-x);
@@ -2496,6 +2507,20 @@ body.new-main-mode .new-main-schedule-table td {
 body.new-main-mode .tbl__row:hover,
 body.new-main-mode .new-main-schedule-table tbody tr:hover {
   background: #EFF4FF;
+}
+
+/* cross-page header tint (main/new_main) */
+#page-main .main-section-header,
+#page-main .main-live-header,
+#page-main .panel__header--history,
+#page-main .main-my-history-header,
+#page-main .notice-header,
+#page-main .softphone-script-header,
+#page-main .new-main-schedule-header,
+#page-main .new-main-routing-title {
+  background-color: #E7EEFA !important;
+  background-image: none !important;
+  border-bottom-color: #C9D5E3 !important;
 }
 
 /* Breakpoints: layout ratios preserved */
