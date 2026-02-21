@@ -1329,7 +1329,7 @@ body.new-main-mode .col-center,
 body.new-main-mode .col-right {
   min-height: 0;
   overflow: hidden;
-  padding: var(--space-6);
+  padding: 0;
   gap: var(--space-6);
 }
 
