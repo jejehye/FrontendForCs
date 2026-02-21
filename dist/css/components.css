@@ -2211,6 +2211,29 @@ body.new-main-mode .coaching-panel {
   gap: 16px;
 }
 
+/* final header alignment: notice == realtime chat/coaching */
+body.new-main-mode .notice-header,
+body.new-main-mode #chat-area .main-live-header,
+body.new-main-mode #coaching-area .main-live-header {
+  padding: 16px 24px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+body.new-main-mode .notice-header-row {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+body.new-main-mode .notice-header .main-center-notice-title,
+body.new-main-mode .notice-header h3 {
+  margin: 0;
+  line-height: 1.4;
+}
+
 /* Breakpoints: layout ratios preserved */
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {
