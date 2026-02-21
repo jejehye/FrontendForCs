@@ -2025,7 +2025,7 @@ body.new-main-mode #chat-area {
 body.new-main-mode .new-main-routing-panel {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  background: var(--surface);
+  background: transparent;
   overflow: hidden;
 }
 
@@ -2033,7 +2033,7 @@ body.new-main-mode .new-main-routing-panel {
 body.new-main-mode .customer-warning {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  background: var(--surface);
+  background: transparent;
   box-shadow: none;
   margin-top: 8px;
 }
@@ -2042,6 +2042,7 @@ body.new-main-mode .customer-warning {
 body.new-main-mode .new-main-warning-panel {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
+  background: transparent;
 }
 
 body.new-main-mode .customer-warning-icon {
