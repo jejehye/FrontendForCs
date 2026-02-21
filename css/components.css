@@ -1329,7 +1329,7 @@ body.new-main-mode .col-center,
 body.new-main-mode .col-right {
   min-height: 0;
   overflow: hidden;
-  padding: var(--space-5);
+  padding: var(--space-6);
   gap: var(--space-6);
 }
 
@@ -1381,23 +1381,18 @@ body.new-main-mode .new-main-history-editor {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
-  box-shadow:
-    0 1px 2px rgba(16, 24, 40, 0.04),
-    0 1px 3px rgba(16, 24, 40, 0.06);
-  transition: box-shadow var(--t-fast), border-color var(--t-fast);
+  box-shadow: none;
+  transition: border-color var(--t-fast);
+  padding: var(--space-6);
 }
 
+/* Level 2: key cards only */
 body.new-main-mode #chat-area,
-body.new-main-mode #notice-area {
+body.new-main-mode .panel--history-table,
+body.new-main-mode .main-my-history-panel {
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.02),
-    0 8px 24px rgba(16, 24, 40, 0.04);
-}
-
-body.new-main-mode #notice-area:hover,
-body.new-main-mode #chat-area:hover,
-body.new-main-mode .notice-card:hover {
-  box-shadow: 0 4px 8px rgba(16, 24, 40, 0.08);
+    0 4px 8px rgba(16, 24, 40, 0.06);
 }
 
 body.new-main-mode .softphone-script-panel,
@@ -1419,8 +1414,11 @@ body.new-main-mode .softphone-script-header {
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
   color: var(--text);
-  border-color: var(--border);
-  background: linear-gradient(to bottom, #FFFFFF 0%, #FAFBFC 100%);
+  background: #F8FAFC;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
 body.new-main-mode .new-main-header-strong,
@@ -1611,11 +1609,11 @@ body.new-main-mode .agent-logout-btn:hover {
 /* Top action area */
 body.new-main-mode .new-main-topbar {
   gap: var(--space-3);
-  padding: var(--space-4);
+  padding: var(--space-5);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  box-shadow: none;
 }
 
 body.new-main-mode .new-main-topbar-statuses,
@@ -1654,6 +1652,7 @@ body.new-main-mode .new-main-schedule-table-wrap {
   overflow-x: auto;
   overflow-y: auto;
   min-height: 0;
+  padding: 24px;
 }
 
 body.new-main-mode .main-history-thead,
@@ -1709,6 +1708,7 @@ body.new-main-mode #chat-area {
   min-height: 0;
   overflow: hidden;
   background: var(--surface);
+  padding: 0;
 }
 
 body.new-main-mode #chat-area .main-live-header {
@@ -1721,7 +1721,7 @@ body.new-main-mode #chat-area .chat-message-list {
   flex: 1 1 auto;
   min-height: 0;
   margin: 0;
-  padding: var(--space-4);
+  padding: 24px;
   background: var(--bg-col);
   overflow-y: auto;
   overflow-x: hidden;
@@ -1736,7 +1736,7 @@ body.new-main-mode #chat-area .main-live-input-wrap {
   flex: 0 0 auto;
   border-top: 1px solid var(--border);
   background: var(--surface);
-  padding: var(--space-3) var(--space-4);
+  padding: 16px 24px;
 }
 
 /* Section-level scroll ownership */
@@ -1755,10 +1755,28 @@ body.new-main-mode .coaching-panel,
 body.new-main-mode .new-main-schedule-body {
   min-height: 0;
   overflow-y: auto;
+  padding: 24px;
 }
 
 body.new-main-mode #coaching-area .main-center-warning-wrap {
   flex: 0 0 auto;
+  margin: 0 24px 24px;
+}
+
+/* simplify nested boxes: spacing over extra lines */
+body.new-main-mode .panel__header--table,
+body.new-main-mode .panel__body,
+body.new-main-mode .main-my-history-filter,
+body.new-main-mode .history-editor-actions-wrap,
+body.new-main-mode .main-center-warning-wrap,
+body.new-main-mode .warning-tabs {
+  border: 0;
+  box-shadow: none;
+}
+
+body.new-main-mode .panel__body,
+body.new-main-mode .main-my-history-filter {
+  padding: 24px;
 }
 
 /* Breakpoints: layout ratios preserved */
