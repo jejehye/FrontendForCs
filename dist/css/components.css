@@ -1830,15 +1830,22 @@ body.new-main-mode .notice-header {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-height: 56px;
 }
 
 body.new-main-mode .notice-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 0;
   flex: 1 1 auto;
   min-width: 0;
+  min-height: 24px;
 }
 
 body.new-main-mode .notice-header-title-row {
+  display: flex;
+  align-items: center;
   min-height: 24px;
 }
 
@@ -1848,6 +1855,11 @@ body.new-main-mode .notice-updated {
   white-space: nowrap;
   flex-shrink: 0;
   align-self: center;
+}
+
+body.new-main-mode .notice-header .main-center-notice-title {
+  margin: 0;
+  line-height: 1.4;
 }
 
 body.new-main-mode .notice-list-wrap,
