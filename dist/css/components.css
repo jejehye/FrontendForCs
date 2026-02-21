@@ -2274,6 +2274,20 @@ body.new-main-mode .new-main-routing-item {
   background: transparent;
 }
 
+/* real notice header in new_main is .new-main-schedule-header (rendered by JS) */
+body.new-main-mode .new-main-schedule-header {
+  padding: 20px 24px;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+body.new-main-mode .new-main-schedule-title {
+  margin: 0;
+  line-height: 1.4;
+}
+
 /* Breakpoints: layout ratios preserved */
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {
