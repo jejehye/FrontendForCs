@@ -2767,6 +2767,9 @@ body.new-main-mode .new-main-schedule-table-wrap {
 
 /* topbar ux final */
 body.new-main-mode .new-main-topbar {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
   padding: 18px 20px;
   gap: 32px;
   background: #FFFFFF;
@@ -2779,7 +2782,8 @@ body.new-main-mode .new-main-topbar-statuses {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  flex: 1 1 auto;
+  flex: 1 1 620px;
+  min-width: 0;
 }
 
 body.new-main-mode .new-main-status-item {
@@ -2894,9 +2898,10 @@ body.new-main-mode .new-main-status-chip--action:hover {
 body.new-main-mode .new-main-topbar-actions {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-left: 32px;
-  flex: 0 0 auto;
+  margin-left: auto;
+  flex: 0 1 auto;
 }
 
 body.new-main-mode .new-main-action-btn {
@@ -3019,8 +3024,9 @@ body.new-main-mode .new-main-login-inline.is-offline .new-main-login-inline-dot 
   }
 
   body.new-main-mode .new-main-topbar-actions {
-    justify-content: flex-end;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    margin-left: 16px;
+    margin-left: 0;
+    width: 100%;
   }
 }
