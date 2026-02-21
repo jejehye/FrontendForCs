@@ -2329,6 +2329,21 @@ body.new-main-mode #notice-area .new-main-schedule-panel {
   height: auto !important;
 }
 
+/* warning description: single line and centered in content area */
+body.new-main-mode .new-main-warning-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 44px;
+  padding: 8px 14px !important;
+}
+
+/* routing card: add small top inset below header */
+body.new-main-mode .new-main-routing-list {
+  padding-top: 8px !important;
+}
+
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;

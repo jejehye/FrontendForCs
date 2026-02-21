@@ -275,8 +275,6 @@ function warningTemplate() {
       </div>
       <div class="new-main-warning-content">
         <span class="new-main-warning-item">자주 민원을 제기하는 고객으로 상담 시 주의가 필요합니다.</span>
-        <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">응대 내용은 명확히 고지하고 기록을 상세히 남겨주세요.</span>
       </div>
     </div>
   `;
