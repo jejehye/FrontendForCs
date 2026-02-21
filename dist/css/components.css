@@ -2377,6 +2377,32 @@ body.new-main-mode .new-main-schedule-header {
   box-sizing: border-box;
 }
 
+body.new-main-mode .new-main-routing-title {
+  height: 44px;
+  min-height: 44px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* force same title scale across schedule / live chat / routing headers */
+body.new-main-mode .new-main-routing-title,
+body.new-main-mode .new-main-schedule-title,
+body.new-main-mode #chat-area .main-live-header .weight-semibold {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+/* align live chat/coaching header heights with unified card headers */
+body.new-main-mode #chat-area .main-live-header,
+body.new-main-mode #coaching-area .main-live-header {
+  height: var(--card-header-h) !important;
+  min-height: var(--card-header-h) !important;
+  padding: var(--card-header-py) var(--card-header-px) !important;
+  box-sizing: border-box;
+}
+
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;
