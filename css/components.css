@@ -3479,3 +3479,46 @@ body.new-main-mode #history-area > .new-main-history-editor .consultation-note-f
   flex: 1 1 auto;
   min-height: 180px;
 }
+
+/* compact card header unification (style-only) */
+:root {
+  --card-header-h: 40px;
+  --card-header-px: 20px;
+  --card-header-py: 8px;
+}
+
+body.new-main-mode .account-panel-title-row,
+body.new-main-mode .main-section-header,
+body.new-main-mode .main-live-header,
+body.new-main-mode .panel__header--history,
+body.new-main-mode .main-my-history-header,
+body.new-main-mode .notice-header,
+body.new-main-mode .softphone-script-header,
+body.new-main-mode .new-main-schedule-header,
+body.new-main-mode .new-main-routing-title {
+  height: var(--card-header-h);
+  min-height: var(--card-header-h);
+  padding: var(--card-header-py) var(--card-header-px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFC;
+  border-bottom: 1px solid #E6EAF0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+body.new-main-mode .new-main-warning-head {
+  height: var(--card-header-h);
+  min-height: var(--card-header-h);
+  padding: var(--card-header-py) var(--card-header-px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  box-sizing: border-box;
+}
