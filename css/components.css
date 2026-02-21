@@ -1926,6 +1926,52 @@ body.new-main-mode #coaching-area .main-center-warning-wrap {
   margin: 0;
 }
 
+/* align routing/schedule headers with account-info header style */
+body.new-main-mode .new-main-schedule-header,
+body.new-main-mode .new-main-routing-title,
+body.new-main-mode .notice-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 0 10px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+body.new-main-mode .new-main-schedule-title,
+body.new-main-mode .new-main-routing-title,
+body.new-main-mode .main-center-notice-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* remove badge look for I/B breadcrumb area */
+body.new-main-mode .chat-status-row .status-badge.status-ib {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  color: #4b5563;
+}
+
+/* remove white box background for warning/routing info blocks */
+body.new-main-mode .new-main-warning-panel,
+body.new-main-mode .new-main-warning-content,
+body.new-main-mode .new-main-routing-panel,
+body.new-main-mode .new-main-routing-list,
+body.new-main-mode .new-main-routing-item {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
 body.new-main-mode .tbl__cell:nth-child(1),
 body.new-main-mode .tbl__cell:nth-child(2),
 body.new-main-mode .tbl__cell:nth-child(6),
