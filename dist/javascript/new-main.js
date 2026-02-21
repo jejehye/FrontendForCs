@@ -34,6 +34,7 @@ const ROLE = {
 const ACTION = {
   openGroupSwitch: 'main-open-group-switch-modal',
   openCallTransfer: 'main-open-call-transfer-modal',
+  openBranchTransfer: 'main-open-branch-transfer-modal',
   openOutbound: 'main-open-outbound-modal',
   callTransfer: 'new-main-call-transfer',
   schedulePrev: 'schedule-prev',
@@ -208,7 +209,6 @@ function topbarTemplate() {
   return `
     <div class="new-main-topbar-statuses">
       <div class="new-main-status-item new-main-status-item--work">
-        <span class="new-main-status-label">업무상태</span>
         <div class="new-main-status-segmented" role="group" aria-label="업무상태 전환">
           <button type="button" class="new-main-status-segment is-active" data-status-value="ready" aria-pressed="true">업무</button>
           <button type="button" class="new-main-status-segment" data-status-value="busy" aria-pressed="false">대기</button>
@@ -226,6 +226,10 @@ function topbarTemplate() {
       </div>
     </div>
     <div class="new-main-topbar-actions">
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="main-call-hold" aria-label="보류">
+        <i class="fa-solid fa-pause"></i>
+        보류
+      </button>
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
         <i class="fa-solid fa-arrows-rotate"></i>
         그룹전환
@@ -234,7 +238,7 @@ function topbarTemplate() {
         <i class="fa-solid fa-phone-volume"></i>
         호전환
       </button>
-      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="지점전환">
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openBranchTransfer}" aria-label="지점전환">
         <i class="fa-solid fa-building"></i>
         지점전환
       </button>
@@ -275,13 +279,7 @@ function warningTemplate() {
         <span class="new-main-warning-badge">HIGH RISK</span>
       </div>
       <div class="new-main-warning-content">
-        <span class="new-main-warning-item">고액거래 고객</span>
-        <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">담당PB 연결 필수</span>
-        <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">개인정보 보호 강화 대상</span>
-        <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">본인확인 철저</span>
+        <span class="new-main-warning-item">자주 민원을 제기하는 고객으로 상담 시 주의가 필요합니다.</span>
       </div>
     </div>
   `;
@@ -313,8 +311,12 @@ function historyEditorTemplate() {
           상담이력 입력
         </h3>
         <div class="history-editor-actions history-editor-actions--inline">
-          <button type="button" class="btn--history-reset btn-common-action btn-common-action--reset">초기화</button>
-          <button type="button" class="btn--history-reset history-editor-save-btn btn-common-action btn-common-action--save">저장</button>
+          <button type="button" class="btn--history-reset btn-common-action btn-common-action--reset">
+            <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화
+          </button>
+          <button type="button" class="btn--history-reset history-editor-save-btn btn-common-action btn-common-action--save">
+            <i class="fa-solid fa-save history-action-icon-gap"></i>저장
+          </button>
           <span class="history-editor-timestamp" data-role="current-datetime"></span>
         </div>
       </div>

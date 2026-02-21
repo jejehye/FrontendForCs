@@ -34,6 +34,7 @@ const ROLE = {
 const ACTION = {
   openGroupSwitch: 'main-open-group-switch-modal',
   openCallTransfer: 'main-open-call-transfer-modal',
+  openBranchTransfer: 'main-open-branch-transfer-modal',
   openOutbound: 'main-open-outbound-modal',
   callTransfer: 'new-main-call-transfer',
   schedulePrev: 'schedule-prev',
@@ -225,6 +226,10 @@ function topbarTemplate() {
       </div>
     </div>
     <div class="new-main-topbar-actions">
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="main-call-hold" aria-label="보류">
+        <i class="fa-solid fa-pause"></i>
+        보류
+      </button>
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
         <i class="fa-solid fa-arrows-rotate"></i>
         그룹전환
@@ -233,7 +238,7 @@ function topbarTemplate() {
         <i class="fa-solid fa-phone-volume"></i>
         호전환
       </button>
-      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="지점전환">
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openBranchTransfer}" aria-label="지점전환">
         <i class="fa-solid fa-building"></i>
         지점전환
       </button>
@@ -306,8 +311,12 @@ function historyEditorTemplate() {
           상담이력 입력
         </h3>
         <div class="history-editor-actions history-editor-actions--inline">
-          <button type="button" class="btn--history-reset btn-common-action btn-common-action--reset">초기화</button>
-          <button type="button" class="btn--history-reset history-editor-save-btn btn-common-action btn-common-action--save">저장</button>
+          <button type="button" class="btn--history-reset btn-common-action btn-common-action--reset">
+            <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화
+          </button>
+          <button type="button" class="btn--history-reset history-editor-save-btn btn-common-action btn-common-action--save">
+            <i class="fa-solid fa-save history-action-icon-gap"></i>저장
+          </button>
           <span class="history-editor-timestamp" data-role="current-datetime"></span>
         </div>
       </div>

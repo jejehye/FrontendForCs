@@ -416,12 +416,81 @@ window.MainPageActions = (() => {
     }
   };
 
+  const initBranchTransferModal = () => {
+    const modal = selectOne('[data-role="main-branch-transfer-modal"]');
+    const openButton = selectOne('[data-action="main-open-branch-transfer-modal"]');
+    const closeButtons = selectAll('[data-action="main-close-branch-transfer-modal"]');
+    const submitButton = selectOne('[data-action="main-submit-branch-transfer"]');
+    const branchTarget = selectOne('[data-role="main-branch-transfer-target"]');
+    const transferNumber = selectOne('[data-role="main-branch-transfer-number"]');
+
+    if (!modal || !openButton || !branchTarget || !transferNumber) {
+      return;
+    }
+
+    const openModal = () => {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      transferNumber.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const submitTransfer = () => {
+      const target = branchTarget.value;
+      const number = transferNumber.value.trim();
+
+      if (!target) {
+        alert('전환할 지점을 선택해 주세요.');
+        branchTarget.focus();
+        return;
+      }
+
+      if (!number) {
+        alert('전환할 번호를 입력해 주세요.');
+        transferNumber.focus();
+        return;
+      }
+
+      alert(`${target}로 ${number} 번호에 지점전환합니다.`);
+      closeModal();
+    };
+
+    openButton.addEventListener('click', openModal);
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    transferNumber.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submitTransfer();
+      }
+    });
+
+    if (submitButton) {
+      submitButton.addEventListener('click', submitTransfer);
+    }
+  };
+
   const init = () => {
     initStatusControl();
     initLogoutAction();
     initCustomerTransferActions();
     initSoftphoneScripts();
     initCallTransferModal();
+    initBranchTransferModal();
     initOutboundDialer();
     initGroupSwitchModal();
   };

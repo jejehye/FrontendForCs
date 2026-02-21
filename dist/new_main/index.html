@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CTI Agent Dashboard</title>
-  <link rel="stylesheet" href="app.css?v=1771681908354">
+  <link rel="stylesheet" href="app.css?v=1771682154362">
   
   <!-- ===================== Vendor Styles ===================== -->
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771681908354">
-  <script src="./vendor/fontawesome/js/all.min.js?v=1771681908354" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771682154362">
+  <script src="./vendor/fontawesome/js/all.min.js?v=1771682154362" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- ===================== Page Styles ===================== -->
-  <link rel="stylesheet" href="css/main.css?v=1771681908354">
+  <link rel="stylesheet" href="css/main.css?v=1771682154362">
 
 </head>
 <body>
   
-  <script src="app-config.js?v=1771681908354"></script>
-  <script src="javascript/common/page-module.js?v=1771681908354"></script>
-  <script src="javascript/common/global-header.js?v=1771681908354"></script>
+  <script src="app-config.js?v=1771682154362"></script>
+  <script src="javascript/common/page-module.js?v=1771682154362"></script>
+  <script src="javascript/common/global-header.js?v=1771682154362"></script>
 
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">
@@ -1844,6 +1844,47 @@
 
 <!-- ===================== Outbound Modal ===================== -->
 <section>
+  <div class="main-outbound-modal" data-role="main-branch-transfer-modal" aria-hidden="true">
+    <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-branch-transfer-title">
+      <div class="main-outbound-modal__header">
+        <h4 id="main-branch-transfer-title" class="main-outbound-modal__title">지점전환</h4>
+        <button type="button" class="main-outbound-modal__close" data-action="main-close-branch-transfer-modal" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="main-outbound-modal__body">
+        <label class="main-outbound-modal__label" for="mainBranchTransferTarget">전환 지점 선택</label>
+        <select
+          id="mainBranchTransferTarget"
+          class="field main-outbound-modal__input"
+          data-role="main-branch-transfer-target"
+        >
+          <option value="강남지점">강남지점</option>
+          <option value="여의도지점">여의도지점</option>
+          <option value="종로지점">종로지점</option>
+          <option value="부산지점">부산지점</option>
+        </select>
+        <label class="main-outbound-modal__label" for="mainBranchTransferNumber">전환 번호 입력</label>
+        <input
+          id="mainBranchTransferNumber"
+          type="text"
+          class="field main-outbound-modal__input"
+          inputmode="numeric"
+          placeholder="예: 2045 / 02-1234-5678"
+          data-role="main-branch-transfer-number"
+        />
+        <p class="main-outbound-modal__hint">전환할 내선 또는 외부번호를 입력해 주세요.</p>
+      </div>
+      <div class="main-outbound-modal__footer">
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-branch-transfer-modal">취소</button>
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-branch-transfer">전환</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Outbound Modal ===================== -->
+<section>
   <div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">
     <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-outbound-title">
       <div class="main-outbound-modal__header">
@@ -1933,15 +1974,15 @@
   </script>
 
   
-  <script src="javascript/common/ui.js?v=1771681908354"></script>
-  <script src="javascript/common/api.js?v=1771681908354"></script>
-  <script src="javascript/main/config.js?v=1771681908354"></script>
-  <script src="javascript/main/data.js?v=1771681908354"></script>
-  <script src="javascript/main/customer-info.js?v=1771681908354"></script>
-  <script src="javascript/main/tabs.js?v=1771681908354"></script>
-  <script src="javascript/main/history.js?v=1771681908354"></script>
-  <script src="javascript/main/actions.js?v=1771681908354"></script>
-  <script src="javascript/new-main.js?v=1771681908354"></script>
+  <script src="javascript/common/ui.js?v=1771682154362"></script>
+  <script src="javascript/common/api.js?v=1771682154362"></script>
+  <script src="javascript/main/config.js?v=1771682154362"></script>
+  <script src="javascript/main/data.js?v=1771682154362"></script>
+  <script src="javascript/main/customer-info.js?v=1771682154362"></script>
+  <script src="javascript/main/tabs.js?v=1771682154362"></script>
+  <script src="javascript/main/history.js?v=1771682154362"></script>
+  <script src="javascript/main/actions.js?v=1771682154362"></script>
+  <script src="javascript/new-main.js?v=1771682154362"></script>
 
 </body>
 </html>
