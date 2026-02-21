@@ -2371,6 +2371,21 @@ body.new-main-mode .softphone-call-toggle.is-active:hover {
   color: #FFFFFF;
 }
 
+/* new_main history actions: keep reset secondary, save navy only */
+body.new-main-mode .new-main-history-editor .history-editor-actions .history-editor-save-btn {
+  background: #1E3A8A !important;
+  border: 1px solid #1E3A8A !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+body.new-main-mode .new-main-history-editor .history-editor-actions .history-editor-save-btn:hover {
+  background: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
+  color: #FFFFFF !important;
+}
+
+
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;
