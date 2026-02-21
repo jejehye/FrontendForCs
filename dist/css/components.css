@@ -3312,12 +3312,12 @@ body.new-main-mode .new-main-topbar {
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  min-height: 46px;
-  height: 46px;
+  min-height: 54px;
+  height: 54px;
   padding: 4px 12px;
   gap: 24px;
   margin-bottom: 8px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 body.new-main-mode .new-main-topbar-statuses {
@@ -3335,24 +3335,27 @@ body.new-main-mode .new-main-status-item {
   gap: 8px;
   flex: 0 1 auto;
   min-width: 0;
-  min-height: 34px;
+  min-height: 38px;
 }
 
 body.new-main-mode .new-main-status-label {
-  font-size: 12px;
-  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  line-height: 1.35;
   white-space: nowrap;
+  padding-block: 1px;
 }
 
 body.new-main-mode .new-main-status-segmented {
-  height: 34px;
+  height: 38px;
   border: 1px solid #E5E7EB;
   border-radius: 10px;
   overflow: hidden;
 }
 
 body.new-main-mode .new-main-status-segment {
-  height: 32px;
+  height: 36px;
   min-width: 0;
   padding: 0 8px;
   border-right: 1px solid #EEF2F7;
@@ -3368,8 +3371,8 @@ body.new-main-mode .new-main-status-segment.is-active {
 }
 
 body.new-main-mode .new-main-status-chip {
-  height: 32px;
-  min-height: 32px;
+  height: 36px;
+  min-height: 36px;
   padding: 0 8px;
   border: 1px solid #DCE3EA;
   border-radius: 10px;
@@ -3393,8 +3396,8 @@ body.new-main-mode .new-main-topbar-actions {
 body.new-main-mode .new-main-action-btn,
 body.new-main-mode .new-main-topbar .new-main-topbar-action,
 body.new-main-mode .new-main-topbar .softphone-outbound-btn {
-  height: 34px;
-  min-height: 34px;
+  height: 35px;
+  min-height: 35px;
   padding: 0 10px;
   border-radius: 10px;
   font-size: 12px;
@@ -3416,8 +3419,15 @@ body.new-main-mode .new-main-action-btn--primary {
 
 @media (max-width: 1366px) {
   body.new-main-mode .new-main-topbar {
+    min-height: 52px;
+    height: 52px;
     padding: 4px 10px;
     gap: 20px;
+  }
+
+  body.new-main-mode .new-main-status-label {
+    font-size: 12px;
+    line-height: 1.3;
   }
 
   body.new-main-mode .new-main-topbar-actions {
@@ -3438,4 +3448,34 @@ body.new-main-mode .new-main-action-btn--primary {
     padding: 0 8px;
     font-size: 11px;
   }
+}
+
+/* new_main: make consultation history editor fill remaining column height */
+body.new-main-mode #history-area {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+body.new-main-mode #history-area > .new-main-history-editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+body.new-main-mode #history-area > .new-main-history-editor .main-section-header {
+  flex: 0 0 auto;
+}
+
+body.new-main-mode #history-area > .new-main-history-editor .new-main-history-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+body.new-main-mode #history-area > .new-main-history-editor .consultation-note-field {
+  flex: 1 1 auto;
+  min-height: 180px;
 }

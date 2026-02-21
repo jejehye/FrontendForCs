@@ -208,7 +208,6 @@ function topbarTemplate() {
   return `
     <div class="new-main-topbar-statuses">
       <div class="new-main-status-item new-main-status-item--work">
-        <span class="new-main-status-label">업무상태</span>
         <div class="new-main-status-segmented" role="group" aria-label="업무상태 전환">
           <button type="button" class="new-main-status-segment is-active" data-status-value="ready" aria-pressed="true">업무</button>
           <button type="button" class="new-main-status-segment" data-status-value="busy" aria-pressed="false">대기</button>
