@@ -2292,6 +2292,28 @@ body.new-main-mode .new-main-routing-panel {
   box-sizing: border-box;
 }
 
+/* apply same alignment rule to warning section */
+body.new-main-mode .new-main-warning-slot {
+  padding: 0;
+  margin: 0;
+}
+
+body.new-main-mode .new-main-warning-panel {
+  width: 100%;
+  box-sizing: border-box;
+  background: #FFF4F4;
+  border-color: #F4C8C8;
+}
+
+body.new-main-mode .new-main-warning-head {
+  background: #FFEAEA;
+  border-bottom: 1px solid #F4C8C8;
+}
+
+body.new-main-mode .new-main-warning-content {
+  background: #FFF4F4;
+}
+
 /* real notice header in new_main is .new-main-schedule-header (rendered by JS) */
 body.new-main-mode .new-main-schedule-header {
   padding: 20px var(--nm-header-pad-x);
@@ -2509,6 +2531,226 @@ body.new-main-mode .new-main-schedule-table tbody tr:hover {
   background: #EFF4FF;
 }
 
+/* topbar UX redesign: status (left) + actions (right) */
+body.new-main-mode .new-main-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+body.new-main-mode .new-main-topbar-statuses {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+body.new-main-mode .new-main-status-item {
+  min-height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.new-main-mode .new-main-status-item--action {
+  gap: 0;
+}
+
+body.new-main-mode .new-main-status-label {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1;
+}
+
+body.new-main-mode .new-main-status-item--work .new-main-work-select-wrap {
+  min-height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: #F8FAFC;
+  padding: 0 10px 0 28px;
+  display: inline-flex;
+  align-items: center;
+}
+
+body.new-main-mode .new-main-status-item--work .new-main-status-control {
+  min-height: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0 20px 0 0;
+}
+
+body.new-main-mode .new-main-status-chip {
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: #F8FAFC;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+body.new-main-mode .new-main-status-chip--action {
+  cursor: pointer;
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+
+body.new-main-mode .new-main-status-chip--action:hover {
+  background: #EEF4FF;
+  border-color: #BFD0F5;
+  color: #1E3A8A;
+  transform: translateY(-1px);
+}
+
+body.new-main-mode .new-main-status-action-btn {
+  min-height: 38px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: var(--radius-btn);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+body.new-main-mode .new-main-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #94A3B8;
+  flex-shrink: 0;
+}
+
+body.new-main-mode .new-main-status-chip--ok {
+  background: #ECFDF3;
+  border-color: #B7E4CC;
+  color: #166534;
+}
+
+body.new-main-mode .new-main-status-chip--ok .new-main-status-dot {
+  background: #22C55E;
+}
+
+body.new-main-mode .new-main-status-chip--warn {
+  background: #FFF7ED;
+  border-color: #FED7AA;
+  color: #9A3412;
+}
+
+body.new-main-mode .new-main-status-chip--warn .new-main-status-dot {
+  background: #F59E0B;
+}
+
+body.new-main-mode .new-main-status-chip--muted {
+  background: #F8FAFC;
+  border-color: var(--border);
+  color: #475569;
+}
+
+body.new-main-mode .new-main-status-chip--muted .new-main-status-dot {
+  background: #94A3B8;
+}
+
+body.new-main-mode .new-main-topbar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 24px;
+  flex: 0 0 auto;
+}
+
+body.new-main-mode .new-main-topbar-statuses .new-main-status-item--action .new-main-modal-action-btn {
+  min-width: 92px;
+}
+
+body.new-main-mode .new-main-topbar .new-main-topbar-action {
+  height: 38px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius-btn);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+body.new-main-mode .new-main-status-item--work .new-main-status-control {
+  font-size: 13px;
+}
+
+/* schedule table readability (layout only: no color/font change) */
+body.new-main-mode .new-main-schedule-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+body.new-main-mode .new-main-schedule-table th:nth-child(1),
+body.new-main-mode .new-main-schedule-table td:nth-child(1) {
+  width: 64px;
+  text-align: center;
+}
+
+body.new-main-mode .new-main-schedule-table th:nth-child(2),
+body.new-main-mode .new-main-schedule-table td:nth-child(2) {
+  width: auto;
+}
+
+body.new-main-mode .new-main-schedule-table th:nth-child(3),
+body.new-main-mode .new-main-schedule-table td:nth-child(3) {
+  width: 180px;
+  text-align: right;
+}
+
+body.new-main-mode .new-main-schedule-table th,
+body.new-main-mode .new-main-schedule-table td {
+  vertical-align: middle;
+}
+
+body.new-main-mode .new-main-schedule-table td:nth-child(2) {
+  white-space: normal;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+body.new-main-mode .new-main-schedule-table td:nth-child(1),
+body.new-main-mode .new-main-schedule-table td:nth-child(3) {
+  white-space: nowrap;
+}
+
+body.new-main-mode .new-main-schedule-table-wrap {
+  padding-top: 8px;
+}
+
+body.new-main-mode .new-main-schedule-pagination {
+  margin-top: 14px;
+}
+
+/* schedule table: use pagination only (no internal scroll) */
+body.new-main-mode .new-main-schedule-table-wrap {
+  overflow: hidden;
+  max-height: none;
+}
+
 /* cross-page header tint (main/new_main) */
 #page-main .main-section-header,
 #page-main .main-live-header,
@@ -2521,6 +2763,175 @@ body.new-main-mode .new-main-schedule-table tbody tr:hover {
   background-color: #E7EEFA !important;
   background-image: none !important;
   border-bottom-color: #C9D5E3 !important;
+}
+
+/* topbar ux final */
+body.new-main-mode .new-main-topbar {
+  padding: 18px 20px;
+  gap: 32px;
+  background: #FFFFFF;
+  border: 1px solid #DCE3EA;
+  box-shadow: none;
+}
+
+body.new-main-mode .new-main-topbar-statuses {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 1 1 auto;
+}
+
+body.new-main-mode .new-main-status-item {
+  min-height: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.new-main-mode .new-main-status-item--work {
+  gap: 10px;
+}
+
+body.new-main-mode .new-main-status-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748B;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+body.new-main-mode .new-main-status-segmented {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  height: 36px;
+  border: 1px solid #DCE3EA;
+  border-radius: 10px;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+body.new-main-mode .new-main-status-segment {
+  height: 34px;
+  min-width: 56px;
+  border: 0;
+  border-right: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  color: #1F2937;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: background-color var(--t-fast), color var(--t-fast);
+}
+
+body.new-main-mode .new-main-status-segment:last-of-type {
+  border-right: 0;
+}
+
+body.new-main-mode .new-main-status-segment:hover {
+  background: #F1F5F9;
+}
+
+body.new-main-mode .new-main-status-segment.is-active {
+  background: #1E3A8A;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+body.new-main-mode .new-main-status-control--hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.new-main-mode .new-main-status-chip {
+  min-height: 34px;
+  height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #DCE3EA;
+  border-radius: 10px;
+  background: #F7F9FC;
+  color: #1F2937;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+body.new-main-mode .new-main-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #94A3B8;
+}
+
+body.new-main-mode .new-main-status-chip--ok .new-main-status-dot { background: #22C55E; }
+body.new-main-mode .new-main-status-chip--warn .new-main-status-dot { background: #94A3B8; }
+body.new-main-mode .new-main-status-chip--muted .new-main-status-dot { background: #94A3B8; }
+
+body.new-main-mode .new-main-status-chip--action {
+  cursor: pointer;
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+
+body.new-main-mode .new-main-status-chip--action:hover {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+}
+
+body.new-main-mode .new-main-topbar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 32px;
+  flex: 0 0 auto;
+}
+
+body.new-main-mode .new-main-action-btn {
+  height: 38px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #DCE3EA;
+  background: #FFFFFF;
+  color: #1F2937;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: none;
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+
+body.new-main-mode .new-main-action-btn--secondary:hover {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+}
+
+body.new-main-mode .new-main-action-btn--primary {
+  background: #1E3A8A;
+  border-color: #1E3A8A;
+  color: #FFFFFF;
+}
+
+body.new-main-mode .new-main-action-btn--primary:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
 /* Breakpoints: layout ratios preserved */
@@ -2557,12 +2968,9 @@ body.new-main-mode .new-main-schedule-table tbody tr:hover {
     grid-template-columns: 52px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
   }
 
-  body.new-main-mode .new-main-topbar-statuses {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   body.new-main-mode .new-main-topbar-actions {
     justify-content: flex-end;
     flex-wrap: wrap;
+    margin-left: 16px;
   }
 }

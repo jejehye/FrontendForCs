@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CTI Agent Dashboard</title>
-  <link rel="stylesheet" href="app.css?v=1771664040130">
+  <link rel="stylesheet" href="app.css?v=1771666076844">
   
   <!-- ===================== Vendor Styles ===================== -->
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771664040130">
-  <script src="./vendor/fontawesome/js/all.min.js?v=1771664040130" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771666076844">
+  <script src="./vendor/fontawesome/js/all.min.js?v=1771666076844" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- ===================== Page Styles ===================== -->
-  <link rel="stylesheet" href="css/main.css?v=1771664040130">
+  <link rel="stylesheet" href="css/main.css?v=1771666076844">
 
 </head>
 <body>
   
-  <script src="app-config.js?v=1771664040130"></script>
-  <script src="javascript/common/page-module.js?v=1771664040130"></script>
+  <script src="app-config.js?v=1771666076844"></script>
+  <script src="javascript/common/page-module.js?v=1771666076844"></script>
 
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">
@@ -1803,6 +1803,46 @@
 
 <!-- ===================== Outbound Modal ===================== -->
 <section>
+  <div class="main-outbound-modal" data-role="main-call-transfer-modal" aria-hidden="true">
+    <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-call-transfer-title">
+      <div class="main-outbound-modal__header">
+        <h4 id="main-call-transfer-title" class="main-outbound-modal__title">호전환</h4>
+        <button type="button" class="main-outbound-modal__close" data-action="main-close-call-transfer-modal" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="main-outbound-modal__body">
+        <label class="main-outbound-modal__label" for="mainCallTransferType">전환 방식</label>
+        <select
+          id="mainCallTransferType"
+          class="field main-outbound-modal__input"
+          data-role="main-call-transfer-type"
+        >
+          <option value="내선전환">내선전환</option>
+          <option value="부서전환">부서전환</option>
+          <option value="외부전환">외부전환</option>
+        </select>
+        <label class="main-outbound-modal__label" for="mainCallTransferNumber">전환 번호 입력</label>
+        <input
+          id="mainCallTransferNumber"
+          type="text"
+          class="field main-outbound-modal__input"
+          inputmode="numeric"
+          placeholder="예: 2045 / 02-1234-5678"
+          data-role="main-call-transfer-number"
+        />
+        <p class="main-outbound-modal__hint">내선 또는 외부번호를 입력해 주세요.</p>
+      </div>
+      <div class="main-outbound-modal__footer">
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--cancel" data-action="main-close-call-transfer-modal">취소</button>
+        <button type="button" class="main-outbound-modal__btn main-outbound-modal__btn--submit" data-action="main-submit-call-transfer">전환</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Outbound Modal ===================== -->
+<section>
   <div class="main-outbound-modal" data-role="main-outbound-modal" aria-hidden="true">
     <div class="main-outbound-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="main-outbound-title">
       <div class="main-outbound-modal__header">
@@ -1892,15 +1932,15 @@
   </script>
 
   
-  <script src="javascript/common/ui.js?v=1771664040130"></script>
-  <script src="javascript/common/api.js?v=1771664040130"></script>
-  <script src="javascript/main/config.js?v=1771664040130"></script>
-  <script src="javascript/main/data.js?v=1771664040130"></script>
-  <script src="javascript/main/customer-info.js?v=1771664040130"></script>
-  <script src="javascript/main/tabs.js?v=1771664040130"></script>
-  <script src="javascript/main/history.js?v=1771664040130"></script>
-  <script src="javascript/main/actions.js?v=1771664040130"></script>
-  <script src="javascript/new-main.js?v=1771664040130"></script>
+  <script src="javascript/common/ui.js?v=1771666076844"></script>
+  <script src="javascript/common/api.js?v=1771666076844"></script>
+  <script src="javascript/main/config.js?v=1771666076844"></script>
+  <script src="javascript/main/data.js?v=1771666076844"></script>
+  <script src="javascript/main/customer-info.js?v=1771666076844"></script>
+  <script src="javascript/main/tabs.js?v=1771666076844"></script>
+  <script src="javascript/main/history.js?v=1771666076844"></script>
+  <script src="javascript/main/actions.js?v=1771666076844"></script>
+  <script src="javascript/new-main.js?v=1771666076844"></script>
 
 </body>
 </html>
