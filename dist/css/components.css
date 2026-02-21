@@ -297,6 +297,15 @@ body { background-color: #f3f4f6; }
 .softphone-script-btn { border: 1px solid #7a98b6; border-radius: 0; background: #4f81a8; color: #ffffff; font-size: 12px; font-weight: 600; padding: 8px 6px; text-align: center; cursor: pointer; transition: all 0.18s ease; display: inline-flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; min-height: 34px; }
 .softphone-script-btn:hover { background: #426f92; border-color: #5f7f9f; color: #ffffff; }
 .softphone-script-btn:disabled { background: #f1f5f9; color: #94a3b8; border-color: #e2e8f0; cursor: not-allowed; }
+.softphone-script-panel.is-call-active .softphone-script-btn:not(:disabled) {
+  border-color: #0f4aa8;
+  background: linear-gradient(180deg, #1f5ec7 0%, #1e3a8a 100%);
+  color: #ffffff;
+}
+.softphone-script-panel.is-call-active .softphone-script-btn:not(:disabled):hover {
+  border-color: #1d4ed8;
+  background: linear-gradient(180deg, #1d4ed8 0%, #1e3a8a 100%);
+}
 .softphone-script-status { margin-top: 8px; font-size: 10px; color: #64748b; background: #f8fafc; border-radius: 6px; padding: 5px 8px; }
 .softphone-script-status.is-playing { color: #1d4ed8; background: #eff6ff; }
 .softphone-script-status.is-warn { color: #b45309; background: #fef3c7; }

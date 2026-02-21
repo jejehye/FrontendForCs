@@ -147,6 +147,7 @@ window.MainPageActions = (() => {
     const callToggleButton = selectOne('[data-action="softphone-toggle"]', '[data-call-toggle]');
     const scriptButtons = selectAll('[data-action="softphone-script"]', '[data-softphone-script]');
     const scriptOutput = selectOne('[data-role="softphone-output"]', '[data-softphone-output]');
+    const scriptPanel = callToggleButton?.closest('.softphone-script-panel') || null;
 
     let isCallActive = false;
 
@@ -166,6 +167,9 @@ window.MainPageActions = (() => {
       if (callToggleButton) {
         callToggleButton.textContent = isCallActive ? '통화중 ON' : '통화중 OFF';
         callToggleButton.classList.toggle('is-active', isCallActive);
+      }
+      if (scriptPanel) {
+        scriptPanel.classList.toggle('is-call-active', isCallActive);
       }
 
       scriptButtons.forEach(button => {
@@ -350,11 +354,74 @@ window.MainPageActions = (() => {
     }
   };
 
+  const initCallTransferModal = () => {
+    const modal = selectOne('[data-role="main-call-transfer-modal"]');
+    const openButton = selectOne('[data-action="main-open-call-transfer-modal"]');
+    const closeButtons = selectAll('[data-action="main-close-call-transfer-modal"]');
+    const submitButton = selectOne('[data-action="main-submit-call-transfer"]');
+    const transferType = selectOne('[data-role="main-call-transfer-type"]');
+    const transferNumber = selectOne('[data-role="main-call-transfer-number"]');
+
+    if (!modal || !openButton || !transferType || !transferNumber) {
+      return;
+    }
+
+    const openModal = () => {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      transferNumber.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const submitTransfer = () => {
+      const type = transferType.value;
+      const number = transferNumber.value.trim();
+
+      if (!number) {
+        alert('전환할 번호를 입력해 주세요.');
+        transferNumber.focus();
+        return;
+      }
+
+      alert(`${type}으로 ${number} 번호에 호전환합니다.`);
+      closeModal();
+    };
+
+    openButton.addEventListener('click', openModal);
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    transferNumber.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submitTransfer();
+      }
+    });
+
+    if (submitButton) {
+      submitButton.addEventListener('click', submitTransfer);
+    }
+  };
+
   const init = () => {
     initStatusControl();
     initLogoutAction();
     initCustomerTransferActions();
     initSoftphoneScripts();
+    initCallTransferModal();
     initOutboundDialer();
     initGroupSwitchModal();
   };
