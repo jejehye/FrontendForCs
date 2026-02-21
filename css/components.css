@@ -2934,6 +2934,24 @@ body.new-main-mode .new-main-action-btn--primary:hover {
   transform: translateY(-1px);
 }
 
+/* make breadcrumb row match main design and remove extra backplate */
+body.new-main-mode .new-main-status-row-wrap {
+  padding: 0 0 8px;
+  background: transparent;
+}
+
+body.new-main-mode .new-main-status-row-wrap .chat-status-row {
+  margin-bottom: 0;
+}
+
+body.new-main-mode .chat-status-row .status-badge.status-ib {
+  color: var(--color-primary);
+  background: var(--color-highlight-blue);
+  border: 1px solid #99c2ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
 /* Breakpoints: layout ratios preserved */
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {
