@@ -1625,6 +1625,80 @@ body.new-main-mode .new-main-topbar-actions {
   margin-left: var(--space-4);
 }
 
+/* left-top button area cleanup */
+body.new-main-mode .panel-header-actions-only,
+body.new-main-mode .panel-header-actions {
+  background: #ffffff;
+}
+
+body.new-main-mode .panel-header-actions {
+  gap: 10px;
+  padding: 0;
+  align-items: center;
+}
+
+body.new-main-mode .agent-status-bar {
+  min-height: 38px;
+  padding: 0 12px;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+body.new-main-mode .status-select {
+  min-height: 38px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 20px 0 0;
+}
+
+body.new-main-mode .softphone-outbound-btn {
+  min-height: 38px;
+  height: 38px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 14px;
+  gap: 8px;
+  box-shadow: none;
+}
+
+body.new-main-mode .softphone-outbound-btn:hover {
+  background: #F3F4F6;
+  border-color: #D5DCE5;
+  color: var(--text);
+}
+
+body.new-main-mode .softphone-outbound-btn[data-action="main-open-outbound-modal"] {
+  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
+  border: 0;
+  color: #ffffff;
+}
+
+body.new-main-mode .softphone-outbound-btn[data-action="main-open-outbound-modal"]:hover {
+  background: linear-gradient(180deg, #2563EB 0%, #1D4ED8 100%);
+  color: #ffffff;
+}
+
+body.new-main-mode .agent-login-chip {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  box-shadow: none;
+  gap: 8px;
+  min-height: 38px;
+  padding: 4px 10px;
+}
+
 /* Risk emphasis */
 body.new-main-mode .new-main-warning-panel {
   border-color: #FECACA;
