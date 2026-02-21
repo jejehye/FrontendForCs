@@ -1987,7 +1987,7 @@ body.new-main-mode .new-main-routing-panel {
 
 /* align caution customer info with unified card border */
 body.new-main-mode .customer-warning {
-  border: 1px solid #C7D1DE;
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
   box-shadow: none;
@@ -1996,7 +1996,7 @@ body.new-main-mode .customer-warning {
 
 /* keep caution info border visible */
 body.new-main-mode .new-main-warning-panel {
-  border: 1px solid #C7D1DE;
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
 }
 
