@@ -1274,8 +1274,8 @@ body { background-color: #f3f4f6; }
    - No logic/data changes
    ========================================================================== */
 body.new-main-mode {
-  --bg-page: #F5F7FA;
-  --bg-col: #F9FAFB;
+  --bg-page: #FFFFFF;
+  --bg-col: #FFFFFF;
   --surface: #FFFFFF;
   --border: #E6EAF0;
   --text: #111827;
