@@ -1991,7 +1991,7 @@ body.new-main-mode .new-main-routing-title {
 /* increase only notice header area */
 body.new-main-mode .notice-header {
   padding: 20px 24px;
-  min-height: 76px;
+  min-height: 92px;
 }
 
 body.new-main-mode .new-main-schedule-title,
@@ -2233,7 +2233,7 @@ body.new-main-mode .notice-header-row {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 32px;
+  min-height: 44px;
 }
 
 body.new-main-mode .notice-header .main-center-notice-title,
@@ -2259,7 +2259,7 @@ body.new-main-mode .notice-updated {
   transform: translateY(-50%);
   margin: 0;
   white-space: nowrap;
-  height: 28px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
 }
