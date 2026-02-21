@@ -12,7 +12,7 @@ body {
 }
 
 :root {
-  --global-header-h: 40px;
+  --global-header-h: 42px;
   --global-sidebar-w: 60px;
 }
 
@@ -45,7 +45,7 @@ body.has-global-header .col-sidebar {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 .app-global-header__user-wrap {
@@ -57,18 +57,18 @@ body.has-global-header .col-sidebar {
 .app-global-header__user {
   font-size: 13px;
   color: #1F2937;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .app-global-header__logout {
-  height: 30px;
+  height: 28px;
   padding: 0 8px;
   border: 0;
   border-radius: 8px;
   background: transparent;
   color: #1E3A8A;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.4;
   cursor: pointer;
 }
 
