@@ -1274,8 +1274,8 @@ body { background-color: #f3f4f6; }
    - No logic/data changes
    ========================================================================== */
 body.new-main-mode {
-  --bg-page: #FFFFFF;
-  --bg-col: #FFFFFF;
+  --bg-page: #F4F6F9;
+  --bg-col: #F8FAFC;
   --surface: #FFFFFF;
   --border: #E6EAF0;
   --text: #111827;
@@ -1596,7 +1596,6 @@ body.new-main-mode .main-outbound-modal__btn:hover {
 
 /* Primary (single emphasis actions) */
 body.new-main-mode .history-editor-save-btn,
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"],
 body.new-main-mode .main-outbound-modal__btn--submit {
   background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
   border: 0;
@@ -1605,14 +1604,12 @@ body.new-main-mode .main-outbound-modal__btn--submit {
 }
 
 body.new-main-mode .history-editor-save-btn:hover,
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"]:hover,
 body.new-main-mode .main-outbound-modal__btn--submit:hover {
   background: linear-gradient(180deg, #2563EB 0%, #1D4ED8 100%);
   transform: translateY(-1px);
 }
 
 body.new-main-mode .history-editor-save-btn:active,
-body.new-main-mode .new-main-topbar-action[data-action="main-open-outbound-modal"]:active,
 body.new-main-mode .main-outbound-modal__btn--submit:active {
   transform: translateY(0);
 }
@@ -1729,17 +1726,6 @@ body.new-main-mode .softphone-outbound-btn:hover {
   color: var(--text);
 }
 
-body.new-main-mode .softphone-outbound-btn[data-action="main-open-outbound-modal"] {
-  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
-  border: 0;
-  color: #ffffff;
-}
-
-body.new-main-mode .softphone-outbound-btn[data-action="main-open-outbound-modal"]:hover {
-  background: linear-gradient(180deg, #2563EB 0%, #1D4ED8 100%);
-  color: #ffffff;
-}
-
 body.new-main-mode .agent-login-chip {
   background: #ffffff;
   border: 1px solid var(--border);
@@ -1792,12 +1778,12 @@ body.new-main-mode .new-main-schedule-table th {
   background: #F1F5F9;
   color: var(--muted);
   border-color: var(--border);
-  padding: 12px 14px;
+  padding: 14px 14px;
 }
 
 body.new-main-mode .tbl__cell,
 body.new-main-mode .new-main-schedule-table td {
-  padding: 12px 14px;
+  padding: 14px 14px;
   border-color: var(--border);
   white-space: nowrap;
   overflow: hidden;
@@ -2125,6 +2111,44 @@ body.new-main-mode .new-main-warning-content,
 body.new-main-mode .new-main-routing-list,
 body.new-main-mode .new-main-history-body {
   padding-bottom: 24px;
+}
+
+/* center column emphasis: increase body density spacing */
+body.new-main-mode #center-column .notice-list-wrap,
+body.new-main-mode #center-column .new-main-schedule-body,
+body.new-main-mode #center-column #chat-area .chat-message-list,
+body.new-main-mode #center-column #chat-area .main-live-input-wrap,
+body.new-main-mode #center-column .coaching-panel,
+body.new-main-mode #center-column .panel__body {
+  padding: 30px;
+}
+
+body.new-main-mode #center-column #coaching-area .main-center-warning-wrap {
+  margin: 0 30px 30px;
+}
+
+/* left consultation-history card: remove inner gray fills and extra borders */
+body.new-main-mode .new-main-history-editor .history-editor-card,
+body.new-main-mode .new-main-history-editor .history-editor-group,
+body.new-main-mode .new-main-history-editor .history-editor-actions-wrap {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* ensure filter/input blocks have comfortable spacing */
+body.new-main-mode .main-history-filter-grid,
+body.new-main-mode .main-my-history-filter-grid,
+body.new-main-mode .history-category-grid,
+body.new-main-mode .history-editor-form {
+  row-gap: 16px;
+  column-gap: 16px;
+}
+
+body.new-main-mode .history-editor-form,
+body.new-main-mode .main-my-history-filter,
+body.new-main-mode .new-main-history-body {
+  gap: 16px;
 }
 
 /* Breakpoints: layout ratios preserved */
