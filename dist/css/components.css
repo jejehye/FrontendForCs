@@ -2772,8 +2772,8 @@ body.new-main-mode .new-main-topbar {
   flex-wrap: wrap;
   padding: 18px 20px;
   gap: 32px;
-  background: transparent;
-  border: 0;
+  background: #FFFFFF;
+  border: 1px solid #DCE3EA;
   box-shadow: none;
 }
 
@@ -2937,6 +2937,11 @@ body.new-main-mode .new-main-action-btn--primary:hover {
   border-color: #1D4ED8;
   color: #FFFFFF;
   transform: translateY(-1px);
+}
+
+/* hide right-top agent bar in new_main */
+body.new-main-mode #right-column .panel-header-actions-only {
+  display: none;
 }
 
 /* make breadcrumb row match main design and remove extra backplate */

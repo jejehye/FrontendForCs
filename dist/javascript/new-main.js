@@ -207,6 +207,23 @@ function renderTodaySchedulePanel() {
 function topbarTemplate() {
   return `
     <div class="new-main-topbar-statuses">
+      <div class="new-main-status-item new-main-status-item--work">
+        <span class="new-main-status-label">업무상태</span>
+        <div class="new-main-status-segmented" role="group" aria-label="업무상태 전환">
+          <button type="button" class="new-main-status-segment is-active" data-status-value="ready" aria-pressed="true">업무</button>
+          <button type="button" class="new-main-status-segment" data-status-value="busy" aria-pressed="false">대기</button>
+          <button type="button" class="new-main-status-segment" data-status-value="away" aria-pressed="false">이석</button>
+          <button type="button" class="new-main-status-segment" data-status-value="meeting" aria-pressed="false">교육</button>
+          <button type="button" class="new-main-status-segment" data-status-value="break" aria-pressed="false">식사</button>
+          <select class="new-main-status-control new-main-status-control--hidden" data-role="agent-status-select" aria-label="업무상태">
+            <option value="ready" selected>업무</option>
+            <option value="busy">대기</option>
+            <option value="away">이석</option>
+            <option value="meeting">교육</option>
+            <option value="break">식사</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="new-main-topbar-actions">
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
@@ -450,6 +467,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const chatArea = document.querySelector(SELECTOR.chatArea);
   const coachingArea = document.querySelector(SELECTOR.coachingArea);
   const myHistoryPanel = rightColumn?.querySelector('.main-my-history-panel');
+  const rightTopBarSection = rightColumn?.querySelector('.panel-header-actions-only')?.closest('section');
+
+  rightTopBarSection?.remove();
 
   ensureSection({
     anchor: chatColumn,
