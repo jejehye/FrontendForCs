@@ -2772,8 +2772,8 @@ body.new-main-mode .new-main-topbar {
   flex-wrap: wrap;
   padding: 18px 20px;
   gap: 32px;
-  background: #FFFFFF;
-  border: 1px solid #DCE3EA;
+  background: transparent;
+  border: 0;
   box-shadow: none;
 }
 
