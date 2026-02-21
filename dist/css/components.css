@@ -2952,6 +2952,38 @@ body.new-main-mode .chat-status-row .status-badge.status-ib {
   border-radius: 4px;
 }
 
+body.new-main-mode .new-main-login-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid #B7E4CC;
+  background: #ECFDF3;
+  color: #065F46;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+body.new-main-mode .new-main-login-inline-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #22C55E;
+}
+
+body.new-main-mode .new-main-login-inline.is-offline {
+  border-color: #DCE3EA;
+  background: #F8FAFC;
+  color: #64748B;
+}
+
+body.new-main-mode .new-main-login-inline.is-offline .new-main-login-inline-dot {
+  background: #94A3B8;
+}
+
 /* Breakpoints: layout ratios preserved */
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {

@@ -224,13 +224,6 @@ function topbarTemplate() {
           </select>
         </div>
       </div>
-      <div class="new-main-status-item">
-        <span class="new-main-status-label">로그인여부</span>
-        <span class="new-main-status-chip new-main-status-chip--ok" data-role="new-main-login-chip">
-          <span class="new-main-status-dot"></span>
-          로그인
-        </span>
-      </div>
     </div>
     <div class="new-main-topbar-actions">
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
@@ -262,6 +255,10 @@ function statusRowTemplate() {
       </span>
       <span class="customer-status-text">
         신한 고객센터 &gt; 투자상담
+      </span>
+      <span class="new-main-login-inline" data-role="new-main-login-chip">
+        <span class="new-main-login-inline-dot"></span>
+        <span data-role="new-main-login-chip-text">로그인</span>
       </span>
     </div>
   `;
@@ -427,6 +424,22 @@ function promoteHeaderWeight() {
   });
 }
 
+function syncLoginChipState() {
+  const loginChip = document.querySelector('[data-role="new-main-login-chip"]');
+  const loginChipText = document.querySelector('[data-role="new-main-login-chip-text"]');
+  if (!loginChip || !loginChipText) {
+    return;
+  }
+
+  const agentId = (localStorage.getItem('currentAgentId') || '').trim();
+  const agentName = (localStorage.getItem('currentAgentName') || '').trim();
+  const isLoggedIn = Boolean(agentId || agentName);
+
+  loginChip.classList.toggle('is-online', isLoggedIn);
+  loginChip.classList.toggle('is-offline', !isLoggedIn);
+  loginChipText.textContent = isLoggedIn ? '로그인' : '로그오프';
+}
+
 function initMainModules() {
   const modules = [
     window.MainPageCustomerInfo,
@@ -507,6 +520,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       html: statusRowTemplate()
     })
   });
+  syncLoginChipState();
+  window.addEventListener('storage', syncLoginChipState);
 
   ensureSection({
     anchor: verifyFormSection,
