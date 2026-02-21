@@ -1329,7 +1329,7 @@ body.new-main-mode .col-center,
 body.new-main-mode .col-right {
   min-height: 0;
   overflow: hidden;
-  padding: 0;
+  padding: var(--space-6);
   gap: var(--space-6);
 }
 
@@ -1401,6 +1401,13 @@ body.new-main-mode #verify-form .account-info-panel,
 body.new-main-mode .main-my-history-panel,
 body.new-main-mode .new-main-history-editor {
   padding: var(--space-6);
+}
+
+/* remove header-to-border inset only for specific cards */
+body.new-main-mode .softphone-script-panel,
+body.new-main-mode .main-my-history-panel,
+body.new-main-mode .new-main-history-editor {
+  padding: 0;
 }
 
 /* Header hierarchy */
