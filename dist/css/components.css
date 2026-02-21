@@ -1985,6 +1985,14 @@ body.new-main-mode .new-main-routing-panel {
   overflow: hidden;
 }
 
+/* align caution customer info with unified card border */
+body.new-main-mode .customer-warning {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: none;
+}
+
 body.new-main-mode .tbl__cell:nth-child(1),
 body.new-main-mode .tbl__cell:nth-child(2),
 body.new-main-mode .tbl__cell:nth-child(6),
