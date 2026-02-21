@@ -1456,6 +1456,45 @@ body.new-main-mode .notice-updated {
   color: var(--muted);
 }
 
+/* section meta text should not look like cards */
+body.new-main-mode .chat-panel-header {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0 0 10px;
+  margin: 0 0 10px;
+}
+
+body.new-main-mode .chat-status-row {
+  margin-bottom: 10px;
+}
+
+body.new-main-mode .account-panel-helper,
+body.new-main-mode .notice-updated,
+body.new-main-mode .customer-status-text,
+body.new-main-mode .new-main-routing-title,
+body.new-main-mode .new-main-schedule-title,
+body.new-main-mode .new-main-schedule-date,
+body.new-main-mode .new-main-topbar-note {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+body.new-main-mode .new-main-routing-title,
+body.new-main-mode .new-main-schedule-title {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+body.new-main-mode .notice-updated {
+  margin-top: 8px;
+  padding: 0;
+}
+
 /* Inputs and focus detail */
 body.new-main-mode .field,
 body.new-main-mode .consultation-note-field,
