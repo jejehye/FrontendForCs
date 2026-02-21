@@ -313,8 +313,8 @@ function historyEditorTemplate() {
           상담이력 입력
         </h3>
         <div class="history-editor-actions history-editor-actions--inline">
-          <button type="button" class="btn--history-reset">초기화</button>
-          <button type="button" class="btn--history-reset history-editor-save-btn">저장</button>
+          <button type="button" class="btn--history-reset btn-common-action btn-common-action--reset">초기화</button>
+          <button type="button" class="btn--history-reset history-editor-save-btn btn-common-action btn-common-action--save">저장</button>
           <span class="history-editor-timestamp" data-role="current-datetime"></span>
         </div>
       </div>

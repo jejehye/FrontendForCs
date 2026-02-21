@@ -509,6 +509,39 @@ body { background-color: #f3f4f6; }
 }
 .main-history-actions { display: flex; gap: 8px; }
 .main-history-icon-gap { margin-right: 4px; }
+
+/* common action button module (reset/search/save) */
+.btn-common-action {
+  min-height: 26px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--main-header-control-border);
+  background: var(--main-header-control-bg);
+  color: var(--main-header-control-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.btn-common-action:hover {
+  background: var(--main-header-control-bg-hover);
+  border-color: rgba(226, 232, 240, 0.62);
+}
+
+.btn-common-action--save {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+
+.btn-common-action--save:hover {
+  background: #1d4ed8;
+  border-color: #1e40af;
+}
+
 .history-editor-save-btn {
   background: #2563eb;
   border-color: #1d4ed8;
@@ -1336,6 +1369,7 @@ body.new-main-mode #app-container.grid-layout {
 body.new-main-mode.has-global-header #app-container.grid-layout {
   height: calc(100vh - var(--global-header-h));
   margin-top: var(--global-header-h);
+  overflow: visible;
 }
 
 body.new-main-mode #page-main {
