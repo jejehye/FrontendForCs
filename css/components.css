@@ -1902,6 +1902,30 @@ body.new-main-mode #notice-area .notice-title {
   color: #111827;
 }
 
+/* remove inner card paddings to match account-info style */
+body.new-main-mode .panel__body,
+body.new-main-mode .main-my-history-filter,
+body.new-main-mode .notice-list-wrap,
+body.new-main-mode .new-main-schedule-body,
+body.new-main-mode .main-history-table-wrap,
+body.new-main-mode .main-my-history-table-wrap,
+body.new-main-mode .new-main-schedule-table-wrap,
+body.new-main-mode #chat-area .chat-message-list,
+body.new-main-mode #chat-area .main-live-input-wrap,
+body.new-main-mode .coaching-panel,
+body.new-main-mode .account-info-grid,
+body.new-main-mode .verify-transfer-actions,
+body.new-main-mode .softphone-script-groups,
+body.new-main-mode .new-main-warning-content,
+body.new-main-mode .new-main-routing-list,
+body.new-main-mode .new-main-history-body {
+  padding: 0;
+}
+
+body.new-main-mode #coaching-area .main-center-warning-wrap {
+  margin: 0;
+}
+
 body.new-main-mode .tbl__cell:nth-child(1),
 body.new-main-mode .tbl__cell:nth-child(2),
 body.new-main-mode .tbl__cell:nth-child(6),
