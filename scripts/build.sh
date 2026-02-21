@@ -9,7 +9,7 @@ rm -rf "$DIST_DIR"
 mkdir -p "$DIST_DIR"
 
 cd "$ROOT_DIR"
-npm run build
+ASSET_VERSION="$(node -e 'process.stdout.write(String(Date.now()))')" npm run build
 
 for static_dir in css javascript fonts; do
   if [ -d "$ROOT_DIR/$static_dir" ]; then

@@ -1425,6 +1425,7 @@ body.new-main-mode .panel__header--history,
 body.new-main-mode .main-my-history-header,
 body.new-main-mode .notice-header,
 body.new-main-mode .softphone-script-header {
+  border-top: 2px solid rgba(30, 58, 138, 0.22);
   font-size: 16px;
   line-height: 1.5;
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -2292,6 +2293,209 @@ body.new-main-mode .new-main-schedule-header {
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;
+}
+
+/* final theme pass: deep navy financial SaaS tone */
+body.new-main-mode {
+  --bg-page: #EEF2F7;
+  --bg-col: #F7F9FC;
+  --surface: #FFFFFF;
+  --border: #DCE3EA;
+  --primary: #1E3A8A;
+  --primary-hover: #1D4ED8;
+  --title: #0F172A;
+  --text: #111827;
+  --muted: #64748B;
+  line-height: 1.6;
+}
+
+body.new-main-mode,
+body.new-main-mode .main-shell {
+  background: var(--bg-page);
+}
+
+body.new-main-mode .col-chat,
+body.new-main-mode .col-right {
+  background: var(--bg-col);
+}
+
+body.new-main-mode .col-center {
+  background: var(--surface);
+}
+
+body.new-main-mode .panel,
+body.new-main-mode .info-card,
+body.new-main-mode #verify-form .account-info-panel,
+body.new-main-mode #notice-area,
+body.new-main-mode #chat-area,
+body.new-main-mode #history-area,
+body.new-main-mode #coaching-area,
+body.new-main-mode .softphone-script-panel,
+body.new-main-mode .main-my-history-panel,
+body.new-main-mode .new-main-warning-panel,
+body.new-main-mode .new-main-routing-panel,
+body.new-main-mode .new-main-history-editor {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+body.new-main-mode .main-section-header,
+body.new-main-mode .main-live-header,
+body.new-main-mode .panel__header--history,
+body.new-main-mode .main-my-history-header,
+body.new-main-mode .notice-header,
+body.new-main-mode .softphone-script-header,
+body.new-main-mode .new-main-schedule-header,
+body.new-main-mode .new-main-routing-title {
+  background: #F1F5FB;
+}
+
+/* center emphasis only */
+body.new-main-mode #chat-area {
+  box-shadow: 0 14px 32px rgba(16, 24, 40, 0.07);
+}
+
+body.new-main-mode .new-main-header-strong,
+body.new-main-mode .main-center-notice-title,
+body.new-main-mode .main-live-header .weight-semibold,
+body.new-main-mode .main-coaching-header .weight-semibold,
+body.new-main-mode .panel__header--history .weight-semibold,
+body.new-main-mode .history-editor-title,
+body.new-main-mode .main-my-history-title,
+body.new-main-mode .main-center-coaching-title {
+  color: var(--title);
+}
+
+body.new-main-mode .main-center-notice-icon,
+body.new-main-mode .history-editor-icon-brand,
+body.new-main-mode .main-history-sort-icon,
+body.new-main-mode .main-live-search-icon {
+  color: var(--primary);
+}
+
+body.new-main-mode .notice-desc,
+body.new-main-mode .new-main-schedule-list,
+body.new-main-mode .customer-warning-text,
+body.new-main-mode .new-main-routing-text,
+body.new-main-mode .tbl__cell {
+  color: var(--text);
+}
+
+body.new-main-mode .customer-status-text,
+body.new-main-mode .main-live-time-text,
+body.new-main-mode .notice-date,
+body.new-main-mode .notice-updated,
+body.new-main-mode .history-editor-timestamp,
+body.new-main-mode .history-note-limit {
+  color: var(--muted);
+}
+
+/* button system */
+body.new-main-mode .history-editor-save-btn,
+body.new-main-mode .main-outbound-modal__btn--submit {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: #FFFFFF;
+  box-shadow: none;
+}
+
+body.new-main-mode .history-editor-save-btn:hover,
+body.new-main-mode .main-outbound-modal__btn--submit:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+body.new-main-mode .field:focus,
+body.new-main-mode .chat-search-input:focus,
+body.new-main-mode select:focus,
+body.new-main-mode textarea:focus,
+body.new-main-mode input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+}
+
+/* make one clear primary action in top area visible */
+body.new-main-mode .new-main-topbar .new-main-topbar-action[data-action="main-open-outbound-modal"] {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: #FFFFFF;
+}
+
+body.new-main-mode .new-main-topbar .new-main-topbar-action[data-action="main-open-outbound-modal"]:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+body.new-main-mode .new-main-status-btn,
+body.new-main-mode .btn--history-reset,
+body.new-main-mode .btn--history-search,
+body.new-main-mode .main-my-history-btn,
+body.new-main-mode .verify-transfer-btn,
+body.new-main-mode .softphone-outbound-btn,
+body.new-main-mode .new-main-topbar .new-main-topbar-action,
+body.new-main-mode .history-export-btn,
+body.new-main-mode .pagination__btn,
+body.new-main-mode .main-outbound-modal__btn--cancel {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+body.new-main-mode .new-main-status-btn:hover,
+body.new-main-mode .btn--history-reset:hover,
+body.new-main-mode .btn--history-search:hover,
+body.new-main-mode .main-my-history-btn:hover,
+body.new-main-mode .verify-transfer-btn:hover,
+body.new-main-mode .softphone-outbound-btn:hover,
+body.new-main-mode .new-main-topbar .new-main-topbar-action:hover,
+body.new-main-mode .history-export-btn:hover,
+body.new-main-mode .pagination__btn:hover,
+body.new-main-mode .main-outbound-modal__btn--cancel:hover {
+  background: #F3F6FB;
+  border-color: #C9D5E3;
+}
+
+/* table readability */
+body.new-main-mode .table__head,
+body.new-main-mode .new-main-schedule-table th,
+body.new-main-mode .main-history-thead {
+  background: #EEF2F7;
+  color: #1E3A8A;
+  border-color: var(--border);
+}
+
+body.new-main-mode .pagination__btn.is-active,
+body.new-main-mode .new-main-schedule-page-btn.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+}
+
+body.new-main-mode .warning-tab.is-active {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+}
+
+body.new-main-mode .warning-tab:hover {
+  background: #E8EEFF;
+  color: #1E3A8A;
+}
+
+body.new-main-mode .tbl__cell,
+body.new-main-mode .new-main-schedule-table td {
+  padding: 16px;
+  border-color: var(--border);
+  line-height: 1.6;
+}
+
+body.new-main-mode .tbl__row:hover,
+body.new-main-mode .new-main-schedule-table tbody tr:hover {
+  background: #EFF4FF;
 }
 
 /* Breakpoints: layout ratios preserved */
