@@ -1824,6 +1824,32 @@ body.new-main-mode .new-main-schedule-header {
   box-sizing: border-box;
 }
 
+/* align notice(주요일정) header rhythm with realtime-coaching header */
+body.new-main-mode .notice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body.new-main-mode .notice-header-row {
+  margin-bottom: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+body.new-main-mode .notice-header-title-row {
+  min-height: 24px;
+}
+
+body.new-main-mode .notice-updated {
+  margin-top: 0;
+  margin-left: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+}
+
 body.new-main-mode .notice-list-wrap,
 body.new-main-mode .new-main-schedule-body {
   flex: 1 1 auto;
