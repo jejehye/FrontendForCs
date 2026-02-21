@@ -2277,7 +2277,7 @@ body.new-main-mode .new-main-routing-item {
 /* real notice header in new_main is .new-main-schedule-header (rendered by JS) */
 body.new-main-mode .new-main-schedule-header {
   padding: 20px 24px;
-  min-height: 92px;
+  min-height: 78px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
