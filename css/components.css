@@ -1973,6 +1973,18 @@ body.new-main-mode .new-main-routing-item {
   box-shadow: none;
 }
 
+/* request: chat area +50px, routing border same as chat card */
+body.new-main-mode #chat-area {
+  min-height: 430px;
+}
+
+body.new-main-mode .new-main-routing-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  overflow: hidden;
+}
+
 body.new-main-mode .tbl__cell:nth-child(1),
 body.new-main-mode .tbl__cell:nth-child(2),
 body.new-main-mode .tbl__cell:nth-child(6),
