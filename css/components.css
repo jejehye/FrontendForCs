@@ -1808,6 +1808,69 @@ body.new-main-mode .new-main-schedule-table {
   table-layout: fixed;
 }
 
+/* schedule/notice card readability + unified card system */
+body.new-main-mode #notice-area,
+body.new-main-mode .new-main-schedule-panel {
+  background: #FFFFFF;
+  border: 1px solid #E6EAF0;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+body.new-main-mode .notice-header,
+body.new-main-mode .new-main-schedule-header {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 16px 24px;
+  background: #F8FAFC;
+  border-bottom: 1px solid #E6EAF0;
+  box-sizing: border-box;
+}
+
+body.new-main-mode .notice-list-wrap,
+body.new-main-mode .new-main-schedule-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* scroll ownership: only list/table content scrolls */
+body.new-main-mode .notice-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+body.new-main-mode .new-main-schedule-table-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 0;
+}
+
+body.new-main-mode .pagination--notice,
+body.new-main-mode .new-main-schedule-pagination {
+  flex: 0 0 auto;
+  margin-top: 12px;
+  padding-top: 4px;
+}
+
+body.new-main-mode .notice-desc,
+body.new-main-mode .new-main-schedule-list {
+  line-height: 1.5;
+  color: #374151;
+}
+
 body.new-main-mode .tbl__cell:nth-child(1),
 body.new-main-mode .tbl__cell:nth-child(2),
 body.new-main-mode .tbl__cell:nth-child(6),
