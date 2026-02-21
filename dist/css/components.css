@@ -1383,7 +1383,8 @@ body.new-main-mode .new-main-history-editor {
   background: var(--surface);
   box-shadow: none;
   transition: border-color var(--t-fast);
-  padding: var(--space-6);
+  padding: 0;
+  overflow: hidden;
 }
 
 /* Level 2: key cards only */
@@ -1418,6 +1419,10 @@ body.new-main-mode .softphone-script-header {
   border: 0;
   border-bottom: 1px solid var(--border);
   padding: 16px 24px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  align-self: stretch;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
@@ -1851,6 +1856,25 @@ body.new-main-mode .warning-tabs {
 body.new-main-mode .panel__body,
 body.new-main-mode .main-my-history-filter {
   padding: 24px;
+}
+
+/* card body padding unification */
+body.new-main-mode .account-panel-title-row + .account-info-grid,
+body.new-main-mode .verify-transfer-actions,
+body.new-main-mode .softphone-script-groups,
+body.new-main-mode .new-main-warning-content,
+body.new-main-mode .new-main-routing-list,
+body.new-main-mode .new-main-history-body {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+body.new-main-mode .verify-transfer-actions,
+body.new-main-mode .softphone-script-groups,
+body.new-main-mode .new-main-warning-content,
+body.new-main-mode .new-main-routing-list,
+body.new-main-mode .new-main-history-body {
+  padding-bottom: 24px;
 }
 
 /* Breakpoints: layout ratios preserved */
