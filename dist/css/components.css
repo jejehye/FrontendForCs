@@ -2279,7 +2279,8 @@ body.new-main-mode #chat-area .main-live-header .weight-semibold {
   line-height: 1.4 !important;
 }
 
-/* align live chat/coaching header heights with unified card headers */
+/* align live chat/coaching headers exactly with schedule header */
+body.new-main-mode .new-main-schedule-header,
 body.new-main-mode #chat-area .main-live-header,
 body.new-main-mode #coaching-area .main-live-header {
   height: var(--card-header-h) !important;
