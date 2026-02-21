@@ -2344,6 +2344,24 @@ body.new-main-mode .new-main-routing-list {
   padding-top: 8px !important;
 }
 
+/* softphone script panel: add breathing room below header */
+body.new-main-mode .softphone-script-groups {
+  padding-top: 8px !important;
+}
+
+/* call toggle ON state: navy selected button */
+body.new-main-mode .softphone-call-toggle.is-active {
+  background: #1E3A8A;
+  border-color: #1E3A8A;
+  color: #FFFFFF;
+}
+
+body.new-main-mode .softphone-call-toggle.is-active:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  color: #FFFFFF;
+}
+
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;
