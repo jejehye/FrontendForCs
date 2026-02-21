@@ -274,13 +274,9 @@ function warningTemplate() {
         <span class="new-main-warning-badge">HIGH RISK</span>
       </div>
       <div class="new-main-warning-content">
-        <span class="new-main-warning-item">고액거래 고객</span>
+        <span class="new-main-warning-item">자주 민원을 제기하는 고객으로 상담 시 주의가 필요합니다.</span>
         <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">담당PB 연결 필수</span>
-        <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">개인정보 보호 강화 대상</span>
-        <span class="new-main-warning-sep">|</span>
-        <span class="new-main-warning-item">본인확인 철저</span>
+        <span class="new-main-warning-item">응대 내용은 명확히 고지하고 기록을 상세히 남겨주세요.</span>
       </div>
     </div>
   `;

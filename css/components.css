@@ -2314,6 +2314,21 @@ body.new-main-mode #notice-area .new-main-schedule-pagination {
   padding-bottom: 0 !important;
 }
 
+/* notice card height: fit content up to table + pagination */
+body.new-main-mode #center-column {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+}
+
+body.new-main-mode #center-column > #notice-area {
+  align-self: start;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+body.new-main-mode #notice-area .new-main-schedule-panel {
+  height: auto !important;
+}
+
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;
