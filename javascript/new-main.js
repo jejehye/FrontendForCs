@@ -33,6 +33,7 @@ const ROLE = {
 
 const ACTION = {
   openGroupSwitch: 'main-open-group-switch-modal',
+  openCallTransfer: 'main-open-call-transfer-modal',
   openOutbound: 'main-open-outbound-modal',
   callTransfer: 'new-main-call-transfer',
   schedulePrev: 'schedule-prev',
@@ -208,36 +209,43 @@ function topbarTemplate() {
     <div class="new-main-topbar-statuses">
       <div class="new-main-status-item new-main-status-item--work">
         <span class="new-main-status-label">업무상태</span>
-        <div class="new-main-work-select-wrap">
-          <span class="new-main-work-dot" aria-hidden="true"></span>
-          <select class="new-main-status-control" data-role="agent-status-select" aria-label="업무상태">
+        <div class="new-main-status-segmented" role="group" aria-label="업무상태 전환">
+          <button type="button" class="new-main-status-segment is-active" data-status-value="ready" aria-pressed="true">업무</button>
+          <button type="button" class="new-main-status-segment" data-status-value="busy" aria-pressed="false">대기</button>
+          <button type="button" class="new-main-status-segment" data-status-value="away" aria-pressed="false">이석</button>
+          <button type="button" class="new-main-status-segment" data-status-value="meeting" aria-pressed="false">교육</button>
+          <button type="button" class="new-main-status-segment" data-status-value="break" aria-pressed="false">식사</button>
+          <select class="new-main-status-control new-main-status-control--hidden" data-role="agent-status-select" aria-label="업무상태">
             <option value="ready" selected>업무</option>
-            <option value="away">이석</option>
             <option value="busy">대기</option>
-            <option value="break">휴식</option>
-            <option value="meeting">회의</option>
+            <option value="away">이석</option>
+            <option value="meeting">교육</option>
+            <option value="break">식사</option>
           </select>
         </div>
       </div>
       <div class="new-main-status-item">
         <span class="new-main-status-label">로그인여부</span>
-        <span class="new-main-status-value is-on">로그인</span>
-      </div>
-      <div class="new-main-status-item">
-        <span class="new-main-status-label">호전환</span>
-        <button type="button" class="new-main-status-btn" data-action="${ACTION.callTransfer}">호전환</button>
-      </div>
-      <div class="new-main-status-item">
-        <span class="new-main-status-label">지점전환</span>
-        <button type="button" class="new-main-status-btn" data-action="${ACTION.openGroupSwitch}">지점전환</button>
+        <span class="new-main-status-chip new-main-status-chip--ok" data-role="new-main-login-chip">
+          <span class="new-main-status-dot"></span>
+          로그인
+        </span>
       </div>
     </div>
     <div class="new-main-topbar-actions">
-      <button type="button" class="softphone-outbound-btn new-main-topbar-action" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
         <i class="fa-solid fa-arrows-rotate"></i>
         그룹전환
       </button>
-      <button type="button" class="softphone-outbound-btn new-main-topbar-action" data-action="${ACTION.openOutbound}" aria-label="아웃바운드">
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openCallTransfer}" aria-label="호전환">
+        <i class="fa-solid fa-phone-volume"></i>
+        호전환
+      </button>
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="지점전환">
+        <i class="fa-solid fa-building"></i>
+        지점전환
+      </button>
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--primary" data-action="${ACTION.openOutbound}" aria-label="아웃바운드">
         <i class="fa-solid fa-phone"></i>
         아웃바운드
       </button>
@@ -445,6 +453,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const historyArea = document.querySelector(SELECTOR.historyArea);
   const chatArea = document.querySelector(SELECTOR.chatArea);
   const coachingArea = document.querySelector(SELECTOR.coachingArea);
+  const myHistoryPanel = rightColumn?.querySelector('.main-my-history-panel');
 
   ensureSection({
     anchor: chatColumn,
@@ -456,6 +465,34 @@ document.addEventListener('DOMContentLoaded', async () => {
       html: topbarTemplate()
     })
   });
+
+  const topbarStatusSelect = document.querySelector('.new-main-topbar [data-role="agent-status-select"]');
+  const statusSegments = Array.from(document.querySelectorAll('.new-main-topbar .new-main-status-segment'));
+  if (topbarStatusSelect && statusSegments.length) {
+    const syncStatusSegments = value => {
+      statusSegments.forEach(segment => {
+        const isActive = segment.getAttribute('data-status-value') === value;
+        segment.classList.toggle('is-active', isActive);
+        segment.setAttribute('aria-pressed', String(isActive));
+      });
+    };
+
+    syncStatusSegments(topbarStatusSelect.value);
+    topbarStatusSelect.addEventListener('change', event => {
+      syncStatusSegments(event.target.value);
+    });
+
+    statusSegments.forEach(segment => {
+      segment.addEventListener('click', () => {
+        const value = segment.getAttribute('data-status-value');
+        if (!value || topbarStatusSelect.value === value) {
+          return;
+        }
+        topbarStatusSelect.value = value;
+        topbarStatusSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
 
   rightColumn?.querySelectorAll(`[data-action="${ACTION.openGroupSwitch}"], [data-action="${ACTION.openOutbound}"]`)
     .forEach(button => button.remove());
@@ -496,15 +533,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.querySelector(SELECTOR.rightHistoryEditor)?.remove();
   document.querySelector(SELECTOR.warningTabsWrap)?.remove();
 
-  document.querySelectorAll(`[data-action="${ACTION.callTransfer}"]`).forEach(button => {
-    button.addEventListener('click', () => {
-      window.alert('호전환 처리 요청이 접수되었습니다.');
-    });
-  });
-
   if (chatArea && coachingArea && coachingArea.parentElement) {
     chatArea.classList.add('new-main-chat-relocated');
     coachingArea.parentElement.insertBefore(chatArea, coachingArea);
+  }
+
+  if (coachingArea && myHistoryPanel) {
+    myHistoryPanel.replaceWith(coachingArea);
+  } else if (coachingArea && rightColumn && !rightColumn.contains(coachingArea)) {
+    rightColumn.appendChild(coachingArea);
   }
 
   if (historyArea && !historyArea.querySelector(`[data-role="${ROLE.historyEditor}"]`)) {

@@ -231,25 +231,19 @@ function topbarTemplate() {
           로그인
         </span>
       </div>
-      <div class="new-main-status-item">
-        <span class="new-main-status-label">호전환</span>
-        <button type="button" class="new-main-status-chip new-main-status-chip--action new-main-status-chip--warn" data-action="${ACTION.openCallTransfer}" aria-label="호전환">
-          <span class="new-main-status-dot"></span>
-          호전환
-        </button>
-      </div>
-      <div class="new-main-status-item">
-        <span class="new-main-status-label">지점전환</span>
-        <button type="button" class="new-main-status-chip new-main-status-chip--action new-main-status-chip--muted" data-action="${ACTION.openGroupSwitch}" aria-label="지점전환">
-          <span class="new-main-status-dot"></span>
-          지점전환
-        </button>
-      </div>
     </div>
     <div class="new-main-topbar-actions">
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
         <i class="fa-solid fa-arrows-rotate"></i>
         그룹전환
+      </button>
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openCallTransfer}" aria-label="호전환">
+        <i class="fa-solid fa-phone-volume"></i>
+        호전환
+      </button>
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="지점전환">
+        <i class="fa-solid fa-building"></i>
+        지점전환
       </button>
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--primary" data-action="${ACTION.openOutbound}" aria-label="아웃바운드">
         <i class="fa-solid fa-phone"></i>
