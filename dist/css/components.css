@@ -1987,10 +1987,23 @@ body.new-main-mode .new-main-routing-panel {
 
 /* align caution customer info with unified card border */
 body.new-main-mode .customer-warning {
-  border: 1px solid var(--border);
+  border: 1px solid #D5DCE5;
   border-radius: var(--radius-card);
   background: var(--surface);
   box-shadow: none;
+  margin-top: 8px;
+}
+
+body.new-main-mode .customer-warning-icon {
+  color: #6b7280;
+}
+
+body.new-main-mode .customer-warning-title {
+  color: #111827;
+}
+
+body.new-main-mode .customer-warning-text {
+  color: #374151;
 }
 
 body.new-main-mode .tbl__cell:nth-child(1),
