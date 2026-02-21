@@ -1358,9 +1358,9 @@ body.new-main-mode .col-right {
 }
 
 body.new-main-mode .col-sidebar {
-  position: sticky;
-  top: 0;
-  align-self: start;
+  position: relative;
+  top: auto;
+  align-self: stretch;
   height: 100vh;
   min-height: 100vh;
 }
