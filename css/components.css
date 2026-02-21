@@ -1988,6 +1988,12 @@ body.new-main-mode .new-main-routing-title {
   box-sizing: border-box;
 }
 
+/* increase only notice header area */
+body.new-main-mode .notice-header {
+  padding: 20px 24px;
+  min-height: 76px;
+}
+
 body.new-main-mode .new-main-schedule-title,
 body.new-main-mode .new-main-routing-title {
   font-size: 17px;
@@ -2215,8 +2221,8 @@ body.new-main-mode .coaching-panel {
 body.new-main-mode .notice-header,
 body.new-main-mode #chat-area .main-live-header,
 body.new-main-mode #coaching-area .main-live-header {
-  padding: 20px 24px;
-  min-height: 76px;
+  padding: 16px 24px;
+  min-height: 64px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -2227,7 +2233,7 @@ body.new-main-mode .notice-header-row {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 36px;
+  min-height: 32px;
 }
 
 body.new-main-mode .notice-header .main-center-notice-title,
@@ -2256,6 +2262,16 @@ body.new-main-mode .notice-updated {
   height: 28px;
   display: inline-flex;
   align-items: center;
+}
+
+/* remove white backplate behind warning/routing sections */
+body.new-main-mode .new-main-warning-slot,
+body.new-main-mode .new-main-routing-slot {
+  background: transparent;
+}
+
+body.new-main-mode .new-main-routing-item {
+  background: transparent;
 }
 
 /* Breakpoints: layout ratios preserved */
