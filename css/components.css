@@ -1871,6 +1871,37 @@ body.new-main-mode .new-main-schedule-list {
   color: #374151;
 }
 
+/* notice(주요일정) final alignment with other cards */
+body.new-main-mode #notice-area .notice-list-wrap {
+  background: #FFFFFF;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+body.new-main-mode #notice-area .notice-list {
+  background: #FFFFFF;
+}
+
+body.new-main-mode #notice-area .notice-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #E6EAF0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 12px 0;
+}
+
+body.new-main-mode #notice-area .notice-card:last-child {
+  border-bottom: 0;
+}
+
+body.new-main-mode #notice-area .notice-title {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111827;
+}
+
 body.new-main-mode .tbl__cell:nth-child(1),
 body.new-main-mode .tbl__cell:nth-child(2),
 body.new-main-mode .tbl__cell:nth-child(6),
