@@ -3076,6 +3076,125 @@ body.new-main-mode .new-main-history-editor .history-editor-actions .btn-common-
   border-color: #1e40af;
 }
 
+/* polish pass: subtle SaaS finish (style-only) */
+body.new-main-mode {
+  --nm-polish-transition: 150ms ease;
+}
+
+/* 1) top status segmented control */
+body.new-main-mode .new-main-status-segmented {
+  height: 32px;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  align-items: center;
+}
+
+body.new-main-mode .new-main-status-segment {
+  height: 30px;
+  border-right: 1px solid #EEF2F7;
+  padding: 0 11px;
+}
+
+body.new-main-mode .new-main-status-segment.is-active {
+  background: #243C8F;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+body.new-main-mode .new-main-status-segment:hover {
+  background: #F1F5F9;
+}
+
+/* 2) center card emphasis */
+body.new-main-mode #chat-area {
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.10);
+}
+
+body.new-main-mode #chat-area .main-live-header {
+  padding: 14px 36px;
+}
+
+body.new-main-mode #chat-area .chat-message-list {
+  padding: 24px 36px 20px;
+}
+
+body.new-main-mode #chat-area .chat-bubble {
+  color: #0F172A;
+}
+
+/* 3) left history card density */
+body.new-main-mode .new-main-history-editor .new-main-history-body {
+  padding: 20px;
+  gap: 20px;
+}
+
+body.new-main-mode .new-main-history-editor .history-editor-card,
+body.new-main-mode .new-main-history-editor .history-editor-group {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.new-main-mode .new-main-history-editor .consultation-note-field {
+  padding: 16px;
+}
+
+body.new-main-mode .new-main-history-editor .field,
+body.new-main-mode .new-main-history-editor select,
+body.new-main-mode .new-main-history-editor input {
+  min-height: 36px;
+  height: 36px;
+}
+
+/* 4) table readability */
+body.new-main-mode .tbl__head,
+body.new-main-mode thead .table__head {
+  color: #0F172A;
+}
+
+body.new-main-mode .tbl__cell,
+body.new-main-mode tbody td {
+  color: #1F2937;
+  padding: 16px;
+}
+
+body.new-main-mode .tbl__cell .main-live-time-text,
+body.new-main-mode .main-history-date-sep,
+body.new-main-mode .history-editor-timestamp {
+  color: #64748B;
+}
+
+body.new-main-mode .tbl__row {
+  min-height: 40px;
+}
+
+body.new-main-mode .tbl__row:hover {
+  background: #F8FAFC;
+}
+
+/* 5) interaction finish */
+body.new-main-mode .btn-common-action,
+body.new-main-mode .new-main-action-btn,
+body.new-main-mode .tbl__row,
+body.new-main-mode .field,
+body.new-main-mode input,
+body.new-main-mode select,
+body.new-main-mode textarea {
+  transition: all var(--nm-polish-transition);
+}
+
+body.new-main-mode .btn-common-action--save:hover,
+body.new-main-mode .new-main-action-btn--primary:hover {
+  transform: translateY(-1px);
+}
+
+body.new-main-mode .field:focus,
+body.new-main-mode input:focus,
+body.new-main-mode select:focus,
+body.new-main-mode textarea:focus {
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.18);
+}
+
 /* Breakpoints: layout ratios preserved */
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {
