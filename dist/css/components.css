@@ -1294,6 +1294,12 @@ body.new-main-mode {
   --space-6: 26px;
 
   --t-fast: 150ms ease;
+  --nm-col-gap: 26px;
+  --nm-col-pad: 26px;
+  --nm-header-pad-y: 16px;
+  --nm-header-pad-x: 24px;
+  --nm-header-min-h: 64px;
+  --nm-notice-header-min-h: 78px;
 
   background: var(--bg-page);
   color: var(--text);
@@ -1330,8 +1336,8 @@ body.new-main-mode .col-center,
 body.new-main-mode .col-right {
   min-height: 0;
   overflow: hidden;
-  padding: var(--space-6);
-  gap: var(--space-6);
+  padding: var(--nm-col-pad);
+  gap: var(--nm-col-gap);
 }
 
 body.new-main-mode .col-chat,
@@ -1427,7 +1433,7 @@ body.new-main-mode .softphone-script-header {
   background: #F8FAFC;
   border: 0;
   border-bottom: 1px solid var(--border);
-  padding: 16px 24px;
+  padding: var(--nm-header-pad-y) var(--nm-header-pad-x);
   margin: 0;
   width: 100%;
   box-sizing: border-box;
@@ -2221,8 +2227,8 @@ body.new-main-mode .coaching-panel {
 body.new-main-mode .notice-header,
 body.new-main-mode #chat-area .main-live-header,
 body.new-main-mode #coaching-area .main-live-header {
-  padding: 16px 24px;
-  min-height: 64px;
+  padding: var(--nm-header-pad-y) var(--nm-header-pad-x);
+  min-height: var(--nm-header-min-h);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -2276,8 +2282,8 @@ body.new-main-mode .new-main-routing-item {
 
 /* real notice header in new_main is .new-main-schedule-header (rendered by JS) */
 body.new-main-mode .new-main-schedule-header {
-  padding: 20px 24px;
-  min-height: 78px;
+  padding: 20px var(--nm-header-pad-x);
+  min-height: var(--nm-notice-header-min-h);
   display: flex;
   align-items: center;
   box-sizing: border-box;
