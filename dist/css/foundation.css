@@ -11,6 +11,72 @@ body {
   overflow: auto;
 }
 
+:root {
+  --global-header-h: 40px;
+  --global-sidebar-w: 60px;
+}
+
+body.has-global-header #app-container.grid-layout {
+  height: calc(100vh - var(--global-header-h));
+  margin-top: var(--global-header-h);
+}
+
+body.has-global-header .col-sidebar {
+  margin-top: calc(var(--global-header-h) * -1);
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.app-global-header {
+  position: fixed;
+  top: 0;
+  left: var(--global-sidebar-w);
+  right: 0;
+  width: calc(100% - var(--global-sidebar-w));
+  height: var(--global-header-h);
+  min-height: var(--global-header-h);
+  z-index: 120;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.app-global-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.app-global-header__user-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-global-header__user {
+  font-size: 13px;
+  color: #1F2937;
+  line-height: 1.5;
+}
+
+.app-global-header__logout {
+  height: 30px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #1E3A8A;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.app-global-header__logout:hover {
+  text-decoration: underline;
+  background: #F8FAFC;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

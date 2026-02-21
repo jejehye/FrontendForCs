@@ -1315,6 +1315,8 @@ body.new-main-mode {
 
 body.new-main-mode,
 body.new-main-mode .main-shell {
+  --nm-global-header-h: 40px;
+  --nm-sidebar-w: 56px;
   min-height: 100vh;
   background: var(--bg-page);
 }
@@ -1323,12 +1325,17 @@ body.new-main-mode .main-shell {
 body.new-main-mode #app-container.grid-layout {
   grid-template-columns: 56px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
   width: 100vw;
-  height: calc(100vh - 48px);
+  height: 100vh;
   min-width: 0;
-  margin: 48px 0 0;
+  margin: 0;
   background: var(--surface);
   box-shadow: none;
   overflow: hidden;
+}
+
+body.new-main-mode.has-global-header #app-container.grid-layout {
+  height: calc(100vh - var(--global-header-h));
+  margin-top: var(--global-header-h);
 }
 
 body.new-main-mode #page-main {
@@ -1348,6 +1355,14 @@ body.new-main-mode .col-right {
 body.new-main-mode .col-chat,
 body.new-main-mode .col-right {
   background: var(--bg-col);
+}
+
+body.new-main-mode .col-sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 body.new-main-mode .col-center {
@@ -2774,12 +2789,12 @@ body.new-main-mode .new-main-schedule-table-wrap {
 body.new-main-mode .new-main-global-header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: var(--nm-sidebar-w);
   right: 0;
   z-index: 120;
-  height: 48px;
-  min-height: 48px;
-  width: 100%;
+  height: var(--nm-global-header-h);
+  min-height: var(--nm-global-header-h);
+  width: calc(100% - var(--nm-sidebar-w));
   background: #FFFFFF;
   border-bottom: 1px solid #E5E7EB;
   box-shadow: none;
@@ -3056,6 +3071,10 @@ body.new-main-mode .new-main-login-inline.is-offline .new-main-login-inline-dot 
 
 /* Breakpoints: layout ratios preserved */
 @media (max-width: 1600px) {
+  body.new-main-mode {
+    --nm-sidebar-w: 56px;
+  }
+
   body.new-main-mode #app-container.grid-layout {
     width: 100vw;
     height: 100vh;
@@ -3065,6 +3084,10 @@ body.new-main-mode .new-main-login-inline.is-offline .new-main-login-inline-dot 
 }
 
 @media (max-width: 1440px) {
+  body.new-main-mode {
+    --nm-sidebar-w: 54px;
+  }
+
   body.new-main-mode #app-container.grid-layout {
     width: 100vw;
     height: 100vh;
@@ -3081,6 +3104,10 @@ body.new-main-mode .new-main-login-inline.is-offline .new-main-login-inline-dot 
 }
 
 @media (max-width: 1366px) {
+  body.new-main-mode {
+    --nm-sidebar-w: 52px;
+  }
+
   body.new-main-mode #app-container.grid-layout {
     width: 100vw;
     height: 100vh;

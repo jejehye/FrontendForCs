@@ -1,7 +1,6 @@
 /* New-main page bootstrap entry */
 
 const SELECTOR = {
-  appContainer: '#app-container',
   chatColumn: '#chat-column',
   rightColumn: '#right-column',
   verifyForm: '#verify-form',
@@ -18,7 +17,6 @@ const SELECTOR = {
 };
 
 const ROLE = {
-  globalHeader: 'new-main-global-header',
   topbar: 'new-main-topbar',
   statusRow: 'new-main-status-row',
   warning: 'new-main-warning',
@@ -248,17 +246,6 @@ function topbarTemplate() {
   `;
 }
 
-function globalHeaderTemplate() {
-  return `
-    <div class="new-main-global-header-inner">
-      <div class="new-main-global-user-wrap">
-        <span class="new-main-global-user" data-role="new-main-global-user">상담원</span>
-        <button type="button" class="new-main-global-logout" data-action="main-logout" aria-label="로그아웃">로그아웃</button>
-      </div>
-    </div>
-  `;
-}
-
 function statusRowTemplate() {
   return `
     <div class="chat-status-row">
@@ -453,33 +440,6 @@ function syncLoginChipState() {
   loginChipText.textContent = isLoggedIn ? '로그인' : '로그오프';
 }
 
-function syncGlobalAgentState() {
-  const globalUser = document.querySelector('[data-role="new-main-global-user"]');
-  if (!globalUser) {
-    return;
-  }
-
-  const agentId = (localStorage.getItem('currentAgentId') || '').trim();
-  const agentName = (localStorage.getItem('currentAgentName') || '').trim();
-
-  if (agentName && agentId) {
-    globalUser.textContent = `${agentName}(${agentId})`;
-    return;
-  }
-
-  if (agentName) {
-    globalUser.textContent = agentName;
-    return;
-  }
-
-  if (agentId) {
-    globalUser.textContent = `상담원(${agentId})`;
-    return;
-  }
-
-  globalUser.textContent = '상담원';
-}
-
 function initMainModules() {
   const modules = [
     window.MainPageCustomerInfo,
@@ -501,7 +461,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.querySelector(SELECTOR.customerInfo)?.remove();
 
   const chatColumn = document.querySelector(SELECTOR.chatColumn);
-  const appContainer = document.querySelector(SELECTOR.appContainer);
   const rightColumn = document.querySelector(SELECTOR.rightColumn);
   const verifyFormSection = document.querySelector(SELECTOR.verifyForm);
   const historyArea = document.querySelector(SELECTOR.historyArea);
@@ -511,17 +470,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const rightTopBarSection = rightColumn?.querySelector('.panel-header-actions-only')?.closest('section');
 
   rightTopBarSection?.remove();
-
-  ensureSection({
-    anchor: appContainer,
-    existsSelector: `[data-role="${ROLE.globalHeader}"]`,
-    position: 'beforebegin',
-    section: createSection({
-      className: 'new-main-global-header',
-      role: ROLE.globalHeader,
-      html: globalHeaderTemplate()
-    })
-  });
 
   ensureSection({
     anchor: chatColumn,
@@ -576,9 +524,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
   });
   syncLoginChipState();
-  syncGlobalAgentState();
   window.addEventListener('storage', syncLoginChipState);
-  window.addEventListener('storage', syncGlobalAgentState);
 
   ensureSection({
     anchor: verifyFormSection,
