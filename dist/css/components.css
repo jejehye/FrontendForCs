@@ -2403,6 +2403,16 @@ body.new-main-mode #coaching-area .main-live-header {
   box-sizing: border-box;
 }
 
+/* tighten top gap between left status bar and I/B row */
+body.new-main-mode .new-main-topbar {
+  margin-bottom: 0 !important;
+}
+
+body.new-main-mode .new-main-status-row-wrap {
+  margin-top: 0 !important;
+  padding: 0 0 2px !important;
+}
+
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
   line-height: 1.4;
@@ -3342,7 +3352,7 @@ body.new-main-mode .new-main-topbar {
   height: 54px;
   padding: 4px 12px;
   gap: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   overflow: visible;
 }
 
