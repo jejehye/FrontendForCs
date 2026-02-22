@@ -2372,6 +2372,15 @@ body.new-main-mode .softphone-call-toggle.is-active:hover {
   color: #FFFFFF;
 }
 
+/* match "안내 멘트 송출" icon color with consultation-history icon tone */
+body.new-main-mode .softphone-script-title i {
+  color: var(--primary) !important;
+}
+
+body.new-main-mode .softphone-script-header .fa-volume-high {
+  color: var(--primary) !important;
+}
+
 /* new_main history actions: keep reset secondary, save navy only */
 body.new-main-mode .new-main-history-editor .history-editor-actions .history-editor-save-btn {
   background: #1E3A8A !important;
@@ -2384,6 +2393,11 @@ body.new-main-mode .new-main-history-editor .history-editor-actions .history-edi
   background: #1D4ED8 !important;
   border-color: #1D4ED8 !important;
   color: #FFFFFF !important;
+}
+
+/* tighten top whitespace above left topbar only */
+body.new-main-mode #chat-column {
+  padding-top: 18px !important;
 }
 
 
