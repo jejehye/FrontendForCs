@@ -797,17 +797,21 @@ body {
 }
 
 /* callback shell: single source of truth (remove header/sidebar overlap) */
-body.has-global-header .app-global-header {
+body.callback-mode.has-global-header .app-global-header {
   left: 60px !important;
   width: calc(100vw - 60px) !important;
   z-index: 40 !important;
 }
 
-body.has-global-header #sidebar.col-sidebar {
-  position: relative !important;
+body.callback-mode.has-global-header #sidebar.col-sidebar {
+  position: fixed !important;
+  left: 0 !important;
   top: 0 !important;
-  margin-top: calc(var(--global-header-h) * -1) !important;
+  margin-top: 0 !important;
+  width: 60px !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
   height: 100vh !important;
   min-height: 100vh !important;
-  z-index: 90 !important;
+  z-index: 100 !important;
 }
