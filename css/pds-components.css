@@ -37,7 +37,7 @@ body { background-color: #f3f4f6; }
 
 .col-sidebar { background-color: var(--color-primary); align-items: center; padding-top: 20px; z-index: 50; }
 .col-pds { border-right: 0; background: #fff; overflow-y: auto; min-width: 0; }
-.col-center { border-right: 0; background: #fff; padding: 32px; gap: 24px; overflow-y: auto; min-width: 0; }
+.col-center { border-right: 0; background: #fff; padding: 20px 32px 32px; gap: 24px; overflow-y: auto; min-width: 0; }
 .col-right { background: #fff; padding: 16px; gap: 16px; overflow-y: auto; min-width: 0; }
 
 .card,
