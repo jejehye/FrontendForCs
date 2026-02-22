@@ -8,7 +8,61 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ asset('javascript/common/ui.js') }}"></script>
-<script src="{{ asset('javascript/common/api.js') }}"></script>
-<script src="{{ asset('javascript/chat.js') }}"></script>
+  <script src="{{ asset('javascript/common/ui.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AppUi?.initSidebarNavigation) {
+        window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
+      }
+
+      const iframe = document.getElementById('chat-iframe');
+      if (!iframe) {
+        return;
+      }
+
+      const primaryUrl = iframe.dataset.primaryUrl || iframe.src;
+      const fallbackUrl = iframe.dataset.fallbackUrl || primaryUrl;
+      let loaded = false;
+      let fallbackTried = false;
+      let watchdog = null;
+
+      const clearWatchdog = () => {
+        if (watchdog) {
+          clearTimeout(watchdog);
+          watchdog = null;
+        }
+      };
+
+      const tryFallback = () => {
+        if (fallbackTried || loaded) {
+          return;
+        }
+        fallbackTried = true;
+        clearWatchdog();
+        const sep = fallbackUrl.includes('?') ? '&' : '?';
+        iframe.src = `${fallbackUrl}${sep}retry=${Date.now()}`;
+      };
+
+      const startWatchdog = () => {
+        clearWatchdog();
+        watchdog = setTimeout(() => {
+          if (!loaded) {
+            tryFallback();
+          }
+        }, 7000);
+      };
+
+      iframe.addEventListener('load', () => {
+        loaded = true;
+        clearWatchdog();
+      });
+
+      iframe.addEventListener('error', () => {
+        tryFallback();
+      });
+
+      iframe.src = primaryUrl;
+      startWatchdog();
+    });
+  </script>
 {% endblock %}

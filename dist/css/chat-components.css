@@ -258,6 +258,24 @@ body { background-color: #f3f4f6; }
 .chat-service-strip { display: flex; gap: 16px; font-size: 12px; background: #f9fafb; padding: 8px; border-radius: 4px; border: 1px solid #e5e7eb; }
 .chat-service-badge { color: #fff; padding: 0 6px; border-radius: 4px; font-size: 10px; font-weight: 700; }
 .chat-service-badge--danger { background: #ef4444; }
+
+/* chat page: external iframe only */
+.chat-iframe-shell {
+  grid-column: 2 / -1;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+}
+
+.chat-iframe-view {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #ffffff;
+}
 .chat-service-badge--warn { background: #eab308; }
 .chat-service-badge--info { background: #2563eb; }
 .chat-stat-list { display: flex; flex-direction: column; gap: 8px; }
