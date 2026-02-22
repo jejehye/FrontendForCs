@@ -14,6 +14,7 @@ body {
 :root {
   --global-header-h: 42px;
   --global-sidebar-w: 60px;
+  --layout-sidebar-gap: 0px;
 }
 
 body.has-global-header #app-container.grid-layout {
@@ -30,9 +31,9 @@ body.has-global-header .col-sidebar {
 .app-global-header {
   position: fixed;
   top: 0;
-  left: var(--global-sidebar-w);
+  left: calc(var(--global-sidebar-w) + var(--layout-sidebar-gap));
   right: 0;
-  width: calc(100% - var(--global-sidebar-w));
+  width: calc(100% - var(--global-sidebar-w) - var(--layout-sidebar-gap));
   height: var(--global-header-h);
   min-height: var(--global-header-h);
   z-index: 120;

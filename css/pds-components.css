@@ -413,6 +413,7 @@ body { background-color: #f3f4f6; }
 
 /* layout-only polish: 3-column structure and scoped scroll containers */
 #app-container.grid-layout {
+  --layout-sidebar-gap: 24px;
   grid-template-columns: 60px minmax(280px, 24fr) minmax(520px, 48fr) minmax(320px, 28fr);
   gap: 24px;
   width: 100%;
@@ -534,4 +535,36 @@ body.has-global-header #app-container.grid-layout {
 #right-column .pds-script-list {
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+/* typography sync: match new_main font style */
+#pds-column,
+#center-column,
+#right-column,
+#pds-column *:not(i),
+#center-column *:not(i),
+#right-column *:not(i) {
+  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#pds-column .pds-title-lg,
+#center-column .pds-card-title,
+#center-column .pds-note-title,
+#center-column .pds-live-chat-header .weight-semibold,
+#right-column .pds-detail-title,
+#right-column .pds-script-title,
+#right-column .pds-right-tabs .tab-item {
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+}
+
+#pds-column .pds-meta-text,
+#center-column .pds-meta-text,
+#center-column .pds-note-hint,
+#right-column .pds-meta-text,
+#center-column .main-live-time-text,
+#center-column .main-live-agent-text,
+#center-column .main-live-customer-text,
+#center-column .pds-log-box {
+  font-weight: 400;
 }
