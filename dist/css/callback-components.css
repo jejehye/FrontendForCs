@@ -643,7 +643,8 @@ body { overflow: hidden; }
 }
 
 /* center primary emphasis */
-#center-column #callback-chat-area {
+#center-column #callback-chat-area,
+#right-column #callback-chat-area {
   box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
 }
 
@@ -651,6 +652,7 @@ body { overflow: hidden; }
 #sms-column .callback-request-header-row,
 #sms-column .callback-request-filter-row,
 #center-column #callback-chat-area .main-live-header,
+#right-column #callback-chat-area .main-live-header,
 #center-column > .info-card > .callback-section-header,
 #right-column > .info-card > .callback-info-tabs,
 #right-column > .info-card > .callback-section-header {
@@ -673,6 +675,7 @@ body { overflow: hidden; }
 
 #sms-column .callback-request-title,
 #center-column #callback-chat-area .main-live-header .weight-semibold,
+#right-column #callback-chat-area .main-live-header .weight-semibold,
 #center-column > .info-card > .callback-section-header .callback-section-title,
 #right-column > .info-card > .callback-info-tabs .callback-info-tab-btn,
 #right-column > .info-card > .callback-section-header .callback-section-title {
@@ -717,7 +720,8 @@ body { overflow: hidden; }
   overflow: hidden;
 }
 
-#center-column #callback-chat-area {
+#center-column #callback-chat-area,
+#right-column #callback-chat-area {
   flex: 0 0 360px;
   min-height: 360px;
   display: flex;
@@ -726,7 +730,8 @@ body { overflow: hidden; }
   overflow: hidden;
 }
 
-#center-column #callback-chat-area .callback-live-chat-list {
+#center-column #callback-chat-area .callback-live-chat-list,
+#right-column #callback-chat-area .callback-live-chat-list {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
@@ -752,14 +757,16 @@ body { overflow: hidden; }
 
 /* right: history table scroll + note fixed bottom */
 #right-column {
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #right-column .callback-info-panel {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-height: 0;
   padding: 0;
   overflow: hidden;
+  max-height: 300px;
 }
 
 #right-column .callback-info-panel .callback-info-body {
@@ -918,4 +925,23 @@ body.has-global-header #center-column.col-center {
 .callback-outbound-callerid__table {
   width: 100% !important;
   display: table !important;
+}
+
+/* callback layout stability for section wrappers */
+#page-main > section {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+#page-main > section > .column {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+#sms-column,
+#center-column,
+#right-column {
+  height: 100% !important;
 }
