@@ -834,10 +834,19 @@ body { overflow: hidden; }
   }
 }
 
-/* callback: lock global-header/sidebar layering + new_main background tone */
+/* callback shell lock: prevent overlap + enforce new_main background tones */
+:root {
+  --cb-bg-page: #EEF2F7;
+  --cb-bg-side: #F7F9FC;
+  --cb-bg-center: #FFFFFF;
+}
+
 html,
-body {
-  background: #EEF2F7 !important;
+body,
+body.has-global-header,
+body.has-global-header #page-main,
+body.has-global-header #app-container.grid-layout {
+  background: var(--cb-bg-page) !important;
 }
 
 #app-container.grid-layout {
@@ -868,10 +877,45 @@ body.has-global-header #app-container.grid-layout {
 }
 
 body.has-global-header .col-sms,
-body.has-global-header .col-right {
-  background: #F7F9FC !important;
+body.has-global-header .col-right,
+body.has-global-header #sms-column.col-sms,
+body.has-global-header #right-column.col-right {
+  background: var(--cb-bg-side) !important;
 }
 
-body.has-global-header .col-center {
-  background: #FFFFFF !important;
+body.has-global-header .col-center,
+body.has-global-header #center-column.col-center {
+  background: var(--cb-bg-center) !important;
+}
+
+/* callback list visibility recovery */
+#sms-column .callback-request-list-wrap,
+#sms-column .callback-request-list {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#sms-column .callback-request-list-wrap {
+  min-height: 260px !important;
+}
+
+#sms-column .callback-request-list {
+  padding: 16px !important;
+}
+
+#sms-column .callback-card {
+  display: block !important;
+}
+
+/* outbound send list visibility recovery */
+.callback-outbound-callerid {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.callback-outbound-callerid__table {
+  width: 100% !important;
+  display: table !important;
 }
