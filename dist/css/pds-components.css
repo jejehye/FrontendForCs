@@ -408,3 +408,46 @@ body { background-color: #f3f4f6; }
   padding: 8px 12px;
   font-size: 13px;
 }
+
+/* compact dialing summary card (center first card) */
+#center-column > .card.info-card:first-of-type {
+  padding: 12px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-card-header {
+  margin-bottom: 10px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-card-title--lg {
+  font-size: 16px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-progress-wrap {
+  margin-bottom: 14px;
+}
+
+#center-column > .card.info-card:first-of-type .progress-ring {
+  width: 104px;
+  height: 104px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-progress-percent {
+  font-size: 24px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-grid {
+  gap: 8px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-card {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-head {
+  margin-bottom: 6px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-value {
+  font-size: 20px;
+}
