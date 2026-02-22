@@ -92,4 +92,55 @@
       </button>
     </div>
   </div>
+
+  <section id="pds-live-chat" class="card info-card pds-live-chat-panel" data-role="pds-live-chat">
+    <header class="pds-live-chat-header">
+      <h3 class="weight-semibold heading-reset">실시간 대화</h3>
+      <div class="main-live-header-actions">
+        <div class="main-live-search-wrap">
+          <input
+            type="text"
+            class="field chat-search-input"
+            placeholder="검색어를 입력하세요"
+            aria-label="실시간 대화 검색"
+          />
+          <i class="fa-solid fa-magnifying-glass main-live-search-icon"></i>
+        </div>
+        <button class="main-live-pause-btn" aria-label="대화 일시정지">
+          <i class="fa-solid fa-pause"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="pds-live-chat-messages">
+      <div class="main-live-msg main-live-msg--agent">
+        <div class="main-live-msg-meta">
+          <span class="main-live-time-text">14:23</span>
+          <span class="main-live-agent-text">상담사 K</span>
+        </div>
+        <div class="chat-bubble agent main-live-bubble-elevated">
+          안녕하세요, 신한투자증권입니다. 무엇을 도와드릴까요?
+        </div>
+      </div>
+
+      <div class="main-live-msg main-live-msg--customer">
+        <div class="main-live-msg-meta">
+          <i class="fa-regular fa-user main-live-user-icon"></i>
+          <span class="main-live-customer-text">고객01</span>
+        </div>
+        <div class="chat-bubble customer main-live-bubble-elevated">
+          해외주식 ETF 관련 문의드립니다.
+        </div>
+        <div class="main-live-tag-row">
+          <span class="tag-pill tag-pill--brand">해외주식</span>
+          <span class="tag-pill tag-pill--teal">ETF</span>
+        </div>
+        <span class="main-live-time-text main-live-msg-time">14:24</span>
+      </div>
+    </div>
+
+    <div class="pds-live-chat-input-wrap">
+      <input type="text" class="field" placeholder="메시지를 입력하세요" aria-label="메시지 입력" />
+    </div>
+  </section>
 </section>
