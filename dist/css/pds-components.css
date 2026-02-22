@@ -790,3 +790,17 @@ body.has-global-header #app-container.grid-layout {
     grid-template-columns: 60px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
   }
 }
+
+/* 3-column background tone aligned with new_main */
+body {
+  background: #EEF2F7;
+}
+
+.col-pds,
+.col-right {
+  background: #F7F9FC;
+}
+
+.col-center {
+  background: #FFFFFF;
+}
