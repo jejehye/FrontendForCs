@@ -146,9 +146,24 @@
 .callback-summary-value--brand { color: var(--color-primary); }
 .callback-summary-value--success { color: #16a34a; }
 
-.callback-info-tab-btn { padding: 8px 16px; font-size: 12px; font-weight: 500; color: #6b7280; }
-.callback-info-tab-btn:hover { color: #374151; }
-.callback-info-tab-btn.is-active { padding: 8px 16px; font-size: 12px; font-weight: 700; background: #fff; border-top: 2px solid var(--color-primary); color: var(--color-primary); }
+.callback-info-tab-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: #0F172A;
+  font-family: inherit;
+}
+.callback-info-tab-btn:hover { color: #0F172A; }
+.callback-info-tab-btn.is-active {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: #0F172A;
+  background: transparent;
+  border-top: 0;
+}
 
 .callback-history-table { width: 100%; text-align: left; }
 .callback-history-body { color: #4b5563; }
