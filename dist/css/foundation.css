@@ -15,7 +15,7 @@ body {
   --global-header-h: 42px;
   --global-sidebar-w: 60px;
   --layout-sidebar-gap: 0px;
-  --global-header-left: 60px;
+  --global-header-left: var(--global-sidebar-w);
 }
 
 body.has-global-header #app-container.grid-layout {
@@ -24,9 +24,11 @@ body.has-global-header #app-container.grid-layout {
 }
 
 body.has-global-header .col-sidebar {
+  position: relative;
   margin-top: calc(var(--global-header-h) * -1);
   height: 100vh;
   min-height: 100vh;
+  z-index: 80;
 }
 
 .app-global-header {
@@ -37,7 +39,7 @@ body.has-global-header .col-sidebar {
   width: calc(100% - var(--global-header-left));
   height: var(--global-header-h);
   min-height: var(--global-header-h);
-  z-index: 120;
+  z-index: 40;
   background-color: #FFFFFF !important;
   background-image: none !important;
   border-bottom: 1px solid #E5E7EB;

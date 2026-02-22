@@ -12,8 +12,19 @@
 
   const syncSidebarWidth = () => {
     const sidebar = document.querySelector('#sidebar');
-    const width = sidebar?.offsetWidth || 60;
+    if (!sidebar) {
+      document.documentElement.style.setProperty('--global-sidebar-w', '60px');
+      document.documentElement.style.setProperty('--global-header-left', '60px');
+      return;
+    }
+
+    const width = Math.round(sidebar.offsetWidth || 60);
+    const sidebarRect = sidebar.getBoundingClientRect();
+    const sidebarRight = Math.round(sidebarRect.right || width || 60);
+    const headerLeft = Math.max(width, sidebarRight, 60);
+
     document.documentElement.style.setProperty('--global-sidebar-w', `${width}px`);
+    document.documentElement.style.setProperty('--global-header-left', `${headerLeft}px`);
   };
 
   const syncUserDisplay = () => {

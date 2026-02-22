@@ -12,54 +12,19 @@
 
   const syncSidebarWidth = () => {
     const sidebar = document.querySelector('#sidebar');
-    const width = sidebar?.offsetWidth || 60;
-    document.documentElement.style.setProperty('--global-sidebar-w', `${width}px`);
-  };
-
-  const syncHeaderLeft = () => {
-    const sidebar = document.querySelector('#sidebar');
-    const firstContentColumn = document.querySelector(
-      '#page-main > .column, #page-main > section, #page-main > div'
-    );
-
     if (!sidebar) {
+      document.documentElement.style.setProperty('--global-sidebar-w', '60px');
+      document.documentElement.style.setProperty('--global-header-left', '60px');
       return;
     }
 
+    const width = Math.round(sidebar.offsetWidth || 60);
     const sidebarRect = sidebar.getBoundingClientRect();
-    const sidebarRight = Math.max(0, Math.round(sidebarRect.right));
-    let headerLeft = sidebarRight;
+    const sidebarRight = Math.round(sidebarRect.right || width || 60);
+    const headerLeft = Math.max(width, sidebarRight, 60);
 
-    if (firstContentColumn) {
-      const contentRect = firstContentColumn.getBoundingClientRect();
-      headerLeft = Math.max(sidebarRight, Math.round(contentRect.left));
-    }
-
+    document.documentElement.style.setProperty('--global-sidebar-w', `${width}px`);
     document.documentElement.style.setProperty('--global-header-left', `${headerLeft}px`);
-  };
-
-  const syncLayoutGap = () => {
-    const appContainer = document.querySelector('#app-container.grid-layout');
-    const sidebar = document.querySelector('#sidebar');
-    if (!appContainer || !sidebar) {
-      return;
-    }
-
-    const firstContentColumn = document.querySelector(
-      '#page-main > .column, #page-main > section, #page-main > div'
-    );
-
-    if (!firstContentColumn) {
-      document.documentElement.style.setProperty('--layout-sidebar-gap', '0px');
-      return;
-    }
-
-    const sidebarRect = sidebar.getBoundingClientRect();
-    const contentRect = firstContentColumn.getBoundingClientRect();
-    const measuredGap = Math.max(0, Math.round(contentRect.left - sidebarRect.right));
-
-    document.documentElement.style.setProperty('--layout-sidebar-gap', `${measuredGap}px`);
-    syncHeaderLeft();
   };
 
   const syncUserDisplay = () => {
@@ -131,19 +96,13 @@
 
     document.body.classList.add('has-global-header');
     syncSidebarWidth();
-    syncLayoutGap();
-    syncHeaderLeft();
     syncUserDisplay();
     bindLogout();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
     ensureHeader();
-    window.addEventListener('resize', () => {
-      syncSidebarWidth();
-      syncLayoutGap();
-      syncHeaderLeft();
-    });
+    window.addEventListener('resize', syncSidebarWidth);
     window.addEventListener('storage', syncUserDisplay);
   });
 })();
