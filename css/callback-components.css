@@ -927,19 +927,6 @@ body.has-global-header #center-column.col-center {
   display: table !important;
 }
 
-/* callback layout stability for section wrappers */
-#page-main > section {
-  min-width: 0;
-  min-height: 0;
-  display: flex;
-}
-
-#page-main > section > .column {
-  flex: 1 1 auto;
-  min-width: 0;
-  min-height: 0;
-}
-
 #sms-column,
 #center-column,
 #right-column {
