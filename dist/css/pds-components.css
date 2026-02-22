@@ -40,6 +40,18 @@ body { background-color: #f3f4f6; }
 .col-center { border-right: 0; background: #fff; padding: 36px; gap: 24px; overflow-y: auto; min-width: 0; }
 .col-right { background: #fff; padding: 20px; gap: 24px; overflow-y: auto; min-width: 0; }
 
+/* pds-only: keep left sidebar above global header overlap zone */
+body.has-global-header .col-sidebar {
+  position: relative;
+  z-index: 150;
+}
+
+/* pds-only hard guard: prevent global header from covering sidebar */
+body.has-global-header .app-global-header {
+  left: calc(var(--global-sidebar-w) + 24px) !important;
+  width: calc(100% - var(--global-sidebar-w) - 24px) !important;
+}
+
 .card,
 .info-card {
   background: white;
@@ -567,4 +579,9 @@ body.has-global-header #app-container.grid-layout {
 #center-column .main-live-customer-text,
 #center-column .pds-log-box {
   font-weight: 400;
+}
+
+body.has-global-header .col-sidebar {
+  position: relative;
+  z-index: 150;
 }

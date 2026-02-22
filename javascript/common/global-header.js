@@ -16,14 +16,50 @@
     document.documentElement.style.setProperty('--global-sidebar-w', `${width}px`);
   };
 
-  const syncLayoutGap = () => {
-    const appContainer = document.querySelector('#app-container.grid-layout');
-    if (!appContainer) {
+  const syncHeaderLeft = () => {
+    const sidebar = document.querySelector('#sidebar');
+    const firstContentColumn = document.querySelector(
+      '#page-main > .column, #page-main > section, #page-main > div'
+    );
+
+    if (!sidebar) {
       return;
     }
-    const computed = window.getComputedStyle(appContainer);
-    const columnGap = computed.columnGap || computed.gap || '0px';
-    document.documentElement.style.setProperty('--layout-sidebar-gap', columnGap);
+
+    const sidebarRect = sidebar.getBoundingClientRect();
+    const sidebarRight = Math.max(0, Math.round(sidebarRect.right));
+    let headerLeft = sidebarRight;
+
+    if (firstContentColumn) {
+      const contentRect = firstContentColumn.getBoundingClientRect();
+      headerLeft = Math.max(sidebarRight, Math.round(contentRect.left));
+    }
+
+    document.documentElement.style.setProperty('--global-header-left', `${headerLeft}px`);
+  };
+
+  const syncLayoutGap = () => {
+    const appContainer = document.querySelector('#app-container.grid-layout');
+    const sidebar = document.querySelector('#sidebar');
+    if (!appContainer || !sidebar) {
+      return;
+    }
+
+    const firstContentColumn = document.querySelector(
+      '#page-main > .column, #page-main > section, #page-main > div'
+    );
+
+    if (!firstContentColumn) {
+      document.documentElement.style.setProperty('--layout-sidebar-gap', '0px');
+      return;
+    }
+
+    const sidebarRect = sidebar.getBoundingClientRect();
+    const contentRect = firstContentColumn.getBoundingClientRect();
+    const measuredGap = Math.max(0, Math.round(contentRect.left - sidebarRect.right));
+
+    document.documentElement.style.setProperty('--layout-sidebar-gap', `${measuredGap}px`);
+    syncHeaderLeft();
   };
 
   const syncUserDisplay = () => {
@@ -96,6 +132,7 @@
     document.body.classList.add('has-global-header');
     syncSidebarWidth();
     syncLayoutGap();
+    syncHeaderLeft();
     syncUserDisplay();
     bindLogout();
   };
@@ -105,6 +142,7 @@
     window.addEventListener('resize', () => {
       syncSidebarWidth();
       syncLayoutGap();
+      syncHeaderLeft();
     });
     window.addEventListener('storage', syncUserDisplay);
   });

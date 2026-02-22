@@ -15,6 +15,7 @@ body {
   --global-header-h: 42px;
   --global-sidebar-w: 60px;
   --layout-sidebar-gap: 0px;
+  --global-header-left: 60px;
 }
 
 body.has-global-header #app-container.grid-layout {
@@ -31,13 +32,14 @@ body.has-global-header .col-sidebar {
 .app-global-header {
   position: fixed;
   top: 0;
-  left: calc(var(--global-sidebar-w) + var(--layout-sidebar-gap));
-  right: 0;
-  width: calc(100% - var(--global-sidebar-w) - var(--layout-sidebar-gap));
+  left: var(--global-header-left);
+  right: auto;
+  width: calc(100% - var(--global-header-left));
   height: var(--global-header-h);
   min-height: var(--global-header-h);
   z-index: 120;
-  background: #FFFFFF;
+  background-color: #FFFFFF !important;
+  background-image: none !important;
   border-bottom: 1px solid #E5E7EB;
 }
 
