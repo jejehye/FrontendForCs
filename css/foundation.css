@@ -15,7 +15,6 @@ body {
   --global-header-h: 42px;
   --global-sidebar-w: 60px;
   --global-header-left: var(--global-sidebar-w);
-  --global-header-safe-left: max(var(--global-header-left), var(--global-sidebar-w), 60px);
 }
 
 body.has-global-header #app-container.grid-layout {
@@ -34,9 +33,9 @@ body.has-global-header .col-sidebar {
 .app-global-header {
   position: fixed;
   top: 0;
-  left: var(--global-header-safe-left);
+  left: var(--global-header-left);
   right: auto;
-  width: calc(100vw - var(--global-header-safe-left));
+  width: calc(100vw - var(--global-header-left));
   height: var(--global-header-h);
   min-height: var(--global-header-h);
   z-index: 40;

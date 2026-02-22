@@ -14,9 +14,6 @@
   --main-header-control-text: #334155;
 }
 
-
-body { background-color: #f3f4f6; }
-
 .grid-layout {
   display: grid;
   grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
@@ -149,13 +146,6 @@ body { background-color: #f3f4f6; }
 .callback-summary-value--brand { color: var(--color-primary); }
 .callback-summary-value--success { color: #16a34a; }
 
-.callback-right-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; }
-.callback-save-btn { background: var(--color-primary); color: #fff; font-size: 12px; padding: 6px 12px; border-radius: 4px; }
-.callback-save-btn:hover { background: var(--color-primary-dark); }
-.callback-customer-name { font-weight: 700; color: #1f2937; }
-.callback-refresh-icon-btn { color: #9ca3af; }
-.callback-refresh-icon-btn:hover { color: #3b82f6; }
-
 .callback-info-tab-btn { padding: 8px 16px; font-size: 12px; font-weight: 500; color: #6b7280; }
 .callback-info-tab-btn:hover { color: #374151; }
 .callback-info-tab-btn.is-active { padding: 8px 16px; font-size: 12px; font-weight: 700; background: #fff; border-top: 2px solid var(--color-primary); color: var(--color-primary); }
@@ -186,25 +176,7 @@ body { background-color: #f3f4f6; }
 .callback-modal-option-label { font-size: 14px; color: #374151; }
 
 /* Callback cleanup pass */
-.callback-notice-title { font-weight: 700; color: #1f2937; font-size: 14px; }
-.callback-notice-more-btn { font-size: 12px; color: #6b7280; }
-.callback-notice-more-btn:hover { color: #2563eb; }
 .callback-history-desc { font-size: 11px; color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
-
-.callback-action-btn--blue { border-color: #bfdbfe; background: var(--color-highlight-blue); }
-.callback-action-btn--teal { border-color: #99f6e4; background: #ccfbf1; }
-.callback-action-label-primary { color: var(--color-primary); font-weight: 700; }
-.callback-action-label-teal { color: #115e59; font-weight: 700; }
-.callback-action-btn--campaign { background: var(--color-primary); border-color: #2563eb; }
-.callback-action-btn--campaign:hover { background: var(--color-primary-dark); }
-.callback-action-label-inverse { color: #fff; }
-
-.callback-service-label { color: #4b5563; }
-.callback-service-badge { color: #fff; padding: 0 6px; border-radius: 4px; font-size: 10px; font-weight: 700; }
-.callback-service-badge--danger { background: #ef4444; }
-.callback-service-badge--brand { background: var(--color-primary); }
-.callback-service-badge--teal { background: #14b8a6; }
-.callback-inline-gap-xs { display: flex; align-items: center; gap: 4px; }
 .callback-status-success-badge {
   font-size: 10.40px;
   line-height: 16px;
@@ -609,36 +581,8 @@ body { background-color: #f3f4f6; }
   font-size: 13px;
 }
 
-@media (max-width: 1600px) {
-  .grid-layout {
-    grid-template-columns: 60px minmax(340px, 1fr) minmax(400px, 1.05fr) minmax(400px, 1.05fr);
-  }
-}
-
-@media (max-width: 1440px) {
-  .grid-layout {
-    grid-template-columns: 60px minmax(320px, 1fr) minmax(380px, 1.03fr) minmax(380px, 1.03fr);
-  }
-
-  .col-sms,
-  .col-center,
-  .col-right {
-    padding: 16px;
-    gap: 16px;
-  }
-}
-
-@media (max-width: 1366px) {
-  .grid-layout {
-    grid-template-columns: 60px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
-  }
-}
-
 /* Callback unified system (aligned with new_main, style-only) */
-body {
-  background: #EEF2F7;
-  overflow: hidden;
-}
+body { overflow: hidden; }
 
 #app-container.grid-layout {
   grid-template-columns: 60px minmax(340px, 26fr) minmax(520px, 44fr) minmax(360px, 30fr);
@@ -890,16 +834,44 @@ body {
   }
 }
 
-/* 3-column background tone aligned with new_main */
+/* callback: lock global-header/sidebar layering + new_main background tone */
+html,
 body {
-  background: #EEF2F7;
+  background: #EEF2F7 !important;
 }
 
-.col-sms,
-.col-right {
-  background: #F7F9FC;
+#app-container.grid-layout {
+  background: transparent !important;
 }
 
-.col-center {
-  background: #FFFFFF;
+body.has-global-header .app-global-header {
+  left: 60px !important;
+  width: calc(100vw - 60px) !important;
+  z-index: 40 !important;
+}
+
+body.has-global-header #sidebar.col-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 60px !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
+  height: 100vh !important;
+  margin-top: 0 !important;
+  z-index: 90 !important;
+}
+
+body.has-global-header #app-container.grid-layout {
+  margin-top: var(--global-header-h) !important;
+  height: calc(100vh - var(--global-header-h)) !important;
+}
+
+body.has-global-header .col-sms,
+body.has-global-header .col-right {
+  background: #F7F9FC !important;
+}
+
+body.has-global-header .col-center {
+  background: #FFFFFF !important;
 }
