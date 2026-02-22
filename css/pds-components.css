@@ -411,11 +411,11 @@ body { background-color: #f3f4f6; }
 
 /* compact dialing summary card (center first card) */
 #center-column > .card.info-card:first-of-type {
-  padding: 10px;
+  padding: 8px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-header {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-title--lg {
@@ -423,25 +423,25 @@ body { background-color: #f3f4f6; }
 }
 
 #center-column > .card.info-card:first-of-type .pds-progress-wrap {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 #center-column > .card.info-card:first-of-type .progress-ring {
-  width: 96px;
-  height: 96px;
+  width: 90px;
+  height: 90px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-progress-percent {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-metric-grid {
-  gap: 6px;
+  gap: 5px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-metric-card {
-  padding: 8px;
-  border-radius: 10px;
+  padding: 7px;
+  border-radius: 9px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-metric-head {
@@ -449,5 +449,5 @@ body { background-color: #f3f4f6; }
 }
 
 #center-column > .card.info-card:first-of-type .pds-metric-value {
-  font-size: 18px;
+  font-size: 17px;
 }
