@@ -16,6 +16,16 @@
     document.documentElement.style.setProperty('--global-sidebar-w', `${width}px`);
   };
 
+  const syncLayoutGap = () => {
+    const appContainer = document.querySelector('#app-container.grid-layout');
+    if (!appContainer) {
+      return;
+    }
+    const computed = window.getComputedStyle(appContainer);
+    const columnGap = computed.columnGap || computed.gap || '0px';
+    document.documentElement.style.setProperty('--layout-sidebar-gap', columnGap);
+  };
+
   const syncUserDisplay = () => {
     const userNode = document.querySelector(`[data-role="${ROLE.user}"]`);
     if (!userNode) {
@@ -85,13 +95,17 @@
 
     document.body.classList.add('has-global-header');
     syncSidebarWidth();
+    syncLayoutGap();
     syncUserDisplay();
     bindLogout();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
     ensureHeader();
-    window.addEventListener('resize', syncSidebarWidth);
+    window.addEventListener('resize', () => {
+      syncSidebarWidth();
+      syncLayoutGap();
+    });
     window.addEventListener('storage', syncUserDisplay);
   });
 })();

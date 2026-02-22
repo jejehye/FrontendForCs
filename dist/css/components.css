@@ -2402,22 +2402,22 @@ body.new-main-mode #chat-column {
 
 /* verify card: reduce inner spacing/padding density */
 body.new-main-mode #verify-form .account-panel-title-row {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 body.new-main-mode #verify-form .account-info-grid {
-  column-gap: 8px;
-  row-gap: 6px;
+  column-gap: 6px;
+  row-gap: 4px;
 }
 
 body.new-main-mode #verify-form .account-field-row {
-  min-height: 34px;
-  padding: 4px 8px;
+  min-height: 32px;
+  padding: 3px 7px;
 }
 
 body.new-main-mode #verify-form .verify-transfer-actions {
-  margin-top: 6px;
-  gap: 6px;
+  margin-top: 4px;
+  gap: 4px;
 }
 
 
@@ -3423,4 +3423,28 @@ body.new-main-mode .new-main-warning-head {
   font-weight: 600;
   line-height: 1;
   box-sizing: border-box;
+}
+
+/* final override: tighten verify card inner spacing further */
+body.new-main-mode #verify-form .account-info-panel {
+  padding: 6px 8px;
+}
+
+body.new-main-mode #verify-form .account-panel-title-row {
+  margin-bottom: 2px;
+}
+
+body.new-main-mode #verify-form .account-info-grid {
+  column-gap: 4px;
+  row-gap: 3px;
+}
+
+body.new-main-mode #verify-form .account-field-row {
+  min-height: 30px;
+  padding: 2px 6px;
+}
+
+body.new-main-mode #verify-form .verify-transfer-actions {
+  margin-top: 3px;
+  gap: 3px;
 }
