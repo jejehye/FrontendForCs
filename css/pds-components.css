@@ -42,8 +42,18 @@ body { background-color: #f3f4f6; }
 
 /* pds-only: keep left sidebar above global header overlap zone */
 body.has-global-header .col-sidebar {
+  margin-top: calc(var(--global-header-h) * -1);
+  height: 100vh;
+  min-height: 100vh;
+  padding-top: 20px;
   position: relative;
   z-index: 150;
+}
+
+/* pds-only: match other tabs header/sidebar separation exactly */
+body.has-global-header .app-global-header {
+  left: 60px !important;
+  width: calc(100% - 60px) !important;
 }
 
 /* pds-only hard guard: prevent global header from covering sidebar */
