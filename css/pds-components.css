@@ -2,7 +2,7 @@
 
 :root {
   --color-primary: #0046ff;
-  --color-panel-border: #d2d2d7;
+  --color-panel-border: #E4E7EC;
   --color-surface-soft: #fafbfc;
   --color-text-primary: #1d1d1f;
   --color-text-secondary: #86868b;
@@ -173,7 +173,19 @@ body { background-color: #f3f4f6; }
 .pds-customer-name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); }
 .pds-campaign-text { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 8px; }
 
-.pds-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.pds-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: var(--pds-header-min-h);
+  min-height: var(--pds-header-min-h);
+  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
+  margin: 0;
+  background: var(--main-header-bg);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  color: var(--pds-header-text);
+}
 .pds-card-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
 .pds-card-title--lg { font-size: 18px; }
 
@@ -221,7 +233,19 @@ body { background-color: #f3f4f6; }
 .pds-script-copy { font-size: 12px; line-height: 1.45; color: var(--color-text-primary); }
 .pds-script-list { font-size: 12px; line-height: 1.45; color: var(--color-text-primary); display: flex; flex-direction: column; gap: 2px; }
 
-.pds-note-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+.pds-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: var(--pds-header-min-h);
+  min-height: var(--pds-header-min-h);
+  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
+  margin: 0;
+  background: var(--main-header-bg);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  color: var(--pds-header-text);
+}
 .pds-note-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
 .pds-note-hint { font-size: 11px; color: var(--color-text-secondary); white-space: nowrap; }
 .pds-note-actions { display: flex; gap: 8px; margin-top: 10px; }
@@ -260,7 +284,9 @@ body { background-color: #f3f4f6; }
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 14px 36px;
+  height: var(--pds-header-min-h);
+  min-height: var(--pds-header-min-h);
+  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
   border-bottom: 1px solid var(--color-panel-border);
   background: var(--main-header-bg);
 }
@@ -491,32 +517,6 @@ body.has-global-header #app-container.grid-layout {
   font-size: 11px;
 }
 
-#right-column .pds-script-title {
-  font-size: 14px;
-  margin: 0;
-}
-
-#right-column .pds-script-block {
-  padding: 8px;
-  border-radius: 10px;
-  margin-bottom: 6px;
-}
-
-#right-column .pds-script-block-title {
-  font-size: 11px;
-  margin-bottom: 6px;
-}
-
-#right-column .pds-script-copy,
-#right-column .pds-script-list {
-  font-size: 11px;
-  line-height: 1.35;
-}
-
-#right-column .pds-script-list {
-  gap: 1px;
-}
-
 #center-column > .card.info-card:nth-of-type(2) {
   flex: 0 0 280px;
   display: flex;
@@ -617,44 +617,27 @@ body.has-global-header #app-container.grid-layout {
   font-weight: 400;
 }
 
-/* match new_main header design for PDS center sections */
-#center-column > .card.info-card:first-of-type .pds-card-header,
 #center-column > .card.info-card:nth-of-type(2) .pds-between-row-md,
-#center-column > .card.info-card:nth-of-type(3) .pds-note-header,
-#center-column .pds-live-chat-header,
-#right-column > .card.info-card:nth-of-type(2) .pds-card-header,
-#right-column > .card.info-card:nth-of-type(3) .pds-card-header {
+#center-column .pds-live-chat-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  border-top: 0;
-  font-size: 14px;
-  line-height: 1;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-  color: var(--pds-header-text);
-  background: var(--main-header-bg);
-  border: 1px solid var(--main-header-border);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  border-left: 0;
-  border-right: 0;
-  margin: 0;
   height: var(--pds-header-min-h);
   min-height: var(--pds-header-min-h);
   padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
-  width: 100%;
-  box-sizing: border-box;
-  align-self: stretch;
-  border-radius: 12px 12px 0 0;
+  margin: 0;
+  background: var(--main-header-bg);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  color: var(--pds-header-text);
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-title,
 #center-column > .card.info-card:nth-of-type(2) .pds-card-title,
 #center-column > .card.info-card:nth-of-type(3) .pds-note-title,
 #center-column .pds-live-chat-header .weight-semibold,
-#right-column > .card.info-card:nth-of-type(2) .pds-detail-title,
-#right-column > .card.info-card:nth-of-type(3) .pds-script-title {
+#right-column .pds-detail-title,
+#right-column .pds-script-title {
   font-size: 14px;
   line-height: 1;
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -665,8 +648,8 @@ body.has-global-header #app-container.grid-layout {
 #center-column > .card.info-card:first-of-type .pds-card-title i,
 #center-column > .card.info-card:nth-of-type(2) .pds-card-title i,
 #center-column > .card.info-card:nth-of-type(3) .pds-note-title i,
-#right-column > .card.info-card:nth-of-type(2) .pds-detail-title i,
-#right-column > .card.info-card:nth-of-type(3) .pds-script-title i {
+#right-column .pds-detail-title i,
+#right-column .pds-script-title i {
   color: var(--pds-header-icon);
 }
 
