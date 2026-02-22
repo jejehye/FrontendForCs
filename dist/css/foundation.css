@@ -33,15 +33,21 @@ body.has-global-header .col-sidebar {
 .app-global-header {
   position: fixed;
   top: 0;
-  left: var(--global-header-left);
+  left: 60px;
   right: auto;
-  width: calc(100vw - var(--global-header-left));
+  width: calc(100vw - 60px);
   height: var(--global-header-h);
   min-height: var(--global-header-h);
   z-index: 40;
   background-color: #FFFFFF !important;
   background-image: none !important;
   border-bottom: 1px solid #E5E7EB;
+}
+
+body.has-global-header #sidebar.col-sidebar {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
 }
 
 .app-global-header__inner {

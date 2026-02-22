@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SMS 발송</title>
-  <link rel="stylesheet" href="app.css?v=1771773968157">
+  <link rel="stylesheet" href="app.css?v=1771776092020">
   
   <!-- ===================== Vendor Styles ===================== -->
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771773968157">
-  <script src="./vendor/fontawesome/js/all.min.js?v=1771773968157" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771776092020">
+  <script src="./vendor/fontawesome/js/all.min.js?v=1771776092020" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- ===================== Page Styles ===================== -->
-  <link rel="stylesheet" href="css/callback.css?v=1771773968157">
+  <link rel="stylesheet" href="css/callback.css?v=1771776092020">
 
 </head>
 <body>
   
-  <script src="app-config.js?v=1771773968157"></script>
-  <script src="javascript/common/page-module.js?v=1771773968157"></script>
-  <script src="javascript/common/global-header.js?v=1771773968157"></script>
+  <script src="app-config.js?v=1771776092020"></script>
+  <script src="javascript/common/page-module.js?v=1771776092020"></script>
+  <script src="javascript/common/global-header.js?v=1771776092020"></script>
 
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">
@@ -264,6 +264,41 @@
 
 <!-- ===================== Center Column ===================== -->
       <div id="center-column" class="column col-center">
+        <section id="callback-chat-area" class="info-card callback-live-chat-card">
+          <header class="panel-header main-live-header">
+            <h3 class="weight-semibold heading-reset">실시간 대화</h3>
+            <div class="main-live-header-actions">
+              <div class="main-live-search-wrap">
+                <input type="text" placeholder="검색어를 입력하세요" class="field chat-search-input">
+                <i class="fa-solid fa-magnifying-glass main-live-search-icon"></i>
+              </div>
+              <button class="main-live-pause-btn"><i class="fa-solid fa-pause"></i></button>
+            </div>
+          </header>
+          <div class="callback-live-chat-list">
+            <div class="main-live-msg main-live-msg--agent">
+              <div class="main-live-msg-meta">
+                <span class="main-live-time-text">14:23</span>
+                <span class="main-live-agent-text">상담사 K</span>
+              </div>
+              <div class="chat-bubble agent">안녕하세요, 신한투자증권입니다. 무엇을 도와드릴까요?</div>
+            </div>
+
+            <div class="main-live-msg main-live-msg--customer">
+              <div class="main-live-msg-meta">
+                <i class="fa-regular fa-user main-live-user-icon"></i>
+                <span class="main-live-customer-text">고객01</span>
+              </div>
+              <div class="chat-bubble customer">콜백 처리 상태와 예상 통화 가능 시간을 확인하고 싶습니다.</div>
+              <div class="main-live-tag-row">
+                <span class="tag-pill tag-pill--brand">콜백</span>
+                <span class="tag-pill tag-pill--teal">상태확인</span>
+              </div>
+              <span class="main-live-time-text main-live-msg-time">14:24</span>
+            </div>
+          </div>
+        </section>
+
         <div class="info-card">
           <div class="callback-section-header">
             <h3 class="callback-section-title">
@@ -402,43 +437,6 @@
             </table>
           </div>
         </div>
-        <section id="callback-chat-area" class="info-card callback-live-chat-card">
-          <header class="panel-header main-live-header">
-            <h3 class="weight-semibold heading-reset">실시간 대화</h3>
-            <div class="main-live-header-actions">
-              <div class="main-live-search-wrap">
-                <input type="text" placeholder="검색어를 입력하세요" class="field chat-search-input">
-                <i class="fa-solid fa-magnifying-glass main-live-search-icon"></i>
-              </div>
-              <button class="main-live-pause-btn"><i class="fa-solid fa-pause"></i></button>
-            </div>
-          </header>
-          <div class="callback-live-chat-list">
-            <div class="main-live-msg main-live-msg--agent">
-              <div class="main-live-msg-meta">
-                <span class="main-live-time-text">14:23</span>
-                <span class="main-live-agent-text">상담사 K</span>
-              </div>
-              <div class="chat-bubble agent">안녕하세요, 신한투자증권입니다. 무엇을 도와드릴까요?</div>
-            </div>
-
-            <div class="main-live-msg main-live-msg--customer">
-              <div class="main-live-msg-meta">
-                <i class="fa-regular fa-user main-live-user-icon"></i>
-                <span class="main-live-customer-text">고객01</span>
-              </div>
-              <div class="chat-bubble customer">콜백 처리 상태와 예상 통화 가능 시간을 확인하고 싶습니다.</div>
-              <div class="main-live-tag-row">
-                <span class="tag-pill tag-pill--brand">콜백</span>
-                <span class="tag-pill tag-pill--teal">상태확인</span>
-              </div>
-              <span class="main-live-time-text main-live-msg-time">14:24</span>
-            </div>
-          </div>
-          <div class="callback-live-chat-input-wrap">
-            <input type="text" class="field" placeholder="메시지를 입력하세요">
-          </div>
-        </section>
         <div class="card info-card callback-note-card">
           <div class="callback-section-header">
             <h3 class="callback-section-title">
@@ -639,10 +637,10 @@
   </script>
 
   
-  <script src="javascript/common/api.js?v=1771773968157"></script>
-  <script src="javascript/callback-config.js?v=1771773968157"></script>
-  <script src="javascript/common/ui.js?v=1771773968157"></script>
-  <script src="javascript/callback.js?v=1771773968157"></script>
+  <script src="javascript/common/api.js?v=1771776092020"></script>
+  <script src="javascript/callback-config.js?v=1771776092020"></script>
+  <script src="javascript/common/ui.js?v=1771776092020"></script>
+  <script src="javascript/callback.js?v=1771776092020"></script>
 
 </body>
 </html>

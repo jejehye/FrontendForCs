@@ -12,66 +12,11 @@
   --main-header-control-bg-hover: #f8fafc;
   --main-header-control-border: #cbd5e1;
   --main-header-control-text: #334155;
+  --callback-header-bg: #F8FAFC;
+  --callback-header-text-size: 14px;
 }
 
-.grid-layout {
-  display: grid;
-  grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
-  height: 100vh;
-  width: 100vw;
-  min-width: 0;
-  margin: 0;
-  background: #fff;
-  box-shadow: none;
-}
-
-.column,
-.col-sidebar,
-.col-sms,
-.col-center,
-.col-right { display: flex; flex-direction: column; }
-
-.col-sidebar { background: var(--color-primary); align-items: center; padding-top: 20px; z-index: 50; }
-.col-sms,
-.col-center,
-.col-right {
-  min-height: 0;
-  overflow: hidden;
-  padding: 24px;
-  gap: 24px;
-}
-.col-sms,
-.col-right { background: #f8fafc; }
-.col-center { background: #fff; }
-
-#page-main {
-  min-height: 0;
-  height: 100%;
-}
-
-#sms-column,
-#center-column,
-#right-column {
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-#sms-column {
-  overflow: hidden;
-}
-
-#sms-column .callback-request-list-wrap {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-}
-
-#center-column,
-#right-column {
-  overflow-y: auto;
-}
+/* Layout shell styles are unified later in this file to avoid conflicts. */
 
 .badge,
 .status-badge { font-size: 12px; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
@@ -146,25 +91,6 @@
 .callback-summary-value--brand { color: var(--color-primary); }
 .callback-summary-value--success { color: #16a34a; }
 
-.callback-info-tab-btn {
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  color: #0F172A;
-  font-family: inherit;
-}
-.callback-info-tab-btn:hover { color: #0F172A; }
-.callback-info-tab-btn.is-active {
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  color: #0F172A;
-  background: transparent;
-  border-top: 0;
-}
-
 .callback-history-table { width: 100%; text-align: left; }
 .callback-history-body { color: #4b5563; }
 .callback-history-row { cursor: pointer; }
@@ -219,85 +145,6 @@
 .callback-radio-unreachable:focus { outline-color: #ef4444; }
 .callback-icon-inline-md,
 .callback-icon-gap-2 { margin-right: 8px; }
-
-/* Header tone sync with main page */
-.callback-request-header {
-  border-top: 2px solid rgba(30, 58, 138, 0.22);
-  background: #E7EEFA;
-  border-bottom: 1px solid #C9D5E3;
-  border-left: 0;
-  border-right: 0;
-  margin: 0;
-  border-radius: 12px 12px 0 0;
-  overflow: hidden;
-}
-
-.callback-request-title {
-  color: #334155;
-  font-size: 17px;
-  line-height: 1.4;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-}
-
-.callback-request-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 16px 24px;
-}
-
-.callback-request-filter-row {
-  display: flex;
-  gap: 8px;
-  padding: 0 24px 14px;
-}
-
-#center-column > .info-card > .history-filter-row,
-#center-column > .info-card > .callback-section-header,
-#right-column > .info-card > .callback-section-header,
-#right-column > .info-card > .callback-info-tabs {
-  border-top: 2px solid rgba(30, 58, 138, 0.22);
-  background: #E7EEFA;
-  border-bottom: 1px solid #C9D5E3;
-  border-left: 0;
-  border-right: 0;
-  margin: 0;
-  padding: 16px 24px;
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-#center-column > .info-card > .history-filter-row .callback-notice-title,
-#center-column > .info-card > .callback-section-header .callback-section-title,
-#right-column > .info-card > .callback-section-header .callback-section-title,
-#right-column > .info-card > .callback-info-tabs .callback-info-tab-btn {
-  font-size: 17px;
-  line-height: 1.4;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-  color: #334155;
-}
-
-#right-column > .info-card > .callback-info-tabs .callback-info-tab-btn {
-  padding: 0;
-  background: transparent;
-  border: 0;
-}
-
-#center-column > .info-card > .history-filter-row .callback-notice-more-btn,
-#center-column > .info-card > .callback-section-header .callback-link-more,
-#right-column > .info-card > .callback-section-header .callback-link-more {
-  font-size: 13px;
-  line-height: 1.5;
-  color: #64748B;
-  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 400;
-}
 
 .callback-request-refresh-btn {
   color: var(--main-header-control-text);
@@ -414,7 +261,7 @@
 
 .callback-live-chat-card .main-live-header {
   border-top: 2px solid rgba(30, 58, 138, 0.22);
-  background: #E7EEFA;
+  background: var(--callback-header-bg);
   border-bottom: 1px solid #C9D5E3;
   border-left: 0;
   border-right: 0;
@@ -428,11 +275,11 @@
 }
 
 .callback-live-chat-card .main-live-header .weight-semibold {
-  font-size: 17px;
-  line-height: 1.4;
+  font-size: var(--callback-header-text-size);
+  line-height: 1;
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-  color: #334155;
+  font-weight: 700;
+  color: #0F172A;
 }
 
 .callback-live-chat-card .main-live-header-actions {
@@ -600,6 +447,7 @@
 body { overflow: hidden; }
 
 #app-container.grid-layout {
+  display: grid;
   grid-template-columns: 60px minmax(340px, 26fr) minmax(520px, 44fr) minmax(360px, 30fr);
   gap: 24px;
   width: 100vw;
@@ -610,6 +458,22 @@ body { overflow: hidden; }
   background: transparent;
   box-shadow: none;
   overflow: hidden;
+}
+
+.column,
+.col-sidebar,
+.col-sms,
+.col-center,
+.col-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-sidebar {
+  background: var(--color-primary);
+  align-items: center;
+  padding-top: 20px;
+  z-index: 50;
 }
 
 #page-main {
@@ -627,6 +491,11 @@ body { overflow: hidden; }
   overflow: hidden;
   padding: 20px;
   gap: 24px;
+}
+
+/* callback left column: remove outer gutter for request management panel */
+#sms-column.col-sms {
+  padding: 0 !important;
 }
 
 .col-sms,
@@ -680,7 +549,7 @@ body { overflow: hidden; }
   justify-content: space-between;
   gap: 8px;
   box-sizing: border-box;
-  background: #F8FAFC;
+  background: var(--callback-header-bg);
   border-bottom: 1px solid #E6EAF0;
   border-top: 0;
   border-left: 0;
@@ -694,16 +563,25 @@ body { overflow: hidden; }
 #center-column > .info-card > .callback-section-header .callback-section-title,
 #right-column > .info-card > .callback-info-tabs .callback-info-tab-btn,
 #right-column > .info-card > .callback-section-header .callback-section-title {
-  font-size: 14px;
+  font-size: var(--callback-header-text-size);
   line-height: 1;
-  font-weight: 600;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
   color: #0F172A;
 }
 
 #right-column > .info-card > .callback-info-tabs .callback-info-tab-btn {
+  display: inline-flex;
+  align-items: center;
   padding: 0;
   background: transparent;
   border: 0;
+  white-space: nowrap;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: var(--callback-header-text-size) !important;
+  line-height: 1 !important;
+  color: #0F172A !important;
 }
 
 /* left column: header/filter fixed + request list scroll */
@@ -715,7 +593,7 @@ body { overflow: hidden; }
   flex: 0 0 auto;
   border: 1px solid #DCE3EA;
   border-radius: 12px 12px 0 0;
-  background: #FFFFFF;
+  background: var(--callback-header-bg);
   overflow: hidden;
 }
 
@@ -724,6 +602,7 @@ body { overflow: hidden; }
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 0 !important;
   border: 1px solid #DCE3EA;
   border-top: 0;
   border-radius: 0 0 12px 12px;
@@ -737,8 +616,8 @@ body { overflow: hidden; }
 
 #center-column #callback-chat-area,
 #right-column #callback-chat-area {
-  flex: 0 0 360px;
-  min-height: 360px;
+  flex: 0 0 430px;
+  min-height: 430px;
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -864,10 +743,7 @@ body { overflow: hidden; }
 }
 
 html,
-body,
-body.has-global-header,
-body.has-global-header #page-main,
-body.has-global-header #app-container.grid-layout {
+body {
   background: var(--cb-bg-page) !important;
 }
 
@@ -875,37 +751,15 @@ body.has-global-header #app-container.grid-layout {
   background: transparent !important;
 }
 
-body.has-global-header .app-global-header {
-  left: 60px !important;
-  width: calc(100vw - 60px) !important;
-  z-index: 40 !important;
-}
-
-body.has-global-header #sidebar.col-sidebar {
-  position: relative !important;
-  width: 60px !important;
-  min-width: 60px !important;
-  max-width: 60px !important;
-  margin-top: calc(-1 * var(--global-header-h)) !important;
-  height: 100vh !important;
-  min-height: 100vh !important;
-  z-index: 90 !important;
-}
-
-body.has-global-header #app-container.grid-layout {
-  margin-top: var(--global-header-h) !important;
-  height: calc(100vh - var(--global-header-h)) !important;
-}
-
-body.has-global-header .col-sms,
-body.has-global-header .col-right,
-body.has-global-header #sms-column.col-sms,
-body.has-global-header #right-column.col-right {
+.col-sms,
+.col-right,
+#sms-column.col-sms,
+#right-column.col-right {
   background: var(--cb-bg-side) !important;
 }
 
-body.has-global-header .col-center,
-body.has-global-header #center-column.col-center {
+.col-center,
+#center-column.col-center {
   background: var(--cb-bg-center) !important;
 }
 
@@ -922,7 +776,8 @@ body.has-global-header #center-column.col-center {
 }
 
 #sms-column .callback-request-list {
-  padding: 16px !important;
+  padding: 0 !important;
+  background: transparent !important;
 }
 
 #sms-column .callback-card {
@@ -939,4 +794,20 @@ body.has-global-header #center-column.col-center {
 .callback-outbound-callerid__table {
   width: 100% !important;
   display: table !important;
+}
+
+/* callback shell: single source of truth (remove header/sidebar overlap) */
+body.has-global-header .app-global-header {
+  left: 60px !important;
+  width: calc(100vw - 60px) !important;
+  z-index: 40 !important;
+}
+
+body.has-global-header #sidebar.col-sidebar {
+  position: relative !important;
+  top: 0 !important;
+  margin-top: calc(var(--global-header-h) * -1) !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  z-index: 90 !important;
 }

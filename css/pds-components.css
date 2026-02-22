@@ -255,11 +255,21 @@ body {
   border-bottom: 1px solid rgba(148, 163, 184, 0.35);
   color: var(--pds-header-text);
 }
+.pds-note-header-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
 .pds-note-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
 .pds-note-hint { font-size: 11px; color: var(--color-text-secondary); white-space: nowrap; }
 .pds-note-actions { display: flex; gap: 8px; margin-top: 10px; }
+.pds-note-header .pds-note-actions {
+  margin-top: 0;
+  margin-left: auto;
+}
 .pds-note-actions .btn-common-action {
-  flex: 1;
+  flex: 0 0 auto;
   min-height: 26px;
   height: 26px;
   padding: 4px 10px;

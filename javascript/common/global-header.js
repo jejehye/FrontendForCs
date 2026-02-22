@@ -12,9 +12,14 @@
 
   const syncSidebarWidth = () => {
     const sidebar = document.querySelector('#sidebar');
+    const header = document.querySelector(`[data-role="${ROLE.header}"]`);
     if (!sidebar) {
       document.documentElement.style.setProperty('--global-sidebar-w', '60px');
       document.documentElement.style.setProperty('--global-header-left', '60px');
+      if (header) {
+        header.style.left = '60px';
+        header.style.width = 'calc(100vw - 60px)';
+      }
       return;
     }
 
@@ -25,6 +30,10 @@
 
     document.documentElement.style.setProperty('--global-sidebar-w', `${width}px`);
     document.documentElement.style.setProperty('--global-header-left', `${headerLeft}px`);
+    if (header) {
+      header.style.left = `${headerLeft}px`;
+      header.style.width = `calc(100vw - ${headerLeft}px)`;
+    }
   };
 
   const syncUserDisplay = () => {

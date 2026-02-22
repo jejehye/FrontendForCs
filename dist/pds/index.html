@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PDS 자동다이얼링</title>
-  <link rel="stylesheet" href="app.css?v=1771768283486">
+  <link rel="stylesheet" href="app.css?v=1771776092020">
   
   <!-- ===================== Vendor Styles ===================== -->
-  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771768283486">
-  <script src="./vendor/fontawesome/js/all.min.js?v=1771768283486" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771776092020">
+  <script src="./vendor/fontawesome/js/all.min.js?v=1771776092020" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- ===================== Page Styles ===================== -->
-  <link rel="stylesheet" href="css/pds.css?v=1771768283486">
+  <link rel="stylesheet" href="css/pds.css?v=1771776092020">
 
 </head>
 <body>
   
-  <script src="app-config.js?v=1771768283486"></script>
-  <script src="javascript/common/page-module.js?v=1771768283486"></script>
-  <script src="javascript/common/global-header.js?v=1771768283486"></script>
+  <script src="app-config.js?v=1771776092020"></script>
+  <script src="javascript/common/page-module.js?v=1771776092020"></script>
+  <script src="javascript/common/global-header.js?v=1771776092020"></script>
 
   <!-- ===================== App Shell ===================== -->
   <div id="app-container" class="grid-layout" data-role="app-shell">
@@ -440,25 +440,27 @@
 
   <div class="card info-card">
     <div class="pds-note-header">
-      <h3 class="pds-note-title">
-        <i class="fa-solid fa-pen-to-square pds-accent-text"></i>
-        상담 메모
-      </h3>
-      <span class="pds-note-hint">통화 핵심 내용을 간단히 기록하세요.</span>
+      <div class="pds-note-header-main">
+        <h3 class="pds-note-title">
+          <i class="fa-solid fa-pen-to-square pds-accent-text"></i>
+          상담 메모
+        </h3>
+        <span class="pds-note-hint">통화 핵심 내용을 간단히 기록하세요.</span>
+      </div>
+      <div class="pds-note-actions">
+        <button class="btn-common-action">
+          <i class="fa-solid fa-rotate-left pds-icon-inline-sm"></i>초기화
+        </button>
+        <button class="btn-common-action btn-common-action--save">
+          <i class="fa-solid fa-save pds-icon-inline-sm"></i>메모 저장
+        </button>
+      </div>
     </div>
     <textarea
       class="pds-note-textarea pds-input-border pds-note-input"
       placeholder="상담 내용을 기록하세요..."
       data-role="pds-center-note"
     ></textarea>
-    <div class="pds-note-actions">
-      <button class="btn-common-action">
-        <i class="fa-solid fa-rotate-left pds-icon-inline-sm"></i>초기화
-      </button>
-      <button class="btn-common-action btn-common-action--save">
-        <i class="fa-solid fa-save pds-icon-inline-sm"></i>메모 저장
-      </button>
-    </div>
   </div>
 
   <section id="pds-live-chat" class="card info-card pds-live-chat-panel" data-role="pds-live-chat">
@@ -642,10 +644,10 @@
   </script>
 
   
-  <script src="javascript/common/api.js?v=1771768283486"></script>
-  <script src="javascript/pds-config.js?v=1771768283486"></script>
-  <script src="javascript/common/ui.js?v=1771768283486"></script>
-  <script src="javascript/pds.js?v=1771768283486"></script>
+  <script src="javascript/common/api.js?v=1771776092020"></script>
+  <script src="javascript/pds-config.js?v=1771776092020"></script>
+  <script src="javascript/common/ui.js?v=1771776092020"></script>
+  <script src="javascript/pds.js?v=1771776092020"></script>
 
 </body>
 </html>
