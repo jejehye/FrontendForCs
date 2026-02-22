@@ -415,16 +415,16 @@ body { background-color: #f3f4f6; }
 #app-container.grid-layout {
   grid-template-columns: 60px minmax(280px, 24fr) minmax(520px, 48fr) minmax(320px, 28fr);
   gap: 24px;
-  max-width: 1600px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
   overflow: hidden;
 }
 
 body.has-global-header #app-container.grid-layout {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #pds-column,
