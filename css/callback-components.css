@@ -867,14 +867,13 @@ body.has-global-header .app-global-header {
 }
 
 body.has-global-header #sidebar.col-sidebar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
+  position: relative !important;
   width: 60px !important;
   min-width: 60px !important;
   max-width: 60px !important;
+  margin-top: calc(-1 * var(--global-header-h)) !important;
   height: 100vh !important;
-  margin-top: 0 !important;
+  min-height: 100vh !important;
   z-index: 90 !important;
 }
 
@@ -925,10 +924,4 @@ body.has-global-header #center-column.col-center {
 .callback-outbound-callerid__table {
   width: 100% !important;
   display: table !important;
-}
-
-#sms-column,
-#center-column,
-#right-column {
-  height: 100% !important;
 }
