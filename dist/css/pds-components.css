@@ -293,7 +293,7 @@ body { background-color: #f3f4f6; }
 
 .pds-live-chat-header .weight-semibold {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   color: #334155;
 }
 
@@ -342,12 +342,12 @@ body { background-color: #f3f4f6; }
 }
 
 #center-column #pds-live-chat .pds-live-chat-messages.chat-message-list {
-  padding: 0 !important;
-  margin: 0 !important;
+  padding: 0;
+  margin: 0;
 }
 
 #center-column #pds-live-chat .main-live-msg {
-  margin: 0 !important;
+  margin: 0;
 }
 
 .pds-live-chat-panel .main-live-msg { display: flex; flex-direction: column; }
@@ -433,11 +433,7 @@ body.has-global-header #app-container.grid-layout {
 }
 
 /* normalize section header height for consistent alignment */
-#pds-column .pds-main-header > .pds-between-row-md,
-#center-column .pds-card-header,
-#center-column > .card.info-card .pds-between-row-md,
-#center-column .pds-note-header,
-#center-column .pds-live-chat-header {
+#pds-column .pds-main-header > .pds-between-row-md {
   height: var(--pds-header-min-h);
   min-height: var(--pds-header-min-h);
   align-items: center;
@@ -473,10 +469,6 @@ body.has-global-header #app-container.grid-layout {
 /* dial status summary card: reduce overall height/density */
 #center-column > .card.info-card:first-of-type {
   padding: 0;
-}
-
-#center-column > .card.info-card:first-of-type .pds-card-header {
-  margin-bottom: 8px;
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-title--lg {
@@ -617,8 +609,12 @@ body.has-global-header #app-container.grid-layout {
   font-weight: 400;
 }
 
+#center-column > .card.info-card:first-of-type .pds-card-header,
 #center-column > .card.info-card:nth-of-type(2) .pds-between-row-md,
-#center-column .pds-live-chat-header {
+#center-column > .card.info-card:nth-of-type(3) .pds-note-header,
+#center-column .pds-live-chat-header,
+#right-column > .card.info-card:nth-of-type(2) .pds-card-header,
+#right-column > .card.info-card:nth-of-type(3) .pds-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -630,6 +626,7 @@ body.has-global-header #app-container.grid-layout {
   background: var(--main-header-bg);
   border-bottom: 1px solid rgba(148, 163, 184, 0.35);
   color: var(--pds-header-text);
+  box-sizing: border-box;
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-title,
