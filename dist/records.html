@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>녹취</title>
+  <link rel="stylesheet" href="app.css?v=1771745566498">
+  
+  <!-- ===================== Vendor Styles ===================== -->
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css?v=1771745566498">
+  <script src="./vendor/fontawesome/js/all.min.js?v=1771745566498" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- ===================== Page Styles ===================== -->
+  <link rel="stylesheet" href="css/main.css?v=1771745566498">
+
+</head>
+<body>
+  
+  <script src="app-config.js?v=1771745566498"></script>
+  <script src="javascript/common/page-module.js?v=1771745566498"></script>
+  <script src="javascript/common/global-header.js?v=1771745566498"></script>
+
+  <!-- ===================== App Shell ===================== -->
+  <div id="app-container" class="grid-layout" data-role="app-shell">
+    <!-- ===================== Global Navigation ===================== -->
+    <aside id="sidebar" class="column col-sidebar" data-role="global-sidebar" aria-label="사이드바 메뉴">
+  <!-- ===================== Sidebar Brand ===================== -->
+  <div class="sidebar-top-spacing">
+    <div class="sidebar-logo" aria-hidden="true">S</div>
+  </div>
+
+  <!-- ===================== Sidebar Navigation ===================== -->
+  
+  <nav aria-label="주요 메뉴">
+    
+      <div
+        data-page="main"
+        title="Main"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-headset"></i>
+      </div>
+    
+      <div
+        data-page="new_main"
+        title="New Main"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-table-columns"></i>
+      </div>
+    
+      <div
+        data-page="records"
+        title="녹취"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item active"
+      >
+        <i class="fa-solid fa-microphone-lines"></i>
+      </div>
+    
+      <div
+        data-page="pds"
+        title="PDS"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-phone-volume"></i>
+      </div>
+    
+      <div
+        data-page="sms"
+        title="SMS"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-comment-sms"></i>
+      </div>
+    
+      <div
+        data-page="callback"
+        title="Callback"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-phone"></i>
+      </div>
+    
+      <div
+        data-page="specific"
+        title="Specific"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-user-check"></i>
+      </div>
+    
+      <div
+        data-page="chat"
+        title="Chat"
+        data-role="nav-item"
+        data-action="navigate"
+        class="nav-item"
+      >
+        <i class="fa-solid fa-comments"></i>
+      </div>
+    
+  </nav>
+
+  <!-- ===================== Sidebar Settings ===================== -->
+  <div title="Settings" data-role="nav-item" data-action="navigate" class="nav-item sidebar-settings-item">
+    <i class="fa-solid fa-gear"></i>
+  </div>
+</aside>
+
+
+    <!-- ===================== Page Content ===================== -->
+    <main id="page-main" class="layout-main-content" data-role="page-main">
+      
+  <section id="records-column" class="column col-chat layout-shell">
+  <section class="info-card">
+    <header class="main-section-header">
+      <h3 class="heading-reset">녹취</h3>
+    </header>
+    <div class="panel__body">
+      <p class="notice-desc">녹취 탭이 추가되었습니다.</p>
+    </div>
+  </section>
+</section>
+
+<section class="column col-center layout-shell">
+  <section class="info-card">
+    <header class="main-section-header">
+      <h3 class="heading-reset">녹취 목록</h3>
+    </header>
+    <div class="panel__body">
+      <p class="notice-desc">녹취 목록/검색 UI는 추후 연결 예정입니다.</p>
+    </div>
+  </section>
+</section>
+
+<section class="column col-right layout-aside">
+  <section class="info-card">
+    <header class="main-section-header">
+      <h3 class="heading-reset">상세 정보</h3>
+    </header>
+    <div class="panel__body">
+      <p class="notice-desc">선택한 녹취의 상세 정보가 표시됩니다.</p>
+    </div>
+  </section>
+</section>
+
+
+    </main>
+  </div>
+
+  <!-- ===================== Server Data Payload ===================== -->
+  <script id="page-data-json" type="application/json">{}</script>
+
+  <!-- ===================== Client Data Bootstrap ===================== -->
+  <script>
+    (() => {
+      const pageDataNode = document.getElementById('page-data-json');
+      if (!pageDataNode) {
+        window.__PAGE_DATA__ = {};
+        return;
+      }
+      try {
+        window.__PAGE_DATA__ = JSON.parse(pageDataNode.textContent || '{}');
+      } catch (error) {
+        window.__PAGE_DATA__ = {};
+      }
+    })();
+  </script>
+
+  
+  <script src="javascript/common/ui.js?v=1771745566498"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AppUi?.initSidebarNavigation) {
+        window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
+      }
+    });
+  </script>
+
+</body>
+</html>
