@@ -114,10 +114,6 @@ body { background-color: #f3f4f6; }
 .pds-card-danger { background: #FEF2F2; border-color: #fca5a5; }
 .pds-card-neutral { background: #f0f0f5; border-color: var(--color-panel-border); }
 .pds-log-bg { background: var(--color-text-primary); }
-.pds-progress-track { background: #e5e7eb; }
-.pds-progress-success { width: 0%; background: #00c73c; }
-.pds-progress-warning { width: 0%; background: #ff9500; }
-.pds-progress-danger { width: 0%; background: #ff3b30; }
 .pds-summary-vip-card,
 .pds-badge-vip-bg { background: #e5edff; border-color: #b3ccff; }
 .pds-input-border,
@@ -267,7 +263,6 @@ body { background-color: #f3f4f6; }
 .pds-note-input::placeholder { color: #9ca3af; }
 .pds-note-input:focus { background: #fff; border-color: #8fb0ff; box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.12); }
 .pds-current-icon-wrap { width: 80px; height: 80px; border-radius: 9999px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
-.pds-flex-fill { flex: 1 1 0%; }
 
 .pds-inline-center-2 { display: flex; align-items: center; gap: 8px; }
 .pds-tier-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
@@ -413,9 +408,10 @@ body { background-color: #f3f4f6; }
 
 /* layout-only polish: 3-column structure and scoped scroll containers */
 #app-container.grid-layout {
-  grid-template-columns: 60px minmax(280px, 24fr) minmax(520px, 48fr) minmax(320px, 28fr);
+  grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
   gap: 24px;
-  width: 100%;
+  width: 100vw;
+  min-width: 0;
   max-width: none;
   margin-left: 0;
   margin-right: 0;
@@ -482,6 +478,48 @@ body.has-global-header #app-container.grid-layout {
 #center-column > .card.info-card:first-of-type,
 #center-column > .card.info-card:nth-of-type(3) {
   flex: 0 0 auto;
+}
+
+/* dial status summary card: reduce overall height/density */
+#center-column > .card.info-card:first-of-type {
+  padding: 16px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-card-header {
+  margin-bottom: 10px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-card-title--lg {
+  font-size: 16px;
+}
+
+#center-column > .card.info-card:first-of-type .progress-ring {
+  width: 96px;
+  height: 96px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-progress-wrap {
+  margin-bottom: 14px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-progress-percent {
+  font-size: 24px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-grid {
+  gap: 8px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-card {
+  padding: 12px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-head {
+  margin-bottom: 6px;
+}
+
+#center-column > .card.info-card:first-of-type .pds-metric-value {
+  font-size: 20px;
 }
 
 #center-column > .card.info-card:nth-of-type(2) {
@@ -567,4 +605,22 @@ body.has-global-header #app-container.grid-layout {
 #center-column .main-live-customer-text,
 #center-column .pds-log-box {
   font-weight: 400;
+}
+
+@media (max-width: 1600px) {
+  #app-container.grid-layout {
+    grid-template-columns: 60px minmax(340px, 1fr) minmax(400px, 1.05fr) minmax(400px, 1.05fr);
+  }
+}
+
+@media (max-width: 1440px) {
+  #app-container.grid-layout {
+    grid-template-columns: 60px minmax(320px, 1fr) minmax(380px, 1.03fr) minmax(380px, 1.03fr);
+  }
+}
+
+@media (max-width: 1366px) {
+  #app-container.grid-layout {
+    grid-template-columns: 60px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
+  }
 }
