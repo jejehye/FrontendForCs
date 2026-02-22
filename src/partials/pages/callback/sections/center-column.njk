@@ -1,59 +1,42 @@
       <div id="center-column" class="column col-center">
-        <div class="info-card">
-          <div
-            class="history-filter-row">
-            <h3 class="callback-notice-title">공지사항</h3><button
-              class="callback-notice-more-btn">더보기 +</button>
-          </div>
-          <ul class="callback-notice-list">
-            {% for notice in callback_data.notices or [] %}
-              <li class="callback-notice-item"><span
-                  class="callback-notice-text">{% if notice.prefix_text %}<span
-                    class="{{ notice.prefix_class }}">{{ notice.prefix_text }}</span>{% endif %}{{ notice.text }}
-                  {% if notice.has_attachment %}
-                    <i
-                      class="fa-solid fa-paperclip callback-icon-attachment"></i>
-                  {% endif %}</span><span
-                  class="callback-notice-date">{{ notice.date }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="info-card">
-          <div class="callback-section-header">
-            <h3 class="callback-section-title">
-              <i class="fa-solid fa-phone-volume callback-icon-phone-volume"></i>
-              콜백 통계
-            </h3><select
-              class="callback-period-select">
-              <option>오늘</option>
-              <option>이번 주</option>
-              <option>이번 달</option>
-            </select>
-          </div>
-          <div class="callback-stats-grid">
-            <div class="callback-stat-card callback-stat-card--pending">
-              <div class="callback-stat-value-pending">3</div>
-              <div class="callback-stat-label">대기중</div>
+        <section id="callback-chat-area" class="info-card callback-live-chat-card">
+          <header class="panel-header main-live-header">
+            <h3 class="weight-semibold heading-reset">실시간 대화</h3>
+            <div class="main-live-header-actions">
+              <div class="main-live-search-wrap">
+                <input type="text" placeholder="검색어를 입력하세요" class="field chat-search-input">
+                <i class="fa-solid fa-magnifying-glass main-live-search-icon"></i>
+              </div>
+              <button class="main-live-pause-btn"><i class="fa-solid fa-pause"></i></button>
             </div>
-            <div class="callback-stat-card callback-stat-card--progress">
-              <div class="callback-stat-value-progress">8</div>
-              <div class="callback-stat-label">처리중</div>
+          </header>
+          <div class="callback-live-chat-list">
+            <div class="main-live-msg main-live-msg--agent">
+              <div class="main-live-msg-meta">
+                <span class="main-live-time-text">14:23</span>
+                <span class="main-live-agent-text">상담사 K</span>
+              </div>
+              <div class="chat-bubble agent">안녕하세요, 신한투자증권입니다. 무엇을 도와드릴까요?</div>
             </div>
-            <div class="callback-stat-card callback-stat-card--completed">
-              <div class="callback-stat-value-completed">12</div>
-              <div class="callback-stat-label">완료</div>
+
+            <div class="main-live-msg main-live-msg--customer">
+              <div class="main-live-msg-meta">
+                <i class="fa-regular fa-user main-live-user-icon"></i>
+                <span class="main-live-customer-text">고객01</span>
+              </div>
+              <div class="chat-bubble customer">콜백 처리 상태와 예상 통화 가능 시간을 확인하고 싶습니다.</div>
+              <div class="main-live-tag-row">
+                <span class="tag-pill tag-pill--brand">콜백</span>
+                <span class="tag-pill tag-pill--teal">상태확인</span>
+              </div>
+              <span class="main-live-time-text main-live-msg-time">14:24</span>
             </div>
           </div>
-          <div class="callback-stats-summary">
-            <div class="callback-summary-row"><span
-                class="callback-summary-label">평균 응답 시간</span><span
-                class="callback-summary-value callback-summary-value--brand">8분 32초</span></div>
-            <div class="callback-summary-rate-row"><span
-                class="callback-summary-label">완료율</span><span
-                class="callback-summary-value callback-summary-value--success">94.2%</span></div>
+          <div class="callback-live-chat-input-wrap">
+            <input type="text" class="field" placeholder="메시지를 입력하세요">
           </div>
-        </div>
+        </section>
+
         <div class="info-card">
           <div class="callback-section-header">
             <h3 class="callback-section-title">
