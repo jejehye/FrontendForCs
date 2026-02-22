@@ -2400,6 +2400,26 @@ body.new-main-mode #chat-column {
   padding-top: 18px !important;
 }
 
+/* verify card: reduce inner spacing/padding density */
+body.new-main-mode #verify-form .account-panel-title-row {
+  margin-bottom: 6px;
+}
+
+body.new-main-mode #verify-form .account-info-grid {
+  column-gap: 8px;
+  row-gap: 6px;
+}
+
+body.new-main-mode #verify-form .account-field-row {
+  min-height: 34px;
+  padding: 4px 8px;
+}
+
+body.new-main-mode #verify-form .verify-transfer-actions {
+  margin-top: 6px;
+  gap: 6px;
+}
+
 
 body.new-main-mode .new-main-schedule-title {
   margin: 0;
