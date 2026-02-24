@@ -1281,11 +1281,10 @@ body.new-main-mode .col-right {
 }
 
 body.new-main-mode .col-sidebar {
-  position: relative;
-  top: auto;
-  align-self: stretch;
-  height: 100vh;
-  min-height: 100vh;
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  flex: 0 0 60px;
 }
 
 body.new-main-mode .col-center {
@@ -1359,47 +1358,6 @@ body.new-main-mode .softphone-script-panel,
 body.new-main-mode .main-my-history-panel,
 body.new-main-mode .new-main-history-editor {
   padding: 0;
-}
-
-/* Header hierarchy */
-body.new-main-mode .main-section-header,
-body.new-main-mode .main-live-header,
-body.new-main-mode .panel__header--history,
-body.new-main-mode .main-my-history-header,
-body.new-main-mode .notice-header,
-body.new-main-mode .softphone-script-header {
-  border-top: 2px solid rgba(30, 58, 138, 0.22);
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-  color: var(--title);
-  background: #F8FAFC;
-  border: 0;
-  border-bottom: 1px solid var(--border);
-  padding: var(--nm-header-pad-y) var(--nm-header-pad-x);
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-  align-self: stretch;
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
-}
-
-body.new-main-mode .new-main-header-strong,
-body.new-main-mode .main-center-notice-title,
-body.new-main-mode .softphone-script-title,
-body.new-main-mode .main-live-header .weight-semibold,
-body.new-main-mode .panel__header--history .weight-semibold,
-body.new-main-mode .main-coaching-header .weight-semibold,
-body.new-main-mode .account-panel-title,
-body.new-main-mode .history-editor-title,
-body.new-main-mode .main-my-history-title,
-body.new-main-mode .main-center-coaching-title {
-  font-size: 17px;
-  line-height: 1.4;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-  color: var(--title);
 }
 
 body.new-main-mode .customer-status-text,
@@ -2253,15 +2211,6 @@ body.new-main-mode .new-main-warning-content {
   background: #FFF4F4;
 }
 
-/* real notice header in new_main is .new-main-schedule-header (rendered by JS) */
-body.new-main-mode .new-main-schedule-header {
-  padding: 20px var(--nm-header-pad-x);
-  min-height: var(--nm-notice-header-min-h);
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-}
-
 body.new-main-mode .new-main-routing-title {
   height: 44px;
   min-height: 44px;
@@ -2469,17 +2418,6 @@ body.new-main-mode .new-main-history-editor {
   border: 1px solid var(--border);
   background: var(--surface);
   box-shadow: none;
-}
-
-body.new-main-mode .main-section-header,
-body.new-main-mode .main-live-header,
-body.new-main-mode .panel__header--history,
-body.new-main-mode .main-my-history-header,
-body.new-main-mode .notice-header,
-body.new-main-mode .softphone-script-header,
-body.new-main-mode .new-main-schedule-header,
-body.new-main-mode .new-main-routing-title {
-  background: #F1F5FB;
 }
 
 /* center emphasis only */

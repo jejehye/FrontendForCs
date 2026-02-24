@@ -750,10 +750,6 @@ body {
   background: var(--cb-bg-page) !important;
 }
 
-#app-container.grid-layout {
-  background: transparent !important;
-}
-
 .col-sms,
 .col-right,
 #sms-column.col-sms,

@@ -6,9 +6,9 @@
   --color-surface-soft: #fafbfc;
   --color-text-primary: #1d1d1f;
   --color-text-secondary: #86868b;
-  --main-header-bg: #f1f5f9;
-  --main-header-bg-dark: #e2e8f0;
-  --main-header-border: #d7dee8;
+  --main-header-bg: #F8FAFC;
+  --main-header-bg-dark: #F8FAFC;
+  --main-header-border: #E6EAF0;
   --main-header-control-bg: #ffffff;
   --main-header-control-bg-hover: #f8fafc;
   --main-header-control-border: #cbd5e1;
@@ -16,7 +16,7 @@
   --pds-header-min-h: 40px;
   --pds-header-pad-y: 8px;
   --pds-header-pad-x: 20px;
-  --pds-header-text: #334155;
+  --pds-header-text: #0F172A;
   --pds-header-icon: #64748b;
 }
 
@@ -142,12 +142,12 @@ body {
   padding: 0;
   border: 1px solid #DCE3EA;
   border-radius: 12px;
-  color: #334155;
+  color: inherit;
   background: #FFFFFF;
   overflow: hidden;
 }
 .pds-between-row-md { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.pds-title-lg { font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+.pds-title-lg { margin: 0; display: flex; align-items: center; gap: 8px; }
 .pds-refresh-btn {
   color: var(--main-header-control-text);
   border: 1px solid var(--main-header-control-border);
@@ -181,21 +181,8 @@ body {
 .pds-customer-name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); }
 .pds-campaign-text { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 8px; }
 
-.pds-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  height: var(--pds-header-min-h);
-  min-height: var(--pds-header-min-h);
-  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
-  margin: 0;
-  background: var(--main-header-bg);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  color: var(--pds-header-text);
-}
-.pds-card-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
-.pds-card-title--lg { font-size: 14px; }
+.pds-card-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; }
+.pds-card-title--lg { font-size: inherit; }
 
 .pds-progress-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
 .pds-progress-inner { position: relative; }
@@ -214,7 +201,7 @@ body {
 
 
 .pds-current-call-card { padding: 20px; border-radius: 12px; border: 1px solid var(--color-panel-border); background: #f8fafc; }
-.pds-current-title { font-size: 14px; margin: 0; line-height: 1; font-weight: 600; color: #0F172A; display: flex; align-items: center; gap: 8px; }
+.pds-current-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; }
 .pds-current-top { text-align: center; margin-bottom: 16px; }
 .pds-current-name { font-weight: 700; font-size: 18px; margin-bottom: 4px; color: var(--color-text-primary); }
 .pds-current-phone { font-size: 14px; color: var(--color-text-secondary); }
@@ -228,40 +215,27 @@ body {
 .pds-btn-success-bg:hover { background: #15803D; }
 .pds-btn-danger-bg:hover { background: #B91C1C; }
 
-.pds-detail-title { font-weight: 700; font-size: 14px; margin: 0; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-detail-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; }
 .pds-detail-list { display: flex; flex-direction: column; gap: 0; font-size: 12px; }
 .pds-detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f5; }
 .pds-detail-row:last-child { border-bottom: 0; }
 .pds-detail-value { font-weight: 700; color: var(--color-text-primary); }
 .pds-detail-value--brand { color: var(--color-primary); }
 
-.pds-script-title { font-weight: 700; font-size: 14px; margin: 0; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-script-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; }
 .pds-script-block { border-radius: 12px; padding: 10px; border: 1px solid var(--color-panel-border); background: #f8fafc; margin-bottom: 8px; }
 .pds-script-block:last-child { margin-bottom: 0; }
 .pds-script-block-title { font-size: 12px; font-weight: 500; margin-bottom: 8px; color: var(--color-text-primary); }
 .pds-script-copy { font-size: 12px; line-height: 1.45; color: var(--color-text-primary); }
 .pds-script-list { font-size: 12px; line-height: 1.45; color: var(--color-text-primary); display: flex; flex-direction: column; gap: 2px; }
 
-.pds-note-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  height: var(--pds-header-min-h);
-  min-height: var(--pds-header-min-h);
-  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
-  margin: 0;
-  background: var(--main-header-bg);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  color: var(--pds-header-text);
-}
 .pds-note-header-main {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-width: 0;
 }
-.pds-note-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); }
+.pds-note-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; }
 .pds-note-hint { font-size: 11px; color: var(--color-text-secondary); white-space: nowrap; }
 .pds-note-actions { display: flex; gap: 8px; margin-top: 10px; }
 .pds-note-header .pds-note-actions {
@@ -324,24 +298,6 @@ body {
   padding: 0;
   min-height: 430px;
   overflow: hidden;
-}
-
-.pds-live-chat-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  height: var(--pds-header-min-h);
-  min-height: var(--pds-header-min-h);
-  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
-  border-bottom: 1px solid var(--color-panel-border);
-  background: var(--main-header-bg);
-}
-
-.pds-live-chat-header .weight-semibold {
-  font-size: 14px;
-  font-weight: 600;
-  color: #334155;
 }
 
 .pds-live-chat-panel .main-live-header-actions { display: flex; align-items: center; gap: 8px; }
@@ -477,13 +433,6 @@ body.has-global-header #app-container.grid-layout {
 #center-column > *,
 #right-column > * {
   width: 100%;
-}
-
-/* normalize section header height for consistent alignment */
-#pds-column .pds-main-header > .pds-between-row-md {
-  height: var(--pds-header-min-h);
-  min-height: var(--pds-header-min-h);
-  align-items: center;
 }
 
 /* left column: header/control fixed, customer list only scroll */
@@ -653,45 +602,6 @@ body.has-global-header #app-container.grid-layout {
   font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-#pds-column .pds-title-lg,
-#center-column .pds-card-title,
-#center-column .pds-note-title,
-#center-column .pds-live-chat-header .weight-semibold,
-#right-column .pds-current-title,
-#right-column .pds-detail-title,
-#right-column .pds-script-title {
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  color: #0F172A;
-}
-
-#pds-column .pds-title-lg {
-  font-size: 14px;
-}
-
-#pds-column .pds-main-header > .pds-between-row-md,
-#center-column > .card.info-card:first-of-type .pds-card-header,
-#center-column > .card.info-card:nth-of-type(2) .pds-between-row-md,
-#center-column > .card.info-card:nth-of-type(3) .pds-note-header,
-#center-column #pds-live-chat .pds-live-chat-header,
-#right-column .pds-current-call-card > .pds-card-header,
-#right-column > .card.info-card:nth-of-type(2) .pds-card-header,
-#right-column > .card.info-card:nth-of-type(3) .pds-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  height: 40px;
-  min-height: 40px;
-  padding: 8px 20px;
-  margin: 0;
-  background: #F8FAFC;
-  border-bottom: 1px solid #E6EAF0;
-  box-sizing: border-box;
-}
-
 #center-column > .card.info-card:first-of-type .pds-card-title i,
 #center-column > .card.info-card:nth-of-type(2) .pds-card-title i,
 #center-column > .card.info-card:nth-of-type(3) .pds-note-title i,
@@ -813,4 +723,40 @@ body {
 
 .col-center {
   background: #FFFFFF;
+}
+
+/* new_main parity: unify PDS card header color/padding format */
+#pds-column .pds-main-header > .pds-between-row-md,
+#center-column > .card.info-card:nth-of-type(2) .pds-between-row-md,
+#center-column .pds-card-header,
+#center-column .pds-note-header,
+#center-column .pds-live-chat-header,
+#right-column .pds-card-header,
+#right-column .pds-note-header,
+#right-column .pds-live-chat-header {
+  height: 40px;
+  min-height: 40px;
+  padding: 8px 20px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: #E7EEFA;
+  border-bottom: 1px solid #C9D5E3;
+  box-sizing: border-box;
+}
+
+#pds-column .pds-title-lg,
+#center-column .pds-card-title,
+#center-column .pds-note-title,
+#center-column .pds-live-chat-header .weight-semibold,
+#right-column .pds-current-title,
+#right-column .pds-detail-title,
+#right-column .pds-script-title {
+  font-size: 14px;
+  line-height: 1;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  color: #0F172A;
 }
