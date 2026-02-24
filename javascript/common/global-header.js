@@ -1,6 +1,7 @@
 (() => {
   const ROLE = {
     header: 'app-global-header',
+    stats: 'app-global-stats',
     user: 'app-global-user',
     logout: 'app-global-logout'
   };
@@ -94,6 +95,15 @@
       header.setAttribute('data-role', ROLE.header);
       header.innerHTML = `
         <div class="app-global-header__inner">
+          <div class="app-global-header__stats" data-role="${ROLE.stats}" hidden>
+            <span class="app-global-header__stat"><span class="app-global-header__stat-label">금일상담</span><strong data-role="app-global-stat-value">24건</strong></span>
+            <span class="app-global-header__divider" aria-hidden="true"></span>
+            <span class="app-global-header__stat"><span class="app-global-header__stat-label">통화시간</span><strong data-role="app-global-stat-value">03:42:15</strong></span>
+            <span class="app-global-header__divider" aria-hidden="true"></span>
+            <span class="app-global-header__stat"><span class="app-global-header__stat-label">고객대기</span><strong data-role="app-global-stat-value">5명</strong></span>
+            <span class="app-global-header__divider" aria-hidden="true"></span>
+            <span class="app-global-header__stat"><span class="app-global-header__stat-label">대기시간</span><strong data-role="app-global-stat-value">01:28</strong></span>
+          </div>
           <div class="app-global-header__user-wrap">
             <span class="app-global-header__user" data-role="${ROLE.user}">상담원</span>
             <button type="button" class="app-global-header__logout" data-role="${ROLE.logout}" aria-label="로그아웃">로그아웃</button>
@@ -106,6 +116,7 @@
     document.body.classList.add('has-global-header');
     syncSidebarWidth();
     syncUserDisplay();
+    syncStatsDisplay();
     bindLogout();
   };
 
@@ -115,3 +126,34 @@
     window.addEventListener('storage', syncUserDisplay);
   });
 })();
+  const isMainPage = () => {
+    const path = (window.location.pathname || '').toLowerCase();
+    return path.endsWith('/main') || path.endsWith('/main/') || path.endsWith('/main.html');
+  };
+
+  const syncStatsDisplay = () => {
+    const statsNode = document.querySelector(`[data-role="${ROLE.stats}"]`);
+    if (!statsNode) return;
+
+    if (!isMainPage()) {
+      statsNode.hidden = true;
+      return;
+    }
+
+    statsNode.hidden = false;
+    const defaults = {
+      todayCount: '24건',
+      callDuration: '03:42:15',
+      waitCustomers: '5명',
+      waitDuration: '01:28'
+    };
+    const pageStats = (window.__PAGE_DATA__ && window.__PAGE_DATA__.globalStats) || {};
+    const stats = { ...defaults, ...pageStats };
+
+    const values = statsNode.querySelectorAll('[data-role="app-global-stat-value"]');
+    if (values.length < 4) return;
+    values[0].textContent = stats.todayCount;
+    values[1].textContent = stats.callDuration;
+    values[2].textContent = stats.waitCustomers;
+    values[3].textContent = stats.waitDuration;
+  };

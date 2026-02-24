@@ -470,7 +470,7 @@ body.has-global-header #app-container.grid-layout {
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-title--lg {
-  font-size: 15px;
+  font-size: 17px;
 }
 
 #center-column > .card.info-card:first-of-type .progress-ring {
@@ -533,6 +533,7 @@ body.has-global-header #app-container.grid-layout {
   min-height: 0;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 24px 36px 20px;
 }
 
 #center-column .pds-live-chat-messages::-webkit-scrollbar {
@@ -594,17 +595,20 @@ body.has-global-header #app-container.grid-layout {
   overflow-y: auto;
 }
 
-#right-column > .card.info-card:nth-of-type(3) {
+#right-column > .card.info-card:nth-of-type(4) {
   flex: 1 1 0;
   min-height: 0;
+  height: calc(100% - 800px);
+  max-height: calc(100% - 800px);
+  overflow-y: auto;
 }
 
 /* match new_main: card body spacing via inner blocks, not card padding */
 #pds-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
 #center-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
 #right-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header) {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 36px;
+  margin-right: 36px;
 }
 
 /* remove inner card padding/inset for requested cards */
@@ -626,7 +630,6 @@ body.has-global-header #app-container.grid-layout {
 
 #center-column > .card.info-card:first-of-type .pds-card-title i,
 #center-column > .card.info-card:nth-of-type(2) .pds-card-title i,
-#center-column > .card.info-card:nth-of-type(3) .pds-note-title i,
 #right-column .pds-current-title i,
 #right-column .pds-detail-title i,
 #right-column .pds-script-title i {
@@ -699,4 +702,8 @@ body {
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
   color: #0F172A;
+}
+
+#center-column #pds-live-chat .pds-live-chat-header {
+  padding: 14px 36px;
 }
