@@ -560,6 +560,19 @@ body.has-global-header #app-container.grid-layout {
 
 #right-column .pds-current-call-card {
   flex: 0 0 auto;
+  padding: 0;
+  background: #FFFFFF;
+  border: 1px solid #DCE3EA;
+  border-radius: 12px;
+}
+
+#right-column .pds-current-call-card > :not(.pds-card-header) {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#right-column .pds-current-top {
+  margin-top: 16px;
 }
 
 #right-column > .card.info-card {
@@ -571,8 +584,8 @@ body.has-global-header #app-container.grid-layout {
 
 /* right column sizing: reduce customer info card height (~200px) */
 #right-column > .card.info-card:nth-of-type(2) {
-  flex: 0 0 320px;
-  max-height: 320px;
+  flex: 0 0 220px;
+  max-height: 220px;
   overflow: hidden;
 }
 
@@ -590,8 +603,8 @@ body.has-global-header #app-container.grid-layout {
 #pds-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
 #center-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
 #right-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header) {
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* remove inner card padding/inset for requested cards */
@@ -618,88 +631,6 @@ body.has-global-header #app-container.grid-layout {
 #right-column .pds-detail-title i,
 #right-column .pds-script-title i {
   color: #64748B;
-}
-
-/* scroll containers by column */
-#pds-column {
-  overflow: hidden;
-}
-
-#pds-column .pds-main-header,
-#pds-column .pds-control-bar {
-  flex: 0 0 auto;
-}
-
-#pds-column .pds-list-area {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#center-column {
-  overflow: hidden;
-}
-
-#center-column > .card.info-card:first-of-type,
-#center-column > .card.info-card:nth-of-type(3) {
-  flex: 0 0 auto;
-}
-
-#center-column > .card.info-card:nth-of-type(2) {
-  flex: 0 0 280px;
-  display: flex;
-  flex-direction: column;
-  height: 280px;
-  max-height: 280px;
-  overflow: hidden;
-}
-
-#center-column > .card.info-card:nth-of-type(2) .pds-log-box {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#center-column #pds-live-chat {
-  flex: 1 1 auto;
-  min-height: 280px;
-}
-
-#center-column .pds-live-chat-messages {
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#right-column {
-  overflow: hidden;
-}
-
-#right-column .pds-current-call-card {
-  flex: 0 0 auto;
-  padding: 0;
-  background: #FFFFFF;
-  border: 1px solid #DCE3EA;
-  border-radius: 12px;
-}
-
-#right-column .pds-current-call-card > :not(.pds-card-header) {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-#right-column .pds-current-top {
-  margin-top: 16px;
-}
-
-#right-column > .card.info-card {
-  flex: 1 1 0;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 @media (max-width: 1600px) {
@@ -763,7 +694,7 @@ body {
 #right-column .pds-current-title,
 #right-column .pds-detail-title,
 #right-column .pds-script-title {
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1;
   font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;

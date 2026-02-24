@@ -12,8 +12,14 @@
   --main-header-control-bg-hover: #f8fafc;
   --main-header-control-border: #cbd5e1;
   --main-header-control-text: #334155;
-  --callback-header-bg: #F8FAFC;
+  --callback-header-bg: #E7EEFA;
+  --callback-header-border: #C9D5E3;
   --callback-header-text-size: 14px;
+  --callback-card-pad-x: 20px;
+  --callback-card-pad-y: 20px;
+  --cb-bg-page: #EEF2F7;
+  --cb-bg-side: #F7F9FC;
+  --cb-bg-center: #FFFFFF;
 }
 
 /* Layout shell styles are unified later in this file to avoid conflicts. */
@@ -506,6 +512,8 @@
   background: #FFFFFF;
   border: 1px solid #DCE3EA;
   border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
   box-shadow: none;
 }
 
@@ -533,7 +541,7 @@
   gap: 8px;
   box-sizing: border-box;
   background: var(--callback-header-bg);
-  border-bottom: 1px solid #E6EAF0;
+  border-bottom: 1px solid var(--callback-header-border);
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -624,7 +632,7 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 16px 20px 16px;
+  padding: var(--callback-card-pad-y) var(--callback-card-pad-x);
 }
 
 /* right: history table scroll + note fixed bottom */
@@ -658,7 +666,7 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: auto;
-  padding: 12px 20px 16px;
+  padding: var(--callback-card-pad-y) var(--callback-card-pad-x);
 }
 
 #right-column .callback-note-card {
@@ -669,11 +677,11 @@
 }
 
 #right-column .callback-note-card .callback-note-textarea {
-  margin: 16px 20px 12px;
+  margin: var(--callback-card-pad-y) var(--callback-card-pad-x) 12px;
 }
 
 #right-column .callback-note-card .callback-modal-actions {
-  margin: 0 20px 16px;
+  margin: 0 var(--callback-card-pad-x) var(--callback-card-pad-y);
   padding-top: 0;
 }
 
@@ -726,12 +734,6 @@
 }
 
 /* callback shell lock: prevent overlap + enforce new_main background tones */
-:root {
-  --cb-bg-page: #EEF2F7;
-  --cb-bg-side: #F7F9FC;
-  --cb-bg-center: #FFFFFF;
-}
-
 html,
 body {
   background: var(--cb-bg-page) !important;
@@ -764,7 +766,7 @@ body {
 }
 
 #sms-column .callback-request-list {
-  padding: 12px;
+  padding: var(--callback-card-pad-y) var(--callback-card-pad-x);
   background: transparent;
 }
 

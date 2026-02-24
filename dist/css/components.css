@@ -2222,7 +2222,10 @@ body.new-main-mode .new-main-routing-title {
 /* force same title scale across schedule / live chat / routing headers */
 body.new-main-mode .new-main-routing-title,
 body.new-main-mode .new-main-schedule-title,
-body.new-main-mode #chat-area .main-live-header .weight-semibold {
+body.new-main-mode #chat-area .main-live-header .weight-semibold,
+body.new-main-mode #coaching-area .main-live-header .weight-semibold,
+body.new-main-mode .history-editor-title,
+body.new-main-mode .softphone-script-title {
   font-size: 17px !important;
   font-weight: 600 !important;
   line-height: 1.4 !important;
