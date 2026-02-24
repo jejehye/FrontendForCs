@@ -45,7 +45,7 @@
 .tab-item:hover { color: var(--color-primary); background: #f8fafc; }
 .tab-item.active { color: var(--color-primary); border-bottom-color: var(--color-primary); background: #fff; }
 
-.callback-card { background: #fff; border: 2px solid var(--color-panel-border); border-radius: 8px; padding: 12px; margin-bottom: 12px; transition: all 0.2s; cursor: pointer; }
+.callback-card { background: #fff; border: 2px solid var(--color-panel-border); border-radius: 8px; padding: 16px; margin-bottom: 14px; transition: all 0.2s; cursor: pointer; }
 .callback-card:hover { border-color: #ff8a00; background: #fff8f0; }
 .callback-card.urgent { border-color: #ff6b6b; background: #fff5f5; }
 .callback-card.completed { border-color: #00c896; background: #f0fff9; opacity: .7; }
@@ -444,20 +444,17 @@
 }
 
 /* Callback unified system (aligned with new_main, style-only) */
-body { overflow: hidden; }
 
 #app-container.grid-layout {
   display: grid;
   grid-template-columns: 60px minmax(340px, 26fr) minmax(520px, 44fr) minmax(360px, 30fr);
   gap: 24px;
-  width: 100vw;
+  width: 100%;
   max-width: none;
   min-width: 0;
-  margin: 0;
-  height: 100vh;
   background: transparent;
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .column,
@@ -476,6 +473,14 @@ body { overflow: hidden; }
   z-index: 50;
 }
 
+#sidebar.col-sidebar {
+  background: var(--color-primary);
+  margin-top: calc(var(--global-header-h) * -1) !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
+
+
 #page-main {
   height: 100%;
   min-height: 0;
@@ -491,20 +496,6 @@ body { overflow: hidden; }
   overflow: hidden;
   padding: 20px;
   gap: 24px;
-}
-
-/* callback left column: remove outer gutter for request management panel */
-#sms-column.col-sms {
-  padding: 0 !important;
-}
-
-.col-sms,
-.col-right {
-  background: #F7F9FC;
-}
-
-.col-center {
-  background: #FFFFFF;
 }
 
 #sms-column,
@@ -656,11 +647,23 @@ body { overflow: hidden; }
 }
 
 #right-column .callback-info-panel {
-  flex: 0 0 auto;
-  min-height: 0;
+  flex: 0 0 360px;
+  min-height: 360px;
   padding: 0;
   overflow: hidden;
-  max-height: 300px;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#right-column .callback-info-panel .callback-info-tabs {
+  flex: 0 0 40px;
+  min-height: 40px;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #right-column .callback-info-panel .callback-info-body {
@@ -763,55 +766,56 @@ body {
   background: var(--cb-bg-center) !important;
 }
 
-/* callback list visibility recovery */
+/* callback visibility + header/sidebar guard (deduped) */
+#sms-column .callback-request-header,
 #sms-column .callback-request-list-wrap,
-#sms-column .callback-request-list {
+#sms-column .callback-request-list,
+#sms-column .callback-card {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
 #sms-column .callback-request-list-wrap {
-  min-height: 260px !important;
+  min-height: 260px;
 }
 
 #sms-column .callback-request-list {
-  padding: 0 !important;
-  background: transparent !important;
+  padding: 12px;
+  background: transparent;
 }
 
-#sms-column .callback-card {
-  display: block !important;
-}
-
-/* outbound send list visibility recovery */
 .callback-outbound-callerid {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .callback-outbound-callerid__table {
-  width: 100% !important;
-  display: table !important;
+  width: 100%;
+  display: table;
 }
 
-/* callback shell: single source of truth (remove header/sidebar overlap) */
-body.callback-mode.has-global-header .app-global-header {
+#right-column .callback-info-panel,
+#right-column .callback-info-panel .callback-info-body,
+#right-column .callback-info-panel .callback-history-table,
+#right-column .callback-info-panel .callback-history-body {
+  visibility: visible;
+  opacity: 1;
+}
+
+#right-column .callback-info-panel .callback-info-body {
+  display: block;
+  overflow-y: auto;
+}
+
+/* callback final guard: keep global header from covering sidebar */
+.app-global-header {
   left: 60px !important;
   width: calc(100vw - 60px) !important;
-  z-index: 40 !important;
 }
 
-body.callback-mode.has-global-header #sidebar.col-sidebar {
-  position: fixed !important;
-  left: 0 !important;
-  top: 0 !important;
-  margin-top: 0 !important;
-  width: 60px !important;
-  min-width: 60px !important;
-  max-width: 60px !important;
-  height: 100vh !important;
-  min-height: 100vh !important;
-  z-index: 100 !important;
+.app-global-header + #app-container.grid-layout {
+  margin-top: var(--global-header-h) !important;
+  height: calc(100vh - var(--global-header-h)) !important;
 }
