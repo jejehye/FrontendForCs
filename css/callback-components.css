@@ -274,14 +274,6 @@
   gap: 8px;
 }
 
-.callback-live-chat-card .main-live-header .weight-semibold {
-  font-size: var(--callback-header-text-size);
-  line-height: 1;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-weight: 700;
-  color: #0F172A;
-}
-
 .callback-live-chat-card .main-live-header-actions {
   display: flex;
   align-items: center;
@@ -568,11 +560,6 @@
   background: transparent;
   border: 0;
   white-space: nowrap;
-  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 700 !important;
-  font-size: var(--callback-header-text-size) !important;
-  line-height: 1 !important;
-  color: #0F172A !important;
 }
 
 /* left column: header/filter fixed + request list scroll */

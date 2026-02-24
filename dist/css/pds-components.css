@@ -18,6 +18,8 @@
   --pds-header-pad-x: 20px;
   --pds-header-text: #0F172A;
   --pds-header-icon: #64748b;
+  --pds-col-gap: 26px;
+  --pds-col-pad: 26px;
 }
 
 
@@ -46,9 +48,9 @@ body {
 .col-right { display: flex; flex-direction: column; }
 
 .col-sidebar { background-color: var(--color-primary); align-items: center; padding-top: 20px; z-index: 50; }
-.col-pds { border-right: 0; background: #F7F9FC; overflow-y: auto; min-width: 0; gap: 24px; padding: 20px; }
-.col-center { border-right: 0; background: #FFFFFF; padding: 20px; gap: 24px; overflow-y: auto; min-width: 0; }
-.col-right { background: #F7F9FC; padding: 20px; gap: 24px; overflow-y: auto; min-width: 0; }
+.col-pds { border-right: 0; background: #F7F9FC; overflow-y: auto; min-width: 0; gap: var(--pds-col-gap); padding: var(--pds-col-pad); }
+.col-center { border-right: 0; background: #FFFFFF; padding: var(--pds-col-pad); gap: var(--pds-col-gap); overflow-y: auto; min-width: 0; }
+.col-right { background: #F7F9FC; padding: var(--pds-col-pad); gap: var(--pds-col-gap); overflow-y: auto; min-width: 0; }
 
 .card,
 .info-card {
@@ -426,7 +428,7 @@ body.has-global-header #app-container.grid-layout {
 #pds-column,
 #center-column,
 #right-column {
-  gap: 24px;
+  gap: var(--pds-col-gap);
 }
 
 #pds-column > *,
@@ -567,6 +569,23 @@ body.has-global-header #app-container.grid-layout {
   overflow-x: hidden;
 }
 
+/* right column sizing: reduce customer info card height (~200px) */
+#right-column > .card.info-card:nth-of-type(2) {
+  flex: 0 0 320px;
+  max-height: 320px;
+  overflow: hidden;
+}
+
+#right-column > .card.info-card:nth-of-type(2) .pds-detail-list {
+  height: calc(100% - 40px);
+  overflow-y: auto;
+}
+
+#right-column > .card.info-card:nth-of-type(3) {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
 /* match new_main: card body spacing via inner blocks, not card padding */
 #pds-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
 #center-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
@@ -590,16 +609,6 @@ body.has-global-header #app-container.grid-layout {
 #right-column .pds-script-list {
   overflow-wrap: anywhere;
   word-break: break-word;
-}
-
-/* PDS aligned design system (same tone as new_main) */
-#pds-column,
-#center-column,
-#right-column,
-#pds-column *:not(i),
-#center-column *:not(i),
-#right-column *:not(i) {
-  font-family: "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 #center-column > .card.info-card:first-of-type .pds-card-title i,

@@ -3345,6 +3345,7 @@ body.new-main-mode .new-main-routing-title {
   background: #F8FAFC;
   border-bottom: 1px solid #E6EAF0;
   font-size: 14px;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
   line-height: 1;
   box-sizing: border-box;
@@ -3358,6 +3359,7 @@ body.new-main-mode .new-main-warning-head {
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 600;
   line-height: 1;
   box-sizing: border-box;

@@ -1,6 +1,5 @@
 window.AppUi?.initSidebarNavigation();
 window.AppUi?.initSingleActiveToggle({ itemSelector: '.tab-item' });
-document.body.classList.add('callback-mode');
 
 const pageData = window.__PAGE_DATA__ || {};
 const callbackDataEndpoint = window.__APP_ENDPOINTS__?.callbackData || '/api/callback';
