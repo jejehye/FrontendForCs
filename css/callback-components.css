@@ -461,8 +461,9 @@
 #sidebar.col-sidebar {
   background: var(--color-primary);
   margin-top: calc(var(--global-header-h) * -1) !important;
-  height: 100vh !important;
-  min-height: 100vh !important;
+  height: auto !important;
+  min-height: calc(100vh + var(--global-header-h)) !important;
+  align-self: stretch !important;
 }
 
 

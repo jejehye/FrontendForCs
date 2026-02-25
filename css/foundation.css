@@ -17,6 +17,13 @@ body {
   --global-header-left: var(--global-sidebar-w);
 }
 
+/* keep left sidebar stretched to full app height on every page */
+#sidebar.col-sidebar {
+  height: auto;
+  min-height: 100vh;
+  align-self: stretch;
+}
+
 body.has-global-header #app-container.grid-layout {
   height: calc(100vh - var(--global-header-h));
   margin-top: var(--global-header-h);
@@ -25,8 +32,8 @@ body.has-global-header #app-container.grid-layout {
 body.has-global-header .col-sidebar {
   position: relative;
   margin-top: calc(var(--global-header-h) * -1);
-  height: 100vh;
-  min-height: 100vh;
+  height: auto;
+  min-height: calc(100vh + var(--global-header-h));
   z-index: 80;
 }
 
