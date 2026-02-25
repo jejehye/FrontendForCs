@@ -24,17 +24,22 @@
 }
 
 
-body { background-color: #f3f4f6; }
+body {
+  background-color: #f3f4f6;
+  overflow: auto;
+}
 
 .grid-layout {
   display: grid;
   grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   width: 100vw;
   min-width: 0;
   margin: 0;
   background: #fff;
   box-shadow: none;
+  overflow: visible;
 }
 
 .column,
@@ -48,7 +53,7 @@ body { background-color: #f3f4f6; }
 .col-center,
 .col-right {
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   padding: var(--sms-col-pad);
   gap: var(--sms-col-gap);
 }
@@ -62,7 +67,7 @@ body { background-color: #f3f4f6; }
 
 #page-main {
   min-height: 0;
-  height: 100%;
+  height: auto;
 }
 
 #sms-column,
@@ -81,7 +86,7 @@ body { background-color: #f3f4f6; }
   display: flex;
   flex-direction: column;
   gap: 24px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #center-column > .info-card:first-child {
@@ -103,7 +108,7 @@ body { background-color: #f3f4f6; }
 }
 
 #right-column {
-  overflow: hidden;
+  overflow: visible;
 }
 
 #right-column > .info-card {
@@ -332,6 +337,13 @@ body { background-color: #f3f4f6; }
 /* 3-column background tone aligned with new_main */
 body {
   background: #EEF2F7;
+}
+
+/* sms final safeguard: allow full-page vertical scroll */
+body.has-global-header #app-container.grid-layout {
+  height: auto !important;
+  min-height: calc(100vh - var(--global-header-h)) !important;
+  overflow: visible !important;
 }
 
 .col-sms,

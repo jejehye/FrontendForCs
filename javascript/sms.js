@@ -228,7 +228,9 @@ function initializeTemplatePagination() {
   };
 
   const rebuildTemplateButtons = () => {
-    templatePageButtons.forEach(button => button.remove());
+    templatePagination.querySelectorAll('[data-action="template-page-btn"], [data-template-page-btn]').forEach(button => {
+      button.remove();
+    });
 
     templatePageButtons = templatePages.map((_, index) => {
       const button = document.createElement('button');
@@ -443,7 +445,9 @@ function rebuildSmsHistoryPagination(totalPages) {
     return;
   }
 
-  smsHistoryPageButtons.forEach(button => button.remove());
+  smsHistoryPagination.querySelectorAll('[data-action="sms-history-page-btn"], [data-sms-history-page-btn]').forEach(button => {
+    button.remove();
+  });
   smsHistoryPageButtons = [];
 
   for (let page = 1; page <= totalPages; page += 1) {

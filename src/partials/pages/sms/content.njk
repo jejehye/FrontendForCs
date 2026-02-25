@@ -3,18 +3,19 @@
 <!-- ===================== SMS Column ===================== -->
 <section id="sms-column" class="column col-sms" data-role="sms-composer" data-channel-label="SMS">
   {% include "partials/pages/main/customer-info.njk" %}
-  <div class="sms-header-bar sms-header-inner">
-    <span class="sms-header-title">
-      <i class="fa-solid fa-comment-sms"></i>
-      SMS 발송
-    </span>
-    <button class="sms-header-refresh">
-      <i class="fa-solid fa-rotate-right"></i>
-    </button>
-  </div>
+  <div class="info-card sms-altalk-panel">
+    <div class="sms-template-header">
+      <span class="sms-header-title">
+        <i class="fa-solid fa-comment-sms"></i>
+        SMS 발송
+      </span>
+      <button class="sms-header-refresh">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
 
-  <div class="sms-body">
-    <div class="sms-stack">
+    <div class="sms-body">
+      <div class="sms-stack">
       <div class="sms-panel">
         <h3 class="sms-section-title">
           <i class="fa-solid fa-user-group sms-primary-text"></i>
@@ -74,13 +75,14 @@
         </div>
       </div>
 
-      <div class="sms-send-row">
-        <button data-action="composer-send-instant" class="sms-primary-btn sms-send-now-btn">
-          <i class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
-        </button>
-        <button data-action="composer-send-scheduled" class="sms-send-schedule-btn">
-          <i class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
-        </button>
+        <div class="sms-send-row">
+          <button data-action="composer-send-instant" class="sms-primary-btn sms-send-now-btn">
+            <i class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
+          </button>
+          <button data-action="composer-send-scheduled" class="sms-send-schedule-btn">
+            <i class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
+          </button>
+        </div>
       </div>
     </div>
   </div>
