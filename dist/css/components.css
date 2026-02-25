@@ -1234,7 +1234,7 @@ body.new-main-mode {
   color: var(--text);
   font-size: 14px;
   line-height: 1.6;
-  overflow: hidden;
+  overflow: auto;
 }
 
 body.new-main-mode,
@@ -1247,30 +1247,32 @@ body.new-main-mode .main-shell {
 body.new-main-mode #app-container.grid-layout {
   grid-template-columns: 60px minmax(360px, 1fr) minmax(420px, 1.05fr) minmax(420px, 1.05fr);
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   min-width: 0;
   margin: 0;
   background: var(--surface);
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 body.new-main-mode.has-global-header #app-container.grid-layout {
-  height: calc(100vh - var(--global-header-h));
+  height: auto;
+  min-height: calc(100vh - var(--global-header-h));
   margin-top: var(--global-header-h);
   overflow: visible;
 }
 
 body.new-main-mode #page-main {
   min-height: 0;
-  height: 100%;
+  height: auto;
 }
 
 body.new-main-mode .col-chat,
 body.new-main-mode .col-center,
 body.new-main-mode .col-right {
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   padding: var(--nm-col-pad);
   gap: var(--nm-col-gap);
 }
@@ -1299,17 +1301,17 @@ body.new-main-mode #right-column {
 
 body.new-main-mode #center-column {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
   gap: 32px;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 body.new-main-mode #center-column > #notice-area,
 body.new-main-mode #center-column > #coaching-area {
   min-height: 0;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
@@ -2276,21 +2278,6 @@ body.new-main-mode #notice-area .new-main-schedule-pagination {
   padding-bottom: 0 !important;
 }
 
-/* notice card height: fit content up to table + pagination */
-body.new-main-mode #center-column {
-  grid-template-rows: auto minmax(0, 1fr) !important;
-}
-
-body.new-main-mode #center-column > #notice-area {
-  align-self: start;
-  height: auto !important;
-  min-height: 0 !important;
-}
-
-body.new-main-mode #notice-area .new-main-schedule-panel {
-  height: auto !important;
-}
-
 /* warning description: single line and centered in content area */
 body.new-main-mode .new-main-warning-content {
   display: flex;
@@ -2962,18 +2949,6 @@ body.new-main-mode .new-main-status-segment:hover {
 }
 
 /* 2) center card emphasis */
-body.new-main-mode #chat-area {
-  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.10);
-}
-
-body.new-main-mode #chat-area .main-live-header {
-  padding: 14px 36px;
-}
-
-body.new-main-mode #chat-area .chat-message-list {
-  padding: 24px 36px 20px;
-}
-
 body.new-main-mode #chat-area .chat-bubble {
   color: #0F172A;
 }
@@ -3055,7 +3030,8 @@ body.new-main-mode textarea:focus {
 @media (max-width: 1600px) {
   body.new-main-mode #app-container.grid-layout {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     margin: 0;
     grid-template-columns: 60px minmax(340px, 1fr) minmax(400px, 1.05fr) minmax(400px, 1.05fr);
   }
@@ -3064,7 +3040,8 @@ body.new-main-mode textarea:focus {
 @media (max-width: 1440px) {
   body.new-main-mode #app-container.grid-layout {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     margin: 0;
     grid-template-columns: 60px minmax(320px, 1fr) minmax(380px, 1.03fr) minmax(380px, 1.03fr);
   }
@@ -3080,7 +3057,8 @@ body.new-main-mode textarea:focus {
 @media (max-width: 1366px) {
   body.new-main-mode #app-container.grid-layout {
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     margin: 0;
     grid-template-columns: 60px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
   }
@@ -3094,10 +3072,6 @@ body.new-main-mode textarea:focus {
 }
 
 /* text hierarchy system: color-only refinements */
-body.new-main-mode {
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
 
 body.new-main-mode .new-main-header-strong,
 body.new-main-mode .account-panel-title,
