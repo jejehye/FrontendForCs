@@ -3365,3 +3365,33 @@ body.new-main-mode #verify-form .verify-transfer-actions {
   margin-top: 3px;
   gap: 3px;
 }
+
+/* new_main final safeguard: always allow full-page scroll */
+html,
+body.new-main-mode {
+  height: auto !important;
+  min-height: 100% !important;
+}
+
+body.new-main-mode {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+body.new-main-mode #app-container.grid-layout {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+
+body.new-main-mode.has-global-header #app-container.grid-layout {
+  min-height: calc(100vh - var(--global-header-h)) !important;
+}
+
+body.new-main-mode #page-main,
+body.new-main-mode #chat-column,
+body.new-main-mode #center-column,
+body.new-main-mode #right-column {
+  height: auto !important;
+  overflow: visible !important;
+}
