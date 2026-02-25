@@ -128,7 +128,7 @@
   
 
 <!-- ===================== SMS Column ===================== -->
-<section id="sms-column" class="column col-sms">
+<section id="sms-column" class="column col-sms" data-role="sms-composer" data-channel-label="SMS">
   <div class="chat-panel-header">
   <div class="chat-status-row">
     <span class="status-badge status-ib">
@@ -193,14 +193,14 @@
               type="text"
               placeholder="전화번호 입력 (010-1234-5678)"
               class="sms-field-input"
-              data-role="sms-recipient-input"
+              data-role="composer-recipient-input"
               inputmode="numeric"
             >
-            <button type="button" class="sms-recipient-btn" data-action="sms-recipient-add">
+            <button type="button" class="sms-recipient-btn" data-action="composer-recipient-add">
               <i class="fa-solid fa-plus sms-icon-inline-sm"></i>추가
             </button>
           </div>
-          <div class="sms-recipient-list">
+          <div class="sms-recipient-list" data-role="composer-recipient-list">
             
               <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">
                 김신한 (010-1234-5678)
@@ -230,8 +230,8 @@
           메시지 내용
         </h3>
         <div class="sms-textarea-wrap">
-          <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input" data-role="sms-message-input"></textarea>
-          <span class="char-counter" data-role="sms-char-counter">0 / 2000</span>
+          <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input" data-role="composer-message-input"></textarea>
+          <span class="char-counter" data-role="composer-char-counter">0 / 2000</span>
         </div>
         <div class="sms-action-row sms-action-row--top">
           <button class="sms-variable-btn">
@@ -247,10 +247,10 @@
       </div>
 
       <div class="sms-send-row">
-        <button data-action="sms-send-instant" data-sms-send="instant" class="sms-primary-btn sms-send-now-btn">
+        <button data-action="composer-send-instant" class="sms-primary-btn sms-send-now-btn">
           <i class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
         </button>
-        <button data-action="sms-send-scheduled" data-sms-send="scheduled" class="sms-send-schedule-btn">
+        <button data-action="composer-send-scheduled" class="sms-send-schedule-btn">
           <i class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
         </button>
       </div>
@@ -260,7 +260,147 @@
 
 <!-- ===================== Center Column ===================== -->
 <section id="center-column" class="column col-center">
-  <div class="info-card">
+  <div class="info-card sms-altalk-panel" data-role="sms-composer" data-channel-label="알림톡">
+    <div class="sms-template-header">
+      <h3 class="sms-template-title">
+        <i class="fa-solid fa-comment-dots sms-primary-text"></i>
+        알림톡 발송
+      </h3>
+    </div>
+    <div class="sms-body">
+      <div class="sms-stack">
+        <div class="sms-panel">
+          <h3 class="sms-section-title">
+            <i class="fa-solid fa-user-group sms-primary-text"></i>
+            수신자 선택
+          </h3>
+          <div class="sms-section-block">
+            <div class="sms-input-row">
+              <input
+                type="text"
+                placeholder="전화번호 입력 (010-1234-5678)"
+                class="sms-field-input"
+                data-role="composer-recipient-input"
+                inputmode="numeric"
+              >
+              <button type="button" class="sms-recipient-btn" data-action="composer-recipient-add">
+                <i class="fa-solid fa-plus sms-icon-inline-sm"></i>추가
+              </button>
+            </div>
+            <div class="sms-recipient-list" data-role="composer-recipient-list">
+              <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">김신한 (010-1234-5678)<i class="fa-solid fa-xmark sms-icon-danger-hover"></i></span>
+              <span class="recipient-chip recipient-chip-primary" data-role="recipient-chip">이투자 (010-9876-5432)<i class="fa-solid fa-xmark sms-icon-danger-hover"></i></span>
+            </div>
+          </div>
+          <div class="sms-action-row">
+            <button class="sms-recipient-btn">
+              <i class="fa-solid fa-address-book sms-icon-inline-sm"></i>주소록
+            </button>
+            <button class="sms-recipient-btn">
+              <i class="fa-solid fa-file-excel sms-icon-inline-sm"></i>엑셀 업로드
+            </button>
+          </div>
+        </div>
+
+        <div class="sms-panel">
+          <h3 class="sms-section-title">
+            <i class="fa-solid fa-pen-to-square sms-accent-icon"></i>
+            메시지 내용
+          </h3>
+          <div class="sms-textarea-wrap">
+            <textarea placeholder="메시지 내용을 입력하세요..." class="sms-message-input" data-role="composer-message-input"></textarea>
+            <span class="char-counter" data-role="composer-char-counter">0 / 2000</span>
+          </div>
+          <div class="sms-action-row sms-action-row--top">
+            <button class="sms-variable-btn">
+              <i class="fa-solid fa-user sms-icon-inline-sm"></i>고객명
+            </button>
+            <button class="sms-variable-btn">
+              <i class="fa-solid fa-phone sms-icon-inline-sm"></i>연락처
+            </button>
+            <button class="sms-variable-btn">
+              <i class="fa-solid fa-calendar sms-icon-inline-sm"></i>날짜
+            </button>
+          </div>
+        </div>
+
+        <div class="sms-send-row">
+          <button data-action="composer-send-instant" class="sms-primary-btn sms-send-now-btn">
+            <i class="fa-solid fa-paper-plane sms-icon-inline-md"></i>즉시 발송
+          </button>
+          <button data-action="composer-send-scheduled" class="sms-send-schedule-btn">
+            <i class="fa-regular fa-clock sms-icon-inline-md"></i>예약 발송
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Side Panel ===================== -->
+<section id="right-column" class="column col-right">
+  <div class="info-card sms-history-panel">
+    <div class="sms-history-top">
+      <h4 class="sms-history-title">
+        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+        발송이력 조회
+      </h4>
+      <span class="sms-history-meta">고객전화번호 기준</span>
+    </div>
+    <div class="sms-history-search">
+      <input
+        type="text"
+        inputmode="numeric"
+        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
+        class="sms-field-input"
+        data-role="sms-history-phone"
+        data-sms-history-phone
+      >
+      <button
+        type="button"
+        class="btn--history-search sms-btn-nowrap"
+        data-action="sms-history-search"
+        data-sms-history-search
+      >
+        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
+        조회
+      </button>
+    </div>
+    <div class="sms-history-table-wrap">
+      <table class="sms-history-table table-compact">
+        <thead>
+          <tr>
+            <th>발송일시</th>
+            <th>템플릿명</th>
+            <th class="sms-status-col">상태</th>
+          </tr>
+        </thead>
+        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
+          <tr>
+            <td colspan="3" class="sms-history-empty-row">
+              조회할 고객전화번호를 입력해 주세요.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination pagination--history sms-pagination-wrap" data-role="sms-history-pagination" data-sms-history-pagination>
+      <button class="pagination__btn" data-action="sms-history-nav-first" data-sms-history-nav="first">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+      <button class="pagination__btn" data-action="sms-history-nav-prev" data-sms-history-nav="prev">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="pagination__btn is-active" data-action="sms-history-page-btn" data-target="1" data-sms-history-page-btn="1">1</button>
+      <button class="pagination__btn" data-action="sms-history-nav-next" data-sms-history-nav="next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+      <button class="pagination__btn" data-action="sms-history-nav-last" data-sms-history-nav="last">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="info-card sms-template-panel">
     <div class="sms-template-header">
       <h3 class="sms-template-title">
         <i class="fa-solid fa-file-lines sms-primary-text"></i>
@@ -361,56 +501,6 @@
       <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
         <i class="fa-solid fa-angles-right"></i>
       </button>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== Side Panel ===================== -->
-<section id="right-column" class="column col-right">
-  <div class="info-card sms-history-panel">
-    <div class="sms-history-top">
-      <h4 class="sms-history-title">
-        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
-        발송이력 조회
-      </h4>
-      <span class="sms-history-meta">고객전화번호 기준</span>
-    </div>
-    <div class="sms-history-search">
-      <input
-        type="text"
-        inputmode="numeric"
-        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
-        class="sms-field-input"
-        data-role="sms-history-phone"
-        data-sms-history-phone
-      >
-      <button
-        type="button"
-        class="btn--history-search sms-btn-nowrap"
-        data-action="sms-history-search"
-        data-sms-history-search
-      >
-        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
-        조회
-      </button>
-    </div>
-    <div class="sms-history-table-wrap">
-      <table class="sms-history-table table-compact">
-        <thead>
-          <tr>
-            <th>발송일시</th>
-            <th>템플릿명</th>
-            <th class="sms-status-col">상태</th>
-          </tr>
-        </thead>
-        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
-          <tr>
-            <td colspan="3" class="sms-history-empty-row">
-              조회할 고객전화번호를 입력해 주세요.
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>

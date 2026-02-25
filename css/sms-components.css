@@ -290,10 +290,19 @@ body { background-color: #f3f4f6; }
 
 .sms-pagination-wrap { margin: 0; padding: 12px var(--sms-card-pad-x) 16px; }
 
-.sms-history-panel { height: 360px; display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.sms-history-panel { height: 280px; display: flex; flex-direction: column; padding: 0; overflow: hidden; }
 .sms-history-title { display: flex; align-items: center; gap: 8px; }
 .sms-history-meta { font-size: 12px; color: #6b7280; }
 .sms-history-table-wrap { flex: 1; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 4px; margin: 0 var(--sms-card-pad-x) var(--sms-card-pad-y); }
+.sms-template-panel { display: flex; flex-direction: column; min-height: 0; padding: 0; overflow: hidden; }
+.sms-template-panel .sms-template-list { flex: 1 1 auto; min-height: 0; }
+.sms-altalk-panel { display: flex; flex-direction: column; min-height: 0; padding: 0; overflow: hidden; }
+.sms-altalk-panel .sms-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: var(--sms-card-pad-y) var(--sms-card-pad-x);
+  background: #fff;
+}
 
 .sms-history-search {
   padding: 12px var(--sms-card-pad-x);

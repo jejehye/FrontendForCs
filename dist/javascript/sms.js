@@ -38,8 +38,7 @@ let smsHistoryRecords = Array.isArray(smsData.sms_history_records) && smsData.sm
   ? smsData.sms_history_records
   : defaultSmsHistoryRecords;
 
-const messageTextarea = selectOne('[data-role="sms-message-input"]', 'textarea');
-const charCounter = selectOne('[data-role="sms-char-counter"]', '.char-counter');
+const getComposerSections = () => selectAll('[data-role="sms-composer"]');
 
 const templateList = selectOne('[data-role="template-list"]', '[data-template-list]');
 const templatePagination = selectOne('[data-role="template-pagination"]', '[data-template-pagination]');
@@ -52,17 +51,19 @@ const templateSearchInput = selectOne('[data-role="template-search"]', '[data-te
 const smsHistoryPhoneInput = selectOne('[data-role="sms-history-phone"]', '[data-sms-history-phone]');
 const smsHistorySearchButton = selectOne('[data-action="sms-history-search"]', '[data-sms-history-search]');
 const smsHistoryBody = selectOne('[data-role="sms-history-body"]', '[data-sms-history-body]');
-const recipientInput = selectOne('[data-role="sms-recipient-input"]');
-const recipientAddButton = selectOne('[data-action="sms-recipient-add"]');
-const recipientList = document.querySelector('.sms-recipient-list');
-
-const instantSendButton = selectOne('[data-action="sms-send-instant"]', '[data-sms-send="instant"]');
-const scheduledSendButton = selectOne('[data-action="sms-send-scheduled"]', '[data-sms-send="scheduled"]');
-
+const smsHistoryPagination = selectOne('[data-role="sms-history-pagination"]', '[data-sms-history-pagination]');
+const smsHistoryFirstButton = selectOne('[data-action="sms-history-nav-first"]', '[data-sms-history-nav="first"]');
+const smsHistoryPrevButton = selectOne('[data-action="sms-history-nav-prev"]', '[data-sms-history-nav="prev"]');
+const smsHistoryNextButton = selectOne('[data-action="sms-history-nav-next"]', '[data-sms-history-nav="next"]');
+const smsHistoryLastButton = selectOne('[data-action="sms-history-nav-last"]', '[data-sms-history-nav="last"]');
 let templatePageButtons = [];
 let activeTemplatePage = 1;
 const templatePageSize = 10;
 let templatePages = [];
+let smsHistoryPageButtons = [];
+let activeSmsHistoryPage = 1;
+const smsHistoryPageSize = 5;
+let filteredSmsHistoryRecords = [];
 
 function createRecipientChip(recipient) {
   const chip = document.createElement('span');
@@ -148,17 +149,14 @@ function createTemplateCard(template) {
 
 function renderSmsDynamicBlocks(data) {
   const recipients = Array.isArray(data.recipients) ? data.recipients : [];
-  const notices = Array.isArray(data.notices) ? data.notices : [];
   const templates = Array.isArray(data.templates) ? data.templates : [];
 
-  if (recipientList) {
-    recipientList.replaceChildren(...recipients.map(createRecipientChip));
-  }
-
-  const noticeList = document.querySelector('.sms-notice-list');
-  if (noticeList) {
-    noticeList.replaceChildren(...notices.map(createNoticeItem));
-  }
+  getComposerSections().forEach(section => {
+    const recipientList = section.querySelector('[data-role="composer-recipient-list"]');
+    if (recipientList) {
+      recipientList.replaceChildren(...recipients.map(createRecipientChip));
+    }
+  });
 
   if (templateList) {
     templateList.replaceChildren(...templates.map(createTemplateCard));
@@ -172,14 +170,16 @@ function bindTemplateSelect() {
       this.classList.add('selected');
 
       const templateText = this.querySelector('p')?.textContent?.trim() || '';
-
-      if (messageTextarea) {
-        messageTextarea.value = templateText;
-      }
-
-      if (charCounter) {
-        charCounter.textContent = `${templateText.length} / 2000`;
-      }
+      getComposerSections().forEach(section => {
+        const textarea = section.querySelector('[data-role="composer-message-input"]');
+        const counter = section.querySelector('[data-role="composer-char-counter"]');
+        if (textarea) {
+          textarea.value = templateText;
+        }
+        if (counter) {
+          counter.textContent = `${templateText.length} / 2000`;
+        }
+      });
     });
   });
 }
@@ -283,11 +283,11 @@ const formatRecipientPhone = value => {
   return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
 };
 
-function addRecipientByPhone(phoneValue) {
+function addRecipientByPhone(phoneValue, focusTarget) {
   const digits = normalizePhone(phoneValue);
   if (digits.length < 10) {
     alert('전화번호를 정확히 입력해 주세요.');
-    recipientInput?.focus();
+    focusTarget?.focus();
     return;
   }
 
@@ -295,7 +295,7 @@ function addRecipientByPhone(phoneValue) {
   const exists = recipients.some(item => normalizePhone(item.phone || '') === digits);
   if (exists) {
     alert('이미 추가된 수신자입니다.');
-    recipientInput?.focus();
+    focusTarget?.focus();
     return;
   }
 
@@ -306,13 +306,31 @@ function addRecipientByPhone(phoneValue) {
   smsData.recipients = recipients;
   renderSmsDynamicBlocks(smsData);
 
-  if (recipientInput) {
-    recipientInput.value = '';
-    recipientInput.focus();
+  if (focusTarget) {
+    focusTarget.value = '';
+    focusTarget.focus();
   }
 }
 
-function bindRecipientActions() {
+function getRecipientCount() {
+  return Array.isArray(smsData.recipients) ? smsData.recipients.length : 0;
+}
+
+function initComposerSection(section) {
+  const recipientInput = section.querySelector('[data-role="composer-recipient-input"]');
+  const recipientList = section.querySelector('[data-role="composer-recipient-list"]');
+  const addButton = section.querySelector('[data-action="composer-recipient-add"]');
+  const messageTextarea = section.querySelector('[data-role="composer-message-input"]');
+  const charCounter = section.querySelector('[data-role="composer-char-counter"]');
+  const instantSendButton = section.querySelector('[data-action="composer-send-instant"]');
+  const scheduledSendButton = section.querySelector('[data-action="composer-send-scheduled"]');
+  const channelLabel = section.getAttribute('data-channel-label') || '메시지';
+
+  if (section.dataset.composerBound === 'true') {
+    return;
+  }
+  section.dataset.composerBound = 'true';
+
   if (recipientInput) {
     recipientInput.addEventListener('input', () => {
       recipientInput.value = formatRecipientPhone(recipientInput.value);
@@ -321,14 +339,14 @@ function bindRecipientActions() {
     recipientInput.addEventListener('keydown', event => {
       if (event.key === 'Enter') {
         event.preventDefault();
-        addRecipientByPhone(recipientInput.value);
+        addRecipientByPhone(recipientInput.value, recipientInput);
       }
     });
   }
 
-  if (recipientAddButton) {
-    recipientAddButton.addEventListener('click', () => {
-      addRecipientByPhone(recipientInput?.value || '');
+  if (addButton && recipientInput) {
+    addButton.addEventListener('click', () => {
+      addRecipientByPhone(recipientInput.value, recipientInput);
     });
   }
 
@@ -351,13 +369,51 @@ function bindRecipientActions() {
       renderSmsDynamicBlocks(smsData);
     });
   }
+
+  if (messageTextarea) {
+    messageTextarea.addEventListener('input', () => {
+      if (charCounter) {
+        charCounter.textContent = `${messageTextarea.value.length} / 2000`;
+      }
+    });
+  }
+
+  const validateSend = () => {
+    const message = messageTextarea?.value.trim() || '';
+    if (!message) {
+      alert('메시지 내용을 입력해 주세요.');
+      messageTextarea?.focus();
+      return false;
+    }
+    if (!getRecipientCount()) {
+      alert('수신자를 1명 이상 선택해 주세요.');
+      return false;
+    }
+    return true;
+  };
+
+  if (instantSendButton) {
+    instantSendButton.addEventListener('click', () => {
+      if (!validateSend()) return;
+      alert(`${getRecipientCount()}명에게 ${channelLabel} 즉시 발송되었습니다.`);
+    });
+  }
+
+  if (scheduledSendButton) {
+    scheduledSendButton.addEventListener('click', () => {
+      if (!validateSend()) return;
+      const scheduledAt = prompt('예약 발송 시간을 입력하세요. (예: 2024-01-25 09:00)', '2024-01-25 09:00');
+      if (!scheduledAt) return;
+      alert(`${getRecipientCount()}명에게 ${channelLabel} ${scheduledAt} 예약 발송되었습니다.`);
+    });
+  }
 }
 
 function createHistoryMessageRow(message) {
   const row = document.createElement('tr');
   const cell = document.createElement('td');
   cell.colSpan = 3;
-  cell.className = 'text-center text-xs text-gray-400 py-3';
+  cell.className = 'sms-history-empty-row';
   cell.textContent = message;
   row.appendChild(cell);
   return row;
@@ -382,79 +438,144 @@ function createHistoryRecordRow(record) {
   return row;
 }
 
-function renderSmsHistoryRows(records) {
+function rebuildSmsHistoryPagination(totalPages) {
+  if (!smsHistoryPagination || !smsHistoryNextButton) {
+    return;
+  }
+
+  smsHistoryPageButtons.forEach(button => button.remove());
+  smsHistoryPageButtons = [];
+
+  for (let page = 1; page <= totalPages; page += 1) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'pagination__btn';
+    button.setAttribute('data-action', 'sms-history-page-btn');
+    button.setAttribute('data-target', String(page));
+    button.setAttribute('data-sms-history-page-btn', String(page));
+    button.textContent = String(page);
+    smsHistoryPagination.insertBefore(button, smsHistoryNextButton);
+    smsHistoryPageButtons.push(button);
+  }
+}
+
+function setSmsHistoryPaginationState(totalPages) {
+  if (!smsHistoryFirstButton || !smsHistoryPrevButton || !smsHistoryNextButton || !smsHistoryLastButton) {
+    return;
+  }
+
+  const isEmpty = totalPages <= 0;
+  const maxPage = Math.max(1, totalPages);
+  activeSmsHistoryPage = Math.min(maxPage, Math.max(1, activeSmsHistoryPage));
+
+  smsHistoryPageButtons.forEach(button => {
+    const page = Number(button.getAttribute('data-target') || button.getAttribute('data-sms-history-page-btn'));
+    button.classList.toggle('is-active', page === activeSmsHistoryPage);
+  });
+
+  smsHistoryFirstButton.disabled = isEmpty || activeSmsHistoryPage === 1;
+  smsHistoryPrevButton.disabled = isEmpty || activeSmsHistoryPage === 1;
+  smsHistoryNextButton.disabled = isEmpty || activeSmsHistoryPage === maxPage;
+  smsHistoryLastButton.disabled = isEmpty || activeSmsHistoryPage === maxPage;
+}
+
+function renderSmsHistoryRows(records, pageNumber = 1) {
   if (!smsHistoryBody) {
     return;
   }
 
-  if (!records.length) {
+  filteredSmsHistoryRecords = Array.isArray(records) ? records : [];
+
+  if (!filteredSmsHistoryRecords.length) {
+    activeSmsHistoryPage = 1;
+    rebuildSmsHistoryPagination(0);
+    setSmsHistoryPaginationState(0);
     smsHistoryBody.replaceChildren(createHistoryMessageRow('조회 결과가 없습니다.'));
     return;
   }
 
-  smsHistoryBody.replaceChildren(...records.map(createHistoryRecordRow));
+  const totalPages = Math.ceil(filteredSmsHistoryRecords.length / smsHistoryPageSize);
+  activeSmsHistoryPage = Math.min(totalPages, Math.max(1, pageNumber));
+
+  rebuildSmsHistoryPagination(totalPages);
+  setSmsHistoryPaginationState(totalPages);
+
+  const startIndex = (activeSmsHistoryPage - 1) * smsHistoryPageSize;
+  const pageRows = filteredSmsHistoryRecords.slice(startIndex, startIndex + smsHistoryPageSize);
+  smsHistoryBody.replaceChildren(...pageRows.map(createHistoryRecordRow));
+}
+
+function renderSmsHistoryPrompt(message) {
+  if (!smsHistoryBody) {
+    return;
+  }
+  filteredSmsHistoryRecords = [];
+  activeSmsHistoryPage = 1;
+  rebuildSmsHistoryPagination(0);
+  setSmsHistoryPaginationState(0);
+  smsHistoryBody.replaceChildren(createHistoryMessageRow(message));
 }
 
 function handleSmsHistorySearch() {
   const keyword = normalizePhone(smsHistoryPhoneInput?.value || '');
 
   if (!keyword) {
-    if (smsHistoryBody) {
-      smsHistoryBody.replaceChildren(createHistoryMessageRow('조회할 고객전화번호를 입력해 주세요.'));
-    }
+    renderSmsHistoryPrompt('조회할 고객전화번호를 입력해 주세요.');
     return;
   }
 
   const results = smsHistoryRecords.filter(record => record.phone.includes(keyword));
-  renderSmsHistoryRows(results);
+  renderSmsHistoryRows(results, 1);
 }
 
-function getRecipientCount() {
-  return selectAll('[data-role="recipient-chip"]', '.recipient-chip').length;
-}
-
-function validateSend() {
-  const message = messageTextarea?.value.trim() || '';
-  if (!message) {
-    alert('메시지 내용을 입력해 주세요.');
-    messageTextarea?.focus();
-    return false;
+function bindSmsHistoryPagination() {
+  if (!smsHistoryPagination || !smsHistoryFirstButton || !smsHistoryPrevButton || !smsHistoryNextButton || !smsHistoryLastButton) {
+    return;
   }
-
-  if (!getRecipientCount()) {
-    alert('수신자를 1명 이상 선택해 주세요.');
-    return false;
+  if (smsHistoryPagination.dataset.bound === 'true') {
+    return;
   }
+  smsHistoryPagination.dataset.bound = 'true';
 
-  return true;
-}
+  smsHistoryPagination.addEventListener('click', event => {
+    const pageButton = event.target.closest('[data-action="sms-history-page-btn"]');
+    if (pageButton) {
+      const page = Number(pageButton.getAttribute('data-target') || pageButton.getAttribute('data-sms-history-page-btn'));
+      if (Number.isFinite(page)) {
+        renderSmsHistoryRows(filteredSmsHistoryRecords, page);
+      }
+      return;
+    }
 
-function bindSendActions() {
-  if (instantSendButton) {
-    instantSendButton.addEventListener('click', () => {
-      if (!validateSend()) return;
-      alert(`${getRecipientCount()}명에게 즉시 발송되었습니다.`);
-    });
-  }
+    const navButton = event.target.closest('[data-action]');
+    if (!navButton) {
+      return;
+    }
 
-  if (scheduledSendButton) {
-    scheduledSendButton.addEventListener('click', () => {
-      if (!validateSend()) return;
-      const scheduledAt = prompt('예약 발송 시간을 입력하세요. (예: 2024-01-25 09:00)', '2024-01-25 09:00');
-      if (!scheduledAt) return;
-      alert(`${getRecipientCount()}명에게 ${scheduledAt} 예약 발송되었습니다.`);
-    });
-  }
+    if (navButton.matches('[data-action="sms-history-nav-first"]')) {
+      renderSmsHistoryRows(filteredSmsHistoryRecords, 1);
+      return;
+    }
+    if (navButton.matches('[data-action="sms-history-nav-prev"]')) {
+      renderSmsHistoryRows(filteredSmsHistoryRecords, activeSmsHistoryPage - 1);
+      return;
+    }
+    if (navButton.matches('[data-action="sms-history-nav-next"]')) {
+      renderSmsHistoryRows(filteredSmsHistoryRecords, activeSmsHistoryPage + 1);
+      return;
+    }
+    if (navButton.matches('[data-action="sms-history-nav-last"]')) {
+      const lastPage = Math.ceil(filteredSmsHistoryRecords.length / smsHistoryPageSize) || 1;
+      renderSmsHistoryRows(filteredSmsHistoryRecords, lastPage);
+    }
+  });
 }
 
 function bindBasicEvents() {
-  if (messageTextarea) {
-    messageTextarea.addEventListener('input', function handleMessageInput() {
-      if (charCounter) {
-        charCounter.textContent = `${this.value.length} / 2000`;
-      }
-    });
+  if (document.body.dataset.smsBasicBound === 'true') {
+    return;
   }
+  document.body.dataset.smsBasicBound = 'true';
 
   if (smsHistorySearchButton) {
     smsHistorySearchButton.addEventListener('click', handleSmsHistorySearch);
@@ -468,6 +589,9 @@ function bindBasicEvents() {
       }
     });
   }
+
+  bindSmsHistoryPagination();
+  renderSmsHistoryPrompt('조회할 고객전화번호를 입력해 주세요.');
 }
 
 async function loadSmsData() {
@@ -499,10 +623,9 @@ async function initSmsPage() {
     : defaultSmsHistoryRecords;
 
   renderSmsDynamicBlocks(smsData);
-  bindRecipientActions();
+  getComposerSections().forEach(initComposerSection);
   bindBasicEvents();
   initializeTemplatePagination();
-  bindSendActions();
 }
 
 const smsPageModule = window.PageModule?.create({
@@ -527,9 +650,8 @@ const smsPageModule = window.PageModule?.create({
   },
   events: {
     bind: () => {
-      bindRecipientActions();
+      getComposerSections().forEach(initComposerSection);
       bindBasicEvents();
-      bindSendActions();
     }
   }
 });
