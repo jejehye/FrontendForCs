@@ -339,16 +339,12 @@ body {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 0;
+  overflow-x: hidden;
+  padding: 16px 20px;
   background: #f8fafc;
   display: flex;
   flex-direction: column;
   gap: 14px;
-}
-
-#center-column #pds-live-chat .pds-live-chat-messages.chat-message-list {
-  padding: 0;
-  margin: 0;
 }
 
 #center-column #pds-live-chat .main-live-msg {
@@ -529,13 +525,6 @@ body.has-global-header #app-container.grid-layout {
   min-height: 280px;
 }
 
-#center-column .pds-live-chat-messages {
-  min-height: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 24px 36px 20px;
-}
-
 #center-column .pds-live-chat-messages::-webkit-scrollbar {
   width: 8px;
 }
@@ -612,10 +601,18 @@ body.has-global-header #app-container.grid-layout {
 }
 
 /* remove inner card padding/inset for requested cards */
-#center-column > .card.info-card:first-of-type > :not(.pds-card-header),
+#center-column > .card.info-card:first-of-type > :not(.pds-card-header) {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
 #center-column .pds-live-chat-panel > :not(.pds-live-chat-header) {
   margin-left: 0;
   margin-right: 0;
+}
+
+#center-column > .card.info-card:nth-of-type(2) .pds-log-box {
+  padding: 16px;
 }
 
 /* prevent horizontal layout break from long content */
@@ -704,6 +701,14 @@ body {
   color: #0F172A;
 }
 
-#center-column #pds-live-chat .pds-live-chat-header {
-  padding: 14px 36px;
+/* keep realtime-chat header independent from generic .main-live-header rules */
+#center-column #pds-live-chat .pds-live-chat-header.main-live-header {
+  height: 40px;
+  min-height: 40px;
+  padding: 8px 20px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid #C9D5E3;
+  border-radius: 0;
+  box-sizing: border-box;
 }
