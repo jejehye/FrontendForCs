@@ -335,13 +335,14 @@ body {
 }
 
 .pds-live-chat-panel .main-live-pause-btn:hover { background: var(--main-header-control-bg-hover); }
+.pds-live-chat-panel .main-live-pause-btn.is-active { background: #e2e8f0; color: #334155; }
 
 .pds-live-chat-messages {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 16px 20px;
+  padding: 30px;
   background: #f8fafc;
   display: flex;
   flex-direction: column;
@@ -673,7 +674,6 @@ body {
 #center-column > .card.info-card:nth-of-type(2) .pds-between-row-md,
 #center-column .pds-card-header,
 #center-column .pds-note-header,
-#center-column .pds-live-chat-header,
 #right-column .pds-card-header,
 #right-column .pds-note-header,
 #right-column .pds-live-chat-header {
@@ -709,8 +709,12 @@ body {
 #center-column #pds-live-chat .pds-live-chat-header.main-live-header {
   height: 40px;
   min-height: 40px;
-  padding: 8px 20px;
+  padding: var(--pds-header-pad-y) var(--pds-header-pad-x);
   margin: 0;
+  background: #E7EEFA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: 0;
   border-bottom: 1px solid #C9D5E3;
   border-radius: 0;

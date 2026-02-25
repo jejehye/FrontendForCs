@@ -49,6 +49,11 @@ const startButton = getHook('startDialingBtn');
 const pauseButton = getHook('pauseDialingBtn');
 const customerList = getOne('#customerList');
 const campaignSelect = getOne('.pds-campaign-select');
+const liveChatPanel = getOne('#pds-live-chat');
+const liveChatSearchInput = liveChatPanel?.querySelector('.chat-search-input') || null;
+const liveChatPauseButton = liveChatPanel?.querySelector('.main-live-pause-btn') || null;
+
+let isLiveChatPaused = false;
 
 function setText(key, value) {
   const node = getHook(key);
@@ -68,6 +73,55 @@ function getDialBadgeClass(status) {
   if (status === 'failed') return 'failed';
   if (status === 'oncall' || status === 'completed') return 'completed';
   return 'ready';
+}
+
+function applyLiveChatFilter() {
+  if (!liveChatPanel) return;
+
+  const keyword = (liveChatSearchInput?.value || '').trim().toLowerCase();
+  const rows = liveChatPanel.querySelectorAll('.main-live-msg, .main-live-read-wrap, .main-live-scroll-wrap');
+
+  rows.forEach(row => {
+    if (!(row instanceof HTMLElement)) return;
+
+    if (!keyword) {
+      row.style.display = '';
+      return;
+    }
+
+    const text = (row.textContent || '').toLowerCase();
+    row.style.display = text.includes(keyword) ? '' : 'none';
+  });
+}
+
+function syncLiveChatPauseUi() {
+  if (!liveChatPanel || !liveChatPauseButton) return;
+
+  liveChatPanel.classList.toggle('is-paused', isLiveChatPaused);
+  liveChatPauseButton.classList.toggle('is-active', isLiveChatPaused);
+  liveChatPauseButton.setAttribute('aria-pressed', isLiveChatPaused ? 'true' : 'false');
+  liveChatPauseButton.setAttribute('aria-label', isLiveChatPaused ? '대화 재개' : '대화 일시정지');
+
+  const icon = liveChatPauseButton.querySelector('i');
+  if (icon) {
+    icon.classList.toggle('fa-pause', !isLiveChatPaused);
+    icon.classList.toggle('fa-play', isLiveChatPaused);
+  }
+}
+
+function toggleLiveChatPause() {
+  isLiveChatPaused = !isLiveChatPaused;
+  syncLiveChatPauseUi();
+}
+
+function bindLiveChatActions() {
+  if (liveChatSearchInput) {
+    liveChatSearchInput.addEventListener('input', applyLiveChatFilter);
+  }
+  if (liveChatPauseButton) {
+    liveChatPauseButton.addEventListener('click', toggleLiveChatPause);
+  }
+  syncLiveChatPauseUi();
 }
 
 function renderCampaignOptions() {
@@ -385,6 +439,7 @@ function initRealtimeClock() {
 function bindActions() {
   startButton?.addEventListener('click', startDialing);
   pauseButton?.addEventListener('click', pauseDialing);
+  bindLiveChatActions();
 }
 
 async function initPdsPage() {
