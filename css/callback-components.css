@@ -84,7 +84,7 @@
 .callback-notice-fixed { color: #2563eb; font-weight: 700; }
 .callback-notice-urgent { color: #ef4444; font-weight: 700; }
 
-.callback-section-title { font-weight: 700; color: #1f2937; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.callback-section-title { display: flex; align-items: center; gap: 8px; }
 .callback-link-more { font-size: 12px; color: #2563eb; font-weight: 500; }
 .callback-link-more:hover { color: #1d4ed8; }
 
