@@ -92,9 +92,10 @@ body.has-global-header #sidebar.col-sidebar {
 
 .app-global-header__stat strong {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700 !important;
   color: #1F2937;
   line-height: 1;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 .app-global-header__divider {
