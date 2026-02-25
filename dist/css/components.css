@@ -292,9 +292,15 @@ body { background-color: #f3f4f6; }
 .softphone-script-group-title { margin: 0 0 6px; font-size: 12px; color: #334155; font-weight: 700; }
 .softphone-script-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
 .softphone-script-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 6px; }
+.softphone-script-grid--notice { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 6px; }
 .softphone-script-item { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
 .softphone-script-duration { text-align: center; font-size: 11px; color: #334155; font-weight: 500; }
 .softphone-script-btn { border: 1px solid #7a98b6; border-radius: 0; background: #4f81a8; color: #ffffff; font-size: 12px; font-weight: 600; padding: 8px 6px; text-align: center; cursor: pointer; transition: all 0.18s ease; display: inline-flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; min-height: 34px; }
+.softphone-script-grid--notice .softphone-script-btn {
+  white-space: normal;
+  line-height: 1.2;
+  min-height: 40px;
+}
 .softphone-script-btn:hover { background: #426f92; border-color: #5f7f9f; color: #ffffff; }
 .softphone-script-btn:disabled { background: #f1f5f9; color: #94a3b8; border-color: #e2e8f0; cursor: not-allowed; }
 .softphone-script-panel.is-call-active .softphone-script-btn:not(:disabled) {

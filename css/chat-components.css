@@ -16,16 +16,21 @@
 }
 
 
-body { background-color: #f3f4f6; }
+body {
+  background-color: #f3f4f6;
+  overflow: auto;
+}
 
 .grid-layout {
   display: grid;
   grid-template-columns: 60px 680px 720px minmax(340px, 1fr);
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   width: 100%;
   margin: 0;
   background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: visible;
 }
 
 .column,
@@ -42,8 +47,8 @@ body { background-color: #f3f4f6; }
 }
 
 .col-chat { border-right: 1px solid var(--color-panel-border); background: #fff; }
-.col-center { border-right: 1px solid var(--color-panel-border); background: #fff; overflow-y: auto; }
-.col-right { background: #fff; overflow-y: auto; }
+.col-center { border-right: 1px solid var(--color-panel-border); background: #fff; overflow: visible; }
+.col-right { background: #fff; overflow: visible; }
 
 .badge,
 .status-badge { font-size: 12px; padding: 2px 6px; border-radius: 4px; font-weight: 500; }
@@ -287,6 +292,13 @@ body { background-color: #f3f4f6; }
 .chat-channel-label { font-size: 12px; color: #4b5563; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chat-investment-label { font-weight: 500; }
 .chat-date-row { text-align: center; margin-bottom: 24px; }
+
+/* chat final safeguard: allow full-page vertical scroll */
+body.has-global-header #app-container.grid-layout {
+  height: auto !important;
+  min-height: calc(100vh - var(--global-header-h)) !important;
+  overflow: visible !important;
+}
 .main-live-header {
   background: var(--main-header-bg);
   padding: 12px;

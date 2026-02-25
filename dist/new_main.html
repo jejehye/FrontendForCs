@@ -1152,7 +1152,11 @@
     <div class="softphone-script-groups">
       <section class="softphone-script-group">
         <h4 class="softphone-script-group-title">본인확인</h4>
-        <div class="softphone-script-grid softphone-script-grid--three">
+        <div class="softphone-script-grid">
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="계좌조회" data-softphone-script="계좌조회">계좌조회</button>
+            <span class="softphone-script-duration">45초</span>
+          </div>
           <div class="softphone-script-item">
             <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="휴대폰 본인인증" data-softphone-script="휴대폰 본인인증">휴대폰 본인인증</button>
             <span class="softphone-script-duration">1분1초</span>
@@ -1200,7 +1204,7 @@
 
       <section class="softphone-script-group">
         <h4 class="softphone-script-group-title">안내사항</h4>
-        <div class="softphone-script-grid softphone-script-grid--three">
+        <div class="softphone-script-grid softphone-script-grid--notice">
           <div class="softphone-script-item">
             <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="ISA 만기연장" data-softphone-script="ISA 만기연장">ISA 만기연장</button>
             <span class="softphone-script-duration">1분40초</span>
@@ -1212,6 +1216,10 @@
           <div class="softphone-script-item">
             <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="전문투자자 위험고지" data-softphone-script="전문투자자 위험고지">전문투자자 위험고지</button>
             <span class="softphone-script-duration">1분3초</span>
+          </div>
+          <div class="softphone-script-item">
+            <button type="button" class="softphone-script-btn" data-action="softphone-script" data-target="문제 고객 대응" data-softphone-script="문제 고객 대응">문제 고객 대응</button>
+            <span class="softphone-script-duration">30초</span>
           </div>
         </div>
       </section>
@@ -1912,6 +1920,15 @@
           inputmode="numeric"
           placeholder="예: 010-1234-5678"
           data-role="main-outbound-phone-input"
+        />
+        <label class="main-outbound-modal__label" for="mainOutboundAccountInput">계좌번호 입력</label>
+        <input
+          id="mainOutboundAccountInput"
+          type="text"
+          class="field main-outbound-modal__input"
+          inputmode="numeric"
+          placeholder="예: 2040750012"
+          data-role="main-outbound-account-input"
         />
         <p class="main-outbound-modal__hint">숫자만 입력해도 자동으로 포맷됩니다.</p>
         <div class="main-outbound-callerid">
