@@ -71,10 +71,10 @@
 
 /* De-tailwind phase 2: semantic layout helpers (Callback page) */
 .callback-card-footer { display: flex; justify-content: space-between; align-items: center; }
-.callback-card-title { font-size: 12px; font-family: var(--callback-header-font-family); font-weight: 600; color: #1f2937; }
-.callback-card-time { font-size: 10.40px; line-height: 16px; font-family: var(--callback-body-font-family); color: #9ca3af; }
-.callback-card-phone { font-size: 12px; font-family: var(--callback-body-font-family); color: #374151; }
-.callback-card-desc { font-size: 12px; font-family: var(--callback-body-font-family); color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
+.callback-card-title { font-size: 12px; font-weight: 600; color: #1f2937; }
+.callback-card-time { font-size: 10.40px; line-height: 16px; color: #9ca3af; }
+.callback-card-phone { font-size: 12px; color: #374151; }
+.callback-card-desc { font-size: 12px; color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
 .callback-done-label { font-size: 11px; color: #16a34a; font-weight: 500; }
 
 .callback-notice-list { font-size: 12px; display: flex; flex-direction: column; gap: 8px; }
@@ -125,11 +125,10 @@
 .callback-modal-option-label { font-size: 14px; color: #374151; }
 
 /* Callback cleanup pass */
-.callback-history-desc { font-size: 11px; font-family: var(--callback-body-font-family); color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
+.callback-history-desc { font-size: 11px; color: #4b5563; margin-bottom: 8px; line-height: 1.625; }
 .callback-status-success-badge {
   font-size: 10.40px;
   line-height: 16px;
-  font-family: var(--callback-body-font-family);
   color: #16a34a;
   background: #f0fdf4;
   padding: 4px 8px;
@@ -141,7 +140,6 @@
   justify-content: space-between;
   font-size: 10.40px;
   line-height: 16px;
-  font-family: var(--callback-body-font-family);
   color: #9ca3af;
 }
 
@@ -543,11 +541,11 @@
 #center-column > .info-card > .callback-section-header .callback-section-title,
 #right-column > .info-card > .callback-info-tabs .callback-info-tab-btn,
 #right-column > .info-card > .callback-section-header .callback-section-title {
-  font-size: var(--callback-header-text-size);
-  line-height: 1;
-  font-family: var(--callback-header-font-family);
-  font-weight: 600;
-  color: #0F172A;
+  font-size: var(--callback-header-text-size) !important;
+  line-height: 1 !important;
+  font-family: var(--callback-header-font-family) !important;
+  font-weight: 600 !important;
+  color: #0F172A !important;
 }
 
 #right-column > .info-card > .callback-info-tabs .callback-info-tab-btn {
@@ -557,6 +555,28 @@
   background: transparent;
   border: 0;
   white-space: nowrap;
+}
+
+/* final typography lock: callback request/history area */
+#sms-column .callback-request-list,
+#center-column > .info-card:last-child .callback-request-list {
+  font-family: var(--callback-body-font-family) !important;
+}
+
+#sms-column .callback-request-list .callback-card-title,
+#center-column > .info-card:last-child .callback-card-title {
+  font-family: var(--callback-header-font-family) !important;
+  font-weight: 600 !important;
+}
+
+#sms-column .callback-request-list .callback-card-time,
+#sms-column .callback-request-list .callback-card-phone,
+#sms-column .callback-request-list .callback-card-desc,
+#sms-column .callback-request-list .callback-request-meta-text,
+#center-column > .info-card:last-child .callback-history-desc,
+#center-column > .info-card:last-child .callback-history-meta-row,
+#center-column > .info-card:last-child .callback-status-success-badge {
+  font-family: var(--callback-body-font-family) !important;
 }
 
 /* left column: header/filter fixed + request list scroll */
