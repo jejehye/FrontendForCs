@@ -467,9 +467,9 @@
 
 
 #page-main {
-  height: 100%;
+  height: auto;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .col-sms,
@@ -478,7 +478,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   padding: 20px;
   gap: 24px;
 }
@@ -589,7 +589,7 @@
 
 /* left column: header/filter fixed + request list scroll */
 #sms-column {
-  overflow: hidden;
+  overflow: visible;
 }
 
 #sms-column .callback-request-header {
@@ -614,7 +614,7 @@
 
 /* center: chat area fixed block + history list scroll */
 #center-column {
-  overflow: hidden;
+  overflow: visible;
 }
 
 #center-column #callback-chat-area,
@@ -654,8 +654,7 @@
 
 /* right: history table scroll + note fixed bottom */
 #right-column {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 #right-column .callback-info-panel {
@@ -754,6 +753,7 @@
 html,
 body {
   background: var(--cb-bg-page) !important;
+  overflow-y: auto !important;
 }
 
 .col-sms,
@@ -819,5 +819,7 @@ body {
 
 .app-global-header + #app-container.grid-layout {
   margin-top: var(--global-header-h) !important;
-  height: calc(100vh - var(--global-header-h)) !important;
+  height: auto !important;
+  min-height: calc(100vh - var(--global-header-h)) !important;
+  overflow: visible !important;
 }
