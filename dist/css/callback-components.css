@@ -493,13 +493,21 @@
 }
 
 .card,
-.info-card,
+.info-card {
+  background: #FFFFFF;
+  border: 1px solid #DCE3EA;
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
 .callback-card,
 .callback-history-card {
   background: #FFFFFF;
   border: 1px solid #DCE3EA;
   border-radius: 12px;
-  padding: 0;
+  padding: 14px 16px;
   overflow: hidden;
   box-shadow: none;
 }
