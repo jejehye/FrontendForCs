@@ -89,29 +89,6 @@
 <!-- ===================== Center Column ===================== -->
 <section id="center-column" class="column col-center">
   <div class="info-card">
-    <div class="history-filter-row sms-notice-header">
-      <h3 class="sms-notice-title">공지사항</h3>
-      <button class="sms-notice-more-btn">더보기 +</button>
-    </div>
-    <ul class="sms-notice-list">
-      {% for notice in sms_data.notices or [] %}
-        <li class="sms-notice-item">
-          <span class="sms-notice-text">
-            {% if notice.prefix_text %}
-              <span class="{{ notice.prefix_class }}">{{ notice.prefix_text }}</span>
-            {% endif %}
-            {{ notice.text }}
-            {% if notice.has_attachment %}
-              <i class="fa-solid fa-paperclip sms-notice-clip"></i>
-            {% endif %}
-          </span>
-          <span class="sms-notice-date">{{ notice.date }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  <div class="info-card">
     <div class="sms-template-header">
       <h3 class="sms-template-title">
         <i class="fa-solid fa-file-lines sms-primary-text"></i>

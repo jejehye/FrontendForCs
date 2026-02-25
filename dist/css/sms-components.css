@@ -160,6 +160,8 @@ body { background-color: #f3f4f6; }
 .sms-header-bar {
   background: var(--sms-header-bg);
   border: 1px solid var(--sms-header-border);
+  border-radius: 12px;
+  overflow: hidden;
 }
 .sms-primary-btn { background: var(--color-primary); }
 .sms-primary-btn:hover { background: #002f66; }
@@ -197,8 +199,9 @@ body { background-color: #f3f4f6; }
 .sms-history-search { display: flex; gap: 8px; margin: 0; }
 
 /* De-tailwind phase 2: semantic content helpers (SMS page) */
-.sms-header-inner { min-height: 40px; padding: 8px var(--sms-card-pad-x); display: flex; align-items: center; justify-content: space-between; color: #334155; }
-.sms-header-title { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.sms-header-inner { height: var(--sms-header-min-h); min-height: var(--sms-header-min-h); padding: var(--sms-header-pad-y) var(--sms-card-pad-x); margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #0F172A; box-sizing: border-box; }
+.sms-header-title { font-size: 17px; line-height: 1; font-weight: 600; display: flex; align-items: center; gap: 8px; font-family: var(--sms-header-font-family); }
+.sms-header-title i { color: #64748B; }
 .sms-section-title { font-size: 14px; }
 .sms-header-refresh {
   color: var(--main-header-control-text);
