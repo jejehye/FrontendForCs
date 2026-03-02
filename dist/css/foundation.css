@@ -46,7 +46,7 @@ body.has-global-header .col-sidebar {
   height: var(--global-header-h);
   min-height: var(--global-header-h);
   z-index: 40;
-  background-color: #FFFFFF !important;
+  background-color: var(--color-primary, #0046ff) !important;
   background-image: none !important;
   border-bottom: 1px solid #E5E7EB;
 }

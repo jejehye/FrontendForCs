@@ -142,6 +142,29 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 .account-input { border: none; outline: none; background: transparent; width: 100%; font-size: 12px; line-height: 1.4; color: #1f2937; text-align: left; }
 .account-input::placeholder { color: #94a3b8; }
 .account-input:focus { outline: none; }
+.account-password-input-wrap { display: flex; align-items: center; gap: 6px; width: 100%; }
+.account-pw-auth-btn {
+  flex-shrink: 0;
+  min-width: 34px;
+  height: 26px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #1e3a8a;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0 8px;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.account-pw-auth-btn:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+.account-pw-auth-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
 
 .verify-transfer-actions { margin-top: 8px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .verify-transfer-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6.4px; min-height: 31.2px; padding: 5.6px 8.8px; border-radius: 8px; border: none; background: #eff6ff; color: #1d4ed8; font-size: 10.88px; font-weight: 700; line-height: 1.2; transition: all 0.2s ease; }
@@ -438,6 +461,24 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 .history-editor-actions { display: flex; gap: 8px; }
 .history-editor-actions--inline { gap: 6px; }
+.history-editor-lookup-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.history-editor-lookup-btn:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e3a8a;
+}
 .history-editor-btn-compact {
   min-height: 27px;
   padding: 4px 9px;
@@ -885,6 +926,24 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
   color: #fff;
 }
 .main-outbound-modal__btn--submit:hover { background: #1d4ed8; }
+.new-main-history-lookup-modal__dialog {
+  width: min(1180px, calc(100% - 32px));
+  max-height: calc(100vh - 52px);
+  display: flex;
+  flex-direction: column;
+}
+.new-main-history-lookup-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.new-main-history-lookup-modal .main-my-history-panel {
+  height: 100%;
+  margin-top: 0;
+  border: 0;
+  border-radius: 0;
+}
 
 .new-main-topbar {
   position: sticky;

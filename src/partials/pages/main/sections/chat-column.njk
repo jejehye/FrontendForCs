@@ -41,16 +41,28 @@
           >
             계좌비번
           </label>
-          <input
-            id="account-password"
-            name="accountPassword"
-            type="password"
-            placeholder="••••"
-            autocomplete="new-password"
-            maxlength="4"
-            class="account-input"
-            aria-label="계좌비밀번호 입력"
-          />
+          <div class="account-password-input-wrap">
+            <input
+              id="account-password"
+              name="accountPassword"
+              type="password"
+              placeholder="••••"
+              autocomplete="new-password"
+              maxlength="4"
+              class="account-input"
+              aria-label="계좌비밀번호 입력"
+            />
+            {% if active_page == "new_main" %}
+              <button
+                type="button"
+                class="account-pw-auth-btn"
+                data-action="new-main-auth-account-password"
+                aria-label="계좌비번만 인증"
+              >
+                PW
+              </button>
+            {% endif %}
+          </div>
         </div>
         <div class="account-field-row">
           <label

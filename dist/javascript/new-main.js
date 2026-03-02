@@ -29,6 +29,7 @@ const ROLE = {
   scheduleBody: 'new-main-schedule-body',
   schedulePagination: 'new-main-schedule-pagination',
   scheduleTabs: 'new-main-schedule-page-tabs',
+  historyLookupModal: 'new-main-history-lookup-modal',
   linkedName: 'new-main-linked-name',
   linkedAccount: 'new-main-linked-account',
   linkedResident: 'new-main-linked-resident'
@@ -45,7 +46,9 @@ const ACTION = {
   schedulePage: 'schedule-page',
   csatPrev: 'csat-prev',
   csatNext: 'csat-next',
-  csatPage: 'csat-page'
+  csatPage: 'csat-page',
+  openHistoryLookup: 'new-main-open-history-lookup',
+  closeHistoryLookup: 'new-main-close-history-lookup'
 };
 
 const SCHEDULE_PAGE_SIZE = 4;
@@ -127,6 +130,101 @@ function bindVerifyClearButton() {
       field.dispatchEvent(new Event('change', { bubbles: true }));
     });
     verifyForm.querySelector('#account-number')?.focus();
+  });
+}
+
+function bindAccountPasswordAuthButton() {
+  const verifyForm = document.querySelector(SELECTOR.verifyForm);
+  const authButton = verifyForm?.querySelector('[data-action="new-main-auth-account-password"]');
+  const passwordInput = verifyForm?.querySelector('#account-password');
+
+  if (!verifyForm || !authButton || !passwordInput || authButton.dataset.bound === 'true') {
+    return;
+  }
+
+  authButton.dataset.bound = 'true';
+  authButton.addEventListener('click', () => {
+    const accountPassword = passwordInput.value.trim();
+    if (!accountPassword) {
+      alert('계좌비번을 입력해 주세요.');
+      passwordInput.focus();
+      return;
+    }
+
+    if (!/^\d{4}$/.test(accountPassword)) {
+      alert('계좌비번은 숫자 4자리로 입력해 주세요.');
+      passwordInput.focus();
+      return;
+    }
+
+    verifyForm.dataset.accountPasswordVerified = 'true';
+    verifyForm.dataset.accountPasswordVerifiedAt = new Date().toISOString();
+    verifyForm.dispatchEvent(new CustomEvent('new-main:account-password-verified', { bubbles: true }));
+    alert('계좌비번만 인증되었습니다.');
+  });
+}
+
+function ensureHistoryLookupModal(historyPanel) {
+  if (!historyPanel || document.querySelector(`[data-role="${ROLE.historyLookupModal}"]`)) {
+    return;
+  }
+
+  const historyPanelCopy = historyPanel.cloneNode(true);
+  const modal = document.createElement('div');
+  modal.className = 'main-outbound-modal new-main-history-lookup-modal';
+  modal.setAttribute('data-role', ROLE.historyLookupModal);
+  modal.setAttribute('aria-hidden', 'true');
+  modal.innerHTML = `
+    <div class="main-outbound-modal__dialog new-main-history-lookup-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="newMainHistoryLookupTitle">
+      <div class="main-outbound-modal__header">
+        <h4 id="newMainHistoryLookupTitle" class="main-outbound-modal__title">상담이력 조회</h4>
+        <button type="button" class="main-outbound-modal__close" data-action="${ACTION.closeHistoryLookup}" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="main-outbound-modal__body new-main-history-lookup-modal__body"></div>
+    </div>
+  `;
+
+  modal.querySelector('.new-main-history-lookup-modal__body')?.appendChild(historyPanelCopy);
+  document.body.appendChild(modal);
+}
+
+function bindHistoryLookupModal() {
+  const openButton = document.querySelector(`[data-action="${ACTION.openHistoryLookup}"]`);
+  const modal = document.querySelector(`[data-role="${ROLE.historyLookupModal}"]`);
+
+  if (!openButton || !modal || openButton.dataset.bound === 'true') {
+    return;
+  }
+
+  const closeModal = () => {
+    modal.classList.remove('is-active');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  const openModal = () => {
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+  };
+
+  openButton.dataset.bound = 'true';
+  openButton.addEventListener('click', openModal);
+
+  modal.querySelectorAll(`[data-action="${ACTION.closeHistoryLookup}"]`).forEach(button => {
+    button.addEventListener('click', closeModal);
+  });
+
+  modal.addEventListener('click', event => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && modal.classList.contains('is-active')) {
+      closeModal();
+    }
   });
 }
 
@@ -492,6 +590,15 @@ function historyEditorTemplate() {
           상담이력 입력
         </h3>
         <div class="history-editor-actions history-editor-actions--inline">
+          <button
+            type="button"
+            class="history-editor-lookup-btn"
+            data-action="${ACTION.openHistoryLookup}"
+            aria-label="상담이력 조회 열기"
+            title="상담이력 조회"
+          >
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </button>
           <button type="button" class="btn--history-reset btn-common-action btn-common-action--reset">
             <i class="fa-solid fa-rotate-left history-action-icon-gap"></i>초기화
           </button>
@@ -695,6 +802,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   mountStatusSegmentToGlobalHeader();
   bindVerifyClearButton();
+  bindAccountPasswordAuthButton();
 
   rightColumn?.querySelectorAll(`[data-action="${ACTION.openGroupSwitch}"], [data-action="${ACTION.openOutbound}"]`)
     .forEach(button => button.remove());
@@ -748,6 +856,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     rightColumn.appendChild(coachingArea);
   }
 
+  ensureHistoryLookupModal(myHistoryPanel);
+
   if (coachingArea && coachingArea.parentElement) {
     const csatRows = buildCsatRows();
     ensureSection({
@@ -770,6 +880,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     historyArea.innerHTML = historyEditorTemplate();
     setupHistoryLinkedCustomer(historyArea);
   }
+  bindHistoryLookupModal();
 
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
     await window.MainPageData.load();
