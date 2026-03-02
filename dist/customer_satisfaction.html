@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고객만족도 조회</title>
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
+  <script src="./vendor/fontawesome/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="css/customer-satisfaction.css">
+</head>
+<body>
+  <script src="app-config.js"></script>
+  <script src="javascript/common/page-module.js"></script>
+  <script src="javascript/common/global-header.js"></script>
+
+  <div id="app-container" class="grid-layout" data-role="app-shell">
+    <aside id="sidebar" class="column col-sidebar" data-role="global-sidebar" aria-label="사이드바 메뉴">
+      <div class="sidebar-top-spacing">
+        <div class="sidebar-logo" aria-hidden="true">S</div>
+      </div>
+      <nav aria-label="주요 메뉴">
+        <div data-page="main" title="Main" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-headset"></i></div>
+        <div data-page="new_main" title="New Main" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-table-columns"></i></div>
+        <div data-page="records" title="녹취" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-microphone-lines"></i></div>
+        <div data-page="pds" title="PDS" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-phone-volume"></i></div>
+        <div data-page="sms" title="SMS" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-comment-sms"></i></div>
+        <div data-page="customer_satisfaction" title="고객만족" data-role="nav-item" data-action="navigate" class="nav-item active"><i class="fa-solid fa-face-smile"></i></div>
+        <div data-page="callback" title="Callback" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-phone"></i></div>
+        <div data-page="specific" title="Specific" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-user-check"></i></div>
+        <div data-page="chat" title="Chat" data-role="nav-item" data-action="navigate" class="nav-item"><i class="fa-solid fa-comments"></i></div>
+      </nav>
+      <div title="Settings" data-role="nav-item" data-action="navigate" class="nav-item sidebar-settings-item">
+        <i class="fa-solid fa-gear"></i>
+      </div>
+    </aside>
+
+    <main id="page-main" class="layout-main-content" data-role="page-main">
+      <div class="column col-center csat-main csat-main-frame">
+        <section class="csat-panel">
+          <header class="panel__header panel__header--history">
+            <h3 class="weight-semibold heading-reset">고객만족도 조회</h3>
+            <div class="main-history-actions">
+              <button class="btn--history-reset btn-common-action btn-common-action--reset" data-action="csat-reset">
+                <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>초기화
+              </button>
+              <button class="btn--history-search btn-common-action btn-common-action--search" data-action="csat-search">
+                <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
+              </button>
+            </div>
+          </header>
+
+          <div class="panel__body panel__body--history-filter">
+            <div class="main-history-filter-grid">
+              <div class="main-history-filter-row">
+                <label class="main-history-filter-label">조회기간</label>
+                <div class="main-history-filter-controls">
+                  <input type="date" class="field field--history-date" data-role="csat-date-from" value="2026-02-01" />
+                  <span class="main-history-date-sep">~</span>
+                  <input type="date" class="field field--history-date" data-role="csat-date-to" value="2026-03-02" />
+                </div>
+              </div>
+              <div class="main-history-filter-row">
+                <label class="main-history-filter-label form-label-compact">상담원</label>
+                <select class="field field--history-select" data-role="csat-agent-filter">
+                  <option value="">전체</option>
+                </select>
+              </div>
+              <div class="main-history-filter-row">
+                <label class="main-history-filter-label">고객명</label>
+                <input type="text" class="field field--history-input" placeholder="고객명 검색" data-role="csat-customer-filter" />
+              </div>
+              <div class="main-history-filter-row">
+                <label class="main-history-filter-label">만족도</label>
+                <select class="field field--history-category" data-role="csat-rating-filter">
+                  <option value="">전체</option>
+                  <option value="매우만족">매우만족</option>
+                  <option value="만족">만족</option>
+                  <option value="보통">보통</option>
+                  <option value="불만족">불만족</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel--history-table">
+            <div class="panel__header panel__header--table">
+              <span class="main-history-list-title">만족도 목록 <span class="main-history-count" data-role="csat-total-count">(총 0건)</span></span>
+            </div>
+            <div class="main-history-table-wrap">
+              <table class="tbl table--history">
+                <thead class="main-history-thead">
+                  <tr>
+                    <th class="table__head table__head--narrow">NO</th>
+                    <th class="table__head table__head--time">시간</th>
+                    <th class="table__head">상담원</th>
+                    <th class="table__head">고객명</th>
+                    <th class="table__head table__head--io">만족도</th>
+                    <th class="table__head table__head--summary">리뷰내용</th>
+                  </tr>
+                </thead>
+                <tbody class="main-history-body" data-role="csat-table-body"></tbody>
+              </table>
+            </div>
+            <div class="pagination pagination--history" data-role="csat-pagination"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script id="page-data-json" type="application/json">{"default_date_from":"2026-02-01","default_date_to":"2026-03-02","csat_rows":[{"id":1,"timestamp":"2026-03-02 09:04:11","agent":"김민수","customer":"박지민","rating":"매우만족","review":"설명이 빠르고 정확해서 바로 해결됐습니다."},{"id":2,"timestamp":"2026-03-02 09:11:30","agent":"이수현","customer":"김하린","rating":"만족","review":"필요한 내용 위주로 안내해줘서 좋았습니다."},{"id":3,"timestamp":"2026-03-02 09:18:57","agent":"김민수","customer":"최예린","rating":"보통","review":"응대는 친절했지만 대기 시간이 조금 있었습니다."},{"id":4,"timestamp":"2026-03-02 09:23:20","agent":"박준호","customer":"서지안","rating":"매우만족","review":"문제 원인을 정확히 짚어주고 해결 방법도 명확했습니다."},{"id":5,"timestamp":"2026-03-02 09:31:09","agent":"김민수","customer":"윤도현","rating":"만족","review":"추가 문의까지 잘 챙겨줘서 신뢰가 갔습니다."},{"id":6,"timestamp":"2026-03-02 09:42:44","agent":"정유진","customer":"한서아","rating":"불만족","review":"원하는 답변을 바로 못 받아 아쉬웠습니다."},{"id":7,"timestamp":"2026-03-02 09:55:03","agent":"김민수","customer":"장민호","rating":"매우만족","review":"고객 입장에서 쉽게 설명해줘서 이해가 빨랐습니다."},{"id":8,"timestamp":"2026-03-02 10:02:15","agent":"이수현","customer":"오하린","rating":"만족","review":"후속 처리 일정까지 알려줘서 좋았습니다."},{"id":9,"timestamp":"2026-03-02 10:11:48","agent":"김민수","customer":"유시우","rating":"보통","review":"상담 내용은 괜찮았지만 연결까지 대기가 길었습니다."},{"id":10,"timestamp":"2026-03-02 10:24:33","agent":"박준호","customer":"김도윤","rating":"매우만족","review":"복잡한 계좌 문의를 한 번에 처리해주셨습니다."},{"id":11,"timestamp":"2026-03-02 10:32:05","agent":"김민수","customer":"이채원","rating":"만족","review":"친절하고 핵심만 정리해줘서 좋았습니다."},{"id":12,"timestamp":"2026-03-02 10:41:16","agent":"정유진","customer":"안재민","rating":"불만족","review":"문의 전달이 지연되어 재문의가 필요했습니다."}]}</script>
+  <script>
+    (() => {
+      const pageDataNode = document.getElementById('page-data-json');
+      if (!pageDataNode) {
+        window.__PAGE_DATA__ = {};
+        return;
+      }
+      try {
+        window.__PAGE_DATA__ = JSON.parse(pageDataNode.textContent || '{}');
+      } catch (error) {
+        window.__PAGE_DATA__ = {};
+      }
+    })();
+  </script>
+
+  <script src="javascript/common/ui.js"></script>
+  <script src="javascript/customer-satisfaction.js"></script>
+</body>
+</html>

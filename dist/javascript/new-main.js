@@ -21,6 +21,9 @@ const ROLE = {
   statusRow: 'new-main-status-row',
   warning: 'new-main-warning',
   routingUtterance: 'new-main-routing-utterance',
+  csatFeed: 'new-main-csat-feed',
+  csatBody: 'new-main-csat-body',
+  csatTabs: 'new-main-csat-page-tabs',
   historyEditor: 'new-main-history-editor',
   schedulePanel: 'new-main-schedule',
   scheduleBody: 'new-main-schedule-body',
@@ -39,10 +42,14 @@ const ACTION = {
   callTransfer: 'new-main-call-transfer',
   schedulePrev: 'schedule-prev',
   scheduleNext: 'schedule-next',
-  schedulePage: 'schedule-page'
+  schedulePage: 'schedule-page',
+  csatPrev: 'csat-prev',
+  csatNext: 'csat-next',
+  csatPage: 'csat-page'
 };
 
 const SCHEDULE_PAGE_SIZE = 4;
+const CSAT_PAGE_SIZE = 4;
 
 function createSection({ className, role, html }) {
   const section = document.createElement('section');
@@ -102,6 +109,135 @@ function buildScheduleRows(dateTokens) {
     title: `${dateTokens.todayRowLabel} (${['업무', '점검', '안내'][index % 3]}) 일정`,
     updated: dateTokens.currentStamp
   }));
+}
+
+function formatTime(value) {
+  const hours = String(value.getHours()).padStart(2, '0');
+  const minutes = String(value.getMinutes()).padStart(2, '0');
+  const seconds = String(value.getSeconds()).padStart(2, '0');
+  return `${hours}:${minutes}:${seconds}`;
+}
+
+function buildCsatRows() {
+  const now = new Date();
+  const ratings = [
+    { label: '매우만족', tone: 'excellent', score: 5 },
+    { label: '만족', tone: 'good', score: 4 },
+    { label: '보통', tone: 'normal', score: 3 },
+    { label: '불만족', tone: 'bad', score: 2 }
+  ];
+  const source = [
+    { agent: '김다은', customer: '박민수', detail: '상품 설명이 명확해서 좋았습니다.' },
+    { agent: '이수현', customer: '최지연', detail: '응대가 빨라서 만족합니다.' },
+    { agent: '정유진', customer: '송도윤', detail: '추가 확인이 늦어 아쉬웠습니다.' },
+    { agent: '박하늘', customer: '한예림', detail: '필요한 안내를 한 번에 받아 좋았습니다.' },
+    { agent: '오지훈', customer: '윤서준', detail: '다음 상담 예약 안내가 도움이 되었습니다.' },
+    { agent: '최서윤', customer: '김하린', detail: '해결까지 시간이 조금 오래 걸렸습니다.' }
+  ];
+
+  return source.map((item, index) => {
+    const rating = ratings[index % ratings.length];
+    const timestamp = new Date(now.getTime() - (index + 1) * 3 * 60 * 1000);
+    return {
+      time: formatTime(timestamp),
+      agent: item.agent,
+      customer: item.customer,
+      ratingLabel: rating.label,
+      ratingTone: rating.tone,
+      score: rating.score,
+      detail: item.detail
+    };
+  });
+}
+
+function csatTemplate() {
+  return `
+    <section class="new-main-csat-panel">
+      <header class="new-main-schedule-header">
+        <h3 class="new-main-schedule-title new-main-header-strong">고객만족도 결과</h3>
+      </header>
+      <div class="panel--history-table">
+        <div class="main-history-table-wrap new-main-csat-table-wrap">
+          <table class="tbl table--history new-main-csat-table" aria-label="고객만족도 결과 목록">
+            <thead class="main-history-thead">
+            <tr>
+              <th class="table__head table__head--time">시간</th>
+              <th class="table__head">상담원</th>
+              <th class="table__head">고객</th>
+              <th class="table__head table__head--io">만족도</th>
+              <th class="table__head table__head--summary">남긴 내용</th>
+            </tr>
+            </thead>
+            <tbody class="main-history-body" data-role="${ROLE.csatBody}"></tbody>
+          </table>
+        </div>
+        <div class="new-main-schedule-pagination">
+          <button type="button" class="new-main-schedule-page-btn" data-action="${ACTION.csatPrev}" aria-label="이전 페이지">
+            <i class="fa-solid fa-angle-left"></i>
+          </button>
+          <div class="new-main-schedule-page-tabs" data-role="${ROLE.csatTabs}"></div>
+          <button type="button" class="new-main-schedule-page-btn" data-action="${ACTION.csatNext}" aria-label="다음 페이지">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderCsatPagination(csatFeed, rows, pageSize = CSAT_PAGE_SIZE) {
+  const csatBody = csatFeed.querySelector(`[data-role="${ROLE.csatBody}"]`);
+  const pageTabs = csatFeed.querySelector(`[data-role="${ROLE.csatTabs}"]`);
+  const prevBtn = csatFeed.querySelector(`[data-action="${ACTION.csatPrev}"]`);
+  const nextBtn = csatFeed.querySelector(`[data-action="${ACTION.csatNext}"]`);
+
+  if (!csatBody || !pageTabs || !prevBtn || !nextBtn) {
+    return;
+  }
+
+  const totalPages = Math.max(1, Math.ceil(rows.length / pageSize));
+  let currentPage = 1;
+
+  const renderPage = page => {
+    currentPage = Math.min(totalPages, Math.max(1, page));
+    const start = (currentPage - 1) * pageSize;
+    const visibleRows = rows.slice(start, start + pageSize);
+
+    csatBody.innerHTML = visibleRows
+      .map(
+        row => `
+          <tr class="tbl__row">
+            <td class="tbl__cell">${row.time}</td>
+            <td class="tbl__cell">${row.agent}</td>
+            <td class="tbl__cell tbl__cell--strong">${row.customer}</td>
+            <td class="tbl__cell">
+              <span class="new-main-csat-badge is-${row.ratingTone}">
+                ${row.ratingLabel} (${row.score}/5)
+              </span>
+            </td>
+            <td class="tbl__cell new-main-csat-review">${row.detail}</td>
+          </tr>
+        `
+      )
+      .join('');
+
+    pageTabs.innerHTML = Array.from({ length: totalPages }, (_, idx) => {
+      const pageNo = idx + 1;
+      const activeClass = pageNo === currentPage ? ' is-active' : '';
+      return `<button type="button" class="new-main-schedule-page-btn${activeClass}" data-action="${ACTION.csatPage}" data-page="${pageNo}">${pageNo}</button>`;
+    }).join('');
+
+    pageTabs.querySelectorAll(`[data-action="${ACTION.csatPage}"]`).forEach(button => {
+      button.addEventListener('click', () => renderPage(Number(button.dataset.page)));
+    });
+
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+  };
+
+  prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
+  nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
+  renderPage(1);
 }
 
 function scheduleTemplate(dateTokens) {
@@ -562,6 +698,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     myHistoryPanel.replaceWith(coachingArea);
   } else if (coachingArea && rightColumn && !rightColumn.contains(coachingArea)) {
     rightColumn.appendChild(coachingArea);
+  }
+
+  if (coachingArea && coachingArea.parentElement) {
+    const csatRows = buildCsatRows();
+    ensureSection({
+      anchor: coachingArea,
+      existsSelector: `[data-role="${ROLE.csatFeed}"]`,
+      position: 'beforebegin',
+      section: createSection({
+        className: 'new-main-csat-slot',
+        role: ROLE.csatFeed,
+        html: csatTemplate()
+      })
+    });
+    const csatFeed = document.querySelector(`[data-role="${ROLE.csatFeed}"]`);
+    if (csatFeed) {
+      renderCsatPagination(csatFeed, csatRows);
+    }
   }
 
   if (historyArea && !historyArea.querySelector(`[data-role="${ROLE.historyEditor}"]`)) {

@@ -1,0 +1,13 @@
+{% extends "layouts/app-shell.njk" %}
+{% set title = "고객만족도 조회" %}
+{% set page_css = "customer-satisfaction.css" %}
+{% set active_page = "customer_satisfaction" %}
+
+{% block app_content %}
+  {% include "partials/pages/customer-satisfaction/content.njk" %}
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ asset('javascript/common/ui.js') }}"></script>
+  <script src="{{ asset('javascript/customer-satisfaction.js') }}"></script>
+{% endblock %}

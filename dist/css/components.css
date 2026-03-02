@@ -1742,6 +1742,68 @@ body.new-main-mode .new-main-schedule-header {
   box-sizing: border-box;
 }
 
+body.new-main-mode .new-main-csat-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+body.new-main-mode .new-main-csat-table-wrap {
+  padding: 24px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+body.new-main-mode .new-main-csat-table {
+  min-width: 860px;
+}
+
+body.new-main-mode .new-main-csat-table .table__head--time,
+body.new-main-mode .new-main-csat-table td:first-child {
+  width: 110px;
+  max-width: 110px;
+  white-space: nowrap;
+}
+
+body.new-main-mode .new-main-csat-review {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.new-main-mode .new-main-csat-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+body.new-main-mode .new-main-csat-badge.is-excellent {
+  color: #166534;
+  background: #DCFCE7;
+}
+
+body.new-main-mode .new-main-csat-badge.is-good {
+  color: #1D4ED8;
+  background: #DBEAFE;
+}
+
+body.new-main-mode .new-main-csat-badge.is-normal {
+  color: #92400E;
+  background: #FEF3C7;
+}
+
+body.new-main-mode .new-main-csat-badge.is-bad {
+  color: #991B1B;
+  background: #FEE2E2;
+}
+
 /* keep notice/chat/coaching header density identical */
 body.new-main-mode .notice-header,
 body.new-main-mode #chat-area .main-live-header,

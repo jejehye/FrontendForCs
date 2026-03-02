@@ -1,0 +1,76 @@
+{% set csat_data = page_data or {} %}
+<div class="column col-center csat-main csat-main-frame">
+  <section class="csat-panel">
+    <header class="panel__header panel__header--history">
+      <h3 class="weight-semibold heading-reset">고객만족도 조회</h3>
+      <div class="main-history-actions">
+        <button class="btn--history-reset btn-common-action btn-common-action--reset" data-action="csat-reset">
+          <i class="fa-solid fa-rotate-right main-history-icon-gap"></i>
+          초기화
+        </button>
+        <button class="btn--history-search btn-common-action btn-common-action--search" data-action="csat-search">
+          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
+          조회
+        </button>
+      </div>
+    </header>
+
+    <div class="panel__body panel__body--history-filter">
+      <div class="main-history-filter-grid">
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">조회기간</label>
+          <div class="main-history-filter-controls">
+            <input type="date" class="field field--history-date" data-role="csat-date-from" value="{{ csat_data.default_date_from or '2026-02-01' }}" />
+            <span class="main-history-date-sep">~</span>
+            <input type="date" class="field field--history-date" data-role="csat-date-to" value="{{ csat_data.default_date_to or '2026-03-02' }}" />
+          </div>
+        </div>
+
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label form-label-compact">상담원</label>
+          <select class="field field--history-select" data-role="csat-agent-filter">
+            <option value="">전체</option>
+          </select>
+        </div>
+
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">고객명</label>
+          <input type="text" class="field field--history-input" placeholder="고객명 검색" data-role="csat-customer-filter" />
+        </div>
+
+        <div class="main-history-filter-row">
+          <label class="main-history-filter-label">만족도</label>
+          <select class="field field--history-category" data-role="csat-rating-filter">
+            <option value="">전체</option>
+            <option value="매우만족">매우만족</option>
+            <option value="만족">만족</option>
+            <option value="보통">보통</option>
+            <option value="불만족">불만족</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel--history-table">
+      <div class="panel__header panel__header--table">
+        <span class="main-history-list-title">만족도 목록 <span class="main-history-count" data-role="csat-total-count">(총 0건)</span></span>
+      </div>
+      <div class="main-history-table-wrap">
+        <table class="tbl table--history">
+          <thead class="main-history-thead">
+            <tr>
+              <th class="table__head table__head--narrow">NO</th>
+              <th class="table__head table__head--time">시간</th>
+              <th class="table__head">상담원</th>
+              <th class="table__head">고객명</th>
+              <th class="table__head table__head--io">만족도</th>
+              <th class="table__head table__head--summary">리뷰내용</th>
+            </tr>
+          </thead>
+          <tbody class="main-history-body" data-role="csat-table-body"></tbody>
+        </table>
+      </div>
+      <div class="pagination pagination--history" data-role="csat-pagination"></div>
+    </div>
+  </section>
+</div>
