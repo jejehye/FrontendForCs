@@ -3185,143 +3185,7 @@ body.new-main-mode .new-main-schedule-table-wrap {
   border-bottom-color: #C9D5E3 !important;
 }
 
-/* topbar ux final */
-body.new-main-mode .new-main-topbar {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 12px 16px;
-  gap: 30px;
-  background: #FFFFFF;
-  border: 1px solid #DCE3EA;
-  box-shadow: none;
-}
-
-body.new-main-mode .new-main-topbar-statuses {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  flex: 1 1 620px;
-  min-width: 0;
-}
-
-body.new-main-mode .new-main-status-item {
-  min-height: 0;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-body.new-main-mode .new-main-status-item--work {
-  gap: 8px;
-}
-
-body.new-main-mode .new-main-status-label {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 500;
-  color: #64748B;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-body.new-main-mode .new-main-status-segmented {
-  position: relative;
-  display: inline-flex;
-  align-items: stretch;
-  height: 32px;
-  border: 1px solid #DCE3EA;
-  border-radius: 10px;
-  background: #FFFFFF;
-  overflow: hidden;
-}
-
-body.new-main-mode .new-main-status-segment {
-  height: 30px;
-  min-width: 56px;
-  border: 0;
-  border-right: 1px solid #EEF2F7;
-  background: #FFFFFF;
-  color: #1F2937;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1;
-  padding: 0 12px;
-  cursor: pointer;
-  transition: background-color var(--t-fast), color var(--t-fast);
-}
-
-body.new-main-mode .new-main-status-segment:last-of-type {
-  border-right: 0;
-}
-
-body.new-main-mode .new-main-status-segment:hover {
-  background: #F1F5F9;
-}
-
-body.new-main-mode .new-main-status-segment.is-active {
-  background: #1E3A8A;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-body.new-main-mode .new-main-status-control--hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-body.new-main-mode .new-main-topbar-actions {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-left: 30px;
-  flex: 0 1 auto;
-}
-
-body.new-main-mode .new-main-action-btn {
-  height: 35px;
-  min-height: 35px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid #DCE3EA;
-  background: #FFFFFF;
-  color: #1F2937;
-  font-size: 13px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: none;
-  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast), transform var(--t-fast);
-}
-
-body.new-main-mode .new-main-action-btn--secondary:hover {
-  background: #F1F5F9;
-  border-color: #CBD5E1;
-}
-
-body.new-main-mode .new-main-action-btn--primary {
-  background: #1E3A8A;
-  border-color: #1E3A8A;
-  color: #FFFFFF;
-}
-
-body.new-main-mode .new-main-action-btn--primary:hover {
-  background: #1D4ED8;
-  border-color: #1D4ED8;
-  color: #FFFFFF;
-  transform: translateY(-1px);
-}
+/* topbar ux final (removed duplicated legacy rules; canonical block lives below) */
 
 /* hide right-top agent bar in new_main */
 body.new-main-mode #right-column .panel-header-actions-only {
@@ -3413,29 +3277,7 @@ body.new-main-mode {
   --nm-polish-transition: 150ms ease;
 }
 
-/* 1) top status segmented control */
-body.new-main-mode .new-main-status-segmented {
-  height: 32px;
-  border: 1px solid #E5E7EB;
-  border-radius: 10px;
-  align-items: center;
-}
-
-body.new-main-mode .new-main-status-segment {
-  height: 30px;
-  border-right: 1px solid #EEF2F7;
-  padding: 0 11px;
-}
-
-body.new-main-mode .new-main-status-segment.is-active {
-  background: #243C8F;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-body.new-main-mode .new-main-status-segment:hover {
-  background: #F1F5F9;
-}
+/* 1) top status segmented control: use canonical block below */
 
 /* 2) center card emphasis */
 body.new-main-mode #chat-area .chat-bubble {
@@ -3685,6 +3527,14 @@ body.new-main-mode .new-main-status-segment.is-active {
   background: #243C8F;
   color: #FFFFFF;
   font-weight: 600;
+}
+
+body.new-main-mode .new-main-status-control--hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 
