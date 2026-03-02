@@ -2,9 +2,10 @@
   <section class="info-card customer-history-panel">
     <header class="customer-history-panel__header">상담원</header>
 
-    <div class="customer-history-top-controls">
-      <div class="customer-history-top-controls__left">
-        <div class="customer-history-top-row">
+    <div class="customer-history-top-layout">
+      <div class="customer-history-top-controls">
+        <div class="customer-history-top-controls__left">
+          <div class="customer-history-top-row">
           <label>계좌번호</label>
           <input class="field" type="text" value="014-01004637" />
           <button class="customer-history-mini-btn" type="button">계좌</button>
@@ -21,49 +22,50 @@
           <button class="customer-history-icon-btn" type="button" aria-label="고객번호 조회">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
+          </div>
+
+          <div class="customer-history-top-row customer-history-top-row--sub">
+            <span class="customer-history-status-pill">운영계정</span>
+            <select class="field">
+              <option>한도이체입금</option>
+            </select>
+          </div>
         </div>
 
-        <div class="customer-history-top-row customer-history-top-row--sub">
-          <span class="customer-history-status-pill">운영계정</span>
-          <select class="field">
-            <option>한도이체입금</option>
-          </select>
+        <div class="customer-history-top-controls__right">
+          <button class="btn--history-reset btn-common-action btn-common-action--reset" type="button">
+            <i class="fa-solid fa-rotate-left main-history-icon-gap"></i>초기화
+          </button>
+          <button class="btn--history-search btn-common-action btn-common-action--search" type="button">
+            <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
+          </button>
         </div>
       </div>
 
-      <div class="customer-history-top-controls__right">
-        <button class="btn--history-reset btn-common-action btn-common-action--reset" type="button">
-          <i class="fa-solid fa-rotate-left main-history-icon-gap"></i>초기화
-        </button>
-        <button class="btn--history-search btn-common-action btn-common-action--search" type="button">
-          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
-        </button>
-      </div>
-    </div>
+      <div class="customer-history-profile">
+        <div class="customer-history-profile__left">
+          <div class="customer-history-info-row"><span>고객명</span><strong>최코다</strong></div>
+          <div class="customer-history-info-row"><span>나이</span><strong>36</strong></div>
+          <div class="customer-history-info-row"><span>서비스등급</span><strong>성실</strong></div>
+          <div class="customer-history-info-row"><span>고객등급</span><strong>미성년</strong></div>
+        </div>
 
-    <div class="customer-history-profile">
-      <div class="customer-history-profile__left">
-        <div class="customer-history-info-row"><span>고객명</span><strong>최코다</strong></div>
-        <div class="customer-history-info-row"><span>나이</span><strong>36</strong></div>
-        <div class="customer-history-info-row"><span>서비스등급</span><strong>성실</strong></div>
-        <div class="customer-history-info-row"><span>고객등급</span><strong>미성년</strong></div>
-      </div>
+        <div class="customer-history-profile__center">
+          <div class="customer-history-phone-row"><span>대표번호</span><strong>1588-6600 (고객센터)</strong></div>
+          <div class="customer-history-phone-row"><span>인입번호</span><strong>010-1234-5678</strong></div>
+          <div class="customer-history-phone-row"><span>시장강의</span><strong>수강중</strong></div>
+          <div class="customer-history-phone-row"><span>직장전화</span><strong>02-0000-0000</strong></div>
+          <div class="customer-history-phone-row"><span>기타전화</span><strong>02-1234-5678</strong></div>
+        </div>
 
-      <div class="customer-history-profile__center">
-        <div class="customer-history-phone-row"><span>대표번호</span><strong>1588-6600 (고객센터)</strong></div>
-        <div class="customer-history-phone-row"><span>인입번호</span><strong>010-1234-5678</strong></div>
-        <div class="customer-history-phone-row"><span>시장강의</span><strong>수강중</strong></div>
-        <div class="customer-history-phone-row"><span>직장전화</span><strong>02-0000-0000</strong></div>
-        <div class="customer-history-phone-row"><span>기타전화</span><strong>02-1234-5678</strong></div>
-      </div>
-
-      <div class="customer-history-profile__right">
-        <div class="customer-history-auth-title">고객인증</div>
-        <label><input type="radio" name="customer-auth" checked /> 계좌번호</label>
-        <label><input type="radio" name="customer-auth" /> 계좌비밀번호</label>
-        <label><input type="radio" name="customer-auth" /> 주민등록번호인증</label>
-        <label><input type="radio" name="customer-auth" /> 미인증</label>
-        <label><input type="radio" name="customer-auth" /> CD인증</label>
+        <div class="customer-history-profile__right">
+          <div class="customer-history-auth-title">고객인증</div>
+          <label><input type="radio" name="customer-auth" checked /> 계좌번호</label>
+          <label><input type="radio" name="customer-auth" /> 계좌비밀번호</label>
+          <label><input type="radio" name="customer-auth" /> 주민등록번호인증</label>
+          <label><input type="radio" name="customer-auth" /> 미인증</label>
+          <label><input type="radio" name="customer-auth" /> CD인증</label>
+        </div>
       </div>
     </div>
 

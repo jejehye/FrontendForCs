@@ -771,6 +771,12 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
   padding: 10px 12px 6px;
 }
 
+.customer-history-top-layout {
+  max-width: 1020px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .customer-history-top-controls__left {
   flex: 1;
   display: flex;
@@ -844,7 +850,14 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 
 .customer-history-top-row--sub {
-  padding-bottom: 2px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 4px;
+}
+
+.customer-history-top-row--sub .field {
+  width: min(100%, 760px);
 }
 
 .customer-history-profile {
@@ -1061,6 +1074,9 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
   }
   .customer-history-top-controls {
     flex-direction: column;
+  }
+  .customer-history-top-layout {
+    max-width: 100%;
   }
   .customer-history-top-controls__right {
     width: 100%;
