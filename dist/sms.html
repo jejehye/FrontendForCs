@@ -149,47 +149,6 @@
 
 <!-- ===================== SMS Column ===================== -->
 <section id="sms-column" class="column col-sms" data-role="sms-composer" data-channel-label="SMS">
-  <div class="chat-panel-header">
-  <div class="chat-status-row">
-    <span class="status-badge status-ib">
-      <i class="fa-solid fa-headset customer-icon-gap-1"></i>
-      I/B
-    </span>
-    <span class="customer-status-text">
-      신한 고객센터 &gt; 투자상담
-    </span>
-    <span class="status-badge status-cti">
-      <i class="fa-solid fa-link customer-icon-gap-1"></i>
-      CTI 연결여부 ON
-    </span>
-  </div>
-  <div class="customer-summary customer-summary-wide">
-    <div class="customer-meta-row">
-      <span class="status-badge status-unauth">
-        <i class="fa-solid fa-lock customer-icon-gap-1"></i>
-        무인증
-      </span>
-      <span class="customer-name">박지민(여)</span>
-      <span class="customer-divider">|</span>
-      <span class="customer-investment-profile">투자성향(적극투자형)</span>
-      <span class="customer-divider">|</span>
-      <span class="customer-grade">고객등급(VVIP)</span>
-      <span class="customer-divider">|</span>
-      <span>010-1234-5678</span>
-    </div>
-    <div class="customer-warning customer-warning-wide">
-      <i class="fa-solid fa-triangle-exclamation customer-warning-icon"></i>
-      <div class="customer-warning-body">
-        <span class="customer-warning-title">주의고객</span>
-        <span class="customer-warning-text">
-          고액거래 고객 - 담당PB 연결 필수 | 개인정보 보호 강화 대상 -
-          본인확인 철저
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-
   <div class="info-card sms-altalk-panel">
     <div class="sms-template-header">
     <span class="sms-header-title">
@@ -278,6 +237,67 @@
     </div>
     </div>
   </div>
+  <div class="info-card sms-history-panel">
+    <div class="sms-history-top">
+      <h4 class="sms-history-title">
+        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+        발송이력 조회
+      </h4>
+      <span class="sms-history-meta">고객전화번호 기준</span>
+    </div>
+    <div class="sms-history-search">
+      <input
+        type="text"
+        inputmode="numeric"
+        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
+        class="sms-field-input"
+        data-role="sms-history-phone"
+        data-sms-history-phone
+      >
+      <button
+        type="button"
+        class="btn--history-search sms-btn-nowrap"
+        data-action="sms-history-search"
+        data-sms-history-search
+      >
+        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
+        조회
+      </button>
+    </div>
+    <div class="sms-history-table-wrap">
+      <table class="sms-history-table table-compact">
+        <thead>
+          <tr>
+            <th>발송일시</th>
+            <th>템플릿명</th>
+            <th class="sms-status-col">상태</th>
+          </tr>
+        </thead>
+        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
+          <tr>
+            <td colspan="3" class="sms-history-empty-row">
+              조회할 고객전화번호를 입력해 주세요.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination pagination--history sms-pagination-wrap" data-role="sms-history-pagination" data-sms-history-pagination>
+      <button class="pagination__btn" data-action="sms-history-nav-first" data-sms-history-nav="first">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+      <button class="pagination__btn" data-action="sms-history-nav-prev" data-sms-history-nav="prev">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="pagination__btn is-active" data-action="sms-history-page-btn" data-target="1" data-sms-history-page-btn="1">1</button>
+      <button class="pagination__btn" data-action="sms-history-nav-next" data-sms-history-nav="next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+      <button class="pagination__btn" data-action="sms-history-nav-last" data-sms-history-nav="last">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- ===================== Center Column ===================== -->
@@ -361,67 +381,6 @@
 
 <!-- ===================== Side Panel ===================== -->
 <section id="right-column" class="column col-right">
-  <div class="info-card sms-history-panel">
-    <div class="sms-history-top">
-      <h4 class="sms-history-title">
-        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
-        발송이력 조회
-      </h4>
-      <span class="sms-history-meta">고객전화번호 기준</span>
-    </div>
-    <div class="sms-history-search">
-      <input
-        type="text"
-        inputmode="numeric"
-        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
-        class="sms-field-input"
-        data-role="sms-history-phone"
-        data-sms-history-phone
-      >
-      <button
-        type="button"
-        class="btn--history-search sms-btn-nowrap"
-        data-action="sms-history-search"
-        data-sms-history-search
-      >
-        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
-        조회
-      </button>
-    </div>
-    <div class="sms-history-table-wrap">
-      <table class="sms-history-table table-compact">
-        <thead>
-          <tr>
-            <th>발송일시</th>
-            <th>템플릿명</th>
-            <th class="sms-status-col">상태</th>
-          </tr>
-        </thead>
-        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
-          <tr>
-            <td colspan="3" class="sms-history-empty-row">
-              조회할 고객전화번호를 입력해 주세요.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="pagination pagination--history sms-pagination-wrap" data-role="sms-history-pagination" data-sms-history-pagination>
-      <button class="pagination__btn" data-action="sms-history-nav-first" data-sms-history-nav="first">
-        <i class="fa-solid fa-angles-left"></i>
-      </button>
-      <button class="pagination__btn" data-action="sms-history-nav-prev" data-sms-history-nav="prev">
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
-      <button class="pagination__btn is-active" data-action="sms-history-page-btn" data-target="1" data-sms-history-page-btn="1">1</button>
-      <button class="pagination__btn" data-action="sms-history-nav-next" data-sms-history-nav="next">
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
-      <button class="pagination__btn" data-action="sms-history-nav-last" data-sms-history-nav="last">
-        <i class="fa-solid fa-angles-right"></i>
-      </button>
-    </div>
-  </div>
   <div class="info-card sms-template-panel">
     <div class="sms-template-header">
       <h3 class="sms-template-title">

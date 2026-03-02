@@ -2,7 +2,6 @@
 
 <!-- ===================== SMS Column ===================== -->
 <section id="sms-column" class="column col-sms" data-role="sms-composer" data-channel-label="SMS">
-  {% include "partials/pages/main/customer-info.njk" %}
   <div class="info-card sms-altalk-panel">
     <div class="sms-template-header">
       <span class="sms-header-title">
@@ -84,6 +83,68 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="info-card sms-history-panel">
+    <div class="sms-history-top">
+      <h4 class="sms-history-title">
+        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
+        발송이력 조회
+      </h4>
+      <span class="sms-history-meta">고객전화번호 기준</span>
+    </div>
+    <div class="sms-history-search">
+      <input
+        type="text"
+        inputmode="numeric"
+        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
+        class="sms-field-input"
+        data-role="sms-history-phone"
+        data-sms-history-phone
+      >
+      <button
+        type="button"
+        class="btn--history-search sms-btn-nowrap"
+        data-action="sms-history-search"
+        data-sms-history-search
+      >
+        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
+        조회
+      </button>
+    </div>
+    <div class="sms-history-table-wrap">
+      <table class="sms-history-table table-compact">
+        <thead>
+          <tr>
+            <th>발송일시</th>
+            <th>템플릿명</th>
+            <th class="sms-status-col">상태</th>
+          </tr>
+        </thead>
+        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
+          <tr>
+            <td colspan="3" class="sms-history-empty-row">
+              조회할 고객전화번호를 입력해 주세요.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination pagination--history sms-pagination-wrap" data-role="sms-history-pagination" data-sms-history-pagination>
+      <button class="pagination__btn" data-action="sms-history-nav-first" data-sms-history-nav="first">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+      <button class="pagination__btn" data-action="sms-history-nav-prev" data-sms-history-nav="prev">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="pagination__btn is-active" data-action="sms-history-page-btn" data-target="1" data-sms-history-page-btn="1">1</button>
+      <button class="pagination__btn" data-action="sms-history-nav-next" data-sms-history-nav="next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+      <button class="pagination__btn" data-action="sms-history-nav-last" data-sms-history-nav="last">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
     </div>
   </div>
 </section>
@@ -173,68 +234,6 @@
 
 <!-- ===================== Side Panel ===================== -->
 <section id="right-column" class="column col-right">
-  <div class="info-card sms-history-panel">
-    <div class="sms-history-top">
-      <h4 class="sms-history-title">
-        <i class="fa-solid fa-clock-rotate-left sms-primary-text"></i>
-        발송이력 조회
-      </h4>
-      <span class="sms-history-meta">고객전화번호 기준</span>
-    </div>
-    <div class="sms-history-search">
-      <input
-        type="text"
-        inputmode="numeric"
-        placeholder="고객전화번호 입력 (예: 010-1234-5678)"
-        class="sms-field-input"
-        data-role="sms-history-phone"
-        data-sms-history-phone
-      >
-      <button
-        type="button"
-        class="btn--history-search sms-btn-nowrap"
-        data-action="sms-history-search"
-        data-sms-history-search
-      >
-        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>
-        조회
-      </button>
-    </div>
-    <div class="sms-history-table-wrap">
-      <table class="sms-history-table table-compact">
-        <thead>
-          <tr>
-            <th>발송일시</th>
-            <th>템플릿명</th>
-            <th class="sms-status-col">상태</th>
-          </tr>
-        </thead>
-        <tbody class="sms-history-body" data-role="sms-history-body" data-sms-history-body>
-          <tr>
-            <td colspan="3" class="sms-history-empty-row">
-              조회할 고객전화번호를 입력해 주세요.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="pagination pagination--history sms-pagination-wrap" data-role="sms-history-pagination" data-sms-history-pagination>
-      <button class="pagination__btn" data-action="sms-history-nav-first" data-sms-history-nav="first">
-        <i class="fa-solid fa-angles-left"></i>
-      </button>
-      <button class="pagination__btn" data-action="sms-history-nav-prev" data-sms-history-nav="prev">
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
-      <button class="pagination__btn is-active" data-action="sms-history-page-btn" data-target="1" data-sms-history-page-btn="1">1</button>
-      <button class="pagination__btn" data-action="sms-history-nav-next" data-sms-history-nav="next">
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
-      <button class="pagination__btn" data-action="sms-history-nav-last" data-sms-history-nav="last">
-        <i class="fa-solid fa-angles-right"></i>
-      </button>
-    </div>
-  </div>
-
   <div class="info-card sms-template-panel">
     <div class="sms-template-header">
       <h3 class="sms-template-title">
