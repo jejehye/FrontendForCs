@@ -147,30 +147,36 @@
       
   
 
-<section class="column col-chat layout-shell">
+
+
+<section class="column col-chat layout-shell customer-history-main-column">
   <section class="info-card customer-history-panel">
     <header class="customer-history-panel__header">상담원</header>
 
     <div class="customer-history-top-layout">
       <div class="customer-history-top-controls">
         <div class="customer-history-top-controls__left">
-          <div class="customer-history-top-row">
-          <label>계좌번호</label>
-          <input class="field" type="text" value="014-01004637" />
-          <button class="customer-history-mini-btn" type="button">계좌</button>
-          <button class="customer-history-mini-btn" type="button">비번</button>
-          <i class="fa-solid fa-lock customer-history-lock-icon" aria-hidden="true"></i>
-
-          <label>생년월일</label>
-          <input class="field customer-history-small-field" type="text" value="900101" />
-          <button class="customer-history-mini-btn" type="button">수신</button>
-          <i class="fa-solid fa-lock customer-history-lock-icon" aria-hidden="true"></i>
-
-          <label>고객번호</label>
-          <input class="field" type="text" value="1010537610" />
-          <button class="customer-history-icon-btn" type="button" aria-label="고객번호 조회">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
+          <div class="customer-history-top-row customer-history-top-row--inputs">
+            <div class="customer-history-top-group">
+              <label>계좌번호</label>
+              <input class="field" type="text" value="014-01004637" />
+              <button class="customer-history-mini-btn" type="button">계좌</button>
+              <button class="customer-history-mini-btn" type="button">비번</button>
+              <i class="fa-solid fa-lock customer-history-lock-icon" aria-hidden="true"></i>
+            </div>
+            <div class="customer-history-top-group">
+              <label>생년월일</label>
+              <input class="field customer-history-small-field" type="text" value="900101" />
+              <button class="customer-history-mini-btn" type="button">수신</button>
+              <i class="fa-solid fa-lock customer-history-lock-icon" aria-hidden="true"></i>
+            </div>
+            <div class="customer-history-top-group">
+              <label>고객번호</label>
+              <input class="field" type="text" value="1010537610" />
+              <button class="customer-history-icon-btn" type="button" aria-label="고객번호 조회">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
           </div>
 
           <div class="customer-history-top-row customer-history-top-row--sub">
@@ -236,25 +242,28 @@
     </div>
 
     <div class="customer-history-table-toolbar">
-      <span class="customer-history-table-toolbar__label">조회기간</span>
-      <input class="field field--history-date" type="date" value="2025-04-02" />
-      <span>~</span>
-      <input class="field field--history-date" type="date" value="2025-07-02" />
-      <button class="customer-history-mini-btn" type="button">당일</button>
-      <button class="customer-history-mini-btn" type="button">주간</button>
-      <button class="customer-history-mini-btn" type="button">월간</button>
-      <span class="customer-history-table-toolbar__spacer"></span>
-      <span class="customer-history-table-toolbar__label">채널</span>
-      <select class="field customer-history-count-select">
-        <option>8선택 / 17 전체</option>
-      </select>
-      <button class="customer-history-icon-btn" type="button" aria-label="새로고침">
-        <i class="fa-solid fa-rotate-right"></i>
-      </button>
-      <label class="customer-history-check-inline"><input type="checkbox" /> 이벤트</label>
-      <button class="btn--history-search btn-common-action btn-common-action--search" type="button">
-        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
-      </button>
+      <div class="customer-history-table-toolbar__left">
+        <span class="customer-history-table-toolbar__label">조회기간</span>
+        <input class="field field--history-date" type="date" value="2025-04-02" />
+        <span>~</span>
+        <input class="field field--history-date" type="date" value="2025-07-02" />
+        <button class="customer-history-mini-btn" type="button">당일</button>
+        <button class="customer-history-mini-btn" type="button">주간</button>
+        <button class="customer-history-mini-btn" type="button">월간</button>
+      </div>
+      <div class="customer-history-table-toolbar__right">
+        <span class="customer-history-table-toolbar__label">채널</span>
+        <select class="field customer-history-count-select">
+          <option>8선택 / 17 전체</option>
+        </select>
+        <button class="customer-history-icon-btn" type="button" aria-label="새로고침">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+        <label class="customer-history-check-inline"><input type="checkbox" /> 이벤트</label>
+        <button class="btn--history-search btn-common-action btn-common-action--search" type="button">
+          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
+        </button>
+      </div>
     </div>
 
     <div class="customer-history-grid-wrap customer-history-grid-wrap--main is-active" data-target="warning-panel" data-target-value="call-history">
@@ -325,7 +334,7 @@
   </section>
 </section>
 
-<section class="column col-center layout-shell"></section>
+<section class="column col-center layout-shell customer-history-empty-center"></section>
 
 <section class="column col-right layout-aside">
   <section class="info-card customer-history-side-card">
@@ -379,6 +388,10 @@
     </div>
   </section>
 </section>
+
+
+
+
 
 
 
