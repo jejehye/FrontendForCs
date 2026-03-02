@@ -68,8 +68,8 @@
 
         <div class="customer-history-profile__right">
           <div class="customer-history-auth-title">고객인증</div>
-          {% for option in (customer_history_data.auth_options or []) %}
-            <label><input type="radio" name="customer-auth"{% if option.checked %} checked{% endif %} /> {{ option.label }}</label>
+          {% for item in (customer_history_data.auth_info or []) %}
+            <div class="customer-history-auth-row"><span>{{ item.label }}</span><strong>{{ item.value }}</strong></div>
           {% endfor %}
         </div>
       </div>

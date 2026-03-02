@@ -761,6 +761,10 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
   box-sizing: border-box;
 }
 
+body.customer-history-mode.has-global-header .customer-history-main-column {
+  padding-top: 10px;
+}
+
 .customer-history-empty-center {
   display: none;
 }
@@ -1002,11 +1006,21 @@ body.customer-history-mode .layout-shell {
   color: #0f172a;
 }
 
-.customer-history-profile__right label {
-  display: block;
-  font-size: 17px;
+.customer-history-auth-row {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
   color: #4f6279;
   line-height: 1.6;
+}
+
+.customer-history-auth-row strong {
+  justify-self: end;
+  text-align: right;
+  color: #23354d;
+  font-weight: 700;
 }
 
 .customer-history-shortcuts {
@@ -1876,7 +1890,7 @@ body.new-main-mode #right-column {
 body.new-main-mode #center-column {
   display: grid;
   grid-template-rows: auto auto;
-  gap: 32px;
+  gap: 16px;
   min-height: 0;
   overflow: visible;
 }
@@ -2730,6 +2744,16 @@ body.new-main-mode #notice-area .new-main-schedule-pagination {
   margin-top: 8px !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
+}
+
+/* keep schedule card height content-based (remove large empty area under pagination) */
+body.new-main-mode #center-column > #notice-area {
+  align-self: start;
+  height: fit-content;
+}
+
+body.new-main-mode #notice-area .new-main-schedule-body {
+  flex: 0 0 auto;
 }
 
 /* warning description: single line and centered in content area */
