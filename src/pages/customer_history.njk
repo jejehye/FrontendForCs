@@ -1,0 +1,19 @@
+{% extends "layouts/app-shell.njk" %}
+{% set title = "이력" %}
+{% set page_css = "main.css" %}
+{% set active_page = "customer_history" %}
+
+{% block app_content %}
+  {% include "partials/pages/customer-history/content.njk" %}
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ asset('javascript/common/ui.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AppUi?.initSidebarNavigation) {
+        window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
+      }
+    });
+  </script>
+{% endblock %}
