@@ -941,7 +941,7 @@ body.customer-history-mode .layout-shell {
 .customer-history-mini-btn,
 .customer-history-icon-btn {
   height: 32px;
-  min-width: 32px;
+  min-width: 44px;
   border: 1px solid var(--main-header-control-border);
   border-radius: 6px;
   background: var(--main-header-control-bg);
@@ -954,6 +954,7 @@ body.customer-history-mode .layout-shell {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .customer-history-icon-btn {
@@ -1236,6 +1237,7 @@ body.customer-history-mode .layout-shell {
   gap: 8px;
   font-size: 11px;
   color: #4b5e75;
+  padding: 10px 12px;
 }
 
 .customer-history-side-body > div {
