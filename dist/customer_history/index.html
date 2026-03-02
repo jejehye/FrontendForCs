@@ -145,79 +145,176 @@
     <!-- ===================== Page Content ===================== -->
     <main id="page-main" class="layout-main-content" data-role="page-main">
       
-  <section class="column col-chat layout-shell">
-  <section class="info-card customer-history-card">
-    <header class="main-section-header">
-      <h3 class="heading-reset">상담원</h3>
-    </header>
-    <div class="panel__body customer-history-search-grid">
-      <input class="field" type="text" placeholder="계좌번호" value="014-01004637" />
-      <input class="field" type="text" placeholder="고객명" value="최코다" />
-      <input class="field" type="text" placeholder="대표번호" value="1588-6600" />
-      <button class="btn--history-search btn-common-action btn-common-action--search">
-        <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
-      </button>
+  
+<section class="column col-chat layout-shell">
+  <section class="info-card customer-history-panel">
+    <header class="customer-history-panel__header">상담원</header>
+
+    <div class="customer-history-top-controls">
+      <div class="customer-history-top-controls__left">
+        <div class="customer-history-top-row">
+          <label>계좌번호</label>
+          <input class="field" type="text" value="014-01004637" />
+          <button class="customer-history-mini-btn" type="button">계좌</button>
+          <button class="customer-history-mini-btn" type="button">비번</button>
+          <i class="fa-solid fa-lock customer-history-lock-icon" aria-hidden="true"></i>
+
+          <label>생년월일</label>
+          <input class="field customer-history-small-field" type="text" value="900101" />
+          <button class="customer-history-mini-btn" type="button">수신</button>
+          <i class="fa-solid fa-lock customer-history-lock-icon" aria-hidden="true"></i>
+
+          <label>고객번호</label>
+          <input class="field" type="text" value="1010537610" />
+          <button class="customer-history-icon-btn" type="button" aria-label="고객번호 조회">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="customer-history-top-row customer-history-top-row--sub">
+          <span class="customer-history-status-pill">운영계정</span>
+          <select class="field">
+            <option>한도이체입금</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="customer-history-top-controls__right">
+        <button class="btn--history-reset btn-common-action btn-common-action--reset" type="button">
+          <i class="fa-solid fa-rotate-left main-history-icon-gap"></i>초기화
+        </button>
+        <button class="btn--history-search btn-common-action btn-common-action--search" type="button">
+          <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
+        </button>
+      </div>
     </div>
-    <div class="panel__body customer-history-profile-grid">
-      <div><span>나이</span><strong>36</strong></div>
-      <div><span>성별</span><strong>여</strong></div>
-      <div><span>고객등급</span><strong>우량</strong></div>
-      <div><span>서비스등급</span><strong>VIP</strong></div>
+
+    <div class="customer-history-profile">
+      <div class="customer-history-profile__left">
+        <div class="customer-history-info-row"><span>고객명</span><strong>최코다</strong></div>
+        <div class="customer-history-info-row"><span>나이</span><strong>36</strong></div>
+        <div class="customer-history-info-row"><span>서비스등급</span><strong>성실</strong></div>
+        <div class="customer-history-info-row"><span>고객등급</span><strong>미성년</strong></div>
+      </div>
+
+      <div class="customer-history-profile__center">
+        <div class="customer-history-phone-row"><span>대표번호</span><strong>1588-6600 (고객센터)</strong></div>
+        <div class="customer-history-phone-row"><span>인입번호</span><strong>010-1234-5678</strong></div>
+        <div class="customer-history-phone-row"><span>시장강의</span><strong>수강중</strong></div>
+        <div class="customer-history-phone-row"><span>직장전화</span><strong>02-0000-0000</strong></div>
+        <div class="customer-history-phone-row"><span>기타전화</span><strong>02-1234-5678</strong></div>
+      </div>
+
+      <div class="customer-history-profile__right">
+        <div class="customer-history-auth-title">고객인증</div>
+        <label><input type="radio" name="customer-auth" checked /> 계좌번호</label>
+        <label><input type="radio" name="customer-auth" /> 계좌비밀번호</label>
+        <label><input type="radio" name="customer-auth" /> 주민등록번호인증</label>
+        <label><input type="radio" name="customer-auth" /> 미인증</label>
+        <label><input type="radio" name="customer-auth" /> CD인증</label>
+      </div>
+    </div>
+
+    <div class="customer-history-shortcuts">
+      <button class="customer-history-shortcut customer-history-shortcut--blue" type="button">KMS</button>
+      <button class="customer-history-shortcut customer-history-shortcut--blue" type="button">KMS검색</button>
+      <button class="customer-history-shortcut" type="button">ARS안내내역</button>
+      <button class="customer-history-shortcut" type="button">SMS이력</button>
+      <button class="customer-history-shortcut" type="button">고객확인이력</button>
+      <button class="customer-history-shortcut" type="button">FAX이력</button>
     </div>
   </section>
-</section>
 
-<section class="column col-center layout-shell">
-  <section class="info-card customer-history-card customer-history-card--fill">
-    <header class="main-section-header customer-history-tabs">
-      <button class="warning-tab is-active" type="button">통화이력</button>
-      <button class="warning-tab" type="button">ARS내역</button>
-      <button class="warning-tab" type="button">캠페인</button>
-    </header>
-    <div class="panel__body customer-history-toolbar">
+  <section class="info-card customer-history-panel customer-history-panel--table">
+    <div class="customer-history-tabs">
+      <button class="warning-tab is-active" type="button" data-action="warning-tab" data-target="call-history">통화이력</button>
+      <button class="warning-tab" type="button" data-action="warning-tab" data-target="ars-history">ARS내역</button>
+      <button class="warning-tab" type="button" data-action="warning-tab" data-target="campaign-history">캠페인</button>
+    </div>
+
+    <div class="customer-history-table-toolbar">
+      <span class="customer-history-table-toolbar__label">조회기간</span>
       <input class="field field--history-date" type="date" value="2025-04-02" />
+      <span>~</span>
       <input class="field field--history-date" type="date" value="2025-07-02" />
-      <button class="btn--history-search btn-common-action btn-common-action--search">
+      <button class="customer-history-mini-btn" type="button">당일</button>
+      <button class="customer-history-mini-btn" type="button">주간</button>
+      <button class="customer-history-mini-btn" type="button">월간</button>
+      <span class="customer-history-table-toolbar__spacer"></span>
+      <span class="customer-history-table-toolbar__label">채널</span>
+      <select class="field customer-history-count-select">
+        <option>8선택 / 17 전체</option>
+      </select>
+      <button class="customer-history-icon-btn" type="button" aria-label="새로고침">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+      <label class="customer-history-check-inline"><input type="checkbox" /> 이벤트</label>
+      <button class="btn--history-search btn-common-action btn-common-action--search" type="button">
         <i class="fa-solid fa-magnifying-glass main-history-icon-gap"></i>조회
       </button>
     </div>
-    <div class="main-history-table-wrap customer-history-table-wrap">
-      <table class="tbl table--history">
+
+    <div class="customer-history-grid-wrap customer-history-grid-wrap--main is-active" data-target="warning-panel" data-target-value="call-history">
+      <table class="tbl table--history customer-history-table">
         <thead class="main-history-thead">
           <tr>
             <th class="table__head table__head--narrow">No</th>
             <th class="table__head">상담일자</th>
             <th class="table__head">시작</th>
             <th class="table__head">종료</th>
-            <th class="table__head">접속채널</th>
+            <th class="table__head">접수채널</th>
             <th class="table__head">인입대표</th>
-            <th class="table__head">유형</th>
+            <th class="table__head">인입구분</th>
+            <th class="table__head">유형(대)</th>
+            <th class="table__head">유형(소)</th>
             <th class="table__head">결과</th>
             <th class="table__head">등록자</th>
+            <th class="table__head">등록지점</th>
+            <th class="table__head">수신번호</th>
+            <th class="table__head">발신번호</th>
           </tr>
         </thead>
         <tbody class="main-history-body">
-          <tr class="tbl__row">
-            <td class="tbl__cell">1</td>
-            <td class="tbl__cell">2025-07-02</td>
-            <td class="tbl__cell">09:42</td>
-            <td class="tbl__cell">09:56</td>
-            <td class="tbl__cell">전화</td>
-            <td class="tbl__cell">1588-6600</td>
-            <td class="tbl__cell">통화이력</td>
-            <td class="tbl__cell">완료</td>
-            <td class="tbl__cell">최코다</td>
+          <tr>
+            <td class="tbl__cell" colspan="14">조회된 항목이 없습니다.</td>
           </tr>
-          <tr class="tbl__row">
-            <td class="tbl__cell">2</td>
-            <td class="tbl__cell">2025-07-01</td>
-            <td class="tbl__cell">14:03</td>
-            <td class="tbl__cell">14:08</td>
-            <td class="tbl__cell">ARS</td>
-            <td class="tbl__cell">1588-6600</td>
-            <td class="tbl__cell">ARS내역</td>
-            <td class="tbl__cell">완료</td>
-            <td class="tbl__cell">시스템</td>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="customer-history-grid-wrap customer-history-grid-wrap--sub is-hidden" data-target="warning-panel" data-target-value="ars-history">
+      <table class="tbl table--history customer-history-table">
+        <thead class="main-history-thead">
+          <tr>
+            <th class="table__head table__head--narrow">No</th>
+            <th class="table__head">일시</th>
+            <th class="table__head">ARS 단계</th>
+            <th class="table__head">입력값</th>
+            <th class="table__head">결과</th>
+          </tr>
+        </thead>
+        <tbody class="main-history-body">
+          <tr>
+            <td class="tbl__cell" colspan="5">ARS 내역이 없습니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="customer-history-grid-wrap customer-history-grid-wrap--sub is-hidden" data-target="warning-panel" data-target-value="campaign-history">
+      <table class="tbl table--history customer-history-table">
+        <thead class="main-history-thead">
+          <tr>
+            <th class="table__head table__head--narrow">No</th>
+            <th class="table__head">일시</th>
+            <th class="table__head">캠페인명</th>
+            <th class="table__head">상태</th>
+            <th class="table__head">비고</th>
+          </tr>
+        </thead>
+        <tbody class="main-history-body">
+          <tr>
+            <td class="tbl__cell" colspan="5">캠페인 내역이 없습니다.</td>
           </tr>
         </tbody>
       </table>
@@ -225,25 +322,62 @@
   </section>
 </section>
 
+<section class="column col-center layout-shell"></section>
+
 <section class="column col-right layout-aside">
-  <section class="info-card customer-history-card">
-    <header class="main-section-header">
+  <section class="info-card customer-history-side-card">
+    <header class="main-section-header customer-history-side-header">
       <h3 class="heading-reset">인입정보</h3>
     </header>
-    <div class="panel__body">
-      <p class="notice-desc">인입구분: ARS세부인입</p>
-      <p class="notice-desc">고객대기시간: 00:34</p>
+    <div class="panel__body customer-history-side-body">
+      <div>
+        <span>인입명</span>
+        <strong>-</strong>
+      </div>
+      <div>
+        <span>인입구분</span>
+        <strong>-</strong>
+      </div>
+      <div>
+        <span>ARS세부인입</span>
+        <strong>-</strong>
+      </div>
+      <div>
+        <span>고객대기시간</span>
+        <strong>00:34</strong>
+      </div>
     </div>
   </section>
-  <section class="info-card customer-history-card">
-    <header class="main-section-header">
+
+  <section class="info-card customer-history-side-card">
+    <header class="main-section-header customer-history-side-header customer-history-side-header--sub">
       <h3 class="heading-reset">최근고객</h3>
+      <button class="warning-tab" type="button">TOP10</button>
     </header>
-    <div class="panel__body">
-      <p class="notice-desc">최코다 / 014-01004637 / 등록</p>
+    <div class="panel__body customer-history-recent-wrap">
+      <table class="tbl table--history customer-history-recent-table">
+        <thead class="main-history-thead">
+          <tr>
+            <th class="table__head table__head--narrow">고정</th>
+            <th class="table__head">계좌번호</th>
+            <th class="table__head">고객명</th>
+            <th class="table__head">구분</th>
+          </tr>
+        </thead>
+        <tbody class="main-history-body">
+          <tr class="tbl__row">
+            <td class="tbl__cell"><input type="checkbox" /></td>
+            <td class="tbl__cell">014-01004637</td>
+            <td class="tbl__cell">최코다</td>
+            <td class="tbl__cell">등록</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 </section>
+
+
 
 
     </main>
@@ -270,10 +404,14 @@
 
   
   <script src="javascript/common/ui.js?v=1771946580931"></script>
+  <script src="javascript/main/tabs.js?v=1771946580931"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.AppUi?.initSidebarNavigation) {
         window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
+      }
+      if (window.MainPageTabs?.init) {
+        window.MainPageTabs.init();
       }
     });
   </script>

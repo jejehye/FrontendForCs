@@ -9,10 +9,14 @@
 
 {% block scripts %}
   <script src="{{ asset('javascript/common/ui.js') }}"></script>
+  <script src="{{ asset('javascript/main/tabs.js') }}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.AppUi?.initSidebarNavigation) {
         window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
+      }
+      if (window.MainPageTabs?.init) {
+        window.MainPageTabs.init();
       }
     });
   </script>
