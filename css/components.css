@@ -757,6 +757,8 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 /* customer_history tab only: use center column width for the left main area */
 .customer-history-main-column {
   grid-column: 2 / 4;
+  padding-left: 12px;
+  box-sizing: border-box;
 }
 
 .customer-history-empty-center {
@@ -976,8 +978,9 @@ body.customer-history-mode .layout-shell {
 
 .customer-history-info-row,
 .customer-history-phone-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 94px minmax(0, 1fr);
+  align-items: center;
   font-size: 17px;
   color: #465b75;
   line-height: 1.75;
@@ -988,6 +991,8 @@ body.customer-history-mode .layout-shell {
 .customer-history-phone-row strong {
   color: #23354d;
   font-weight: 700;
+  justify-self: end;
+  text-align: right;
 }
 
 .customer-history-auth-title {

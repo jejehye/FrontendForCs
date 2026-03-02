@@ -1,0 +1,35 @@
+{
+  "account_number": "014-01004637",
+  "birth_date": "900101",
+  "customer_number": "1010537610",
+  "account_status_label": "운영계정",
+  "account_type_name": "한도이체입금",
+  "profile_left": [
+    { "label": "고객명", "value": "최코다" },
+    { "label": "나이", "value": "36" },
+    { "label": "성별", "value": "성실" },
+    { "label": "고객등급", "value": "미성년" }
+  ],
+  "profile_center": [
+    { "label": "대표번호", "value": "1588-6600 (고객센터)" },
+    { "label": "인입번호", "value": "010-1234-5678" },
+    { "label": "시장강의", "value": "수강중" },
+    { "label": "직장전화", "value": "02-0000-0000" },
+    { "label": "기타전화", "value": "02-1234-5678" }
+  ],
+  "auth_options": [
+    { "label": "계좌번호", "checked": false },
+    { "label": "계좌비밀번호", "checked": true },
+    { "label": "주민등록번호인증", "checked": false },
+    { "label": "미인증", "checked": false },
+    { "label": "CD인증", "checked": false }
+  ],
+  "shortcuts": [
+    "KMS",
+    "KMS검색",
+    "ARS안내내역",
+    "SMS이력",
+    "고객확인이력",
+    "FAX이력"
+  ]
+}
