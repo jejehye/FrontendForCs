@@ -83,6 +83,34 @@ function ensureSection({ anchor, existsSelector, position, section }) {
   }
 }
 
+function mountStatusSegmentToGlobalHeader() {
+  const statusWrap = document.querySelector('.new-main-topbar-statuses');
+  const segmented = document.querySelector('.new-main-topbar .new-main-status-segmented');
+  const headerCenter = document.querySelector('[data-role="app-global-center"]');
+  const globalSegmented = headerCenter?.querySelector('.app-global-status-segmented');
+
+  if (!headerCenter) {
+    return;
+  }
+
+  // Global header now owns the status segmented control for all tabs.
+  // In new_main, drop the duplicate topbar status block.
+  if (globalSegmented) {
+    statusWrap?.remove();
+    return;
+  }
+
+  if (!segmented) {
+    return;
+  }
+  if (!headerCenter.querySelector('.new-main-status-segmented')) {
+    headerCenter.appendChild(segmented);
+  }
+  if (statusWrap && !statusWrap.querySelector('.new-main-status-segmented')) {
+    statusWrap.remove();
+  }
+}
+
 function getCurrentDateTokens() {
   const now = new Date();
   const yyyy = now.getFullYear();
@@ -351,21 +379,19 @@ function topbarTemplate() {
           <button type="button" class="new-main-status-segment" data-status-value="away" aria-pressed="false">이석</button>
           <button type="button" class="new-main-status-segment" data-status-value="meeting" aria-pressed="false">교육</button>
           <button type="button" class="new-main-status-segment" data-status-value="break" aria-pressed="false">식사</button>
+          <button type="button" class="new-main-status-segment" data-status-value="hold" aria-pressed="false">보류</button>
           <select class="new-main-status-control new-main-status-control--hidden" data-role="agent-status-select" aria-label="업무상태">
             <option value="ready" selected>업무</option>
             <option value="busy">대기</option>
             <option value="away">이석</option>
             <option value="meeting">교육</option>
             <option value="break">식사</option>
+            <option value="hold">보류</option>
           </select>
         </div>
       </div>
     </div>
     <div class="new-main-topbar-actions">
-      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="main-call-hold" aria-label="보류">
-        <i class="fa-solid fa-pause"></i>
-        보류
-      </button>
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openGroupSwitch}" aria-label="그룹전환">
         <i class="fa-solid fa-arrows-rotate"></i>
         그룹전환
@@ -620,8 +646,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
   });
 
-  const topbarStatusSelect = document.querySelector('.new-main-topbar [data-role="agent-status-select"]');
-  const statusSegments = Array.from(document.querySelectorAll('.new-main-topbar .new-main-status-segment'));
+  const topbarStatusSelect = document.querySelector('.new-main-status-segmented [data-role="agent-status-select"]');
+  const statusSegments = Array.from(document.querySelectorAll('.new-main-status-segmented .new-main-status-segment'));
   if (topbarStatusSelect && statusSegments.length) {
     const syncStatusSegments = value => {
       statusSegments.forEach(segment => {
@@ -647,6 +673,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     });
   }
+
+  mountStatusSegmentToGlobalHeader();
 
   rightColumn?.querySelectorAll(`[data-action="${ACTION.openGroupSwitch}"], [data-action="${ACTION.openOutbound}"]`)
     .forEach(button => button.remove());

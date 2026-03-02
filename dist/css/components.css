@@ -1761,8 +1761,8 @@ body.new-main-mode .new-main-csat-table {
 
 body.new-main-mode .new-main-csat-table .table__head--time,
 body.new-main-mode .new-main-csat-table td:first-child {
-  width: 110px;
-  max-width: 110px;
+  width: 55px;
+  max-width: 55px;
   white-space: nowrap;
 }
 

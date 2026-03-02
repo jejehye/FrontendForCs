@@ -59,14 +59,15 @@ body.has-global-header #sidebar.col-sidebar {
 
 .app-global-header__inner {
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 0 16px;
   gap: 12px;
 }
 
 .app-global-header__stats {
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -75,6 +76,63 @@ body.has-global-header #sidebar.col-sidebar {
   border: 1px solid #D7DEE8;
   border-radius: 14px;
   background: #F8FAFC;
+}
+
+.app-global-header__center {
+  justify-self: center;
+  min-width: 0;
+}
+
+.app-global-header__center:empty {
+  display: none;
+}
+
+.app-global-status-segmented {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #CBD5E1;
+  border-radius: 10px;
+  background: #FFFFFF;
+  overflow: hidden;
+  min-height: 30px;
+}
+
+.app-global-status-segment {
+  min-height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-right: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.app-global-status-segment:last-of-type {
+  border-right: 0;
+}
+
+.app-global-status-segment:hover {
+  background: #F8FAFC;
+  color: #334155;
+}
+
+.app-global-status-segment.is-active {
+  background: #E2E8F0;
+  color: #1F2937;
+}
+
+.app-global-status-select--hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  overflow: hidden;
 }
 
 .app-global-header__stat {
@@ -106,6 +164,7 @@ body.has-global-header #sidebar.col-sidebar {
 }
 
 .app-global-header__user-wrap {
+  justify-self: end;
   display: inline-flex;
   align-items: center;
   gap: 12px;
