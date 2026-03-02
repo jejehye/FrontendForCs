@@ -187,7 +187,7 @@
           </div>
 
           <div class="customer-history-top-row customer-history-top-row--sub">
-            <span class="customer-history-status-pill">운영계정</span>
+            <button type="button" class="customer-history-status-pill" data-role="customer-history-account-status" data-open-label="운영계좌" data-closed-label="폐쇄계좌" aria-pressed="false">운영계좌</button>
             <select class="field">
               <option>한도이체입금</option>
             </select>
@@ -208,7 +208,7 @@
         <div class="customer-history-profile__left">
           <div class="customer-history-info-row"><span>고객명</span><strong>최코다</strong></div>
           <div class="customer-history-info-row"><span>나이</span><strong>36</strong></div>
-          <div class="customer-history-info-row"><span>성별</span><strong>성실</strong></div>
+          <div class="customer-history-info-row"><span>성별</span><strong>남</strong></div>
           <div class="customer-history-info-row"><span>고객등급</span><strong>미성년</strong></div>
         </div>
 
@@ -439,6 +439,16 @@
       }
       if (window.MainPageTabs?.init) {
         window.MainPageTabs.init();
+      }
+      const accountStatusButton = document.querySelector('[data-role="customer-history-account-status"]');
+      if (accountStatusButton) {
+        accountStatusButton.addEventListener('click', () => {
+          const openLabel = accountStatusButton.dataset.openLabel || '운영계좌';
+          const closedLabel = accountStatusButton.dataset.closedLabel || '폐쇄계좌';
+          const isClosed = accountStatusButton.textContent.trim() === closedLabel;
+          accountStatusButton.textContent = isClosed ? openLabel : closedLabel;
+          accountStatusButton.setAttribute('aria-pressed', String(!isClosed));
+        });
       }
     });
   </script>

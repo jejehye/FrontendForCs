@@ -2,12 +2,13 @@
   "account_number": "014-01004637",
   "birth_date": "900101",
   "customer_number": "1010537610",
-  "account_status_label": "운영계정",
+  "account_status_label": "운영계좌",
+  "closed_account_status_label": "폐쇄계좌",
   "account_type_name": "한도이체입금",
   "profile_left": [
     { "label": "고객명", "value": "최코다" },
     { "label": "나이", "value": "36" },
-    { "label": "성별", "value": "성실" },
+    { "label": "성별", "value": "남" },
     { "label": "고객등급", "value": "미성년" }
   ],
   "profile_center": [

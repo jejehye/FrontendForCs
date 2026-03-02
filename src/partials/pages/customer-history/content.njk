@@ -36,7 +36,14 @@
           </div>
 
           <div class="customer-history-top-row customer-history-top-row--sub">
-            <span class="customer-history-status-pill">{{ customer_history_data.account_status_label or '' }}</span>
+            <button
+              type="button"
+              class="customer-history-status-pill"
+              data-role="customer-history-account-status"
+              data-open-label="{{ customer_history_data.account_status_label or '운영계좌' }}"
+              data-closed-label="{{ customer_history_data.closed_account_status_label or '폐쇄계좌' }}"
+              aria-pressed="false"
+            >{{ customer_history_data.account_status_label or '운영계좌' }}</button>
             <select class="field">
               <option>{{ customer_history_data.account_type_name or '' }}</option>
             </select>

@@ -929,23 +929,25 @@ body.customer-history-mode .layout-shell {
   height: 34px;
   padding: 0 14px;
   border-radius: 999px;
+  border: 0;
   background: #f58220;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.01em;
+  cursor: pointer;
 }
 
 .customer-history-mini-btn,
 .customer-history-icon-btn {
   height: 32px;
   min-width: 32px;
-  border: 1px solid #9eb1ca;
+  border: 1px solid var(--main-header-control-border);
   border-radius: 6px;
-  background: #ffffff;
-  color: #345172;
+  background: var(--main-header-control-bg);
+  color: var(--main-header-control-text);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   padding: 0 14px;
   display: inline-flex;
@@ -956,6 +958,12 @@ body.customer-history-mode .layout-shell {
 
 .customer-history-icon-btn {
   border-radius: 6px;
+}
+
+.customer-history-mini-btn:hover,
+.customer-history-icon-btn:hover {
+  background: var(--main-header-control-bg-hover);
+  border-color: rgba(226, 232, 240, 0.62);
 }
 
 .customer-history-top-row--sub {

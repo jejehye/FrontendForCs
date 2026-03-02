@@ -19,6 +19,16 @@
       if (window.MainPageTabs?.init) {
         window.MainPageTabs.init();
       }
+      const accountStatusButton = document.querySelector('[data-role="customer-history-account-status"]');
+      if (accountStatusButton) {
+        accountStatusButton.addEventListener('click', () => {
+          const openLabel = accountStatusButton.dataset.openLabel || '운영계좌';
+          const closedLabel = accountStatusButton.dataset.closedLabel || '폐쇄계좌';
+          const isClosed = accountStatusButton.textContent.trim() === closedLabel;
+          accountStatusButton.textContent = isClosed ? openLabel : closedLabel;
+          accountStatusButton.setAttribute('aria-pressed', String(!isClosed));
+        });
+      }
     });
   </script>
 {% endblock %}
