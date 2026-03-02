@@ -35,6 +35,7 @@
 }
 
 .csat-panel .main-history-table-wrap {
+  height: 520px;
   max-height: none;
 }
 

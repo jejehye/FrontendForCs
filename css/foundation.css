@@ -98,6 +98,10 @@ body.has-global-header #sidebar.col-sidebar {
 }
 
 .app-global-status-segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   min-height: 30px;
   padding: 0 10px;
   border: 0;
@@ -107,6 +111,11 @@ body.has-global-header #sidebar.col-sidebar {
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.app-global-status-segment i {
+  font-size: 11px;
+  line-height: 1;
 }
 
 .app-global-status-segment:last-of-type {

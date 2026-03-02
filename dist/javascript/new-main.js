@@ -111,6 +111,25 @@ function mountStatusSegmentToGlobalHeader() {
   }
 }
 
+function bindVerifyClearButton() {
+  const clearButton = document.querySelector('[data-action="new-main-clear-verify"]');
+  const verifyForm = document.querySelector(SELECTOR.verifyForm);
+  if (!clearButton || !verifyForm || clearButton.dataset.bound === 'true') {
+    return;
+  }
+
+  clearButton.dataset.bound = 'true';
+  clearButton.addEventListener('click', () => {
+    const fields = verifyForm.querySelectorAll('#account-number, #account-password, #account-owner, #resident-id');
+    fields.forEach(field => {
+      field.value = '';
+      field.dispatchEvent(new Event('input', { bubbles: true }));
+      field.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    verifyForm.querySelector('#account-number')?.focus();
+  });
+}
+
 function getCurrentDateTokens() {
   const now = new Date();
   const yyyy = now.getFullYear();
@@ -675,6 +694,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   mountStatusSegmentToGlobalHeader();
+  bindVerifyClearButton();
 
   rightColumn?.querySelectorAll(`[data-action="${ACTION.openGroupSwitch}"], [data-action="${ACTION.openOutbound}"]`)
     .forEach(button => button.remove());

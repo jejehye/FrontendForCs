@@ -182,12 +182,12 @@
           </div>
           <div class="app-global-header__center" data-role="${ROLE.center}">
             <div class="app-global-status-segmented" data-role="${ROLE.statusSegmented}" role="group" aria-label="업무상태 전환">
-              <button type="button" class="app-global-status-segment is-active" data-status-value="ready" aria-pressed="true">업무</button>
-              <button type="button" class="app-global-status-segment" data-status-value="busy" aria-pressed="false">대기</button>
-              <button type="button" class="app-global-status-segment" data-status-value="away" aria-pressed="false">이석</button>
-              <button type="button" class="app-global-status-segment" data-status-value="meeting" aria-pressed="false">교육</button>
-              <button type="button" class="app-global-status-segment" data-status-value="break" aria-pressed="false">식사</button>
-              <button type="button" class="app-global-status-segment" data-status-value="hold" aria-pressed="false">보류</button>
+              <button type="button" class="app-global-status-segment is-active" data-status-value="ready" aria-pressed="true"><i class="fa-solid fa-briefcase"></i>업무</button>
+              <button type="button" class="app-global-status-segment" data-status-value="busy" aria-pressed="false"><i class="fa-solid fa-hourglass-half"></i>대기</button>
+              <button type="button" class="app-global-status-segment" data-status-value="away" aria-pressed="false"><i class="fa-solid fa-person-walking"></i>이석</button>
+              <button type="button" class="app-global-status-segment" data-status-value="meeting" aria-pressed="false"><i class="fa-solid fa-chalkboard-user"></i>교육</button>
+              <button type="button" class="app-global-status-segment" data-status-value="break" aria-pressed="false"><i class="fa-solid fa-utensils"></i>식사</button>
+              <button type="button" class="app-global-status-segment" data-status-value="hold" aria-pressed="false"><i class="fa-solid fa-pause"></i>보류</button>
               <select class="app-global-status-select app-global-status-select--hidden" data-role="${ROLE.statusSelect}" aria-label="업무상태">
                 <option value="ready" selected>업무</option>
                 <option value="busy">대기</option>
