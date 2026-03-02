@@ -234,11 +234,6 @@ body {
 
 .pds-note-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; flex: 0 0 auto; }
 .pds-note-actions { display: flex; gap: 8px; margin-top: 10px; }
-.pds-note-header .pds-note-actions {
-  margin-top: 0;
-  margin-left: auto;
-  flex: 0 0 auto;
-}
 .pds-note-actions .btn-common-action {
   flex: 0 0 auto;
   min-height: 26px;
@@ -570,6 +565,12 @@ body.has-global-header #app-container.grid-layout {
   overflow-x: hidden;
 }
 
+/* note card should hug content height (avoid fake bottom padding caused by flex stretch) */
+#right-column > .card.info-card.pds-note-card {
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
 /* right column sizing: reduce customer info card height (~200px) */
 #right-column > .card.info-card:nth-of-type(2) {
   flex: 0 0 220px;
@@ -582,13 +583,6 @@ body.has-global-header #app-container.grid-layout {
   overflow-y: auto;
 }
 
-#right-column > .card.info-card:nth-of-type(4) {
-  flex: 1 1 0;
-  min-height: 0;
-  height: calc(100% - 800px);
-  max-height: calc(100% - 800px);
-  overflow-y: auto;
-}
 
 /* match new_main: card body spacing via inner blocks, not card padding */
 #pds-column > .card.info-card > :not(.pds-card-header):not(.pds-between-row-md):not(.pds-note-header):not(.pds-live-chat-header),
@@ -647,20 +641,6 @@ body.has-global-header #app-container.grid-layout {
   #app-container.grid-layout {
     grid-template-columns: 60px minmax(300px, 1fr) minmax(350px, 1fr) minmax(350px, 1fr);
   }
-}
-
-/* 3-column background tone aligned with new_main */
-body {
-  background: #EEF2F7;
-}
-
-.col-pds,
-.col-right {
-  background: #F7F9FC;
-}
-
-.col-center {
-  background: #FFFFFF;
 }
 
 /* new_main parity: unify PDS card header color/padding format */

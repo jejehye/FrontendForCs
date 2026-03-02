@@ -2612,6 +2612,18 @@ body.new-main-mode .new-main-schedule-body {
   padding: 30px;
 }
 
+body.new-main-mode #coaching-area .coaching-placeholder {
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: left;
+  padding: 22px 24px;
+}
+
 body.new-main-mode #coaching-area .main-center-warning-wrap {
   flex: 0 0 auto;
   margin: 0 30px 30px;
