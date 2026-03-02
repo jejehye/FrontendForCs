@@ -191,10 +191,10 @@ function ensureHistoryLookupModal(historyPanel) {
 }
 
 function bindHistoryLookupModal() {
-  const openButton = document.querySelector(`[data-action="${ACTION.openHistoryLookup}"]`);
+  const openButtons = Array.from(document.querySelectorAll(`[data-action="${ACTION.openHistoryLookup}"]`));
   const modal = document.querySelector(`[data-role="${ROLE.historyLookupModal}"]`);
 
-  if (!openButton || !modal || openButton.dataset.bound === 'true') {
+  if (!openButtons.length || !modal) {
     return;
   }
 
@@ -208,8 +208,13 @@ function bindHistoryLookupModal() {
     modal.setAttribute('aria-hidden', 'false');
   };
 
-  openButton.dataset.bound = 'true';
-  openButton.addEventListener('click', openModal);
+  openButtons.forEach(button => {
+    if (button.dataset.bound === 'true') {
+      return;
+    }
+    button.dataset.bound = 'true';
+    button.addEventListener('click', openModal);
+  });
 
   modal.querySelectorAll(`[data-action="${ACTION.closeHistoryLookup}"]`).forEach(button => {
     button.addEventListener('click', closeModal);
@@ -524,6 +529,10 @@ function topbarTemplate() {
       <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--primary" data-action="${ACTION.openOutbound}" aria-label="아웃바운드">
         <i class="fa-solid fa-phone"></i>
         아웃바운드
+      </button>
+      <button type="button" class="softphone-outbound-btn new-main-topbar-action new-main-action-btn new-main-action-btn--secondary" data-action="${ACTION.openHistoryLookup}" aria-label="상담이력">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        상담이력
       </button>
     </div>
   `;
