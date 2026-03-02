@@ -792,13 +792,42 @@ body.customer-history-mode .layout-shell {
 }
 
 .customer-history-panel__header {
-  min-height: 40px;
-  padding: 9px 16px;
+  min-height: 44px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #bfc9da;
+  background: #E7EEFA;
+}
+
+.customer-history-panel__title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1;
+  color: #15243a;
+  letter-spacing: -0.01em;
+}
+
+.customer-history-panel__close {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #e7edf7;
   font-size: 14px;
-  font-weight: 700;
-  color: #0f172a;
-  border-bottom: 1px solid #e6eaf0;
-  background: #f8fafc;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.customer-history-panel__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #f8fbff;
 }
 
 .customer-history-top-controls {
@@ -980,15 +1009,11 @@ body.customer-history-mode .layout-shell {
   border: 0;
   border-radius: 999px;
   padding: 0 9px;
-  background: #f58220;
+  background: #114a86;
   color: #fff;
   font-size: 10px;
   font-weight: 700;
   cursor: pointer;
-}
-
-.customer-history-shortcut--blue {
-  background: #114a86;
 }
 
 .customer-history-panel--table {
@@ -1075,10 +1100,6 @@ body.customer-history-mode .layout-shell {
   margin-right: 4px;
 }
 
-.customer-history-table-toolbar__spacer {
-  flex: 1;
-}
-
 .customer-history-grid-wrap {
   min-height: 260px;
   max-height: 420px;
@@ -1103,26 +1124,28 @@ body.customer-history-mode .layout-shell {
 }
 
 .customer-history-side-header {
-  min-height: 40px;
-  background: #f8fafc;
-  color: #0f172a;
-  padding: 9px 12px;
-  border-bottom: 1px solid #e6eaf0;
+  min-height: 44px;
+  background: #E7EEFA;
+  color: #15243a;
+  padding: 8px 14px;
+  border-bottom: 1px solid #bfc9da;
 }
 
 .customer-history-side-header .heading-reset {
-  font-size: 14px;
-  color: #0f172a;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #15243a;
 }
 
 .customer-history-side-header--sub {
   justify-content: space-between;
-  background: #f4f7fb;
-  color: #24354d;
+  background: #E7EEFA;
+  color: #15243a;
 }
 
 .customer-history-side-header--sub .heading-reset {
-  color: #24354d;
+  color: #15243a;
 }
 
 .customer-history-side-body {
