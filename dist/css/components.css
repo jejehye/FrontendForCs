@@ -1896,13 +1896,6 @@ body.new-main-mode .main-my-history-panel {
   box-shadow: none;
 }
 
-body.new-main-mode .softphone-script-panel,
-body.new-main-mode #verify-form .account-info-panel,
-body.new-main-mode .main-my-history-panel,
-body.new-main-mode .new-main-history-editor {
-  padding: var(--space-6);
-}
-
 /* remove header-to-border inset only for specific cards */
 body.new-main-mode .softphone-script-panel,
 body.new-main-mode .main-my-history-panel,
