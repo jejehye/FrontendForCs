@@ -313,7 +313,6 @@ function csatTemplate() {
             <tr>
               <th class="table__head table__head--time">시간</th>
               <th class="table__head">상담원</th>
-              <th class="table__head">고객</th>
               <th class="table__head table__head--io">만족도</th>
               <th class="table__head table__head--summary">남긴 내용</th>
             </tr>
@@ -359,7 +358,6 @@ function renderCsatPagination(csatFeed, rows, pageSize = CSAT_PAGE_SIZE) {
           <tr class="tbl__row">
             <td class="tbl__cell">${row.time}</td>
             <td class="tbl__cell">${row.agent}</td>
-            <td class="tbl__cell tbl__cell--strong">${row.customer}</td>
             <td class="tbl__cell">
               <span class="new-main-csat-badge is-${row.ratingTone}">
                 ${row.ratingLabel} (${row.score}/5)

@@ -24,6 +24,15 @@
   border-top: 0;
 }
 
+.csat-panel .panel__header--history .weight-semibold {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  color: #0F172A;
+}
+
 .csat-panel .panel__body--history-filter {
   border-left: 0;
   border-right: 0;

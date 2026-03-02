@@ -232,18 +232,12 @@ body {
 .pds-script-copy { font-size: 12px; line-height: 1.45; color: var(--color-text-primary); }
 .pds-script-list { font-size: 12px; line-height: 1.45; color: var(--color-text-primary); display: flex; flex-direction: column; gap: 2px; }
 
-.pds-note-header-main {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-}
-.pds-note-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; }
-.pds-note-hint { font-size: 11px; color: var(--color-text-secondary); white-space: nowrap; }
+.pds-note-title { margin: 0; display: flex; align-items: center; gap: 8px; color: inherit; flex: 0 0 auto; }
 .pds-note-actions { display: flex; gap: 8px; margin-top: 10px; }
 .pds-note-header .pds-note-actions {
   margin-top: 0;
   margin-left: auto;
+  flex: 0 0 auto;
 }
 .pds-note-actions .btn-common-action {
   flex: 0 0 auto;
@@ -726,4 +720,62 @@ body.has-global-header #app-container.grid-layout {
   height: auto !important;
   min-height: calc(100vh - var(--global-header-h)) !important;
   overflow: visible !important;
+}
+
+/* PDS note card: match callback note layout */
+#right-column .pds-note-card .pds-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#right-column .pds-note-card .pds-note-textarea.pds-note-input {
+  margin: 20px 20px 12px;
+  width: calc(100% - 40px);
+  max-width: 100%;
+  min-height: 180px;
+  height: 180px;
+  box-sizing: border-box;
+  display: block;
+  resize: none;
+}
+
+#right-column .pds-note-card .pds-note-actions {
+  margin: 0 20px 20px;
+  gap: 12px;
+}
+
+#right-column .pds-note-card .pds-note-actions .btn-common-action {
+  flex: 1 1 0;
+  min-height: 56px;
+  height: 56px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+#right-column .pds-note-card .pds-note-actions .pds-note-reset-btn {
+  border: 1px solid #D1D5DB;
+  background: #E5E7EB;
+  color: #374151;
+}
+
+#right-column .pds-note-card .pds-note-actions .pds-note-reset-btn:hover {
+  background: #D1D5DB;
+  border-color: #CBD5E1;
+}
+
+#right-column .pds-note-card .pds-note-actions .pds-note-save-btn {
+  background: #2563EB;
+  border-color: #1D4ED8;
+  color: #FFFFFF;
+}
+
+#right-column .pds-note-card .pds-note-actions .pds-note-save-btn:hover {
+  background: #1D4ED8;
+  border-color: #1E40AF;
 }

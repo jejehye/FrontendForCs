@@ -555,6 +555,14 @@
   font-family: var(--callback-header-font-family) !important;
   font-weight: 600 !important;
   color: #0F172A !important;
+  margin: 0;
+  padding: 0;
+}
+
+#sms-column .callback-request-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #right-column > .info-card > .callback-info-tabs .callback-info-tab-btn {
@@ -695,6 +703,11 @@
 
 #right-column .callback-note-card .callback-note-textarea {
   margin: var(--callback-card-pad-y) var(--callback-card-pad-x) 12px;
+  width: calc(100% - (var(--callback-card-pad-x) * 2));
+  max-width: 100%;
+  display: block;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 #right-column .callback-note-card .callback-modal-actions {
