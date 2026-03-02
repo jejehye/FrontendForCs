@@ -747,10 +747,11 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 
 .customer-history-panel {
   padding: 0;
-  border: 1px solid #d8dde6;
-  border-radius: 6px;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
   overflow: hidden;
   background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 /* customer_history tab only: use center column width for the left main area */
@@ -762,22 +763,50 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
   display: none;
 }
 
+/* customer_history tab only: switch from column-scroll to full page scroll */
+body.customer-history-mode {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+body.customer-history-mode #app-container.grid-layout {
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+body.customer-history-mode.has-global-header #app-container.grid-layout {
+  height: auto;
+  min-height: calc(100vh - var(--global-header-h));
+}
+
+body.customer-history-mode .col-chat,
+body.customer-history-mode .col-right {
+  overflow: visible;
+}
+
+body.customer-history-mode .customer-history-main-column,
+body.customer-history-mode .layout-shell {
+  min-height: 0;
+  height: auto;
+}
+
 .customer-history-panel__header {
-  min-height: 34px;
-  padding: 7px 12px;
+  min-height: 40px;
+  padding: 9px 16px;
   font-size: 14px;
   font-weight: 700;
-  color: #23354d;
-  border-bottom: 1px solid #e6ebf2;
-  background: #f4f7fb;
+  color: #0f172a;
+  border-bottom: 1px solid #e6eaf0;
+  background: #f8fafc;
 }
 
 .customer-history-top-controls {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
-  padding: 10px 12px 6px;
+  gap: 14px;
+  padding: 12px 16px 8px;
 }
 
 .customer-history-top-layout {
@@ -790,7 +819,7 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
 .customer-history-top-controls__right {
@@ -801,7 +830,7 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 .customer-history-top-row {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
@@ -831,17 +860,17 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 
 .customer-history-top-row label {
-  font-size: 11px;
-  color: #415165;
+  font-size: 12px;
+  color: #475569;
   font-weight: 600;
 }
 
 .customer-history-top-row .field {
-  height: 24px;
+  height: 30px;
   min-width: 108px;
-  border-color: #d8dde6;
-  border-radius: 4px;
-  font-size: 12px;
+  border-color: #e4e7ec;
+  border-radius: 8px;
+  font-size: 13px;
 }
 
 .customer-history-small-field {
@@ -896,26 +925,26 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 .customer-history-profile {
   display: grid;
   grid-template-columns: 1.1fr 1.3fr 0.7fr;
-  gap: 8px;
-  padding: 0 12px 8px;
+  gap: 10px;
+  padding: 0 16px 12px;
 }
 
 .customer-history-profile__left,
 .customer-history-profile__center,
 .customer-history-profile__right {
-  border: 1px solid #e6ebf2;
-  border-radius: 4px;
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
   background: #fff;
-  padding: 7px 9px;
+  padding: 10px 12px;
 }
 
 .customer-history-info-row,
 .customer-history-phone-row {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
   color: #5b6b7f;
-  line-height: 1.75;
+  line-height: 1.85;
   gap: 8px;
 }
 
@@ -926,23 +955,23 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 
 .customer-history-auth-title {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  margin-bottom: 2px;
-  color: #23354d;
+  margin-bottom: 4px;
+  color: #0f172a;
 }
 
 .customer-history-profile__right label {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   color: #4f6279;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .customer-history-shortcuts {
-  padding: 0 12px 9px;
+  padding: 0 16px 12px;
   display: flex;
-  gap: 5px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
@@ -963,42 +992,43 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 
 .customer-history-panel--table {
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .customer-history-tabs {
   display: flex;
   align-items: flex-end;
-  gap: 3px;
-  padding: 0 10px;
-  background: #ffffff;
-  border-bottom: 2px solid #174173;
+  gap: 4px;
+  padding: 0 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e6eaf0;
 }
 
 .customer-history-tabs .warning-tab {
-  min-width: 72px;
-  min-height: 28px;
-  border-radius: 6px 6px 0 0;
+  min-width: 88px;
+  min-height: 34px;
+  border-radius: 8px 8px 0 0;
   font-size: 12px;
   font-weight: 700;
-  border: 1px solid #cad4e2;
-  background: #ebf0f6;
+  border: 1px solid #dbe3ed;
+  background: #eef2f7;
   color: #5a6a7d;
 }
 
 .customer-history-tabs .warning-tab.is-active {
-  border-color: #174173;
-  background: #174173;
+  border-color: #2563eb;
+  background: #2563eb;
   color: #fff;
 }
 
 .customer-history-table-toolbar {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 6px 10px;
-  border-bottom: 1px solid #dbe3ed;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e6eaf0;
   justify-content: space-between;
+  background: #fff;
 }
 
 .customer-history-table-toolbar > span {
@@ -1023,8 +1053,8 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 
 .customer-history-table-toolbar .field {
-  height: 24px;
-  border-radius: 4px;
+  height: 30px;
+  border-radius: 8px;
 }
 
 .customer-history-table-toolbar__label {
@@ -1050,8 +1080,8 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 }
 
 .customer-history-grid-wrap {
-  min-height: 220px;
-  max-height: 360px;
+  min-height: 260px;
+  max-height: 420px;
   overflow: auto;
 }
 
@@ -1067,20 +1097,22 @@ body.new-main-mode #verify-form .verify-clear-btn:hover {
 .customer-history-side-card {
   padding: 0;
   overflow: hidden;
-  border-radius: 6px;
-  border: 1px solid #d8dde6;
+  border-radius: 12px;
+  border: 1px solid #e4e7ec;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 .customer-history-side-header {
-  min-height: 34px;
-  background: #0f3f72;
-  color: #fff;
-  padding: 6px 10px;
+  min-height: 40px;
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 9px 12px;
+  border-bottom: 1px solid #e6eaf0;
 }
 
 .customer-history-side-header .heading-reset {
-  font-size: 13px;
-  color: #fff;
+  font-size: 14px;
+  color: #0f172a;
 }
 
 .customer-history-side-header--sub {

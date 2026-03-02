@@ -151,7 +151,7 @@
 
 <section class="column col-chat layout-shell customer-history-main-column">
   <section class="info-card customer-history-panel">
-    <header class="customer-history-panel__header">상담원</header>
+    <header class="customer-history-panel__header">고객여정</header>
 
     <div class="customer-history-top-layout">
       <div class="customer-history-top-controls">
@@ -425,6 +425,7 @@
   <script src="javascript/main/tabs.js?v=1771946580931"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('customer-history-mode');
       if (window.AppUi?.initSidebarNavigation) {
         window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
       }

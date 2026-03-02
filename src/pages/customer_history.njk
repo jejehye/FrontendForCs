@@ -12,6 +12,7 @@
   <script src="{{ asset('javascript/main/tabs.js') }}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('customer-history-mode');
       if (window.AppUi?.initSidebarNavigation) {
         window.AppUi.initSidebarNavigation({ itemSelector: '[data-role="nav-item"]' });
       }
