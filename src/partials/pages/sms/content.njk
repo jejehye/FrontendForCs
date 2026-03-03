@@ -252,37 +252,52 @@
       </div>
     </div>
 
-    <div class="sms-template-list" data-role="template-list" data-template-list>
-      {% for template in sms_data.templates or [] %}
-        <div data-template="{{ template.id }}" class="template-card" data-action="template-select">
-          <div class="sms-template-card-head">
-            <span class="sms-template-card-title">{{ template.title }}</span>
-            <span class="sms-template-card-date">{{ template.date }}</span>
-          </div>
-          <p class="sms-template-card-body">
-            {{ template.body }}
-          </p>
-          <div class="sms-template-card-foot{% if template.spaced %} sms-template-card-foot--spaced{% endif %}">
-            <span class="sms-template-char-count">{{ template.char_count }}</span>
-          </div>
+    <div class="sms-template-list">
+      <div class="sms-template-table-wrap">
+        <table class="sms-template-table">
+          <thead>
+            <tr>
+              <th>템플릿 제목</th>
+            </tr>
+          </thead>
+          <tbody data-role="template-list" data-template-list>
+            {% for template in sms_data.templates or [] %}
+              <tr
+                data-template="{{ template.id }}"
+                data-action="template-select"
+                data-template-title="{{ template.title }}"
+                data-template-date="{{ template.date }}"
+                data-template-body="{{ template.body }}"
+                class="sms-template-row"
+              >
+                <td>{{ template.title }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
+        <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+        <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
+        <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+      </div>
+      <div class="sms-template-preview" data-role="template-preview">
+        <div class="sms-template-preview-head">
+          <strong data-role="template-preview-title">템플릿을 선택해 주세요.</strong>
+          <span data-role="template-preview-date"></span>
         </div>
-      {% endfor %}
-    </div>
-
-    <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
-      <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
-        <i class="fa-solid fa-angles-left"></i>
-      </button>
-      <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
-      <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
-      <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
-      <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
-        <i class="fa-solid fa-angles-right"></i>
-      </button>
+        <p class="sms-template-preview-body" data-role="template-preview-body">제목을 클릭하면 내용이 표시됩니다.</p>
+      </div>
     </div>
   </div>
 </section>

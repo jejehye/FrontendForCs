@@ -47,6 +47,10 @@ const templatePrevButton = selectOne('[data-action="template-nav-prev"]', '[data
 const templateNextButton = selectOne('[data-action="template-nav-next"]', '[data-template-nav="next"]');
 const templateLastButton = selectOne('[data-action="template-nav-last"]', '[data-template-nav="last"]');
 const templateSearchInput = selectOne('[data-role="template-search"]', '[data-template-search]');
+const templatePreviewTitle = selectOne('[data-role="template-preview-title"]');
+const templatePreviewDate = selectOne('[data-role="template-preview-date"]');
+const templatePreviewBody = selectOne('[data-role="template-preview-body"]');
+let selectedTemplateBody = '';
 
 const smsHistoryPhoneInput = selectOne('[data-role="sms-history-phone"]', '[data-sms-history-phone]');
 const smsHistorySearchButton = selectOne('[data-action="sms-history-search"]', '[data-sms-history-search]');
@@ -107,44 +111,21 @@ function createNoticeItem(notice) {
   return item;
 }
 
-function createTemplateCard(template) {
-  const card = document.createElement('div');
-  card.className = 'template-card';
-  card.setAttribute('data-action', 'template-select');
+function createTemplateRow(template) {
+  const row = document.createElement('tr');
+  row.className = 'sms-template-row';
+  row.setAttribute('data-action', 'template-select');
   if (template.id != null) {
-    card.setAttribute('data-template', String(template.id));
+    row.setAttribute('data-template', String(template.id));
   }
+  row.setAttribute('data-template-title', template.title || '');
+  row.setAttribute('data-template-date', template.date || '');
+  row.setAttribute('data-template-body', template.body || '');
 
-  const head = document.createElement('div');
-  head.className = 'sms-template-card-head';
-
-  const title = document.createElement('span');
-  title.className = 'sms-template-card-title';
-  title.textContent = template.title || '';
-
-  const date = document.createElement('span');
-  date.className = 'sms-template-card-date';
-  date.textContent = template.date || '';
-
-  head.appendChild(title);
-  head.appendChild(date);
-
-  const body = document.createElement('p');
-  body.className = 'sms-template-card-body';
-  body.textContent = template.body || '';
-
-  const foot = document.createElement('div');
-  foot.className = `sms-template-card-foot${template.spaced ? ' sms-template-card-foot--spaced' : ''}`;
-
-  const count = document.createElement('span');
-  count.className = 'sms-template-char-count';
-  count.textContent = template.char_count || '';
-
-  foot.appendChild(count);
-  card.appendChild(head);
-  card.appendChild(body);
-  card.appendChild(foot);
-  return card;
+  const titleCell = document.createElement('td');
+  titleCell.textContent = template.title || '';
+  row.appendChild(titleCell);
+  return row;
 }
 
 function renderSmsDynamicBlocks(data) {
@@ -159,17 +140,40 @@ function renderSmsDynamicBlocks(data) {
   });
 
   if (templateList) {
-    templateList.replaceChildren(...templates.map(createTemplateCard));
+    templateList.replaceChildren(...templates.map(createTemplateRow));
   }
 }
 
 function bindTemplateSelect() {
-  selectAll('[data-action="template-select"]', '.template-card').forEach(card => {
-    card.addEventListener('click', function handleTemplateSelect() {
-      selectAll('[data-action="template-select"]', '.template-card').forEach(c => c.classList.remove('selected'));
+  selectAll('[data-action="template-select"]', '.sms-template-row').forEach(row => {
+    row.addEventListener('click', function handleTemplateSelect() {
+      selectAll('[data-action="template-select"]', '.sms-template-row').forEach(c => c.classList.remove('selected'));
       this.classList.add('selected');
 
-      const templateText = this.querySelector('p')?.textContent?.trim() || '';
+      const templateTitle = this.getAttribute('data-template-title') || '';
+      const templateDate = this.getAttribute('data-template-date') || '';
+      const templateText = this.getAttribute('data-template-body') || '';
+
+      if (templatePreviewTitle) {
+        templatePreviewTitle.textContent = templateTitle || '템플릿 제목';
+      }
+      if (templatePreviewDate) {
+        templatePreviewDate.textContent = templateDate;
+      }
+      if (templatePreviewBody) {
+        templatePreviewBody.textContent = templateText || '템플릿 내용이 없습니다.';
+      }
+      selectedTemplateBody = templateText;
+    });
+  });
+
+  if (templatePreviewBody && templatePreviewBody.dataset.bound !== 'true') {
+    templatePreviewBody.dataset.bound = 'true';
+    templatePreviewBody.addEventListener('click', () => {
+      const templateText = (selectedTemplateBody || '').trim();
+      if (!templateText) {
+        return;
+      }
       getComposerSections().forEach(section => {
         const textarea = section.querySelector('[data-role="composer-message-input"]');
         const counter = section.querySelector('[data-role="composer-char-counter"]');
@@ -181,7 +185,7 @@ function bindTemplateSelect() {
         }
       });
     });
-  });
+  }
 }
 
 function initializeTemplatePagination() {
@@ -189,21 +193,23 @@ function initializeTemplatePagination() {
     return;
   }
 
-  const templateCards = Array.from(templateList.querySelectorAll('[data-action="template-select"], .template-card'));
+  const templateRows = Array.from(templateList.querySelectorAll('[data-action="template-select"], .sms-template-row'));
 
-  const buildTemplatePages = cards => {
+  const buildTemplatePages = rows => {
     templatePages = [];
-    for (let index = 0; index < cards.length; index += templatePageSize) {
-      templatePages.push(cards.slice(index, index + templatePageSize));
+    for (let index = 0; index < rows.length; index += templatePageSize) {
+      templatePages.push(rows.slice(index, index + templatePageSize));
     }
   };
 
   const setActiveTemplatePage = pageNumber => {
     if (!templatePages.length) {
-      const emptyState = document.createElement('div');
-      emptyState.className = 'text-xs text-gray-400 text-center py-6';
-      emptyState.textContent = '검색 결과가 없습니다.';
-      templateList.replaceChildren(emptyState);
+      const emptyRow = document.createElement('tr');
+      const emptyCell = document.createElement('td');
+      emptyCell.className = 'sms-template-empty-cell';
+      emptyCell.textContent = '검색 결과가 없습니다.';
+      emptyRow.appendChild(emptyCell);
+      templateList.replaceChildren(emptyRow);
       templatePageButtons.forEach(button => button.classList.remove('is-active'));
       templateFirstButton.disabled = true;
       templatePrevButton.disabled = true;
@@ -253,15 +259,18 @@ function initializeTemplatePagination() {
 
   const applyTemplateFilter = () => {
     const keyword = (templateSearchInput?.value || '').trim().toLowerCase();
-    const filteredCards = templateCards.filter(card => card.textContent.toLowerCase().includes(keyword));
-    buildTemplatePages(filteredCards);
+    const filteredRows = templateRows.filter(row => {
+      const title = (row.getAttribute('data-template-title') || row.textContent || '').toLowerCase();
+      return !keyword || title.includes(keyword);
+    });
+    buildTemplatePages(filteredRows);
     activeTemplatePage = 1;
     rebuildTemplateButtons();
     setActiveTemplatePage(1);
     bindTemplateSelect();
   };
 
-  buildTemplatePages(templateCards);
+  buildTemplatePages(templateRows);
   rebuildTemplateButtons();
   setActiveTemplatePage(1);
   bindTemplateSelect();

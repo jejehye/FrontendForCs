@@ -399,89 +399,55 @@
       </div>
     </div>
 
-    <div class="sms-template-list" data-role="template-list" data-template-list>
-      
-        <div data-template="1" class="template-card" data-action="template-select">
-          <div class="sms-template-card-head">
-            <span class="sms-template-card-title">해외주식 거래 수수료 이벤트</span>
-            <span class="sms-template-card-date">2024-01-15</span>
-          </div>
-          <p class="sms-template-card-body">
-            [신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용 1588-xxxx
-          </p>
-          <div class="sms-template-card-foot sms-template-card-foot--spaced">
-            <span class="sms-template-char-count">72자</span>
-          </div>
+    <div class="sms-template-list">
+      <div class="sms-template-table-wrap">
+        <table class="sms-template-table">
+          <thead>
+            <tr>
+              <th>템플릿 제목</th>
+            </tr>
+          </thead>
+          <tbody data-role="template-list" data-template-list>
+            <tr data-template="1" data-action="template-select" data-template-title="해외주식 거래 수수료 이벤트" data-template-date="2024-01-15" data-template-body="[신한투자증권] 고객님, 해외주식 거래 수수료 우대 이벤트 진행중! 최대 90% 할인 혜택. 자세한 내용 1588-xxxx" class="sms-template-row">
+              <td>해외주식 거래 수수료 이벤트</td>
+            </tr>
+            <tr data-template="2" data-action="template-select" data-template-title="ISA 계좌 만기 안내" data-template-date="2024-01-10" data-template-body="[신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의 1588-xxxx" class="sms-template-row">
+              <td>ISA 계좌 만기 안내</td>
+            </tr>
+            <tr data-template="3" data-action="template-select" data-template-title="PRIME 고객 투자 세미나" data-template-date="2024-01-08" data-template-body="[신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00, 장소: 여의도센터 문의: 1588-xxxx" class="sms-template-row">
+              <td>PRIME 고객 투자 세미나</td>
+            </tr>
+            <tr data-template="4" data-action="template-select" data-template-title="계좌 비밀번호 변경 완료" data-template-date="2024-01-05" data-template-body="[신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx" class="sms-template-row">
+              <td>계좌 비밀번호 변경 완료</td>
+            </tr>
+            <tr data-template="5" data-action="template-select" data-template-title="자산관리 상담 예약" data-template-date="2024-01-03" data-template-body="[신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소 1588-xxxx" class="sms-template-row">
+              <td>자산관리 상담 예약</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
+        <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+        <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
+        <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+      </div>
+      <div class="sms-template-preview" data-role="template-preview">
+        <div class="sms-template-preview-head">
+          <strong data-role="template-preview-title">템플릿을 선택해 주세요.</strong>
+          <span data-role="template-preview-date"></span>
         </div>
-      
-        <div data-template="2" class="template-card" data-action="template-select">
-          <div class="sms-template-card-head">
-            <span class="sms-template-card-title">ISA 계좌 만기 안내</span>
-            <span class="sms-template-card-date">2024-01-10</span>
-          </div>
-          <p class="sms-template-card-body">
-            [신한투자증권] 고객님의 ISA 계좌가 2024년 2월 20일 만기 예정입니다. 재가입 문의 1588-xxxx
-          </p>
-          <div class="sms-template-card-foot">
-            <span class="sms-template-char-count">61자</span>
-          </div>
-        </div>
-      
-        <div data-template="3" class="template-card" data-action="template-select">
-          <div class="sms-template-card-head">
-            <span class="sms-template-card-title">PRIME 고객 투자 세미나</span>
-            <span class="sms-template-card-date">2024-01-08</span>
-          </div>
-          <p class="sms-template-card-body">
-            [신한투자증권] PRIME 고객님을 위한 특별 투자 세미나 초대. 일시: 2024.02.25 15:00, 장소: 여의도센터 문의: 1588-xxxx
-          </p>
-          <div class="sms-template-card-foot">
-            <span class="sms-template-char-count">85자</span>
-          </div>
-        </div>
-      
-        <div data-template="4" class="template-card" data-action="template-select">
-          <div class="sms-template-card-head">
-            <span class="sms-template-card-title">계좌 비밀번호 변경 완료</span>
-            <span class="sms-template-card-date">2024-01-05</span>
-          </div>
-          <p class="sms-template-card-body">
-            [신한투자증권] 고객님의 계좌 비밀번호가 안전하게 변경되었습니다. 문의사항은 1588-xxxx
-          </p>
-          <div class="sms-template-card-foot">
-            <span class="sms-template-char-count">58자</span>
-          </div>
-        </div>
-      
-        <div data-template="5" class="template-card" data-action="template-select">
-          <div class="sms-template-card-head">
-            <span class="sms-template-card-title">자산관리 상담 예약</span>
-            <span class="sms-template-card-date">2024-01-03</span>
-          </div>
-          <p class="sms-template-card-body">
-            [신한투자증권] 2024년 2월 10일 14:00 자산관리 상담이 예약되었습니다. 변경/취소 1588-xxxx
-          </p>
-          <div class="sms-template-card-foot">
-            <span class="sms-template-char-count">63자</span>
-          </div>
-        </div>
-      
-    </div>
-
-    <div class="pagination pagination--history sms-pagination-wrap" data-role="template-pagination" data-template-pagination>
-      <button class="pagination__btn" data-action="template-nav-first" data-template-nav="first">
-        <i class="fa-solid fa-angles-left"></i>
-      </button>
-      <button class="pagination__btn" data-action="template-nav-prev" data-template-nav="prev">
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
-      <button class="pagination__btn is-active" data-action="template-page-btn" data-target="1" data-template-page-btn="1">1</button>
-      <button class="pagination__btn" data-action="template-nav-next" data-template-nav="next">
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
-      <button class="pagination__btn" data-action="template-nav-last" data-template-nav="last">
-        <i class="fa-solid fa-angles-right"></i>
-      </button>
+        <p class="sms-template-preview-body" data-role="template-preview-body">제목을 클릭하면 내용이 표시됩니다.</p>
+      </div>
     </div>
   </div>
 </section>
