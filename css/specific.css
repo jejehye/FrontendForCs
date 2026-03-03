@@ -15,23 +15,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--main-header-border);
+  border: 1px solid #C9D5E3;
   border-radius: 10px;
-  background: linear-gradient(to right, var(--main-header-bg), var(--main-header-bg-dark));
-  padding: 12px 14px;
+  background: #E7EEFA;
+  padding: 8px 20px;
+  min-height: 40px;
+  box-sizing: border-box;
 }
 
 .specific-header-title {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #334155;
-  font-weight: 700;
+  color: #111827;
+  font-weight: 600;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 .specific-header-title h1 {
   margin: 0;
-  font-size: 14px;
+  font-size: 17px;
+  line-height: 1.4;
 }
 
 .specific-header-meta {
@@ -60,10 +64,19 @@
 }
 
 .specific-panel-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 20px;
+  margin: -14px -14px 10px;
+  border-bottom: 1px solid #C9D5E3;
+  background: #E7EEFA;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #111827;
+  font-family: "OneShinhanMedium", "OneShinhanLight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .specific-form {
@@ -443,3 +456,4 @@
     width: calc(50% - 14px);
   }
 }
+
