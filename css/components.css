@@ -3394,6 +3394,14 @@ body.new-main-mode a {
   color: var(--text-accent);
 }
 
+/* restore warning area title color in new_main */
+body.new-main-mode .new-main-warning-title,
+body.new-main-mode .new-main-warning-item,
+body.new-main-mode .status-badge.status-unauth,
+body.new-main-mode .customer-investment-profile {
+  color: var(--text-danger);
+}
+
 /* new_main topbar: single-row compact status/action strip under global header */
 body.new-main-mode .new-main-topbar {
   display: flex;

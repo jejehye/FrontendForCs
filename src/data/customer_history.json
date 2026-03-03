@@ -2,6 +2,9 @@
   "account_number": "014-01004637",
   "birth_date": "900101",
   "customer_number": "1010537610",
+  "date_from": "2025-04-02",
+  "date_to": "2025-07-02",
+  "channel_summary": "8선택 / 17 전체",
   "account_status_label": "운영계좌",
   "closed_account_status_label": "폐쇄계좌",
   "account_type_name": "한도이체입금",
@@ -12,7 +15,7 @@
     { "label": "고객등급", "value": "미성년" }
   ],
   "profile_center": [
-    { "label": "대표번호", "value": "1588-6600 (고객센터)" },
+    { "label": "대표번호", "value": "1588-0365 (고객센터)" },
     { "label": "인입번호", "value": "010-1234-5678" },
     { "label": "시장강의", "value": "수강중" },
     { "label": "직장전화", "value": "02-0000-0000" },
@@ -29,5 +32,114 @@
     "SMS이력",
     "고객확인이력",
     "FAX이력"
+  ],
+  "call_history": [
+    {
+      "no": 1,
+      "date": "2025-07-02",
+      "start": "14:05",
+      "end": "14:16",
+      "channel": "IB",
+      "inbound_main": "대표번호",
+      "inbound_type": "계좌문의",
+      "type_large": "업무안내",
+      "type_small": "한도이체",
+      "result": "완료",
+      "registrant": "최코다",
+      "branch": "강남센터",
+      "received_number": "1588-0365",
+      "sent_number": "010-1234-5678"
+    },
+    {
+      "no": 2,
+      "date": "2025-07-01",
+      "start": "11:22",
+      "end": "11:30",
+      "channel": "ARS",
+      "inbound_main": "1588-0365",
+      "inbound_type": "인증문의",
+      "type_large": "인증",
+      "type_small": "계좌비밀번호",
+      "result": "완료",
+      "registrant": "최코다",
+      "branch": "강남센터",
+      "received_number": "1588-0365",
+      "sent_number": "010-1234-5678"
+    },
+    {
+      "no": 3,
+      "date": "2025-06-30",
+      "start": "09:40",
+      "end": "09:48",
+      "channel": "OB",
+      "inbound_main": "직통번호",
+      "inbound_type": "이벤트안내",
+      "type_large": "캠페인",
+      "type_small": "신규고객",
+      "result": "보류",
+      "registrant": "최코다",
+      "branch": "강남센터",
+      "received_number": "02-1234-5678",
+      "sent_number": "010-1234-5678"
+    }
+  ],
+  "ars_history": [
+    {
+      "no": 1,
+      "datetime": "2025-07-02 14:05",
+      "step": "본인인증",
+      "input_value": "****",
+      "result": "성공"
+    },
+    {
+      "no": 2,
+      "datetime": "2025-07-01 11:24",
+      "step": "계좌조회",
+      "input_value": "014-01004637",
+      "result": "성공"
+    }
+  ],
+  "campaign_history": [
+    {
+      "no": 1,
+      "datetime": "2025-06-30 09:41",
+      "campaign_name": "한도이체 안내 캠페인",
+      "status": "완료",
+      "note": "콜백 완료"
+    },
+    {
+      "no": 2,
+      "datetime": "2025-06-25 15:20",
+      "campaign_name": "VIP 전용 서비스 안내",
+      "status": "진행중",
+      "note": "후속안내 예정"
+    }
+  ],
+  "inbound_info": [
+    { "label": "인입명", "value": "대표번호" },
+    { "label": "인입구분", "value": "일반인입" },
+    { "label": "ARS세부인입", "value": "계좌/인증" },
+    { "label": "고객대기시간", "value": "00:34" }
+  ],
+  "recent_customers_tab_label": "TOP10",
+  "recent_customers": [
+    {
+      "fixed": true,
+      "account_number": "014-01004637",
+      "customer_name": "최코다",
+      "category": "등록"
+    },
+    {
+      "fixed": false,
+      "account_number": "012-99887766",
+      "customer_name": "김신한",
+      "category": "조회"
+    },
+    {
+      "fixed": false,
+      "account_number": "021-33445566",
+      "customer_name": "박투자",
+      "category": "등록"
+    }
   ]
 }

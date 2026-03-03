@@ -99,9 +99,9 @@
     <div class="customer-history-table-toolbar">
       <div class="customer-history-table-toolbar__left">
         <span class="customer-history-table-toolbar__label">조회기간</span>
-        <input class="field field--history-date" type="date" value="2025-04-02" />
+        <input class="field field--history-date" type="date" value="{{ customer_history_data.date_from or '2025-04-02' }}" />
         <span>~</span>
-        <input class="field field--history-date" type="date" value="2025-07-02" />
+        <input class="field field--history-date" type="date" value="{{ customer_history_data.date_to or '2025-07-02' }}" />
         <button class="customer-history-mini-btn" type="button">당일</button>
         <button class="customer-history-mini-btn" type="button">주간</button>
         <button class="customer-history-mini-btn" type="button">월간</button>
@@ -109,7 +109,7 @@
       <div class="customer-history-table-toolbar__right">
         <span class="customer-history-table-toolbar__label">채널</span>
         <select class="field customer-history-count-select">
-          <option>8선택 / 17 전체</option>
+          <option>{{ customer_history_data.channel_summary or '8선택 / 17 전체' }}</option>
         </select>
         <button class="customer-history-icon-btn" type="button" aria-label="새로고침">
           <i class="fa-solid fa-rotate-right"></i>
@@ -142,9 +142,30 @@
           </tr>
         </thead>
         <tbody class="main-history-body">
-          <tr>
-            <td class="tbl__cell" colspan="14">조회된 항목이 없습니다.</td>
-          </tr>
+          {% if (customer_history_data.call_history or []) | length > 0 %}
+            {% for row in (customer_history_data.call_history or []) %}
+              <tr class="tbl__row">
+                <td class="tbl__cell">{{ row.no }}</td>
+                <td class="tbl__cell">{{ row.date }}</td>
+                <td class="tbl__cell">{{ row.start }}</td>
+                <td class="tbl__cell">{{ row.end }}</td>
+                <td class="tbl__cell">{{ row.channel }}</td>
+                <td class="tbl__cell">{{ row.inbound_main }}</td>
+                <td class="tbl__cell">{{ row.inbound_type }}</td>
+                <td class="tbl__cell">{{ row.type_large }}</td>
+                <td class="tbl__cell">{{ row.type_small }}</td>
+                <td class="tbl__cell">{{ row.result }}</td>
+                <td class="tbl__cell">{{ row.registrant }}</td>
+                <td class="tbl__cell">{{ row.branch }}</td>
+                <td class="tbl__cell">{{ row.received_number }}</td>
+                <td class="tbl__cell">{{ row.sent_number }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td class="tbl__cell" colspan="14">조회된 항목이 없습니다.</td>
+            </tr>
+          {% endif %}
         </tbody>
       </table>
     </div>
@@ -161,9 +182,21 @@
           </tr>
         </thead>
         <tbody class="main-history-body">
-          <tr>
-            <td class="tbl__cell" colspan="5">ARS 내역이 없습니다.</td>
-          </tr>
+          {% if (customer_history_data.ars_history or []) | length > 0 %}
+            {% for row in (customer_history_data.ars_history or []) %}
+              <tr class="tbl__row">
+                <td class="tbl__cell">{{ row.no }}</td>
+                <td class="tbl__cell">{{ row.datetime }}</td>
+                <td class="tbl__cell">{{ row.step }}</td>
+                <td class="tbl__cell">{{ row.input_value }}</td>
+                <td class="tbl__cell">{{ row.result }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td class="tbl__cell" colspan="5">ARS 내역이 없습니다.</td>
+            </tr>
+          {% endif %}
         </tbody>
       </table>
     </div>
@@ -180,9 +213,21 @@
           </tr>
         </thead>
         <tbody class="main-history-body">
-          <tr>
-            <td class="tbl__cell" colspan="5">캠페인 내역이 없습니다.</td>
-          </tr>
+          {% if (customer_history_data.campaign_history or []) | length > 0 %}
+            {% for row in (customer_history_data.campaign_history or []) %}
+              <tr class="tbl__row">
+                <td class="tbl__cell">{{ row.no }}</td>
+                <td class="tbl__cell">{{ row.datetime }}</td>
+                <td class="tbl__cell">{{ row.campaign_name }}</td>
+                <td class="tbl__cell">{{ row.status }}</td>
+                <td class="tbl__cell">{{ row.note }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td class="tbl__cell" colspan="5">캠페인 내역이 없습니다.</td>
+            </tr>
+          {% endif %}
         </tbody>
       </table>
     </div>
@@ -197,29 +242,19 @@
       <h3 class="heading-reset">인입정보</h3>
     </header>
     <div class="panel__body customer-history-side-body">
-      <div>
-        <span>인입명</span>
-        <strong>-</strong>
-      </div>
-      <div>
-        <span>인입구분</span>
-        <strong>-</strong>
-      </div>
-      <div>
-        <span>ARS세부인입</span>
-        <strong>-</strong>
-      </div>
-      <div>
-        <span>고객대기시간</span>
-        <strong>00:34</strong>
-      </div>
+      {% for item in (customer_history_data.inbound_info or []) %}
+        <div>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+        </div>
+      {% endfor %}
     </div>
   </section>
 
   <section class="info-card customer-history-side-card">
     <header class="main-section-header customer-history-side-header customer-history-side-header--sub">
       <h3 class="heading-reset">최근고객</h3>
-      <button class="warning-tab" type="button">TOP10</button>
+      <button class="warning-tab" type="button">{{ customer_history_data.recent_customers_tab_label or 'TOP10' }}</button>
     </header>
     <div class="panel__body customer-history-recent-wrap">
       <table class="tbl table--history customer-history-recent-table">
@@ -232,12 +267,22 @@
           </tr>
         </thead>
         <tbody class="main-history-body">
-          <tr class="tbl__row">
-            <td class="tbl__cell"><input type="checkbox" /></td>
-            <td class="tbl__cell">014-01004637</td>
-            <td class="tbl__cell">최코다</td>
-            <td class="tbl__cell">등록</td>
-          </tr>
+          {% if (customer_history_data.recent_customers or []) | length > 0 %}
+            {% for row in (customer_history_data.recent_customers or []) %}
+              <tr class="tbl__row">
+                <td class="tbl__cell">
+                  <input type="checkbox" {% if row.fixed %}checked{% endif %} />
+                </td>
+                <td class="tbl__cell">{{ row.account_number }}</td>
+                <td class="tbl__cell">{{ row.customer_name }}</td>
+                <td class="tbl__cell">{{ row.category }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td class="tbl__cell" colspan="4">최근고객 데이터가 없습니다.</td>
+            </tr>
+          {% endif %}
         </tbody>
       </table>
     </div>
