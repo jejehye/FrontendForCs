@@ -1204,6 +1204,12 @@ body.customer-history-mode .layout-shell {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
+/* customer_history: narrow only the inbound-info card width */
+body.customer-history-mode .layout-aside .customer-history-side-card:first-of-type {
+  width: 100%;
+  max-width: 420px;
+}
+
 .customer-history-side-header {
   height: 40px;
   min-height: 40px;
@@ -1719,6 +1725,27 @@ body.customer-history-mode .layout-shell {
   font-size: 12px;
   font-weight: 700;
   color: #0f172a;
+}
+.new-main-linked-history {
+  margin-top: 8px;
+}
+.new-main-linked-history-title {
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
+}
+.new-main-linked-history-wrap {
+  max-height: 180px;
+  overflow: auto;
+  border: 1px solid #dbeafe;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.new-main-linked-history-table .table__head,
+.new-main-linked-history-table .tbl__cell {
+  font-size: 11px;
+  padding: 6px 8px;
 }
 .new-main-schedule-panel {
   border: 1px solid #1d4ed8;
@@ -2338,20 +2365,38 @@ body.new-main-mode .new-main-csat-table-wrap {
 }
 
 body.new-main-mode .new-main-csat-table {
-  min-width: 860px;
+  min-width: 680px;
+  table-layout: fixed;
 }
 
 body.new-main-mode .new-main-csat-table .table__head--time,
 body.new-main-mode .new-main-csat-table td:first-child {
-  width: 55px;
-  max-width: 55px;
+  width: 62px !important;
+  min-width: 62px !important;
+  max-width: 62px !important;
   white-space: nowrap;
 }
 
+body.new-main-mode .new-main-csat-table th:nth-child(2),
+body.new-main-mode .new-main-csat-table td:nth-child(2) {
+  width: 84px !important;
+  min-width: 84px !important;
+  max-width: 84px !important;
+}
+
+body.new-main-mode .new-main-csat-table th:nth-child(3),
+body.new-main-mode .new-main-csat-table td:nth-child(3) {
+  width: 92px !important;
+  min-width: 92px !important;
+  max-width: 92px !important;
+}
+
 body.new-main-mode .new-main-csat-review {
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 body.new-main-mode .new-main-csat-badge {

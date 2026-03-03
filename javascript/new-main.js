@@ -32,7 +32,8 @@ const ROLE = {
   historyLookupModal: 'new-main-history-lookup-modal',
   linkedName: 'new-main-linked-name',
   linkedAccount: 'new-main-linked-account',
-  linkedResident: 'new-main-linked-resident'
+  linkedResident: 'new-main-linked-resident',
+  linkedRecentHistoryBody: 'new-main-linked-recent-history-body'
 };
 
 const ACTION = {
@@ -635,6 +636,22 @@ function historyEditorTemplate() {
               <span class="new-main-linked-value" data-role="${ROLE.linkedResident}">-</span>
             </div>
           </div>
+          <div class="new-main-linked-history">
+            <div class="new-main-linked-history-title">최근 상담이력 (고객 기준)</div>
+            <div class="new-main-linked-history-wrap">
+              <table class="tbl table--history new-main-linked-history-table" aria-label="고객 기준 최근 상담이력">
+                <thead class="main-history-thead">
+                  <tr>
+                    <th class="table__head table__head--time">일시</th>
+                    <th class="table__head">상담원</th>
+                    <th class="table__head">유형</th>
+                    <th class="table__head table__head--summary">내용</th>
+                  </tr>
+                </thead>
+                <tbody class="main-history-body" data-role="${ROLE.linkedRecentHistoryBody}"></tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <div class="history-category-grid">
           <div>
@@ -689,6 +706,66 @@ function setupHistoryLinkedCustomer(historyArea) {
   const linkedName = historyArea.querySelector(`[data-role="${ROLE.linkedName}"]`);
   const linkedAccount = historyArea.querySelector(`[data-role="${ROLE.linkedAccount}"]`);
   const linkedResident = historyArea.querySelector(`[data-role="${ROLE.linkedResident}"]`);
+  const linkedRecentHistoryBody = historyArea.querySelector(`[data-role="${ROLE.linkedRecentHistoryBody}"]`);
+
+  const parseDate = value => {
+    const text = String(value || '').trim();
+    const date = new Date(text.replace(' ', 'T'));
+    return Number.isNaN(date.getTime()) ? 0 : date.getTime();
+  };
+
+  const getRecentRows = customerName => {
+    const normalizedName = String(customerName || '').trim();
+    const pageData = window.__PAGE_DATA__ || {};
+    const rows = [
+      ...(Array.isArray(pageData.my_history_rows) ? pageData.my_history_rows : []),
+      ...(Array.isArray(pageData.history_rows) ? pageData.history_rows : [])
+    ];
+
+    return rows
+      .filter(row => String(row?.customer || '').trim() === normalizedName)
+      .sort((left, right) => parseDate(right?.timestamp) - parseDate(left?.timestamp))
+      .slice(0, 5);
+  };
+
+  const renderRecentRows = customerName => {
+    if (!linkedRecentHistoryBody) {
+      return;
+    }
+
+    const rows = getRecentRows(customerName);
+    linkedRecentHistoryBody.replaceChildren();
+
+    if (!rows.length) {
+      const tr = document.createElement('tr');
+      tr.className = 'tbl__row';
+      const td = document.createElement('td');
+      td.className = 'tbl__cell';
+      td.colSpan = 4;
+      td.textContent = '고객 기준 상담이력이 없습니다.';
+      tr.appendChild(td);
+      linkedRecentHistoryBody.appendChild(tr);
+      return;
+    }
+
+    rows.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.className = 'tbl__row';
+
+      const cells = [row?.timestamp || '-', row?.agent || '-', row?.type || '-', row?.content || '-'];
+      cells.forEach((value, index) => {
+        const td = document.createElement('td');
+        td.className = 'tbl__cell';
+        if (index === 3) {
+          td.classList.add('tbl__cell--truncate');
+        }
+        td.textContent = value;
+        tr.appendChild(td);
+      });
+
+      linkedRecentHistoryBody.appendChild(tr);
+    });
+  };
 
   const syncLinkedCustomer = () => {
     if (linkedName) {
@@ -700,6 +777,7 @@ function setupHistoryLinkedCustomer(historyArea) {
     if (linkedResident) {
       linkedResident.textContent = residentIdInput?.value?.trim() || '920315-2******';
     }
+    renderRecentRows(linkedName?.textContent || accountOwnerInput?.value || '박지민');
   };
 
   [accountOwnerInput, accountNumberInput, residentIdInput].forEach(input => {
@@ -891,6 +969,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (window.MainPageData && typeof window.MainPageData.load === 'function') {
     await window.MainPageData.load();
+    document.querySelector(SELECTOR.accountOwner)?.dispatchEvent(new Event('input', { bubbles: true }));
   }
 
   renderTodaySchedulePanel();
