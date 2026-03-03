@@ -932,7 +932,7 @@ body.customer-history-mode .layout-shell {
   border: 0;
   background: #f58220;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.01em;
   cursor: pointer;
@@ -2258,19 +2258,6 @@ body.new-main-mode .agent-login-chip {
   padding: 4px 10px;
 }
 
-/* Risk emphasis */
-body.new-main-mode .new-main-warning-panel {
-  border-color: #FECACA;
-  background: #FEF2F2;
-}
-
-body.new-main-mode .new-main-warning-title,
-body.new-main-mode .new-main-warning-content,
-body.new-main-mode .new-main-warning-badge,
-body.new-main-mode .customer-investment-profile {
-  color: var(--danger);
-}
-
 /* Pills and badges */
 body.new-main-mode .status-badge,
 body.new-main-mode .tag-pill,
@@ -2525,13 +2512,6 @@ body.new-main-mode .customer-warning {
   margin-top: 8px;
 }
 
-/* keep caution info border visible */
-body.new-main-mode .new-main-warning-panel {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  background: transparent;
-}
-
 body.new-main-mode .customer-warning-icon {
   color: #6b7280;
 }
@@ -2756,6 +2736,8 @@ body.new-main-mode .new-main-warning-content {
 /* force same title scale across schedule / live chat / routing headers */
 body.new-main-mode .new-main-routing-title,
 body.new-main-mode .new-main-schedule-title,
+body.new-main-mode .account-panel-title,
+body.new-main-mode .new-main-warning-title,
 body.new-main-mode #chat-area .main-live-header .weight-semibold,
 body.new-main-mode #coaching-area .main-live-header .weight-semibold,
 body.new-main-mode .history-editor-title,
@@ -3410,14 +3392,6 @@ body.new-main-mode .warning-tab.is-active,
 body.new-main-mode .pagination__btn.is-active,
 body.new-main-mode a {
   color: var(--text-accent);
-}
-
-body.new-main-mode .customer-warning-title,
-body.new-main-mode .customer-warning-text,
-body.new-main-mode .new-main-warning-title,
-body.new-main-mode .new-main-warning-item,
-body.new-main-mode .status-badge.status-unauth {
-  color: var(--text-danger);
 }
 
 /* new_main topbar: single-row compact status/action strip under global header */
