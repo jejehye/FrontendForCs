@@ -544,6 +544,12 @@
   border-radius: 0;
 }
 
+/* callback left header: remove inner separator lines */
+#sms-column .callback-request-header-row,
+#sms-column .callback-request-filter-row {
+  border-bottom: 0;
+}
+
 #sms-column .callback-request-title,
 #center-column #callback-chat-area .main-live-header .weight-semibold,
 #right-column #callback-chat-area .main-live-header .weight-semibold,
@@ -606,6 +612,7 @@
   border: 1px solid #DCE3EA;
   border-radius: 12px 12px 0 0;
   background: var(--callback-header-bg);
+  padding: 0;
   overflow: hidden;
 }
 
