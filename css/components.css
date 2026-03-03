@@ -1747,6 +1747,27 @@ body.customer-history-mode .layout-aside .customer-history-side-card:first-of-ty
   font-size: 11px;
   padding: 6px 8px;
 }
+.new-main-linked-history-table {
+  table-layout: fixed;
+}
+.new-main-linked-history-table th:nth-child(1),
+.new-main-linked-history-table td:nth-child(1) {
+  width: 64px;
+  max-width: 64px;
+  white-space: nowrap;
+}
+.new-main-linked-history-table th:nth-child(2),
+.new-main-linked-history-table td:nth-child(2) {
+  width: 56px;
+  max-width: 56px;
+  white-space: nowrap;
+}
+.new-main-linked-history-table th:nth-child(3),
+.new-main-linked-history-table td:nth-child(3) {
+  width: 64px;
+  max-width: 64px;
+  white-space: nowrap;
+}
 .new-main-schedule-panel {
   border: 1px solid #1d4ed8;
   border-radius: 8px;
