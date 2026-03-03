@@ -23,11 +23,6 @@
 }
 
 
-body {
-  background-color: #F4F6F9;
-  overflow: auto;
-}
-
 .column,
 .col-sidebar,
 .col-pds,
@@ -35,9 +30,9 @@ body {
 .col-right { display: flex; flex-direction: column; }
 
 .col-sidebar { background-color: var(--color-primary); align-items: center; padding-top: 20px; z-index: 50; }
-.col-pds { border-right: 0; background: #F8FAFC; overflow-y: auto; min-width: 0; gap: var(--pds-col-gap); padding: var(--pds-col-pad); }
-.col-center { border-right: 0; background: #F8FAFC; padding: var(--pds-col-pad); gap: var(--pds-col-gap); overflow-y: auto; min-width: 0; }
-.col-right { background: #F8FAFC; padding: var(--pds-col-pad); gap: var(--pds-col-gap); overflow-y: auto; min-width: 0; }
+.col-pds { border-right: 0; overflow-y: auto; min-width: 0; gap: var(--pds-col-gap); padding: var(--pds-col-pad); }
+.col-center { border-right: 0; padding: var(--pds-col-pad); gap: var(--pds-col-gap); overflow-y: auto; min-width: 0; }
+.col-right { padding: var(--pds-col-pad); gap: var(--pds-col-gap); overflow-y: auto; min-width: 0; }
 
 .card,
 .info-card {
@@ -749,4 +744,23 @@ body.has-global-header #app-container.grid-layout {
 
 #right-column .pds-script-card .pds-script-block:last-child {
   margin-bottom: 20px;
+}
+
+/* pds shell lock: prevent overlapping background tones */
+html,
+body {
+  background: #EEF2F7 !important;
+  overflow-y: auto !important;
+}
+
+.col-pds,
+.col-right,
+#pds-column.col-pds,
+#right-column.col-right {
+  background: #EEF2F7 !important;
+}
+
+.col-center,
+#center-column.col-center {
+  background: #FFFFFF !important;
 }
